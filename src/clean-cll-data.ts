@@ -13,15 +13,17 @@ export const cards = jsonDeck.cards
   .filter((card) => card.data.challenge_files.length)
   .map(cleanCard);
 
+console.log("clean-cll-data", { PUBLIC_URL: process.env.PUBLIC_URL });
+
 function cleanCard(card: JsonCard): Card {
   return {
     cherokee: card.data.challenge,
     english: card.data.answer.replace(/^“([^“”]*)”\.$/, "$1"),
     cherokee_audio: card.data.challenge_files.map(({ file }) =>
-      file.replace("cache/chr", "/source-chr")
+      file.replace("cache/chr", `${process.env.PUBLIC_URL}/source-chr`)
     ),
     english_audio: card.data.answer_files.map(({ file }) =>
-      file.replace("cache/en", "/source-en")
+      file.replace("cache/en", `${process.env.PUBLIC_URL}/source-en`)
     ),
   };
 }
