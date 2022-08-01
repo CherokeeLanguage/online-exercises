@@ -19,11 +19,11 @@ function cleanCard(card: JsonCard): Card {
   return {
     cherokee: card.data.challenge,
     english: card.data.answer.replace(/^“([^“”]*)”\.$/, "$1"),
-    cherokee_audio: card.data.challenge_files.map(({ file }) =>
-      file.replace("cache/chr", `${process.env.PUBLIC_URL}/source-chr`)
+    cherokee_audio: card.data.challenge_files.map(
+      ({ file }) => `${process.env.PUBLIC_URL}/source/chr/${file}`
     ),
-    english_audio: card.data.answer_files.map(({ file }) =>
-      file.replace("cache/en", `${process.env.PUBLIC_URL}/source-en`)
+    english_audio: card.data.answer_files.map(
+      ({ file }) => `${process.env.PUBLIC_URL}/source/en/${file}`
     ),
   };
 }
