@@ -1,13 +1,11 @@
 import React from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { Sidebar } from "./Sidebar";
-import { routes } from "./routes";
 import { LeitnerBoxProvider } from "./utils/LeitnerBoxProvider";
 
 const AppWrapper = styled.div`
   text-align: center;
-  width: 100vw;
   height: 100vh;
   padding: 0;
   margin: 0;
