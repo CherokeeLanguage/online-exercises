@@ -16,7 +16,6 @@ export function useTransition({ duration }: UseTransitionProps) {
   });
   useEffect(() => {
     if (transitioning) {
-      console.log("new timemout", transitioning, callback);
       const timeout = setTimeout(() => {
         setTransitioning(false);
         callback.cb && callback.cb();
@@ -27,7 +26,6 @@ export function useTransition({ duration }: UseTransitionProps) {
   return {
     transitioning,
     startTransition: (newCallback?: () => void) => {
-      console.log("start transition", newCallback);
       setTransitioning(true);
       setCallback({ cb: newCallback });
     },

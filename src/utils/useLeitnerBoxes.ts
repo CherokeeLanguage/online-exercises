@@ -1,159 +1,166 @@
 import { Reducer, useMemo, useReducer, useState } from "react";
 
-interface NewUseLeitnerBoxesProps<T> {
+interface NewUseLeitnerBoxesProps {
   type: "NEW";
   numBoxes: number;
-  initialCards: T[];
+  initialTerms: string[];
 }
 
-interface LoadUseLeitnerBoxProps<T> {
+interface LoadUseLeitnerBoxProps {
   type: "LOAD";
-  state: LeitnerBoxState<T>;
+  state: LeitnerBoxState;
 }
 
-export type UseLeitnerBoxesProps<T> =
-  | NewUseLeitnerBoxesProps<T>
-  | LoadUseLeitnerBoxProps<T>;
+export type UseLeitnerBoxesProps =
+  | NewUseLeitnerBoxesProps
+  | LoadUseLeitnerBoxProps;
 
-interface UseLeitnerBoxesReturn<T> {
-  currentCard: T;
-  state: LeitnerBoxState<T>;
-  next: (cardCorrect: boolean) => void;
+export interface UseLeitnerBoxesReturn {
+  state: LeitnerBoxState;
+  reviewTerm: (termKey: string, termCorrect: boolean) => void;
+  addNewTerms: (terms: string[]) => void;
 }
 
-interface BoxedCard<T> {
-  card: T;
+export interface TermStats {
+  key: string;
   box: number;
+  // timestamps
+  lastShown: number;
+  nextShowTime: number;
 }
 
-export interface LeitnerBoxState<T> {
+export interface LeitnerBoxState {
   /**
-   * Boxes for cards that have already been reviewed
+   * Terms with box info.
    */
-  boxes: T[][];
-  /**
-   * Cards left to review in the current session.
-   */
-  cardsToReview: BoxedCard<T>[];
+  terms: Record<string, TermStats>;
+  numBoxes: number;
 }
 
-type LeitnerBoxAction = {
-  type: "next";
+type ReviewCardAction = {
+  type: "review_term";
   correct: boolean; // was previous card answered correctly?
+  termKey: string; // key of the term that was reviewed
 };
 
-function reduceLeitnerBoxState<T>(
-  numBoxes: number
-): Reducer<LeitnerBoxState<T>, LeitnerBoxAction> {
-  return function (state, action) {
-    switch (action.type) {
-      case "next":
-        console.log("next action");
-        const currentCard = state.cardsToReview[0];
-        const newBoxForCard = action.correct
-          ? Math.min(currentCard.box + 1, numBoxes - 1)
-          : 0;
-        const newBoxes = state.boxes.map((box, idx) =>
-          idx === newBoxForCard ? [...box, currentCard.card] : box
-        );
-        let remainingCardsToReview = state.cardsToReview.slice(1);
-        if (remainingCardsToReview.length) {
-          return {
-            boxes: newBoxes,
-            cardsToReview: remainingCardsToReview.sort(),
-          };
-        } else {
-          // move cards from boxes into cardsToReview
-          return dealCards(newBoxes);
-        }
-    }
-  };
-}
+type AddNewTermsAction = {
+  type: "add_new_terms";
+  terms: string[];
+};
 
-function shuffle<T>(list: T[]): T[] {
-  return list
-    .map((t) => ({ t, k: Math.random() }))
-    .sort((a, b) => a.k - b.k)
-    .map(({ t }) => t);
-}
+type LeitnerBoxAction = ReviewCardAction | AddNewTermsAction;
 
-/**
- * Randomly select some boxes for review, based on exponential curve.
- */
-function dealCards<T>(
-  boxes: T[][],
-  initialCardsToReview?: BoxedCard<T>[]
-): LeitnerBoxState<T> {
-  const firstNonEmptyBox = boxes.findIndex((box) => box.length > 0);
-  const state = boxes.reduce<LeitnerBoxState<T>>(
-    ({ boxes, cardsToReview }, box, boxIdx) => {
-      // decide which boxes to include with exponential fall off
-      const includeBoxInLesson =
-        Math.random() < Math.pow(1 / 2, boxIdx - firstNonEmptyBox);
-      return {
-        boxes: [...boxes, includeBoxInLesson ? [] : box],
-        cardsToReview: includeBoxInLesson
-          ? [...cardsToReview, ...box.map((card) => ({ card, box: boxIdx }))]
-          : cardsToReview,
-      };
-    },
-    { boxes: [], cardsToReview: initialCardsToReview ?? [] }
-  );
-  if (state.cardsToReview.length)
-    return {
-      boxes: state.boxes,
-      cardsToReview: shuffle(state.cardsToReview),
-    };
-  else return dealCards(state.boxes, state.cardsToReview);
-}
+const PIMSLEUR_TIMINGS = new Array(15)
+  .fill(undefined)
+  .map((_, idx) => Math.pow(5, idx));
 
-export function flattenBoxes<T>(boxes: T[][]): BoxedCard<T>[] {
-  return boxes.flatMap((box, boxIdx) =>
-    box.map((card) => ({
-      card,
-      box: boxIdx,
-    }))
+function nextShowTime(lastShown: number, correctInARow: number) {
+  return (
+    lastShown +
+    (1 +
+      PIMSLEUR_TIMINGS[
+        Math.min(Math.max(correctInARow, 0), PIMSLEUR_TIMINGS.length - 1)
+      ]) *
+      1000
   );
 }
 
-function initLeiterBoxState<T>({
-  numBoxes,
-  initialCards,
-}: {
-  numBoxes: number;
-  initialCards: T[];
-}): LeitnerBoxState<T> {
+export function newTerm(term: string): TermStats {
   return {
-    // boxes are empty
-    boxes: new Array(numBoxes).fill(undefined).map(() => []),
-    // all cards are unknown
-    cardsToReview: initialCards.map((card) => ({ card, box: 0 })),
+    key: term,
+    box: 0,
+    lastShown: 0,
+    nextShowTime: 0,
   };
 }
 
-export function useLeitnerBoxes<T>(
-  props: UseLeitnerBoxesProps<T>
-): UseLeitnerBoxesReturn<T> {
-  const [state, dispatch] = useReducer<
-    Reducer<LeitnerBoxState<T>, LeitnerBoxAction>
-  >(
-    reduceLeitnerBoxState(
-      props.type === "NEW" ? props.numBoxes : props.state.boxes.length
+function reduceLeitnerBoxState(
+  { terms, numBoxes }: LeitnerBoxState,
+  action: LeitnerBoxAction
+): LeitnerBoxState {
+  switch (action.type) {
+    case "review_term":
+      const term = terms[action.termKey];
+      const now = Date.now();
+      if (!term) {
+        return {
+          terms: {
+            ...terms,
+            [action.termKey]: {
+              key: action.termKey,
+              box: 0,
+              lastShown: now,
+              nextShowTime: nextShowTime(now, 0),
+            },
+          },
+          numBoxes,
+        };
+      }
+
+      const newBox = action.correct ? Math.min(term.box + 1, numBoxes - 1) : 0;
+      return {
+        terms: {
+          ...terms,
+          [action.termKey]: {
+            ...term,
+            box: newBox,
+            lastShown: now,
+            nextShowTime: nextShowTime(now, newBox),
+          },
+        },
+        numBoxes,
+      };
+    case "add_new_terms":
+      return {
+        terms: {
+          ...Object.fromEntries(
+            action.terms.map((term) => [term, newTerm(term)])
+          ),
+          ...terms,
+        },
+        numBoxes,
+      };
+  }
+}
+
+function initLeiterBoxState({
+  initialTerms,
+  numBoxes,
+}: {
+  initialTerms: string[];
+  numBoxes: number;
+}): LeitnerBoxState {
+  return {
+    terms: Object.fromEntries(
+      initialTerms.map((term) => [term, newTerm(term)])
     ),
+    numBoxes,
+  };
+}
+
+export function useLeitnerBoxes(
+  props: UseLeitnerBoxesProps
+): UseLeitnerBoxesReturn {
+  const [state, dispatch] = useReducer<
+    Reducer<LeitnerBoxState, LeitnerBoxAction>
+  >(
+    reduceLeitnerBoxState,
     props.type === "NEW" ? initLeiterBoxState(props) : props.state
   );
 
-  const { card: currentCard } = useMemo(() => {
-    return state.cardsToReview[0];
-  }, [state.cardsToReview]);
-
   return {
-    currentCard,
     state,
-    next(correct) {
+    reviewTerm(termKey, correct) {
       dispatch({
-        type: "next",
+        type: "review_term",
         correct,
+        termKey,
+      });
+    },
+    addNewTerms(terms) {
+      dispatch({
+        type: "add_new_terms",
+        terms,
       });
     },
   };

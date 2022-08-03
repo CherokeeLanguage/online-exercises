@@ -1,8 +1,9 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { Sidebar } from "./Sidebar";
 import { routes } from "./routes";
+import { LeitnerBoxProvider } from "./utils/LeitnerBoxProvider";
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -14,8 +15,12 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-const AppHeader = styled.h1`
-  font-weight: bold;
+const AppHeader = styled.header`
+  h1 {
+    font-weight: bold;
+    margin: 0;
+    padding: 8px;
+  }
   border-bottom: 1px solid #111;
   margin: 0;
   padding: 8px;
@@ -33,19 +38,19 @@ const AppContent = styled.div`
 
 function App() {
   return (
-    <AppWrapper>
-      <AppHeader>Cherokee Language Lessons Exercises</AppHeader>
-      <AppBody>
-        <Sidebar />
-        <AppContent>
-          <Routes>
-            {routes.map((route, i) => (
-              <Route key={i} path={route.path} element={route.element()} />
-            ))}
-          </Routes>
-        </AppContent>
-      </AppBody>
-    </AppWrapper>
+    <LeitnerBoxProvider numBoxes={15} localStorageKey="global-leitner-boxes">
+      <AppWrapper>
+        <AppHeader>
+          <h1>Cherokee Language Lessons Exercises</h1>
+          <Sidebar />
+        </AppHeader>
+        <AppBody>
+          <AppContent>
+            <Outlet />
+          </AppContent>
+        </AppBody>
+      </AppWrapper>
+    </LeitnerBoxProvider>
   );
 }
 

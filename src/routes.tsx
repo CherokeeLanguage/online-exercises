@@ -1,9 +1,39 @@
-import React from "react";
-import { SimilarTerms } from "./exercises/SimilarTerms";
+import React, { ReactElement } from "react";
+import { RouteProps } from "react-router-dom";
+import {
+  SimilarTerms,
+  SimilarTermsAllSeenTerms,
+  SimilarTermsForLesson,
+} from "./exercises/SimilarTerms";
+import { Lessons } from "./lessons";
+import { Overview } from "./Overview";
 
-export const routes = [
+type DelayedRoute = {
+  element: () => ReactElement;
+  path?: string;
+  name: string;
+  index?: boolean;
+};
+
+export const routes: DelayedRoute[] = [
   {
+    name: "Similar terms",
+    path: "similar-terms/:lessonName/:cummulative",
+    element: () => <SimilarTermsForLesson />,
+  },
+  {
+    name: "Similar terms",
     path: "similar-terms/",
-    element: () => <SimilarTerms />,
+    element: () => <SimilarTermsAllSeenTerms />,
+  },
+  {
+    name: "Lessons",
+    index: true,
+    element: () => <Lessons />,
+  },
+  {
+    name: "Overview",
+    path: "overview/",
+    element: () => <Overview />,
   },
 ];

@@ -4,21 +4,36 @@ import styled from "styled-components";
 
 import { routes } from "./routes";
 
-const SidebarWrapper = styled.div`
-  flex: 200px 0 1;
-  border-right: 1px solid #111;
+const SidebarWrapper = styled.div``;
+
+const StyledNav = styled.nav`
+  display: flex;
+  gap: 16px;
+  max-width: 600px;
+  margin: auto;
+  align-items: center;
+`;
+
+const StyledLink = styled.a`
+  border: 1px solid #333;
+  flex: 1;
+  border-radius: 8px;
 `;
 
 export function Sidebar(): ReactElement {
   return (
     <SidebarWrapper>
-      <nav>
-        {routes.map((route, i) => (
-          <Link key={i} to={route.path}>
-            {route.path}
-          </Link>
-        ))}
-      </nav>
+      <StyledNav>
+        <StyledLink as={Link} to={"/"}>
+          Find lessons
+        </StyledLink>
+        <StyledLink as={Link} to={"/overview"}>
+          Review your progress
+        </StyledLink>
+        <StyledLink as={Link} to={"/similar-terms"}>
+          Practice now
+        </StyledLink>
+      </StyledNav>
     </SidebarWrapper>
   );
 }

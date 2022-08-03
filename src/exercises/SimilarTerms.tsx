@@ -1,34 +1,46 @@
-import React, { ReactElement, useState, useMemo } from "react";
+import React, { ReactElement, useState, useMemo, useEffect } from "react";
 import styled, { css } from "styled-components";
 // @ts-ignore
 import trigramSimilarity from "trigram-similarity";
-import { Card, cards } from "../clean-cll-data";
+import { Card, cards, keyForCard } from "../data/clean-cll-data";
 import { useAudio } from "../utils/useAudio";
-import { useCachedLeitnerBoxes } from "../utils/useCachedLeitnerBoxes";
 import { useTransition } from "../utils/useTransition";
 import SHA256 from "crypto-js/sha256";
+import { useParams } from "react-router-dom";
+import { termsByLesson } from "../data/clean-cll-data";
+import { useLeitnerBoxContext } from "../utils/LeitnerBoxProvider";
+import {
+  TermCardWithStats,
+  useLeitnerReviewSession,
+} from "../utils/useLeitnerReviewSession";
+import { useCardsForTerms } from "../utils/useCardsForTerms";
 
 interface Challenge {
   terms: Card[];
   correctTermIdx: number;
 }
 
-function newChallenge(correctTerm: Card): Challenge {
-  const temptingTerm = cards
+function newChallenge(
+  correctCard: TermCardWithStats<Card>,
+  lessonCards: Record<string, Card>
+): Challenge {
+  const temptingTerm = Object.keys(lessonCards)
     .slice(0)
     .sort(
       (a, b) =>
-        trigramSimilarity(b.cherokee, correctTerm.cherokee) -
-        trigramSimilarity(a.cherokee, correctTerm.cherokee)
+        trigramSimilarity(b, correctCard.card.cherokee) -
+        trigramSimilarity(a, correctCard.card.cherokee)
     )[1 + Math.floor(Math.random() * 2)]; // get a close match
+
+  const temptingCard = lessonCards[temptingTerm];
 
   const correctTermIdx = Math.floor(Math.random() * 2);
 
   return {
     terms:
       correctTermIdx === 0
-        ? [correctTerm, temptingTerm]
-        : [temptingTerm, correctTerm],
+        ? [correctCard.card, temptingCard]
+        : [temptingCard, correctCard.card],
     correctTermIdx,
   };
 }
@@ -52,33 +64,109 @@ const LESSON_HASH = SHA256(
   LESSON_CARDS.map((c) => c.cherokee).join("|")
 ).toString();
 
-export function SimilarTerms(): ReactElement {
-  const {
-    currentCard,
-    next,
-    state: leitnerBoxState,
-  } = useCachedLeitnerBoxes({
-    localStorageKey: `similar-terms-v2-${LESSON_HASH}`,
-    initialCards: cards.slice(0, 20),
-    allCards: cards,
-    numBoxes: 5,
-  });
+function lessonNameValid(lessonName: string): boolean {
+  return lessonName in termsByLesson;
+}
 
-  const challenge = useMemo(() => newChallenge(currentCard), [currentCard]);
+function getTerms(lessonName: string, cummulative: boolean): string[] {
+  if (!cummulative) return termsByLesson[lessonName];
+
+  const allLessons = Object.keys(
+    termsByLesson
+  ) as (keyof typeof termsByLesson)[];
+
+  const lessonIdx = allLessons.findIndex((lesson) => lesson === lessonName);
+  const lessonsInSession = allLessons.slice(0, lessonIdx + 1);
+
+  return lessonsInSession.flatMap((lesson) => termsByLesson[lesson]);
+}
+
+export function SimilarTermsForLesson(): ReactElement {
+  const { lessonName, cummulative: rawCummulative } = useParams();
+  const cummulative = rawCummulative?.toLowerCase() === "true";
+  if (!lessonName) throw new Error("Lesson name is required");
+  if (!lessonNameValid(lessonName)) throw new Error("Lesson name not found");
+
+  const lessonTerms = useMemo(
+    () => getTerms(lessonName, cummulative),
+    [lessonName, cummulative]
+  );
+  return <SimilarTerms lessonTerms={lessonTerms} />;
+}
+
+export function SimilarTermsAllSeenTerms(): ReactElement {
+  const leitnerBoxes = useLeitnerBoxContext();
+
+  const lessonTerms = useMemo(
+    () => Object.keys(leitnerBoxes.state.terms),
+    [leitnerBoxes.state.terms]
+  );
+  return <SimilarTerms lessonTerms={lessonTerms} />;
+}
+
+export function SimilarTerms({
+  lessonTerms,
+}: {
+  lessonTerms: string[];
+}): ReactElement {
+  const lessonCards = useCardsForTerms(cards, lessonTerms, keyForCard);
+
+  const leitnerBoxes = useLeitnerBoxContext();
+  const { ready, currentCard, reviewCurrentCard } = useLeitnerReviewSession(
+    leitnerBoxes,
+    lessonCards
+  );
+
+  const challenge = useMemo(
+    () => newChallenge(currentCard, lessonCards),
+    [currentCard]
+  );
+
+  const done = useMemo(
+    () => currentCard?.stats?.nextShowTime > Date.now() + 1000 * 60 * 60,
+    [currentCard]
+  );
+
+  if (!ready) return <p> Loading...</p>;
+  if (done)
+    return (
+      <>
+        <p>
+          You've reviewed these cards as much as you should today. Time to take
+          a break or learn some more vocabulary.
+        </p>
+        <p>
+          Come back in{" "}
+          {Math.floor(
+            (currentCard.stats.nextShowTime - Date.now()) / 1000 / 60 / 60
+          )}{" "}
+          hours
+        </p>
+      </>
+    );
+  else
+    return (
+      <SimilarTermsGame
+        challenge={challenge}
+        reviewCurrentCard={reviewCurrentCard}
+      />
+    );
+}
+
+function SimilarTermsGame({
+  challenge,
+  reviewCurrentCard,
+}: {
+  challenge: Challenge;
+  reviewCurrentCard: (correct: boolean) => void;
+}) {
   const [answerState, setAnswerState] = useState(AnswerState.UNANSWERED);
   const { transitioning, startTransition } = useTransition({ duration: 250 });
-
-  const cardsPerLevel = useMemo(() => {
-    return leitnerBoxState.cardsToReview.reduce(
-      (counts, card) => counts.map((c, i) => (i === card.box ? c + 1 : c)),
-      leitnerBoxState.boxes.map((box) => box.length)
-    );
-  }, [leitnerBoxState]);
 
   function onTermClicked(correct: boolean) {
     setAnswerState(correct ? AnswerState.CORRECT : AnswerState.INCORRECT);
     startTransition(() => {
-      next(correct);
+      reviewCurrentCard(correct);
       setAnswerState(AnswerState.UNANSWERED);
     });
   }
@@ -106,7 +194,7 @@ export function SimilarTerms(): ReactElement {
         display: "grid",
       }}
     >
-      <p> {leitnerBoxState.cardsToReview.length} left in session </p>
+      {/* <p> {leitnerBoxState.cardsToReview.length} left in session </p> */}
       <button onClick={play} disabled={playing}>
         Listen again
       </button>
@@ -121,7 +209,7 @@ export function SimilarTerms(): ReactElement {
           />
         ))}
       </Answers>
-      <Progress cardsPerLevel={cardsPerLevel} />
+      {/* <Progress cardsPerLevel={cardsPerLevel} /> */}
     </div>
   );
 }
