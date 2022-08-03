@@ -30,9 +30,9 @@ export function useAudio({
       setPlaying(false);
     };
     return () => {
+      audio.oncanplay = () => {};
       if (!audio.paused) {
         setPlaying(false);
-        audio.oncanplay = () => {};
         audio.pause();
       }
     };
