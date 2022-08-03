@@ -82,14 +82,14 @@ function getTerms(lessonName: string, cummulative: boolean): string[] {
 }
 
 export function SimilarTermsForLesson(): ReactElement {
-  const { lessonName, cummulative: rawCummulative } = useParams();
-  const cummulative = rawCummulative?.toLowerCase() === "true";
+  const { lessonName, cumulative: rawCumulative } = useParams();
+  const cumulative = rawCumulative?.toLowerCase() === "true";
   if (!lessonName) throw new Error("Lesson name is required");
   if (!lessonNameValid(lessonName)) throw new Error("Lesson name not found");
 
   const lessonTerms = useMemo(
-    () => getTerms(lessonName, cummulative),
-    [lessonName, cummulative]
+    () => getTerms(lessonName, cumulative),
+    [lessonName, cumulative]
   );
   return <SimilarTerms lessonTerms={lessonTerms} />;
 }

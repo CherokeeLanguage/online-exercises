@@ -18,7 +18,7 @@ type DelayedRoute = {
 export const routes: DelayedRoute[] = [
   {
     name: "Similar terms",
-    path: "similar-terms/:lessonName/:cummulative",
+    path: "similar-terms/:lessonName/:cumulative",
     element: () => <SimilarTermsForLesson />,
   },
   {
