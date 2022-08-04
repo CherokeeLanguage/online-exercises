@@ -1,7 +1,5 @@
 import React, { ReactElement } from "react";
-import { RouteProps } from "react-router-dom";
 import {
-  SimilarTerms,
   SimilarTermsAllSeenTerms,
   SimilarTermsForLesson,
 } from "./exercises/SimilarTerms";
