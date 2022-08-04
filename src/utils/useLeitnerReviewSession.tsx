@@ -40,13 +40,6 @@ export function useLeitnerReviewSession<T>(
   // then resort from mostly sorted order
   useEffect(() => {
     // console.log("Resorting cards...");
-    const newSortedCards = sortedCards
-      .map(({ term }) => ({
-        term,
-        stats: leitnerBoxes.state.terms[term] ?? newTerm(term),
-        card: lessonCards[term],
-      }))
-      .sort(compareTerms);
     // console.log("1st/last terms: ");
     // console.log("first", {
     //   date: new Date(newSortedCards[0].stats.nextShowTime),
@@ -58,7 +51,15 @@ export function useLeitnerReviewSession<T>(
     //   ),
     //   box: newSortedCards[newSortedCards.length - 1].stats.box,
     // });
-    setSortedCards(newSortedCards);
+    setSortedCards((currentSortedCards) =>
+      currentSortedCards
+        .map(({ term }) => ({
+          term,
+          stats: leitnerBoxes.state.terms[term] ?? newTerm(term),
+          card: lessonCards[term],
+        }))
+        .sort(compareTerms)
+    );
     setReady(true);
   }, [leitnerBoxes.state.terms, lessonCards]);
 
@@ -66,7 +67,7 @@ export function useLeitnerReviewSession<T>(
     const topCard = sortedCards[0];
     if (topCard.term !== lastCardKey) return topCard;
     else return sortedCards[1];
-  }, [sortedCards]);
+  }, [sortedCards, lastCardKey]);
 
   return {
     ready,

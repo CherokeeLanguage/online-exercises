@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { StyledAnchor } from "./components/StyledLink";
 
 import { routes } from "./routes";
 
@@ -9,30 +10,31 @@ const SidebarWrapper = styled.div``;
 const StyledNav = styled.nav`
   display: flex;
   gap: 16px;
-  max-width: 600px;
+  max-width: 800px;
   margin: auto;
   align-items: center;
 `;
 
-const StyledLink = styled.a`
-  border: 1px solid #333;
+const StyledNavLink = styled(StyledAnchor)`
   flex: 1;
-  border-radius: 8px;
+  &.active {
+    background: #33a;
+  }
 `;
 
 export function Sidebar(): ReactElement {
   return (
     <SidebarWrapper>
       <StyledNav>
-        <StyledLink as={Link} to={"/"}>
+        <StyledNavLink as={NavLink} to={"/"}>
           Find lessons
-        </StyledLink>
-        <StyledLink as={Link} to={"/overview"}>
+        </StyledNavLink>
+        <StyledNavLink as={NavLink} to={"/overview"}>
           Review your progress
-        </StyledLink>
-        <StyledLink as={Link} to={"/similar-terms"}>
+        </StyledNavLink>
+        <StyledNavLink as={NavLink} to={"/similar-terms"}>
           Practice now
-        </StyledLink>
+        </StyledNavLink>
       </StyledNav>
     </SidebarWrapper>
   );
