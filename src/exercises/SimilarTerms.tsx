@@ -5,15 +5,14 @@ import trigramSimilarity from "trigram-similarity";
 import { Card, cards, keyForCard } from "../data/clean-cll-data";
 import { useAudio } from "../utils/useAudio";
 import { useTransition } from "../utils/useTransition";
-import SHA256 from "crypto-js/sha256";
 import { useParams } from "react-router-dom";
-import { termsByLesson } from "../data/clean-cll-data";
 import { useLeitnerBoxContext } from "../utils/LeitnerBoxProvider";
 import {
   TermCardWithStats,
   useLeitnerReviewSession,
 } from "../utils/useLeitnerReviewSession";
 import { useCardsForTerms } from "../utils/useCardsForTerms";
+import { lessonNameValid, getTerms } from "../data/utils";
 
 interface Challenge {
   terms: Card[];
@@ -57,28 +56,6 @@ enum AnswerState {
   CORRECT = "CORRECT",
   INCORRECT = "INCORRECT",
   UNANSWERED = "UNANSWERED",
-}
-
-const LESSON_CARDS = cards.slice(0, 20);
-const LESSON_HASH = SHA256(
-  LESSON_CARDS.map((c) => c.cherokee).join("|")
-).toString();
-
-function lessonNameValid(lessonName: string): boolean {
-  return lessonName in termsByLesson;
-}
-
-function getTerms(lessonName: string, cummulative: boolean): string[] {
-  if (!cummulative) return termsByLesson[lessonName];
-
-  const allLessons = Object.keys(
-    termsByLesson
-  ) as (keyof typeof termsByLesson)[];
-
-  const lessonIdx = allLessons.findIndex((lesson) => lesson === lessonName);
-  const lessonsInSession = allLessons.slice(0, lessonIdx + 1);
-
-  return lessonsInSession.flatMap((lesson) => termsByLesson[lesson]);
 }
 
 export function SimilarTermsForLesson(): ReactElement {
