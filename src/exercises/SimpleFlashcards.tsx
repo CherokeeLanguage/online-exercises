@@ -197,7 +197,7 @@ export function Flashcard({
   return (
     <FlashcardWrapper>
       <form>
-        <label htmlFor={selectId}></label>
+        <label htmlFor={selectId}>Start with</label>
         <select id={selectId} value={startSide} onChange={onStartSideChange}>
           <option value="cherokee">Cherokee</option>
           <option value="english">English</option>
