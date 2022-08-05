@@ -1,4 +1,10 @@
-import { createContext, PropsWithChildren, Context, useContext } from "react";
+import {
+  createContext,
+  PropsWithChildren,
+  Context,
+  useContext,
+  useEffect,
+} from "react";
 import { useCachedLeitnerBoxes } from "./useCachedLeitnerBoxes";
 import { UseLeitnerBoxesReturn } from "./useLeitnerBoxes";
 
@@ -19,6 +25,11 @@ export function LeitnerBoxProvider({
     localStorageKey,
     initialTerms: [],
   });
+
+  useEffect(() => {
+    // handle resizes if we ever deploy them
+    if (value.state.numBoxes !== numBoxes) value.resize(numBoxes);
+  }, []);
   return (
     <LeitnerBoxContext.Provider value={value}>
       {children}

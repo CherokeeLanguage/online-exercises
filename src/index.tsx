@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <LeitnerBoxProvider numBoxes={15} localStorageKey="global-leitner-boxes">
+      <LeitnerBoxProvider numBoxes={10} localStorageKey="global-leitner-boxes">
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="/" element={<Lessons />} />

@@ -1,4 +1,4 @@
-import { Reducer, useMemo, useReducer, useState } from "react";
+import { Reducer, useReducer } from "react";
 
 interface NewUseLeitnerBoxesProps {
   type: "NEW";
@@ -18,7 +18,7 @@ export type UseLeitnerBoxesProps =
 export interface UseLeitnerBoxesReturn {
   state: LeitnerBoxState;
   reviewTerm: (termKey: string, termCorrect: boolean) => void;
-  addNewTerms: (terms: string[]) => void;
+  resize: (numBoxes: number) => void;
 }
 
 export interface TermStats {
@@ -43,12 +43,12 @@ type ReviewCardAction = {
   termKey: string; // key of the term that was reviewed
 };
 
-type AddNewTermsAction = {
-  type: "add_new_terms";
-  terms: string[];
+type ResizeAction = {
+  type: "resize";
+  newNumBoxes: number;
 };
 
-type LeitnerBoxAction = ReviewCardAction | AddNewTermsAction;
+type LeitnerBoxAction = ReviewCardAction | ResizeAction;
 
 const PIMSLEUR_TIMINGS = new Array(15)
   .fill(undefined)
@@ -110,15 +110,15 @@ function reduceLeitnerBoxState(
         },
         numBoxes,
       };
-    case "add_new_terms":
+    case "resize":
       return {
-        terms: {
-          ...Object.fromEntries(
-            action.terms.map((term) => [term, newTerm(term)])
-          ),
-          ...terms,
-        },
-        numBoxes,
+        terms: Object.fromEntries(
+          Object.entries(terms).map(([term, stats]) => [
+            term,
+            { ...stats, box: Math.min(stats.box, action.newNumBoxes - 1) },
+          ])
+        ),
+        numBoxes: action.newNumBoxes,
       };
   }
 }
@@ -157,10 +157,10 @@ export function useLeitnerBoxes(
         termKey,
       });
     },
-    addNewTerms(terms) {
+    resize(newNumBoxes) {
       dispatch({
-        type: "add_new_terms",
-        terms,
+        type: "resize",
+        newNumBoxes,
       });
     },
   };
