@@ -1,26 +1,9 @@
 import { ReactNode, useMemo, useState } from "react";
-import styled from "styled-components";
+import { TermCardList } from "./components/TermCardList";
 import { Card, cards, keyForCard } from "./data/clean-cll-data";
 import { useLeitnerBoxContext } from "./utils/LeitnerBoxProvider";
 import { useCardsForTerms } from "./utils/useCardsForTerms";
 import { TermCardWithStats } from "./utils/useLeitnerReviewSession";
-
-const TermList = styled.ul`
-  list-style: none;
-  margin: 8px auto;
-  padding: 0 16px;
-  border-bottom: 1px solid #333;
-  max-width: 600px;
-  display: flex;
-  flex-wrap: wrap;
-  li {
-    margin: 8px;
-    padding: 16px;
-    border: 1px solid #666;
-    border-radius: 8px;
-    flex: 0 1 150px;
-  }
-`;
 
 export function Overview() {
   const leitnerBoxes = useLeitnerBoxContext();
@@ -84,16 +67,7 @@ function ProficiencyLevel({
           {open ? "Hide terms" : "View terms"}
         </button>
       </h2>
-      {open && (
-        <TermList>
-          {terms.map((term, termIdx) => (
-            <li key={termIdx}>
-              <p>{term.card.syllabary}</p>
-              <p>{term.card.english}</p>
-            </li>
-          ))}
-        </TermList>
-      )}
+      {open && <TermCardList terms={terms} />}
     </div>
   );
 }

@@ -1,28 +1,18 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { StyledLink } from "../components/StyledLink";
-import { termsByLesson } from "../data/clean-cll-data";
+import { TermCardList } from "../components/TermCardList";
+import { cards, keyForCard, termsByLesson } from "../data/clean-cll-data";
 import { getTerms } from "../data/utils";
 import { useLeitnerBoxContext } from "../utils/LeitnerBoxProvider";
-import { LeitnerBoxState, TermStats } from "../utils/useLeitnerBoxes";
+import { useCardsForTerms } from "../utils/useCardsForTerms";
+import { LeitnerBoxState, newTerm, TermStats } from "../utils/useLeitnerBoxes";
 
 const StyledLessonList = styled.ul`
   padding: 0;
   margin: auto;
   max-width: 800px;
   list-style: none;
-  li {
-    padding: 8px 32px;
-    margin-top: 32px;
-    border-bottom: 1px solid #444;
-    display: flex;
-    justify-content: space-between;
-    h2 {
-      padding: 0;
-      margin: 0;
-      min-width: fit-content;
-    }
-  }
 `;
 
 const StyledLessonLinks = styled.div`
@@ -53,8 +43,6 @@ function termsToPractice(
 }
 
 export function Lessons(): ReactElement {
-  const { state: leitnerBoxState } = useLeitnerBoxContext();
-  const now = Date.now();
   return (
     <div>
       <p>
@@ -70,40 +58,69 @@ export function Lessons(): ReactElement {
         terms enough for today.
       </p>
       <StyledLessonList>
-        {Object.keys(termsByLesson).map((chapters, i) => {
-          return (
-            <li key={i}>
-              <h2>{chapters}</h2>
-              <StyledLessonLinks>
-                <StyledLink
-                  to={`/practice/lesson/${chapters}/false`}
-                  disabled={
-                    termsToPractice(
-                      getTerms(chapters, false),
-                      leitnerBoxState,
-                      now
-                    ) === 0
-                  }
-                >
-                  New terms
-                </StyledLink>
-                <StyledLink
-                  to={`/practice/lesson/${chapters}/true`}
-                  disabled={
-                    termsToPractice(
-                      getTerms(chapters, true),
-                      leitnerBoxState,
-                      now
-                    ) === 0
-                  }
-                >
-                  All material
-                </StyledLink>
-              </StyledLessonLinks>
-            </li>
-          );
+        {Object.keys(termsByLesson).map((lessonName, i) => {
+          return <Lesson key={i} lessonName={lessonName} />;
         })}
       </StyledLessonList>
     </div>
+  );
+}
+
+const StyledLessonHeader = styled.div`
+  padding: 8px 32px;
+  margin-top: 32px;
+  border-bottom: 1px solid #444;
+  display: flex;
+  justify-content: space-between;
+  h2 {
+    padding: 0;
+    margin: 0;
+    min-width: fit-content;
+  }
+`;
+
+export function Lesson({ lessonName }: { lessonName: string }): ReactElement {
+  const { state: leitnerBoxState } = useLeitnerBoxContext();
+  const [showTerms, setShowTerms] = useState(false);
+  const now = Date.now();
+  const lessonTerms = getTerms(lessonName, false);
+  const termCards = useCardsForTerms(cards, lessonTerms, keyForCard);
+
+  const termsWithStats = Object.entries(termCards).map(([term, card]) => ({
+    term,
+    stats: leitnerBoxState.terms[term] ?? newTerm(term),
+    card,
+  }));
+
+  return (
+    <li>
+      <StyledLessonHeader>
+        <h2>{lessonName}</h2>
+        <StyledLessonLinks>
+          <StyledLink
+            to={`/practice/lesson/${lessonName}/false`}
+            disabled={termsToPractice(lessonTerms, leitnerBoxState, now) === 0}
+          >
+            New terms
+          </StyledLink>
+          <StyledLink
+            to={`/practice/lesson/${lessonName}/true`}
+            disabled={
+              termsToPractice(
+                getTerms(lessonName, true),
+                leitnerBoxState,
+                now
+              ) === 0
+            }
+          >
+            All material
+          </StyledLink>
+          <button onClick={() => setShowTerms(!showTerms)}>
+            {showTerms ? "Hide terms" : `Show terms (${termsWithStats.length})`}
+          </button>
+        </StyledLessonLinks>
+      </StyledLessonHeader>
+      {showTerms && <TermCardList terms={termsWithStats} />}
+    </li>
   );
 }
