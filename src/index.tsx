@@ -4,8 +4,10 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { routes } from "./routes";
 import { LeitnerBoxProvider } from "./utils/LeitnerBoxProvider";
+import { Lessons } from "./lessons";
+import { Overview } from "./Overview";
+import { Practice } from "./Practice";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,18 +15,15 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          {routes.map((route, i) => (
-            <Route
-              key={i}
-              path={route.path}
-              index={route.index}
-              element={route.element()}
-            />
-          ))}
-        </Route>
-      </Routes>
+      <LeitnerBoxProvider numBoxes={15} localStorageKey="global-leitner-boxes">
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/" element={<Lessons />} />
+            <Route path="/overview" element={<Overview />} />
+            <Route path="/practice/*" element={<Practice />} />
+          </Route>
+        </Routes>
+      </LeitnerBoxProvider>
     </HashRouter>
   </React.StrictMode>
 );

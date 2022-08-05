@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { StyledAnchor } from "./components/StyledLink";
 
-import { routes } from "./routes";
-
 const SidebarWrapper = styled.div``;
 
 const StyledNav = styled.nav`
@@ -22,7 +20,7 @@ const StyledNavLink = styled(StyledAnchor)`
   }
 `;
 
-export function Sidebar(): ReactElement {
+export function NavBar(): ReactElement {
   return (
     <SidebarWrapper>
       <StyledNav>
@@ -32,7 +30,7 @@ export function Sidebar(): ReactElement {
         <StyledNavLink as={NavLink} to={"/overview"}>
           Review your progress
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/similar-terms"}>
+        <StyledNavLink as={NavLink} to={"/practice"}>
           Practice now
         </StyledNavLink>
       </StyledNav>

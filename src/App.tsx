@@ -1,8 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import { Sidebar } from "./Sidebar";
-import { LeitnerBoxProvider } from "./utils/LeitnerBoxProvider";
+import { NavBar } from "./NavBar";
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -32,23 +31,23 @@ const AppBody = styled.div`
 
 const AppContent = styled.div`
   flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
 `;
 
 function App() {
   return (
-    <LeitnerBoxProvider numBoxes={15} localStorageKey="global-leitner-boxes">
-      <AppWrapper>
-        <AppHeader>
-          <h1>Cherokee Language Lessons Exercises</h1>
-          <Sidebar />
-        </AppHeader>
-        <AppBody>
-          <AppContent>
-            <Outlet />
-          </AppContent>
-        </AppBody>
-      </AppWrapper>
-    </LeitnerBoxProvider>
+    <AppWrapper>
+      <AppHeader>
+        <h1>Cherokee Language Lessons Exercises</h1>
+        <NavBar />
+      </AppHeader>
+      <AppBody>
+        <AppContent>
+          <Outlet />
+        </AppContent>
+      </AppBody>
+    </AppWrapper>
   );
 }
 
