@@ -1,4 +1,10 @@
-import React, { ReactElement, useMemo, useState } from "react";
+import React, {
+  ChangeEvent,
+  ReactElement,
+  useId,
+  useMemo,
+  useState,
+} from "react";
 import { useParams } from "react-router-dom";
 import { useKeyPressEvent } from "react-use";
 import styled from "styled-components";
@@ -83,6 +89,10 @@ export function SimpleFlashcards({
           term, the enter key to mark a card as answered correctly, and the "x"
           key to mark a card as answered incorrectly.
         </p>
+        <p>
+          You can choose to start with English, but this is much harder and can
+          lead to much longer sessions.
+        </p>
         <Flashcard card={currentCard} reviewCurrentCard={reviewCurrentCard} />
       </div>
     );
@@ -118,7 +128,10 @@ export function Flashcard({
   reviewCurrentCard: (correct: boolean) => void;
 }) {
   const [cardFlipped, setCardFlipped] = useState(false);
-  const [side, setSide] = useState<"cherokee" | "english">("cherokee");
+  const [startSide, setStartSide] = useState<"cherokee" | "english">(
+    "cherokee"
+  );
+  const [side, setSide] = useState(startSide);
   const [lastReviewed, setLastReviewed] = useState<string | undefined>(
     undefined
   );
@@ -132,7 +145,7 @@ export function Flashcard({
   function reviewCardAndResetState(correct: boolean) {
     reviewCurrentCard(correct);
     setLastReviewed(card.term);
-    setSide("cherokee");
+    setSide(startSide);
     setCardFlipped(false);
   }
 
@@ -157,6 +170,16 @@ export function Flashcard({
     reviewCardOrFlip(true);
   });
 
+  function onStartSideChange(e: ChangeEvent<HTMLSelectElement>) {
+    e.preventDefault();
+    const value = e.target.value;
+    if (value === "cherokee" || value === "english") {
+      setStartSide(value);
+    } else {
+      console.warn("Unrecognized start side!!");
+    }
+  }
+
   // pick random cherokee voice to use
   const audio = useMemo(() => {
     const options =
@@ -169,8 +192,17 @@ export function Flashcard({
     autoplay: true,
   });
 
+  const selectId = useId();
+
   return (
     <FlashcardWrapper>
+      <form>
+        <label htmlFor={selectId}></label>
+        <select id={selectId} value={startSide} onChange={onStartSideChange}>
+          <option value="cherokee">Cherokee</option>
+          <option value="english">English</option>
+        </select>
+      </form>
       <StyledFlashcardBody
         onClick={() => {
           console.log("button click flip");
