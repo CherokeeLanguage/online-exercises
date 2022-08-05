@@ -50,18 +50,39 @@ type ResizeAction = {
 
 type LeitnerBoxAction = ReviewCardAction | ResizeAction;
 
-const PIMSLEUR_TIMINGS = new Array(15)
-  .fill(undefined)
-  .map((_, idx) => Math.pow(5, idx));
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
+const DAY = 24 * HOUR;
+
+const PIMSLEUR_TIMINGS = [
+  5 * SECOND, // 0 - new
+  30 * SECOND, // 1 - learning
+  2 * MINUTE, // 2 - learning
+  10 * MINUTE, // 3 - learning
+  40 * MINUTE, // 4 - review at end of session
+  2 * HOUR, // 5 - term learned
+  18 * HOUR, // 6 - every other review session if twice a day
+  1.5 * DAY, // 7 - every other day
+  6 * DAY, // 8 - once a week
+  28 * DAY, // 9 - once a month
+];
+
+/**
+ * Add a bit of noise to timings so card order changes.
+ * +/- 10%.
+ */
+function pimsleurNoise() {
+  return Math.random() * 0.2 + 0.9;
+}
 
 function nextShowTime(lastShown: number, correctInARow: number) {
   return (
     lastShown +
-    (1 +
+    pimsleurNoise() *
       PIMSLEUR_TIMINGS[
         Math.min(Math.max(correctInARow, 0), PIMSLEUR_TIMINGS.length - 1)
-      ]) *
-      1000
+      ]
   );
 }
 
