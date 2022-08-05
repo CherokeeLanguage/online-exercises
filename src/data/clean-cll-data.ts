@@ -31,7 +31,7 @@ export function keyForCard(card: Card): string {
 function cleanCard(card: JsonCard): Card {
   return {
     cherokee: cherokeeToKey(card.data.challenge),
-    syllabary: card.data.syllabary.split(";")[0].trim(),
+    syllabary: card.data.syllabary.split(";")[0].trim().toUpperCase(),
     english: card.data.answer.replace(/^“([^“”]*)”\.$/, "$1"),
     cherokee_audio: card.data.challenge_files.map(
       ({ file }) => `${process.env.PUBLIC_URL}/source/chr/${file}`
