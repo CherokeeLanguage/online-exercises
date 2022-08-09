@@ -1,10 +1,15 @@
 import jest from "jest";
 import { renderHook, act } from "@testing-library/react";
 import assert from "assert";
+
 import { Card, keyForCard } from "../data/clean-cll-data";
-import { MissingCardsError } from "./useCachedLeitnerBoxes";
-import { useCardsForTerms } from "./useCardsForTerms";
-import { useLeitnerBoxes } from "./useLeitnerBoxes";
+import { useCardsForTerms, MissingCardsError } from "../utils/useCardsForTerms";
+
+import {
+  LeitnerBoxState,
+  ReviewResult,
+  useLeitnerBoxes,
+} from "./useLeitnerBoxes";
 
 const HOWA: Card = {
   cherokee: "howa.",
@@ -68,26 +73,26 @@ describe("useCardsForTerms", () => {
 
 describe("useLeitnerBoxes", () => {
   it("can be loaded from a saved state", () => {
-    const initialState = {
+    const initialState: LeitnerBoxState = {
       numBoxes: 5,
       terms: {
         foo: {
           box: 0,
           key: "foo",
-          lastShown: 0,
-          nextShowTime: 0,
+          lastShownDate: 0,
+          nextShowDate: 0,
         },
         bar: {
           box: 0,
           key: "bar",
-          lastShown: 0,
-          nextShowTime: 0,
+          lastShownDate: 0,
+          nextShowDate: 0,
         },
         baz: {
           box: 0,
           key: "baz",
-          lastShown: 0,
-          nextShowTime: 0,
+          lastShownDate: 0,
+          nextShowDate: 0,
         },
       },
     };
@@ -103,31 +108,33 @@ describe("useLeitnerBoxes", () => {
   it("can be initialized", () => {
     const { result } = renderHook(() =>
       useLeitnerBoxes({
-        initialTerms: ["foo", "bar", "baz"],
         numBoxes: 5,
         type: "NEW",
       })
     );
+
+    act(() => result.current.addNewTerms(["foo", "bar", "baz"]));
+
     assert.deepStrictEqual(result.current.state, {
       numBoxes: 5,
       terms: {
         foo: {
           box: 0,
           key: "foo",
-          lastShown: 0,
-          nextShowTime: 0,
+          lastShownDate: 0,
+          nextShowDate: 0,
         },
         bar: {
           box: 0,
           key: "bar",
-          lastShown: 0,
-          nextShowTime: 0,
+          lastShownDate: 0,
+          nextShowDate: 0,
         },
         baz: {
           box: 0,
           key: "baz",
-          lastShown: 0,
-          nextShowTime: 0,
+          lastShownDate: 0,
+          nextShowDate: 0,
         },
       },
     });
@@ -137,33 +144,35 @@ describe("useLeitnerBoxes", () => {
     it("advances terms when answered correctly, up to the last box", () => {
       const { result } = renderHook(() =>
         useLeitnerBoxes({
-          initialTerms: ["foo", "bar", "baz"],
           numBoxes: 5,
           type: "NEW",
         })
       );
+
+      act(() => result.current.addNewTerms(["foo", "bar", "baz"]));
+
       act(() => {
-        result.current.reviewTerm("foo", true);
+        result.current.concludeReviewSession({ foo: ReviewResult.ALL_CORRECT });
       });
       assert.deepStrictEqual(result.current.state.terms.foo.box, 1);
 
       act(() => {
-        result.current.reviewTerm("foo", true);
+        result.current.concludeReviewSession({ foo: ReviewResult.ALL_CORRECT });
       });
       assert.deepStrictEqual(result.current.state.terms.foo.box, 2);
 
       act(() => {
-        result.current.reviewTerm("foo", true);
+        result.current.concludeReviewSession({ foo: ReviewResult.ALL_CORRECT });
       });
       assert.deepStrictEqual(result.current.state.terms.foo.box, 3);
 
       act(() => {
-        result.current.reviewTerm("foo", true);
+        result.current.concludeReviewSession({ foo: ReviewResult.ALL_CORRECT });
       });
       assert.deepStrictEqual(result.current.state.terms.foo.box, 4);
 
       act(() => {
-        result.current.reviewTerm("foo", true);
+        result.current.concludeReviewSession({ foo: ReviewResult.ALL_CORRECT });
       });
       assert.deepStrictEqual(result.current.state.terms.foo.box, 4);
     });
@@ -171,37 +180,62 @@ describe("useLeitnerBoxes", () => {
     it("keeps terms in the first box when answered incorrectly", () => {
       const { result } = renderHook(() =>
         useLeitnerBoxes({
-          initialTerms: ["foo", "bar", "baz"],
           numBoxes: 5,
           type: "NEW",
         })
       );
+
+      act(() => result.current.addNewTerms(["foo", "bar", "baz"]));
+
       act(() => {
-        result.current.reviewTerm("bar", false);
+        result.current.concludeReviewSession({
+          bar: ReviewResult.SINGLE_MISTAKE,
+          baz: ReviewResult.REPEAT_MISTAKE,
+        });
       });
+
       assert.deepStrictEqual(result.current.state.terms.bar.box, 0);
+      assert.deepStrictEqual(result.current.state.terms.baz.box, 0);
     });
 
-    it("returns terms to the first box when answered incorrectly", () => {
+    it("moves terms back one box when answered incorrectly several times; keeps them in the same box when answered incorrectly once", () => {
       const { result } = renderHook(() =>
         useLeitnerBoxes({
-          initialTerms: ["foo", "bar", "baz"],
           numBoxes: 5,
           type: "NEW",
         })
       );
+
       act(() => {
-        result.current.reviewTerm("baz", true);
+        result.current.addNewTerms(["foo", "bar", "baz"]);
       });
+
+      act(() => {
+        result.current.concludeReviewSession({
+          bar: ReviewResult.ALL_CORRECT,
+          baz: ReviewResult.ALL_CORRECT,
+        });
+      });
+      assert.deepStrictEqual(result.current.state.terms.bar.box, 1);
       assert.deepStrictEqual(result.current.state.terms.baz.box, 1);
+
       act(() => {
-        result.current.reviewTerm("baz", true);
+        result.current.concludeReviewSession({
+          bar: ReviewResult.SINGLE_MISTAKE,
+          baz: ReviewResult.ALL_CORRECT,
+        });
       });
+      assert.deepStrictEqual(result.current.state.terms.bar.box, 1);
       assert.deepStrictEqual(result.current.state.terms.baz.box, 2);
+
       act(() => {
-        result.current.reviewTerm("baz", false);
+        result.current.concludeReviewSession({
+          bar: ReviewResult.SINGLE_MISTAKE,
+          baz: ReviewResult.REPEAT_MISTAKE,
+        });
       });
-      assert.deepStrictEqual(result.current.state.terms.baz.box, 0);
+      assert.deepStrictEqual(result.current.state.terms.bar.box, 1);
+      assert.deepStrictEqual(result.current.state.terms.baz.box, 1);
     });
   });
 });

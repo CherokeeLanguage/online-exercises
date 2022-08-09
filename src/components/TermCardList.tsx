@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Card } from "../data/clean-cll-data";
-import { TermCardWithStats } from "../utils/useLeitnerReviewSession";
+import { TermCardWithStats } from "../spaced-repetition/types";
 
 const StyledTermList = styled.ul`
   list-style: none;
@@ -19,13 +19,13 @@ const StyledTermList = styled.ul`
   }
 `;
 
-export function TermCardList({ terms }: { terms: TermCardWithStats<Card>[] }) {
+export function TermCardList({ cards }: { cards: Card[] }) {
   return (
     <StyledTermList>
-      {terms.map((term, termIdx) => (
-        <li key={termIdx}>
-          <p>{term.card.syllabary}</p>
-          <p>{term.card.english}</p>
+      {cards.map((card, idx) => (
+        <li key={idx}>
+          <p>{card.syllabary}</p>
+          <p>{card.english}</p>
         </li>
       ))}
     </StyledTermList>

@@ -5,24 +5,11 @@ import { LeitnerBoxState, useLeitnerBoxes } from "./useLeitnerBoxes";
 interface UseCachedLeitnerBoxesProps {
   numBoxes: number;
   localStorageKey: string;
-  initialTerms: string[];
-}
-
-// cards replaced with key (cherokee pronounciation)
-export type KeyedLeitnerBoxState = LeitnerBoxState;
-
-export class MissingCardsError extends Error {
-  missingCards: string[];
-  constructor(missingCards: string[]) {
-    super(`Failed to deserialize ${missingCards.length} cards`);
-    this.missingCards = missingCards;
-  }
 }
 
 export function useCachedLeitnerBoxes({
   numBoxes,
   localStorageKey,
-  initialTerms,
 }: UseCachedLeitnerBoxesProps) {
   const [storedState, setStoredState] = useLocalStorage<LeitnerBoxState | null>(
     localStorageKey,
@@ -43,7 +30,6 @@ export function useCachedLeitnerBoxes({
       : {
           type: "NEW",
           numBoxes: numBoxes,
-          initialTerms,
         }
   );
 

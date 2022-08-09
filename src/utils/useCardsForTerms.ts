@@ -1,5 +1,12 @@
 import { useMemo } from "react";
-import { MissingCardsError } from "./useCachedLeitnerBoxes";
+
+export class MissingCardsError extends Error {
+  missingCards: string[];
+  constructor(missingCards: string[]) {
+    super(`Failed to deserialize ${missingCards.length} cards`);
+    this.missingCards = missingCards;
+  }
+}
 
 /**
  * Given a list of lookups and a list of terms, try to lookup all the terms

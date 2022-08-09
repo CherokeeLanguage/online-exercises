@@ -2,17 +2,11 @@ import React, { ReactElement, useState, useMemo, useEffect } from "react";
 import styled, { css } from "styled-components";
 // @ts-ignore
 import trigramSimilarity from "trigram-similarity";
-import { Card, cards, keyForCard } from "../data/clean-cll-data";
+import { Card } from "../data/clean-cll-data";
+import { TermCardWithStats } from "../spaced-repetition/types";
 import { useAudio } from "../utils/useAudio";
 import { useTransition } from "../utils/useTransition";
-import { useParams } from "react-router-dom";
-import { useLeitnerBoxContext } from "../utils/LeitnerBoxProvider";
-import {
-  TermCardWithStats,
-  useLeitnerReviewSession,
-} from "../utils/useLeitnerReviewSession";
-import { useCardsForTerms } from "../utils/useCardsForTerms";
-import { lessonNameValid, getTerms } from "../data/utils";
+import { ExerciseComponentProps } from "./Exercise";
 
 interface Challenge {
   terms: Card[];
@@ -58,85 +52,16 @@ enum AnswerState {
   UNANSWERED = "UNANSWERED",
 }
 
-export function SimilarTermsForLesson(): ReactElement {
-  const { lessonName, cumulative: rawCumulative } = useParams();
-  const cumulative = rawCumulative?.toLowerCase() === "true";
-  if (!lessonName) throw new Error("Lesson name is required");
-  if (!lessonNameValid(lessonName)) throw new Error("Lesson name not found");
-
-  const lessonTerms = useMemo(
-    () => getTerms(lessonName, cumulative),
-    [lessonName, cumulative]
-  );
-  return <SimilarTerms lessonTerms={lessonTerms} />;
-}
-
-export function SimilarTermsAllSeenTerms(): ReactElement {
-  const leitnerBoxes = useLeitnerBoxContext();
-
-  const lessonTerms = useMemo(
-    () => Object.keys(leitnerBoxes.state.terms),
-    [leitnerBoxes.state.terms]
-  );
-  return <SimilarTerms lessonTerms={lessonTerms} />;
-}
-
 export function SimilarTerms({
-  lessonTerms,
-}: {
-  lessonTerms: string[];
-}): ReactElement {
-  const lessonCards = useCardsForTerms(cards, lessonTerms, keyForCard);
-
-  const leitnerBoxes = useLeitnerBoxContext();
-  const { ready, currentCard, reviewCurrentCard } = useLeitnerReviewSession(
-    leitnerBoxes,
-    lessonCards
-  );
-
+  currentCard,
+  lessonCards,
+  reviewCurrentCard,
+}: ExerciseComponentProps): ReactElement {
   const challenge = useMemo(
     () => newChallenge(currentCard, lessonCards),
     [currentCard]
   );
 
-  const done = useMemo(
-    () => currentCard?.stats?.nextShowTime > Date.now() + 1000 * 60 * 60,
-    [currentCard]
-  );
-
-  if (!ready) return <p> Loading...</p>;
-  if (done)
-    return (
-      <>
-        <p>
-          You've reviewed these cards as much as you should today. Time to take
-          a break or learn some more vocabulary.
-        </p>
-        <p>
-          Come back in{" "}
-          {Math.floor(
-            (currentCard.stats.nextShowTime - Date.now()) / 1000 / 60 / 60
-          )}{" "}
-          hours
-        </p>
-      </>
-    );
-  else
-    return (
-      <SimilarTermsGame
-        challenge={challenge}
-        reviewCurrentCard={reviewCurrentCard}
-      />
-    );
-}
-
-function SimilarTermsGame({
-  challenge,
-  reviewCurrentCard,
-}: {
-  challenge: Challenge;
-  reviewCurrentCard: (correct: boolean) => void;
-}) {
   const [answerState, setAnswerState] = useState(AnswerState.UNANSWERED);
   const { transitioning, startTransition } = useTransition({ duration: 250 });
 

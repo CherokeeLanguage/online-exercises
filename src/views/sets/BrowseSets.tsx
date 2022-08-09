@@ -1,12 +1,20 @@
 import React, { ReactElement, useState } from "react";
 import styled from "styled-components";
-import { StyledLink } from "../components/StyledLink";
-import { TermCardList } from "../components/TermCardList";
-import { cards, keyForCard, termsByLesson } from "../data/clean-cll-data";
-import { getTerms } from "../data/utils";
-import { useLeitnerBoxContext } from "../utils/LeitnerBoxProvider";
-import { useCardsForTerms } from "../utils/useCardsForTerms";
-import { LeitnerBoxState, newTerm, TermStats } from "../utils/useLeitnerBoxes";
+import { StyledLink } from "../../components/StyledLink";
+import { TermCardList } from "../../components/TermCardList";
+import {
+  Card,
+  cards,
+  keyForCard,
+  termsByLesson,
+} from "../../data/clean-cll-data";
+import { getTerms } from "../../data/utils";
+import { useLeitnerBoxContext } from "../../spaced-repetition/LeitnerBoxProvider";
+import { useCardsForTerms } from "../../utils/useCardsForTerms";
+import { TermStats } from "../../spaced-repetition/types";
+import { LeitnerBoxState } from "../../spaced-repetition/useLeitnerBoxes";
+import { getToday } from "../../utils/dateUtils";
+import { termNeedsPractice } from "../../spaced-repetition/groupTermsIntoLessons";
 
 const StyledLessonList = styled.ul`
   padding: 0;
@@ -19,30 +27,22 @@ const StyledLessonLinks = styled.div`
   gap: 8px;
 `;
 
-function termNeedsPractice(
-  term: TermStats | undefined,
-  epochNow: number
-): boolean {
-  if (!term) return true;
-  else return term.nextShowTime < epochNow + 1000 * 60 * 60;
-}
-
 /**
  * Count how many terms from the lesson need to be practiced in the next hour
  */
 function termsToPractice(
   terms: string[],
   leitnerBoxes: LeitnerBoxState,
-  epochNow: number
+  today: number
 ) {
   return terms.reduce(
     (count, term) =>
-      termNeedsPractice(leitnerBoxes.terms[term], epochNow) ? count + 1 : count,
+      termNeedsPractice(leitnerBoxes.terms[term], today) ? count + 1 : count,
     0
   );
 }
 
-export function Lessons(): ReactElement {
+export function BrowseSets(): ReactElement {
   return (
     <div>
       <p>
@@ -82,13 +82,17 @@ const StyledLessonHeader = styled.div`
 export function Lesson({ lessonName }: { lessonName: string }): ReactElement {
   const { state: leitnerBoxState } = useLeitnerBoxContext();
   const [showTerms, setShowTerms] = useState(false);
-  const now = Date.now();
+  const today = getToday();
   const lessonTerms = getTerms(lessonName, false);
   const termCards = useCardsForTerms(cards, lessonTerms, keyForCard);
 
-  const termsWithStats = Object.entries(termCards).map(([term, card]) => ({
+  const termsWithStats = Object.entries(termCards).map<{
+    term: string;
+    stats?: TermStats;
+    card: Card;
+  }>(([term, card]) => ({
     term,
-    stats: leitnerBoxState.terms[term] ?? newTerm(term),
+    stats: leitnerBoxState.terms[term] ?? undefined,
     card,
   }));
 
@@ -99,7 +103,9 @@ export function Lesson({ lessonName }: { lessonName: string }): ReactElement {
         <StyledLessonLinks>
           <StyledLink
             to={`/practice/lesson/${lessonName}/false`}
-            disabled={termsToPractice(lessonTerms, leitnerBoxState, now) === 0}
+            disabled={
+              termsToPractice(lessonTerms, leitnerBoxState, today) === 0
+            }
           >
             New terms
           </StyledLink>
@@ -109,7 +115,7 @@ export function Lesson({ lessonName }: { lessonName: string }): ReactElement {
               termsToPractice(
                 getTerms(lessonName, true),
                 leitnerBoxState,
-                now
+                today
               ) === 0
             }
           >
@@ -120,7 +126,7 @@ export function Lesson({ lessonName }: { lessonName: string }): ReactElement {
           </button>
         </StyledLessonLinks>
       </StyledLessonHeader>
-      {showTerms && <TermCardList terms={termsWithStats} />}
+      {showTerms && <TermCardList cards={termsWithStats.map((t) => t.card)} />}
     </li>
   );
 }

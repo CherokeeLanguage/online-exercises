@@ -23,7 +23,6 @@ export function LeitnerBoxProvider({
   const value = useCachedLeitnerBoxes({
     numBoxes,
     localStorageKey,
-    initialTerms: [],
   });
 
   useEffect(() => {
