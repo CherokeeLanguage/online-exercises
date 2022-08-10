@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { Route, Routes, useParams } from "react-router-dom";
-import { StyledLink } from "./components/StyledLink";
+import { StyledLink } from "../../components/StyledLink";
 import { Exercise, ExerciseComponentProps } from "./exercises/Exercise";
 import { SimilarTerms } from "./exercises/SimilarTerms";
 import { SimpleFlashcards } from "./exercises/SimpleFlashcards";

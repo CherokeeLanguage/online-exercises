@@ -8,11 +8,12 @@ import { LeitnerBoxProvider } from "./spaced-repetition/LeitnerBoxProvider";
 import { BrowseSets } from "./views/sets/BrowseSets";
 import { ViewSet } from "./views/sets/ViewSet";
 // import { Overview } from "./Overview";
-import { PracticeLesson } from "./Practice";
-import { Dashboard } from "./views/Dashboard";
+import { PracticeLesson } from "./views/practice/Practice";
+import { Dashboard } from "./views/dashboard/Dashboard";
 import { BrowseLessons } from "./views/lessons/BrowseLessons";
 import { ViewLesson } from "./views/lessons/ViewLesson";
 import { LessonsProvider } from "./spaced-repetition/LessonsProvider";
+import { SetLessons } from "./views/sets/SetLessons";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -31,6 +32,7 @@ root.render(
               <Route path="sets">
                 <Route index element={<BrowseSets />} />
                 <Route path=":setId" element={<ViewSet />} />
+                <Route path=":setId/lessons" element={<SetLessons />} />
               </Route>
               <Route path="lessons">
                 <Route index element={<BrowseLessons />} />

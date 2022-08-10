@@ -1,11 +1,14 @@
 import { ReactElement, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, cards, keyForCard } from "../data/clean-cll-data";
-import { useLeitnerBoxContext } from "../spaced-repetition/LeitnerBoxProvider";
-import { PimsleurStats, TermCardWithStats } from "../spaced-repetition/types";
-import { useLesson } from "../spaced-repetition/LessonsProvider";
-import { useReviewSession } from "../spaced-repetition/useReviewSession";
-import { useCardsForTerms } from "../utils/useCardsForTerms";
+import { Card, cards, keyForCard } from "../../../data/clean-cll-data";
+import { useLeitnerBoxContext } from "../../../spaced-repetition/LeitnerBoxProvider";
+import {
+  PimsleurStats,
+  TermCardWithStats,
+} from "../../../spaced-repetition/types";
+import { useLesson } from "../../../spaced-repetition/LessonsProvider";
+import { useReviewSession } from "../../../spaced-repetition/useReviewSession";
+import { useCardsForTerms } from "../../../utils/useCardsForTerms";
 
 export interface ExerciseComponentProps {
   currentCard: TermCardWithStats<Card, PimsleurStats>;

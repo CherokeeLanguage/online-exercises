@@ -1,18 +1,31 @@
 import * as d3 from "d3";
 import { ReactElement, useRef, useMemo, useEffect } from "react";
 import { useLeitnerBoxContext } from "../../spaced-repetition/LeitnerBoxProvider";
+import { DAY, getToday, WEEK } from "../../utils/dateUtils";
 
 export function UpcomingCardsWidget() {
   const {
     state: { terms },
   } = useLeitnerBoxContext();
 
-  const termsByDay = d3.group(
-    Object.values(terms).map((t) => ({
-      ...t,
-      nextShowString: new Date(t.nextShowDate).toDateString(),
-    })),
-    (t) => t.nextShowString
+  const today = getToday();
+
+  function labelForDate(daysAfterToday: number) {
+    if (daysAfterToday === 0) return "Today";
+    if (daysAfterToday === 1) return "Tomorrow";
+    else return new Date(today + daysAfterToday * DAY).toDateString();
+  }
+
+  const termsByDayThisWeek = d3.group(
+    Object.values(terms)
+      .filter((t) => t.nextShowDate < today + WEEK)
+      .map((t) => ({
+        ...t,
+        nextShowDateString: labelForDate(
+          Math.floor(Math.max(t.nextShowDate - today, 0) / DAY)
+        ),
+      })),
+    (t) => t.nextShowDateString
   );
 
   const chartRef = useRef<SVGSVGElement | null>(null);
@@ -30,7 +43,7 @@ export function UpcomingCardsWidget() {
       height: dimensions.height - dimensions.margins * 2,
     };
 
-    const maxCount = d3.max(termsByDay.values(), (t) => t.length) ?? 0;
+    const maxCount = d3.max(termsByDayThisWeek.values(), (t) => t.length) ?? 0;
 
     const svg = d3
       .select(chartRef.current)
@@ -53,9 +66,16 @@ export function UpcomingCardsWidget() {
 
     const xScale = d3
       .scaleBand()
-      .domain(termsByDay.keys())
+      .domain(
+        [0, 1, 2, 3, 4, 5, 6].map((i) => {
+          if (i === 0) return "Today";
+          if (i === 1) return "Tomorrow";
+          else return new Date(today + i * DAY).toDateString();
+        })
+      )
       .range([0, containerDimensions.width])
       .padding(0.4);
+
     const yScale = d3
       .scaleLinear()
       .domain([0, maxCount])
@@ -84,7 +104,7 @@ export function UpcomingCardsWidget() {
 
     container
       .selectAll(".bar")
-      .data(termsByDay)
+      .data(termsByDayThisWeek)
       .enter()
       .append("rect")
       .attr("x", ([date, terms], i) => xScale(date) ?? 0)
@@ -94,7 +114,7 @@ export function UpcomingCardsWidget() {
         "height",
         ([date, terms], i) => containerDimensions.height - yScale(terms.length)
       );
-  }, [chartRef.current, termsByDay]);
+  }, [chartRef.current, termsByDayThisWeek]);
 
   // {
   //   termsByBox.map((count, idx) => {

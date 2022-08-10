@@ -1,5 +1,5 @@
 import { Reducer, useReducer } from "react";
-import { DAY, getToday, MINUTE, SECOND, WEEK } from "../utils/dateUtils";
+import { DAY, getToday, WEEK } from "../utils/dateUtils";
 import { TermStats } from "./types";
 
 interface NewUseLeitnerBoxesProps {
@@ -80,13 +80,13 @@ function nextShowDate(lastShownDate: number, box: number) {
   );
 }
 
-function newTermStats(term: string): TermStats {
+function newTermStats(term: string, today: number): TermStats {
   return {
     key: term,
     box: 0,
     // show immediately
     lastShownDate: 0,
-    nextShowDate: 0,
+    nextShowDate: nextShowDate(today, 0),
   };
 }
 
@@ -121,18 +121,21 @@ function reduceLeitnerBoxState(
   { terms, numBoxes }: LeitnerBoxState,
   action: LeitnerBoxAction
 ): LeitnerBoxState {
+  const today = getToday();
   switch (action.type) {
     case "add_new_terms":
       return {
         terms: action.newTerms.reduce(
           // do not overwrite existing data
-          (newTerms, term) => ({ [term]: newTermStats(term), ...newTerms }),
+          (newTerms, term) => ({
+            [term]: newTermStats(term, today),
+            ...newTerms,
+          }),
           terms
         ),
         numBoxes,
       };
     case "conclude_review":
-      const today = getToday();
       return {
         terms: Object.entries(action.reviewedTerms).reduce(
           (newTerms, [term, result]) => ({

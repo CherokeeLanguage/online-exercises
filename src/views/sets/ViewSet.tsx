@@ -1,12 +1,10 @@
 import React, { ReactElement } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { StyledAnchor, StyledLink } from "../../components/StyledLink";
+import { StyledAnchor } from "../../components/StyledLink";
 import { TermCardList } from "../../components/TermCardList";
 import { cards, keyForCard } from "../../data/clean-cll-data";
 import { collections, Set, sets } from "../../data/sets";
 import { useLeitnerBoxContext } from "../../spaced-repetition/LeitnerBoxProvider";
-import { useLessons } from "../../spaced-repetition/LessonsProvider";
-import { getToday } from "../../utils/dateUtils";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
 
 export function ViewSet(): ReactElement {
@@ -18,7 +16,6 @@ export function ViewSet(): ReactElement {
 
 function _ViewSet({ set }: { set: Set }): ReactElement {
   // used for starting a new set
-  const { upsertLesson } = useLessons();
   const { addNewTerms } = useLeitnerBoxContext();
 
   const navigate = useNavigate();
@@ -26,17 +23,9 @@ function _ViewSet({ set }: { set: Set }): ReactElement {
   const collectionName =
     (set.collection && collections[set.collection].title) ?? "";
 
-  function createLessonAndReview() {
-    const lessonId = "set:" + set.id;
-    const terms = Object.values(set.terms);
-    upsertLesson({
-      id: lessonId,
-      createdFor: getToday(),
-      completedAt: null,
-      terms,
-    });
-    addNewTerms(terms);
-    navigate(`/practice/${lessonId}`);
+  function registerTermsAndViewLessons() {
+    addNewTerms(Object.values(set.terms));
+    navigate(`/sets/${set.id}/lessons`);
   }
   return (
     <div>
@@ -44,7 +33,7 @@ function _ViewSet({ set }: { set: Set }): ReactElement {
         {collectionName && `${collectionName} - `}
         {set.title}
       </h2>
-      <StyledAnchor as={"button"} onClick={createLessonAndReview}>
+      <StyledAnchor as={"button"} onClick={registerTermsAndViewLessons}>
         Learn now!
       </StyledAnchor>
       <TermCardList cards={Object.values(setCards)} />

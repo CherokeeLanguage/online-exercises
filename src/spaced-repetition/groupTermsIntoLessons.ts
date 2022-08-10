@@ -18,12 +18,12 @@ export const MAX_CHALLENGES_PER_SESSION = 60;
  * Decide which terms need to be practiced today.
  */
 export function groupTermsIntoLessons(terms: TermStats[]): TermStats[][] {
-  const today = getToday();
-  const termsToPractice = terms
-    .filter((s) => termNeedsPractice(s, today))
+  // start with overdue
+  const orderedTerms = terms
+    .slice(0)
     .sort((a, b) => a.nextShowDate - b.nextShowDate);
 
-  const termsGroupedIntoLessons = termsToPractice.reduce<{
+  const termsGroupedIntoLessons = orderedTerms.reduce<{
     lessons: TermStats[][];
     currentLesson: TermStats[];
     currentLessonChallenges: number;

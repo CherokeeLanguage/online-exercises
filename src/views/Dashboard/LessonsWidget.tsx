@@ -1,24 +1,39 @@
 import React, { ReactElement } from "react";
-import { useLessons } from "../../spaced-repetition/LessonsProvider";
-import { getToday } from "../../utils/dateUtils";
+import { StyledLink } from "../../components/StyledLink";
+import {
+  nameForLesson,
+  useLessons,
+} from "../../spaced-repetition/LessonsProvider";
 import { DashboardWidget } from "./DashboardWidget";
 import { DashboardWidgetCard } from "./DashboardWidgetCard";
 
 export function LessonsWidget(): ReactElement {
   const { todaysLessons } = useLessons();
 
+  const lessonsToDo = todaysLessons.filter(
+    (l) => l.type === "DAILY" && l.completedAt === null
+  );
+
   return (
     <DashboardWidget title="Today's lessons">
-      {todaysLessons.length ? (
-        todaysLessons.map((id) => (
-          <DashboardWidgetCard title={`Lesson ${id}`}>
-            <p>60000 cards</p>
+      {lessonsToDo.length ? (
+        lessonsToDo.map((lesson) => (
+          <DashboardWidgetCard
+            title={nameForLesson(lesson)}
+            action={
+              <StyledLink to={`/practice/${lesson.id}`}>
+                Practice now!
+              </StyledLink>
+            }
+          >
+            <p>{lesson.terms.length} terms</p>
           </DashboardWidgetCard>
         ))
       ) : (
-        <DashboardWidgetCard title="Ooop come back">
-          <p>No lessons today</p>
-        </DashboardWidgetCard>
+        <p>
+          No more lessons today - take a break or start learning a new set from
+          below!
+        </p>
       )}
     </DashboardWidget>
   );

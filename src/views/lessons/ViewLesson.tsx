@@ -1,7 +1,15 @@
 import React, { ReactElement } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
+import { Lesson, useLessons } from "../../spaced-repetition/LessonsProvider";
 
 export function ViewLesson(): ReactElement {
   const { lessonId } = useParams();
-  return <p>View lesson {lessonId}</p>;
+  const { lessons } = useLessons();
+  if (!lessonId) return <Navigate to={"/lessons"} replace />;
+  const lesson = lessons[lessonId];
+  return <_ViewLesson lesson={lesson} />;
+}
+
+export function _ViewLesson({ lesson }: { lesson: Lesson }): ReactElement {
+  return <p>View lesson {lesson.id}</p>;
 }

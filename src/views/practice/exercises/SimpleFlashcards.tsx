@@ -7,9 +7,9 @@ import React, {
 } from "react";
 import { useKeyPressEvent } from "react-use";
 import styled from "styled-components";
-import { Card } from "../data/clean-cll-data";
-import { TermCardWithStats } from "../spaced-repetition/types";
-import { useAudio } from "../utils/useAudio";
+import { Card } from "../../../data/clean-cll-data";
+import { TermCardWithStats } from "../../../spaced-repetition/types";
+import { useAudio } from "../../../utils/useAudio";
 import { ExerciseComponentProps } from "./Exercise";
 
 export function SimpleFlashcards({

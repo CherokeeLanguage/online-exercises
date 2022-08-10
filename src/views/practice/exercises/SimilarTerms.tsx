@@ -2,10 +2,10 @@ import React, { ReactElement, useState, useMemo, useEffect } from "react";
 import styled, { css } from "styled-components";
 // @ts-ignore
 import trigramSimilarity from "trigram-similarity";
-import { Card } from "../data/clean-cll-data";
-import { TermCardWithStats } from "../spaced-repetition/types";
-import { useAudio } from "../utils/useAudio";
-import { useTransition } from "../utils/useTransition";
+import { Card } from "../../../data/clean-cll-data";
+import { TermCardWithStats } from "../../../spaced-repetition/types";
+import { useAudio } from "../../../utils/useAudio";
+import { useTransition } from "../../../utils/useTransition";
 import { ExerciseComponentProps } from "./Exercise";
 
 interface Challenge {
