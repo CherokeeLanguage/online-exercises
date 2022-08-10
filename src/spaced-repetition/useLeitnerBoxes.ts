@@ -21,6 +21,7 @@ export interface UseLeitnerBoxesReturn {
   concludeReviewSession: (reviewedTerms: Record<string, ReviewResult>) => void;
   resize: (numBoxes: number) => void;
   addNewTerms: (newTerms: string[]) => void;
+  removeTerms: (termsToRemove: string[]) => void;
 }
 
 export interface LeitnerBoxState {
@@ -47,6 +48,11 @@ type AddNewTermsAction = {
   newTerms: string[];
 };
 
+type RemoveTermsAction = {
+  type: "remove_terms";
+  termsToRemove: string[];
+};
+
 type ResizeAction = {
   type: "resize";
   newNumBoxes: number;
@@ -55,6 +61,7 @@ type ResizeAction = {
 type LeitnerBoxAction =
   | ConcludeReviewSessionAction
   | AddNewTermsAction
+  | RemoveTermsAction
   | ResizeAction;
 
 // TODO:
@@ -146,6 +153,15 @@ function reduceLeitnerBoxState(
         ),
         numBoxes,
       };
+    case "remove_terms":
+      return {
+        terms: Object.fromEntries(
+          Object.entries(terms).filter(
+            ([key, _]) => key in action.termsToRemove
+          )
+        ),
+        numBoxes,
+      };
     case "resize":
       return {
         terms: Object.fromEntries(
@@ -196,6 +212,12 @@ export function useLeitnerBoxes(
       dispatch({
         type: "add_new_terms",
         newTerms,
+      });
+    },
+    removeTerms(termsToRemove) {
+      dispatch({
+        type: "remove_terms",
+        termsToRemove,
       });
     },
     resize(newNumBoxes) {

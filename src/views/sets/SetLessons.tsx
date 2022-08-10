@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useMemo } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { StyledLink } from "../../components/StyledLink";
-import { Set, sets } from "../../data/sets";
+import { VocabSet, vocabSets } from "../../data/vocabSets";
 import { groupTermsIntoLessons } from "../../spaced-repetition/groupTermsIntoLessons";
 import { useLeitnerBoxContext } from "../../spaced-repetition/LeitnerBoxProvider";
 import {
@@ -10,19 +10,24 @@ import {
   nameForLesson,
   useLessons,
 } from "../../spaced-repetition/LessonsProvider";
+import { getToday } from "../../utils/dateUtils";
 
 export function SetLessons(): ReactElement {
   const { setId } = useParams();
   if (!setId) return <Navigate to="/sets" replace />;
-  const set = sets[setId];
+  const set = vocabSets[setId];
   return <_SetLessons set={set}></_SetLessons>;
 }
 
-function _SetLessons({ set }: { set: Set }): ReactElement {
-  const { todaysLessons, refreshLessons } = useLessons();
+function _SetLessons({ set }: { set: VocabSet }): ReactElement {
+  const { lessons, refreshLessons } = useLessons();
+  const today = getToday();
   const currentLessonsForSet = useMemo(
-    () => todaysLessons.filter((l) => l.type === "SET" && l.setId === set.id),
-    [todaysLessons]
+    () =>
+      Object.values(lessons).filter(
+        (l) => l.type === "SET" && l.setId === set.id && l.createdFor === today
+      ),
+    [lessons, today]
   );
   const leitnerBoxes = useLeitnerBoxContext();
 
@@ -41,6 +46,7 @@ function _SetLessons({ set }: { set: Set }): ReactElement {
           idx
         )
       );
+      console.log(`creating ${newLessons.length} new set lessons`);
       refreshLessons(newLessons, {
         type: "SET",
         setId: set.id,

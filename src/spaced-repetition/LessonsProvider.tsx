@@ -8,7 +8,7 @@ import {
 } from "./groupTermsIntoLessons";
 import { useLeitnerBoxContext } from "./LeitnerBoxProvider";
 import { v4 } from "uuid";
-import { sets } from "../data/sets";
+import { vocabSets } from "../data/vocabSets";
 
 export interface DailyLesson {
   type: "DAILY";
@@ -72,7 +72,7 @@ export function nameForLesson(lesson: Lesson) {
     case "DAILY":
       return `Daily lesson ${lesson.index + 1}`;
     case "SET":
-      const set = sets[lesson.setId];
+      const set = vocabSets[lesson.setId];
       return `Lesson ${lesson.index + 1} for set '${set.title}'`;
   }
 }

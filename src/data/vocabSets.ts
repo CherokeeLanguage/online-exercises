@@ -3,10 +3,10 @@ import { termsByLesson } from "./clean-cll-data";
 export interface Collection {
   id: string;
   title: string;
-  sets: Set[];
+  sets: VocabSet[];
 }
 
-export interface Set {
+export interface VocabSet {
   id: string;
   title: string;
   collection?: string;
@@ -29,6 +29,6 @@ export const collections: Record<string, Collection> = {
   },
 };
 
-export const sets: Record<string, Set> = Object.fromEntries(
+export const vocabSets: Record<string, VocabSet> = Object.fromEntries(
   Object.values(collections).flatMap((c) => c.sets.map((set) => [set.id, set]))
 );

@@ -27,8 +27,11 @@ export function NavBar(): ReactElement {
         <StyledNavLink as={NavLink} to={"/"}>
           Dashboard
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/sets"}>
-          Find vocab sets
+        <StyledNavLink as={NavLink} to={"/sets/my"}>
+          Your sets
+        </StyledNavLink>
+        <StyledNavLink as={NavLink} to={"/sets/browse"}>
+          Learn new vocabulary
         </StyledNavLink>
         <StyledNavLink as={NavLink} to={"/lessons"}>
           Today's lessons

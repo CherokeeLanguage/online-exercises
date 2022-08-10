@@ -5,7 +5,8 @@ import { useLeitnerBoxContext } from "../../spaced-repetition/LeitnerBoxProvider
 import { LeitnerBoxState } from "../../spaced-repetition/useLeitnerBoxes";
 import { getToday } from "../../utils/dateUtils";
 import { termNeedsPractice } from "../../spaced-repetition/groupTermsIntoLessons";
-import { collections, Set } from "../../data/sets";
+import { collections, VocabSet } from "../../data/vocabSets";
+import { useUserSetsContext } from "../../spaced-repetition/useUserSets";
 
 const StyledSetList = styled.ul`
   padding: 0;
@@ -34,24 +35,23 @@ function termsToPractice(
 }
 
 export function BrowseSets(): ReactElement {
+  const userSets = useUserSetsContext();
   return (
     <div>
       <p>
-        You may choose to review only new terms in a chapter, or all terms
-        introduced before and within that chapter.
-      </p>
-      <p>
-        If a link to practice is disabled, you have already practiced those
-        terms enough for today.
+        Here you can find new vocab sets. If it seems like a set is missing,
+        check the "Your sets" tab to see if you are already practicing.
       </p>
       {Object.values(collections).map((collection) => (
         <div>
           <h2>{collection.title}</h2>
 
           <StyledSetList>
-            {collection.sets.map((set, i) => {
-              return <VocabSet key={i} set={set} />;
-            })}
+            {collection.sets
+              .filter((set) => !(set.id in userSets.sets))
+              .map((set, i) => {
+                return <VocabSetPreview key={i} set={set} />;
+              })}
           </StyledSetList>
         </div>
       ))}
@@ -72,7 +72,7 @@ const StyledLessonHeader = styled.div`
   }
 `;
 
-export function VocabSet({ set }: { set: Set }): ReactElement {
+function VocabSetPreview({ set }: { set: VocabSet }): ReactElement {
   const { state: leitnerBoxState } = useLeitnerBoxContext();
   const today = getToday();
 
@@ -81,13 +81,7 @@ export function VocabSet({ set }: { set: Set }): ReactElement {
       <StyledLessonHeader>
         <h2>{set.title}</h2>
         <StyledSetLinks>
-          <StyledLink to={`/sets/${set.id}`}>View terms</StyledLink>
-          <StyledLink
-            to={`/set/${set.id}/lessons`}
-            disabled={termsToPractice(set.terms, leitnerBoxState, today) === 0}
-          >
-            Practice set
-          </StyledLink>
+          <StyledLink to={`/sets/browse/${set.id}`}>View details</StyledLink>
         </StyledSetLinks>
       </StyledLessonHeader>
     </li>

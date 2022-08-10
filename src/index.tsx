@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { LeitnerBoxProvider } from "./spaced-repetition/LeitnerBoxProvider";
 import { BrowseSets } from "./views/sets/BrowseSets";
 import { ViewSet } from "./views/sets/ViewSet";
+import { MySets } from "./views/sets/MySets";
 // import { Overview } from "./Overview";
 import { PracticeLesson } from "./views/practice/Practice";
 import { Dashboard } from "./views/dashboard/Dashboard";
@@ -14,6 +15,7 @@ import { BrowseLessons } from "./views/lessons/BrowseLessons";
 import { ViewLesson } from "./views/lessons/ViewLesson";
 import { LessonsProvider } from "./spaced-repetition/LessonsProvider";
 import { SetLessons } from "./views/sets/SetLessons";
+import { UserSetsProvider } from "./spaced-repetition/useUserSets";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -25,26 +27,34 @@ root.render(
         numBoxes={6}
         localStorageKey="global-leitner-boxes-v2"
       >
-        <LessonsProvider>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="sets">
-                <Route index element={<BrowseSets />} />
-                <Route path=":setId" element={<ViewSet />} />
-                <Route path=":setId/lessons" element={<SetLessons />} />
+        <UserSetsProvider>
+          <LessonsProvider>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="sets">
+                  <Route path="browse">
+                    <Route index element={<BrowseSets />} />
+                    <Route path=":setId" element={<ViewSet />} />
+                    <Route path=":setId/lessons" element={<SetLessons />} />
+                  </Route>
+                  <Route path="my" element={<MySets />} />
+                </Route>
+                <Route path="lessons">
+                  <Route index element={<BrowseLessons />} />
+                  <Route path=":lessonId" element={<ViewLesson />} />
+                </Route>
+                <Route path="practice">
+                  <Route index element={<Navigate to="/lessons/" replace />} />
+                  <Route
+                    path=":lessonId/*"
+                    element={<PracticeLesson />}
+                  ></Route>
+                </Route>
               </Route>
-              <Route path="lessons">
-                <Route index element={<BrowseLessons />} />
-                <Route path=":lessonId" element={<ViewLesson />} />
-              </Route>
-              <Route path="practice">
-                <Route index element={<Navigate to="/lessons/" replace />} />
-                <Route path=":lessonId/*" element={<PracticeLesson />}></Route>
-              </Route>
-            </Route>
-          </Routes>
-        </LessonsProvider>
+            </Routes>
+          </LessonsProvider>
+        </UserSetsProvider>
       </LeitnerBoxProvider>
     </HashRouter>
   </React.StrictMode>
