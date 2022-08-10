@@ -25,13 +25,13 @@ export function NavBar(): ReactElement {
     <SidebarWrapper>
       <StyledNav>
         <StyledNavLink as={NavLink} to={"/"}>
-          Find lessons
+          Dashboard
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/overview"}>
-          Review your progress
+        <StyledNavLink as={NavLink} to={"/sets"}>
+          Find vocab sets
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/practice"}>
-          Practice now
+        <StyledNavLink as={NavLink} to={"/lessons"}>
+          Today's lessons
         </StyledNavLink>
       </StyledNav>
     </SidebarWrapper>
