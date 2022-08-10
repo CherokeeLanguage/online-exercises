@@ -9,7 +9,7 @@ export interface DashboardWidgetCardProps {
 
 const Card = styled.div`
   min-width: 200px;
-  height: 150px;
+  min-height: 150px;
   box-shadow: 2px 2px 4px #aaa;
   border: 1px solid #aaa;
   border-radius: 8px;

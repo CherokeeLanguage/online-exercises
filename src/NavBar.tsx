@@ -8,7 +8,6 @@ const SidebarWrapper = styled.div``;
 const StyledNav = styled.nav`
   display: flex;
   gap: 16px;
-  max-width: 800px;
   margin: auto;
   align-items: center;
 `;
