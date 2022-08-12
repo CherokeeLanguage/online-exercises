@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { ReactElement, useRef, useMemo, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useLeitnerBoxContext } from "../../spaced-repetition/LeitnerBoxProvider";
 import { DAY, getToday, WEEK } from "../../utils/dateUtils";
 
