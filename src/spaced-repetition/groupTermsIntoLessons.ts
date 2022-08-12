@@ -1,4 +1,4 @@
-import { getToday } from "../utils/dateUtils";
+import { DAY } from "../utils/dateUtils";
 import { TermStats } from "./types";
 import { showsPerSessionForBox } from "./usePimsleurTimings";
 
@@ -8,8 +8,8 @@ export function termNeedsPractice(
 ): boolean {
   // needs practice if never reviewed
   if (!term) return true;
-  // term needs practice if next show date is today or earlier (lapsed)
-  else return term.nextShowDate <= today;
+  // term needs practice if next show date is before tomorrow
+  else return term.nextShowDate < today + DAY;
 }
 
 export const MAX_CHALLENGES_PER_SESSION = 120;
