@@ -3,7 +3,11 @@ import { useLocalStorage } from "react-use";
 import { PimsleurStats, TermCardWithStats } from "./types";
 import { ReviewResult, UseLeitnerBoxesReturn } from "./useLeitnerBoxes";
 import { lessonKey } from "./LessonsProvider";
-import { PimsleurTimingState, usePimsleurTimings } from "./usePimsleurTimings";
+import {
+  MAX_SHOW_PER_SESSION,
+  PimsleurTimingState,
+  usePimsleurTimings,
+} from "./usePimsleurTimings";
 
 export interface UseLeitnerReviewSessionReturn<T> {
   current: TermCardWithStats<T>;
@@ -82,6 +86,16 @@ export function useReviewSession<T>(
 
   useEffect(() => setStoredPimsleurState(timings.state), [timings.state]);
 
+  const challengesRemaining = useMemo(
+    () =>
+      timings.state.sortedTerms.reduce(
+        (count, stats) =>
+          count + MAX_SHOW_PER_SESSION - stats.sessionRepetitions,
+        0
+      ),
+    [timings.state.sortedTerms]
+  );
+
   const currentCard: TermCardWithStats<T, PimsleurStats> | undefined = useMemo(
     () =>
       timings.nextTerm && {
@@ -95,6 +109,7 @@ export function useReviewSession<T>(
   return {
     currentCard,
     reviewedTerms,
+    challengesRemaining,
     reviewCurrentCard(correct: boolean) {
       if (currentCard) {
         setReviewedTerms({

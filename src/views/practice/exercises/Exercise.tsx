@@ -27,11 +27,8 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
   const lessonCards = useCardsForTerms(cards, lesson.terms, keyForCard);
   const navigate = useNavigate();
 
-  const { currentCard, reviewedTerms, reviewCurrentCard } = useReviewSession(
-    leitnerBoxes,
-    lessonCards,
-    lessonId
-  );
+  const { currentCard, reviewedTerms, reviewCurrentCard, challengesRemaining } =
+    useReviewSession(leitnerBoxes, lessonCards, lessonId);
 
   useEffect(() => {
     if (currentCard === undefined) {
@@ -43,11 +40,14 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
   }, [currentCard]);
 
   return currentCard ? (
-    <Component
-      currentCard={currentCard}
-      lessonCards={lessonCards}
-      reviewCurrentCard={reviewCurrentCard}
-    />
+    <>
+      <p>{challengesRemaining} challenges left!</p>
+      <Component
+        currentCard={currentCard}
+        lessonCards={lessonCards}
+        reviewCurrentCard={reviewCurrentCard}
+      />
+    </>
   ) : (
     <></>
   );

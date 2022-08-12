@@ -12,7 +12,7 @@ export function termNeedsPractice(
   else return term.nextShowDate <= today;
 }
 
-export const MAX_CHALLENGES_PER_SESSION = 60;
+export const MAX_CHALLENGES_PER_SESSION = 120;
 
 /**
  * Decide which terms need to be practiced today.

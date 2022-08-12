@@ -13,7 +13,8 @@ function newPimsleurStats(stats: TermStats): PimsleurStats {
   return {
     ...stats,
     lastShownTime: stats.lastShownDate,
-    nextShowTime: nextShowTime(now, repetitionOffset),
+    // show card at random time in 1st 5 minutes of session
+    nextShowTime: now + 5 * MINUTE * Math.random(),
     sessionRepetitions: repetitionOffset,
   };
 }
@@ -38,7 +39,7 @@ const PIMSLEUR_TIMINGS = [
   50 * MINUTE,
 ];
 
-const MAX_SHOW_PER_SESSION = PIMSLEUR_TIMINGS.length;
+export const MAX_SHOW_PER_SESSION = PIMSLEUR_TIMINGS.length;
 
 export function showsPerSessionForBox(box: number) {
   return MAX_SHOW_PER_SESSION - repetitionOffsetForBox(box);
@@ -109,6 +110,7 @@ function initializePimsleurTimingState(
       newPimsleurStats(stats),
     ])
   );
+
   return {
     terms: termsWithTimings,
     sortedTerms: Object.values(termsWithTimings).sort(compareTerms),
