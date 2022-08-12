@@ -40,6 +40,27 @@ function updateReviewResult(
   }
 }
 
+export function useReviewedTerms(lessonId: string) {
+  const [storedReviewedTerms, setReviewedTerms] = useLocalStorage<
+    Record<string, ReviewResult>
+  >(`${lessonKey(lessonId)}/reviewed-terms`, undefined, {
+    raw: false,
+    serializer: JSON.stringify,
+    deserializer: JSON.parse,
+  });
+  const reviewedTerms = storedReviewedTerms ?? {};
+
+  return {
+    reviewedTerms,
+    reviewTerm(term: string, correct: boolean) {
+      setReviewedTerms({
+        ...reviewedTerms,
+        [term]: updateReviewResult(reviewedTerms[term], correct),
+      });
+    },
+  };
+}
+
 /**
  * Start a review session with the given cards.
  *
@@ -58,14 +79,7 @@ export function useReviewSession<T>(
     [leitnerBoxes.state.terms, lessonCards]
   );
 
-  const [storedReviewedTerms, setReviewedTerms] = useLocalStorage<
-    Record<string, ReviewResult>
-  >(`${lessonKey(lessonId)}/reviewed-terms`, undefined, {
-    raw: false,
-    serializer: JSON.stringify,
-    deserializer: JSON.parse,
-  });
-  const reviewedTerms = storedReviewedTerms ?? {};
+  const { reviewedTerms, reviewTerm } = useReviewedTerms(lessonId);
 
   const [storedPimsleurState, setStoredPimsleurState] =
     useLocalStorage<PimsleurTimingState | null>(
@@ -112,13 +126,7 @@ export function useReviewSession<T>(
     challengesRemaining,
     reviewCurrentCard(correct: boolean) {
       if (currentCard) {
-        setReviewedTerms({
-          ...reviewedTerms,
-          [currentCard.term]: updateReviewResult(
-            reviewedTerms[currentCard.term],
-            correct
-          ),
-        });
+        reviewTerm(currentCard.term, correct);
         timings.markTermShown();
       }
     },
