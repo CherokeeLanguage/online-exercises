@@ -17,8 +17,9 @@ export function LessonsWidget(): ReactElement {
   return (
     <DashboardWidget title="Today's lessons">
       {lessonsToDo.length ? (
-        lessonsToDo.map((lesson) => (
+        lessonsToDo.map((lesson, i) => (
           <DashboardWidgetCard
+            key={i}
             title={nameForLesson(lesson)}
             action={
               <StyledLink to={`/practice/${lesson.id}`}>
