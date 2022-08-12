@@ -1,5 +1,6 @@
+import { DateTime, DurationLike } from "luxon";
 import { Reducer, useReducer } from "react";
-import { DAY, getToday, WEEK } from "../utils/dateUtils";
+import { getToday } from "../utils/dateUtils";
 import { TermStats } from "./types";
 
 interface NewUseLeitnerBoxesProps {
@@ -71,20 +72,21 @@ type LeitnerBoxAction =
 // leiter box timings on the order of days/weeks
 // pimsleur timings still just seconds or whatever
 
-const LEITNER_TIMINGS = [
-  0, // review again today
-  DAY, // tomorrow
-  3 * DAY, // three days
-  WEEK, // week
-  2 * WEEK, // two weeks
-  4 * WEEK, // month
+const LEITNER_TIMINGS: DurationLike[] = [
+  { days: 0 }, // review again today
+  { days: 1 }, // tomorrow
+  { days: 3 }, // three days
+  { weeks: 1 }, // week
+  { weeks: 2 }, // two weeks
+  { months: 1 }, // month
 ];
 
-function nextShowDate(lastShownDate: number, box: number) {
-  return (
-    lastShownDate +
-    LEITNER_TIMINGS[Math.min(Math.max(box, 0), LEITNER_TIMINGS.length - 1)]
-  );
+function nextShowDate(lastShownDate: number, box: number): number {
+  return DateTime.fromMillis(lastShownDate)
+    .plus(
+      LEITNER_TIMINGS[Math.min(Math.max(box, 0), LEITNER_TIMINGS.length - 1)]
+    )
+    .toMillis();
 }
 
 function newTermStats(term: string, today: number): TermStats {
