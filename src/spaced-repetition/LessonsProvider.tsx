@@ -195,14 +195,16 @@ export function LessonsProvider({
           lessonIdx
         )
       );
-      console.log(`Creating ${newLessons.length} lessons...`);
-      dispatch({
-        type: "REFRESH_LESSONS",
-        lessons: newLessons,
-        metadata: {
-          type: "DAILY",
-        },
-      });
+      if (newLessons.length) {
+        console.log(`Creating ${newLessons.length} lessons...`);
+        dispatch({
+          type: "REFRESH_LESSONS",
+          lessons: newLessons,
+          metadata: {
+            type: "DAILY",
+          },
+        });
+      }
     }
   }, [todaysLessons]);
 
