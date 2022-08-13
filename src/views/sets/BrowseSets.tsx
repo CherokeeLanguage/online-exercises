@@ -29,7 +29,7 @@ export function BrowseSets(): ReactElement {
 
           <StyledSetList>
             {collection.sets
-              .filter((set) => !(set.id in sets.sets))
+              .filter((set) => !(set.id in sets))
               .map((set, i) => {
                 return <VocabSetPreview key={i} set={set} />;
               })}
