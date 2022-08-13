@@ -1,12 +1,10 @@
 import React, { ReactElement } from "react";
-import { StyledAnchor, StyledLink } from "../../components/StyledLink";
-import {
-  nameForLesson,
-  useLessons,
-} from "../../spaced-repetition/LessonsProvider";
+import { StyledLink } from "../../components/StyledLink";
+import { nameForLesson } from "../../state/reducers/lessons";
+import { useUserStateContext } from "../../state/UserStateProvider";
 
 export function BrowseLessons(): ReactElement {
-  const { lessons, todaysLessons } = useLessons();
+  const { todaysLessons } = useUserStateContext();
   return (
     <div>
       <h2>Browse Lessons</h2>

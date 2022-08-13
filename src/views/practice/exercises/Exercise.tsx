@@ -1,14 +1,14 @@
 import { ReactElement, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, cards, keyForCard } from "../../../data/clean-cll-data";
-import { useLeitnerBoxContext } from "../../../spaced-repetition/LeitnerBoxProvider";
 import {
   PimsleurStats,
   TermCardWithStats,
 } from "../../../spaced-repetition/types";
-import { useLesson } from "../../../spaced-repetition/LessonsProvider";
+import { useLesson } from "../../../state/useLesson";
 import { useReviewSession } from "../../../spaced-repetition/useReviewSession";
 import { useCardsForTerms } from "../../../utils/useCardsForTerms";
+import { useUserStateContext } from "../../../state/UserStateProvider";
 
 export interface ExerciseComponentProps {
   currentCard: TermCardWithStats<Card, PimsleurStats>;
@@ -22,19 +22,18 @@ export interface ExerciseProps {
 }
 
 export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
-  const leitnerBoxes = useLeitnerBoxContext();
-  const [lesson, markLessonCompleted] = useLesson(lessonId);
+  const { leitnerBoxes } = useUserStateContext();
+  const { lesson, concludeLesson, reviewTerm } = useLesson(lessonId);
   const lessonCards = useCardsForTerms(cards, lesson.terms, keyForCard);
   const navigate = useNavigate();
 
-  const { currentCard, reviewedTerms, reviewCurrentCard, challengesRemaining } =
-    useReviewSession(leitnerBoxes, lessonCards, lessonId);
+  const { currentCard, reviewCurrentCard, challengesRemaining } =
+    useReviewSession(leitnerBoxes, lessonCards, lessonId, reviewTerm);
 
   useEffect(() => {
     if (currentCard === undefined) {
       // then we are done!
-      leitnerBoxes.concludeReviewSession(reviewedTerms);
-      markLessonCompleted();
+      concludeLesson();
       navigate(`/lessons/${lessonId}`);
     }
   }, [currentCard]);

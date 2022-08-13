@@ -1,7 +1,9 @@
 import { DateTime, DurationLike } from "luxon";
-import { Reducer, useReducer } from "react";
-import { getToday } from "../utils/dateUtils";
-import { TermStats } from "./types";
+import { Dispatch, Reducer, useMemo, useReducer } from "react";
+import { getToday } from "../../utils/dateUtils";
+import { TermStats } from "../../spaced-repetition/types";
+import { ImperativeBlock } from "../../utils/useReducerWithImperative";
+import { UserState, UserStateAction } from "../UserStateProvider";
 
 interface NewUseLeitnerBoxesProps {
   type: "NEW";
@@ -16,14 +18,6 @@ interface LoadUseLeitnerBoxProps {
 export type UseLeitnerBoxesProps =
   | NewUseLeitnerBoxesProps
   | LoadUseLeitnerBoxProps;
-
-export interface UseLeitnerBoxesReturn {
-  state: LeitnerBoxState;
-  concludeReviewSession: (reviewedTerms: Record<string, ReviewResult>) => void;
-  resize: (numBoxes: number) => void;
-  addNewTerms: (newTerms: string[]) => void;
-  removeTerms: (termsToRemove: string[]) => void;
-}
 
 export interface LeitnerBoxState {
   /**
@@ -59,7 +53,7 @@ type ResizeAction = {
   newNumBoxes: number;
 };
 
-type LeitnerBoxAction =
+export type LeitnerBoxAction =
   | ConcludeReviewSessionAction
   | AddNewTermsAction
   | RemoveTermsAction
@@ -126,7 +120,7 @@ function updateTermStats(
   };
 }
 
-function reduceLeitnerBoxState(
+export function reduceLeitnerBoxState(
   { terms, numBoxes }: LeitnerBoxState,
   action: LeitnerBoxAction
 ): LeitnerBoxState {
@@ -177,11 +171,8 @@ function reduceLeitnerBoxState(
   }
 }
 
-function emptyLeiterBoxState(numBoxes: number): LeitnerBoxState {
-  return {
-    terms: {},
-    numBoxes,
-  };
+export interface LeitnerBoxesInteractors {
+  resize: (numBoxes: number) => void;
 }
 
 /**
@@ -192,41 +183,23 @@ function emptyLeiterBoxState(numBoxes: number): LeitnerBoxState {
  *
  * To track when cards should be shown in an actual review session, use `usePimsleurTimings`.
  */
-export function useLeitnerBoxes(
-  props: UseLeitnerBoxesProps
-): UseLeitnerBoxesReturn {
-  const [state, dispatch] = useReducer<
-    Reducer<LeitnerBoxState, LeitnerBoxAction>
-  >(
-    reduceLeitnerBoxState,
-    props.type === "NEW" ? emptyLeiterBoxState(props.numBoxes) : props.state
+export function useLeitnerBoxesInteractors(
+  state: UserState,
+  dispatch: Dispatch<UserStateAction>,
+  dispatchImperativeBlock: Dispatch<ImperativeBlock<UserState, UserStateAction>>
+): LeitnerBoxesInteractors {
+  return useMemo(
+    () => ({
+      resize(newNumBoxes) {
+        dispatch({
+          slice: "LeitnerBoxes",
+          action: {
+            type: "resize",
+            newNumBoxes,
+          },
+        });
+      },
+    }),
+    [dispatch]
   );
-
-  return {
-    state,
-    concludeReviewSession(reviewedTerms) {
-      dispatch({
-        type: "conclude_review",
-        reviewedTerms,
-      });
-    },
-    addNewTerms(newTerms) {
-      dispatch({
-        type: "add_new_terms",
-        newTerms,
-      });
-    },
-    removeTerms(termsToRemove) {
-      dispatch({
-        type: "remove_terms",
-        termsToRemove,
-      });
-    },
-    resize(newNumBoxes) {
-      dispatch({
-        type: "resize",
-        newNumBoxes,
-      });
-    },
-  };
 }

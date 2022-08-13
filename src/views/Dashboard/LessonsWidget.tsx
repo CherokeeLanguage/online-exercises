@@ -1,21 +1,26 @@
 import React, { ReactElement } from "react";
 import { StyledLink } from "../../components/StyledLink";
-import {
-  nameForLesson,
-  useLessons,
-} from "../../spaced-repetition/LessonsProvider";
+import { nameForLesson } from "../../state/reducers/lessons";
+import { useUserStateContext } from "../../state/UserStateProvider";
 import { DashboardWidget } from "./DashboardWidget";
 import { DashboardWidgetCard } from "./DashboardWidgetCard";
 
 export function LessonsWidget(): ReactElement {
-  const { todaysLessons } = useLessons();
+  const { todaysLessons, refreshDailyLessons } = useUserStateContext();
 
   const lessonsToDo = todaysLessons.filter(
     (l) => l.type === "DAILY" && l.completedAt === null
   );
 
   return (
-    <DashboardWidget title="Today's lessons">
+    <DashboardWidget
+      title={
+        <>
+          Today's lessons{" "}
+          <button onClick={refreshDailyLessons}>Refresh lessons</button>
+        </>
+      }
+    >
       {lessonsToDo.length ? (
         lessonsToDo.map((lesson, i) => (
           <DashboardWidgetCard

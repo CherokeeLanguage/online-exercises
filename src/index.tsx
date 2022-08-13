@@ -1,21 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
-import "./index.css";
 import App from "./App";
+import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { LeitnerBoxProvider } from "./spaced-repetition/LeitnerBoxProvider";
 import { BrowseSets } from "./views/sets/BrowseSets";
-import { ViewSet } from "./views/sets/ViewSet";
 import { MySets } from "./views/sets/MySets";
+import { ViewSet } from "./views/sets/ViewSet";
 // import { Overview } from "./Overview";
-import { PracticeLesson } from "./views/practice/Practice";
+import { UserStateProvider } from "./state/UserStateProvider";
 import { Dashboard } from "./views/dashboard/Dashboard";
 import { BrowseLessons } from "./views/lessons/BrowseLessons";
 import { ViewLesson } from "./views/lessons/ViewLesson";
-import { LessonsProvider } from "./spaced-repetition/LessonsProvider";
-import { SetLessons } from "./views/sets/SetLessons";
-import { UserSetsProvider } from "./spaced-repetition/useUserSets";
+import { PracticeLesson } from "./views/practice/Practice";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -23,39 +20,28 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <LeitnerBoxProvider
-        numBoxes={6}
-        localStorageKey="global-leitner-boxes-v2"
-      >
-        <UserSetsProvider>
-          <LessonsProvider>
-            <Routes>
-              <Route path="/" element={<App />}>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="sets">
-                  <Route path="browse">
-                    <Route index element={<BrowseSets />} />
-                    <Route path=":setId" element={<ViewSet />} />
-                    <Route path=":setId/lessons" element={<SetLessons />} />
-                  </Route>
-                  <Route path="my" element={<MySets />} />
-                </Route>
-                <Route path="lessons">
-                  <Route index element={<BrowseLessons />} />
-                  <Route path=":lessonId" element={<ViewLesson />} />
-                </Route>
-                <Route path="practice">
-                  <Route index element={<Navigate to="/lessons/" replace />} />
-                  <Route
-                    path=":lessonId/*"
-                    element={<PracticeLesson />}
-                  ></Route>
-                </Route>
+      <UserStateProvider>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="sets">
+              <Route path="browse">
+                <Route index element={<BrowseSets />} />
+                <Route path=":setId" element={<ViewSet />} />
               </Route>
-            </Routes>
-          </LessonsProvider>
-        </UserSetsProvider>
-      </LeitnerBoxProvider>
+              <Route path="my" element={<MySets />} />
+            </Route>
+            <Route path="lessons">
+              <Route index element={<BrowseLessons />} />
+              <Route path=":lessonId" element={<ViewLesson />} />
+            </Route>
+            <Route path="practice">
+              <Route index element={<Navigate to="/lessons/" replace />} />
+              <Route path=":lessonId/*" element={<PracticeLesson />}></Route>
+            </Route>
+          </Route>
+        </Routes>
+      </UserStateProvider>
     </HashRouter>
   </React.StrictMode>
 );

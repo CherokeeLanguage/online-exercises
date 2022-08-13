@@ -1,14 +1,15 @@
-import React, { ReactNode, useContext, useReducer } from "react";
-import { ReactElement, useEffect, useMemo } from "react";
-import { useLocalStorage } from "react-use";
-import { getToday } from "../utils/dateUtils";
+import React, { Dispatch } from "react";
+import { useEffect, useMemo } from "react";
+import { getToday } from "../../utils/dateUtils";
 import {
   groupTermsIntoLessons,
   termNeedsPractice,
-} from "./groupTermsIntoLessons";
-import { useLeitnerBoxContext } from "./LeitnerBoxProvider";
+} from "../../spaced-repetition/groupTermsIntoLessons";
 import { v4 } from "uuid";
-import { vocabSets } from "../data/vocabSets";
+import { vocabSets } from "../../data/vocabSets";
+import { UserState, UserStateAction } from "../UserStateProvider";
+import { ImperativeBlock } from "../../utils/useReducerWithImperative";
+import { ReviewResult } from "./leitnerBoxes";
 
 export interface DailyLesson {
   type: "DAILY";
@@ -77,14 +78,17 @@ export function nameForLesson(lesson: Lesson) {
   }
 }
 
-export interface LessonsContext {
-  lessons: Record<string, Lesson>;
-  todaysLessons: Lesson[];
-  markLessonComplete: (lessonId: string) => void;
-  refreshLessons: (newLessons: Lesson[], metadata: LessonMeta) => void;
-}
+export type LessonsState = Record<string, Lesson>;
 
-const lessonsContext = React.createContext<LessonsContext | null>(null);
+export interface LessonsInteractors {
+  todaysLessons: Lesson[];
+  concludeLesson: (
+    lessonId: string,
+    reviewedTerms: Record<string, ReviewResult>
+  ) => void;
+  refreshLessons: (newLessons: Lesson[], metadata: LessonMeta) => void;
+  refreshDailyLessons: () => void;
+}
 
 interface RefreshLessons {
   type: "REFRESH_LESSONS";
@@ -97,7 +101,7 @@ interface MarkLessonComplete {
   lessonId: string;
 }
 
-type LessonsAction = RefreshLessons | MarkLessonComplete;
+export type LessonsAction = RefreshLessons | MarkLessonComplete;
 
 function lessonMetadataMatches(
   metadata: LessonMeta,
@@ -111,8 +115,8 @@ function lessonMetadataMatches(
   }
 }
 
-function reduceLessonState(
-  lessons: Record<string, Lesson>,
+export function reduceLessonsState(
+  lessons: LessonsState,
   action: LessonsAction
 ): Record<string, Lesson> {
   switch (action.type) {
@@ -144,28 +148,11 @@ function reduceLessonState(
   }
 }
 
-export function LessonsProvider({
-  children,
-}: {
-  children: ReactNode;
-}): ReactElement {
-  const leitnerBoxes = useLeitnerBoxContext();
-
-  const [storedLessons, setStoredLessons] = useLocalStorage<
-    Record<string, Lesson>
-  >("lessons", undefined, {
-    raw: false,
-    serializer: JSON.stringify,
-    deserializer: JSON.parse,
-  });
-
-  const [lessons, dispatch] = useReducer(
-    reduceLessonState,
-    storedLessons ?? {}
-  );
-
-  useEffect(() => setStoredLessons(lessons), [lessons]);
-
+export function useLessonsInteractors(
+  { lessons }: UserState,
+  dispatch: Dispatch<UserStateAction>,
+  dispatchImperativeBlock: Dispatch<ImperativeBlock<UserState, UserStateAction>>
+): LessonsInteractors {
   const today = getToday();
   const todaysLessons = useMemo(
     () =>
@@ -179,12 +166,10 @@ export function LessonsProvider({
     [lessons, today]
   );
 
-  useEffect(() => {
-    if (todaysLessons.filter((l) => l.completedAt === null).length === 0) {
-      console.log("Creating today's lessons...");
-
+  function refreshDailyLessons() {
+    dispatchImperativeBlock((state, act) => {
       const termsToPracticeToday = Object.values(
-        leitnerBoxes.state.terms
+        state.leitnerBoxes.terms
       ).filter((term) => termNeedsPractice(term, today));
 
       const newLessons: Lesson[] = groupTermsIntoLessons(
@@ -195,62 +180,67 @@ export function LessonsProvider({
           lessonIdx
         )
       );
+
       if (newLessons.length) {
         console.log(`Creating ${newLessons.length} lessons...`);
-        dispatch({
-          type: "REFRESH_LESSONS",
-          lessons: newLessons,
-          metadata: {
-            type: "DAILY",
+        return act([
+          {
+            slice: "Lessons",
+            action: {
+              type: "REFRESH_LESSONS",
+              lessons: newLessons,
+              metadata: {
+                type: "DAILY",
+              },
+            },
           },
-        });
+        ]);
+      } else {
+        // no update
+        return state;
       }
+    });
+  }
+
+  useEffect(() => {
+    if (todaysLessons.filter((l) => l.completedAt === null).length === 0) {
+      console.log("Creating today's lessons...");
+      refreshDailyLessons();
     }
   }, [todaysLessons]);
 
-  return (
-    <lessonsContext.Provider
-      value={{
-        lessons,
-        todaysLessons,
-        markLessonComplete(lessonId) {
-          dispatch({
-            type: "MARK_LESSON_COMPLETE",
-            lessonId,
-          });
-        },
-        refreshLessons(newLessons, metadata) {
-          dispatch({
-            type: "REFRESH_LESSONS",
-            lessons: newLessons,
-            metadata,
-          });
-        },
-      }}
-    >
-      {children}
-    </lessonsContext.Provider>
-  );
-}
-
-export function useLessons(): LessonsContext {
-  const context = useContext(lessonsContext);
-  if (!context)
-    throw new Error("Use Lessons MUST be used under a LessonsProvider");
-  return context;
-}
-
-/**
- * Returns a lesson and an imperative function to mark the lesson as completed.
- */
-export function useLesson(lessonId: string): [Lesson, () => void] {
-  const { lessons, markLessonComplete } = useLessons();
-  const lesson = lessons[lessonId];
-  if (!lesson) throw new Error("Unknown lesson");
-  return [
-    lesson,
-    () => {
-      markLessonComplete(lesson.id);
+  return {
+    todaysLessons,
+    concludeLesson(lessonId, reviewedTerms) {
+      dispatchImperativeBlock((state, act) =>
+        act([
+          {
+            slice: "LeitnerBoxes",
+            action: {
+              type: "conclude_review",
+              reviewedTerms,
+            },
+          },
+          {
+            slice: "Lessons",
+            action: {
+              type: "MARK_LESSON_COMPLETE",
+              lessonId,
+            },
+          },
+        ])
+      );
     },
-  ];
+    refreshLessons(newLessons, metadata) {
+      dispatch({
+        slice: "Lessons",
+        action: {
+          type: "REFRESH_LESSONS",
+          lessons: newLessons,
+          metadata,
+        },
+      });
+    },
+    refreshDailyLessons,
+  };
 }

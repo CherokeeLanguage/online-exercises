@@ -1,21 +1,16 @@
 import React, { ReactElement } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { cards, keyForCard } from "../../data/clean-cll-data";
-import {
-  Lesson,
-  nameForLesson,
-  useLessons,
-} from "../../spaced-repetition/LessonsProvider";
-import { ReviewResult } from "../../spaced-repetition/useLeitnerBoxes";
+import { Lesson, nameForLesson } from "../../state/reducers/lessons";
+import { ReviewResult } from "../../state/reducers/leitnerBoxes";
 import { useReviewedTerms } from "../../spaced-repetition/useReviewSession";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
+import { useLesson } from "../../state/useLesson";
 
 export function ViewLesson(): ReactElement {
   const { lessonId } = useParams();
-  const { lessons } = useLessons();
   if (!lessonId) return <Navigate to={"/lessons"} replace />;
-  const lesson = lessons[lessonId];
-  return <_ViewLesson lesson={lesson} />;
+  return <_ViewLesson lessonId={lessonId} />;
 }
 
 const reviewResultNames: Record<ReviewResult, string> = {
@@ -24,8 +19,8 @@ const reviewResultNames: Record<ReviewResult, string> = {
   REPEAT_MISTAKE: "Multiple mistakes.",
 };
 
-export function _ViewLesson({ lesson }: { lesson: Lesson }): ReactElement {
-  const { reviewedTerms } = useReviewedTerms(lesson.id);
+export function _ViewLesson({ lessonId }: { lessonId: string }): ReactElement {
+  const { lesson, reviewedTerms } = useLesson(lessonId);
   const reviewedCards = useCardsForTerms(
     cards,
     Object.keys(reviewedTerms),

@@ -19,7 +19,7 @@ const CardContainer = styled.div`
 `;
 
 export interface DashboardWidgetProps {
-  title: string;
+  title: ReactNode;
   children: ReactNode;
 }
 

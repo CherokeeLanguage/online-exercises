@@ -1,12 +1,12 @@
 import * as d3 from "d3";
 import { useRef, useEffect } from "react";
-import { useLeitnerBoxContext } from "../../spaced-repetition/LeitnerBoxProvider";
+import { useUserStateContext } from "../../state/UserStateProvider";
 import { DAY, getToday, WEEK } from "../../utils/dateUtils";
 
 export function UpcomingCardsWidget() {
   const {
-    state: { terms },
-  } = useLeitnerBoxContext();
+    leitnerBoxes: { terms },
+  } = useUserStateContext();
 
   const today = getToday();
 

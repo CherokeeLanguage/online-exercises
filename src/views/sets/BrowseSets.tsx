@@ -1,12 +1,8 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { StyledLink } from "../../components/StyledLink";
-import { useLeitnerBoxContext } from "../../spaced-repetition/LeitnerBoxProvider";
-import { LeitnerBoxState } from "../../spaced-repetition/useLeitnerBoxes";
-import { getToday } from "../../utils/dateUtils";
-import { termNeedsPractice } from "../../spaced-repetition/groupTermsIntoLessons";
 import { collections, VocabSet } from "../../data/vocabSets";
-import { useUserSetsContext } from "../../spaced-repetition/useUserSets";
+import { useUserStateContext } from "../../state/UserStateProvider";
 
 const StyledSetList = styled.ul`
   padding: 0;
@@ -19,23 +15,8 @@ const StyledSetLinks = styled.div`
   gap: 8px;
 `;
 
-/**
- * Count how many terms from the lesson need to be practiced in the next hour
- */
-function termsToPractice(
-  terms: string[],
-  leitnerBoxes: LeitnerBoxState,
-  today: number
-) {
-  return terms.reduce(
-    (count, term) =>
-      termNeedsPractice(leitnerBoxes.terms[term], today) ? count + 1 : count,
-    0
-  );
-}
-
 export function BrowseSets(): ReactElement {
-  const userSets = useUserSetsContext();
+  const { sets } = useUserStateContext();
   return (
     <div>
       <p>
@@ -48,7 +29,7 @@ export function BrowseSets(): ReactElement {
 
           <StyledSetList>
             {collection.sets
-              .filter((set) => !(set.id in userSets.sets))
+              .filter((set) => !(set.id in sets.sets))
               .map((set, i) => {
                 return <VocabSetPreview key={i} set={set} />;
               })}
@@ -73,9 +54,6 @@ const StyledLessonHeader = styled.div`
 `;
 
 function VocabSetPreview({ set }: { set: VocabSet }): ReactElement {
-  const { state: leitnerBoxState } = useLeitnerBoxContext();
-  const today = getToday();
-
   return (
     <li>
       <StyledLessonHeader>

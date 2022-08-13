@@ -7,16 +7,16 @@ import {
 } from "../../data/vocabSets";
 import { useNavigate } from "react-router-dom";
 import { DashboardWidgetCardAction } from "./DashboardWidgetCardAction";
-import { useUserSetsContext } from "../../spaced-repetition/useUserSets";
+import { useUserStateContext } from "../../state/UserStateProvider";
 
 export function SetsWidget(): ReactElement {
   const cll1 = collections[CHEROKEE_LANGUAGE_LESSONS_COLLLECTION];
-  const userSets = useUserSetsContext();
+  const { sets } = useUserStateContext();
   const navigate = useNavigate();
   return (
     <DashboardWidget title={cll1.title}>
       {cll1.sets
-        .filter((s) => !(s.id in userSets.sets))
+        .filter((s) => !(s.id in sets))
         .map((set, idx) => (
           <DashboardWidgetCard
             key={idx}

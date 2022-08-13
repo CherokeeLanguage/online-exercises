@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocalStorage } from "react-use";
 import { PimsleurStats, TermCardWithStats } from "./types";
-import { ReviewResult, UseLeitnerBoxesReturn } from "./useLeitnerBoxes";
-import { lessonKey } from "./LessonsProvider";
+import { LeitnerBoxState, ReviewResult } from "../state/reducers/leitnerBoxes";
+import { lessonKey } from "../state/reducers/lessons";
 import {
   MAX_SHOW_PER_SESSION,
   PimsleurTimingState,
@@ -67,19 +67,18 @@ export function useReviewedTerms(lessonId: string) {
  * The cards must *already* be tracked by the provided leitner box instance.
  */
 export function useReviewSession<T>(
-  leitnerBoxes: UseLeitnerBoxesReturn,
+  leitnerBoxes: LeitnerBoxState,
   lessonCards: Record<string, T>,
-  lessonId: string
+  lessonId: string,
+  reviewTerm: (term: string, correct: boolean) => void
 ) {
   const termStats = useMemo(
     () =>
       Object.fromEntries(
-        Object.keys(lessonCards).map((k) => [k, leitnerBoxes.state.terms[k]])
+        Object.keys(lessonCards).map((k) => [k, leitnerBoxes.terms[k]])
       ),
-    [leitnerBoxes.state.terms, lessonCards]
+    [leitnerBoxes.terms, lessonCards]
   );
-
-  const { reviewedTerms, reviewTerm } = useReviewedTerms(lessonId);
 
   const [storedPimsleurState, setStoredPimsleurState] =
     useLocalStorage<PimsleurTimingState | null>(
@@ -122,7 +121,6 @@ export function useReviewSession<T>(
 
   return {
     currentCard,
-    reviewedTerms,
     challengesRemaining,
     reviewCurrentCard(correct: boolean) {
       if (currentCard) {
