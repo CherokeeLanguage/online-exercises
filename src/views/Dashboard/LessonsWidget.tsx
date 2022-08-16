@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
-import { ButtonLink } from "../../components/Button";
-import { StyledLink } from "../../components/StyledLink";
+import { Button, ButtonLink } from "../../components/Button";
 import { nameForLesson } from "../../state/reducers/lessons";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { DashboardWidget } from "./DashboardWidget";
@@ -18,7 +17,9 @@ export function LessonsWidget(): ReactElement {
       title={
         <>
           Today's lessons{" "}
-          <button onClick={refreshDailyLessons}>Refresh lessons</button>
+          <Button onClick={refreshDailyLessons} variant="primary">
+            Refresh lessons
+          </Button>
         </>
       }
     >
