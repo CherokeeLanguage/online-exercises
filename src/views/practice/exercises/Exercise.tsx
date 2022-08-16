@@ -1,17 +1,14 @@
 import { ReactElement, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, cards, keyForCard } from "../../../data/clean-cll-data";
-import {
-  PimsleurStats,
-  TermCardWithStats,
-} from "../../../spaced-repetition/types";
+import { TermCardWithStats } from "../../../spaced-repetition/types";
 import { useLesson } from "../../../state/useLesson";
 import { useReviewSession } from "../../../spaced-repetition/useReviewSession";
 import { useCardsForTerms } from "../../../utils/useCardsForTerms";
 import { useUserStateContext } from "../../../state/UserStateProvider";
 
 export interface ExerciseComponentProps {
-  currentCard: TermCardWithStats<Card, PimsleurStats>;
+  currentCard: TermCardWithStats<Card>;
   lessonCards: Record<string, Card>;
   reviewCurrentCard: (correct: boolean) => void;
 }

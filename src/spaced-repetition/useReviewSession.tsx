@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useLocalStorage } from "react-use";
-import { PimsleurStats, TermCardWithStats } from "./types";
+import { TermCardWithStats, TermStats } from "./types";
 import { LeitnerBoxState, ReviewResult } from "../state/reducers/leitnerBoxes";
 import { lessonKey } from "../state/reducers/lessons";
 import {
@@ -109,13 +109,15 @@ export function useReviewSession<T>(
     [timings.state.sortedTerms]
   );
 
-  const currentCard: TermCardWithStats<T, PimsleurStats> | undefined = useMemo(
+  const currentCard: TermCardWithStats<T, TermStats> | undefined = useMemo(
     () =>
-      timings.nextTerm && {
-        term: timings.nextTerm.key,
-        stats: timings.nextTerm,
-        card: lessonCards[timings.nextTerm.key],
-      },
+      timings.nextTerm
+        ? {
+            term: timings.nextTerm,
+            stats: leitnerBoxes.terms[timings.nextTerm],
+            card: lessonCards[timings.nextTerm],
+          }
+        : undefined,
     [timings.nextTerm, lessonCards]
   );
 

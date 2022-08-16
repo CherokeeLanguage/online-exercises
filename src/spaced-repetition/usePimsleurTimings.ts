@@ -7,20 +7,20 @@ function repetitionOffsetForBox(box: number) {
   return Math.min(box, 3);
 }
 
-function newPimsleurStats(stats: TermStats): PimsleurStats {
+function newPimsleurStats(stats: TermStats, now: number): PimsleurStats {
+  // cards that the user knows well skip the first few shows
   const repetitionOffset = repetitionOffsetForBox(stats.box);
-  const now = Date.now();
   return {
     ...stats,
-    lastShownTime: stats.lastShownDate,
-    // show card at random time in 1st 5 minutes of session
-    nextShowTime: now + 5 * MINUTE * Math.random(),
+    lastShownTime: now,
+    nextShowTime: nextShowTime(now, repetitionOffset),
     sessionRepetitions: repetitionOffset,
   };
 }
 
 export interface PimsleurTimingState {
-  terms: Record<string, PimsleurStats>;
+  shownTerms: Record<string, PimsleurStats>;
+  termsToIntroduce: Record<string, TermStats>;
   sortedTerms: PimsleurStats[];
   lastShown: string | undefined;
 }
@@ -84,18 +84,48 @@ function reducePimsleurTimingState(
 ): PimsleurTimingState {
   switch (action.type) {
     case "term_shown":
-      const newTerms = {
-        ...state.terms,
-        [action.term]: updateTimings(state.terms[action.term]),
-      };
-      return {
-        terms: newTerms,
-        sortedTerms: state.sortedTerms
-          .map((s) => (s.key === action.term ? newTerms[action.term] : s))
-          .filter((s) => s.sessionRepetitions < MAX_SHOW_PER_SESSION)
-          .sort(compareTerms),
-        lastShown: action.term,
-      };
+      if (action.term in state.shownTerms) {
+        const newShownTerms = {
+          ...state.shownTerms,
+          [action.term]: updateTimings(state.shownTerms[action.term]),
+        };
+        return {
+          shownTerms: newShownTerms,
+          sortedTerms: state.sortedTerms
+            .map((s) =>
+              s.key === action.term ? newShownTerms[action.term] : s
+            )
+            .filter((s) => s.sessionRepetitions < MAX_SHOW_PER_SESSION)
+            .sort(compareTerms),
+          termsToIntroduce: state.termsToIntroduce,
+          lastShown: action.term,
+        };
+      } else {
+        const newTermStats = newPimsleurStats(
+          state.termsToIntroduce[action.term],
+          Date.now()
+        );
+        const newShownTerms = {
+          ...state.shownTerms,
+          [action.term]: newTermStats,
+        };
+
+        return {
+          shownTerms: newShownTerms,
+          sortedTerms: [...state.sortedTerms, newTermStats]
+            .filter((s) => s.sessionRepetitions < MAX_SHOW_PER_SESSION)
+            .sort(compareTerms),
+          termsToIntroduce:
+            action.term in state.termsToIntroduce
+              ? Object.fromEntries(
+                  Object.entries(state.termsToIntroduce).filter(
+                    ([term, _]) => term !== action.term
+                  )
+                )
+              : state.termsToIntroduce,
+          lastShown: action.term,
+        };
+      }
   }
 }
 
@@ -104,16 +134,10 @@ function initializePimsleurTimingState(
 ): PimsleurTimingState {
   if (props.type === "LOAD") return props.state;
 
-  const termsWithTimings = Object.fromEntries(
-    Object.entries(props.terms).map(([term, stats]) => [
-      term,
-      newPimsleurStats(stats),
-    ])
-  );
-
   return {
-    terms: termsWithTimings,
-    sortedTerms: Object.values(termsWithTimings).sort(compareTerms),
+    shownTerms: {},
+    sortedTerms: [],
+    termsToIntroduce: props.terms,
     lastShown: undefined,
   };
 }
@@ -135,11 +159,54 @@ export function usePimsleurTimings(props: UsePimsleurTimingsProps) {
     initializePimsleurTimingState
   );
 
-  const nextTerm: PimsleurStats | undefined = useMemo(() => {
-    const top = state.sortedTerms[0] as PimsleurStats | undefined;
-    if (state.lastShown === top?.key && state.sortedTerms.length > 1)
-      return state.sortedTerms[1];
-    else return top;
+  const nextTerm: string | undefined = useMemo(() => {
+    const now = Date.now();
+
+    // keep track of next new term to show
+    const nextNewTerm = Object.keys(state.termsToIntroduce)[0] as
+      | string
+      | undefined;
+
+    // never show the same card twice in a row
+    let topCard = state.sortedTerms[0] as PimsleurStats | undefined;
+    if (topCard?.key === state.lastShown && state.sortedTerms.length > 1) {
+      topCard = state.sortedTerms[1];
+    }
+
+    // if no top card, show a new card or we are out of cards
+    if (!topCard) {
+      console.log("Showing new term because there is no top card");
+      return nextNewTerm;
+    }
+
+    // if it's time to show the card, then show it
+    if (topCard.nextShowTime <= now) {
+      console.log(
+        `Top card is ready to show (${
+          (now - topCard.nextShowTime) / 1000
+        } secs)`
+      );
+      return topCard.key;
+    }
+
+    // if there is a new term, show it
+    if (nextNewTerm) {
+      console.log(
+        `Showing new term because top card is too early ${
+          (topCard.nextShowTime - now) / 1000
+        }`
+      );
+      return nextNewTerm;
+    }
+    // otherwise, show top card early
+    else {
+      console.log(
+        `Showing top card early because there are no more new terms ${
+          (topCard.nextShowTime - now) / 1000
+        }`
+      );
+      return topCard.key;
+    }
   }, [state.lastShown, state.sortedTerms]);
 
   return {
@@ -149,7 +216,7 @@ export function usePimsleurTimings(props: UsePimsleurTimingsProps) {
       if (nextTerm)
         dispatch({
           type: "term_shown",
-          term: nextTerm.key,
+          term: nextTerm,
         });
     },
   };
