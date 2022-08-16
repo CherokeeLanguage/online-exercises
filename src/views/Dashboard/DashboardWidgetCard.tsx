@@ -14,6 +14,7 @@ const Card = styled.div`
   border: 1px solid #aaa;
   border-radius: 8px;
   background: #fff;
+  text-align: center;
 `;
 
 const CardContent = styled.div``;
