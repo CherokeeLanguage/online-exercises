@@ -2,8 +2,10 @@ export const theme = {
   colors: {
     HARD_YELLOW: "#F2BD09",
     SOFT_YELLOW: "#E9C87E",
-    LIGHT_GRAY: "#EFEFEF",
-    TEXT_GRAY: "#222222",
+    LIGHTER_GRAY: "#EFEFEF",
+    LIGHT_GRAY: "#D0D0D0",
+    MED_GRAY: "#A2A2A2",
     DARK_RED: "#7A2022",
+    TEXT_GRAY: "#222222",
   },
 };

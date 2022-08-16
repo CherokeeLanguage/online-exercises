@@ -7,7 +7,7 @@ const SidebarWrapper = styled.div`
   flex: 0 1 265px;
   text-align: left;
   border-right: 2px solid ${theme.colors.HARD_YELLOW};
-  background: ${theme.colors.LIGHT_GRAY};
+  background: ${theme.colors.LIGHTER_GRAY};
 `;
 
 const StyledNav = styled.nav`
@@ -53,11 +53,11 @@ export function SideBar(): ReactElement {
         <StyledNavLink as={NavLink} to={"/"}>
           Dashboard
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/sets/my"}>
-          Your sets
-        </StyledNavLink>
         <StyledNavLink as={NavLink} to={"/sets/browse"}>
           Find new vocabulary
+        </StyledNavLink>
+        <StyledNavLink as={NavLink} to={"/sets/my"}>
+          Your sets
         </StyledNavLink>
         {/* <StyledNavLink as={NavLink} to={"/lessons"}>
           Today's lessons

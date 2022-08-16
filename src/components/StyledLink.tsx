@@ -1,25 +1,25 @@
 import { Link, LinkProps } from "react-router-dom";
 import styled, { css } from "styled-components";
+import { theme } from "../theme";
 
 export interface StyledAnchorProps {
   disabled?: boolean;
 }
 
 export const StyledAnchor = styled.a<StyledAnchorProps>`
-  border: 1px solid #333;
   border-radius: 8px;
   padding: 8px;
   margin: 0 8px;
   display: inline-block;
-  color: white;
-  background: #555;
+  text-decoration: none;
+  color: ${theme.colors.DARK_RED};
   ${({ disabled }) =>
     disabled &&
     css`
       pointer-events: none;
       background: #888;
       color: black;
-    `}
+    `};
 `;
 
 export function StyledLink({

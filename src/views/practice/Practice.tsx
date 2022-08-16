@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { Route, Routes, useParams } from "react-router-dom";
+import { ButtonLink } from "../../components/Button";
 import { StyledLink } from "../../components/StyledLink";
 import { Exercise, ExerciseComponentProps } from "./exercises/Exercise";
 import { SimilarTerms } from "./exercises/SimilarTerms";
@@ -46,13 +47,13 @@ function PickExercise() {
       <h2>Practice terms</h2>
       <p>Pick an exercise from the list below to start working on terms.</p>
       <ul>
-        <li>
-          {exercises.map(({ name, path }, idx) => (
-            <StyledLink to={path} key={idx}>
+        {exercises.map(({ name, path }, idx) => (
+          <li key={idx}>
+            <ButtonLink to={path} variant="primary">
               {name}
-            </StyledLink>
-          ))}
-        </li>
+            </ButtonLink>
+          </li>
+        ))}
       </ul>
     </div>
   );

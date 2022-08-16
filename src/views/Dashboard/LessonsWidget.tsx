@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { ButtonLink } from "../../components/Button";
 import { StyledLink } from "../../components/StyledLink";
 import { nameForLesson } from "../../state/reducers/lessons";
 import { useUserStateContext } from "../../state/UserStateProvider";
@@ -27,9 +28,9 @@ export function LessonsWidget(): ReactElement {
             key={i}
             title={nameForLesson(lesson)}
             action={
-              <StyledLink to={`/practice/${lesson.id}`}>
+              <ButtonLink to={`/practice/${lesson.id}`} variant="primary">
                 Practice now!
-              </StyledLink>
+              </ButtonLink>
             }
           >
             <p>{lesson.terms.length} terms</p>

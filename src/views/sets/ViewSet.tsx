@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { StyledAnchor } from "../../components/StyledLink";
+import { Button } from "../../components/Button";
 import { TermCardList } from "../../components/TermCardList";
 import { cards, keyForCard } from "../../data/clean-cll-data";
 import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
@@ -40,9 +40,9 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
       {userSetData ? (
         <p>You are already learning this set</p>
       ) : (
-        <StyledAnchor as={"button"} onClick={registerTermsAndRecreateLessons}>
+        <Button variant="primary" onClick={registerTermsAndRecreateLessons}>
           Add set to today's lessons
-        </StyledAnchor>
+        </Button>
       )}
       <TermCardList cards={Object.values(setCards)} />
     </div>

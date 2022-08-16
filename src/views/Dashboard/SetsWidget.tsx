@@ -8,11 +8,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import { DashboardWidgetCardAction } from "./DashboardWidgetCardAction";
 import { useUserStateContext } from "../../state/UserStateProvider";
+import { StyledLink } from "../../components/StyledLink";
+import { ButtonLink } from "../../components/Button";
 
 export function SetsWidget(): ReactElement {
   const cll1 = collections[CHEROKEE_LANGUAGE_LESSONS_COLLLECTION];
   const { sets } = useUserStateContext();
-  const navigate = useNavigate();
   return (
     <DashboardWidget title={cll1.title}>
       {cll1.sets
@@ -22,11 +23,7 @@ export function SetsWidget(): ReactElement {
             key={idx}
             title={set.title}
             action={
-              <DashboardWidgetCardAction
-                onClick={() => navigate(`sets/browse/${set.id}`)}
-              >
-                View set
-              </DashboardWidgetCardAction>
+              <StyledLink to={`sets/browse/${set.id}`}>View set</StyledLink>
             }
           >
             {set.terms.length} terms
