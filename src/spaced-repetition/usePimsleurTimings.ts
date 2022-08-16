@@ -30,14 +30,8 @@ type PimsleurTimingAction = {
   term: string;
 };
 
-// shown 5x per session
-const PIMSLEUR_TIMINGS = [
-  5 * SECOND,
-  25 * SECOND,
-  2 * MINUTE,
-  10 * MINUTE,
-  50 * MINUTE,
-];
+// shown 4x per session
+const PIMSLEUR_TIMINGS = [5 * SECOND, 25 * SECOND, 2 * MINUTE, 10 * MINUTE];
 
 export const MAX_SHOW_PER_SESSION = PIMSLEUR_TIMINGS.length;
 
