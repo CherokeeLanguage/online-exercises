@@ -9,8 +9,8 @@ export const theme = {
     TEXT_GRAY: "#222222",
   },
   fontSizes: {
-    sm: 16,
-    md: 20,
-    lg: 24,
+    sm: "16px",
+    md: "20px",
+    lg: "24px",
   },
-};
+} as const;

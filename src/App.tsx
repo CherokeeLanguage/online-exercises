@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { SideBar } from "./SideBar";
 
 const AppWrapper = styled.div`
-  text-align: center;
   height: 100vh;
   padding: 0;
   margin: 0;
@@ -22,7 +21,7 @@ const AppBody = styled.div`
 
 const AppContent = styled.div`
   flex: 1;
-  max-width: 800px;
+  padding: 16px;
   margin: 0 auto;
 `;
 

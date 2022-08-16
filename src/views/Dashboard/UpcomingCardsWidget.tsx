@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 import { useRef, useEffect } from "react";
+import { SectionHeading } from "../../components/SectionHeading";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { DAY, getToday, WEEK } from "../../utils/dateUtils";
 
@@ -146,7 +147,12 @@ export function UpcomingCardsWidget() {
 
   return (
     <div>
-      <h2>Upcoming cards</h2>
+      <SectionHeading>Upcoming cards</SectionHeading>
+      <p>
+        You have{" "}
+        <strong>{termsByDayThisWeek.get("Today")?.length ?? 0} terms</strong>{" "}
+        left to review today.
+      </p>
       <svg ref={chartRef} />
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
+import { SectionHeading } from "../../components/SectionHeading";
 
 const StyledDashboardWidget = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ export function DashboardWidget({
 }: DashboardWidgetProps): ReactElement {
   return (
     <StyledDashboardWidget>
-      <h2>{title}</h2>
+      <SectionHeading>{title}</SectionHeading>
       <WidgetScrollSection>
         <CardContainer>{children}</CardContainer>
       </WidgetScrollSection>

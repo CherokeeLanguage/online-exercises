@@ -8,7 +8,7 @@ export function Dashboard(): ReactElement {
     <div>
       <UpcomingCardsWidget />
       <LessonsWidget />
-      <SetsWidget />
+      {/* <SetsWidget /> */}
     </div>
   );
 }

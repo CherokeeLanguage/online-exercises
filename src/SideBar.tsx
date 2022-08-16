@@ -42,7 +42,7 @@ const StyledHeading = styled.h1`
   font-weight: bold;
   font-size: ${theme.fontSizes.lg};
   margin: 0;
-  padding: 8px;
+  padding: 4px;
 `;
 
 export function SideBar(): ReactElement {
