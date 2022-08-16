@@ -144,5 +144,10 @@ export function UpcomingCardsWidget() {
   //   });
   // }
 
-  return <svg ref={chartRef} />;
+  return (
+    <div>
+      <h2>Upcoming cards</h2>
+      <svg ref={chartRef} />
+    </div>
+  );
 }

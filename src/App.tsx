@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import { NavBar } from "./NavBar";
+import { SideBar } from "./SideBar";
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -9,24 +9,15 @@ const AppWrapper = styled.div`
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column;
-`;
-
-const AppHeader = styled.header`
-  h1 {
-    font-weight: bold;
-    margin: 0;
-    padding: 8px;
-  }
-  border-bottom: 1px solid #111;
-  margin: 0;
-  padding: 8px;
+  flex-direction: row;
 `;
 
 const AppBody = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;
+  height: 100%;
+  overflow-x: auto;
 `;
 
 const AppContent = styled.div`
@@ -38,10 +29,7 @@ const AppContent = styled.div`
 function App() {
   return (
     <AppWrapper>
-      <AppHeader>
-        <h1>Cherokee Language Lessons Exercises</h1>
-        <NavBar />
-      </AppHeader>
+      <SideBar />
       <AppBody>
         <AppContent>
           <Outlet />
