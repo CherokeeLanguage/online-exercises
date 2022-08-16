@@ -13,6 +13,7 @@ export const Button = styled.button<ButtonProps>`
   border-radius: 8px;
   padding: 8px;
   text-decoration: none;
+  font-size: ${theme.fontSizes.md};
   display: inline-block;
   cursor: pointer;
   ${({ variant }) =>
@@ -20,9 +21,9 @@ export const Button = styled.button<ButtonProps>`
     css`
       background: ${theme.colors.HARD_YELLOW};
       color: ${theme.colors.TEXT_GRAY};
-      border: 2px solid ${theme.colors.LIGHT_GRAY};
+      border: 1px solid ${theme.colors.MED_GRAY};
       &:hover {
-        border: 2px solid ${theme.colors.MED_GRAY};
+        border: 1px solid ${theme.colors.TEXT_GRAY};
       }
     `}
 `;

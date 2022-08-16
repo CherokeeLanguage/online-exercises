@@ -9,6 +9,7 @@ import { useKeyPressEvent } from "react-use";
 import styled from "styled-components";
 import { Card } from "../../../data/clean-cll-data";
 import { TermCardWithStats } from "../../../spaced-repetition/types";
+import { theme } from "../../../theme";
 import { useAudio } from "../../../utils/useAudio";
 import { ExerciseComponentProps } from "./Exercise";
 
@@ -55,7 +56,7 @@ const StyledFlashcardBody = styled.button`
   p {
     flex: 1;
     text-align: center;
-    font-size: 24px;
+    font-size: ${theme.fontSizes.lg};
   }
 `;
 

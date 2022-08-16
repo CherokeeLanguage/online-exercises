@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../../data/clean-cll-data";
 import { TermCardWithStats } from "../../../spaced-repetition/types";
+import { theme } from "../../../theme";
 import { useAudio } from "../../../utils/useAudio";
 import { useTransition } from "../../../utils/useTransition";
 import { ExerciseComponentProps } from "./Exercise";
@@ -195,7 +196,7 @@ const StyledAnswerCard = styled.button<{
       background: #611;
     `}
   padding: 24px;
-  font-size: 16px;
+  font-size: ${theme.fontSizes.sm};
   margin: 16px;
   color: white;
   flex: 1;

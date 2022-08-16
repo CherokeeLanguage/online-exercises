@@ -40,7 +40,7 @@ const StyledNavLink = styled.a`
 
 const StyledHeading = styled.h1`
   font-weight: bold;
-  font-size: 24px;
+  font-size: ${theme.fontSizes.lg};
   margin: 0;
   padding: 8px;
 `;

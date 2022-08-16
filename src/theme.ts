@@ -8,4 +8,9 @@ export const theme = {
     DARK_RED: "#7A2022",
     TEXT_GRAY: "#222222",
   },
+  fontSizes: {
+    sm: 16,
+    md: 20,
+    lg: 24,
+  },
 };
