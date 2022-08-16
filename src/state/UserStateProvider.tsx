@@ -30,9 +30,14 @@ export interface UserStateProps {
 }
 
 export interface UserState {
+  /** Terms the user is learning and ther progress */
   leitnerBoxes: LeitnerBoxState;
+  /** Lessons that have been created for the user */
   lessons: LessonsState;
+  /** Sets the user is learning */
   sets: UserSetsState;
+  /** The collection from which new sets should be pulled when the user is ready for new terms */
+  upstreamCollection: string | undefined;
 }
 
 export type UserInteractors = UserSetsInteractors &
@@ -51,6 +56,10 @@ export type UserStateAction =
   | {
       slice: "UserSets";
       action: UserSetsAction;
+    }
+  | {
+      slice: "UpstreamCollection";
+      newCollectionId: string | undefined;
     };
 
 function reduceUserState(state: UserState, action: UserStateAction): UserState {
@@ -69,6 +78,11 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
       return {
         ...state,
         sets: reduceUserSetsState(state.sets, action.action),
+      };
+    case "UpstreamCollection":
+      return {
+        ...state,
+        upstreamCollection: action.newCollectionId,
       };
   }
 }
@@ -89,6 +103,7 @@ function initializeUserState({
         numBoxes: initializationProps.leitnerBoxes.numBoxes,
         terms: {},
       },
+      upstreamCollection: undefined,
     };
 }
 
