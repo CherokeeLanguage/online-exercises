@@ -6,6 +6,7 @@ import { lessonKey } from "../state/reducers/lessons";
 import {
   MAX_SHOW_PER_SESSION,
   PimsleurTimingState,
+  showsPerSessionForBox,
   usePimsleurTimings,
 } from "./usePimsleurTimings";
 
@@ -105,8 +106,12 @@ export function useReviewSession<T>(
         (count, stats) =>
           count + MAX_SHOW_PER_SESSION - stats.sessionRepetitions,
         0
+      ) +
+      Object.values(timings.state.termsToIntroduce).reduce(
+        (count, stats) => count + showsPerSessionForBox(stats.box),
+        0
       ),
-    [timings.state.sortedTerms]
+    [timings.state.sortedTerms, timings.state.termsToIntroduce]
   );
 
   const currentCard: TermCardWithStats<T, TermStats> | undefined = useMemo(
