@@ -11,7 +11,7 @@ export interface UserSetData {
 export type UserSetsState = Record<string, UserSetData>;
 
 export function reduceUserSetsState(
-  sets: UserSetsState,
+  { sets }: UserState,
   action: UserStateAction
 ): UserSetsState {
   switch (action.type) {

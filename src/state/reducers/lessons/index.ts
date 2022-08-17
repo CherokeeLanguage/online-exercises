@@ -78,7 +78,7 @@ export interface LessonsInteractors {
 }
 
 export function reduceLessonsState(
-  lessons: LessonsState,
+  { lessons }: UserState,
   action: UserStateAction
 ): Record<string, Lesson> {
   switch (action.type) {

@@ -43,23 +43,19 @@ export type UserInteractors = UserSetsInteractors &
   LeitnerBoxesInteractors;
 
 function reduceUpstreamCollection(
-  state: string | undefined,
+  { upstreamCollection }: UserState,
   action: UserStateAction
 ): string | undefined {
   if (action.type === "SET_UPSTREAM_COLLECTION") return action.newCollectionId;
-  else return state;
+  else return upstreamCollection;
 }
 
 function reduceUserState(state: UserState, action: UserStateAction): UserState {
   return {
-    // global state as last parameter, sometimes
-    leitnerBoxes: reduceLeitnerBoxState(state.leitnerBoxes, action, state),
-    lessons: reduceLessonsState(state.lessons, action),
-    sets: reduceUserSetsState(state.sets, action),
-    upstreamCollection: reduceUpstreamCollection(
-      state.upstreamCollection,
-      action
-    ),
+    leitnerBoxes: reduceLeitnerBoxState(state, action),
+    lessons: reduceLessonsState(state, action),
+    sets: reduceUserSetsState(state, action),
+    upstreamCollection: reduceUpstreamCollection(state, action),
   };
 }
 

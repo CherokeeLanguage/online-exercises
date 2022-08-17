@@ -90,9 +90,8 @@ function updateTermStats(
 }
 
 export function reduceLeitnerBoxState(
-  { terms, numBoxes }: LeitnerBoxState,
-  action: UserStateAction,
-  globalState: UserState
+  { leitnerBoxes: { terms, numBoxes }, ...globalState }: UserState,
+  action: UserStateAction
 ): LeitnerBoxState {
   const today = getToday();
   switch (action.type) {
