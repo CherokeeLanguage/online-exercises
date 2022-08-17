@@ -95,9 +95,9 @@ function reducePimsleurTimingState(
           lastShown: action.term,
         };
       } else {
-        const newTermStats = newPimsleurStats(
-          state.termsToIntroduce[action.term],
-          Date.now()
+        // we always call update timings
+        const newTermStats = updateTimings(
+          newPimsleurStats(state.termsToIntroduce[action.term], Date.now())
         );
         const newShownTerms = {
           ...state.shownTerms,

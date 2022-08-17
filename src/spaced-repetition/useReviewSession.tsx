@@ -102,11 +102,13 @@ export function useReviewSession<T>(
 
   const challengesRemaining = useMemo(
     () =>
+      // count for terms that have been shown
       timings.state.sortedTerms.reduce(
         (count, stats) =>
           count + MAX_SHOW_PER_SESSION - stats.sessionRepetitions,
         0
       ) +
+      // terms that haven't been shown
       Object.values(timings.state.termsToIntroduce).reduce(
         (count, stats) => count + showsPerSessionForBox(stats.box),
         0
