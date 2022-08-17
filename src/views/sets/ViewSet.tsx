@@ -16,7 +16,7 @@ export function ViewSet(): ReactElement {
 }
 
 function _ViewSet({ set }: { set: VocabSet }): ReactElement {
-  const { addSet, sets, refreshDailyLessons } = useUserStateContext();
+  const { addSet, sets } = useUserStateContext();
 
   const userSetData = sets[set.id] as UserSetData | undefined;
 
@@ -25,10 +25,9 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
   const collectionName =
     (set.collection && collections[set.collection].title) ?? "";
 
-  function registerTermsAndRecreateLessons() {
+  function addSetAndRedirect() {
     addSet(set.id);
-    refreshDailyLessons();
-    navigate(`/lessons/`);
+    navigate(`/`);
   }
 
   return (
@@ -40,8 +39,8 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
       {userSetData ? (
         <p>You are already learning this set</p>
       ) : (
-        <Button variant="primary" onClick={registerTermsAndRecreateLessons}>
-          Add set to today's lessons
+        <Button variant="primary" onClick={addSetAndRedirect}>
+          Add set and return to dashboard
         </Button>
       )}
       <TermCardList cards={Object.values(setCards)} />

@@ -41,6 +41,7 @@ export function SimpleFlashcards({
 const FlashcardWrapper = styled.div`
   max-width: 600px;
   margin: auto;
+  text-align: center;
 `;
 
 const StyledFlashcardBody = styled.button`

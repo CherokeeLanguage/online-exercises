@@ -3,7 +3,9 @@ import { Dispatch, Reducer, useMemo, useReducer } from "react";
 import { getToday } from "../../utils/dateUtils";
 import { TermStats } from "../../spaced-repetition/types";
 import { ImperativeBlock } from "../../utils/useReducerWithImperative";
-import { UserState, UserStateAction } from "../UserStateProvider";
+import { UserState } from "../UserStateProvider";
+import { vocabSets } from "../../data/vocabSets";
+import { UserStateAction } from "../actions";
 
 interface NewUseLeitnerBoxesProps {
   type: "NEW";
@@ -32,39 +34,6 @@ export enum ReviewResult {
   SINGLE_MISTAKE = "SINGLE_MISTAKE",
   ALL_CORRECT = "ALL_CORRECT",
 }
-
-type ConcludeReviewSessionAction = {
-  type: "conclude_review";
-  reviewedTerms: Record<string, ReviewResult>;
-};
-
-type AddNewTermsAction = {
-  type: "add_new_terms";
-  newTerms: string[];
-};
-
-type RemoveTermsAction = {
-  type: "remove_terms";
-  termsToRemove: string[];
-};
-
-type ResizeAction = {
-  type: "resize";
-  newNumBoxes: number;
-};
-
-export type LeitnerBoxAction =
-  | ConcludeReviewSessionAction
-  | AddNewTermsAction
-  | RemoveTermsAction
-  | ResizeAction;
-
-// TODO:
-// leitner boxes between sessions
-// if answered correctly all times in session --> advance
-// if answered incorrectly during session --> demote (each time or only once??)
-// leiter box timings on the order of days/weeks
-// pimsleur timings still just seconds or whatever
 
 const LEITNER_TIMINGS: DurationLike[] = [
   { days: 0 }, // review again today
@@ -122,13 +91,15 @@ function updateTermStats(
 
 export function reduceLeitnerBoxState(
   { terms, numBoxes }: LeitnerBoxState,
-  action: LeitnerBoxAction
+  action: UserStateAction,
+  globalState: UserState
 ): LeitnerBoxState {
   const today = getToday();
   switch (action.type) {
-    case "add_new_terms":
+    case "ADD_SET":
+      const newTerms = vocabSets[action.setToAdd].terms;
       return {
-        terms: action.newTerms.reduce(
+        terms: newTerms.reduce(
           // do not overwrite existing data
           (newTerms, term) => ({
             [term]: newTermStats(term, today),
@@ -138,7 +109,7 @@ export function reduceLeitnerBoxState(
         ),
         numBoxes,
       };
-    case "conclude_review":
+    case "CONCLUDE_LESSON":
       return {
         terms: Object.entries(action.reviewedTerms).reduce(
           (newTerms, [term, result]) => ({
@@ -149,16 +120,35 @@ export function reduceLeitnerBoxState(
         ),
         numBoxes,
       };
-    case "remove_terms":
+    case "REMOVE_SET":
+      const setToRemove = vocabSets[action.setToRemove];
+      // we need to figure out which terms are used ONLY by the set we are removing
+      // to do this, we remove any terms which appear in another set
+      const termsUniqueToSet = Object.values(globalState.sets)
+        // get all other sets
+        .filter((stats) => stats.setId !== setToRemove.id)
+        // get terms for those sets
+        .map((s) => vocabSets[s.setId].terms)
+        // for each set of terms, remove all terms from the list of unique terms
+        .reduce(
+          (uniqueTerms, setTerms) =>
+            // for each term in that set
+            setTerms.reduce(
+              // drop that term from the list of unique terms, if it is in there
+              (uniqueTerms, potentialDuplicateTerm) =>
+                uniqueTerms.filter((term) => term !== potentialDuplicateTerm),
+              uniqueTerms
+            ),
+          setToRemove.terms // list of unique terms starts with all terms in set to delete
+        );
+
       return {
         terms: Object.fromEntries(
-          Object.entries(terms).filter(
-            ([key, _]) => key in action.termsToRemove
-          )
+          Object.entries(terms).filter(([key, _]) => key in termsUniqueToSet)
         ),
         numBoxes,
       };
-    case "resize":
+    case "RESIZE_LEITNER_BOXES":
       return {
         terms: Object.fromEntries(
           Object.entries(terms).map(([term, stats]) => [
@@ -169,6 +159,8 @@ export function reduceLeitnerBoxState(
         numBoxes: action.newNumBoxes,
       };
   }
+
+  return { terms, numBoxes };
 }
 
 export interface LeitnerBoxesInteractors {
@@ -192,11 +184,8 @@ export function useLeitnerBoxesInteractors(
     () => ({
       resize(newNumBoxes) {
         dispatch({
-          slice: "LeitnerBoxes",
-          action: {
-            type: "resize",
-            newNumBoxes,
-          },
+          type: "RESIZE_LEITNER_BOXES",
+          newNumBoxes,
         });
       },
     }),

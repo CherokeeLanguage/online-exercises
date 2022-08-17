@@ -13,6 +13,7 @@ import { Dashboard } from "./views/dashboard/Dashboard";
 import { BrowseLessons } from "./views/lessons/BrowseLessons";
 import { ViewLesson } from "./views/lessons/ViewLesson";
 import { PracticeLesson } from "./views/practice/Practice";
+import { NewLesson } from "./views/lessons/NewLesson";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -34,6 +35,11 @@ root.render(
             <Route path="lessons">
               <Route index element={<BrowseLessons />} />
               <Route path=":lessonId" element={<ViewLesson />} />
+              {/* "reviewOnly" is an optional parameter so we make two routes https://stackoverflow.com/questions/70005601/alternate-way-for-optional-parameters-in-v6 */}
+              <Route path="new/:numChallenges/">
+                <Route path="" element={<NewLesson />} />
+                <Route path=":reviewOnly" element={<NewLesson />} />
+              </Route>
             </Route>
             <Route path="practice">
               <Route index element={<Navigate to="/lessons/" replace />} />

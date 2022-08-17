@@ -3,12 +3,16 @@ import React, { Reducer, useMemo, useReducer } from "react";
 export type ImperativeBlock<State, Action> = (
   state: State,
   act: Act<State, Action>
-) => State;
+) => StateWithThen<State, Action>;
+
+export type StateWithThen<State, Action> = {
+  state: State;
+  then: (block: ImperativeBlock<State, Action>) => StateWithThen<State, Action>;
+};
 
 export type Act<State, Action> = (
-  actions: Action[],
-  then?: ImperativeBlock<State, Action>
-) => State;
+  ...actions: Action[]
+) => StateWithThen<State, Action>;
 
 type ImperativeAction<State, Action> = {
   type: "imperative";
@@ -26,10 +30,16 @@ type ActionOrImperative<State, Action> =
 
 function actFunctionFactory<State, Action>(reducer: Reducer<State, Action>) {
   return function createActFunction(state: State): Act<State, Action> {
-    return function (actions, then) {
+    return function self(...actions) {
+      // if no actions, don't create a new closure
+      if (actions.length === 0)
+        return { state, then: (block) => block(state, self) };
+
       const newState = actions.reduce(reducer, state);
-      if (then) return then(newState, createActFunction(newState));
-      else return newState;
+      return {
+        state: newState,
+        then: (block) => block(newState, createActFunction(newState)),
+      };
     };
   };
 }
@@ -45,7 +55,7 @@ function wrapReducerWithImperative<State, Action>(
     action: ActionOrImperative<State, Action>
   ) {
     if (action.type === "internal") return reducer(state, action.inner);
-    else return action.block(state, createActFunction(state));
+    else return action.block(state, createActFunction(state)).state;
   }
 
   return wrappedReducer;

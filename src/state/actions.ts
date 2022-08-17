@@ -1,0 +1,51 @@
+import { ReviewResult } from "./reducers/leitnerBoxes";
+import { Lesson } from "./reducers/lessons";
+
+export type ResizeLeitnerBoxesAction = {
+  type: "RESIZE_LEITNER_BOXES";
+  newNumBoxes: number;
+};
+
+export type AddSetAction = {
+  type: "ADD_SET";
+  setToAdd: string;
+};
+
+export type RemoveSetAction = {
+  type: "REMOVE_SET";
+  setToRemove: string;
+};
+
+export type SetAction = AddSetAction | RemoveSetAction;
+
+export type SetUpstreamCollectionAction = {
+  type: "SET_UPSTREAM_COLLECTION";
+  newCollectionId: string | undefined;
+};
+
+export type AddLessonAction = {
+  type: "ADD_LESSON";
+  lesson: Lesson;
+};
+
+export type StartLessonAction = {
+  type: "START_LESSON";
+  lessonId: string;
+};
+
+export type ConcludeLessonAction = {
+  type: "CONCLUDE_LESSON";
+  lessonId: string;
+  reviewedTerms: Record<string, ReviewResult>;
+};
+
+export type LessonsAction =
+  | AddLessonAction
+  | ConcludeLessonAction
+  | StartLessonAction;
+
+export type UserStateAction =
+  | SetUpstreamCollectionAction
+  | ResizeLeitnerBoxesAction
+  | SetAction
+  | LessonsAction;

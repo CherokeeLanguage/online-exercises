@@ -1,48 +1,23 @@
 import React, { ReactElement } from "react";
-import { Button, ButtonLink } from "../../components/Button";
-import { nameForLesson } from "../../state/reducers/lessons";
-import { useUserStateContext } from "../../state/UserStateProvider";
-import { DashboardWidget } from "./DashboardWidget";
-import { DashboardWidgetCard } from "./DashboardWidgetCard";
+import { ButtonLink } from "../../components/Button";
 
 export function LessonsWidget(): ReactElement {
-  const { todaysLessons, refreshDailyLessons } = useUserStateContext();
-
-  const lessonsToDo = todaysLessons.filter(
-    (l) => l.type === "DAILY" && l.completedAt === null
-  );
+  function createLessonPath(numChallenges: number, reviewOnly: boolean) {
+    return `/lessons/new/${numChallenges}/${reviewOnly}`;
+  }
 
   return (
-    <DashboardWidget
-      title={
-        <>
-          Today's lessons{" "}
-          <Button onClick={refreshDailyLessons} variant="primary">
-            Refresh lessons
-          </Button>
-        </>
-      }
-    >
-      {lessonsToDo.length ? (
-        lessonsToDo.map((lesson, i) => (
-          <DashboardWidgetCard
-            key={i}
-            title={nameForLesson(lesson)}
-            action={
-              <ButtonLink to={`/practice/${lesson.id}`} variant="primary">
-                Practice now!
-              </ButtonLink>
-            }
-          >
-            <p>{lesson.terms.length} terms</p>
-          </DashboardWidgetCard>
-        ))
-      ) : (
-        <p>
-          No more lessons today - take a break or start learning a new set from
-          below!
-        </p>
-      )}
-    </DashboardWidget>
+    <div>
+      <h2>Learn now - start a new lesson</h2>
+      <p>You should try to do at least one lesson with new terms a day.</p>
+      <div style={{ gap: "16px", display: "flex" }}>
+        <ButtonLink to={createLessonPath(120, false)} variant="primary">
+          15 minute lesson with new terms
+        </ButtonLink>
+        <ButtonLink to={createLessonPath(120, true)} variant="primary">
+          15 minute review session
+        </ButtonLink>
+      </div>
+    </div>
   );
 }

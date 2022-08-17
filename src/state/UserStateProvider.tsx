@@ -1,14 +1,12 @@
 import React, { ReactElement, ReactNode, useContext, useEffect } from "react";
 import { useLocalStorage } from "react-use";
 import {
-  LessonsAction,
   LessonsInteractors,
   LessonsState,
   reduceLessonsState,
   useLessonsInteractors,
 } from "./reducers/lessons";
 import {
-  LeitnerBoxAction,
   LeitnerBoxesInteractors,
   LeitnerBoxState,
   reduceLeitnerBoxState,
@@ -17,11 +15,11 @@ import {
 import { useReducerWithImperative } from "../utils/useReducerWithImperative";
 import {
   reduceUserSetsState,
-  UserSetsAction,
   UserSetsInteractors,
   UserSetsState,
   useUserSetsInteractors,
 } from "./reducers/userSets";
+import { UserStateAction } from "./actions";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -44,47 +42,25 @@ export type UserInteractors = UserSetsInteractors &
   LessonsInteractors &
   LeitnerBoxesInteractors;
 
-export type UserStateAction =
-  | {
-      slice: "LeitnerBoxes";
-      action: LeitnerBoxAction;
-    }
-  | {
-      slice: "Lessons";
-      action: LessonsAction;
-    }
-  | {
-      slice: "UserSets";
-      action: UserSetsAction;
-    }
-  | {
-      slice: "UpstreamCollection";
-      newCollectionId: string | undefined;
-    };
+function reduceUpstreamCollection(
+  state: string | undefined,
+  action: UserStateAction
+): string | undefined {
+  if (action.type === "SET_UPSTREAM_COLLECTION") return action.newCollectionId;
+  else return state;
+}
 
 function reduceUserState(state: UserState, action: UserStateAction): UserState {
-  switch (action.slice) {
-    case "LeitnerBoxes":
-      return {
-        ...state,
-        leitnerBoxes: reduceLeitnerBoxState(state.leitnerBoxes, action.action),
-      };
-    case "Lessons":
-      return {
-        ...state,
-        lessons: reduceLessonsState(state.lessons, action.action),
-      };
-    case "UserSets":
-      return {
-        ...state,
-        sets: reduceUserSetsState(state.sets, action.action),
-      };
-    case "UpstreamCollection":
-      return {
-        ...state,
-        upstreamCollection: action.newCollectionId,
-      };
-  }
+  return {
+    // global state as last parameter, sometimes
+    leitnerBoxes: reduceLeitnerBoxState(state.leitnerBoxes, action, state),
+    lessons: reduceLessonsState(state.lessons, action),
+    sets: reduceUserSetsState(state.sets, action),
+    upstreamCollection: reduceUpstreamCollection(
+      state.upstreamCollection,
+      action
+    ),
+  };
 }
 
 function initializeUserState({
