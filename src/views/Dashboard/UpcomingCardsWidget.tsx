@@ -19,7 +19,13 @@ export function UpcomingCardsWidget() {
 
   const termsByDayThisWeek = d3.group(
     Object.values(terms)
-      .filter((t) => t.nextShowDate < today + WEEK)
+      .filter(
+        (t) =>
+          // cards are up for review in the next week
+          t.nextShowDate < today + WEEK &&
+          // don't include new cards
+          t.lastShownDate !== 0
+      )
       .map((t) => ({
         ...t,
         nextShowDateString: labelForDate(
