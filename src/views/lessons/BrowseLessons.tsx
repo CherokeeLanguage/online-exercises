@@ -55,7 +55,13 @@ function FinishedLessonRow({ lesson }: { lesson: FinishedLesson }) {
       <td>{nameForLesson(lesson)}</td>
       <td>{lesson.numChallenges || "Unknown number of challenges"}</td>
       <td>
-        {Duration.fromMillis(lesson.completedAt - lesson.startedAt).toHuman()}
+        {Duration.fromObject({
+          milliseconds: lesson.completedAt - lesson.startedAt,
+        })
+          .shiftTo("minutes", "seconds", "milliseconds")
+          .mapUnits((x, u) => (u === "milliseconds" ? 0 : x))
+          .shiftTo("minutes", "seconds")
+          .toHuman()}
       </td>
       <td>
         <StyledLink to={`/lessons/${lesson.id}`}>Details</StyledLink>
