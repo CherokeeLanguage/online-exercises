@@ -16,11 +16,9 @@ export function LessonsWidget(): ReactElement {
 
   return (
     <div>
-      <SectionHeading>Learn now - start a new lesson</SectionHeading>
-      <p>
-        You should try to do at least one lesson with new terms a day.{" "}
-        {newTermsText(upstreamCollection)}
-      </p>
+      <SectionHeading>Learn now</SectionHeading>
+      <p>You should try to do at least one lesson with new terms a day.</p>
+      {newTermsText(upstreamCollection)}
       <div style={{ gap: "16px", display: "flex" }}>
         <ButtonLink to={createLessonPath(120, false)}>
           15 minute lesson with new terms
@@ -35,7 +33,17 @@ export function LessonsWidget(): ReactElement {
 
 function newTermsText(upstreamCollection: Collection | undefined) {
   if (upstreamCollection)
-    return `Right now, new terms come from the ${upstreamCollection.title} collection.`;
+    return (
+      <p>
+        Right now, new terms come from the{" "}
+        <strong>{upstreamCollection.title}</strong> collection.
+      </p>
+    );
   else
-    return `Right now, you aren't working through any collections, so you'll have to add new terms one set at a time.`;
+    return (
+      <p>
+        Right now, you aren't working through any collections, so you'll have to
+        add new terms one set at a time.
+      </p>
+    );
 }
