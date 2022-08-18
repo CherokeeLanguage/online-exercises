@@ -1,14 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import { SideBar } from "./SideBar";
+import { NavigationBar } from "./components/NavigationBar";
 
 const AppWrapper = styled.div`
   height: 100vh;
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
 
 const AppBody = styled.div`
@@ -21,6 +21,7 @@ const AppBody = styled.div`
 
 const AppContent = styled.div`
   flex: 1;
+  max-width: min(800px, 100vw);
   padding: 16px;
   margin: 0 auto;
 `;
@@ -28,7 +29,7 @@ const AppContent = styled.div`
 function App() {
   return (
     <AppWrapper>
-      <SideBar />
+      <NavigationBar />
       <AppBody>
         <AppContent>
           <Outlet />

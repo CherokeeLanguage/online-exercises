@@ -1,26 +1,28 @@
 import React, { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { theme } from "./theme";
+import { theme } from "../theme";
 
-const SidebarWrapper = styled.div`
-  flex: 0 1 265px;
+const NavbarWrapper = styled.div`
   text-align: left;
-  border-right: 2px solid ${theme.colors.HARD_YELLOW};
+  border-bottom: 2px solid ${theme.colors.HARD_YELLOW};
   background: ${theme.colors.LIGHTER_GRAY};
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
 `;
 
 const StyledNav = styled.nav`
   gap: 16px;
   margin: auto;
   align-items: center;
+  display: flex;
 `;
 
 const StyledNavLink = styled.a`
   display: block;
   position: relative;
   color: ${theme.colors.TEXT_GRAY};
-  padding: 0 8px;
+  padding: 4px;
   margin: 4px 0;
   text-decoration: none;
   &.active {
@@ -29,11 +31,11 @@ const StyledNavLink = styled.a`
       content: "";
       background: ${theme.colors.DARK_RED};
       position: absolute;
-      top: 0;
       bottom: 0;
       left: 0;
-      width: 4px;
-      height: 100%;
+      width: 100%;
+      height: 4px;
+      border-radius: 0 0 8px 8px;
     }
   }
 `;
@@ -45,9 +47,9 @@ const StyledHeading = styled.h1`
   padding: 4px;
 `;
 
-export function SideBar(): ReactElement {
+export function NavigationBar(): ReactElement {
   return (
-    <SidebarWrapper>
+    <NavbarWrapper>
       <StyledHeading>Cherokee Language Exercises</StyledHeading>
       <StyledNav>
         <StyledNavLink as={NavLink} to={"/"}>
@@ -59,11 +61,11 @@ export function SideBar(): ReactElement {
         <StyledNavLink as={NavLink} to={"/sets/my"}>
           Your sets
         </StyledNavLink>
-        <hr />
         <StyledNavLink as={NavLink} to={"/lessons"}>
           Lesson archive
         </StyledNavLink>
       </StyledNav>
-    </SidebarWrapper>
+      <div></div>
+    </NavbarWrapper>
   );
 }
