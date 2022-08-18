@@ -69,9 +69,6 @@ export function pullNewSets(
     0
   );
 
-  if (termsFound < numNewTermsNeeded)
-    throw new Error("Not enough terms in upstream set to create a lesson");
-
   return [setsToAdd, termsFound];
 }
 
