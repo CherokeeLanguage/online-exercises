@@ -45,7 +45,7 @@ export function lessonKey(lessonId: string) {
 export function nameForLesson(lesson: Lesson) {
   switch (lesson.type) {
     case "DAILY":
-      return `Daily lesson`;
+      return `Daily lesson on ${new Date(lesson.createdFor).toDateString()}`;
     case "SET":
       const set = vocabSets[lesson.setId];
       return `Lesson for set '${set.title}'`;
