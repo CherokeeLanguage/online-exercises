@@ -6,7 +6,7 @@ import { ReviewResult } from "../../state/reducers/leitnerBoxes";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
 import { useLesson } from "../../state/useLesson";
 import { SectionHeading } from "../../components/SectionHeading";
-import { StyledTable } from "../../components/StyledTable";
+import { CardTable } from "../../components/CardTable";
 
 export function ViewLesson(): ReactElement {
   const { lessonId } = useParams();
@@ -49,22 +49,7 @@ export function _ViewLesson({ lessonId }: { lessonId: string }): ReactElement {
           cards.length > 0 && (
             <div>
               <h3>{reviewResultNames[result as ReviewResult]}</h3>
-              <StyledTable>
-                <thead>
-                  <tr>
-                    <th>Syllabary</th>
-                    <th>English translation</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cards.map((card) => (
-                    <tr>
-                      <td>{card.syllabary}</td>
-                      <td>{card.english}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </StyledTable>
+              <CardTable cards={cards} />
             </div>
           )
       )}
