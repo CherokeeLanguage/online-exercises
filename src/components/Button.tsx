@@ -1,44 +1,60 @@
-import { ReactNode } from "react";
+import React, { Component, HTMLProps, ReactElement, ReactNode } from "react";
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled, {
+  css,
+  IntrinsicElementsKeys,
+  StyledComponent,
+} from "styled-components";
 import { theme } from "../theme";
+import { styledWithDefault } from "../utils/styledWithDefault";
 
 type ButtonVariant = "primary";
 
-interface ButtonProps {
+interface RequiredButtonProps {}
+
+interface OptionalButtonProps {
   variant: ButtonVariant;
 }
 
-export const Button = styled.button<ButtonProps>`
-  border-radius: 8px;
-  padding: 8px;
-  text-decoration: none;
-  font-size: ${theme.fontSizes.md};
-  display: inline-block;
-  cursor: pointer;
-  ${({ variant }) =>
-    variant === "primary" &&
-    css`
-      background: ${theme.colors.HARD_YELLOW};
-      color: ${theme.colors.TEXT_GRAY};
-      border: 1px solid ${theme.colors.MED_GRAY};
-      &:hover {
-        border: 1px solid ${theme.colors.TEXT_GRAY};
-      }
-    `}
-`;
+type ButtonPropsWithDefaults = RequiredButtonProps &
+  Required<OptionalButtonProps>;
+
+export type ButtonProps = RequiredButtonProps & Partial<OptionalButtonProps>;
+
+export const Button = styledWithDefault(
+  styled.button<ButtonPropsWithDefaults>`
+    border-radius: 8px;
+    padding: 8px;
+    text-decoration: none;
+    font-size: ${theme.fontSizes.md};
+    display: inline-block;
+    cursor: pointer;
+    ${({ variant }) =>
+      variant === "primary" &&
+      css`
+        background: ${theme.colors.HARD_YELLOW};
+        color: ${theme.colors.TEXT_GRAY};
+        border: 1px solid ${theme.colors.MED_GRAY};
+        &:hover {
+          border: 1px solid ${theme.colors.TEXT_GRAY};
+        }
+      `}
+  `,
+  {
+    variant: "primary",
+  }
+);
 
 export function ButtonLink({
   children,
-  variant,
   to,
+  ...rest
 }: {
   children?: ReactNode;
-  variant: ButtonVariant;
   to: string;
-}) {
+} & ButtonProps) {
   return (
-    <Button as={Link} to={to} variant={variant}>
+    <Button as={Link} to={to} {...rest}>
       {children}
     </Button>
   );
