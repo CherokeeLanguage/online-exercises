@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { ButtonLink } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
+import { StyledLink } from "../../components/StyledLink";
 import { Collection, collections } from "../../data/vocabSets";
 import { useUserStateContext } from "../../state/UserStateProvider";
 
@@ -36,7 +37,10 @@ function newTermsText(upstreamCollection: Collection | undefined) {
     return (
       <p>
         Right now, new terms come from the{" "}
-        <strong>{upstreamCollection.title}</strong> collection.
+        <StyledLink to={`/collections/${upstreamCollection.id}`}>
+          {upstreamCollection.title}
+        </StyledLink>{" "}
+        collection.
       </p>
     );
   else

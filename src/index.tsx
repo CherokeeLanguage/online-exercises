@@ -14,10 +14,12 @@ import { LessonArchive } from "./views/lessons/LessonArchive";
 import { ViewLesson } from "./views/lessons/ViewLesson";
 import { PracticeLesson } from "./views/practice/Practice";
 import { NewLesson } from "./views/lessons/NewLesson";
+import { ViewCollection } from "./views/collections/ViewCollection";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <HashRouter>
@@ -25,6 +27,10 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="/" element={<Dashboard />} />
+            <Route
+              path="collections/:collectionId"
+              element={<ViewCollection />}
+            />
             <Route path="sets">
               <Route path="browse">
                 <Route index element={<BrowseSets />} />
