@@ -1,8 +1,15 @@
 import React, { ReactElement } from "react";
 import { ButtonLink } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
+import { Collection, collections } from "../../data/vocabSets";
+import { useUserStateContext } from "../../state/UserStateProvider";
 
 export function LessonsWidget(): ReactElement {
+  const { upstreamCollection: collectionId } = useUserStateContext();
+  const upstreamCollection = collectionId
+    ? collections[collectionId]
+    : undefined;
+
   function createLessonPath(numChallenges: number, reviewOnly: boolean) {
     return `/lessons/new/${numChallenges}/${reviewOnly}`;
   }
@@ -10,7 +17,10 @@ export function LessonsWidget(): ReactElement {
   return (
     <div>
       <SectionHeading>Learn now - start a new lesson</SectionHeading>
-      <p>You should try to do at least one lesson with new terms a day.</p>
+      <p>
+        You should try to do at least one lesson with new terms a day.{" "}
+        {newTermsText(upstreamCollection)}
+      </p>
       <div style={{ gap: "16px", display: "flex" }}>
         <ButtonLink to={createLessonPath(120, false)}>
           15 minute lesson with new terms
@@ -21,4 +31,11 @@ export function LessonsWidget(): ReactElement {
       </div>
     </div>
   );
+}
+
+function newTermsText(upstreamCollection: Collection | undefined) {
+  if (upstreamCollection)
+    return `Right now, new terms come from the ${upstreamCollection.title} collection.`;
+  else
+    return `Right now, you aren't working through any collections, so you'll have to add new terms one set at a time.`;
 }
