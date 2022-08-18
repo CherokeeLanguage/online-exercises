@@ -8,13 +8,14 @@ interface UseLessonReturn {
   reviewedTerms: Record<string, ReviewResult>;
   reviewTerm: (term: string, correct: boolean) => void;
   concludeLesson: () => void;
+  startLesson: () => void;
 }
 
 /**
  * Maybe this is a great time to use context!?
  */
 export function useLesson(lessonId: string): UseLessonReturn {
-  const { lessons, concludeLesson } = useUserStateContext();
+  const { lessons, concludeLesson, startLesson } = useUserStateContext();
   const reviewedTerms = useReviewedTerms(lessonId);
   const lesson = lessons[lessonId];
   if (!lesson) throw new Error(`Lesson ${lessonId} not found`);
@@ -22,5 +23,6 @@ export function useLesson(lessonId: string): UseLessonReturn {
     lesson,
     ...reviewedTerms,
     concludeLesson: () => concludeLesson(lessonId, reviewedTerms.reviewedTerms),
+    startLesson: () => startLesson(lessonId),
   };
 }

@@ -20,12 +20,17 @@ export interface ExerciseProps {
 
 export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
   const { leitnerBoxes } = useUserStateContext();
-  const { lesson, concludeLesson, reviewTerm } = useLesson(lessonId);
+  const { lesson, startLesson, concludeLesson, reviewTerm } =
+    useLesson(lessonId);
   const lessonCards = useCardsForTerms(cards, lesson.terms, keyForCard);
   const navigate = useNavigate();
 
   const { currentCard, reviewCurrentCard, challengesRemaining } =
     useReviewSession(leitnerBoxes, lessonCards, lessonId, reviewTerm);
+
+  useEffect(() => {
+    if (lesson.startedAt === null) startLesson();
+  }, [lesson.startedAt]);
 
   useEffect(() => {
     if (currentCard === undefined) {
