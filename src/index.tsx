@@ -10,7 +10,7 @@ import { ViewSet } from "./views/sets/ViewSet";
 // import { Overview } from "./Overview";
 import { UserStateProvider } from "./state/UserStateProvider";
 import { Dashboard } from "./views/dashboard/Dashboard";
-import { BrowseLessons } from "./views/lessons/BrowseLessons";
+import { LessonArchive } from "./views/lessons/LessonArchive";
 import { ViewLesson } from "./views/lessons/ViewLesson";
 import { PracticeLesson } from "./views/practice/Practice";
 import { NewLesson } from "./views/lessons/NewLesson";
@@ -33,7 +33,7 @@ root.render(
               <Route path="my" element={<MySets />} />
             </Route>
             <Route path="lessons">
-              <Route index element={<BrowseLessons />} />
+              <Route index element={<LessonArchive />} />
               <Route path=":lessonId" element={<ViewLesson />} />
               {/* "reviewOnly" is an optional parameter so we make two routes https://stackoverflow.com/questions/70005601/alternate-way-for-optional-parameters-in-v6 */}
               <Route path="new/:numChallenges/">

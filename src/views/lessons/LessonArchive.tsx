@@ -9,11 +9,12 @@ import { useUserStateContext } from "../../state/UserStateProvider";
 
 type FinishedLesson = Lesson & { startedAt: number; completedAt: number };
 
-export function BrowseLessons(): ReactElement {
+export function LessonArchive(): ReactElement {
   const { lessons } = useUserStateContext();
   const finishedLessons = Object.values(lessons)
     .filter((l): l is FinishedLesson => Boolean(l.completedAt && l.startedAt))
-    .sort((a, b) => a.completedAt - b.completedAt);
+    // most recent first
+    .sort((a, b) => b.completedAt - a.completedAt);
   return (
     <div>
       <SectionHeading>Lessons archive</SectionHeading>
