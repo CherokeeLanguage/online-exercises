@@ -8,8 +8,7 @@ export interface StyledAnchorProps {
 
 export const StyledAnchor = styled.a<StyledAnchorProps>`
   border-radius: 8px;
-  padding: 8px;
-  margin: 0 8px;
+  cursor: pointer;
   display: inline-block;
   text-decoration: none;
   color: ${theme.colors.DARK_RED};
