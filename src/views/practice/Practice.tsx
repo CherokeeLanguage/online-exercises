@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Route, Routes, useParams } from "react-router-dom";
 import { ButtonLink } from "../../components/Button";
+import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import { Exercise, ExerciseComponentProps } from "./exercises/Exercise";
 import { SimilarTerms } from "./exercises/SimilarTerms";
@@ -44,7 +45,7 @@ export function PracticeLesson(): ReactElement {
 function PickExercise() {
   return (
     <div>
-      <h2>Practice terms</h2>
+      <SectionHeading>Practice terms</SectionHeading>
       <p>Pick an exercise from the list below to start working on terms.</p>
       <ul>
         {exercises.map(({ name, path }, idx) => (

@@ -1,8 +1,7 @@
 import React, { ReactElement } from "react";
-import { StyledLink } from "../../components/StyledLink";
+import { SectionHeading } from "../../components/SectionHeading";
 import { VocabSetTable } from "../../components/VocabSetTable";
 import { vocabSets } from "../../data/vocabSets";
-import { UserSetData } from "../../state/reducers/userSets";
 import { useUserStateContext } from "../../state/UserStateProvider";
 
 export function MySets(): ReactElement {
@@ -12,6 +11,7 @@ export function MySets(): ReactElement {
     .map((metadata) => vocabSets[metadata.setId]);
   return (
     <div>
+      <SectionHeading>Your sets</SectionHeading>
       <p>Here you can see the vocab sets you are working on learning.</p>
       <VocabSetTable
         sets={userSets}

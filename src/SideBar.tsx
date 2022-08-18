@@ -59,9 +59,10 @@ export function SideBar(): ReactElement {
         <StyledNavLink as={NavLink} to={"/sets/my"}>
           Your sets
         </StyledNavLink>
-        {/* <StyledNavLink as={NavLink} to={"/lessons"}>
-          Today's lessons
-        </StyledNavLink> */}
+        <hr />
+        <StyledNavLink as={NavLink} to={"/lessons"}>
+          Lesson archive
+        </StyledNavLink>
       </StyledNav>
     </SidebarWrapper>
   );

@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { ButtonLink } from "../../components/Button";
+import { SectionHeading } from "../../components/SectionHeading";
 
 export function LessonsWidget(): ReactElement {
   function createLessonPath(numChallenges: number, reviewOnly: boolean) {
@@ -8,7 +9,7 @@ export function LessonsWidget(): ReactElement {
 
   return (
     <div>
-      <h2>Learn now - start a new lesson</h2>
+      <SectionHeading>Learn now - start a new lesson</SectionHeading>
       <p>You should try to do at least one lesson with new terms a day.</p>
       <div style={{ gap: "16px", display: "flex" }}>
         <ButtonLink to={createLessonPath(120, false)} variant="primary">

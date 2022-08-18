@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../components/Button";
+import { SectionHeading } from "../../components/SectionHeading";
 import { TermCardList } from "../../components/TermCardList";
 import { cards, keyForCard } from "../../data/clean-cll-data";
 import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
@@ -32,10 +33,10 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
 
   return (
     <div>
-      <h2>
+      <SectionHeading>
         {collectionName && `${collectionName} - `}
         {set.title}
-      </h2>
+      </SectionHeading>
       {userSetData ? (
         <p>You are already learning this set</p>
       ) : (

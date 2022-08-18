@@ -1,11 +1,11 @@
 import React, { ReactElement } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { cards, keyForCard } from "../../data/clean-cll-data";
-import { Lesson, nameForLesson } from "../../state/reducers/lessons";
+import { nameForLesson } from "../../state/reducers/lessons";
 import { ReviewResult } from "../../state/reducers/leitnerBoxes";
-import { useReviewedTerms } from "../../spaced-repetition/useReviewSession";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
 import { useLesson } from "../../state/useLesson";
+import { SectionHeading } from "../../components/SectionHeading";
 
 export function ViewLesson(): ReactElement {
   const { lessonId } = useParams();
@@ -34,9 +34,9 @@ export function _ViewLesson({ lessonId }: { lessonId: string }): ReactElement {
       <ul>
         {Object.entries(reviewedTerms).map(([term, value], idx) => (
           <li key={idx}>
-            <h2>
+            <SectionHeading>
               {reviewedCards[term].syllabary} / {reviewedCards[term].english}
-            </h2>
+            </SectionHeading>
             <p>{reviewResultNames[value]}</p>
           </li>
         ))}

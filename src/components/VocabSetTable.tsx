@@ -1,26 +1,8 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
 import { collections, VocabSet } from "../data/vocabSets";
-import { theme } from "../theme";
 import { StyledLink } from "./StyledLink";
+import { StyledTable } from "./StyledTable";
 import { VisuallyHidden } from "./VisuallyHidden";
-
-const StyledTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  th {
-    text-align: left;
-  }
-  td {
-    border-bottom: 1px solid ${theme.colors.LIGHT_GRAY};
-    text-align: left;
-  }
-  tr:nth-child(2n + 1) {
-    td {
-      background: ${theme.colors.LIGHTER_GRAY};
-    }
-  }
-`;
 
 export function VocabSetTable({
   sets,

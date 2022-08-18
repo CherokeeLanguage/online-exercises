@@ -30,6 +30,8 @@ export interface LessonMixin {
   completedAt: number | null;
   /** Day the lesson was planned for */
   createdFor: number;
+  /** Number of challenges in the lesson */
+  numChallenges: number;
 }
 
 type LessonMeta = SetLesson | DailyLesson;
@@ -38,18 +40,6 @@ export type Lesson = LessonMixin & LessonMeta;
 
 export function lessonKey(lessonId: string) {
   return `lesson/${lessonId}`;
-}
-
-export function createDailyLesson(terms: string[]): Lesson {
-  return {
-    id: v4(),
-    terms,
-    startedAt: null,
-    completedAt: null,
-    createdAt: Date.now(),
-    createdFor: getToday(),
-    type: "DAILY",
-  };
 }
 
 export function nameForLesson(lesson: Lesson) {

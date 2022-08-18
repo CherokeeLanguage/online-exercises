@@ -157,6 +157,7 @@ export function createLessonTransaction(
         completedAt: null,
         createdAt: Date.now(),
         createdFor: getToday(),
+        numChallenges,
         type: "DAILY",
       };
 
