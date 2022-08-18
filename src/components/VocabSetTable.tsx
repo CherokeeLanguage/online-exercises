@@ -22,7 +22,9 @@ export function VocabSetTable({
           <th>Name</th>
           <th>Number of terms</th>
           <th>{lastColumnName}</th>
-          <VisuallyHidden as={"th"}>Link to set</VisuallyHidden>
+          <th>
+            <VisuallyHidden>Link to set</VisuallyHidden>
+          </th>
         </tr>
       </thead>
       <tbody>

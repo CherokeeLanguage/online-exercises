@@ -28,9 +28,9 @@ export function BrowseLessons(): ReactElement {
               <th>Name</th>
               <th>Number of challenges</th>
               <th>Duration</th>
-              <VisuallyHidden as="th">
-                Link to view lesson details
-              </VisuallyHidden>
+              <th>
+                <VisuallyHidden>Link to view lesson details</VisuallyHidden>
+              </th>
             </tr>
           </thead>
           <tbody>
