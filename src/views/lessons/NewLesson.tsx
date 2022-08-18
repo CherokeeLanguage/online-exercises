@@ -36,10 +36,10 @@ export function NewLesson() {
 
   if (lessonError)
     return (
-      <p>
-        Error creating lesson:{" "}
+      <div>
+        <h3>Lesson could not be created</h3>
         <ErrorAdvice error={lessonError} numChallenges={numChallenges} />
-      </p>
+      </div>
     );
   else if (newLessonId in lessons)
     return <Navigate to={`/practice/${newLessonId}`} />;
