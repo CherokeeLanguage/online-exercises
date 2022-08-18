@@ -26,9 +26,10 @@ export const Button = styledWithDefault(
     border-radius: 8px;
     padding: 8px;
     text-decoration: none;
-    font-size: ${theme.fontSizes.md};
+    font-size: ${theme.fontSizes.sm};
     display: inline-block;
     cursor: pointer;
+    box-shadow: 1px 1px 6px ${theme.colors.MED_GRAY};
     ${({ variant }) =>
       variant === "primary" &&
       css`
