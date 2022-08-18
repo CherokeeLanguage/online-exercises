@@ -21,6 +21,10 @@ export interface LessonCreationError {
 
 /**
  * Scan a list and perform takeWhile on the scan results.
+ *
+ * Scanning happens _after_ predicate is called. Ie. the predicate receives the
+ * value of the accumulator _without_ the item reduced.
+ *
  * @param list List to scan + takeWhile
  * @param reducer Scaning function
  * @param predicate Return false to stop scanning
@@ -30,20 +34,19 @@ export interface LessonCreationError {
 export function scanWhile<A, T>(
   list: T[],
   reducer: (accumulator: A, item: T) => A,
-  predicate: (accumulator: A, item: T) => boolean,
+  predicate: (accumulatorWithoutItem: A, item: T) => boolean,
   initialValue: A
 ): [T[], A] {
   let accumulatedValue = initialValue;
 
   for (let i = 0; i < list.length; i++) {
     const item = list[i];
-    const newAccumulatedValue = reducer(accumulatedValue, item);
 
-    if (!predicate(newAccumulatedValue, item))
+    if (!predicate(accumulatedValue, item))
       // we return the old accumulated value, not including the current item's impact
       return [list.slice(0, i), accumulatedValue];
 
-    accumulatedValue = newAccumulatedValue;
+    accumulatedValue = reducer(accumulatedValue, item);
   }
 
   return [list, accumulatedValue];
@@ -93,12 +96,11 @@ function fetchNewTermsIfNeeded(
       },
     });
 
-  const [setsToAdd, termsFound] = pullNewSets(
-    state,
-    numNewTermsToInclude - potentialNewTerms.length
-  );
+  const numTermsToFind = numNewTermsToInclude - potentialNewTerms.length;
 
-  if (termsFound < numNewTermsToInclude)
+  const [setsToAdd, termsFound] = pullNewSets(state, numTermsToFind);
+
+  if (termsFound < numTermsToFind)
     return act({
       type: "LESSON_CREATE_ERROR",
       error: {

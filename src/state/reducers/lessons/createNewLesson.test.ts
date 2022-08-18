@@ -7,7 +7,7 @@ describe("scanWhile", () => {
     const [items, count] = scanWhile(
       [1, 2, 3, 4],
       (count, e) => count + e,
-      (count) => count < 10,
+      (count, e) => count + e < 10,
       0
     );
     assert.deepStrictEqual(items, [1, 2, 3]);
