@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
+import { Button } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import { collections, VocabSet } from "../../data/vocabSets";
@@ -16,8 +17,18 @@ const StyledSetLinks = styled.div`
   gap: 8px;
 `;
 
+const StyledCollectionHeader = styled.div`
+  display: flex;
+  align-items: baseline;
+  h3 {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+  }
+`;
+
 export function BrowseSets(): ReactElement {
-  const { sets } = useUserStateContext();
+  const { sets, upstreamCollection } = useUserStateContext();
   return (
     <div>
       <SectionHeading>Find new vocabulary</SectionHeading>
@@ -27,7 +38,15 @@ export function BrowseSets(): ReactElement {
       </p>
       {Object.values(collections).map((collection) => (
         <div>
-          <h3>{collection.title}</h3>
+          <StyledCollectionHeader>
+            <h3>{collection.title}</h3>
+
+            {upstreamCollection === collection.id ? (
+              <UpstreamCollectionFlare />
+            ) : (
+              <MakeUpstreamCollectionButton collectionId={collection.id} />
+            )}
+          </StyledCollectionHeader>
 
           <StyledSetList>
             {collection.sets
@@ -39,6 +58,26 @@ export function BrowseSets(): ReactElement {
         </div>
       ))}
     </div>
+  );
+}
+
+function UpstreamCollectionFlare() {
+  return <span>Current upstream collection</span>;
+}
+
+function MakeUpstreamCollectionButton({
+  collectionId,
+}: {
+  collectionId: string;
+}) {
+  const { setUpstreamCollection } = useUserStateContext();
+  return (
+    <Button
+      onClick={() => setUpstreamCollection(collectionId)}
+      variant="primary"
+    >
+      Make upstream collection
+    </Button>
   );
 }
 

@@ -1,4 +1,10 @@
-import React, { ReactElement, ReactNode, useContext, useEffect } from "react";
+import React, {
+  ReactElement,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+} from "react";
 import { useLocalStorage } from "react-use";
 import {
   LessonsInteractors,
@@ -41,9 +47,14 @@ export interface UserState {
   upstreamCollection: string | undefined;
 }
 
+interface MiscInteractors {
+  setUpstreamCollection: (collectionId: string) => void;
+}
+
 export type UserInteractors = UserSetsInteractors &
   LessonsInteractors &
-  LeitnerBoxesInteractors;
+  LeitnerBoxesInteractors &
+  MiscInteractors;
 
 function reduceUpstreamCollection(
   { upstreamCollection }: UserState,
@@ -131,6 +142,18 @@ export function useUserState(initializationProps: UserStateProps) {
     dispatchImperativeBlock
   );
 
+  const miscInteractors: MiscInteractors = useMemo(
+    () => ({
+      setUpstreamCollection(collectionId: string | undefined) {
+        dispatch({
+          type: "SET_UPSTREAM_COLLECTION",
+          newCollectionId: collectionId,
+        });
+      },
+    }),
+    []
+  );
+
   useEffect(() => {
     // handle resizes in number of boxes if we ever deploy them
     if (
@@ -144,6 +167,7 @@ export function useUserState(initializationProps: UserStateProps) {
     ...userSetsInteractors,
     ...lessonsInteractors,
     ...leitnerBoxesInteractors,
+    ...miscInteractors,
   };
 }
 
