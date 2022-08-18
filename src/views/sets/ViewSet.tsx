@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import styled from "styled-components";
 import { Button } from "../../components/Button";
 import { CardTable } from "../../components/CardTable";
 import { SectionHeading } from "../../components/SectionHeading";
@@ -15,6 +16,17 @@ export function ViewSet(): ReactElement {
   const set = vocabSets[setId];
   return <_ViewSet set={set} />;
 }
+
+const StyledHeadingWithButton = styled.div`
+  display: flex;
+  align-items: baseline;
+  margin: 16px 0;
+  h2 {
+    margin: 0;
+    margin-right: 8px;
+    padding: 0;
+  }
+`;
 
 function _ViewSet({ set }: { set: VocabSet }): ReactElement {
   const { addSet, sets } = useUserStateContext();
@@ -33,17 +45,20 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
 
   return (
     <div>
-      <SectionHeading>
-        {collectionName && `${collectionName} - `}
-        {set.title}
-      </SectionHeading>
-      {userSetData ? (
-        <p>You are already learning this set</p>
-      ) : (
-        <Button onClick={addSetAndRedirect}>
-          Add set and return to dashboard
-        </Button>
-      )}
+      <StyledHeadingWithButton>
+        <SectionHeading>
+          {collectionName && `${collectionName} - `}
+          {set.title}
+        </SectionHeading>
+        {userSetData ? (
+          <span>(you are already learning this set)</span>
+        ) : (
+          <Button onClick={addSetAndRedirect}>
+            Add set and return to dashboard
+          </Button>
+        )}
+      </StyledHeadingWithButton>
+
       <CardTable cards={Object.values(setCards)} />
     </div>
   );
