@@ -12,10 +12,10 @@ export function LessonsWidget(): ReactElement {
       <SectionHeading>Learn now - start a new lesson</SectionHeading>
       <p>You should try to do at least one lesson with new terms a day.</p>
       <div style={{ gap: "16px", display: "flex" }}>
-        <ButtonLink to={createLessonPath(120, false)} variant="primary">
+        <ButtonLink to={createLessonPath(120, false)}>
           15 minute lesson with new terms
         </ButtonLink>
-        <ButtonLink to={createLessonPath(120, true)} variant="primary">
+        <ButtonLink to={createLessonPath(120, true)}>
           15 minute review session
         </ButtonLink>
       </div>

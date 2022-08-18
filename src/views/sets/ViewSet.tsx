@@ -40,7 +40,7 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
       {userSetData ? (
         <p>You are already learning this set</p>
       ) : (
-        <Button variant="primary" onClick={addSetAndRedirect}>
+        <Button onClick={addSetAndRedirect}>
           Add set and return to dashboard
         </Button>
       )}

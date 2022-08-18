@@ -50,9 +50,7 @@ function PickExercise() {
       <ul>
         {exercises.map(({ name, path }, idx) => (
           <li key={idx}>
-            <ButtonLink to={path} variant="primary">
-              {name}
-            </ButtonLink>
+            <ButtonLink to={path}>{name}</ButtonLink>
           </li>
         ))}
       </ul>
