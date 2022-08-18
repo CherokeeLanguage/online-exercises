@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useMemo } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { v4 } from "uuid";
+import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import {
   LessonCreationError,
@@ -37,13 +38,13 @@ export function NewLesson() {
   if (lessonError)
     return (
       <div>
-        <h3>Lesson could not be created</h3>
+        <SectionHeading>Lesson could not be created</SectionHeading>
         <ErrorAdvice error={lessonError} numChallenges={numChallenges} />
       </div>
     );
   else if (newLessonId in lessons)
     return <Navigate to={`/practice/${newLessonId}`} />;
-  else return <p>Creating lesson...</p>;
+  else return <SectionHeading>Creating lesson...</SectionHeading>;
 }
 
 function ErrorAdvice({
