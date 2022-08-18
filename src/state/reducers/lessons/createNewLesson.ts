@@ -1,3 +1,4 @@
+import { act } from "react-dom/test-utils";
 import { Lesson } from ".";
 import { VocabSet, collections } from "../../../data/vocabSets";
 import { termNeedsPractice } from "../../../spaced-repetition/groupTermsIntoLessons";
@@ -7,6 +8,16 @@ import { getToday } from "../../../utils/dateUtils";
 import { Act, StateWithThen } from "../../../utils/useReducerWithImperative";
 import { UserStateAction } from "../../actions";
 import { UserState } from "../../UserStateProvider";
+
+export enum LessonCreationErrorType {
+  "NOT_ENOUGH_TERMS_FOR_REVIEW_LESSON",
+  "NOT_ENOUGH_NEW_TERMS_FOR_LESSON",
+}
+
+export interface LessonCreationError {
+  lessonId: string;
+  type: LessonCreationErrorType;
+}
 
 /**
  * Scan a list and perform takeWhile on the scan results.
@@ -41,46 +52,70 @@ export function scanWhile<A, T>(
 export function pullNewSets(
   state: UserState,
   numNewTermsNeeded: number
-): VocabSet[] {
+): [VocabSet[], number] {
   if (state.upstreamCollection === undefined)
     throw new Error(
-      "Out of terms! Add new terms or add an upstream collection"
+      "No upstream collection. This should have been checked before calling."
     );
   const collection = collections[state.upstreamCollection];
   const remainingSetsInCollection = collection.sets.filter(
     (set) => !(set.id in state.sets)
   );
 
-  const [setsToAdd, termsAdded] = scanWhile(
+  const [setsToAdd, termsFound] = scanWhile(
     remainingSetsInCollection,
-    (termsAdded, set) => termsAdded + set.terms.length,
-    (termsAdded) => termsAdded <= numNewTermsNeeded,
+    (termsFound, set) => termsFound + set.terms.length,
+    (termsFound) => termsFound <= numNewTermsNeeded,
     0
   );
 
-  if (termsAdded < numNewTermsNeeded)
+  if (termsFound < numNewTermsNeeded)
     throw new Error("Not enough terms in upstream set to create a lesson");
 
-  return setsToAdd;
+  return [setsToAdd, termsFound];
 }
 
 function fetchNewTermsIfNeeded(
+  desiredId: string,
+  numNewTermsToInclude: number,
   state: UserState,
-  act: Act<UserState, UserStateAction>,
-  numNewTermsToInclude: number
+  act: Act<UserState, UserStateAction>
 ) {
   const [_, potentialNewTerms] = splitNewTerms(state);
-  return potentialNewTerms.length < numNewTermsToInclude
-    ? act(
-        ...pullNewSets(
-          state,
-          numNewTermsToInclude - potentialNewTerms.length
-        ).map((set) => ({
-          type: "ADD_SET" as const,
-          setToAdd: set.id,
-        }))
-      )
-    : act();
+
+  // we have enough terms
+  if (potentialNewTerms.length >= numNewTermsToInclude) return act();
+
+  // we don't have enough terms AND there's nowhere to get more
+  if (state.upstreamCollection === undefined)
+    return act({
+      type: "LESSON_CREATE_ERROR",
+      error: {
+        lessonId: desiredId,
+        type: LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON,
+      },
+    });
+
+  const [setsToAdd, termsFound] = pullNewSets(
+    state,
+    numNewTermsToInclude - potentialNewTerms.length
+  );
+
+  if (termsFound < numNewTermsToInclude)
+    return act({
+      type: "LESSON_CREATE_ERROR",
+      error: {
+        lessonId: desiredId,
+        type: LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON,
+      },
+    });
+
+  return act(
+    ...setsToAdd.map((set) => ({
+      type: "ADD_SET" as const,
+      setToAdd: set.id,
+    }))
+  );
 }
 
 /**
@@ -107,64 +142,112 @@ function splitNewTerms(state: UserState) {
  * Acts as a single dispatch against the global user state reducer.
  *
  * See `dispatchImperativeBlock`.
- * @param numChallenges
+ * @param desiredNumChallenges
  * @param state
  * @param act
  * @returns
  */
 export function createLessonTransaction(
   desiredId: string,
-  numChallenges: number,
+  desiredNumChallenges: number,
   reviewOnly: boolean,
   state: UserState,
-  act: Act<UserState, UserStateAction>
+  act: Act<UserState, UserStateAction>,
+  suggestedNewTermsToInclude?: number
 ): StateWithThen<UserState, UserStateAction> {
   // if the lesson was already created, don't make it again
   if (desiredId in state.lessons) return act();
 
   // 10 terms for 15 minute lesson
   // TODO: finetune this
-  const numNewTermsToInclude = reviewOnly ? 0 : Math.floor(numChallenges / 12);
+  // this may change if not enough review terms are available
+  const numNewTermsToInclude =
+    suggestedNewTermsToInclude ??
+    (reviewOnly ? 0 : Math.floor(desiredNumChallenges / 12));
 
-  return fetchNewTermsIfNeeded(state, act, numNewTermsToInclude).then(
-    (state, act) => {
-      // split terms into review terms and new terms
-      const [potentialReviewTerms, potentialNewTerms] = splitNewTerms(state);
+  return fetchNewTermsIfNeeded(
+    desiredId,
+    numNewTermsToInclude,
+    state,
+    act
+  ).then((state, act) => {
+    // if something has gone wrong, bail
+    if (state.lessonCreationError?.lessonId === desiredId) return act();
 
-      const newTerms = potentialNewTerms.slice(0, numNewTermsToInclude);
+    // split terms into review terms and new terms
+    const [potentialReviewTerms, potentialNewTerms] = splitNewTerms(state);
 
-      // new terms are in box 0, by definition
-      const numNewTermChallenges = newTerms.length * showsPerSessionForBox(0);
-      const numReviewTermChallenges = numChallenges - numNewTermChallenges;
+    console.log({
+      potentialReviewTerms: potentialReviewTerms.length,
+      potentialNewTerms: potentialNewTerms.length,
+    });
 
-      // select review terms until we max number of challenges
-      const [reviewTerms, reviewChallengesFound] = scanWhile(
-        potentialReviewTerms,
-        (count, term) => count + showsPerSessionForBox(term.box),
-        (count) => count <= numReviewTermChallenges,
-        0
-      );
+    // new terms are in box 0, by definition
+    const numNewTermChallenges =
+      numNewTermsToInclude * showsPerSessionForBox(0);
+    const numReviewTermChallenges = desiredNumChallenges - numNewTermChallenges;
 
-      if (reviewChallengesFound + numNewTermChallenges < 0.8 * numChallenges) {
-        // TODO: recurse and increase new term count
-        console.log("Not enough review terms for a lesson! oops");
+    // select review terms until we max number of challenges
+    const [reviewTerms, reviewChallengesFound] = scanWhile(
+      potentialReviewTerms,
+      (count, term) => count + showsPerSessionForBox(term.box),
+      (count) => count <= numReviewTermChallenges,
+      0
+    );
+
+    // if there aren't enough terms...
+    if (
+      reviewChallengesFound + numNewTermChallenges <
+      0.8 * desiredNumChallenges
+    ) {
+      if (reviewOnly) {
+        console.log(
+          "Not enough review terms for a lesson! But a review only lesson was requested!"
+        );
+        return act({
+          type: "LESSON_CREATE_ERROR",
+          error: {
+            lessonId: desiredId,
+            type: LessonCreationErrorType.NOT_ENOUGH_TERMS_FOR_REVIEW_LESSON,
+          },
+        });
+      } else {
+        // try to fill lesson with new terms
+        return createLessonTransaction(
+          desiredId,
+          desiredNumChallenges,
+          reviewOnly,
+          state,
+          act,
+          Math.floor(
+            // remaining challenges / challenges per new term
+            (desiredNumChallenges - reviewChallengesFound) /
+              showsPerSessionForBox(0)
+          )
+        );
       }
-
-      const lesson: Lesson = {
-        id: desiredId,
-        terms: [...newTerms, ...reviewTerms].map((t) => t.key),
-        startedAt: null,
-        completedAt: null,
-        createdAt: Date.now(),
-        createdFor: getToday(),
-        numChallenges,
-        type: "DAILY",
-      };
-
-      return act({
-        type: "ADD_LESSON",
-        lesson,
-      });
     }
-  );
+
+    // if we have enough terms...
+    const newTerms = potentialNewTerms.slice(0, numNewTermsToInclude);
+
+    const realNumChallenges =
+      reviewChallengesFound + newTerms.length * showsPerSessionForBox(0);
+
+    const lesson: Lesson = {
+      id: desiredId,
+      terms: [...newTerms, ...reviewTerms].map((t) => t.key),
+      startedAt: null,
+      completedAt: null,
+      createdAt: Date.now(),
+      createdFor: getToday(),
+      numChallenges: realNumChallenges,
+      type: "DAILY",
+    };
+
+    return act({
+      type: "ADD_LESSON",
+      lesson,
+    });
+  });
 }

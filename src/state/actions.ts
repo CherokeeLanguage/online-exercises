@@ -1,5 +1,6 @@
 import { ReviewResult } from "./reducers/leitnerBoxes";
 import { Lesson } from "./reducers/lessons";
+import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 
 export type ResizeLeitnerBoxesAction = {
   type: "RESIZE_LEITNER_BOXES";
@@ -39,10 +40,16 @@ export type ConcludeLessonAction = {
   reviewedTerms: Record<string, ReviewResult>;
 };
 
+export type FlagLessonCreationError = {
+  type: "LESSON_CREATE_ERROR";
+  error: LessonCreationError;
+};
+
 export type LessonsAction =
   | AddLessonAction
   | ConcludeLessonAction
-  | StartLessonAction;
+  | StartLessonAction
+  | FlagLessonCreationError;
 
 export type UserStateAction =
   | SetUpstreamCollectionAction

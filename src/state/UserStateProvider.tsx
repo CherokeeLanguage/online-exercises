@@ -20,6 +20,7 @@ import {
   useUserSetsInteractors,
 } from "./reducers/userSets";
 import { UserStateAction } from "./actions";
+import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -32,6 +33,8 @@ export interface UserState {
   leitnerBoxes: LeitnerBoxState;
   /** Lessons that have been created for the user */
   lessons: LessonsState;
+  /** Latest error describing why a lesson could not be created */
+  lessonCreationError: LessonCreationError | undefined;
   /** Sets the user is learning */
   sets: UserSetsState;
   /** The collection from which new sets should be pulled when the user is ready for new terms */
@@ -50,12 +53,21 @@ function reduceUpstreamCollection(
   else return upstreamCollection;
 }
 
+function reduceLessonCreationError(
+  { lessonCreationError }: UserState,
+  action: UserStateAction
+): LessonCreationError | undefined {
+  if (action.type === "LESSON_CREATE_ERROR") return action.error;
+  else return lessonCreationError;
+}
+
 function reduceUserState(state: UserState, action: UserStateAction): UserState {
   return {
     leitnerBoxes: reduceLeitnerBoxState(state, action),
     lessons: reduceLessonsState(state, action),
     sets: reduceUserSetsState(state, action),
     upstreamCollection: reduceUpstreamCollection(state, action),
+    lessonCreationError: reduceLessonCreationError(state, action),
   };
 }
 
@@ -76,6 +88,7 @@ function initializeUserState({
         terms: {},
       },
       upstreamCollection: undefined,
+      lessonCreationError: undefined,
     };
 }
 
