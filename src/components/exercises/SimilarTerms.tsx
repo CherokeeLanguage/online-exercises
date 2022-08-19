@@ -187,13 +187,13 @@ const StyledAnswerCard = styled.button<{
     correct &&
     answerState === AnswerState.CORRECT &&
     css`
-      background: #151;
+      background: ${theme.colors.DARK_GREEN};
     `}
   ${({ answerState, correct }) =>
     !correct &&
     answerState === AnswerState.INCORRECT &&
     css`
-      background: #611;
+      background: ${theme.colors.DARK_RED};
     `}
   padding: 24px;
   font-size: ${theme.fontSizes.sm};
