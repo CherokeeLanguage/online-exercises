@@ -1,10 +1,9 @@
-import * as d3 from "d3";
+import d3 from "d3";
 import { useRef, useEffect } from "react";
-import { SectionHeading } from "../../components/SectionHeading";
-import { useUserStateContext } from "../../state/UserStateProvider";
-import { DAY, getToday, WEEK } from "../../utils/dateUtils";
+import { useUserStateContext } from "../state/UserStateProvider";
+import { getToday, DAY, WEEK } from "../utils/dateUtils";
 
-export function UpcomingCardsWidget() {
+export function UpcomingCardsByDayChart() {
   const {
     leitnerBoxes: { terms },
   } = useUserStateContext();
@@ -123,43 +122,5 @@ export function UpcomingCardsWidget() {
       );
   }, [chartRef.current, termsByDayThisWeek]);
 
-  // {
-  //   termsByBox.map((count, idx) => {
-  //     const barHeight =
-  //       zeroBarHeight + Math.round((count / maxCount) * maxBarHeight);
-
-  //     const barX = (idx + 0.5) * barWidth * 2;
-  //     const barY = maxHeight - barHeight;
-  //     return (
-  //       <>
-  //         <rect
-  //           style={{ fill: selectedLevel === idx ? "#f32" : "#999" }}
-  //           x={barX}
-  //           y={barY}
-  //           width={barWidth}
-  //           height={barHeight}
-  //         ></rect>
-  //         <text
-  //           x={barX + barWidth / 2}
-  //           y={maxHeight - zeroBarHeight}
-  //           textAnchor="middle"
-  //         >
-  //           {count}
-  //         </text>
-  //       </>
-  //     );
-  //   });
-  // }
-
-  return (
-    <div>
-      <SectionHeading>Upcoming cards</SectionHeading>
-      <p>
-        You have{" "}
-        <strong>{termsByDayThisWeek.get("Today")?.length ?? 0} terms</strong>{" "}
-        left to review today.
-      </p>
-      <svg ref={chartRef} />
-    </div>
-  );
+  return <svg ref={chartRef} />;
 }

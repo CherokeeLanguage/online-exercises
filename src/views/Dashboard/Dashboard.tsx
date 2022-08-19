@@ -1,12 +1,14 @@
 import React, { ReactElement } from "react";
 import { LessonsWidget } from "./LessonsWidget";
-import { SetsWidget } from "./SetsWidget";
-import { UpcomingCardsWidget } from "./UpcomingCardsWidget";
+// import { SetsWidget } from "./SetsWidget";
+import { ActivityWidget } from "./ActivityWidget";
+import { GettingStartedWidget } from "./GettingStartedWidget";
 
 export function Dashboard(): ReactElement {
   return (
     <div>
-      <UpcomingCardsWidget />
+      <GettingStartedWidget />
+      <ActivityWidget />
       <LessonsWidget />
       {/* <SetsWidget /> */}
     </div>
