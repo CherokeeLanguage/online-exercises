@@ -38,7 +38,7 @@ export function NewLesson() {
   if (lessonError)
     return (
       <div>
-        <SectionHeading>Lesson could not be created</SectionHeading>
+        <SectionHeading>Uh oh!</SectionHeading>
         <ErrorAdvice error={lessonError} numChallenges={numChallenges} />
       </div>
     );
@@ -57,21 +57,29 @@ function ErrorAdvice({
   switch (error.type) {
     case LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON:
       return (
-        <p>
-          There are not enough new terms for a lesson. Consider adding some{" "}
-          <StyledLink to="/sets/browse">new terms</StyledLink>.
-        </p>
+        <>
+          <p>There are not enough new terms for a lesson.</p>
+          <p>
+            Consider adding some{" "}
+            <StyledLink to="/sets/browse">new terms</StyledLink> or wrapping up
+            for the day!
+          </p>
+        </>
       );
     case LessonCreationErrorType.NOT_ENOUGH_TERMS_FOR_REVIEW_LESSON:
       return (
-        <p>
-          There are not enough terms up for review to make a whole lesson.
-          Consider doing a lesson with{" "}
-          <StyledLink to={`/lessons/new/${numChallenges}`}>
-            some new vocabulary
-          </StyledLink>
-          .
-        </p>
+        <>
+          <p>
+            There are not enough terms up for review to make a whole lesson.
+          </p>
+          <p>
+            Consider doing a lesson with{" "}
+            <StyledLink to={`/lessons/new/${numChallenges}`}>
+              some new vocabulary
+            </StyledLink>
+            .
+          </p>
+        </>
       );
   }
 }
