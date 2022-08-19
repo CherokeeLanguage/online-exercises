@@ -128,9 +128,19 @@ export function useReviewSession<T>(
     [timings.nextTerm, lessonCards]
   );
 
+  const numTermsToIntroduce = Object.keys(
+    timings.state.termsToIntroduce
+  ).length;
+  const numActiveTerms = timings.state.sortedTerms.length;
+  const numFinishedTerms =
+    Object.keys(timings.state.shownTerms).length - numActiveTerms;
+
   return {
     currentCard,
     challengesRemaining,
+    numTermsToIntroduce,
+    numActiveTerms,
+    numFinishedTerms,
     reviewCurrentCard(correct: boolean) {
       if (currentCard) {
         reviewTerm(currentCard.term, correct);
