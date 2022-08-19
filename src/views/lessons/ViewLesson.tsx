@@ -7,6 +7,7 @@ import { useCardsForTerms } from "../../utils/useCardsForTerms";
 import { useLesson } from "../../state/useLesson";
 import { SectionHeading } from "../../components/SectionHeading";
 import { CardTable } from "../../components/CardTable";
+import { StyledLink } from "../../components/StyledLink";
 
 export function ViewLesson(): ReactElement {
   const { lessonId } = useParams();
@@ -43,7 +44,15 @@ export function _ViewLesson({ lessonId }: { lessonId: string }): ReactElement {
   );
   return (
     <div>
-      <SectionHeading>{nameForLesson(lesson)}</SectionHeading>
+      <SectionHeading>Lesson debrief - {nameForLesson(lesson)}</SectionHeading>
+      <p>
+        Take a look at how you did! If you were confused by a term, go ahead and
+        listen to all the alternate pronouncations by hitting the "More" button.
+      </p>
+      <p>
+        Head back to the <StyledLink to="/">dashboard</StyledLink> to keep
+        learning!
+      </p>
       {Object.entries(reviewedCardsByStatus).map(
         ([result, cards]) =>
           cards.length > 0 && (

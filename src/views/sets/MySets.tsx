@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { SectionHeading } from "../../components/SectionHeading";
+import { StyledLink } from "../../components/StyledLink";
 import { VocabSetTable } from "../../components/VocabSetTable";
 import { vocabSets } from "../../data/vocabSets";
 import { useUserStateContext } from "../../state/UserStateProvider";
@@ -13,14 +14,22 @@ export function MySets(): ReactElement {
     <div>
       <SectionHeading>Your sets</SectionHeading>
       <p>Here you can see the vocab sets you are working on learning.</p>
-      <VocabSetTable
-        sets={userSets}
-        includeCollectionName
-        lastColumnName={"Added at"}
-        LastCell={({ set }) => (
-          <span>{new Date(sets[set.id].addedAt).toDateString()}</span>
-        )}
-      />
+      {userSets.length > 0 ? (
+        <VocabSetTable
+          sets={userSets}
+          includeCollectionName
+          lastColumnName={"Added at"}
+          LastCell={({ set }) => (
+            <span>{new Date(sets[set.id].addedAt).toDateString()}</span>
+          )}
+        />
+      ) : (
+        <p>
+          You haven't started learning any vocab sets yet. Browse available sets
+          and <StyledLink to="/sets/browse">find new vocabulary</StyledLink> to
+          get started.
+        </p>
+      )}
     </div>
   );
 }

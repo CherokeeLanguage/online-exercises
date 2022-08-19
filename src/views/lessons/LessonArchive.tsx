@@ -42,8 +42,8 @@ export function LessonArchive(): ReactElement {
         </StyledTable>
       ) : (
         <p>
-          You have not completed any lessons. Head over to the dashboard to
-          start learning!
+          You have not completed any lessons. Head over to the{" "}
+          <StyledLink to="/">dashboard</StyledLink> to start learning!
         </p>
       )}
     </div>
