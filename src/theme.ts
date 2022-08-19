@@ -9,6 +9,7 @@ export const theme = {
     MED_GREEN: "#77CE33",
     DARK_GREEN: "#427A15",
     TEXT_GRAY: "#222222",
+    WHITE: "#FFFFFF",
   },
   fontSizes: {
     sm: "16px",
