@@ -13,6 +13,10 @@ import { theme } from "../../theme";
 import { useAudio } from "../../utils/useAudio";
 import { ExerciseComponentProps } from "./Exercise";
 
+function pickRandomElement<T>(options: T[]) {
+  return options[Math.floor(Math.random() * options.length)];
+}
+
 export function SimpleFlashcards({
   currentCard,
   reviewCurrentCard,
@@ -73,9 +77,6 @@ export function Flashcard({
     "cherokee"
   );
   const [side, setSide] = useState(startSide);
-  const [lastReviewed, setLastReviewed] = useState<string | undefined>(
-    undefined
-  );
 
   function flipCard() {
     console.log("Flipping card...");
@@ -85,7 +86,6 @@ export function Flashcard({
 
   function reviewCardAndResetState(correct: boolean) {
     reviewCurrentCard(correct);
-    setLastReviewed(card.term);
     setSide(startSide);
     setCardFlipped(false);
   }
@@ -121,15 +121,16 @@ export function Flashcard({
     }
   }
 
-  // pick random cherokee voice to use
-  const audio = useMemo(() => {
-    const options =
-      side === "cherokee" ? card.card.cherokee_audio : card.card.english_audio;
-    return options[Math.floor(Math.random() * options.length)];
-  }, [card, side]);
+  // pick random voice to use
+  const [cherokeeAudio, englishAudio] = useMemo(() => {
+    return [
+      pickRandomElement(card.card.cherokee_audio),
+      pickRandomElement(card.card.english_audio),
+    ];
+  }, [card]);
 
   const { play, playing } = useAudio({
-    src: audio,
+    src: side === "cherokee" ? cherokeeAudio : englishAudio,
     autoplay: true,
   });
 
