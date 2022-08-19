@@ -15,6 +15,7 @@ import { ViewLesson } from "./views/lessons/ViewLesson";
 import { PracticeLesson } from "./views/practice/Practice";
 import { NewLesson } from "./views/lessons/NewLesson";
 import { ViewCollection } from "./views/collections/ViewCollection";
+import { MyTerms } from "./views/terms/MyTerms";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -38,6 +39,7 @@ root.render(
               </Route>
               <Route path="my" element={<MySets />} />
             </Route>
+            <Route path="terms" element={<MyTerms />} />
             <Route path="lessons">
               <Route index element={<LessonArchive />} />
               <Route path=":lessonId" element={<ViewLesson />} />

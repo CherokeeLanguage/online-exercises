@@ -61,6 +61,9 @@ export function NavigationBar(): ReactElement {
         <StyledNavLink as={NavLink} to={"/sets/my"}>
           Your sets
         </StyledNavLink>
+        <StyledNavLink as={NavLink} to={"/terms"}>
+          Your terms
+        </StyledNavLink>
         <StyledNavLink as={NavLink} to={"/lessons"}>
           Lesson archive
         </StyledNavLink>
