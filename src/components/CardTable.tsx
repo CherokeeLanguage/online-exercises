@@ -15,8 +15,8 @@ export function CardTable({ cards }: { cards: Card[] }): ReactElement {
       <StyledTable>
         <thead>
           <tr>
-            <th>Cherokee</th>
-            <th>English translation</th>
+            <th style={{ width: "50%" }}>Cherokee</th>
+            <th style={{ width: "50%" }}>English translation</th>
             <th>
               <VisuallyHidden>Button to show card audio</VisuallyHidden>
             </th>
