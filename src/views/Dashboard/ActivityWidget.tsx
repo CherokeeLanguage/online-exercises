@@ -57,7 +57,7 @@ export function ActivityWidget() {
             {termsReviewedToday.length} term
             {termsReviewedToday.length !== 1 && "s"}
           </strong>{" "}
-          today . ᎤᏍᏆᏂᎩᏗ!
+          today. ᎤᏍᏆᏂᎩᏗ!
         </p>
       ) : (
         <p>
