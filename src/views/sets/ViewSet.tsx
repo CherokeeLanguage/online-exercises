@@ -19,12 +19,13 @@ export function ViewSet(): ReactElement {
 
 const StyledHeadingWithButton = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   margin: 16px 0;
   h2 {
     margin: 0;
     margin-right: 8px;
     padding: 0;
+    flex: 1;
   }
 `;
 

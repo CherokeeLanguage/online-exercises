@@ -8,12 +8,13 @@ import { VisuallyHidden } from "./VisuallyHidden";
 
 const StyledCollectionHeader = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   margin: 16px 0;
   h3 {
     margin: 0;
     margin-right: 8px;
     padding: 0;
+    flex: 1;
   }
 `;
 
