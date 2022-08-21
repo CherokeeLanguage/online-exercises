@@ -63,12 +63,14 @@ export function CollectionDetails({
 
       <StyledTable>
         <thead>
-          <th>Name</th>
-          <th>Number of terms</th>
-          {showAddedSets && <th>Started learning</th>}
-          <th>
-            <VisuallyHidden>Link to view set</VisuallyHidden>
-          </th>
+          <tr>
+            <th>Name</th>
+            <th>Number of terms</th>
+            {showAddedSets && <th>Started learning</th>}
+            <th>
+              <VisuallyHidden>Link to view set</VisuallyHidden>
+            </th>
+          </tr>
         </thead>
         <tbody>
           {setsToShow.map((set, i) => {

@@ -143,7 +143,9 @@ export function reduceLeitnerBoxState(
 
       return {
         terms: Object.fromEntries(
-          Object.entries(terms).filter(([key, _]) => key in termsUniqueToSet)
+          Object.entries(terms).filter(
+            ([key, _]) => !termsUniqueToSet.includes(key)
+          )
         ),
         numBoxes,
       };

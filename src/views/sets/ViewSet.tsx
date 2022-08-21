@@ -1,8 +1,9 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../../components/Button";
 import { CardTable } from "../../components/CardTable";
+import { Modal } from "../../components/Modal";
 import { SectionHeading } from "../../components/SectionHeading";
 import { cards, keyForCard } from "../../data/clean-cll-data";
 import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
@@ -17,6 +18,11 @@ export function ViewSet(): ReactElement {
   return <_ViewSet set={set} />;
 }
 
+const RemoveSetWrapper = styled.div`
+  text-align: center;
+  margin-bottom: 16px;
+`;
+
 const StyledHeadingWithButton = styled.div`
   display: flex;
   align-items: center;
@@ -30,7 +36,8 @@ const StyledHeadingWithButton = styled.div`
 `;
 
 function _ViewSet({ set }: { set: VocabSet }): ReactElement {
-  const { addSet, sets } = useUserStateContext();
+  const { addSet, sets, removeSet } = useUserStateContext();
+  const [modalIsOpen, setModalOpen] = useState(false);
 
   const userSetData = sets[set.id] as UserSetData | undefined;
 
@@ -42,6 +49,11 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
   function addSetAndRedirect() {
     addSet(set.id);
     navigate(`/`);
+  }
+
+  function removeSetAndRedirect() {
+    removeSet(set.id);
+    navigate("/");
   }
 
   return (
@@ -61,6 +73,44 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
       </StyledHeadingWithButton>
 
       <CardTable cards={Object.values(setCards)} />
+      <RemoveSetWrapper>
+        <Button onClick={() => setModalOpen(true)}>
+          Stop practicing these terms
+        </Button>
+      </RemoveSetWrapper>
+      {modalIsOpen && (
+        <ConfirmRemoveSetModal
+          set={set}
+          close={() => setModalOpen(false)}
+          confirm={removeSetAndRedirect}
+        />
+      )}
     </div>
+  );
+}
+
+function ConfirmRemoveSetModal({
+  set,
+  close,
+  confirm,
+}: {
+  set: VocabSet;
+  close: () => void;
+  confirm: () => void;
+}): ReactElement {
+  return (
+    <Modal title={`Remove set ${set.title}`} close={close}>
+      <p>
+        If you remove this set, all your data on terms from this set will be
+        deleted.
+      </p>
+      <p>
+        You may still see terms from this set if they are in another set you are
+        learning.
+      </p>
+      <Button onClick={confirm}>
+        Delete all data on up to {set.terms.length} terms
+      </Button>
+    </Modal>
   );
 }

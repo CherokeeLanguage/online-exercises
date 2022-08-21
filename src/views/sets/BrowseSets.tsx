@@ -11,8 +11,8 @@ export function BrowseSets(): ReactElement {
         Here you can find new vocab sets. If it seems like a set is missing,
         check the "Your sets" tab to see if you are already practicing.
       </p>
-      {Object.values(collections).map((collection) => (
-        <CollectionDetails collection={collection} />
+      {Object.values(collections).map((collection, idx) => (
+        <CollectionDetails collection={collection} key={idx} />
       ))}
     </div>
   );
