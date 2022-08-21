@@ -49,6 +49,7 @@ export interface UserState {
 
 interface MiscInteractors {
   setUpstreamCollection: (collectionId: string) => void;
+  loadState: (state: UserState) => void;
 }
 
 export type UserInteractors = UserSetsInteractors &
@@ -73,6 +74,9 @@ function reduceLessonCreationError(
 }
 
 function reduceUserState(state: UserState, action: UserStateAction): UserState {
+  // bail on individual resovlers if loading state
+  if (action.type === "LOAD_STATE") return action.state;
+
   return {
     leitnerBoxes: reduceLeitnerBoxState(state, action),
     lessons: reduceLessonsState(state, action),
@@ -148,6 +152,12 @@ export function useUserState(initializationProps: UserStateProps) {
         dispatch({
           type: "SET_UPSTREAM_COLLECTION",
           newCollectionId: collectionId,
+        });
+      },
+      loadState(state: UserState) {
+        dispatch({
+          type: "LOAD_STATE",
+          state,
         });
       },
     }),
