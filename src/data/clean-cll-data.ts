@@ -6,7 +6,7 @@ type JsonCard = typeof jsonDeck["cards"][number];
 export interface Card {
   cherokee: string;
   syllabary: string;
-  alternate_pronounciations: string[];
+  alternate_pronunciations: string[];
   alternate_syllabary: string[];
   english: string;
   cherokee_audio: string[];
@@ -39,7 +39,7 @@ function cleanCard(card: JsonCard): Card {
     english_audio: card.data.answer_files.map(
       ({ file }) => `${process.env.PUBLIC_URL}/source/en/${file}`
     ),
-    alternate_pronounciations: [
+    alternate_pronunciations: [
       ...card.data.challenge.split(";").slice(1).map(cherokeeToKey),
     ],
     alternate_syllabary: [
