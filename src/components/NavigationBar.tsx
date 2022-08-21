@@ -47,6 +47,13 @@ const StyledHeading = styled.h1`
   padding: 4px;
 `;
 
+const AdvancedSettings = styled.div`
+  flex-direction: row-reverse;
+  align-items: center;
+  display: flex;
+  padding-right: 4px;
+`;
+
 export function NavigationBar(): ReactElement {
   return (
     <NavbarWrapper>
@@ -68,7 +75,11 @@ export function NavigationBar(): ReactElement {
           Lesson archive
         </StyledNavLink>
       </StyledNav>
-      <div></div>
+      <AdvancedSettings>
+        <StyledNavLink as={NavLink} to="/developer-tools">
+          Developers
+        </StyledNavLink>
+      </AdvancedSettings>
     </NavbarWrapper>
   );
 }

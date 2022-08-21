@@ -1,6 +1,7 @@
 import { ReviewResult } from "./reducers/leitnerBoxes";
 import { Lesson } from "./reducers/lessons";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
+import { UserState } from "./UserStateProvider";
 
 export type ResizeLeitnerBoxesAction = {
   type: "RESIZE_LEITNER_BOXES";
@@ -22,6 +23,11 @@ export type SetAction = AddSetAction | RemoveSetAction;
 export type SetUpstreamCollectionAction = {
   type: "SET_UPSTREAM_COLLECTION";
   newCollectionId: string | undefined;
+};
+
+export type LoadStateAction = {
+  type: "LOAD_STATE";
+  state: UserState;
 };
 
 export type AddLessonAction = {
@@ -53,6 +59,7 @@ export type LessonsAction =
 
 export type UserStateAction =
   | SetUpstreamCollectionAction
+  | LoadStateAction
   | ResizeLeitnerBoxesAction
   | SetAction
   | LessonsAction;
