@@ -3,8 +3,8 @@ import { SECOND, MINUTE } from "../utils/dateUtils";
 import { PimsleurStats, TermStats } from "./types";
 
 function repetitionOffsetForBox(box: number) {
-  // discount at most 3 shows for well learned cards
-  return Math.min(box, 3);
+  // show cards at least two times
+  return Math.min(box, MAX_SHOW_PER_SESSION - 2);
 }
 
 function newPimsleurStats(stats: TermStats, now: number): PimsleurStats {
@@ -31,7 +31,12 @@ type PimsleurTimingAction = {
 };
 
 // shown 4x per session
-const PIMSLEUR_TIMINGS = [5 * SECOND, 25 * SECOND, 2 * MINUTE, 10 * MINUTE];
+const PIMSLEUR_TIMINGS = [
+  5 * SECOND,
+  25 * SECOND,
+  2 * MINUTE,
+  10 * MINUTE,
+] as const;
 
 export const MAX_SHOW_PER_SESSION = PIMSLEUR_TIMINGS.length;
 
