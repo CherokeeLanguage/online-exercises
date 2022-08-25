@@ -1,10 +1,8 @@
-import { act } from "react-dom/test-utils";
 import { Lesson } from ".";
 import { VocabSet, collections } from "../../../data/vocabSets";
-import { termNeedsPractice } from "../../../spaced-repetition/groupTermsIntoLessons";
 import { TermStats } from "../../../spaced-repetition/types";
 import { showsPerSessionForBox } from "../../../spaced-repetition/usePimsleurTimings";
-import { getToday } from "../../../utils/dateUtils";
+import { DAY, getToday } from "../../../utils/dateUtils";
 import { Act, StateWithThen } from "../../../utils/useReducerWithImperative";
 import { UserStateAction } from "../../actions";
 import { UserState } from "../../UserStateProvider";
@@ -17,6 +15,16 @@ export enum LessonCreationErrorType {
 export interface LessonCreationError {
   lessonId: string;
   type: LessonCreationErrorType;
+}
+
+export function termNeedsPractice(
+  term: TermStats | undefined,
+  today: number
+): boolean {
+  // needs practice if never reviewed
+  if (!term) return true;
+  // term needs practice if next show date is before tomorrow
+  else return term.nextShowDate < today + DAY;
 }
 
 /**
@@ -197,7 +205,7 @@ export function createLessonTransaction(
     // if there aren't enough terms...
     if (
       reviewChallengesFound + numNewTermChallenges <
-      0.8 * desiredNumChallenges
+      0.5 * desiredNumChallenges
     ) {
       if (reviewOnly) {
         console.log(
