@@ -10,6 +10,7 @@ import styled from "styled-components";
 import { Card } from "../../data/clean-cll-data";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { theme } from "../../theme";
+import { createIssueForAudioInNewTab } from "../../utils/createIssue";
 import { useAudio } from "../../utils/useAudio";
 import { ExerciseComponentProps } from "./Exercise";
 
@@ -145,15 +146,20 @@ export function Flashcard({
           <option value="english">English</option>
         </select>
       </form>
-      <StyledFlashcardBody
-        onClick={() => {
-          console.log("button click flip");
-          flipCard();
-        }}
-      >
+      <StyledFlashcardBody onClick={() => flipCard()}>
         <p>{side === "cherokee" ? card.card.syllabary : card.card.english}</p>
       </StyledFlashcardBody>
       <FlashcardControls playAudio={play} reviewCard={reviewCardOrFlip} />
+      <button
+        onClick={() =>
+          createIssueForAudioInNewTab(
+            [cherokeeAudio, englishAudio],
+            JSON.stringify({ term: card.term })
+          )
+        }
+      >
+        Flag an issue with this audio
+      </button>
     </FlashcardWrapper>
   );
 }
