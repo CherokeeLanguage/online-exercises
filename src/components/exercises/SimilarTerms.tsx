@@ -5,6 +5,7 @@ import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../data/clean-cll-data";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { theme } from "../../theme";
+import { createIssueForAudioInNewTab } from "../../utils/createIssue";
 import { useAudio } from "../../utils/useAudio";
 import { useTransition } from "../../utils/useTransition";
 import { ExerciseComponentProps } from "./Exercise";
@@ -113,66 +114,18 @@ export function SimilarTerms({
         ))}
       </Answers>
       {/* <Progress cardsPerLevel={cardsPerLevel} /> */}
-    </div>
-  );
-}
-
-function Progress({ cardsPerLevel }: { cardsPerLevel: number[] }) {
-  const totalCards = cardsPerLevel.reduce((sum, count) => sum + count);
-  const cardGeometry = cardsPerLevel.reduce<
-    {
-      x: number;
-      width: number;
-    }[]
-  >(
-    (attrs, count) => [
-      ...attrs,
-      {
-        x:
-          (attrs[attrs.length - 1]?.width ?? 0) +
-          (attrs[attrs.length - 1]?.x ?? 0),
-        width: Math.round((count / totalCards) * 100),
-      },
-    ],
-    []
-  );
-  return (
-    <div style={{ display: "flex", padding: 16 }}>
-      {cardsPerLevel.map(
-        (count, idx) =>
-          count > 0 && (
-            <div
-              style={{
-                flex: count,
-                border: "1px solid #444",
-                height: "8px",
-                background: `rgb(${Math.round(
-                  (1 - idx / (cardGeometry.length - 1)) * 255
-                )},${Math.round((idx / (cardGeometry.length - 1)) * 255)},0)`,
-              }}
-            />
+      <button
+        onClick={() =>
+          createIssueForAudioInNewTab(
+            [cherokee_audio],
+            JSON.stringify({
+              term: currentCard.term,
+            })
           )
-      )}
-    </div>
-  );
-  return (
-    <div style={{ padding: 16 }}>
-      <svg viewBox="0 0 100 10" width="100%">
-        {cardGeometry.map((geo, idx) => (
-          <rect
-            width={geo.width}
-            x={geo.x}
-            height="10"
-            style={{
-              fill: `rgb(${Math.round(
-                (1 - idx / (cardGeometry.length - 1)) * 255
-              )},${Math.round((idx / (cardGeometry.length - 1)) * 255)},0)`,
-              strokeWidth: "1",
-              stroke: "rgb(0,0,0)",
-            }}
-          />
-        ))}
-      </svg>
+        }
+      >
+        Flag an issue with this audio
+      </button>
     </div>
   );
 }

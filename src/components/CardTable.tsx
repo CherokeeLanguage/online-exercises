@@ -1,5 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Card } from "../data/clean-cll-data";
+import { createIssueForAudioInNewTab } from "../utils/createIssue";
 import { Button } from "./Button";
 import { Modal } from "./Modal";
 import { StyledTable } from "./StyledTable";
@@ -84,10 +85,43 @@ function CardAudioModalContent({ card }: { card: Card }) {
       ))}
       <h4>English translation</h4>
       {card.english}
-      <h4>Cherokee audio</h4>
-      {card.cherokee_audio.map((src, idx) => (
-        <audio src={src} key={idx} controls style={{ width: "100%" }}></audio>
-      ))}
+      <hr></hr>
+      <StyledTable>
+        <thead>
+          <tr>
+            <th>Cherokee audio</th>
+            <th>
+              <VisuallyHidden>
+                Button to flag an issue with audio
+              </VisuallyHidden>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {card.cherokee_audio.map((src, idx) => (
+            <AudioRow src={src} term={card.cherokee} key={idx} />
+          ))}
+        </tbody>
+      </StyledTable>
     </div>
+  );
+}
+
+function AudioRow({ src, term }: { src: string; term: string }) {
+  return (
+    <tr>
+      <td>
+        <audio src={src} controls style={{ width: "100%" }} />
+      </td>
+      <td>
+        <button
+          onClick={() =>
+            createIssueForAudioInNewTab([src], JSON.stringify({ term }))
+          }
+        >
+          Flag issue
+        </button>
+      </td>
+    </tr>
   );
 }
