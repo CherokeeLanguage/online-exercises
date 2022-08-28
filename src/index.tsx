@@ -12,7 +12,7 @@ import { UserStateProvider } from "./state/UserStateProvider";
 import { Dashboard } from "./views/dashboard/Dashboard";
 import { LessonArchive } from "./views/lessons/LessonArchive";
 import { ViewLesson } from "./views/lessons/ViewLesson";
-import { PracticeLesson } from "./views/practice/Practice";
+import { PracticeLesson } from "./views/practice/PracticeLesson";
 import { NewLesson } from "./views/lessons/NewLesson";
 import { ViewCollection } from "./views/collections/ViewCollection";
 import { MyTerms } from "./views/terms/MyTerms";
