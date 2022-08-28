@@ -1,5 +1,5 @@
 import { ReactElement, useState } from "react";
-import { Card } from "../data/clean-cll-data";
+import { Card } from "../data/cards";
 import { createIssueForAudioInNewTab } from "../utils/createIssue";
 import { Button } from "./Button";
 import { Modal } from "./Modal";

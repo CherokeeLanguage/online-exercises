@@ -5,7 +5,7 @@ import {
   PROFICIENCY_LEVELS,
   TermsByProficiencyLevelChart,
 } from "../../components/TermsByProficiencyLevelChart";
-import { cards, keyForCard } from "../../data/clean-cll-data";
+import { cards, keyForCard } from "../../data/cards";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
 

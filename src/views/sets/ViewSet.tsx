@@ -5,7 +5,7 @@ import { Button } from "../../components/Button";
 import { CardTable } from "../../components/CardTable";
 import { Modal } from "../../components/Modal";
 import { SectionHeading } from "../../components/SectionHeading";
-import { cards, keyForCard } from "../../data/clean-cll-data";
+import { cards, keyForCard } from "../../data/cards";
 import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
 import { UserSetData } from "../../state/reducers/userSets";
 import { useUserStateContext } from "../../state/UserStateProvider";

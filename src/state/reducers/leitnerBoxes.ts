@@ -6,6 +6,7 @@ import { ImperativeBlock } from "../../utils/useReducerWithImperative";
 import { UserState } from "../UserStateProvider";
 import { vocabSets } from "../../data/vocabSets";
 import { UserStateAction } from "../actions";
+import { migration } from "../../data/migrations/2022-08-25";
 
 interface NewUseLeitnerBoxesProps {
   type: "NEW";
@@ -89,6 +90,21 @@ function updateTermStats(
   };
 }
 
+function addNewTermsIfMissing(
+  terms: Record<string, TermStats>,
+  newTerms: string[],
+  today: number
+): Record<string, TermStats> {
+  return newTerms.reduce(
+    // do not overwrite existing data
+    (newTerms, term) => ({
+      [term]: newTermStats(term, today),
+      ...newTerms,
+    }),
+    terms
+  );
+}
+
 export function reduceLeitnerBoxState(
   { leitnerBoxes: { terms, numBoxes }, ...globalState }: UserState,
   action: UserStateAction
@@ -98,14 +114,7 @@ export function reduceLeitnerBoxState(
     case "ADD_SET":
       const newTerms = vocabSets[action.setToAdd].terms;
       return {
-        terms: newTerms.reduce(
-          // do not overwrite existing data
-          (newTerms, term) => ({
-            [term]: newTermStats(term, today),
-            ...newTerms,
-          }),
-          terms
-        ),
+        terms: addNewTermsIfMissing(terms, newTerms, today),
         numBoxes,
       };
     case "CONCLUDE_LESSON":
@@ -158,6 +167,24 @@ export function reduceLeitnerBoxState(
           ])
         ),
         numBoxes: action.newNumBoxes,
+      };
+    case "HANDLE_SET_CHANGES":
+      const termsFromAllSets = Object.keys(globalState.sets).flatMap(
+        (setId) => vocabSets[setId].terms
+      );
+      const termsWithMigrations = Object.fromEntries(
+        Object.entries(terms).map(([term, stats]) => [
+          term in migration ? migration[term as keyof typeof migration] : term,
+          stats,
+        ])
+      );
+      return {
+        terms: addNewTermsIfMissing(
+          termsWithMigrations,
+          termsFromAllSets,
+          today
+        ),
+        numBoxes,
       };
   }
 

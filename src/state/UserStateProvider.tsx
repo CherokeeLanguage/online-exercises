@@ -159,6 +159,7 @@ export function useUserState(initializationProps: UserStateProps) {
           type: "LOAD_STATE",
           state,
         });
+        dispatch({ type: "HANDLE_SET_CHANGES" });
       },
     }),
     []
@@ -170,6 +171,7 @@ export function useUserState(initializationProps: UserStateProps) {
       state.leitnerBoxes.numBoxes !== initializationProps.leitnerBoxes.numBoxes
     )
       leitnerBoxesInteractors.resize(initializationProps.leitnerBoxes.numBoxes);
+    dispatch({ type: "HANDLE_SET_CHANGES" });
   }, []);
 
   return {

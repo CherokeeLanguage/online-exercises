@@ -2,7 +2,7 @@ import React, { ReactElement, useState, useMemo, useEffect } from "react";
 import styled, { css } from "styled-components";
 // @ts-ignore
 import trigramSimilarity from "trigram-similarity";
-import { Card } from "../../data/clean-cll-data";
+import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { theme } from "../../theme";
 import { createIssueForAudioInNewTab } from "../../utils/createIssue";
