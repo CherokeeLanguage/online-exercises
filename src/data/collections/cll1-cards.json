@@ -44,12 +44,12 @@
   {
     "alternate_pronunciations": ["hla", "tla"],
     "alternate_syllabary": ["Ꮭ", "Ꮭ"],
-    "cherokee": "vhla.",
+    "cherokee": "v́ːhla.",
     "cherokee_audio": [
-      "source/chr/vhla_en-333-f_a1.30_18633d9e26f55fb706da170dc03c8980a13ec9ea.mp3",
-      "source/chr/vhla_en-345-m_a1.30_18633d9e26f55fb706da170dc03c8980a13ec9ea.mp3",
-      "source/chr/vhla_en-360-m_a1.30_18633d9e26f55fb706da170dc03c8980a13ec9ea.mp3",
-      "source/chr/vhla_en-361-f_a1.30_18633d9e26f55fb706da170dc03c8980a13ec9ea.mp3",
+      "source/chr/vhla_en-333-f_a1.30_4db1bdfd03090365a731044c6591b19f587e13e3.mp3",
+      "source/chr/vhla_en-345-m_a1.30_4db1bdfd03090365a731044c6591b19f587e13e3.mp3",
+      "source/chr/vhla_en-360-m_a1.30_4db1bdfd03090365a731044c6591b19f587e13e3.mp3",
+      "source/chr/vhla_en-361-f_a1.30_4db1bdfd03090365a731044c6591b19f587e13e3.mp3",
       "source/chr/hla_en-333-f_a1.30_ba0b8f82fbd73b7b4400cfbafaf2b299c224a10c.mp3",
       "source/chr/hla_en-345-m_a1.30_ba0b8f82fbd73b7b4400cfbafaf2b299c224a10c.mp3",
       "source/chr/hla_en-360-m_a1.30_ba0b8f82fbd73b7b4400cfbafaf2b299c224a10c.mp3",
@@ -86,12 +86,12 @@
   {
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "cherokee": "ayo!",
+    "cherokee": "ayő!",
     "cherokee_audio": [
-      "source/chr/ayo_en-333-f_a1.30_7f0cbcb5411ba7ca4f607cef434b943203496107.mp3",
-      "source/chr/ayo_en-345-m_a1.30_7f0cbcb5411ba7ca4f607cef434b943203496107.mp3",
-      "source/chr/ayo_en-360-m_a1.30_7f0cbcb5411ba7ca4f607cef434b943203496107.mp3",
-      "source/chr/ayo_en-361-f_a1.30_7f0cbcb5411ba7ca4f607cef434b943203496107.mp3"
+      "source/chr/ayo_en-333-f_a1.30_4a0f4c7a8589f058f2822fba468a7cbb1f605458.mp3",
+      "source/chr/ayo_en-345-m_a1.30_4a0f4c7a8589f058f2822fba468a7cbb1f605458.mp3",
+      "source/chr/ayo_en-360-m_a1.30_4a0f4c7a8589f058f2822fba468a7cbb1f605458.mp3",
+      "source/chr/ayo_en-361-f_a1.30_4a0f4c7a8589f058f2822fba468a7cbb1f605458.mp3"
     ],
     "english": "Ouch!",
     "english_audio": [
@@ -204,12 +204,12 @@
       "hlahv ő:sd yi̋gi."
     ],
     "alternate_syllabary": ["Ꮭ ᎣᏍD ᏱᎩ.", "Ꮭ ᎣᏍD ᏱG.", "ᏝᎲ ᎣᏍD ᏱᎩ."],
-    "cherokee": "v̀:hla ő:sda yi̋gi.",
+    "cherokee": "v́ːhla ő:sda yi̋gi.",
     "cherokee_audio": [
-      "source/chr/vhla_osda_yigi_en-333-f_a1.30_71cfc84e1cc72906b7c214d43277326062d3ff69.mp3",
-      "source/chr/vhla_osda_yigi_en-345-m_a1.30_71cfc84e1cc72906b7c214d43277326062d3ff69.mp3",
-      "source/chr/vhla_osda_yigi_en-360-m_a1.30_71cfc84e1cc72906b7c214d43277326062d3ff69.mp3",
-      "source/chr/vhla_osda_yigi_en-361-f_a1.30_71cfc84e1cc72906b7c214d43277326062d3ff69.mp3",
+      "source/chr/vhla_osda_yigi_en-333-f_a1.30_f7226a3ee6b290b010dae26ed82fcf8e8aa45c6c.mp3",
+      "source/chr/vhla_osda_yigi_en-345-m_a1.30_f7226a3ee6b290b010dae26ed82fcf8e8aa45c6c.mp3",
+      "source/chr/vhla_osda_yigi_en-360-m_a1.30_f7226a3ee6b290b010dae26ed82fcf8e8aa45c6c.mp3",
+      "source/chr/vhla_osda_yigi_en-361-f_a1.30_f7226a3ee6b290b010dae26ed82fcf8e8aa45c6c.mp3",
       "source/chr/hla_osd_yigi_en-333-f_a1.30_9b316e814c97790e4c9406d6f98735a4df023a38.mp3",
       "source/chr/hla_osd_yigi_en-345-m_a1.30_9b316e814c97790e4c9406d6f98735a4df023a38.mp3",
       "source/chr/hla_osd_yigi_en-360-m_a1.30_9b316e814c97790e4c9406d6f98735a4df023a38.mp3",
@@ -237,12 +237,12 @@
       "hlahv tò:hi̋ yi̋gi."
     ],
     "alternate_syllabary": ["Ꮭ ᏙᎯ ᏱᎩ.", "Ꮭ ᏙᎯ ᏱG.", "ᏝᎲ ᏙᎯ ᏱᎩ."],
-    "cherokee": "v̀:hla tò:hi̋ yi̋gi.",
+    "cherokee": "v́ːhla tò:hi̋ yi̋gi.",
     "cherokee_audio": [
-      "source/chr/vhla_tohi_yigi_en-333-f_a1.30_42642eb1d03a680c464357904020d7c26052afa5.mp3",
-      "source/chr/vhla_tohi_yigi_en-345-m_a1.30_42642eb1d03a680c464357904020d7c26052afa5.mp3",
-      "source/chr/vhla_tohi_yigi_en-360-m_a1.30_42642eb1d03a680c464357904020d7c26052afa5.mp3",
-      "source/chr/vhla_tohi_yigi_en-361-f_a1.30_42642eb1d03a680c464357904020d7c26052afa5.mp3",
+      "source/chr/vhla_tohi_yigi_en-333-f_a1.30_7b8b53c0567e422c2dfaf57e9432e00093b7aad4.mp3",
+      "source/chr/vhla_tohi_yigi_en-345-m_a1.30_7b8b53c0567e422c2dfaf57e9432e00093b7aad4.mp3",
+      "source/chr/vhla_tohi_yigi_en-360-m_a1.30_7b8b53c0567e422c2dfaf57e9432e00093b7aad4.mp3",
+      "source/chr/vhla_tohi_yigi_en-361-f_a1.30_7b8b53c0567e422c2dfaf57e9432e00093b7aad4.mp3",
       "source/chr/hla_tohi_yigi_en-333-f_a1.30_43700e1b8e5d1a5738d47cec07f368c989a84327.mp3",
       "source/chr/hla_tohi_yigi_en-345-m_a1.30_43700e1b8e5d1a5738d47cec07f368c989a84327.mp3",
       "source/chr/hla_tohi_yigi_en-360-m_a1.30_43700e1b8e5d1a5738d47cec07f368c989a84327.mp3",
@@ -525,18 +525,18 @@
     "syllabary": "ᎠᏯᏙᏢᎢ"
   },
   {
-    "alternate_pronunciations": ["gawò:nǐ:hísd"],
+    "alternate_pronunciations": ["gawò:nǐ:hísd"],
     "alternate_syllabary": ["ᎦᏬᏂᎯᏍD"],
-    "cherokee": "gawò:nǐ:hísdi",
+    "cherokee": "gawò:nǐ:hísdi",
     "cherokee_audio": [
-      "source/chr/gawonihisdi_en-333-f_a1.30_70cd4c4740b2d1964a42c2b25e3bce2401c3c406.mp3",
-      "source/chr/gawonihisdi_en-345-m_a1.30_70cd4c4740b2d1964a42c2b25e3bce2401c3c406.mp3",
-      "source/chr/gawonihisdi_en-360-m_a1.30_70cd4c4740b2d1964a42c2b25e3bce2401c3c406.mp3",
-      "source/chr/gawonihisdi_en-361-f_a1.30_70cd4c4740b2d1964a42c2b25e3bce2401c3c406.mp3",
-      "source/chr/gawonihisd_en-333-f_a1.30_5432aff86324ca56248616853df6ebdd29f46208.mp3",
-      "source/chr/gawonihisd_en-345-m_a1.30_5432aff86324ca56248616853df6ebdd29f46208.mp3",
-      "source/chr/gawonihisd_en-360-m_a1.30_5432aff86324ca56248616853df6ebdd29f46208.mp3",
-      "source/chr/gawonihisd_en-361-f_a1.30_5432aff86324ca56248616853df6ebdd29f46208.mp3"
+      "source/chr/gawonihisdi_en-333-f_a1.30_69e8ad94ef437836f1b65094979249bb8009c448.mp3",
+      "source/chr/gawonihisdi_en-345-m_a1.30_69e8ad94ef437836f1b65094979249bb8009c448.mp3",
+      "source/chr/gawonihisdi_en-360-m_a1.30_69e8ad94ef437836f1b65094979249bb8009c448.mp3",
+      "source/chr/gawonihisdi_en-361-f_a1.30_69e8ad94ef437836f1b65094979249bb8009c448.mp3",
+      "source/chr/gawonihisd_en-333-f_a1.30_50b9e10d0a73bb04411894f344f3f6d0b880a6fd.mp3",
+      "source/chr/gawonihisd_en-345-m_a1.30_50b9e10d0a73bb04411894f344f3f6d0b880a6fd.mp3",
+      "source/chr/gawonihisd_en-360-m_a1.30_50b9e10d0a73bb04411894f344f3f6d0b880a6fd.mp3",
+      "source/chr/gawonihisd_en-361-f_a1.30_50b9e10d0a73bb04411894f344f3f6d0b880a6fd.mp3"
     ],
     "english": "Speech or language.",
     "english_audio": [
@@ -609,18 +609,18 @@
     "syllabary": "ᏦᎢ ᏄᎾ"
   },
   {
-    "alternate_pronunciations": ["Áhni ǐ:gá:d ama."],
+    "alternate_pronunciations": ["Áhni ǐ:gá:d ama."],
     "alternate_syllabary": ["ᎠᏂ ᎢᎦD ᎠᎹ."],
-    "cherokee": "Áhani ǐ:gá:da ama.",
+    "cherokee": "Áhani ǐ:gá:da ama.",
     "cherokee_audio": [
-      "source/chr/ahani_igada_ama_en-333-f_a1.30_c350970658d692ac1f389858aedea2a383b575a9.mp3",
-      "source/chr/ahani_igada_ama_en-345-m_a1.30_c350970658d692ac1f389858aedea2a383b575a9.mp3",
-      "source/chr/ahani_igada_ama_en-360-m_a1.30_c350970658d692ac1f389858aedea2a383b575a9.mp3",
-      "source/chr/ahani_igada_ama_en-361-f_a1.30_c350970658d692ac1f389858aedea2a383b575a9.mp3",
-      "source/chr/ahni_igad_ama_en-333-f_a1.30_080a5b40900d61847908d995c26f76d2efacbbdd.mp3",
-      "source/chr/ahni_igad_ama_en-345-m_a1.30_080a5b40900d61847908d995c26f76d2efacbbdd.mp3",
-      "source/chr/ahni_igad_ama_en-360-m_a1.30_080a5b40900d61847908d995c26f76d2efacbbdd.mp3",
-      "source/chr/ahni_igad_ama_en-361-f_a1.30_080a5b40900d61847908d995c26f76d2efacbbdd.mp3"
+      "source/chr/ahani_igada_ama_en-333-f_a1.30_9c9b912610a7653062202ed0bbf8ca966172db90.mp3",
+      "source/chr/ahani_igada_ama_en-345-m_a1.30_9c9b912610a7653062202ed0bbf8ca966172db90.mp3",
+      "source/chr/ahani_igada_ama_en-360-m_a1.30_9c9b912610a7653062202ed0bbf8ca966172db90.mp3",
+      "source/chr/ahani_igada_ama_en-361-f_a1.30_9c9b912610a7653062202ed0bbf8ca966172db90.mp3",
+      "source/chr/ahni_igad_ama_en-333-f_a1.30_55ed4fb4692d17340bf8e05ed9002f689331b254.mp3",
+      "source/chr/ahni_igad_ama_en-345-m_a1.30_55ed4fb4692d17340bf8e05ed9002f689331b254.mp3",
+      "source/chr/ahni_igad_ama_en-360-m_a1.30_55ed4fb4692d17340bf8e05ed9002f689331b254.mp3",
+      "source/chr/ahni_igad_ama_en-361-f_a1.30_55ed4fb4692d17340bf8e05ed9002f689331b254.mp3"
     ],
     "english": "Here is some water.",
     "english_audio": [
@@ -630,18 +630,18 @@
     "syllabary": "ᎠᎭᏂ ᎢᎦᏓ ᎠᎹ."
   },
   {
-    "alternate_pronunciations": ["Áhni ǐ:gá:d á:ma."],
+    "alternate_pronunciations": ["Áhni ǐ:gá:d á:ma."],
     "alternate_syllabary": ["ᎠᏂ ᎢᎦD ᎠᎹ."],
-    "cherokee": "Áhani ǐ:gá:da á:ma.",
+    "cherokee": "Áhani ǐ:gá:da á:ma.",
     "cherokee_audio": [
-      "source/chr/ahani_igada_ama_en-333-f_a1.30_9a60a0c76679cba3db2673017612ede084142d67.mp3",
-      "source/chr/ahani_igada_ama_en-345-m_a1.30_9a60a0c76679cba3db2673017612ede084142d67.mp3",
-      "source/chr/ahani_igada_ama_en-360-m_a1.30_9a60a0c76679cba3db2673017612ede084142d67.mp3",
-      "source/chr/ahani_igada_ama_en-361-f_a1.30_9a60a0c76679cba3db2673017612ede084142d67.mp3",
-      "source/chr/ahni_igad_ama_en-333-f_a1.30_b6c59936b0695f30508126359725b0c6757f77c6.mp3",
-      "source/chr/ahni_igad_ama_en-345-m_a1.30_b6c59936b0695f30508126359725b0c6757f77c6.mp3",
-      "source/chr/ahni_igad_ama_en-360-m_a1.30_b6c59936b0695f30508126359725b0c6757f77c6.mp3",
-      "source/chr/ahni_igad_ama_en-361-f_a1.30_b6c59936b0695f30508126359725b0c6757f77c6.mp3"
+      "source/chr/ahani_igada_ama_en-333-f_a1.30_d392f577ecce896c7609d61141ee5ffc0f67bd33.mp3",
+      "source/chr/ahani_igada_ama_en-345-m_a1.30_d392f577ecce896c7609d61141ee5ffc0f67bd33.mp3",
+      "source/chr/ahani_igada_ama_en-360-m_a1.30_d392f577ecce896c7609d61141ee5ffc0f67bd33.mp3",
+      "source/chr/ahani_igada_ama_en-361-f_a1.30_d392f577ecce896c7609d61141ee5ffc0f67bd33.mp3",
+      "source/chr/ahni_igad_ama_en-333-f_a1.30_4ad16bd5d0722c9206ee2313d495cbb3222bde99.mp3",
+      "source/chr/ahni_igad_ama_en-345-m_a1.30_4ad16bd5d0722c9206ee2313d495cbb3222bde99.mp3",
+      "source/chr/ahni_igad_ama_en-360-m_a1.30_4ad16bd5d0722c9206ee2313d495cbb3222bde99.mp3",
+      "source/chr/ahni_igad_ama_en-361-f_a1.30_4ad16bd5d0722c9206ee2313d495cbb3222bde99.mp3"
     ],
     "english": "Here is some salt.",
     "english_audio": [
@@ -3301,18 +3301,18 @@
     "syllabary": "ᏍᎪᎯTᏍᏆ"
   },
   {
-    "alternate_pronunciations": ["Gahlgwǒ:g ale joʔga:ʔd táʔlsgǒ ǐ:g."],
+    "alternate_pronunciations": ["Gahlgwǒ:g ale joʔga:ʔd táʔlsgǒ ǐ:g."],
     "alternate_syllabary": ["ᎦᎵᏉG ᎠᎴ ᏦᎦD ᏔᎵᏍᎪ ᎢG."],
-    "cherokee": "Gahlgwǒ:gi ale joʔga:ʔdu táʔlsgǒ:hi ǐ:gi.",
+    "cherokee": "Gahlgwǒ:gi ale joʔga:ʔdu táʔlsgǒ:hi ǐ:gi.",
     "cherokee_audio": [
-      "source/chr/gahlgwogi_ale_jogadu_talsgohi_ig_en-333-f_a1.30_ce6634cbe015c57caadaad018399f0860a837eab.mp3",
-      "source/chr/gahlgwogi_ale_jogadu_talsgohi_ig_en-345-m_a1.30_ce6634cbe015c57caadaad018399f0860a837eab.mp3",
-      "source/chr/gahlgwogi_ale_jogadu_talsgohi_ig_en-360-m_a1.30_ce6634cbe015c57caadaad018399f0860a837eab.mp3",
-      "source/chr/gahlgwogi_ale_jogadu_talsgohi_ig_en-361-f_a1.30_ce6634cbe015c57caadaad018399f0860a837eab.mp3",
-      "source/chr/gahlgwog_ale_jogad_talsgo_ig_en-333-f_a1.30_a1eace1d6d887e2721ed0e5d09d4aafba931fdae.mp3",
-      "source/chr/gahlgwog_ale_jogad_talsgo_ig_en-345-m_a1.30_a1eace1d6d887e2721ed0e5d09d4aafba931fdae.mp3",
-      "source/chr/gahlgwog_ale_jogad_talsgo_ig_en-360-m_a1.30_a1eace1d6d887e2721ed0e5d09d4aafba931fdae.mp3",
-      "source/chr/gahlgwog_ale_jogad_talsgo_ig_en-361-f_a1.30_a1eace1d6d887e2721ed0e5d09d4aafba931fdae.mp3"
+      "source/chr/gahlgwogi_ale_jogadu_talsgohi_ig_en-333-f_a1.30_115f37ff752f90c093c331cf987db84d19ea3e97.mp3",
+      "source/chr/gahlgwogi_ale_jogadu_talsgohi_ig_en-345-m_a1.30_115f37ff752f90c093c331cf987db84d19ea3e97.mp3",
+      "source/chr/gahlgwogi_ale_jogadu_talsgohi_ig_en-360-m_a1.30_115f37ff752f90c093c331cf987db84d19ea3e97.mp3",
+      "source/chr/gahlgwogi_ale_jogadu_talsgohi_ig_en-361-f_a1.30_115f37ff752f90c093c331cf987db84d19ea3e97.mp3",
+      "source/chr/gahlgwog_ale_jogad_talsgo_ig_en-333-f_a1.30_be846a726fe2b238ae523603e2854e60e56c89cc.mp3",
+      "source/chr/gahlgwog_ale_jogad_talsgo_ig_en-345-m_a1.30_be846a726fe2b238ae523603e2854e60e56c89cc.mp3",
+      "source/chr/gahlgwog_ale_jogad_talsgo_ig_en-360-m_a1.30_be846a726fe2b238ae523603e2854e60e56c89cc.mp3",
+      "source/chr/gahlgwog_ale_jogad_talsgo_ig_en-361-f_a1.30_be846a726fe2b238ae523603e2854e60e56c89cc.mp3"
     ],
     "english": "Seven and thirteen is twenty.",
     "english_audio": [
@@ -3323,33 +3323,33 @@
   },
   {
     "alternate_pronunciations": [
-      "Gahlgwǒ:g ale sà:gwű chaně:l ǐ:g.",
-      "Gahlgwǒ:gi ale sà:gwű chuně:la ǐ:gi.",
-      "Gahlgwǒ:g ale sà:gwű chuně:l ǐ:g."
+      "Gahlgwǒ:g ale sà:gwű chaně:l ǐ:g.",
+      "Gahlgwǒ:gi ale sà:gwű chuně:la ǐ:gi.",
+      "Gahlgwǒ:g ale sà:gwű chuně:l ǐ:g."
     ],
     "alternate_syllabary": [
       "ᎦᎵᏉG ᎠᎴ ᏌᏊ ᏣᏁᎵ ᎢG.",
       "ᎦᎵᏉᎩ ᎠᎴ ᏌᏊ ᏧᏁᎳ ᎢᎩ.",
       "ᎦᎵᏉG ᎠᎴ ᏌᏊ ᏧᏁᎵ ᎢG."
     ],
-    "cherokee": "Gahlgwǒ:gi ale sà:gwű chaně:la ǐ:gi.",
+    "cherokee": "Gahlgwǒ:gi ale sà:gwű chaně:la ǐ:gi.",
     "cherokee_audio": [
-      "source/chr/gahlgwogi_ale_sagwu_chanela_igi_en-333-f_a1.30_9679930248b44f9565c164d779e86c33d64ae3c7.mp3",
-      "source/chr/gahlgwogi_ale_sagwu_chanela_igi_en-345-m_a1.30_9679930248b44f9565c164d779e86c33d64ae3c7.mp3",
-      "source/chr/gahlgwogi_ale_sagwu_chanela_igi_en-360-m_a1.30_9679930248b44f9565c164d779e86c33d64ae3c7.mp3",
-      "source/chr/gahlgwogi_ale_sagwu_chanela_igi_en-361-f_a1.30_9679930248b44f9565c164d779e86c33d64ae3c7.mp3",
-      "source/chr/gahlgwog_ale_sagwu_chanel_ig_en-333-f_a1.30_8e5fe1cd5b34b45f88cdd07e6e05ff746e8434b3.mp3",
-      "source/chr/gahlgwog_ale_sagwu_chanel_ig_en-345-m_a1.30_8e5fe1cd5b34b45f88cdd07e6e05ff746e8434b3.mp3",
-      "source/chr/gahlgwog_ale_sagwu_chanel_ig_en-360-m_a1.30_8e5fe1cd5b34b45f88cdd07e6e05ff746e8434b3.mp3",
-      "source/chr/gahlgwog_ale_sagwu_chanel_ig_en-361-f_a1.30_8e5fe1cd5b34b45f88cdd07e6e05ff746e8434b3.mp3",
-      "source/chr/gahlgwogi_ale_sagwu_chunela_igi_en-333-f_a1.30_077cf240bbd794be8cfd9c482a8f84e78b029478.mp3",
-      "source/chr/gahlgwogi_ale_sagwu_chunela_igi_en-345-m_a1.30_077cf240bbd794be8cfd9c482a8f84e78b029478.mp3",
-      "source/chr/gahlgwogi_ale_sagwu_chunela_igi_en-360-m_a1.30_077cf240bbd794be8cfd9c482a8f84e78b029478.mp3",
-      "source/chr/gahlgwogi_ale_sagwu_chunela_igi_en-361-f_a1.30_077cf240bbd794be8cfd9c482a8f84e78b029478.mp3",
-      "source/chr/gahlgwog_ale_sagwu_chunel_ig_en-333-f_a1.30_4dad3b5bc5db37cc96740d37ba74b6289e54e3f9.mp3",
-      "source/chr/gahlgwog_ale_sagwu_chunel_ig_en-345-m_a1.30_4dad3b5bc5db37cc96740d37ba74b6289e54e3f9.mp3",
-      "source/chr/gahlgwog_ale_sagwu_chunel_ig_en-360-m_a1.30_4dad3b5bc5db37cc96740d37ba74b6289e54e3f9.mp3",
-      "source/chr/gahlgwog_ale_sagwu_chunel_ig_en-361-f_a1.30_4dad3b5bc5db37cc96740d37ba74b6289e54e3f9.mp3"
+      "source/chr/gahlgwogi_ale_sagwu_chanela_igi_en-333-f_a1.30_7acbe5ab4be388ba72bbc6af5e7a7ab74637d1de.mp3",
+      "source/chr/gahlgwogi_ale_sagwu_chanela_igi_en-345-m_a1.30_7acbe5ab4be388ba72bbc6af5e7a7ab74637d1de.mp3",
+      "source/chr/gahlgwogi_ale_sagwu_chanela_igi_en-360-m_a1.30_7acbe5ab4be388ba72bbc6af5e7a7ab74637d1de.mp3",
+      "source/chr/gahlgwogi_ale_sagwu_chanela_igi_en-361-f_a1.30_7acbe5ab4be388ba72bbc6af5e7a7ab74637d1de.mp3",
+      "source/chr/gahlgwog_ale_sagwu_chanel_ig_en-333-f_a1.30_8179679f3083f3b70cc6d3f2d7058227c355f21e.mp3",
+      "source/chr/gahlgwog_ale_sagwu_chanel_ig_en-345-m_a1.30_8179679f3083f3b70cc6d3f2d7058227c355f21e.mp3",
+      "source/chr/gahlgwog_ale_sagwu_chanel_ig_en-360-m_a1.30_8179679f3083f3b70cc6d3f2d7058227c355f21e.mp3",
+      "source/chr/gahlgwog_ale_sagwu_chanel_ig_en-361-f_a1.30_8179679f3083f3b70cc6d3f2d7058227c355f21e.mp3",
+      "source/chr/gahlgwogi_ale_sagwu_chunela_igi_en-333-f_a1.30_fe55f01e62259c5482061259e19f6c705d53dfc1.mp3",
+      "source/chr/gahlgwogi_ale_sagwu_chunela_igi_en-345-m_a1.30_fe55f01e62259c5482061259e19f6c705d53dfc1.mp3",
+      "source/chr/gahlgwogi_ale_sagwu_chunela_igi_en-360-m_a1.30_fe55f01e62259c5482061259e19f6c705d53dfc1.mp3",
+      "source/chr/gahlgwogi_ale_sagwu_chunela_igi_en-361-f_a1.30_fe55f01e62259c5482061259e19f6c705d53dfc1.mp3",
+      "source/chr/gahlgwog_ale_sagwu_chunel_ig_en-333-f_a1.30_71c552932ab3701d1cd898b20600bf9fed9b076d.mp3",
+      "source/chr/gahlgwog_ale_sagwu_chunel_ig_en-345-m_a1.30_71c552932ab3701d1cd898b20600bf9fed9b076d.mp3",
+      "source/chr/gahlgwog_ale_sagwu_chunel_ig_en-360-m_a1.30_71c552932ab3701d1cd898b20600bf9fed9b076d.mp3",
+      "source/chr/gahlgwog_ale_sagwu_chunel_ig_en-361-f_a1.30_71c552932ab3701d1cd898b20600bf9fed9b076d.mp3"
     ],
     "english": "Seven and one is eight.",
     "english_audio": [
@@ -3359,18 +3359,18 @@
     "syllabary": "ᎦᎵᏉᎩ ᎠᎴ ᏌᏊ ᏣᏁᎳ ᎢᎩ."
   },
   {
-    "alternate_pronunciations": ["Hisg ale sóhně:l niga:ʔd ǐ:g."],
+    "alternate_pronunciations": ["Hisg ale sóhně:l niga:ʔd ǐ:g."],
     "alternate_syllabary": ["ᎯᏍG ᎠᎴ ᏐᏁᎵ ᏂᎦD ᎢG."],
-    "cherokee": "Hisgi ale sóhně:la niga:ʔdu ǐ:gi.",
+    "cherokee": "Hisgi ale sóhně:la niga:ʔdu ǐ:gi.",
     "cherokee_audio": [
-      "source/chr/hisgi_ale_sohnela_nigadu_igi_en-333-f_a1.30_6496dc02c5923677a29094fa2e4525ed9f9d6ac9.mp3",
-      "source/chr/hisgi_ale_sohnela_nigadu_igi_en-345-m_a1.30_6496dc02c5923677a29094fa2e4525ed9f9d6ac9.mp3",
-      "source/chr/hisgi_ale_sohnela_nigadu_igi_en-360-m_a1.30_6496dc02c5923677a29094fa2e4525ed9f9d6ac9.mp3",
-      "source/chr/hisgi_ale_sohnela_nigadu_igi_en-361-f_a1.30_6496dc02c5923677a29094fa2e4525ed9f9d6ac9.mp3",
-      "source/chr/hisg_ale_sohnel_nigad_ig_en-333-f_a1.30_fa9632c93c2c9516e8176e93e8d2ea9d0f94a39d.mp3",
-      "source/chr/hisg_ale_sohnel_nigad_ig_en-345-m_a1.30_fa9632c93c2c9516e8176e93e8d2ea9d0f94a39d.mp3",
-      "source/chr/hisg_ale_sohnel_nigad_ig_en-360-m_a1.30_fa9632c93c2c9516e8176e93e8d2ea9d0f94a39d.mp3",
-      "source/chr/hisg_ale_sohnel_nigad_ig_en-361-f_a1.30_fa9632c93c2c9516e8176e93e8d2ea9d0f94a39d.mp3"
+      "source/chr/hisgi_ale_sohnela_nigadu_igi_en-333-f_a1.30_717f321fb8a006e89e4469b88aefee841738aebb.mp3",
+      "source/chr/hisgi_ale_sohnela_nigadu_igi_en-345-m_a1.30_717f321fb8a006e89e4469b88aefee841738aebb.mp3",
+      "source/chr/hisgi_ale_sohnela_nigadu_igi_en-360-m_a1.30_717f321fb8a006e89e4469b88aefee841738aebb.mp3",
+      "source/chr/hisgi_ale_sohnela_nigadu_igi_en-361-f_a1.30_717f321fb8a006e89e4469b88aefee841738aebb.mp3",
+      "source/chr/hisg_ale_sohnel_nigad_ig_en-333-f_a1.30_4a21d55bc3cef0d384e42055da88c78f160f1c26.mp3",
+      "source/chr/hisg_ale_sohnel_nigad_ig_en-345-m_a1.30_4a21d55bc3cef0d384e42055da88c78f160f1c26.mp3",
+      "source/chr/hisg_ale_sohnel_nigad_ig_en-360-m_a1.30_4a21d55bc3cef0d384e42055da88c78f160f1c26.mp3",
+      "source/chr/hisg_ale_sohnel_nigad_ig_en-361-f_a1.30_4a21d55bc3cef0d384e42055da88c78f160f1c26.mp3"
     ],
     "english": "Five and nine is fourteen.",
     "english_audio": [
@@ -3381,33 +3381,33 @@
   },
   {
     "alternate_pronunciations": [
-      "Chuně:la ale gahlgwǒ:gi sgiga:ʔdu ǐ:gi.",
-      "Chaně:l ale gahlgwǒ:g sgiga:ʔd ǐ:g.",
-      "Chuně:l ale gahlgwǒ:g sgiga:ʔd ǐ:g."
+      "Chuně:la ale gahlgwǒ:gi sgiga:ʔdu ǐ:gi.",
+      "Chaně:l ale gahlgwǒ:g sgiga:ʔd ǐ:g.",
+      "Chuně:l ale gahlgwǒ:g sgiga:ʔd ǐ:g."
     ],
     "alternate_syllabary": [
       "ᏧᏁᎳ ᎠᎴ ᎦᎵᏉᎩ ᏍᎩᎦᏚ ᎢᎩ.",
       "ᏣᏁᎵ ᎠᎴ ᎦᎵᏉG ᏍᎩᎦD ᎢG.",
       "ᏧᏁᎵ ᎠᎴ ᎦᎵᏉG ᏍᎩᎦD ᎢG."
     ],
-    "cherokee": "Chaně:la ale gahlgwǒ:gi sgiga:ʔdu ǐ:gi.",
+    "cherokee": "Chaně:la ale gahlgwǒ:gi sgiga:ʔdu ǐ:gi.",
     "cherokee_audio": [
-      "source/chr/chanela_ale_gahlgwogi_sgigadu_ig_en-333-f_a1.30_a56bcc5fd93bc5b73175585b4fe72382e6d14119.mp3",
-      "source/chr/chanela_ale_gahlgwogi_sgigadu_ig_en-345-m_a1.30_a56bcc5fd93bc5b73175585b4fe72382e6d14119.mp3",
-      "source/chr/chanela_ale_gahlgwogi_sgigadu_ig_en-360-m_a1.30_a56bcc5fd93bc5b73175585b4fe72382e6d14119.mp3",
-      "source/chr/chanela_ale_gahlgwogi_sgigadu_ig_en-361-f_a1.30_a56bcc5fd93bc5b73175585b4fe72382e6d14119.mp3",
-      "source/chr/chunela_ale_gahlgwogi_sgigadu_ig_en-333-f_a1.30_e70d2d5aefe41e7e28b2e824e3d785a406725dee.mp3",
-      "source/chr/chunela_ale_gahlgwogi_sgigadu_ig_en-345-m_a1.30_e70d2d5aefe41e7e28b2e824e3d785a406725dee.mp3",
-      "source/chr/chunela_ale_gahlgwogi_sgigadu_ig_en-360-m_a1.30_e70d2d5aefe41e7e28b2e824e3d785a406725dee.mp3",
-      "source/chr/chunela_ale_gahlgwogi_sgigadu_ig_en-361-f_a1.30_e70d2d5aefe41e7e28b2e824e3d785a406725dee.mp3",
-      "source/chr/chanel_ale_gahlgwog_sgigad_ig_en-333-f_a1.30_674f5dc42c4aa91a9b07109efe8eaf12ca306342.mp3",
-      "source/chr/chanel_ale_gahlgwog_sgigad_ig_en-345-m_a1.30_674f5dc42c4aa91a9b07109efe8eaf12ca306342.mp3",
-      "source/chr/chanel_ale_gahlgwog_sgigad_ig_en-360-m_a1.30_674f5dc42c4aa91a9b07109efe8eaf12ca306342.mp3",
-      "source/chr/chanel_ale_gahlgwog_sgigad_ig_en-361-f_a1.30_674f5dc42c4aa91a9b07109efe8eaf12ca306342.mp3",
-      "source/chr/chunel_ale_gahlgwog_sgigad_ig_en-333-f_a1.30_7eedbf7aef7c85f226002814d8347d0487c99b07.mp3",
-      "source/chr/chunel_ale_gahlgwog_sgigad_ig_en-345-m_a1.30_7eedbf7aef7c85f226002814d8347d0487c99b07.mp3",
-      "source/chr/chunel_ale_gahlgwog_sgigad_ig_en-360-m_a1.30_7eedbf7aef7c85f226002814d8347d0487c99b07.mp3",
-      "source/chr/chunel_ale_gahlgwog_sgigad_ig_en-361-f_a1.30_7eedbf7aef7c85f226002814d8347d0487c99b07.mp3"
+      "source/chr/chanela_ale_gahlgwogi_sgigadu_ig_en-333-f_a1.30_8284f0ec56469593d76a133c83e5a6c2a55fe4bf.mp3",
+      "source/chr/chanela_ale_gahlgwogi_sgigadu_ig_en-345-m_a1.30_8284f0ec56469593d76a133c83e5a6c2a55fe4bf.mp3",
+      "source/chr/chanela_ale_gahlgwogi_sgigadu_ig_en-360-m_a1.30_8284f0ec56469593d76a133c83e5a6c2a55fe4bf.mp3",
+      "source/chr/chanela_ale_gahlgwogi_sgigadu_ig_en-361-f_a1.30_8284f0ec56469593d76a133c83e5a6c2a55fe4bf.mp3",
+      "source/chr/chunela_ale_gahlgwogi_sgigadu_ig_en-333-f_a1.30_7ea7c7ba0b79c7408c8e2d67a0122da8192be4b8.mp3",
+      "source/chr/chunela_ale_gahlgwogi_sgigadu_ig_en-345-m_a1.30_7ea7c7ba0b79c7408c8e2d67a0122da8192be4b8.mp3",
+      "source/chr/chunela_ale_gahlgwogi_sgigadu_ig_en-360-m_a1.30_7ea7c7ba0b79c7408c8e2d67a0122da8192be4b8.mp3",
+      "source/chr/chunela_ale_gahlgwogi_sgigadu_ig_en-361-f_a1.30_7ea7c7ba0b79c7408c8e2d67a0122da8192be4b8.mp3",
+      "source/chr/chanel_ale_gahlgwog_sgigad_ig_en-333-f_a1.30_149a78165e645eea5a9abbf0fdc6ae59651550c4.mp3",
+      "source/chr/chanel_ale_gahlgwog_sgigad_ig_en-345-m_a1.30_149a78165e645eea5a9abbf0fdc6ae59651550c4.mp3",
+      "source/chr/chanel_ale_gahlgwog_sgigad_ig_en-360-m_a1.30_149a78165e645eea5a9abbf0fdc6ae59651550c4.mp3",
+      "source/chr/chanel_ale_gahlgwog_sgigad_ig_en-361-f_a1.30_149a78165e645eea5a9abbf0fdc6ae59651550c4.mp3",
+      "source/chr/chunel_ale_gahlgwog_sgigad_ig_en-333-f_a1.30_0d64da98e9886e2d8356c31448a929e7ae9c2148.mp3",
+      "source/chr/chunel_ale_gahlgwog_sgigad_ig_en-345-m_a1.30_0d64da98e9886e2d8356c31448a929e7ae9c2148.mp3",
+      "source/chr/chunel_ale_gahlgwog_sgigad_ig_en-360-m_a1.30_0d64da98e9886e2d8356c31448a929e7ae9c2148.mp3",
+      "source/chr/chunel_ale_gahlgwog_sgigad_ig_en-361-f_a1.30_0d64da98e9886e2d8356c31448a929e7ae9c2148.mp3"
     ],
     "english": "Eight and seven is fifteen.",
     "english_audio": [
@@ -4615,12 +4615,12 @@
       "ᏪᏌᏍ? Ꮭ! ᏍᎩᎾ ᏔᎵ ᎩᏟ",
       "ᏪᏌᏍ? Ꮭ! ᎾᏍᎩ ᏔᎵ ᎩᏟ"
     ],
-    "cherokee": "wě:sasgo? vhla! v̀:sgi a:nitáʔli gi:hli",
+    "cherokee": "wě:sasgo? v́ːhla! v̀:sgi a:nitáʔli gi:hli",
     "cherokee_audio": [
-      "source/chr/wesasgo_vhla_vsgi_anitali_gihli_en-333-f_a1.30_45ae52b85d34dfc8bd99f26ea9cdef3cc3c48265.mp3",
-      "source/chr/wesasgo_vhla_vsgi_anitali_gihli_en-345-m_a1.30_45ae52b85d34dfc8bd99f26ea9cdef3cc3c48265.mp3",
-      "source/chr/wesasgo_vhla_vsgi_anitali_gihli_en-360-m_a1.30_45ae52b85d34dfc8bd99f26ea9cdef3cc3c48265.mp3",
-      "source/chr/wesasgo_vhla_vsgi_anitali_gihli_en-361-f_a1.30_45ae52b85d34dfc8bd99f26ea9cdef3cc3c48265.mp3",
+      "source/chr/wesasgo_vhla_vsgi_anitali_gihli_en-333-f_a1.30_eac05a5464e8763ce468dd9f29c2093b78dfe553.mp3",
+      "source/chr/wesasgo_vhla_vsgi_anitali_gihli_en-345-m_a1.30_eac05a5464e8763ce468dd9f29c2093b78dfe553.mp3",
+      "source/chr/wesasgo_vhla_vsgi_anitali_gihli_en-360-m_a1.30_eac05a5464e8763ce468dd9f29c2093b78dfe553.mp3",
+      "source/chr/wesasgo_vhla_vsgi_anitali_gihli_en-361-f_a1.30_eac05a5464e8763ce468dd9f29c2093b78dfe553.mp3",
       "source/chr/wesas_hla_vsgina_tali_gihli_en-333-f_a1.30_8299b8a5780f468b13254eb231e3946e361836ec.mp3",
       "source/chr/wesas_hla_vsgina_tali_gihli_en-345-m_a1.30_8299b8a5780f468b13254eb231e3946e361836ec.mp3",
       "source/chr/wesas_hla_vsgina_tali_gihli_en-360-m_a1.30_8299b8a5780f468b13254eb231e3946e361836ec.mp3",
@@ -4661,12 +4661,12 @@
   {
     "alternate_pronunciations": ["hla yǒ:n áhni yi̋:g"],
     "alternate_syllabary": ["Ꮭ ᏲN ᎠᏂ ᏱG"],
-    "cherokee": "vhla yǒ:na áhani yi̋:gi",
+    "cherokee": "v́ːhla yǒ:na áhani yi̋:gi",
     "cherokee_audio": [
-      "source/chr/vhla_yona_ahani_yigi_en-333-f_a1.30_b7c0568d5828d0a08785a85ca8d6f9511dafd99b.mp3",
-      "source/chr/vhla_yona_ahani_yigi_en-345-m_a1.30_b7c0568d5828d0a08785a85ca8d6f9511dafd99b.mp3",
-      "source/chr/vhla_yona_ahani_yigi_en-360-m_a1.30_b7c0568d5828d0a08785a85ca8d6f9511dafd99b.mp3",
-      "source/chr/vhla_yona_ahani_yigi_en-361-f_a1.30_b7c0568d5828d0a08785a85ca8d6f9511dafd99b.mp3",
+      "source/chr/vhla_yona_ahani_yigi_en-333-f_a1.30_c32461796eb176613bf61ca7289900e18f729770.mp3",
+      "source/chr/vhla_yona_ahani_yigi_en-345-m_a1.30_c32461796eb176613bf61ca7289900e18f729770.mp3",
+      "source/chr/vhla_yona_ahani_yigi_en-360-m_a1.30_c32461796eb176613bf61ca7289900e18f729770.mp3",
+      "source/chr/vhla_yona_ahani_yigi_en-361-f_a1.30_c32461796eb176613bf61ca7289900e18f729770.mp3",
       "source/chr/hla_yon_ahni_yig_en-333-f_a1.30_d216dd08ef68d6dfa5f431ee3ca29355f9428c46.mp3",
       "source/chr/hla_yon_ahni_yig_en-345-m_a1.30_d216dd08ef68d6dfa5f431ee3ca29355f9428c46.mp3",
       "source/chr/hla_yon_ahni_yig_en-360-m_a1.30_d216dd08ef68d6dfa5f431ee3ca29355f9428c46.mp3",
@@ -4727,21 +4727,21 @@
   },
   {
     "alternate_pronunciations": [
-      "go:hű:sd ő:sd jigowhtí",
+      "go:hű:sd ő:sd jigowhtí",
       "gő:sdi ő:sda jigowhtíha",
       "gő:sd ő:sd jigowhtí"
     ],
     "alternate_syllabary": ["ᎪᎱᏍD ᎣᏍD ᏥᎪWᏘ", "ᎪᏍᏗ ᎣᏍᏓ ᏥᎪWᏘᎭ", "ᎪᏍD ᎣᏍD ᏥᎪWᏘ"],
-    "cherokee": "go:hű:sdi ő:sda jigowhtíha",
+    "cherokee": "go:hű:sdi ő:sda jigowhtíha",
     "cherokee_audio": [
-      "source/chr/gohusdi_osda_jigowhtiha_en-333-f_a1.30_b7b701a52642a8f0456c9194a04a277d2077a10d.mp3",
-      "source/chr/gohusdi_osda_jigowhtiha_en-345-m_a1.30_b7b701a52642a8f0456c9194a04a277d2077a10d.mp3",
-      "source/chr/gohusdi_osda_jigowhtiha_en-360-m_a1.30_b7b701a52642a8f0456c9194a04a277d2077a10d.mp3",
-      "source/chr/gohusdi_osda_jigowhtiha_en-361-f_a1.30_b7b701a52642a8f0456c9194a04a277d2077a10d.mp3",
-      "source/chr/gohusd_osd_jigowhti_en-333-f_a1.30_6e7db777daeaf7bab6c1a679172ea93b17c6c56a.mp3",
-      "source/chr/gohusd_osd_jigowhti_en-345-m_a1.30_6e7db777daeaf7bab6c1a679172ea93b17c6c56a.mp3",
-      "source/chr/gohusd_osd_jigowhti_en-360-m_a1.30_6e7db777daeaf7bab6c1a679172ea93b17c6c56a.mp3",
-      "source/chr/gohusd_osd_jigowhti_en-361-f_a1.30_6e7db777daeaf7bab6c1a679172ea93b17c6c56a.mp3",
+      "source/chr/gohusdi_osda_jigowhtiha_en-333-f_a1.30_6204ea552c9f1f4f3295bb61d77842f7e9cb1348.mp3",
+      "source/chr/gohusdi_osda_jigowhtiha_en-345-m_a1.30_6204ea552c9f1f4f3295bb61d77842f7e9cb1348.mp3",
+      "source/chr/gohusdi_osda_jigowhtiha_en-360-m_a1.30_6204ea552c9f1f4f3295bb61d77842f7e9cb1348.mp3",
+      "source/chr/gohusdi_osda_jigowhtiha_en-361-f_a1.30_6204ea552c9f1f4f3295bb61d77842f7e9cb1348.mp3",
+      "source/chr/gohusd_osd_jigowhti_en-333-f_a1.30_a2caf335b854f73a4c5f27ab0a6eef182ac2a034.mp3",
+      "source/chr/gohusd_osd_jigowhti_en-345-m_a1.30_a2caf335b854f73a4c5f27ab0a6eef182ac2a034.mp3",
+      "source/chr/gohusd_osd_jigowhti_en-360-m_a1.30_a2caf335b854f73a4c5f27ab0a6eef182ac2a034.mp3",
+      "source/chr/gohusd_osd_jigowhti_en-361-f_a1.30_a2caf335b854f73a4c5f27ab0a6eef182ac2a034.mp3",
       "source/chr/gosdi_osda_jigowhtiha_en-333-f_a1.30_b2331cc4853d43a5a434947dc69d9fb873f339b7.mp3",
       "source/chr/gosdi_osda_jigowhtiha_en-345-m_a1.30_b2331cc4853d43a5a434947dc69d9fb873f339b7.mp3",
       "source/chr/gosdi_osda_jigowhtiha_en-360-m_a1.30_b2331cc4853d43a5a434947dc69d9fb873f339b7.mp3",
@@ -4785,21 +4785,21 @@
   },
   {
     "alternate_pronunciations": [
-      "howa. go:hű:sd ő:sd",
+      "howa. go:hű:sd ő:sd",
       "howa. gő:sdi ő:sda",
       "howa. gő:sd ő:sd"
     ],
     "alternate_syllabary": ["ᎰᏩ. ᎪᎱᏍD ᎣᏍD", "ᎰᏩ. ᎪᏍᏗ ᎣᏍᏓ", "ᎰᏩ. ᎪᏍD ᎣᏍD"],
-    "cherokee": "howa. go:hű:sdi ő:sda",
+    "cherokee": "howa. go:hű:sdi ő:sda",
     "cherokee_audio": [
-      "source/chr/howa_gohusdi_osda_en-333-f_a1.30_ffbf947d11339c65d3341dab13b250572edf0dfa.mp3",
-      "source/chr/howa_gohusdi_osda_en-345-m_a1.30_ffbf947d11339c65d3341dab13b250572edf0dfa.mp3",
-      "source/chr/howa_gohusdi_osda_en-360-m_a1.30_ffbf947d11339c65d3341dab13b250572edf0dfa.mp3",
-      "source/chr/howa_gohusdi_osda_en-361-f_a1.30_ffbf947d11339c65d3341dab13b250572edf0dfa.mp3",
-      "source/chr/howa_gohusd_osd_en-333-f_a1.30_e7d6275ce85b8641a5eddb6b560a5c2a1b6d8d02.mp3",
-      "source/chr/howa_gohusd_osd_en-345-m_a1.30_e7d6275ce85b8641a5eddb6b560a5c2a1b6d8d02.mp3",
-      "source/chr/howa_gohusd_osd_en-360-m_a1.30_e7d6275ce85b8641a5eddb6b560a5c2a1b6d8d02.mp3",
-      "source/chr/howa_gohusd_osd_en-361-f_a1.30_e7d6275ce85b8641a5eddb6b560a5c2a1b6d8d02.mp3",
+      "source/chr/howa_gohusdi_osda_en-333-f_a1.30_e407b28212cffc82c038f2c635e0d4105221259d.mp3",
+      "source/chr/howa_gohusdi_osda_en-345-m_a1.30_e407b28212cffc82c038f2c635e0d4105221259d.mp3",
+      "source/chr/howa_gohusdi_osda_en-360-m_a1.30_e407b28212cffc82c038f2c635e0d4105221259d.mp3",
+      "source/chr/howa_gohusdi_osda_en-361-f_a1.30_e407b28212cffc82c038f2c635e0d4105221259d.mp3",
+      "source/chr/howa_gohusd_osd_en-333-f_a1.30_45ce8ad8756e7d0a910ccb522cc99da27493e3d2.mp3",
+      "source/chr/howa_gohusd_osd_en-345-m_a1.30_45ce8ad8756e7d0a910ccb522cc99da27493e3d2.mp3",
+      "source/chr/howa_gohusd_osd_en-360-m_a1.30_45ce8ad8756e7d0a910ccb522cc99da27493e3d2.mp3",
+      "source/chr/howa_gohusd_osd_en-361-f_a1.30_45ce8ad8756e7d0a910ccb522cc99da27493e3d2.mp3",
       "source/chr/howa_gosdi_osda_en-333-f_a1.30_dc3df753810d3419817cb5825aeb8f4d3e89a1cd.mp3",
       "source/chr/howa_gosdi_osda_en-345-m_a1.30_dc3df753810d3419817cb5825aeb8f4d3e89a1cd.mp3",
       "source/chr/howa_gosdi_osda_en-360-m_a1.30_dc3df753810d3419817cb5825aeb8f4d3e89a1cd.mp3",
@@ -6085,8 +6085,8 @@
   },
   {
     "alternate_pronunciations": [
-      "yǒ:na hla yijagowhtíha.",
-      "hla yijagowhtíha na yǒ:na."
+      "yǒ:na hla yijagowhtíha.",
+      "hla yijagowhtíha na yǒ:na."
     ],
     "alternate_syllabary": ["ᏲᎾ Ꮭ ᏱᏣᎪWᏘᎭ.", "Ꮭ ᏱᏣᎪWᏘᎭ Ꮎ ᏲᎾ."],
     "cherokee": "hla yǒ:na yijagowhtíha.",
@@ -6095,14 +6095,14 @@
       "source/chr/hla_yona_yijagowhtiha_en-345-m_a1.30_9d08f8a46185ca2171b645cd30005fb9a30fcf46.mp3",
       "source/chr/hla_yona_yijagowhtiha_en-360-m_a1.30_9d08f8a46185ca2171b645cd30005fb9a30fcf46.mp3",
       "source/chr/hla_yona_yijagowhtiha_en-361-f_a1.30_9d08f8a46185ca2171b645cd30005fb9a30fcf46.mp3",
-      "source/chr/yona_hla_yijagowhtiha_en-333-f_a1.30_4f6331c41391c88d0610b0c231e096a12380d541.mp3",
-      "source/chr/yona_hla_yijagowhtiha_en-345-m_a1.30_4f6331c41391c88d0610b0c231e096a12380d541.mp3",
-      "source/chr/yona_hla_yijagowhtiha_en-360-m_a1.30_4f6331c41391c88d0610b0c231e096a12380d541.mp3",
-      "source/chr/yona_hla_yijagowhtiha_en-361-f_a1.30_4f6331c41391c88d0610b0c231e096a12380d541.mp3",
-      "source/chr/hla_yijagowhtiha_na_yona_en-333-f_a1.30_34aba46458f74eb8fc92bdf2363e47c2a89db36b.mp3",
-      "source/chr/hla_yijagowhtiha_na_yona_en-345-m_a1.30_34aba46458f74eb8fc92bdf2363e47c2a89db36b.mp3",
-      "source/chr/hla_yijagowhtiha_na_yona_en-360-m_a1.30_34aba46458f74eb8fc92bdf2363e47c2a89db36b.mp3",
-      "source/chr/hla_yijagowhtiha_na_yona_en-361-f_a1.30_34aba46458f74eb8fc92bdf2363e47c2a89db36b.mp3"
+      "source/chr/yona_hla_yijagowhtiha_en-333-f_a1.30_2e1711fb83c6970aa2d59ae84f919c802e5b15c9.mp3",
+      "source/chr/yona_hla_yijagowhtiha_en-345-m_a1.30_2e1711fb83c6970aa2d59ae84f919c802e5b15c9.mp3",
+      "source/chr/yona_hla_yijagowhtiha_en-360-m_a1.30_2e1711fb83c6970aa2d59ae84f919c802e5b15c9.mp3",
+      "source/chr/yona_hla_yijagowhtiha_en-361-f_a1.30_2e1711fb83c6970aa2d59ae84f919c802e5b15c9.mp3",
+      "source/chr/hla_yijagowhtiha_na_yona_en-333-f_a1.30_dabaa10e77ffd68c28005c3d68e8daee64b1f1cb.mp3",
+      "source/chr/hla_yijagowhtiha_na_yona_en-345-m_a1.30_dabaa10e77ffd68c28005c3d68e8daee64b1f1cb.mp3",
+      "source/chr/hla_yijagowhtiha_na_yona_en-360-m_a1.30_dabaa10e77ffd68c28005c3d68e8daee64b1f1cb.mp3",
+      "source/chr/hla_yijagowhtiha_na_yona_en-361-f_a1.30_dabaa10e77ffd68c28005c3d68e8daee64b1f1cb.mp3"
     ],
     "english": "The bear doesn't see you.",
     "english_audio": [
@@ -6362,7 +6362,7 @@
   {
     "alternate_pronunciations": [
       "hla ani:ge:hyű:j yigv:gigowhtí.",
-      "vhla yigv:gigowhtíha na ani:ge:hyű:ja.",
+      "v́ːhla yigv:gigowhtíha na ani:ge:hyű:ja.",
       "na ani:ge:hyű:j hla yigv:gigowhtí."
     ],
     "alternate_syllabary": [
@@ -6370,20 +6370,20 @@
       "ᎥᏝ ᏱᎬᎩᎪWᏘᎭ Ꮎ ᎠᏂᎨᏳᏣ.",
       "Ꮎ ᎠᏂᎨᏳJ Ꮭ ᏱᎬᎩᎪWᏘ."
     ],
-    "cherokee": "vhla ani:ge:hyű:ja yigv:gigowhtíha.",
+    "cherokee": "v́ːhla ani:ge:hyű:ja yigv:gigowhtíha.",
     "cherokee_audio": [
-      "source/chr/vhla_anigehyuja_yigvgigowhtiha_en-333-f_a1.30_5af4dcb7fbc838884872b88fe13182c38622d5c2.mp3",
-      "source/chr/vhla_anigehyuja_yigvgigowhtiha_en-345-m_a1.30_5af4dcb7fbc838884872b88fe13182c38622d5c2.mp3",
-      "source/chr/vhla_anigehyuja_yigvgigowhtiha_en-360-m_a1.30_5af4dcb7fbc838884872b88fe13182c38622d5c2.mp3",
-      "source/chr/vhla_anigehyuja_yigvgigowhtiha_en-361-f_a1.30_5af4dcb7fbc838884872b88fe13182c38622d5c2.mp3",
+      "source/chr/vhla_anigehyuja_yigvgigowhtiha_en-333-f_a1.30_b99296bbe343ad45098da501751d70e5d9101715.mp3",
+      "source/chr/vhla_anigehyuja_yigvgigowhtiha_en-345-m_a1.30_b99296bbe343ad45098da501751d70e5d9101715.mp3",
+      "source/chr/vhla_anigehyuja_yigvgigowhtiha_en-360-m_a1.30_b99296bbe343ad45098da501751d70e5d9101715.mp3",
+      "source/chr/vhla_anigehyuja_yigvgigowhtiha_en-361-f_a1.30_b99296bbe343ad45098da501751d70e5d9101715.mp3",
       "source/chr/hla_anigehyuj_yigvgigowhti_en-333-f_a1.30_533b460cbf85d8c1b179b33ab28ac54e1612105e.mp3",
       "source/chr/hla_anigehyuj_yigvgigowhti_en-345-m_a1.30_533b460cbf85d8c1b179b33ab28ac54e1612105e.mp3",
       "source/chr/hla_anigehyuj_yigvgigowhti_en-360-m_a1.30_533b460cbf85d8c1b179b33ab28ac54e1612105e.mp3",
       "source/chr/hla_anigehyuj_yigvgigowhti_en-361-f_a1.30_533b460cbf85d8c1b179b33ab28ac54e1612105e.mp3",
-      "source/chr/vhla_yigvgigowhtiha_na_anigehyuj_en-333-f_a1.30_6356fed31aed1b8007e6b9a03e23f646c966c473.mp3",
-      "source/chr/vhla_yigvgigowhtiha_na_anigehyuj_en-345-m_a1.30_6356fed31aed1b8007e6b9a03e23f646c966c473.mp3",
-      "source/chr/vhla_yigvgigowhtiha_na_anigehyuj_en-360-m_a1.30_6356fed31aed1b8007e6b9a03e23f646c966c473.mp3",
-      "source/chr/vhla_yigvgigowhtiha_na_anigehyuj_en-361-f_a1.30_6356fed31aed1b8007e6b9a03e23f646c966c473.mp3",
+      "source/chr/vhla_yigvgigowhtiha_na_anigehyuj_en-333-f_a1.30_20ffb14320749d1d970ebe4aecb5973b7abd5e50.mp3",
+      "source/chr/vhla_yigvgigowhtiha_na_anigehyuj_en-345-m_a1.30_20ffb14320749d1d970ebe4aecb5973b7abd5e50.mp3",
+      "source/chr/vhla_yigvgigowhtiha_na_anigehyuj_en-360-m_a1.30_20ffb14320749d1d970ebe4aecb5973b7abd5e50.mp3",
+      "source/chr/vhla_yigvgigowhtiha_na_anigehyuj_en-361-f_a1.30_20ffb14320749d1d970ebe4aecb5973b7abd5e50.mp3",
       "source/chr/na_anigehyuj_hla_yigvgigowhti_en-333-f_a1.30_adc103135819c302113b3c355363c4642b035be2.mp3",
       "source/chr/na_anigehyuj_hla_yigvgigowhti_en-345-m_a1.30_adc103135819c302113b3c355363c4642b035be2.mp3",
       "source/chr/na_anigehyuj_hla_yigvgigowhti_en-360-m_a1.30_adc103135819c302113b3c355363c4642b035be2.mp3",
@@ -6432,7 +6432,7 @@
   {
     "alternate_pronunciations": [
       "hla salǒ:l yige:jagowhtí.",
-      "vhla yige:jagowhtíha na salǒ:li.",
+      "v́ːhla yige:jagowhtíha na salǒ:li.",
       "na salǒ:l hla yige:jagowhtí."
     ],
     "alternate_syllabary": [
@@ -6440,20 +6440,20 @@
       "ᎥᏝ ᏱᎨᏣᎪWᏘᎭ Ꮎ ᏌᎶᎵ.",
       "Ꮎ ᏌᎶᎵ Ꮭ ᏱᎨᏣᎪWᏘ."
     ],
-    "cherokee": "vhla salǒ:li yige:jagowhtíha.",
+    "cherokee": "v́ːhla salǒ:li yige:jagowhtíha.",
     "cherokee_audio": [
-      "source/chr/vhla_saloli_yigejagowhtiha_en-333-f_a1.30_96e9fc86c86acdea7f758a3e016f6e12faeea4e5.mp3",
-      "source/chr/vhla_saloli_yigejagowhtiha_en-345-m_a1.30_96e9fc86c86acdea7f758a3e016f6e12faeea4e5.mp3",
-      "source/chr/vhla_saloli_yigejagowhtiha_en-360-m_a1.30_96e9fc86c86acdea7f758a3e016f6e12faeea4e5.mp3",
-      "source/chr/vhla_saloli_yigejagowhtiha_en-361-f_a1.30_96e9fc86c86acdea7f758a3e016f6e12faeea4e5.mp3",
+      "source/chr/vhla_saloli_yigejagowhtiha_en-333-f_a1.30_69a6e645e77cc41f195d4cc29392663b33c929f8.mp3",
+      "source/chr/vhla_saloli_yigejagowhtiha_en-345-m_a1.30_69a6e645e77cc41f195d4cc29392663b33c929f8.mp3",
+      "source/chr/vhla_saloli_yigejagowhtiha_en-360-m_a1.30_69a6e645e77cc41f195d4cc29392663b33c929f8.mp3",
+      "source/chr/vhla_saloli_yigejagowhtiha_en-361-f_a1.30_69a6e645e77cc41f195d4cc29392663b33c929f8.mp3",
       "source/chr/hla_salol_yigejagowhti_en-333-f_a1.30_8f1695894c70bd33d309f9e4c7bfee02ad3477f6.mp3",
       "source/chr/hla_salol_yigejagowhti_en-345-m_a1.30_8f1695894c70bd33d309f9e4c7bfee02ad3477f6.mp3",
       "source/chr/hla_salol_yigejagowhti_en-360-m_a1.30_8f1695894c70bd33d309f9e4c7bfee02ad3477f6.mp3",
       "source/chr/hla_salol_yigejagowhti_en-361-f_a1.30_8f1695894c70bd33d309f9e4c7bfee02ad3477f6.mp3",
-      "source/chr/vhla_yigejagowhtiha_na_saloli_en-333-f_a1.30_6f7dc005e3f4821db78c996d5186240f97733e32.mp3",
-      "source/chr/vhla_yigejagowhtiha_na_saloli_en-345-m_a1.30_6f7dc005e3f4821db78c996d5186240f97733e32.mp3",
-      "source/chr/vhla_yigejagowhtiha_na_saloli_en-360-m_a1.30_6f7dc005e3f4821db78c996d5186240f97733e32.mp3",
-      "source/chr/vhla_yigejagowhtiha_na_saloli_en-361-f_a1.30_6f7dc005e3f4821db78c996d5186240f97733e32.mp3",
+      "source/chr/vhla_yigejagowhtiha_na_saloli_en-333-f_a1.30_c55837f585cc6be524ce5251d9a53443f3205dc3.mp3",
+      "source/chr/vhla_yigejagowhtiha_na_saloli_en-345-m_a1.30_c55837f585cc6be524ce5251d9a53443f3205dc3.mp3",
+      "source/chr/vhla_yigejagowhtiha_na_saloli_en-360-m_a1.30_c55837f585cc6be524ce5251d9a53443f3205dc3.mp3",
+      "source/chr/vhla_yigejagowhtiha_na_saloli_en-361-f_a1.30_c55837f585cc6be524ce5251d9a53443f3205dc3.mp3",
       "source/chr/na_salol_hla_yigejagowhti_en-333-f_a1.30_59de66e575133e2aa1d13c15fb081696bc1080b3.mp3",
       "source/chr/na_salol_hla_yigejagowhti_en-345-m_a1.30_59de66e575133e2aa1d13c15fb081696bc1080b3.mp3",
       "source/chr/na_salol_hla_yigejagowhti_en-360-m_a1.30_59de66e575133e2aa1d13c15fb081696bc1080b3.mp3",
@@ -6709,24 +6709,24 @@
   {
     "alternate_pronunciations": [
       "hla na di:sadv́:d yidǔ:ha.",
-      "vhla yidǔ:ha na di:sadv́:di.",
+      "v́ːhla yidǔ:ha na di:sadv́:di.",
       "na di:sadv́:d hla yidǔ:ha."
     ],
     "alternate_syllabary": ["Ꮭ Ꮎ ᏗᏌᏛD ᏱᏚᎭ.", "ᎥᏝ ᏱᏚᎭ Ꮎ ᏗᏌᏛᏗ.", "Ꮎ ᏗᏌᏛD Ꮭ ᏱᏚᎭ."],
-    "cherokee": "vhla na di:sadv́:di yidǔ:ha.",
+    "cherokee": "v́ːhla na di:sadv́:di yidǔ:ha.",
     "cherokee_audio": [
-      "source/chr/vhla_na_disadvdi_yiduha_en-333-f_a1.30_22903a5359262e4bf2fe809d7235b80a3d8c7ce7.mp3",
-      "source/chr/vhla_na_disadvdi_yiduha_en-345-m_a1.30_22903a5359262e4bf2fe809d7235b80a3d8c7ce7.mp3",
-      "source/chr/vhla_na_disadvdi_yiduha_en-360-m_a1.30_22903a5359262e4bf2fe809d7235b80a3d8c7ce7.mp3",
-      "source/chr/vhla_na_disadvdi_yiduha_en-361-f_a1.30_22903a5359262e4bf2fe809d7235b80a3d8c7ce7.mp3",
+      "source/chr/vhla_na_disadvdi_yiduha_en-333-f_a1.30_6edfc0728805f3030defc466083fb41dbe368ad8.mp3",
+      "source/chr/vhla_na_disadvdi_yiduha_en-345-m_a1.30_6edfc0728805f3030defc466083fb41dbe368ad8.mp3",
+      "source/chr/vhla_na_disadvdi_yiduha_en-360-m_a1.30_6edfc0728805f3030defc466083fb41dbe368ad8.mp3",
+      "source/chr/vhla_na_disadvdi_yiduha_en-361-f_a1.30_6edfc0728805f3030defc466083fb41dbe368ad8.mp3",
       "source/chr/hla_na_disadvd_yiduha_en-333-f_a1.30_a08372db8de3f18e480c84400eaa27dd373b68bc.mp3",
       "source/chr/hla_na_disadvd_yiduha_en-345-m_a1.30_a08372db8de3f18e480c84400eaa27dd373b68bc.mp3",
       "source/chr/hla_na_disadvd_yiduha_en-360-m_a1.30_a08372db8de3f18e480c84400eaa27dd373b68bc.mp3",
       "source/chr/hla_na_disadvd_yiduha_en-361-f_a1.30_a08372db8de3f18e480c84400eaa27dd373b68bc.mp3",
-      "source/chr/vhla_yiduha_na_disadvdi_en-333-f_a1.30_a7ff5583986ba17bb50f4d466e588a44622d1ac7.mp3",
-      "source/chr/vhla_yiduha_na_disadvdi_en-345-m_a1.30_a7ff5583986ba17bb50f4d466e588a44622d1ac7.mp3",
-      "source/chr/vhla_yiduha_na_disadvdi_en-360-m_a1.30_a7ff5583986ba17bb50f4d466e588a44622d1ac7.mp3",
-      "source/chr/vhla_yiduha_na_disadvdi_en-361-f_a1.30_a7ff5583986ba17bb50f4d466e588a44622d1ac7.mp3",
+      "source/chr/vhla_yiduha_na_disadvdi_en-333-f_a1.30_7d58ec9915c99dd5ea38d851e72a00b83a5f62ab.mp3",
+      "source/chr/vhla_yiduha_na_disadvdi_en-345-m_a1.30_7d58ec9915c99dd5ea38d851e72a00b83a5f62ab.mp3",
+      "source/chr/vhla_yiduha_na_disadvdi_en-360-m_a1.30_7d58ec9915c99dd5ea38d851e72a00b83a5f62ab.mp3",
+      "source/chr/vhla_yiduha_na_disadvdi_en-361-f_a1.30_7d58ec9915c99dd5ea38d851e72a00b83a5f62ab.mp3",
       "source/chr/na_disadvd_hla_yiduha_en-333-f_a1.30_88c1fabfd3512068fa032e5160a32607e01cdfc3.mp3",
       "source/chr/na_disadvd_hla_yiduha_en-345-m_a1.30_88c1fabfd3512068fa032e5160a32607e01cdfc3.mp3",
       "source/chr/na_disadvd_hla_yiduha_en-360-m_a1.30_88c1fabfd3512068fa032e5160a32607e01cdfc3.mp3",
@@ -6742,23 +6742,23 @@
   {
     "alternate_pronunciations": [
       "na nǔ:na hla yidù:nǐ:ha.",
-      "vhla yidù:nǐ:ha na nǔ:na."
+      "v́ːhla yidù:nǐ:ha na nǔ:na."
     ],
     "alternate_syllabary": ["Ꮎ ᏄᎾ Ꮭ ᏱᏚᏂᎭ.", "ᎥᏝ ᏱᏚᏂᎭ Ꮎ ᏄᎾ."],
-    "cherokee": "vhla na nǔ:na yidù:nǐ:ha.",
+    "cherokee": "v́ːhla na nǔ:na yidù:nǐ:ha.",
     "cherokee_audio": [
-      "source/chr/vhla_na_nuna_yiduniha_en-333-f_a1.30_d08085f5cfec8fd8ee93a1ef0aa5fd14f7bec5ec.mp3",
-      "source/chr/vhla_na_nuna_yiduniha_en-345-m_a1.30_d08085f5cfec8fd8ee93a1ef0aa5fd14f7bec5ec.mp3",
-      "source/chr/vhla_na_nuna_yiduniha_en-360-m_a1.30_d08085f5cfec8fd8ee93a1ef0aa5fd14f7bec5ec.mp3",
-      "source/chr/vhla_na_nuna_yiduniha_en-361-f_a1.30_d08085f5cfec8fd8ee93a1ef0aa5fd14f7bec5ec.mp3",
+      "source/chr/vhla_na_nuna_yiduniha_en-333-f_a1.30_7b06864e5683ca0ada97f89db88373ee65a93377.mp3",
+      "source/chr/vhla_na_nuna_yiduniha_en-345-m_a1.30_7b06864e5683ca0ada97f89db88373ee65a93377.mp3",
+      "source/chr/vhla_na_nuna_yiduniha_en-360-m_a1.30_7b06864e5683ca0ada97f89db88373ee65a93377.mp3",
+      "source/chr/vhla_na_nuna_yiduniha_en-361-f_a1.30_7b06864e5683ca0ada97f89db88373ee65a93377.mp3",
       "source/chr/na_nuna_hla_yiduniha_en-333-f_a1.30_c6380d7d69005e1cbc54c99b3a67d1a543efe494.mp3",
       "source/chr/na_nuna_hla_yiduniha_en-345-m_a1.30_c6380d7d69005e1cbc54c99b3a67d1a543efe494.mp3",
       "source/chr/na_nuna_hla_yiduniha_en-360-m_a1.30_c6380d7d69005e1cbc54c99b3a67d1a543efe494.mp3",
       "source/chr/na_nuna_hla_yiduniha_en-361-f_a1.30_c6380d7d69005e1cbc54c99b3a67d1a543efe494.mp3",
-      "source/chr/vhla_yiduniha_na_nuna_en-333-f_a1.30_aef5e3c4c391987ccb8837a13ad0262fa42ccc6f.mp3",
-      "source/chr/vhla_yiduniha_na_nuna_en-345-m_a1.30_aef5e3c4c391987ccb8837a13ad0262fa42ccc6f.mp3",
-      "source/chr/vhla_yiduniha_na_nuna_en-360-m_a1.30_aef5e3c4c391987ccb8837a13ad0262fa42ccc6f.mp3",
-      "source/chr/vhla_yiduniha_na_nuna_en-361-f_a1.30_aef5e3c4c391987ccb8837a13ad0262fa42ccc6f.mp3"
+      "source/chr/vhla_yiduniha_na_nuna_en-333-f_a1.30_4136c4d94d37d96a921b8ac6f09d7688e7144de9.mp3",
+      "source/chr/vhla_yiduniha_na_nuna_en-345-m_a1.30_4136c4d94d37d96a921b8ac6f09d7688e7144de9.mp3",
+      "source/chr/vhla_yiduniha_na_nuna_en-360-m_a1.30_4136c4d94d37d96a921b8ac6f09d7688e7144de9.mp3",
+      "source/chr/vhla_yiduniha_na_nuna_en-361-f_a1.30_4136c4d94d37d96a921b8ac6f09d7688e7144de9.mp3"
     ],
     "english": "They don't have the potatoes.",
     "english_audio": [
@@ -6770,23 +6770,23 @@
   {
     "alternate_pronunciations": [
       "nv̀:ya hla yida:giha.",
-      "vhla yida:giha nv̀:ya."
+      "v́ːhla yida:giha nv̀:ya."
     ],
     "alternate_syllabary": ["ᏅᏯ Ꮭ ᏱᏓᎩᎭ.", "ᎥᏝ ᏱᏓᎩᎭ ᏅᏯ."],
-    "cherokee": "vhla nv̀:ya yida:giha.",
+    "cherokee": "v́ːhla nv̀:ya yida:giha.",
     "cherokee_audio": [
-      "source/chr/vhla_nvya_yidagiha_en-333-f_a1.30_42aa75bbde9072cf20264e185e0869403318269d.mp3",
-      "source/chr/vhla_nvya_yidagiha_en-345-m_a1.30_42aa75bbde9072cf20264e185e0869403318269d.mp3",
-      "source/chr/vhla_nvya_yidagiha_en-360-m_a1.30_42aa75bbde9072cf20264e185e0869403318269d.mp3",
-      "source/chr/vhla_nvya_yidagiha_en-361-f_a1.30_42aa75bbde9072cf20264e185e0869403318269d.mp3",
+      "source/chr/vhla_nvya_yidagiha_en-333-f_a1.30_7c28f7d811a9983fbed31b5f512eb91389425f4c.mp3",
+      "source/chr/vhla_nvya_yidagiha_en-345-m_a1.30_7c28f7d811a9983fbed31b5f512eb91389425f4c.mp3",
+      "source/chr/vhla_nvya_yidagiha_en-360-m_a1.30_7c28f7d811a9983fbed31b5f512eb91389425f4c.mp3",
+      "source/chr/vhla_nvya_yidagiha_en-361-f_a1.30_7c28f7d811a9983fbed31b5f512eb91389425f4c.mp3",
       "source/chr/nvya_hla_yidagiha_en-333-f_a1.30_07ecc46a352280e29693ec3190874ff25e86afa5.mp3",
       "source/chr/nvya_hla_yidagiha_en-345-m_a1.30_07ecc46a352280e29693ec3190874ff25e86afa5.mp3",
       "source/chr/nvya_hla_yidagiha_en-360-m_a1.30_07ecc46a352280e29693ec3190874ff25e86afa5.mp3",
       "source/chr/nvya_hla_yidagiha_en-361-f_a1.30_07ecc46a352280e29693ec3190874ff25e86afa5.mp3",
-      "source/chr/vhla_yidagiha_nvya_en-333-f_a1.30_694dc25520186cd69b0ebce5d43a6a73d9ad729a.mp3",
-      "source/chr/vhla_yidagiha_nvya_en-345-m_a1.30_694dc25520186cd69b0ebce5d43a6a73d9ad729a.mp3",
-      "source/chr/vhla_yidagiha_nvya_en-360-m_a1.30_694dc25520186cd69b0ebce5d43a6a73d9ad729a.mp3",
-      "source/chr/vhla_yidagiha_nvya_en-361-f_a1.30_694dc25520186cd69b0ebce5d43a6a73d9ad729a.mp3"
+      "source/chr/vhla_yidagiha_nvya_en-333-f_a1.30_74f74d2ab526000fec23fe49e371e9949887108f.mp3",
+      "source/chr/vhla_yidagiha_nvya_en-345-m_a1.30_74f74d2ab526000fec23fe49e371e9949887108f.mp3",
+      "source/chr/vhla_yidagiha_nvya_en-360-m_a1.30_74f74d2ab526000fec23fe49e371e9949887108f.mp3",
+      "source/chr/vhla_yidagiha_nvya_en-361-f_a1.30_74f74d2ab526000fec23fe49e371e9949887108f.mp3"
     ],
     "english": "I don't have rocks.",
     "english_audio": [
@@ -6798,23 +6798,23 @@
   {
     "alternate_pronunciations": [
       "gu:le hla yidi:jaha.",
-      "vhla yidi:jaha gu:le."
+      "v́ːhla yidi:jaha gu:le."
     ],
     "alternate_syllabary": ["ᎫᎴ Ꮭ ᏱᏗᏣᎭ.", "ᎥᏝ ᏱᏗᏣᎭ ᎫᎴ."],
-    "cherokee": "vhla gu:le yidi:jaha.",
+    "cherokee": "v́ːhla gu:le yidi:jaha.",
     "cherokee_audio": [
-      "source/chr/vhla_gule_yidijaha_en-333-f_a1.30_2b88485110a0703672e895cc2ec7e3f5255c2ec5.mp3",
-      "source/chr/vhla_gule_yidijaha_en-345-m_a1.30_2b88485110a0703672e895cc2ec7e3f5255c2ec5.mp3",
-      "source/chr/vhla_gule_yidijaha_en-360-m_a1.30_2b88485110a0703672e895cc2ec7e3f5255c2ec5.mp3",
-      "source/chr/vhla_gule_yidijaha_en-361-f_a1.30_2b88485110a0703672e895cc2ec7e3f5255c2ec5.mp3",
+      "source/chr/vhla_gule_yidijaha_en-333-f_a1.30_c77878ca50c6c390f19ce192b3faf0486f3679c4.mp3",
+      "source/chr/vhla_gule_yidijaha_en-345-m_a1.30_c77878ca50c6c390f19ce192b3faf0486f3679c4.mp3",
+      "source/chr/vhla_gule_yidijaha_en-360-m_a1.30_c77878ca50c6c390f19ce192b3faf0486f3679c4.mp3",
+      "source/chr/vhla_gule_yidijaha_en-361-f_a1.30_c77878ca50c6c390f19ce192b3faf0486f3679c4.mp3",
       "source/chr/gule_hla_yidijaha_en-333-f_a1.30_5b9fd5535c853cf659ead3369246993dc9687836.mp3",
       "source/chr/gule_hla_yidijaha_en-345-m_a1.30_5b9fd5535c853cf659ead3369246993dc9687836.mp3",
       "source/chr/gule_hla_yidijaha_en-360-m_a1.30_5b9fd5535c853cf659ead3369246993dc9687836.mp3",
       "source/chr/gule_hla_yidijaha_en-361-f_a1.30_5b9fd5535c853cf659ead3369246993dc9687836.mp3",
-      "source/chr/vhla_yidijaha_gule_en-333-f_a1.30_ed02c09fed8240bc3992f6e79b95d3e68a94bd9e.mp3",
-      "source/chr/vhla_yidijaha_gule_en-345-m_a1.30_ed02c09fed8240bc3992f6e79b95d3e68a94bd9e.mp3",
-      "source/chr/vhla_yidijaha_gule_en-360-m_a1.30_ed02c09fed8240bc3992f6e79b95d3e68a94bd9e.mp3",
-      "source/chr/vhla_yidijaha_gule_en-361-f_a1.30_ed02c09fed8240bc3992f6e79b95d3e68a94bd9e.mp3"
+      "source/chr/vhla_yidijaha_gule_en-333-f_a1.30_d375a1aa29e8923297f658dc77b6c454e8aa9681.mp3",
+      "source/chr/vhla_yidijaha_gule_en-345-m_a1.30_d375a1aa29e8923297f658dc77b6c454e8aa9681.mp3",
+      "source/chr/vhla_yidijaha_gule_en-360-m_a1.30_d375a1aa29e8923297f658dc77b6c454e8aa9681.mp3",
+      "source/chr/vhla_yidijaha_gule_en-361-f_a1.30_d375a1aa29e8923297f658dc77b6c454e8aa9681.mp3"
     ],
     "english": "You don't have acorns.",
     "english_audio": [
@@ -6826,24 +6826,24 @@
   {
     "alternate_pronunciations": [
       "hla gi:hli yidù:wa:ká.",
-      "vhla yidù:wa:káha gi:hli.",
+      "v́ːhla yidù:wa:káha gi:hli.",
       "gi:hli hla yidù:wa:ká."
     ],
     "alternate_syllabary": ["Ꮭ ᎩᏟ ᏱᏚᏩᎧ.", "ᎥᏝ ᏱᏚᏩᎧᎭ ᎩᏟ.", "ᎩᏟ Ꮭ ᏱᏚᏩᎧ."],
-    "cherokee": "vhla gi:hli yidù:wa:káha.",
+    "cherokee": "v́ːhla gi:hli yidù:wa:káha.",
     "cherokee_audio": [
-      "source/chr/vhla_gihli_yiduwakaha_en-333-f_a1.30_bd2968f6678a717751bf8473b79b519b549f9bc8.mp3",
-      "source/chr/vhla_gihli_yiduwakaha_en-345-m_a1.30_bd2968f6678a717751bf8473b79b519b549f9bc8.mp3",
-      "source/chr/vhla_gihli_yiduwakaha_en-360-m_a1.30_bd2968f6678a717751bf8473b79b519b549f9bc8.mp3",
-      "source/chr/vhla_gihli_yiduwakaha_en-361-f_a1.30_bd2968f6678a717751bf8473b79b519b549f9bc8.mp3",
+      "source/chr/vhla_gihli_yiduwakaha_en-333-f_a1.30_c59c73cb101afda4ecc6252baced3316e87bf04b.mp3",
+      "source/chr/vhla_gihli_yiduwakaha_en-345-m_a1.30_c59c73cb101afda4ecc6252baced3316e87bf04b.mp3",
+      "source/chr/vhla_gihli_yiduwakaha_en-360-m_a1.30_c59c73cb101afda4ecc6252baced3316e87bf04b.mp3",
+      "source/chr/vhla_gihli_yiduwakaha_en-361-f_a1.30_c59c73cb101afda4ecc6252baced3316e87bf04b.mp3",
       "source/chr/hla_gihli_yiduwaka_en-333-f_a1.30_4f7b4a41c4147a1163d40376631193ab66ff6bdd.mp3",
       "source/chr/hla_gihli_yiduwaka_en-345-m_a1.30_4f7b4a41c4147a1163d40376631193ab66ff6bdd.mp3",
       "source/chr/hla_gihli_yiduwaka_en-360-m_a1.30_4f7b4a41c4147a1163d40376631193ab66ff6bdd.mp3",
       "source/chr/hla_gihli_yiduwaka_en-361-f_a1.30_4f7b4a41c4147a1163d40376631193ab66ff6bdd.mp3",
-      "source/chr/vhla_yiduwakaha_gihli_en-333-f_a1.30_2632c8354c967b6824540c0c88c2ec35154bb528.mp3",
-      "source/chr/vhla_yiduwakaha_gihli_en-345-m_a1.30_2632c8354c967b6824540c0c88c2ec35154bb528.mp3",
-      "source/chr/vhla_yiduwakaha_gihli_en-360-m_a1.30_2632c8354c967b6824540c0c88c2ec35154bb528.mp3",
-      "source/chr/vhla_yiduwakaha_gihli_en-361-f_a1.30_2632c8354c967b6824540c0c88c2ec35154bb528.mp3",
+      "source/chr/vhla_yiduwakaha_gihli_en-333-f_a1.30_974bdc43e2ffd795d3913f810dd5eeea710e6139.mp3",
+      "source/chr/vhla_yiduwakaha_gihli_en-345-m_a1.30_974bdc43e2ffd795d3913f810dd5eeea710e6139.mp3",
+      "source/chr/vhla_yiduwakaha_gihli_en-360-m_a1.30_974bdc43e2ffd795d3913f810dd5eeea710e6139.mp3",
+      "source/chr/vhla_yiduwakaha_gihli_en-361-f_a1.30_974bdc43e2ffd795d3913f810dd5eeea710e6139.mp3",
       "source/chr/gihli_hla_yiduwaka_en-333-f_a1.30_51c4a0f641f1e0539f4bc13704ec907ac433b53e.mp3",
       "source/chr/gihli_hla_yiduwaka_en-345-m_a1.30_51c4a0f641f1e0539f4bc13704ec907ac433b53e.mp3",
       "source/chr/gihli_hla_yiduwaka_en-360-m_a1.30_51c4a0f641f1e0539f4bc13704ec907ac433b53e.mp3",
@@ -6859,24 +6859,24 @@
   {
     "alternate_pronunciations": [
       "hla wě:sa yidù:ni:ká.",
-      "vhla yidù:ni:káha wě:sa.",
+      "v́ːhla yidù:ni:káha wě:sa.",
       "wě:sa hla yidù:ni:ká."
     ],
     "alternate_syllabary": ["Ꮭ ᏪᏌ ᏱᏚᏂᎧ.", "ᎥᏝ ᏱᏚᏂᎧᎭ ᏪᏌ.", "ᏪᏌ Ꮭ ᏱᏚᏂᎧ."],
-    "cherokee": "vhla wě:sa yidù:ni:káha.",
+    "cherokee": "v́ːhla wě:sa yidù:ni:káha.",
     "cherokee_audio": [
-      "source/chr/vhla_wesa_yidunikaha_en-333-f_a1.30_86231da8a8b43186781292c86eab8ab504d7a871.mp3",
-      "source/chr/vhla_wesa_yidunikaha_en-345-m_a1.30_86231da8a8b43186781292c86eab8ab504d7a871.mp3",
-      "source/chr/vhla_wesa_yidunikaha_en-360-m_a1.30_86231da8a8b43186781292c86eab8ab504d7a871.mp3",
-      "source/chr/vhla_wesa_yidunikaha_en-361-f_a1.30_86231da8a8b43186781292c86eab8ab504d7a871.mp3",
+      "source/chr/vhla_wesa_yidunikaha_en-333-f_a1.30_f72c7aea77a17b294830f433248367bb91ceb037.mp3",
+      "source/chr/vhla_wesa_yidunikaha_en-345-m_a1.30_f72c7aea77a17b294830f433248367bb91ceb037.mp3",
+      "source/chr/vhla_wesa_yidunikaha_en-360-m_a1.30_f72c7aea77a17b294830f433248367bb91ceb037.mp3",
+      "source/chr/vhla_wesa_yidunikaha_en-361-f_a1.30_f72c7aea77a17b294830f433248367bb91ceb037.mp3",
       "source/chr/hla_wesa_yidunika_en-333-f_a1.30_3c1809f632ee4a4b2abf36cea3b21e06664adfea.mp3",
       "source/chr/hla_wesa_yidunika_en-345-m_a1.30_3c1809f632ee4a4b2abf36cea3b21e06664adfea.mp3",
       "source/chr/hla_wesa_yidunika_en-360-m_a1.30_3c1809f632ee4a4b2abf36cea3b21e06664adfea.mp3",
       "source/chr/hla_wesa_yidunika_en-361-f_a1.30_3c1809f632ee4a4b2abf36cea3b21e06664adfea.mp3",
-      "source/chr/vhla_yidunikaha_wesa_en-333-f_a1.30_b45a5cf6177afed5d2db7867cb8ec496157bf6e1.mp3",
-      "source/chr/vhla_yidunikaha_wesa_en-345-m_a1.30_b45a5cf6177afed5d2db7867cb8ec496157bf6e1.mp3",
-      "source/chr/vhla_yidunikaha_wesa_en-360-m_a1.30_b45a5cf6177afed5d2db7867cb8ec496157bf6e1.mp3",
-      "source/chr/vhla_yidunikaha_wesa_en-361-f_a1.30_b45a5cf6177afed5d2db7867cb8ec496157bf6e1.mp3",
+      "source/chr/vhla_yidunikaha_wesa_en-333-f_a1.30_adf74339bed99217bbd8b6e8b3d9ff676e1276b9.mp3",
+      "source/chr/vhla_yidunikaha_wesa_en-345-m_a1.30_adf74339bed99217bbd8b6e8b3d9ff676e1276b9.mp3",
+      "source/chr/vhla_yidunikaha_wesa_en-360-m_a1.30_adf74339bed99217bbd8b6e8b3d9ff676e1276b9.mp3",
+      "source/chr/vhla_yidunikaha_wesa_en-361-f_a1.30_adf74339bed99217bbd8b6e8b3d9ff676e1276b9.mp3",
       "source/chr/wesa_hla_yidunika_en-333-f_a1.30_4bec2751711ca0fc9438458485198b5b8a7ca21e.mp3",
       "source/chr/wesa_hla_yidunika_en-345-m_a1.30_4bec2751711ca0fc9438458485198b5b8a7ca21e.mp3",
       "source/chr/wesa_hla_yidunika_en-360-m_a1.30_4bec2751711ca0fc9438458485198b5b8a7ca21e.mp3",
@@ -6892,24 +6892,24 @@
   {
     "alternate_pronunciations": [
       "hla ahwi yida:giká.",
-      "vhla yida:gikáha ahawi.",
+      "v́ːhla yida:gikáha ahawi.",
       "ahwi hla yida:giká."
     ],
     "alternate_syllabary": ["Ꮭ ᎠᏫ ᏱᏓᎩᎧ.", "ᎥᏝ ᏱᏓᎩᎧᎭ ᎠᎭᏫ.", "ᎠᏫ Ꮭ ᏱᏓᎩᎧ."],
-    "cherokee": "vhla ahawi yida:gikáha.",
+    "cherokee": "v́ːhla ahawi yida:gikáha.",
     "cherokee_audio": [
-      "source/chr/vhla_ahawi_yidagikaha_en-333-f_a1.30_78a3b00cf7b859b8323cec02b6857d31209eaf66.mp3",
-      "source/chr/vhla_ahawi_yidagikaha_en-345-m_a1.30_78a3b00cf7b859b8323cec02b6857d31209eaf66.mp3",
-      "source/chr/vhla_ahawi_yidagikaha_en-360-m_a1.30_78a3b00cf7b859b8323cec02b6857d31209eaf66.mp3",
-      "source/chr/vhla_ahawi_yidagikaha_en-361-f_a1.30_78a3b00cf7b859b8323cec02b6857d31209eaf66.mp3",
+      "source/chr/vhla_ahawi_yidagikaha_en-333-f_a1.30_c09a1745d47c79b51f0909c313aaba31b160a366.mp3",
+      "source/chr/vhla_ahawi_yidagikaha_en-345-m_a1.30_c09a1745d47c79b51f0909c313aaba31b160a366.mp3",
+      "source/chr/vhla_ahawi_yidagikaha_en-360-m_a1.30_c09a1745d47c79b51f0909c313aaba31b160a366.mp3",
+      "source/chr/vhla_ahawi_yidagikaha_en-361-f_a1.30_c09a1745d47c79b51f0909c313aaba31b160a366.mp3",
       "source/chr/hla_ahwi_yidagika_en-333-f_a1.30_0227e1d7fc726c085ce5e0c98938efbc288330b7.mp3",
       "source/chr/hla_ahwi_yidagika_en-345-m_a1.30_0227e1d7fc726c085ce5e0c98938efbc288330b7.mp3",
       "source/chr/hla_ahwi_yidagika_en-360-m_a1.30_0227e1d7fc726c085ce5e0c98938efbc288330b7.mp3",
       "source/chr/hla_ahwi_yidagika_en-361-f_a1.30_0227e1d7fc726c085ce5e0c98938efbc288330b7.mp3",
-      "source/chr/vhla_yidagikaha_ahawi_en-333-f_a1.30_840eeae396ca0ab71fd260c1f62b7e06c3a87a21.mp3",
-      "source/chr/vhla_yidagikaha_ahawi_en-345-m_a1.30_840eeae396ca0ab71fd260c1f62b7e06c3a87a21.mp3",
-      "source/chr/vhla_yidagikaha_ahawi_en-360-m_a1.30_840eeae396ca0ab71fd260c1f62b7e06c3a87a21.mp3",
-      "source/chr/vhla_yidagikaha_ahawi_en-361-f_a1.30_840eeae396ca0ab71fd260c1f62b7e06c3a87a21.mp3",
+      "source/chr/vhla_yidagikaha_ahawi_en-333-f_a1.30_3634c41398719bde93ed7d77baa22a7ecee920c0.mp3",
+      "source/chr/vhla_yidagikaha_ahawi_en-345-m_a1.30_3634c41398719bde93ed7d77baa22a7ecee920c0.mp3",
+      "source/chr/vhla_yidagikaha_ahawi_en-360-m_a1.30_3634c41398719bde93ed7d77baa22a7ecee920c0.mp3",
+      "source/chr/vhla_yidagikaha_ahawi_en-361-f_a1.30_3634c41398719bde93ed7d77baa22a7ecee920c0.mp3",
       "source/chr/ahwi_hla_yidagika_en-333-f_a1.30_bcfb5f2b2fdf50eaaf765366a7eb2da53042a1e0.mp3",
       "source/chr/ahwi_hla_yidagika_en-345-m_a1.30_bcfb5f2b2fdf50eaaf765366a7eb2da53042a1e0.mp3",
       "source/chr/ahwi_hla_yidagika_en-360-m_a1.30_bcfb5f2b2fdf50eaaf765366a7eb2da53042a1e0.mp3",
@@ -6925,24 +6925,24 @@
   {
     "alternate_pronunciations": [
       "hla do:ya yidi:jaká.",
-      "vhla yidi:jakáha do:ya.",
+      "v́ːhla yidi:jakáha do:ya.",
       "hla yidi:jaká do:ya."
     ],
     "alternate_syllabary": ["Ꮭ ᏙᏯ ᏱᏗᏣᎧ.", "ᎥᏝ ᏱᏗᏣᎧᎭ ᏙᏯ.", "Ꮭ ᏱᏗᏣᎧ ᏙᏯ."],
-    "cherokee": "vhla do:ya yidi:jakáha.",
+    "cherokee": "v́ːhla do:ya yidi:jakáha.",
     "cherokee_audio": [
-      "source/chr/vhla_doya_yidijakaha_en-333-f_a1.30_035236e6c200232fb4512916dba657f76d5729a1.mp3",
-      "source/chr/vhla_doya_yidijakaha_en-345-m_a1.30_035236e6c200232fb4512916dba657f76d5729a1.mp3",
-      "source/chr/vhla_doya_yidijakaha_en-360-m_a1.30_035236e6c200232fb4512916dba657f76d5729a1.mp3",
-      "source/chr/vhla_doya_yidijakaha_en-361-f_a1.30_035236e6c200232fb4512916dba657f76d5729a1.mp3",
+      "source/chr/vhla_doya_yidijakaha_en-333-f_a1.30_17355e6720ce4d8fc1b541d54cc13cd38bf9d7c9.mp3",
+      "source/chr/vhla_doya_yidijakaha_en-345-m_a1.30_17355e6720ce4d8fc1b541d54cc13cd38bf9d7c9.mp3",
+      "source/chr/vhla_doya_yidijakaha_en-360-m_a1.30_17355e6720ce4d8fc1b541d54cc13cd38bf9d7c9.mp3",
+      "source/chr/vhla_doya_yidijakaha_en-361-f_a1.30_17355e6720ce4d8fc1b541d54cc13cd38bf9d7c9.mp3",
       "source/chr/hla_doya_yidijaka_en-333-f_a1.30_e1a187124c0af015beeec24f0d82beb43d5930da.mp3",
       "source/chr/hla_doya_yidijaka_en-345-m_a1.30_e1a187124c0af015beeec24f0d82beb43d5930da.mp3",
       "source/chr/hla_doya_yidijaka_en-360-m_a1.30_e1a187124c0af015beeec24f0d82beb43d5930da.mp3",
       "source/chr/hla_doya_yidijaka_en-361-f_a1.30_e1a187124c0af015beeec24f0d82beb43d5930da.mp3",
-      "source/chr/vhla_yidijakaha_doya_en-333-f_a1.30_483ed146d00e94bd1d4eb974d92f3c0717708a71.mp3",
-      "source/chr/vhla_yidijakaha_doya_en-345-m_a1.30_483ed146d00e94bd1d4eb974d92f3c0717708a71.mp3",
-      "source/chr/vhla_yidijakaha_doya_en-360-m_a1.30_483ed146d00e94bd1d4eb974d92f3c0717708a71.mp3",
-      "source/chr/vhla_yidijakaha_doya_en-361-f_a1.30_483ed146d00e94bd1d4eb974d92f3c0717708a71.mp3",
+      "source/chr/vhla_yidijakaha_doya_en-333-f_a1.30_f6540bba783496314569f0238d246a6f46b99cd4.mp3",
+      "source/chr/vhla_yidijakaha_doya_en-345-m_a1.30_f6540bba783496314569f0238d246a6f46b99cd4.mp3",
+      "source/chr/vhla_yidijakaha_doya_en-360-m_a1.30_f6540bba783496314569f0238d246a6f46b99cd4.mp3",
+      "source/chr/vhla_yidijakaha_doya_en-361-f_a1.30_f6540bba783496314569f0238d246a6f46b99cd4.mp3",
       "source/chr/hla_yidijaka_doya_en-333-f_a1.30_605a525607c9e806e1120dde428b730fc71be244.mp3",
       "source/chr/hla_yidijaka_doya_en-345-m_a1.30_605a525607c9e806e1120dde428b730fc71be244.mp3",
       "source/chr/hla_yidijaka_doya_en-360-m_a1.30_605a525607c9e806e1120dde428b730fc71be244.mp3",
@@ -7179,18 +7179,18 @@
     "syllabary": "ᏩᎭᏯ ᎠᏂᎬᎿᎨ ᎤᏂᏍᎪᎸ ᎨᏐᎢ."
   },
   {
-    "alternate_pronunciations": ["Na sǎ:lol u:wǒ:díge̋ gè:sv̌."],
+    "alternate_pronunciations": ["Na sǎ:lol u:wǒ:díge̋ gè:sv̌."],
     "alternate_syllabary": ["Ꮎ ᏌᎶᎵ ᎤᏬᏗᎨ ᎨᏒ."],
-    "cherokee": "Na sǎ:loli u:wǒ:díge̋ gè:sv̌:ʔi.",
+    "cherokee": "Na sǎ:loli u:wǒ:díge̋ gè:sv̌:ʔi.",
     "cherokee_audio": [
-      "source/chr/na_saloli_uwodige_gesvi_en-333-f_a1.30_1f8788d53e1c1203d37831693ab6e7b8a03e442c.mp3",
-      "source/chr/na_saloli_uwodige_gesvi_en-345-m_a1.30_1f8788d53e1c1203d37831693ab6e7b8a03e442c.mp3",
-      "source/chr/na_saloli_uwodige_gesvi_en-360-m_a1.30_1f8788d53e1c1203d37831693ab6e7b8a03e442c.mp3",
-      "source/chr/na_saloli_uwodige_gesvi_en-361-f_a1.30_1f8788d53e1c1203d37831693ab6e7b8a03e442c.mp3",
-      "source/chr/na_salol_uwodige_gesv_en-333-f_a1.30_d67de50ca9fa39211f258e07002eae5487c3d01f.mp3",
-      "source/chr/na_salol_uwodige_gesv_en-345-m_a1.30_d67de50ca9fa39211f258e07002eae5487c3d01f.mp3",
-      "source/chr/na_salol_uwodige_gesv_en-360-m_a1.30_d67de50ca9fa39211f258e07002eae5487c3d01f.mp3",
-      "source/chr/na_salol_uwodige_gesv_en-361-f_a1.30_d67de50ca9fa39211f258e07002eae5487c3d01f.mp3"
+      "source/chr/na_saloli_uwodige_gesvi_en-333-f_a1.30_1a7bf8bafa66e8cc7260f8e22f45bd25e72c925f.mp3",
+      "source/chr/na_saloli_uwodige_gesvi_en-345-m_a1.30_1a7bf8bafa66e8cc7260f8e22f45bd25e72c925f.mp3",
+      "source/chr/na_saloli_uwodige_gesvi_en-360-m_a1.30_1a7bf8bafa66e8cc7260f8e22f45bd25e72c925f.mp3",
+      "source/chr/na_saloli_uwodige_gesvi_en-361-f_a1.30_1a7bf8bafa66e8cc7260f8e22f45bd25e72c925f.mp3",
+      "source/chr/na_salol_uwodige_gesv_en-333-f_a1.30_8a17a4b1beeb5d010e0e266915fec5042881b6bf.mp3",
+      "source/chr/na_salol_uwodige_gesv_en-345-m_a1.30_8a17a4b1beeb5d010e0e266915fec5042881b6bf.mp3",
+      "source/chr/na_salol_uwodige_gesv_en-360-m_a1.30_8a17a4b1beeb5d010e0e266915fec5042881b6bf.mp3",
+      "source/chr/na_salol_uwodige_gesv_en-361-f_a1.30_8a17a4b1beeb5d010e0e266915fec5042881b6bf.mp3"
     ],
     "english": "The squirrel was brown.",
     "english_audio": [
@@ -7242,18 +7242,18 @@
     "syllabary": "Ꮎ ᎬᎿᎨ ᏙᏯ ᎠᎭᏂ ᎨᏎᎢ."
   },
   {
-    "alternate_pronunciations": ["Na sǒ:gwíl uwǒ:díge̋ gè:sé:sd."],
+    "alternate_pronunciations": ["Na sǒ:gwíl uwǒ:díge̋ gè:sé:sd."],
     "alternate_syllabary": ["Ꮎ ᏐᏈᎵ ᎤᏬᏗᎨ ᎨᏎᏍD."],
-    "cherokee": "Na sǒ:gwíli uwǒ:díge̋ gè:sé:sdi.",
+    "cherokee": "Na sǒ:gwíli uwǒ:díge̋ gè:sé:sdi.",
     "cherokee_audio": [
-      "source/chr/na_sogwili_uwodige_gesesdi_en-333-f_a1.30_5a03f273b8f7c95a18c013b821f1303b4f74b1d0.mp3",
-      "source/chr/na_sogwili_uwodige_gesesdi_en-345-m_a1.30_5a03f273b8f7c95a18c013b821f1303b4f74b1d0.mp3",
-      "source/chr/na_sogwili_uwodige_gesesdi_en-360-m_a1.30_5a03f273b8f7c95a18c013b821f1303b4f74b1d0.mp3",
-      "source/chr/na_sogwili_uwodige_gesesdi_en-361-f_a1.30_5a03f273b8f7c95a18c013b821f1303b4f74b1d0.mp3",
-      "source/chr/na_sogwil_uwodige_gesesd_en-333-f_a1.30_9a588fbf551ce872c7fe40114dde5bb6586013c1.mp3",
-      "source/chr/na_sogwil_uwodige_gesesd_en-345-m_a1.30_9a588fbf551ce872c7fe40114dde5bb6586013c1.mp3",
-      "source/chr/na_sogwil_uwodige_gesesd_en-360-m_a1.30_9a588fbf551ce872c7fe40114dde5bb6586013c1.mp3",
-      "source/chr/na_sogwil_uwodige_gesesd_en-361-f_a1.30_9a588fbf551ce872c7fe40114dde5bb6586013c1.mp3"
+      "source/chr/na_sogwili_uwodige_gesesdi_en-333-f_a1.30_7212156f0e484cfe1ca5567d87fd707953dca54f.mp3",
+      "source/chr/na_sogwili_uwodige_gesesdi_en-345-m_a1.30_7212156f0e484cfe1ca5567d87fd707953dca54f.mp3",
+      "source/chr/na_sogwili_uwodige_gesesdi_en-360-m_a1.30_7212156f0e484cfe1ca5567d87fd707953dca54f.mp3",
+      "source/chr/na_sogwili_uwodige_gesesdi_en-361-f_a1.30_7212156f0e484cfe1ca5567d87fd707953dca54f.mp3",
+      "source/chr/na_sogwil_uwodige_gesesd_en-333-f_a1.30_62f009245efae858dd9e7426cd100b17f8323939.mp3",
+      "source/chr/na_sogwil_uwodige_gesesd_en-345-m_a1.30_62f009245efae858dd9e7426cd100b17f8323939.mp3",
+      "source/chr/na_sogwil_uwodige_gesesd_en-360-m_a1.30_62f009245efae858dd9e7426cd100b17f8323939.mp3",
+      "source/chr/na_sogwil_uwodige_gesesd_en-361-f_a1.30_62f009245efae858dd9e7426cd100b17f8323939.mp3"
     ],
     "english": "The horse will be brown.",
     "english_audio": [
@@ -7263,18 +7263,18 @@
     "syllabary": "Ꮎ ᏐᏈᎵ ᎤᏬᏗᎨ ᎨᏎᏍᏗ."
   },
   {
-    "alternate_pronunciations": ["Na a:nidalǒ:níge̋ ji:sd ù:hna gè:sv̌:g."],
+    "alternate_pronunciations": ["Na a:nidalǒ:níge̋ ji:sd ù:hna gè:sv̌:g."],
     "alternate_syllabary": ["Ꮎ ᎠᏂᏓᎶᏂᎨ ᏥᏍD ᎤᎿ ᎨᏒG."],
-    "cherokee": "Na a:nidalǒ:níge̋ ji:sdu ù:hna gè:sv̌:gi.",
+    "cherokee": "Na a:nidalǒ:níge̋ ji:sdu ù:hna gè:sv̌:gi.",
     "cherokee_audio": [
-      "source/chr/na_anidalonige_jisdu_uhna_gesvgi_en-333-f_a1.30_5fb43f088064bcc8f6db168ed02c047f6a1b6676.mp3",
-      "source/chr/na_anidalonige_jisdu_uhna_gesvgi_en-345-m_a1.30_5fb43f088064bcc8f6db168ed02c047f6a1b6676.mp3",
-      "source/chr/na_anidalonige_jisdu_uhna_gesvgi_en-360-m_a1.30_5fb43f088064bcc8f6db168ed02c047f6a1b6676.mp3",
-      "source/chr/na_anidalonige_jisdu_uhna_gesvgi_en-361-f_a1.30_5fb43f088064bcc8f6db168ed02c047f6a1b6676.mp3",
-      "source/chr/na_anidalonige_jisd_uhna_gesvg_en-333-f_a1.30_7e6dac250c6f59a32ea022de9ac72c3f3eed1763.mp3",
-      "source/chr/na_anidalonige_jisd_uhna_gesvg_en-345-m_a1.30_7e6dac250c6f59a32ea022de9ac72c3f3eed1763.mp3",
-      "source/chr/na_anidalonige_jisd_uhna_gesvg_en-360-m_a1.30_7e6dac250c6f59a32ea022de9ac72c3f3eed1763.mp3",
-      "source/chr/na_anidalonige_jisd_uhna_gesvg_en-361-f_a1.30_7e6dac250c6f59a32ea022de9ac72c3f3eed1763.mp3"
+      "source/chr/na_anidalonige_jisdu_uhna_gesvgi_en-333-f_a1.30_8bf4430e1bec4c6a6faede2964c7a0d63b0d0f96.mp3",
+      "source/chr/na_anidalonige_jisdu_uhna_gesvgi_en-345-m_a1.30_8bf4430e1bec4c6a6faede2964c7a0d63b0d0f96.mp3",
+      "source/chr/na_anidalonige_jisdu_uhna_gesvgi_en-360-m_a1.30_8bf4430e1bec4c6a6faede2964c7a0d63b0d0f96.mp3",
+      "source/chr/na_anidalonige_jisdu_uhna_gesvgi_en-361-f_a1.30_8bf4430e1bec4c6a6faede2964c7a0d63b0d0f96.mp3",
+      "source/chr/na_anidalonige_jisd_uhna_gesvg_en-333-f_a1.30_009f5f030d78a6271f901f493d43a30fdd2fb9f5.mp3",
+      "source/chr/na_anidalonige_jisd_uhna_gesvg_en-345-m_a1.30_009f5f030d78a6271f901f493d43a30fdd2fb9f5.mp3",
+      "source/chr/na_anidalonige_jisd_uhna_gesvg_en-360-m_a1.30_009f5f030d78a6271f901f493d43a30fdd2fb9f5.mp3",
+      "source/chr/na_anidalonige_jisd_uhna_gesvg_en-361-f_a1.30_009f5f030d78a6271f901f493d43a30fdd2fb9f5.mp3"
     ],
     "english": "The yellow rabbits were there.",
     "english_audio": [
@@ -7284,18 +7284,18 @@
     "syllabary": "Ꮎ ᎠᏂᏓᎶᏂᎨ ᏥᏍᏚ ᎤᎿ ᎨᏒᎩ."
   },
   {
-    "alternate_pronunciations": ["Na yǒ:n dalǒ:níge̋ ù:sgǒ:lv̋ i̋:g."],
+    "alternate_pronunciations": ["Na yǒ:n dalǒ:níge̋ ù:sgǒ:lv̋ i̋:g."],
     "alternate_syllabary": ["Ꮎ ᏲN ᏓᎶᏂᎨ ᎤᏍᎪᎸ ᎢG."],
-    "cherokee": "Na yǒ:na dalǒ:níge̋ ù:sgǒ:lv̋ i̋:gi.",
+    "cherokee": "Na yǒ:na dalǒ:níge̋ ù:sgǒ:lv̋ i̋:gi.",
     "cherokee_audio": [
-      "source/chr/na_yona_dalonige_usgolv_igi_en-333-f_a1.30_c616822eb8bdcee2c19fbc63ce96c175270f911d.mp3",
-      "source/chr/na_yona_dalonige_usgolv_igi_en-345-m_a1.30_c616822eb8bdcee2c19fbc63ce96c175270f911d.mp3",
-      "source/chr/na_yona_dalonige_usgolv_igi_en-360-m_a1.30_c616822eb8bdcee2c19fbc63ce96c175270f911d.mp3",
-      "source/chr/na_yona_dalonige_usgolv_igi_en-361-f_a1.30_c616822eb8bdcee2c19fbc63ce96c175270f911d.mp3",
-      "source/chr/na_yon_dalonige_usgolv_ig_en-333-f_a1.30_9b32aa8dd830ae0a90c7ba4c08da21f7d1aadcce.mp3",
-      "source/chr/na_yon_dalonige_usgolv_ig_en-345-m_a1.30_9b32aa8dd830ae0a90c7ba4c08da21f7d1aadcce.mp3",
-      "source/chr/na_yon_dalonige_usgolv_ig_en-360-m_a1.30_9b32aa8dd830ae0a90c7ba4c08da21f7d1aadcce.mp3",
-      "source/chr/na_yon_dalonige_usgolv_ig_en-361-f_a1.30_9b32aa8dd830ae0a90c7ba4c08da21f7d1aadcce.mp3"
+      "source/chr/na_yona_dalonige_usgolv_igi_en-333-f_a1.30_662262bc8a3f769a6d39cfb00c611e6920389282.mp3",
+      "source/chr/na_yona_dalonige_usgolv_igi_en-345-m_a1.30_662262bc8a3f769a6d39cfb00c611e6920389282.mp3",
+      "source/chr/na_yona_dalonige_usgolv_igi_en-360-m_a1.30_662262bc8a3f769a6d39cfb00c611e6920389282.mp3",
+      "source/chr/na_yona_dalonige_usgolv_igi_en-361-f_a1.30_662262bc8a3f769a6d39cfb00c611e6920389282.mp3",
+      "source/chr/na_yon_dalonige_usgolv_ig_en-333-f_a1.30_230278a0f7dd3684bdc39df34760b1daf3a7acac.mp3",
+      "source/chr/na_yon_dalonige_usgolv_ig_en-345-m_a1.30_230278a0f7dd3684bdc39df34760b1daf3a7acac.mp3",
+      "source/chr/na_yon_dalonige_usgolv_ig_en-360-m_a1.30_230278a0f7dd3684bdc39df34760b1daf3a7acac.mp3",
+      "source/chr/na_yon_dalonige_usgolv_ig_en-361-f_a1.30_230278a0f7dd3684bdc39df34760b1daf3a7acac.mp3"
     ],
     "english": "The bear is orange.",
     "english_audio": [
@@ -7712,12 +7712,12 @@
   {
     "alternate_pronunciations": ["ka! hla nǔ:na yà:gwadu:lí!"],
     "alternate_syllabary": ["Ꭷ! Ꮭ ᏄᎾ ᏯᏆᏚᎵ!"],
-    "cherokee": "ka, vhla nǔ:na yà:gwadu:líha",
+    "cherokee": "ka, v́ːhla nǔ:na yà:gwadu:líha",
     "cherokee_audio": [
-      "source/chr/ka_vhla_nuna_yagwaduliha_en-333-f_a1.30_ec1323c799d59f4f4ce301909b9fd95d6ce235ec.mp3",
-      "source/chr/ka_vhla_nuna_yagwaduliha_en-345-m_a1.30_ec1323c799d59f4f4ce301909b9fd95d6ce235ec.mp3",
-      "source/chr/ka_vhla_nuna_yagwaduliha_en-360-m_a1.30_ec1323c799d59f4f4ce301909b9fd95d6ce235ec.mp3",
-      "source/chr/ka_vhla_nuna_yagwaduliha_en-361-f_a1.30_ec1323c799d59f4f4ce301909b9fd95d6ce235ec.mp3",
+      "source/chr/ka_vhla_nuna_yagwaduliha_en-333-f_a1.30_448c21d43c041b7ae7007c9a4f4cf569b45dc580.mp3",
+      "source/chr/ka_vhla_nuna_yagwaduliha_en-345-m_a1.30_448c21d43c041b7ae7007c9a4f4cf569b45dc580.mp3",
+      "source/chr/ka_vhla_nuna_yagwaduliha_en-360-m_a1.30_448c21d43c041b7ae7007c9a4f4cf569b45dc580.mp3",
+      "source/chr/ka_vhla_nuna_yagwaduliha_en-361-f_a1.30_448c21d43c041b7ae7007c9a4f4cf569b45dc580.mp3",
       "source/chr/ka_hla_nuna_yagwaduli_en-333-f_a1.30_5b41e872cfa6ba10392800e691d33d276359f5c2.mp3",
       "source/chr/ka_hla_nuna_yagwaduli_en-345-m_a1.30_5b41e872cfa6ba10392800e691d33d276359f5c2.mp3",
       "source/chr/ka_hla_nuna_yagwaduli_en-360-m_a1.30_5b41e872cfa6ba10392800e691d33d276359f5c2.mp3",
