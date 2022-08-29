@@ -57,9 +57,14 @@ export type LessonsAction =
   | StartLessonAction
   | FlagLessonCreationError;
 
+export type HandleSetChangesAction = {
+  type: "HANDLE_SET_CHANGES";
+};
+
 export type UserStateAction =
   | SetUpstreamCollectionAction
   | LoadStateAction
   | ResizeLeitnerBoxesAction
   | SetAction
-  | LessonsAction;
+  | LessonsAction
+  | HandleSetChangesAction;

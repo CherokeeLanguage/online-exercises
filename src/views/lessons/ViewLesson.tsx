@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { Card, cards, keyForCard } from "../../data/clean-cll-data";
+import { Card, cards, keyForCard } from "../../data/cards";
 import { nameForLesson } from "../../state/reducers/lessons";
 import { ReviewResult } from "../../state/reducers/leitnerBoxes";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";

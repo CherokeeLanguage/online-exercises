@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { useKeyPressEvent } from "react-use";
 import styled from "styled-components";
-import { Card } from "../../data/clean-cll-data";
+import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { theme } from "../../theme";
 import { createIssueForAudioInNewTab } from "../../utils/createIssue";

@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, cards, keyForCard } from "../../data/clean-cll-data";
+import { Card, cards, keyForCard } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { useLesson } from "../../state/useLesson";
 import { useReviewSession } from "../../spaced-repetition/useReviewSession";

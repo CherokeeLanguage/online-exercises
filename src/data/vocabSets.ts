@@ -1,4 +1,42 @@
-import { termsByLesson } from "./clean-cll-data";
+import { cherokeeToKey } from "./cards";
+import CLL1 from "./collections/cll1.json";
+import SSW from "./collections/ssw.json";
+
+function cleanSet(set: VocabSet, collectionId: string): VocabSet {
+  return {
+    ...set,
+    collection: collectionId,
+    terms: set.terms.map(cherokeeToKey),
+  };
+}
+
+export function cleanCollection({ id, title, sets }: Collection): Collection {
+  return {
+    id,
+    title,
+    sets: sets.map((set) => cleanSet(set, id)),
+  };
+}
+
+function applyMigrationsToSet(
+  set: VocabSet,
+  migrations: Record<string, string>
+): VocabSet {
+  return {
+    ...set,
+    terms: set.terms.map((t) => (t in migrations ? migrations[t] : t)),
+  };
+}
+
+export function applyMigrationsToCollection(
+  collection: Collection,
+  migrations: Record<string, string>
+): Collection {
+  return {
+    ...collection,
+    sets: collection.sets.map((set) => applyMigrationsToSet(set, migrations)),
+  };
+}
 
 export interface Collection {
   id: string;
@@ -13,20 +51,13 @@ export interface VocabSet {
   terms: string[];
 }
 
-export const CHEROKEE_LANGUAGE_LESSONS_COLLLECTION = "CLL1";
+export const CHEROKEE_LANGUAGE_LESSONS_COLLLECTION = CLL1.id;
+export const SEE_SAY_WRITE_COLLECTION = SSW.id;
 
 // additional sets can be added here
 export const collections: Record<string, Collection> = {
-  [CHEROKEE_LANGUAGE_LESSONS_COLLLECTION]: {
-    id: CHEROKEE_LANGUAGE_LESSONS_COLLLECTION,
-    title: "Cherokee Language Lessons 1",
-    sets: Object.entries(termsByLesson).map(([chapters, terms]) => ({
-      id: `${CHEROKEE_LANGUAGE_LESSONS_COLLLECTION}:${chapters}`, // bad - fixme
-      title: chapters,
-      collection: CHEROKEE_LANGUAGE_LESSONS_COLLLECTION,
-      terms: terms,
-    })),
-  },
+  [CHEROKEE_LANGUAGE_LESSONS_COLLLECTION]: cleanCollection(CLL1),
+  [SEE_SAY_WRITE_COLLECTION]: cleanCollection(SSW),
 };
 
 export const vocabSets: Record<string, VocabSet> = Object.fromEntries(
