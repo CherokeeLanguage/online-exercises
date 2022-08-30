@@ -5,6 +5,8 @@ import { StyledLink } from "../../components/StyledLink";
 import { Collection, collections } from "../../data/vocabSets";
 import { useUserStateContext } from "../../state/UserStateProvider";
 
+const CHALLENGES_IN_15_MINUTE_LESSON = 90;
+
 export function LessonsWidget(): ReactElement {
   const { upstreamCollection: collectionId } = useUserStateContext();
   const upstreamCollection = collectionId
@@ -21,10 +23,12 @@ export function LessonsWidget(): ReactElement {
       <p>You should try to do at least one lesson with new terms a day.</p>
       {newTermsText(upstreamCollection)}
       <div style={{ gap: "16px", display: "flex" }}>
-        <ButtonLink to={createLessonPath(120, false)}>
+        <ButtonLink
+          to={createLessonPath(CHALLENGES_IN_15_MINUTE_LESSON, false)}
+        >
           15 minute lesson with new terms
         </ButtonLink>
-        <ButtonLink to={createLessonPath(120, true)}>
+        <ButtonLink to={createLessonPath(CHALLENGES_IN_15_MINUTE_LESSON, true)}>
           15 minute review session
         </ButtonLink>
       </div>
