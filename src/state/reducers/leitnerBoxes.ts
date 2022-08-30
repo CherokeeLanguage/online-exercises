@@ -174,10 +174,10 @@ export function reduceLeitnerBoxState(
         (setId) => vocabSets[setId].terms
       );
       const termsWithMigrations = Object.fromEntries(
-        Object.entries(terms).map(([term, stats]) => [
-          applyMigration(term, migration),
-          stats,
-        ])
+        Object.entries(terms).map(([term, stats]) => {
+          const newTerm = applyMigration(term, migration);
+          return [newTerm, { ...stats, key: newTerm }];
+        })
       );
       return {
         terms: addNewTermsIfMissing(
