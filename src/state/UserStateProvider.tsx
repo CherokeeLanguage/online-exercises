@@ -107,26 +107,15 @@ function initializeUserState({
     };
 }
 
-export function useUserState(initializationProps: UserStateProps) {
-  const [storedUserState, setStoredUserState] = useLocalStorage<UserState>(
-    "user-state",
-    undefined,
-    {
-      raw: false,
-      serializer: JSON.stringify,
-      deserializer: JSON.parse,
-    }
-  );
-
+export function useUserState(props: {
+  storedUserState?: UserState;
+  initializationProps: UserStateProps;
+}) {
   const [state, dispatch, dispatchImperativeBlock] = useReducerWithImperative(
     reduceUserState,
-    { storedUserState, initializationProps },
+    props,
     initializeUserState
   );
-
-  useEffect(() => {
-    setStoredUserState(state);
-  }, [state]);
 
   const userSetsInteractors = useUserSetsInteractors(
     state,
@@ -168,18 +157,23 @@ export function useUserState(initializationProps: UserStateProps) {
   useEffect(() => {
     // handle resizes in number of boxes if we ever deploy them
     if (
-      state.leitnerBoxes.numBoxes !== initializationProps.leitnerBoxes.numBoxes
+      state.leitnerBoxes.numBoxes !==
+      props.initializationProps.leitnerBoxes.numBoxes
     )
-      leitnerBoxesInteractors.resize(initializationProps.leitnerBoxes.numBoxes);
+      leitnerBoxesInteractors.resize(
+        props.initializationProps.leitnerBoxes.numBoxes
+      );
     dispatch({ type: "HANDLE_SET_CHANGES" });
   }, []);
 
   return {
-    ...state,
-    ...userSetsInteractors,
-    ...lessonsInteractors,
-    ...leitnerBoxesInteractors,
-    ...miscInteractors,
+    state,
+    interactors: {
+      ...userSetsInteractors,
+      ...lessonsInteractors,
+      ...leitnerBoxesInteractors,
+      ...miscInteractors,
+    },
   };
 }
 
@@ -194,13 +188,31 @@ export function UserStateProvider({
 }: {
   children: ReactNode;
 }): ReactElement {
-  const value = useUserState({
-    leitnerBoxes: {
-      numBoxes: 6,
+  const [storedUserState, setStoredUserState] = useLocalStorage<UserState>(
+    "user-state",
+    undefined,
+    {
+      raw: false,
+      serializer: JSON.stringify,
+      deserializer: JSON.parse,
+    }
+  );
+
+  const { state, interactors } = useUserState({
+    storedUserState,
+    initializationProps: {
+      leitnerBoxes: {
+        numBoxes: 6,
+      },
     },
   });
+
+  useEffect(() => {
+    setStoredUserState(state);
+  }, [state]);
+
   return (
-    <userStateContext.Provider value={value}>
+    <userStateContext.Provider value={{ ...state, ...interactors }}>
       {children}
     </userStateContext.Provider>
   );

@@ -59,4 +59,3 @@ export function keyForCard(card: Card): string {
 }
 
 console.log("Available cards", cards.length);
-console.log({ cards });

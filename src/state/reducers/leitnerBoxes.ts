@@ -96,14 +96,15 @@ function addNewTermsIfMissing(
   newTerms: string[],
   today: number
 ): Record<string, TermStats> {
-  return newTerms.reduce(
-    // do not overwrite existing data
-    (newTerms, term) => ({
-      [term]: newTermStats(term, today),
-      ...newTerms,
-    }),
-    terms
-  );
+  // filter out terms that already exist
+  const termsToAdd = newTerms.filter((t) => !(t in terms));
+  return {
+    ...terms,
+    // need to add terms down here so they are in the right order
+    ...Object.fromEntries(
+      termsToAdd.map((term) => [term, newTermStats(term, today)])
+    ),
+  };
 }
 
 export function reduceLeitnerBoxState(
