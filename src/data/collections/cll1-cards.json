@@ -1812,7 +1812,7 @@
   },
   {
     "alternate_pronunciations": ["Gawó:ni:sgv́ à:ktahv.́"],
-    "alternate_syllabary": ["ᎦᏬᏂᏍᎬ ᎠKᏔᎲ."],
+    "alternate_syllabary": ["ᎦᏬᏂᏍᎬ ᎠᎦᏔᎲ."],
     "cherokee": "Gawó:ni:sgv́:ʔi à:ktahv́:ʔi.",
     "cherokee_audio": [
       "source/chr/gawonisgvi_aktahvi_en-333-f_a1.30_52a6d3893d0eebe2eb0320cd6e035d61a74f5647.mp3",
@@ -1829,7 +1829,7 @@
       "source/en/knowing_how_to_speak_Kendra_bad1841c3b466568b6057d5afc1a6ca4da6718a5.mp3",
       "source/en/knowing_how_to_speak_Joey_bad1841c3b466568b6057d5afc1a6ca4da6718a5.mp3"
     ],
-    "syllabary": "ᎦᏬᏂᏍᎬᎢ ᎠKᏔᎲᎢ."
+    "syllabary": "ᎦᏬᏂᏍᎬᎢ ᎠᎦᏔᎲᎢ."
   },
   {
     "alternate_pronunciations": [],
@@ -3523,7 +3523,7 @@
   },
   {
     "alternate_pronunciations": ["Dō ű:sdi?", "Dō ű:sd?"],
-    "alternate_syllabary": ["Ꮩ ᎤᏍᏗ?", "Ꮩ ᎤᏍD?"],
+    "alternate_syllabary": ["Ꮩ ᎤᏍᏗ?", "Ꮩ ᎤᏍᏗ?"],
     "cherokee": "Gadō ű:sdi?",
     "cherokee_audio": [
       "source/chr/gado_usdi_en-333-f_a1.30_92aea1dd7159a7ada1700b6c81eacbba8c0e8814.mp3",
@@ -3548,7 +3548,7 @@
   },
   {
     "alternate_pronunciations": ["Dō űnsdi?", "Dō űnsd?"],
-    "alternate_syllabary": ["Ꮩ ᎤᎾᏍᏗ?", "Ꮩ ᎤNᏍD?"],
+    "alternate_syllabary": ["Ꮩ ᎤᎾᏍᏗ?", "Ꮩ ᎤᎾᏍᏗ?"],
     "cherokee": "Gadō űnsdi?",
     "cherokee_audio": [
       "source/chr/gado_unsdi_en-333-f_a1.30_69915cc3a628e12284c0981c3992c76ba6e136a3.mp3",
@@ -3569,11 +3569,11 @@
       "source/en/which_ones_Kendra_17ef8abecb4da09e62d3fec36bfc5b402181f1d5.mp3",
       "source/en/which_ones_Joey_17ef8abecb4da09e62d3fec36bfc5b402181f1d5.mp3"
     ],
-    "syllabary": "ᎦᏙ ᎤNᏍᏗ?"
+    "syllabary": "ᎦᏙ ᎤᎾᏍᏗ?"
   },
   {
     "alternate_pronunciations": ["Dō u:sdi?", "Dō u:sd?"],
-    "alternate_syllabary": ["Ꮩ ᎤᏍᏗ?", "Ꮩ ᎤᏍD?"],
+    "alternate_syllabary": ["Ꮩ ᎤᏍᏗ?", "Ꮩ ᎤᏍᏗ?"],
     "cherokee": "Gadō u:sdi?",
     "cherokee_audio": [
       "source/chr/gado_usdi_en-333-f_a1.30_19c0156991ad17bd41e4d0b76a89a29ff6d8adac.mp3",
@@ -4270,7 +4270,7 @@
   },
   {
     "alternate_pronunciations": ["Hiʔa sà:gwű u:yő ji:sd."],
-    "alternate_syllabary": ["ᎯᎠ ᏌᏊ ᎤᏲ ᏥᏍD."],
+    "alternate_syllabary": ["ᎯᎠ ᏌᏊ ᎤᏲ ᏥᏍᏚ."],
     "cherokee": "Hiʔa sà:gwű u:yő ji:sdu.",
     "cherokee_audio": [
       "source/chr/hia_sagwu_uyo_jisdu_en-333-f_a1.30_e1b605f142b86d5d063cbaf47acfd12ba362783a.mp3",
@@ -6367,7 +6367,7 @@
     ],
     "alternate_syllabary": [
       "Ꮭ ᎠᏂᎨᏳᏣ ᏱᎬᎩᎪᏩᏘ.",
-      "ᎥᏝ ᏱᎬᎩᎪWᏘᎭ Ꮎ ᎠᏂᎨᏳᏣ.",
+      "ᎥᏝ ᏱᎬᎩᎪᏩᏘᎭ Ꮎ ᎠᏂᎨᏳᏣ.",
       "Ꮎ ᎠᏂᎨᏳᏣ Ꮭ ᏱᎬᎩᎪᏩᏘ."
     ],
     "cherokee": "v́ːhla ani:ge:hyű:ja yigv:gigowhtíha.",
@@ -6394,7 +6394,7 @@
       "source/en/the_girls_dont_see_me_Kendra_043588eb73b848c68f5c680f5d6e15c720f7b44c.mp3",
       "source/en/the_girls_dont_see_me_Joey_043588eb73b848c68f5c680f5d6e15c720f7b44c.mp3"
     ],
-    "syllabary": "ᎥᏝ ᎠᏂᎨᏳᏣ ᏱᎬᎩᎪWᏘᎭ."
+    "syllabary": "ᎥᏝ ᎠᏂᎨᏳᏣ ᏱᎬᎩᎪᏩᏘᎭ."
   },
   {
     "alternate_pronunciations": [
@@ -6437,7 +6437,7 @@
     ],
     "alternate_syllabary": [
       "Ꮭ ᏌᎶᎵ ᏱᎨᏣᎪᏩᏘ.",
-      "ᎥᏝ ᏱᎨᏣᎪWᏘᎭ Ꮎ ᏌᎶᎵ.",
+      "ᎥᏝ ᏱᎨᏣᎪᏩᏘᎭ Ꮎ ᏌᎶᎵ.",
       "Ꮎ ᏌᎶᎵ Ꮭ ᏱᎨᏣᎪᏩᏘ."
     ],
     "cherokee": "v́ːhla salǒ:li yige:jagowhtíha.",
@@ -6464,7 +6464,7 @@
       "source/en/the_squirrels_dont_see_you_Kendra_eb8972dd2504a9e7ba6a259af3d995f5d2464017.mp3",
       "source/en/the_squirrels_dont_see_you_Joey_eb8972dd2504a9e7ba6a259af3d995f5d2464017.mp3"
     ],
-    "syllabary": "ᎥᏝ ᏌᎶᎵ ᏱᎨᏣᎪWᏘᎭ."
+    "syllabary": "ᎥᏝ ᏌᎶᎵ ᏱᎨᏣᎪᏩᏘᎭ."
   },
   {
     "alternate_pronunciations": [
