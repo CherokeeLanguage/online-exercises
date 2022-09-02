@@ -172,6 +172,10 @@ export function createLessonTransaction(
     suggestedNewTermsToInclude ??
     (reviewOnly ? 0 : Math.floor(desiredNumChallenges / 12));
 
+  const minChallenges = reviewOnly
+    ? 0.5 * desiredNumChallenges // review only lessons can be shorter (so your last reivew lesson can be completed more often)
+    : 0.85 * desiredNumChallenges; // lessons with new terms should always be about full length
+
   return fetchNewTermsIfNeeded(
     desiredId,
     numNewTermsToInclude,
@@ -203,10 +207,7 @@ export function createLessonTransaction(
     );
 
     // if there aren't enough terms...
-    if (
-      reviewChallengesFound + numNewTermChallenges <
-      0.5 * desiredNumChallenges
-    ) {
+    if (reviewChallengesFound + numNewTermChallenges < minChallenges) {
       if (reviewOnly) {
         console.log(
           "Not enough review terms for a lesson! But a review only lesson was requested!"
