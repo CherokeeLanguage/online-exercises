@@ -121,8 +121,17 @@
     "syllabary": "ᎠᏑᎵᎠ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "He is putting on a pair of pants.",
+    "english": "He or she is putting on a pair of pants.",
     "cherokee_audio": ["ssw-audio/0181-Lessons11_to_20-000052665.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "I:sa à:gíɂa sa:sa",
+    "syllabary": "ᎢᏌ ᎠᎩᎠ ᏌᏌ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "A goose is eating flour.",
+    "cherokee_audio": ["ssw-audio/Lessons01_to_10-isa agia sasa-bespoke.wav"],
     "english_audio": []
   },
   {
@@ -130,7 +139,7 @@
     "syllabary": "ᎠᏟᎶᎠ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "He is measuring.",
+    "english": "He or she is measuring something.",
     "cherokee_audio": ["ssw-audio/0143-Lessons01_to_10-000299745.mp3"],
     "english_audio": []
   },
@@ -207,6 +216,17 @@
     "english_audio": []
   },
   {
+    "cherokee": "Gà:du:li̋:da á:su:líɂa.",
+    "syllabary": "ᎦᏚᎵᏓ ᎠᏑᎵᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is putting on wet pants.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons11_to_20-gadulida asulia.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
     "cherokee": "Ga:sgilo.",
     "syllabary": "ᎦᏍᎩᎶ",
     "alternate_pronunciations": [],
@@ -267,6 +287,28 @@
     "alternate_syllabary": [],
     "english": "The dog is licking me.",
     "cherokee_audio": ["ssw-audio/0209-Lessons11_to_20-000117015.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "U:nv̌:di ù:du:lí na u:sdi̋.",
+    "syllabary": "ᎤᏅᏗ ᎤᏚᎵ Ꮎ ᎤᏍᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The baby wants milk.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons11_to_20-unvdi uduli na usdi.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Dina:da:hli:lò:sdi̋:sgi ù:nv:nv́:ga.",
+    "syllabary": "ᏗᎾᏓᏟᎶᏍᏗᏍᎩ ᎤᏅᏅᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The photographers are in a hurry.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons11_to_20-dinadahlilosdisgi unvnvga.-bespoke.wav"
+    ],
     "english_audio": []
   },
   {
@@ -418,7 +460,7 @@
     "syllabary": "ᎦᏚ ᎤᏂᎦᎾᏍᏓ ᏚᏩᏚᎭ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "She or he is baking sweet bread (cookies, cake).",
+    "english": "He or she is baking sweet bread (cookies, cake).",
     "cherokee_audio": ["ssw-audio/0361-Lessons21_to_30-000077085.mp3"],
     "english_audio": []
   },
@@ -427,7 +469,7 @@
     "syllabary": "ᎤᏅᏗ ᎤᏩᏍᎦ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "She or he is buying milk.",
+    "english": "He or she is buying milk.",
     "cherokee_audio": ["ssw-audio/0363-Lessons21_to_30-000083685.mp3"],
     "english_audio": []
   },
@@ -445,7 +487,7 @@
     "syllabary": "ᏣᏲᏏᎭᏍ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "Are you hungy?",
+    "english": "Are you hungry?",
     "cherokee_audio": ["ssw-audio/0373-Lessons21_to_30-000104025.mp3"],
     "english_audio": []
   },
@@ -463,7 +505,7 @@
     "syllabary": "ᏣᏲᎵ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "She or he is greating you.",
+    "english": "He or she is greating you.",
     "cherokee_audio": ["ssw-audio/0377-Lessons21_to_30-000113215.mp3"],
     "english_audio": []
   },
@@ -501,6 +543,17 @@
     "alternate_syllabary": [],
     "english": "rabbit",
     "cherokee_audio": ["ssw-audio/0398-Lessons21_to_30-000166995.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "U:ni:ji:ya dù:hyoha na asgaya.",
+    "syllabary": "ᎤᏂᏥᏯ ᏚᏲᎭ Ꮎ ᎠᏍᎦᏯ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The man is looking for worms.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons21_to_30-unijiya duhyoha na asgaya.-bespoke.wav"
+    ],
     "english_audio": []
   },
   {
@@ -666,6 +719,17 @@
     "english_audio": []
   },
   {
+    "cherokee": "Dlo:ge̋:si winè:da tǔ:ya gà:yő:hli widinadági.",
+    "syllabary": "ᏠᎨᏏ ᏫᏁᏓ ᏚᏯ ᎦᏲᏟ ᏫᏗᎾᏓᎩ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Let's go to the garden and pick a few beans.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons31_to_40-dlogesi wineda tuya gayohli widinadagi.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
     "cherokee": "Ani:yv:wi:ya̋ dà:nadlo:sga.",
     "syllabary": "ᎠᏂᏴᏫᏯ ᏓᎾᏠᏍᎦ",
     "alternate_pronunciations": [],
@@ -729,6 +793,17 @@
     "english_audio": []
   },
   {
+    "cherokee": "Di:là:sǔ:lo dù:wà:dù:la:chisi na à:lâ:sgalǐ:sgi.",
+    "syllabary": "ᏗᎳᏑᎶ ᏚᏩᏚᎳᏥᏏ Ꮎ ᎠᎳᏍᎦᎵᏍᎩ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The ball player's shoes got wet.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons31_to_40-dilasulo duwadulachisi na alasgalisgi.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
     "cherokee": "Idalà:sgala.",
     "syllabary": "ᎢᏓᎳᏍᎦᎳ",
     "alternate_pronunciations": [],
@@ -744,6 +819,37 @@
     "alternate_syllabary": [],
     "english": "window",
     "cherokee_audio": ["ssw-audio/0562-Lessons31_to_40-000273975.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Jǒ:lani ù:kiɂla wě:sa.",
+    "syllabary": "ᏦᎳᏂ ᎤᎩᎳ ᏪᏌ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "A cat is sitting in the window.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons31_to_40-jolani ukila wesa.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Joɂi iyáni wě:sa ani̋:da à:ni:hlína.",
+    "syllabary": "ᏦᎢ ᎢᏯᏂ ᏪᏌ ᎠᏂᏓ ᎠᏂᏟᎾ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "There are three kittens sleeping.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons31_to_40-joi iyani wesa anida anihlina.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Jǒ:lani tisduɂi.",
+    "syllabary": "ᏦᎳᏂ ᏘᏍᏚᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Open the windows.",
+    "cherokee_audio": ["ssw-audio/Lessons31_to_40-jolani tisdui.-bespoke.wav"],
     "english_audio": []
   },
   {
@@ -1053,6 +1159,17 @@
     "english_audio": []
   },
   {
+    "cherokee": "Ǔ:tana yǒ:na ji:gò:wahtā.",
+    "syllabary": "ᎤᏔᎾ ᏲᎾ ᏥᎪᏩᏔ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I saw a big bear.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons51_to_60-utana yona jigowahta.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
     "cherokee": "Gv:he anahliha gi:hli.",
     "syllabary": "ᎬᎮ ᎠᎾᏟᎭ ᎩᏟ",
     "alternate_pronunciations": [],
@@ -1071,12 +1188,14 @@
     "english_audio": []
   },
   {
-    "cherokee": "Go:hű:sdi nigaweɂa.",
+    "cherokee": "Ni! Go:hű:sdi nigaweɂa.",
     "syllabary": "Ꮒ! ᎪᎱᏍᏗ ᏂᎦᏪᎠ.",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
     "english": "Listen! An animal is making its sound.",
-    "cherokee_audio": ["ssw-audio/0775-Lessons51_to_60-000183845.mp3"],
+    "cherokee_audio": [
+      "ssw-audio/Lessons51_to_60-ni! gohusdi nigawea.-bespoke.wav"
+    ],
     "english_audio": []
   },
   {
@@ -1099,11 +1218,22 @@
   },
   {
     "cherokee": "Sóhně:la aye̋:hli à:tlíɂili",
-    "syllabary": "ᏐᏁᎳ ᎠᏴᏟ ᎠᏟᎵᎢ",
+    "syllabary": "ᏐᏁᎳ ᎠᏰᏟ ᎠᏟᎵᎢ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
     "english": "The time is nine thirty.",
     "cherokee_audio": ["ssw-audio/0792-Lessons51_to_60-000246265.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "À:sǒ:hyv̋ ù:kila jitǎ:ga.",
+    "syllabary": "ᎠᏐᏴ ᎤᎩᎳ ᏥᏔᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "A chicken is sitting on a fence.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons51_to_60-asohyv ukila jitaga.-bespoke.wav"
+    ],
     "english_audio": []
   },
   {
@@ -1140,6 +1270,239 @@
     "alternate_syllabary": [],
     "english": "This boy's name is Phillip",
     "cherokee_audio": ["ssw-audio/0813-Lessons51_to_60-000324475.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Gano:hali:dő:hi gano:halǐ:dô:ha.",
+    "syllabary": "ᎦᏃᎭᎵᏙᎯ ᎦᏃᎭᎵᏙᎭ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "A hunter is hunting.",
+    "cherokee_audio": ["ssw-audio/0835-Lessons61_to_70-000016965.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Gá:gō sdà:hlino:héha.",
+    "syllabary": "ᎦᎪ ᏍᏓᏟᏃᎮᎭ?",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Who are you speaking to?",
+    "cherokee_audio": ["ssw-audio/0837-Lessons61_to_70-000022545.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Jí:sdv:na du:gwe:nù:gi na achű:ja.",
+    "syllabary": "ᏥᏍᏛᎾ ᏚᏇᏄᎩ Ꮎ ᎠᏧᏣ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "A crawdad pinched the boy.",
+    "cherokee_audio": ["ssw-audio/0842-Lessons61_to_70-000039725.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Gè:hv́ ǐ:gó:hi̋:da gina:li̋ gè:sé:sdi.",
+    "syllabary": "ᎦᎥ ᎢᎪᎯᏓ ᎩᎾᎵ ᎨᏎᏍᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "We will be friends as long as I live.",
+    "cherokee_audio": ["ssw-audio/0851-Lessons61_to_70-000077145.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Dù:do:ɂa go:hwě:lí:ɂa.",
+    "syllabary": "ᏚᏙᎥ ᎪᏪᎵᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He is writing his name",
+    "cherokee_audio": ["ssw-audio/Lessons61_to_70-dudoa gohwelia.-bespoke.wav"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Dejadó:ɂa hohwě:lâ:nvɂi.",
+    "syllabary": "ᏕᏣᏙᎥ ᎰᏪᎳᏅᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Write your name (later)",
+    "cherokee_audio": ["ssw-audio/0861-Lessons61_to_70-000105615.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Howa hada.",
+    "syllabary": "ᎰᏩ ᎭᏓ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Say okay.",
+    "cherokee_audio": ["ssw-audio/0863-Lessons61_to_70-000110935.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Ahő:li ù:wanhga sgwà:hle̋:sdi.",
+    "syllabary": "ᎠᎰᎵ ᎤᏩᏂᎦ ᏍᏆᏞᏍᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "A ball hit him or her in the mouth.",
+    "cherokee_audio": ["ssw-audio/0865-Lessons61_to_70-000114805.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Hale:hwisda.",
+    "syllabary": "ᎭᎴᏫᏍᏓ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Stop!",
+    "cherokee_audio": ["ssw-audio/0869-Lessons61_to_70-000132215.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Ǐ:jú:la jalagi ale yó:ne:ga degawó:ni.",
+    "syllabary": "ᎢᏧᎳ ᏣᎳᎩ ᎠᎴ ᏲᏁᎦ ᏕᎦᏪᏂ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she speaks both Cherokee and English.",
+    "cherokee_audio": ["ssw-audio/0871-Lessons61_to_70-000136275.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Gaɂle̋:ni ù:we:hisdâ:neha na ayő:hli.",
+    "syllabary": "ᎦᎴᏂ ᎤᏪᎯᏍᏓᏁ Ꮎ ᎠᏲᏟ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The child has an earache.",
+    "cherokee_audio": ["ssw-audio/0873-Lessons61_to_70-000143465.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Hila̋ɂiyv à:dale:nǐ:sgó gő:la.",
+    "syllabary": "ᎯᎳᎢᏴ ᎠᏓᎴᏂᏍᎪ ᎪᎳ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "When does winter begin?",
+    "cherokee_audio": ["ssw-audio/0875-Lessons61_to_70-000149495.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Ijéɂiyű:sdi ulsǔ:hwi:da ù:hnû:wa.",
+    "syllabary": "ᎢᏤᏳᏍᏗ ᎤᎵᏑᏫᏓ ᎤᏄᏩ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is wearing a green shirt.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons61_to_70-ijeiyusdi ulsuhwida uhnuwa.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Ama à:jě:wíɂa na achű:ja.",
+    "syllabary": "ᎠᎹ ᎠᏤᏫᎠ Ꮎ ᎠᏧᏣ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The boy is wasting water.",
+    "cherokee_audio": ["ssw-audio/0885-Lessons61_to_70-000182445.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Di:je̋ dilà:sǔ:lo dù:du:lí.",
+    "syllabary": "ᏗᏤ ᏗᎳᏑᎶ ᏚᏚᎵ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she wants new shoes.",
+    "cherokee_audio": ["ssw-audio/0887-Lessons61_to_70-000188525.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Akǔ:gi̋:sdi è:sgidisi.",
+    "syllabary": "ᎠᎫᎩᏍᏗ ᎡᏍᎩᏗᏏ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Hand me a dipper.",
+    "cherokee_audio": ["ssw-audio/0893-Lessons61_to_70-000211525.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "U:gù:ku nigawè:sgv́ gà:tv:gí:ɂa.",
+    "syllabary": "ᎤᎫᎫ ᏂᎦᏪᏍᎬ ᎦᏛᎩᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I hear a hoot howl hooting.",
+    "cherokee_audio": ["ssw-audio/0895-Lessons61_to_70-000218175.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Hila̋ɂiyv gvnsgó kuwa:ya.",
+    "syllabary": "ᎯᎳᎢᏴ ᎬᏂᏍᎪ ᎫᏩᏯ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "When do huckleberries get ripe?",
+    "cherokee_audio": ["ssw-audio/0897-Lessons61_to_70-000224065.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "U:sgwo:hli̋ ù:we:hisdâ:ne na ayő:hli.",
+    "syllabary": "ᎤᏍᏉᏟ ᎤᏪᎯᏍᏓᏁ Ꮎ ᎠᏲᏟ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The child has a stomach ache.",
+    "cherokee_audio": ["ssw-audio/0906-Lessons61_to_70-000253125.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Dijalagi digwo:hwě:lô:di gadè:lohgwáɂa.",
+    "syllabary": "ᏗᏣᎳᎩ ᏗᏉᏪᎶᏗ ᎦᏕᎶᏆᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I am learning to write in Cherokee.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons61_to_70-dijalagi digwohwelodi gadelohgwaa.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
+    "cherokee": "U:dlv̋:gi",
+    "syllabary": "ᎤᏢᎩ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "patient",
+    "cherokee_audio": ["ssw-audio/1051-Lessons71_to_84-000320215.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Na u:sdi̋ gahlv:sga.",
+    "syllabary": "Ꮎ ᎤᏍᏗ ᎦᏢᏍᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "That baby is sleepy",
+    "cherokee_audio": [
+      "ssw-audio/Lessons61_to_70-na usdi gahlvsga.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Sv:do:ni kali̋ kanù:gahli gadagi.",
+    "syllabary": "ᏒᏙᏂ ᎧᎵ ᎧᏄᎦᏟ ᎦᏓᎩ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I picked a bucket full of blackberries.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons61_to_70-svdoni kali kanugahli gadagi.-bespoke.wav"
+    ],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Sv̀:gi ǐ:náge̋ e̋:hi giniyalú:ga.",
+    "syllabary": "ᏒᎩ ᎢᎾᎨᎡᎯ ᎩᏂᏯᎷᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Let's go hunt for some wild onions.",
+    "cherokee_audio": ["ssw-audio/0928-Lessons61_to_70-000323415.mp3"],
+    "english_audio": []
+  },
+  {
+    "cherokee": "Ha:dlv wijě:dô:lě sv:hi?",
+    "syllabary": "ᎭᏢ ᏫᏤᏙᎴ ᏒᎯ?",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Where did you go yesterday?",
+    "cherokee_audio": ["ssw-audio/0930-Lessons61_to_70-000329165.mp3"],
     "english_audio": []
   }
 ]
