@@ -1,1508 +1,2424 @@
 [
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Su:li.",
-    "syllabary": "ᏑᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "buzzard",
     "cherokee_audio": ["ssw-audio/0020-Lessons01_to_10-000050415.mp3"],
-    "english_audio": []
+    "english": "buzzard",
+    "english_audio": [
+      "source/en/buzzard_Kendra_16360f8fb2e83a6c860c0ca0d669fa0553d5b50b.mp3",
+      "source/en/buzzard_Joey_16360f8fb2e83a6c860c0ca0d669fa0553d5b50b.mp3"
+    ],
+    "syllabary": "ᏑᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sǔ:dáli.",
-    "syllabary": "ᏑᏓᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "six",
     "cherokee_audio": ["ssw-audio/0052-Lessons01_to_10-000118185.mp3"],
-    "english_audio": []
+    "english": "six",
+    "english_audio": [
+      "source/en/six_Kendra_bec9703f7a456cd2b4ab5fb3220ae016e3e394e3.mp3",
+      "source/en/six_Joey_bec9703f7a456cd2b4ab5fb3220ae016e3e394e3.mp3"
+    ],
+    "syllabary": "ᏑᏓᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ada.",
-    "syllabary": "ᎠᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "wood",
     "cherokee_audio": ["ssw-audio/0068-Lessons01_to_10-000151475.mp3"],
-    "english_audio": []
+    "english": "wood",
+    "english_audio": [
+      "source/en/wood_Kendra_e8002c169040af08d8b4ed2f0d636b840f335f9b.mp3",
+      "source/en/wood_Joey_e8002c169040af08d8b4ed2f0d636b840f335f9b.mp3"
+    ],
+    "syllabary": "ᎠᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "A:li.",
-    "syllabary": "ᎠᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "sweat",
     "cherokee_audio": ["ssw-audio/0036-Lessons01_to_10-000084335.mp3"],
-    "english_audio": []
+    "english": "sweat",
+    "english_audio": [
+      "source/en/sweat_Kendra_8c49835ccb2c634d02293b0268f7269e508523a6.mp3",
+      "source/en/sweat_Joey_8c49835ccb2c634d02293b0268f7269e508523a6.mp3"
+    ],
+    "syllabary": "ᎠᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "À:su:lo.",
-    "syllabary": "ᎠᏑᎶ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "pants",
     "cherokee_audio": ["ssw-audio/0066-Lessons01_to_10-000146755.mp3"],
-    "english_audio": []
+    "english": "pants",
+    "english_audio": [
+      "source/en/pants_Kendra_e65aace9237833ec775253cfde97f59a0af5bc3d.mp3",
+      "source/en/pants_Joey_e65aace9237833ec775253cfde97f59a0af5bc3d.mp3"
+    ],
+    "syllabary": "ᎠᏑᎶ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Lo:lo.",
-    "syllabary": "ᎶᎶ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "locust",
     "cherokee_audio": ["ssw-audio/0048-Lessons01_to_10-000110725.mp3"],
-    "english_audio": []
+    "english": "locust",
+    "english_audio": [
+      "source/en/locust_Kendra_f77cf558c6b4dbb0036a7038625a513ee141ab1b.mp3",
+      "source/en/locust_Joey_f77cf558c6b4dbb0036a7038625a513ee141ab1b.mp3"
+    ],
+    "syllabary": "ᎶᎶ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Salǒ:li.",
-    "syllabary": "ᏌᎶᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "squirrel(s)",
     "cherokee_audio": ["ssw-audio/0083-Lessons01_to_10-000184085.mp3"],
-    "english_audio": []
+    "english": "squirrel(s)",
+    "english_audio": [
+      "source/en/squirrels_Kendra_0b5ed7f33f754a8e73b2f42559eb6a5a15db7009.mp3",
+      "source/en/squirrels_Joey_0b5ed7f33f754a8e73b2f42559eb6a5a15db7009.mp3"
+    ],
+    "syllabary": "ᏌᎶᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "sa:sa",
-    "syllabary": "ᏌᏌ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "goose",
     "cherokee_audio": ["ssw-audio/0121-Lessons01_to_10-000258025.mp3"],
-    "english_audio": []
+    "english": "goose",
+    "english_audio": [
+      "source/en/goose_Kendra_4f7f358cd341d703b4a502b2d0f53db07823b501.mp3",
+      "source/en/goose_Joey_4f7f358cd341d703b4a502b2d0f53db07823b501.mp3"
+    ],
+    "syllabary": "ᏌᏌ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sa:sa á:ɂi.",
-    "syllabary": "ᏌᏌ ᎠᎢ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A goose is walking.",
     "cherokee_audio": ["ssw-audio/0081-Lessons01_to_10-000179635.mp3"],
-    "english_audio": []
+    "english": "A goose is walking.",
+    "english_audio": [
+      "source/en/a_goose_is_walking_Kendra_82fe4c445dfac7a2454a688f961f3e1363d08fa2.mp3",
+      "source/en/a_goose_is_walking_Joey_82fe4c445dfac7a2454a688f961f3e1363d08fa2.mp3"
+    ],
+    "syllabary": "ᏌᏌ ᎠᎢ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sali.",
-    "syllabary": "ᏌᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "persimmon",
     "cherokee_audio": ["ssw-audio/0085-Lessons01_to_10-000187885.mp3"],
-    "english_audio": []
+    "english": "persimmon",
+    "english_audio": [
+      "source/en/persimmon_Kendra_78330fed6542ebfdd75422a6257c318a996441b1.mp3",
+      "source/en/persimmon_Joey_78330fed6542ebfdd75422a6257c318a996441b1.mp3"
+    ],
+    "syllabary": "ᏌᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ǐ:náda.",
-    "syllabary": "ᎢᎾᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "snake",
     "cherokee_audio": ["ssw-audio/0098-Lessons01_to_10-000210455.mp3"],
-    "english_audio": []
+    "english": "snake",
+    "english_audio": [
+      "source/en/snake_Kendra_148627088915c721ccebb4c611b859031037e6ad.mp3",
+      "source/en/snake_Joey_148627088915c721ccebb4c611b859031037e6ad.mp3"
+    ],
+    "syllabary": "ᎢᎾᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sa:sa aná:ɂi.",
-    "syllabary": "ᏌᏌ ᎠᎾᎢ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Some geese are walking.",
     "cherokee_audio": ["ssw-audio/0125-Lessons01_to_10-000265545.mp3"],
-    "english_audio": []
+    "english": "Some geese are walking.",
+    "english_audio": [
+      "source/en/some_geese_are_walking_Kendra_e0a69f29c6dddc1d33d425c3520cc87a469e9559.mp3",
+      "source/en/some_geese_are_walking_Joey_e0a69f29c6dddc1d33d425c3520cc87a469e9559.mp3"
+    ],
+    "syllabary": "ᏌᏌ ᎠᎾᎢ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Iná:ɂi.",
-    "syllabary": "ᎢᎾᎢ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "We are walking",
     "cherokee_audio": ["ssw-audio/0123-Lessons01_to_10-000261425.mp3"],
-    "english_audio": []
+    "english": "We are walking",
+    "english_audio": [
+      "source/en/we_are_walking_Kendra_0c4ddc67d313d13790db957d9e0c00b2b5f747a8.mp3",
+      "source/en/we_are_walking_Joey_0c4ddc67d313d13790db957d9e0c00b2b5f747a8.mp3"
+    ],
+    "syllabary": "ᎢᎾᎢ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "á:su:líɂa.",
-    "syllabary": "ᎠᏑᎵᎠ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she is putting on a pair of pants.",
     "cherokee_audio": ["ssw-audio/0181-Lessons11_to_20-000052665.mp3"],
-    "english_audio": []
+    "english": "He or she is putting on a pair of pants.",
+    "english_audio": [
+      "source/en/he_or_she_is_putting_on_a_pair_o_Kendra_bfd4711d1d607548a0db7d2e929223e4f0c48ed7.mp3",
+      "source/en/he_or_she_is_putting_on_a_pair_o_Joey_bfd4711d1d607548a0db7d2e929223e4f0c48ed7.mp3"
+    ],
+    "syllabary": "ᎠᏑᎵᎠ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "I:sa à:gíɂa sa:sa",
-    "syllabary": "ᎢᏌ ᎠᎩᎠ ᏌᏌ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A goose is eating flour.",
     "cherokee_audio": ["ssw-audio/Lessons01_to_10-isa agia sasa-bespoke.wav"],
-    "english_audio": []
+    "english": "A goose is eating flour.",
+    "english_audio": [
+      "source/en/a_goose_is_eating_flour_Kendra_20026ea1e19bb5853ae6c0ac19496e6d6603dcc2.mp3",
+      "source/en/a_goose_is_eating_flour_Joey_20026ea1e19bb5853ae6c0ac19496e6d6603dcc2.mp3"
+    ],
+    "syllabary": "ᎢᏌ ᎠᎩᎠ ᏌᏌ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "À:hli:ló:ɂa.",
-    "syllabary": "ᎠᏟᎶᎠ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she is measuring something.",
     "cherokee_audio": ["ssw-audio/0143-Lessons01_to_10-000299745.mp3"],
-    "english_audio": []
+    "english": "He or she is measuring something.",
+    "english_audio": [
+      "source/en/he_or_she_is_measuring_something_Kendra_fef026c669a5303ae61598c7d54d42142c713a10.mp3",
+      "source/en/he_or_she_is_measuring_something_Joey_fef026c669a5303ae61598c7d54d42142c713a10.mp3"
+    ],
+    "syllabary": "ᎠᏟᎶᎠ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gi:hli aná:ɂi.",
-    "syllabary": "ᎩᏟ ᎠᎾᎢ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Dogs are walking.",
     "cherokee_audio": ["ssw-audio/0145-Lessons01_to_10-000304735.mp3"],
-    "english_audio": []
+    "english": "Dogs are walking.",
+    "english_audio": [
+      "source/en/dogs_are_walking_Kendra_01e53994c9659c57cf119d00d52d6b295393f6a9.mp3",
+      "source/en/dogs_are_walking_Joey_01e53994c9659c57cf119d00d52d6b295393f6a9.mp3"
+    ],
+    "syllabary": "ᎩᏟ ᎠᎾᎢ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Salǒ:li dù:du:lí na gi:hli.",
-    "syllabary": "ᏌᎶᎵ ᏚᏚᎵ Ꮎ ᎩᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "That dog wants some squirrels.",
     "cherokee_audio": ["ssw-audio/0167-Lessons11_to_20-000012265.mp3"],
-    "english_audio": []
+    "english": "That dog wants some squirrels.",
+    "english_audio": [
+      "source/en/that_dog_wants_some_squirrels_Kendra_156274a281cc8921c301edfb6fd342df266683f5.mp3",
+      "source/en/that_dog_wants_some_squirrels_Joey_156274a281cc8921c301edfb6fd342df266683f5.mp3"
+    ],
+    "syllabary": "ᏌᎶᎵ ᏚᏚᎵ Ꮎ ᎩᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sali dù:nadu:lí na sa:sa.",
-    "syllabary": "ᏌᎵ ᏚᎾᏚᎵ Ꮎ ᏌᏌ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The geese want persimmons.",
     "cherokee_audio": ["ssw-audio/0169-Lessons11_to_20-000018625.mp3"],
-    "english_audio": []
+    "english": "The geese want persimmons.",
+    "english_audio": [
+      "source/en/the_geese_want_persimmons_Kendra_d62be469654f853e2b126b57540b7556a2d8b5bf.mp3",
+      "source/en/the_geese_want_persimmons_Joey_d62be469654f853e2b126b57540b7556a2d8b5bf.mp3"
+    ],
+    "syllabary": "ᏌᎵ ᏚᎾᏚᎵ Ꮎ ᏌᏌ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "sa:ɂdu",
-    "syllabary": "ᏌᏚ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "eleven",
     "cherokee_audio": ["ssw-audio/0165-Lessons11_to_20-000008505.mp3"],
-    "english_audio": []
+    "english": "eleven",
+    "english_audio": [
+      "source/en/eleven_Kendra_cc5a0c506761ce686f1f145da868c162f269480f.mp3",
+      "source/en/eleven_Joey_cc5a0c506761ce686f1f145da868c162f269480f.mp3"
+    ],
+    "syllabary": "ᏌᏚ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sa:ɂdu à:tlíɂili.",
-    "syllabary": "ᏌᏚ ᎠᏟᎢᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The time is eleven o'clock",
     "cherokee_audio": ["ssw-audio/0171-Lessons11_to_20-000025585.mp3"],
-    "english_audio": []
+    "english": "The time is eleven o'clock",
+    "english_audio": [
+      "source/en/the_time_is_eleven_oclock_Kendra_8a1f65ce2331b18c54800fb4e09167cc1a136978.mp3",
+      "source/en/the_time_is_eleven_oclock_Joey_8a1f65ce2331b18c54800fb4e09167cc1a136978.mp3"
+    ],
+    "syllabary": "ᏌᏚ ᎠᏟᎢᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gǎ:da.",
-    "syllabary": "ᎦᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "dirt",
     "cherokee_audio": ["ssw-audio/0176-Lessons11_to_20-000043265.mp3"],
-    "english_audio": []
+    "english": "dirt",
+    "english_audio": [
+      "source/en/dirt_Kendra_7c97ce2798329767eab8e2d1371392491f1c45e2.mp3",
+      "source/en/dirt_Joey_7c97ce2798329767eab8e2d1371392491f1c45e2.mp3"
+    ],
+    "syllabary": "ᎦᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gǐ:ga.",
-    "syllabary": "ᎩᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "blood",
     "cherokee_audio": ["ssw-audio/0178-Lessons11_to_20-000046865.mp3"],
-    "english_audio": []
+    "english": "blood",
+    "english_audio": [
+      "source/en/blood_Kendra_c2c4a896be2b3ab15212fcb701156f10eb890eaf.mp3",
+      "source/en/blood_Joey_c2c4a896be2b3ab15212fcb701156f10eb890eaf.mp3"
+    ],
+    "syllabary": "ᎩᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ga̋:du",
-    "syllabary": "ᎦᏚ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "bread",
     "cherokee_audio": ["ssw-audio/0279-Lessons11_to_20-000273755.mp3"],
-    "english_audio": []
+    "english": "bread",
+    "english_audio": [
+      "source/en/bread_Kendra_6ff291d8175b1d624892cd459444104fbd7ce87f.mp3",
+      "source/en/bread_Joey_6ff291d8175b1d624892cd459444104fbd7ce87f.mp3"
+    ],
+    "syllabary": "ᎦᏚ"
   },
   {
-    "cherokee": "Gà:du:li̋:da á:su:líɂa.",
-    "syllabary": "ᎦᏚᎵᏓ ᎠᏑᎵᎠ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "He or she is putting on wet pants.",
+    "cherokee": "Gà:du:li̋:da á:su:líɂa.",
     "cherokee_audio": [
       "ssw-audio/Lessons11_to_20-gadulida asulia.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "He or she is putting on wet pants.",
+    "english_audio": [
+      "source/en/he_or_she_is_putting_on_wet_pant_Kendra_8b252d3ccd62ab9b18af094d463f35a6313ffc42.mp3",
+      "source/en/he_or_she_is_putting_on_wet_pant_Joey_8b252d3ccd62ab9b18af094d463f35a6313ffc42.mp3"
+    ],
+    "syllabary": "ᎦᏚᎵᏓ ᎠᏑᎵᎠ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ga:sgilo.",
-    "syllabary": "ᎦᏍᎩᎶ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "table or chair",
     "cherokee_audio": ["ssw-audio/0190-Lessons11_to_20-000075035.mp3"],
-    "english_audio": []
+    "english": "table or chair",
+    "english_audio": [
+      "source/en/table_or_chair_Kendra_ff1178888a330f0146c0c5eaddf3598698701daf.mp3",
+      "source/en/table_or_chair_Joey_ff1178888a330f0146c0c5eaddf3598698701daf.mp3"
+    ],
+    "syllabary": "ᎦᏍᎩᎶ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Anà:ga:lǐ:sgi.",
-    "syllabary": "ᎠᎾᎦᎵᏍᎩ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "lightning, battery, electricity",
     "cherokee_audio": ["ssw-audio/0192-Lessons11_to_20-000079295.mp3"],
-    "english_audio": []
+    "english": "lightning, battery, electricity",
+    "english_audio": [
+      "source/en/lightning_battery_electricity_Kendra_82b9a689371b1991ce25b6b95c0f2550f6551a33.mp3",
+      "source/en/lightning_battery_electricity_Joey_82b9a689371b1991ce25b6b95c0f2550f6551a33.mp3"
+    ],
+    "syllabary": "ᎠᎾᎦᎵᏍᎩ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "À:sgâ:ga.",
-    "syllabary": "ᎠᏍᎦᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she is scolding him or her.",
     "cherokee_audio": ["ssw-audio/0194-Lessons11_to_20-000083975.mp3"],
-    "english_audio": []
+    "english": "He or she is scolding him or her.",
+    "english_audio": [
+      "source/en/he_or_she_is_scolding_him_or_her_Kendra_5131e9bb6c00d9409bccbecf1c9ab953add925fa.mp3",
+      "source/en/he_or_she_is_scolding_him_or_her_Joey_5131e9bb6c00d9409bccbecf1c9ab953add925fa.mp3"
+    ],
+    "syllabary": "ᎠᏍᎦᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sdù:di.",
-    "syllabary": "ᏍᏚᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "gate",
     "cherokee_audio": ["ssw-audio/0203-Lessons11_to_20-000101615.mp3"],
-    "english_audio": []
+    "english": "gate",
+    "english_audio": [
+      "source/en/gate_Kendra_3c5b492776742690efb6a0f1fd8508693400e2cc.mp3",
+      "source/en/gate_Joey_3c5b492776742690efb6a0f1fd8508693400e2cc.mp3"
+    ],
+    "syllabary": "ᏍᏚᏗ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Di:da:sdù:di̋.",
-    "syllabary": "ᏗᏓᏍᏚᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "jail",
     "cherokee_audio": ["ssw-audio/0205-Lessons11_to_20-000105555.mp3"],
-    "english_audio": []
+    "english": "jail",
+    "english_audio": [
+      "source/en/jail_Kendra_1b3cd766a59148728ca687c74d9445903c4e7fcf.mp3",
+      "source/en/jail_Joey_1b3cd766a59148728ca687c74d9445903c4e7fcf.mp3"
+    ],
+    "syllabary": "ᏗᏓᏍᏚᏗ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sǔ:dáli diga:sgilo dù:nadu:lí.",
-    "syllabary": "ᏑᏓᎵ ᏗᎦᏍᎩᎶ ᏚᎾᏚᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "They want six chairs.",
     "cherokee_audio": ["ssw-audio/0207-Lessons11_to_20-000110235.mp3"],
-    "english_audio": []
+    "english": "They want six chairs.",
+    "english_audio": [
+      "source/en/they_want_six_chairs_Kendra_118347c4c1d060f713b937c97132193bebf54814.mp3",
+      "source/en/they_want_six_chairs_Joey_118347c4c1d060f713b937c97132193bebf54814.mp3"
+    ],
+    "syllabary": "ᏑᏓᎵ ᏗᎦᏍᎩᎶ ᏚᎾᏚᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gi:hli à:giganǎ:díɂa.",
-    "syllabary": "ᎩᏟ ᎠᎩᎦᎾᏗᎠ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The dog is licking me.",
     "cherokee_audio": ["ssw-audio/0209-Lessons11_to_20-000117015.mp3"],
-    "english_audio": []
+    "english": "The dog is licking me.",
+    "english_audio": [
+      "source/en/the_dog_is_licking_me_Kendra_366739d17cebd65c53dbced05eabd5fa9fe377ed.mp3",
+      "source/en/the_dog_is_licking_me_Joey_366739d17cebd65c53dbced05eabd5fa9fe377ed.mp3"
+    ],
+    "syllabary": "ᎩᏟ ᎠᎩᎦᎾᏗᎠ"
   },
   {
-    "cherokee": "U:nv̌:di ù:du:lí na u:sdi̋.",
-    "syllabary": "ᎤᏅᏗ ᎤᏚᎵ Ꮎ ᎤᏍᏗ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "The baby wants milk.",
+    "cherokee": "U:nv̌:di ù:du:lí na u:sdi̋.",
     "cherokee_audio": [
       "ssw-audio/Lessons11_to_20-unvdi uduli na usdi.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "The baby wants milk.",
+    "english_audio": [
+      "source/en/the_baby_wants_milk_Kendra_b13e2acf34f73a09f527d90d5eec7531ae5da438.mp3",
+      "source/en/the_baby_wants_milk_Joey_b13e2acf34f73a09f527d90d5eec7531ae5da438.mp3"
+    ],
+    "syllabary": "ᎤᏅᏗ ᎤᏚᎵ Ꮎ ᎤᏍᏗ"
   },
   {
-    "cherokee": "Dina:da:hli:lò:sdi̋:sgi ù:nv:nv́:ga.",
-    "syllabary": "ᏗᎾᏓᏟᎶᏍᏗᏍᎩ ᎤᏅᏅᎦ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "The photographers are in a hurry.",
+    "cherokee": "Dina:da:hli:lò:sdi̋:sgi ù:nv:nv́:ga.",
     "cherokee_audio": [
       "ssw-audio/Lessons11_to_20-dinadahlilosdisgi unvnvga.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "The photographers are in a hurry.",
+    "english_audio": [
+      "source/en/the_photographers_are_in_a_hurry_Kendra_69ed8ff0db51c9d09ddc24018c6f0cd080370646.mp3",
+      "source/en/the_photographers_are_in_a_hurry_Joey_69ed8ff0db51c9d09ddc24018c6f0cd080370646.mp3"
+    ],
+    "syllabary": "ᏗᎾᏓᏟᎶᏍᏗᏍᎩ ᎤᏅᏅᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Si:nv̋:da.",
-    "syllabary": "ᏏᏅᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "month",
     "cherokee_audio": ["ssw-audio/0256-Lessons11_to_20-000219285.mp3"],
-    "english_audio": []
+    "english": "month",
+    "english_audio": [
+      "source/en/month_Kendra_021710fa7866431c1dacaa6cd31eeeb47dce64b6.mp3",
+      "source/en/month_Joey_021710fa7866431c1dacaa6cd31eeeb47dce64b6.mp3"
+    ],
+    "syllabary": "ᏏᏅᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ga̋:du agigísi na gi:hli.",
-    "syllabary": "ᎦᏚ ᎠᎩᎩᏏ Ꮎ ᎩᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The dog took my bread.",
     "cherokee_audio": ["ssw-audio/0260-Lessons11_to_20-000228315.mp3"],
-    "english_audio": []
+    "english": "The dog took my bread.",
+    "english_audio": [
+      "source/en/the_dog_took_my_bread_Kendra_e2267695ea92934c6db0d29cf452e85bca95fd3d.mp3",
+      "source/en/the_dog_took_my_bread_Joey_e2267695ea92934c6db0d29cf452e85bca95fd3d.mp3"
+    ],
+    "syllabary": "ᎦᏚ ᎠᎩᎩᏏ Ꮎ ᎩᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Agá:li:siga.",
-    "syllabary": "ᎠᎦᎵᏏᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "There came a sunshine.",
     "cherokee_audio": ["ssw-audio/0262-Lessons11_to_20-000235925.mp3"],
-    "english_audio": []
+    "english": "There came a sunshine.",
+    "english_audio": [
+      "source/en/there_came_a_sunshine_Kendra_dc562c931166a764c67fe1c11ba8b65913f42537.mp3",
+      "source/en/there_came_a_sunshine_Joey_dc562c931166a764c67fe1c11ba8b65913f42537.mp3"
+    ],
+    "syllabary": "ᎠᎦᎵᏏᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ó:si.",
-    "syllabary": "ᎣᏏ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Stove",
     "cherokee_audio": ["ssw-audio/0273-Lessons11_to_20-000258405.mp3"],
-    "english_audio": []
+    "english": "Stove",
+    "english_audio": [
+      "source/en/stove_Kendra_9338aa5b38dd486fe13664c16c58674ec9e09af8.mp3",
+      "source/en/stove_Joey_9338aa5b38dd486fe13664c16c58674ec9e09af8.mp3"
+    ],
+    "syllabary": "ᎣᏏ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Usdi̋ ó:si.",
-    "syllabary": "ᎤᏍᏗ ᎣᏏ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "small stove",
     "cherokee_audio": ["ssw-audio/0275-Lessons11_to_20-000262615.mp3"],
-    "english_audio": []
+    "english": "small stove",
+    "english_audio": [
+      "source/en/small_stove_Kendra_6bc13e9e48735a934076da74d144f0ba4beeecfd.mp3",
+      "source/en/small_stove_Joey_6bc13e9e48735a934076da74d144f0ba4beeecfd.mp3"
+    ],
+    "syllabary": "ᎤᏍᏗ ᎣᏏ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "O:gana anahli gi:hli.",
-    "syllabary": "ᎣᎦᎾ ᎠᎾᏟ ᎩᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A groundhog and a dog are fighting.",
     "cherokee_audio": ["ssw-audio/0277-Lessons11_to_20-000267125.mp3"],
-    "english_audio": []
+    "english": "A groundhog and a dog are fighting.",
+    "english_audio": [
+      "source/en/a_groundhog_and_a_dog_are_fighti_Kendra_2453fc8d53bc89616930553f0fbca41f941b0501.mp3",
+      "source/en/a_groundhog_and_a_dog_are_fighti_Joey_2453fc8d53bc89616930553f0fbca41f941b0501.mp3"
+    ],
+    "syllabary": "ᎣᎦᎾ ᎠᎾᏟ ᎩᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Yǒ:na á:ɂi.",
-    "syllabary": "ᏲᎾ ᎠᎢ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A bear is walking.",
     "cherokee_audio": ["ssw-audio/0294-Lessons11_to_20-000306105.mp3"],
-    "english_audio": []
+    "english": "A bear is walking.",
+    "english_audio": [
+      "source/en/a_bear_is_walking_Kendra_1d3e6d7529eff9c26eaf4307c912f3ba1a5f1df1.mp3",
+      "source/en/a_bear_is_walking_Joey_1d3e6d7529eff9c26eaf4307c912f3ba1a5f1df1.mp3"
+    ],
+    "syllabary": "ᏲᎾ ᎠᎢ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "À:giyó:si.",
-    "syllabary": "ᎠᎩᏲᏏ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I am hungry.",
     "cherokee_audio": ["ssw-audio/0296-Lessons11_to_20-000311075.mp3"],
-    "english_audio": []
+    "english": "I am hungry.",
+    "english_audio": [
+      "source/en/i_am_hungry_Kendra_0d7d033cb36faa5e76a94f4e96897144ad25d4d6.mp3",
+      "source/en/i_am_hungry_Joey_0d7d033cb36faa5e76a94f4e96897144ad25d4d6.mp3"
+    ],
+    "syllabary": "ᎠᎩᏲᏏ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Diga:da:yo:sdi.",
-    "syllabary": "ᏗᎦᏓᏲᏍᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "marbles",
     "cherokee_audio": ["ssw-audio/0298-Lessons11_to_20-000315045.mp3"],
-    "english_audio": []
+    "english": "marbles",
+    "english_audio": [
+      "source/en/marbles_Kendra_cab8708c01461cfc6f6474adb266cc97139fbd08.mp3",
+      "source/en/marbles_Joey_cab8708c01461cfc6f6474adb266cc97139fbd08.mp3"
+    ],
+    "syllabary": "ᏗᎦᏓᏲᏍᏗ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ò:gina:li̋ ù:yó:siha.",
-    "syllabary": "ᎣᎩᎾᎵ ᎤᏲᏏᎭ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "My friend is hungry.",
     "cherokee_audio": ["ssw-audio/0311-Lessons11_to_20-000342765.mp3"],
-    "english_audio": []
+    "english": "My friend is hungry.",
+    "english_audio": [
+      "source/en/my_friend_is_hungry_Kendra_bd1ca2823736332d7e6253803c12fb6b383f7b3d.mp3",
+      "source/en/my_friend_is_hungry_Joey_bd1ca2823736332d7e6253803c12fb6b383f7b3d.mp3"
+    ],
+    "syllabary": "ᎣᎩᎾᎵ ᎤᏲᏏᎭ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hadǐ:da!",
-    "syllabary": "ᎭᏗᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Get up (from voluntary prone position)!",
     "cherokee_audio": ["ssw-audio/0313-Lessons11_to_20-000347985.mp3"],
-    "english_audio": []
+    "english": "Get up (from voluntary prone position)!",
+    "english_audio": [
+      "source/en/get_up_from_voluntary_prone_posi_Kendra_a052dadbc1fff85c9a4ad044db9605ac39a70904.mp3",
+      "source/en/get_up_from_voluntary_prone_posi_Joey_a052dadbc1fff85c9a4ad044db9605ac39a70904.mp3"
+    ],
+    "syllabary": "ᎭᏗᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "O:síyo hada.",
-    "syllabary": "ᎣᏏᏲ ᎭᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Say hello.",
     "cherokee_audio": ["ssw-audio/0315-Lessons11_to_20-000352095.mp3"],
-    "english_audio": []
+    "english": "Say hello.",
+    "english_audio": [
+      "source/en/say_hello_Kendra_e2cb35f393aa6a8828cf8cb1d8b67430d9259d61.mp3",
+      "source/en/say_hello_Joey_e2cb35f393aa6a8828cf8cb1d8b67430d9259d61.mp3"
+    ],
+    "syllabary": "ᎣᏏᏲ ᎭᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Áɂni.",
-    "syllabary": "ᎠᏂ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "strawberries",
     "cherokee_audio": ["ssw-audio/0337-Lessons21_to_30-000013615.mp3"],
-    "english_audio": []
+    "english": "strawberries",
+    "english_audio": [
+      "source/en/strawberries_Kendra_ee9362bf61ac563f677f7a563cf05f111b4c8ec9.mp3",
+      "source/en/strawberries_Joey_ee9362bf61ac563f677f7a563cf05f111b4c8ec9.mp3"
+    ],
+    "syllabary": "ᎠᏂ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sasa ù:niga:sga.",
-    "syllabary": "ᏌᏌ ᎤᏂᎦᏍᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The geese are getting rained on.",
     "cherokee_audio": ["ssw-audio/0342-Lessons21_to_30-000022455.mp3"],
-    "english_audio": []
+    "english": "The geese are getting rained on.",
+    "english_audio": [
+      "source/en/the_geese_are_getting_rained_on_Kendra_c29dc01703a1128c5c8ce73a5096e83fbd386a2c.mp3",
+      "source/en/the_geese_are_getting_rained_on_Joey_c29dc01703a1128c5c8ce73a5096e83fbd386a2c.mp3"
+    ],
+    "syllabary": "ᏌᏌ ᎤᏂᎦᏍᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "U:ne̋:ga gi:hli.",
-    "syllabary": "ᎤᏁᎦ ᎩᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A white dog.",
     "cherokee_audio": ["ssw-audio/0348-Lessons21_to_30-000043965.mp3"],
-    "english_audio": []
+    "english": "A white dog.",
+    "english_audio": [
+      "source/en/a_white_dog_Kendra_b1033a475fea49bc07f1a2ebf9335896e70d1501.mp3",
+      "source/en/a_white_dog_Joey_b1033a475fea49bc07f1a2ebf9335896e70d1501.mp3"
+    ],
+    "syllabary": "ᎤᏁᎦ ᎩᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Dida:náɂnv̋ iné:na.",
-    "syllabary": "ᏗᏓᎾᏅ ᎢᏁᎾ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Let's go to the store (you and I).",
     "cherokee_audio": ["ssw-audio/0350-Lessons21_to_30-000048765.mp3"],
-    "english_audio": []
+    "english": "Let's go to the store (you and I).",
+    "english_audio": [
+      "source/en/lets_go_to_the_store_you_and_i_Kendra_dad249c6965c9e3c2794eff7ac80abc54cd48b71.mp3",
+      "source/en/lets_go_to_the_store_you_and_i_Joey_dad249c6965c9e3c2794eff7ac80abc54cd48b71.mp3"
+    ],
+    "syllabary": "ᏗᏓᎾᏅ ᎢᏁᎾ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ga̋:du u:nigana̋:sda duwá:duha.",
-    "syllabary": "ᎦᏚ ᎤᏂᎦᎾᏍᏓ ᏚᏩᏚᎭ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she is baking sweet bread (cookies, cake).",
     "cherokee_audio": ["ssw-audio/0361-Lessons21_to_30-000077085.mp3"],
-    "english_audio": []
+    "english": "He or she is baking sweet bread (cookies, cake).",
+    "english_audio": [
+      "source/en/he_or_she_is_baking_sweet_bread__Kendra_be5508b647c8aa11fd9f1cdd6af42f905c88c019.mp3",
+      "source/en/he_or_she_is_baking_sweet_bread__Joey_be5508b647c8aa11fd9f1cdd6af42f905c88c019.mp3"
+    ],
+    "syllabary": "ᎦᏚ ᎤᏂᎦᎾᏍᏓ ᏚᏩᏚᎭ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "U:nv̌:di ù:hwasga.",
-    "syllabary": "ᎤᏅᏗ ᎤᏩᏍᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she is buying milk.",
     "cherokee_audio": ["ssw-audio/0363-Lessons21_to_30-000083685.mp3"],
-    "english_audio": []
+    "english": "He or she is buying milk.",
+    "english_audio": [
+      "source/en/he_or_she_is_buying_milk_Kendra_77584b36e60a8eca41623949900a2c0b1437fb2e.mp3",
+      "source/en/he_or_she_is_buying_milk_Joey_77584b36e60a8eca41623949900a2c0b1437fb2e.mp3"
+    ],
+    "syllabary": "ᎤᏅᏗ ᎤᏩᏍᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ajaɂdi.",
-    "syllabary": "ᎠᏣᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "fish",
     "cherokee_audio": ["ssw-audio/0371-Lessons21_to_30-000099905.mp3"],
-    "english_audio": []
+    "english": "fish",
+    "english_audio": [
+      "source/en/fish_Kendra_64875fcccaac069fcb3e0e201e7d5b9166641608.mp3",
+      "source/en/fish_Joey_64875fcccaac069fcb3e0e201e7d5b9166641608.mp3"
+    ],
+    "syllabary": "ᎠᏣᏗ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Jayó:sihas?",
-    "syllabary": "ᏣᏲᏏᎭᏍ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Are you hungry?",
     "cherokee_audio": ["ssw-audio/0373-Lessons21_to_30-000104025.mp3"],
-    "english_audio": []
+    "english": "Are you hungry?",
+    "english_audio": [
+      "source/en/are_you_hungry_Kendra_1088b597d9e539ee464301f40ba9554e50b84472.mp3",
+      "source/en/are_you_hungry_Joey_1088b597d9e539ee464301f40ba9554e50b84472.mp3"
+    ],
+    "syllabary": "ᏣᏲᏏᎭᏍ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Jalí:si.",
-    "syllabary": "ᏣᎵᏏ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Your grandmother.",
     "cherokee_audio": ["ssw-audio/0375-Lessons21_to_30-000108735.mp3"],
-    "english_audio": []
+    "english": "Your grandmother.",
+    "english_audio": [
+      "source/en/your_grandmother_Kendra_f4c4029a7292ec15c0a9e51550c92f81c6bef3d0.mp3",
+      "source/en/your_grandmother_Joey_f4c4029a7292ec15c0a9e51550c92f81c6bef3d0.mp3"
+    ],
+    "syllabary": "ᏣᎵᏏ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Jayó:li.",
-    "syllabary": "ᏣᏲᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she is greating you.",
     "cherokee_audio": ["ssw-audio/0377-Lessons21_to_30-000113215.mp3"],
-    "english_audio": []
+    "english": "He or she is greating you.",
+    "english_audio": [
+      "source/en/he_or_she_is_greating_you_Kendra_034f1252f949cf806f99f7e29ffda0d632abf5e2.mp3",
+      "source/en/he_or_she_is_greating_you_Joey_034f1252f949cf806f99f7e29ffda0d632abf5e2.mp3"
+    ],
+    "syllabary": "ᏣᏲᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "I:ya.",
-    "syllabary": "ᎢᏯ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "pumpkin",
     "cherokee_audio": ["ssw-audio/0386-Lessons21_to_30-000135975.mp3"],
-    "english_audio": []
+    "english": "pumpkin",
+    "english_audio": [
+      "source/en/pumpkin_Kendra_5f13610453fd0dabebe3d680e0b2990619bf138c.mp3",
+      "source/en/pumpkin_Joey_5f13610453fd0dabebe3d680e0b2990619bf138c.mp3"
+    ],
+    "syllabary": "ᎢᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Salǒ:li gaɂnǐ:ya na gi:hli.",
-    "syllabary": "ᏌᎶᎵ ᎦᏂᏯ Ꮎ ᎩᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The dog caught a squirrel.",
     "cherokee_audio": ["ssw-audio/0388-Lessons21_to_30-000139505.mp3"],
-    "english_audio": []
+    "english": "The dog caught a squirrel.",
+    "english_audio": [
+      "source/en/the_dog_caught_a_squirrel_Kendra_f3a67f54aa4743dbcce827246f4b70c28bb68922.mp3",
+      "source/en/the_dog_caught_a_squirrel_Joey_f3a67f54aa4743dbcce827246f4b70c28bb68922.mp3"
+    ],
+    "syllabary": "ᏌᎶᎵ ᎦᏂᏯ Ꮎ ᎩᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Tǔ:ya dù:du:lí.",
-    "syllabary": "ᏙᏯ ᏚᏚᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she wants some beans.",
     "cherokee_audio": ["ssw-audio/0390-Lessons21_to_30-000145645.mp3"],
-    "english_audio": []
+    "english": "He or she wants some beans.",
+    "english_audio": [
+      "source/en/he_or_she_wants_some_beans_Kendra_ab72e9c554853de9a2789d97ced03a5fc7b0abb6.mp3",
+      "source/en/he_or_she_wants_some_beans_Joey_ab72e9c554853de9a2789d97ced03a5fc7b0abb6.mp3"
+    ],
+    "syllabary": "ᏙᏯ ᏚᏚᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ji:sdu.",
-    "syllabary": "ᏥᏍᏚ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "rabbit",
     "cherokee_audio": ["ssw-audio/0398-Lessons21_to_30-000166995.mp3"],
-    "english_audio": []
+    "english": "rabbit",
+    "english_audio": [
+      "source/en/rabbit_Kendra_6d0ebbbdce32474db8141d23d2c01bd9628d6e5f.mp3",
+      "source/en/rabbit_Joey_6d0ebbbdce32474db8141d23d2c01bd9628d6e5f.mp3"
+    ],
+    "syllabary": "ᏥᏍᏚ"
   },
   {
-    "cherokee": "U:ni:ji:ya dù:hyoha na asgaya.",
-    "syllabary": "ᎤᏂᏥᏯ ᏚᏲᎭ Ꮎ ᎠᏍᎦᏯ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "The man is looking for worms.",
+    "cherokee": "U:ni:ji:ya dù:hyoha na asgaya.",
     "cherokee_audio": [
       "ssw-audio/Lessons21_to_30-unijiya duhyoha na asgaya.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "The man is looking for worms.",
+    "english_audio": [
+      "source/en/the_man_is_looking_for_worms_Kendra_94d4b38d7f0842af8a54ac7e638c97ddd0384de4.mp3",
+      "source/en/the_man_is_looking_for_worms_Joey_94d4b38d7f0842af8a54ac7e638c97ddd0384de4.mp3"
+    ],
+    "syllabary": "ᎤᏂᏥᏯ ᏚᏲᎭ Ꮎ ᎠᏍᎦᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ha:wiya.",
-    "syllabary": "ᎭᏫᏯ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "meat",
     "cherokee_audio": ["ssw-audio/0414-Lessons21_to_30-000199605.mp3"],
-    "english_audio": []
+    "english": "meat",
+    "english_audio": [
+      "source/en/meat_Kendra_bb40f75a9c6038e0da200fc5c3a6f371c1592c66.mp3",
+      "source/en/meat_Joey_bb40f75a9c6038e0da200fc5c3a6f371c1592c66.mp3"
+    ],
+    "syllabary": "ᎭᏫᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Wiɂsi.",
-    "syllabary": "ᏫᏏ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "a type of mushroom (wishie)",
     "cherokee_audio": ["ssw-audio/0416-Lessons21_to_30-000203525.mp3"],
-    "english_audio": []
+    "english": "a type of mushroom (wishie)",
+    "english_audio": [
+      "source/en/a_type_of_mushroom_wishie_Kendra_ac7817dbd4b8df457175dd6f23ff4459fcb38020.mp3",
+      "source/en/a_type_of_mushroom_wishie_Joey_ac7817dbd4b8df457175dd6f23ff4459fcb38020.mp3"
+    ],
+    "syllabary": "ᏫᏏ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Jí:sgwa.",
-    "syllabary": "ᏥᏍᏆ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "bird",
     "cherokee_audio": ["ssw-audio/0428-Lessons21_to_30-000234345.mp3"],
-    "english_audio": []
+    "english": "bird",
+    "english_audio": [
+      "source/en/bird_Kendra_cd92815bf6273acbaf834b9faed277c722068291.mp3",
+      "source/en/bird_Joey_cd92815bf6273acbaf834b9faed277c722068291.mp3"
+    ],
+    "syllabary": "ᏥᏍᏆ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sihgwa.",
-    "syllabary": "ᏏᏆ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "hog",
     "cherokee_audio": ["ssw-audio/0430-Lessons21_to_30-000238545.mp3"],
-    "english_audio": []
+    "english": "hog",
+    "english_audio": [
+      "source/en/hog_Kendra_9bf0e809ef19acd9c4849c3fd23622adf5dc8ea7.mp3",
+      "source/en/hog_Joey_9bf0e809ef19acd9c4849c3fd23622adf5dc8ea7.mp3"
+    ],
+    "syllabary": "ᏏᏆ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sihgwa ha:wiya à:gwadu:lí.",
-    "syllabary": "ᏏᏆ ᎭᏫᏯ ᎠᏆᏚᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I want some pork.",
     "cherokee_audio": ["ssw-audio/0432-Lessons21_to_30-000242165.mp3"],
-    "english_audio": []
+    "english": "I want some pork.",
+    "english_audio": [
+      "source/en/i_want_some_pork_Kendra_05481c0c3a41978b09348a28f23b93b5100accf7.mp3",
+      "source/en/i_want_some_pork_Joey_05481c0c3a41978b09348a28f23b93b5100accf7.mp3"
+    ],
+    "syllabary": "ᏏᏆ ᎭᏫᏯ ᎠᏆᏚᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ji:sgwada.",
-    "syllabary": "ᏥᏍᏆᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I just finished it.",
     "cherokee_audio": ["ssw-audio/0434-Lessons21_to_30-000248395.mp3"],
-    "english_audio": []
+    "english": "I just finished it.",
+    "english_audio": [
+      "source/en/i_just_finished_it_Kendra_e52274746f18ace48e9713dd10e17a51fc5b8d8c.mp3",
+      "source/en/i_just_finished_it_Joey_e52274746f18ace48e9713dd10e17a51fc5b8d8c.mp3"
+    ],
+    "syllabary": "ᏥᏍᏆᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "wě:sa.",
-    "syllabary": "ᏪᏌ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "cat",
     "cherokee_audio": ["ssw-audio/0557-Lessons31_to_40-000261425.mp3"],
-    "english_audio": []
+    "english": "cat",
+    "english_audio": [
+      "source/en/cat_Kendra_9d989e8d27dc9e0ec3389fc855f142c3d40f0c50.mp3",
+      "source/en/cat_Joey_9d989e8d27dc9e0ec3389fc855f142c3d40f0c50.mp3"
+    ],
+    "syllabary": "ᏪᏌ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Wě:sa nigawe.",
-    "syllabary": "ᏪᏌ ᏂᎦᏪ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A cat is meowing.",
     "cherokee_audio": ["ssw-audio/0443-Lessons21_to_30-000275975.mp3"],
-    "english_audio": []
+    "english": "A cat is meowing.",
+    "english_audio": [
+      "source/en/a_cat_is_meowing_Kendra_7868cc6a77912e624e1d909d16e39b1ac8dc1bc8.mp3",
+      "source/en/a_cat_is_meowing_Joey_7868cc6a77912e624e1d909d16e39b1ac8dc1bc8.mp3"
+    ],
+    "syllabary": "ᏪᏌ ᏂᎦᏪ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sa:sa na:niwe.",
-    "syllabary": "ᏌᏌ ᎾᏂᏪ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Some geese are honking.",
     "cherokee_audio": ["ssw-audio/0445-Lessons21_to_30-000279905.mp3"],
-    "english_audio": []
+    "english": "Some geese are honking.",
+    "english_audio": [
+      "source/en/some_geese_are_honking_Kendra_2ef84fe3114987b002bdf8fc45a3f0f987d04836.mp3",
+      "source/en/some_geese_are_honking_Joey_2ef84fe3114987b002bdf8fc45a3f0f987d04836.mp3"
+    ],
+    "syllabary": "ᏌᏌ ᎾᏂᏪ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ayv:wi:ya̋.",
-    "syllabary": "ᎠᏴᏫᏯ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Indian",
     "cherokee_audio": ["ssw-audio/0453-Lessons21_to_30-000301505.mp3"],
-    "english_audio": []
+    "english": "Indian",
+    "english_audio": [
+      "source/en/indian_Kendra_d3dc20aa0f3d4996138c53a18eba79b3f099e746.mp3",
+      "source/en/indian_Joey_d3dc20aa0f3d4996138c53a18eba79b3f099e746.mp3"
+    ],
+    "syllabary": "ᎠᏴᏫᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ayv.",
-    "syllabary": "ᎠᏴ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I, me.",
     "cherokee_audio": ["ssw-audio/0456-Lessons21_to_30-000309065.mp3"],
-    "english_audio": []
+    "english": "I, me.",
+    "english_audio": [
+      "source/en/i_me_Kendra_f314510ba3bc552415c1b6ebecbde73bb6288fad.mp3",
+      "source/en/i_me_Joey_f314510ba3bc552415c1b6ebecbde73bb6288fad.mp3"
+    ],
+    "syllabary": "ᎠᏴ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ahyv:dagwalò:sgi.",
-    "syllabary": "ᎠᏴᏓᏆᎶᏍᎩ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "thunder",
     "cherokee_audio": ["ssw-audio/0458-Lessons21_to_30-000312365.mp3"],
-    "english_audio": []
+    "english": "thunder",
+    "english_audio": [
+      "source/en/thunder_Kendra_badcfa3c62742b3bcc1dcd893e78713bd36aa430.mp3",
+      "source/en/thunder_Joey_badcfa3c62742b3bcc1dcd893e78713bd36aa430.mp3"
+    ],
+    "syllabary": "ᎠᏴᏓᏆᎶᏍᎩ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Na agayv̌:líge̋ ù:yó:si, ge:líɂa.",
-    "syllabary": "Ꮎ ᎠᎦᏴᎵᎨ ᎤᏲᏏ ᎨᎵᎠ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "That elderly woman is hungry, I think.",
     "cherokee_audio": ["ssw-audio/0475-Lessons31_to_40-000012415.mp3"],
-    "english_audio": []
+    "english": "That elderly woman is hungry, I think.",
+    "english_audio": [
+      "source/en/that_elderly_woman_is_hungry_i_t_Kendra_920877616a5167b39f8f59c0cc134ea031975e67.mp3",
+      "source/en/that_elderly_woman_is_hungry_i_t_Joey_920877616a5167b39f8f59c0cc134ea031975e67.mp3"
+    ],
+    "syllabary": "Ꮎ ᎠᎦᏴᎵᎨ ᎤᏲᏏ ᎨᎵᎠ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ada:kéhdi ù:du:lí na agě:hya.",
-    "syllabary": "ᎠᏓᎨᏗ ᎤᏚᎵ Ꮎ ᎠᎨᏯ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The woman wants a mirror.",
     "cherokee_audio": ["ssw-audio/0478-Lessons31_to_40-000025345.mp3"],
-    "english_audio": []
+    "english": "The woman wants a mirror.",
+    "english_audio": [
+      "source/en/the_woman_wants_a_mirror_Kendra_90f4174c2533e6423d04e41b2f66c35522f53e87.mp3",
+      "source/en/the_woman_wants_a_mirror_Joey_90f4174c2533e6423d04e41b2f66c35522f53e87.mp3"
+    ],
+    "syllabary": "ᎠᏓᎨᏗ ᎤᏚᎵ Ꮎ ᎠᎨᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ajaɂdi ga:tíga na asgaya.",
-    "syllabary": "ᎠᏣᏗ ᎦᏘᎦ Ꮎ ᎠᏍᎦᏯ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The man gigged a fish.",
     "cherokee_audio": ["ssw-audio/0486-Lessons31_to_40-000050105.mp3"],
-    "english_audio": []
+    "english": "The man gigged a fish.",
+    "english_audio": [
+      "source/en/the_man_gigged_a_fish_Kendra_6e39c82fa40e6dd8cdd9338dfd2bff73bf01c61b.mp3",
+      "source/en/the_man_gigged_a_fish_Joey_6e39c82fa40e6dd8cdd9338dfd2bff73bf01c61b.mp3"
+    ],
+    "syllabary": "ᎠᏣᏗ ᎦᏘᎦ Ꮎ ᎠᏍᎦᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Tiyǒ:háɂli gaɂnǐ:ya na ǐ:náda.",
-    "syllabary": "ᏘᏲᎭᎵ ᎦᏂᏯ Ꮎ ᎢᎾᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The snake caught a lizard.",
     "cherokee_audio": ["ssw-audio/0488-Lessons31_to_40-000056405.mp3"],
-    "english_audio": []
+    "english": "The snake caught a lizard.",
+    "english_audio": [
+      "source/en/the_snake_caught_a_lizard_Kendra_5e867953eb675f8289c940c7b8588e6c25662f36.mp3",
+      "source/en/the_snake_caught_a_lizard_Joey_5e867953eb675f8289c940c7b8588e6c25662f36.mp3"
+    ],
+    "syllabary": "ᏘᏲᎭᎵ ᎦᏂᏯ Ꮎ ᎢᎾᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "O:sǐ:yu iyunalsdà:hnéhdi.",
-    "syllabary": "ᎣᏏᏳ ᎢᏳᎾᎵᏍᏓᏁᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Blessed are they.",
     "cherokee_audio": ["ssw-audio/0497-Lessons31_to_40-000086285.mp3"],
-    "english_audio": []
+    "english": "Blessed are they.",
+    "english_audio": [
+      "source/en/blessed_are_they_Kendra_7d42d16bd63224cf374ba995d1cc8dbdcfd33571.mp3",
+      "source/en/blessed_are_they_Joey_7d42d16bd63224cf374ba995d1cc8dbdcfd33571.mp3"
+    ],
+    "syllabary": "ᎣᏏᏳ ᎢᏳᎾᎵᏍᏓᏁᏗ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ő:sda a:gì:sdi uyu:ti.",
-    "syllabary": "ᎣᏍᏓ ᎠᎩᏍᏗ ᎤᏳᏘ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Gizzard is good to eat.",
     "cherokee_audio": ["ssw-audio/0499-Lessons31_to_40-000091915.mp3"],
-    "english_audio": []
+    "english": "Gizzard is good to eat.",
+    "english_audio": [
+      "source/en/gizzard_is_good_to_eat_Kendra_8589561564e722e3f1d38e9ee5830f7831c79211.mp3",
+      "source/en/gizzard_is_good_to_eat_Joey_8589561564e722e3f1d38e9ee5830f7831c79211.mp3"
+    ],
+    "syllabary": "ᎣᏍᏓ ᎠᎩᏍᏗ ᎤᏳᏘ"
   },
   {
-    "cherokee": "Dlo:ge̋:si winè:da tǔ:ya gà:yő:hli widinadági.",
-    "syllabary": "ᏠᎨᏏ ᏫᏁᏓ ᏚᏯ ᎦᏲᏟ ᏫᏗᎾᏓᎩ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "Let's go to the garden and pick a few beans.",
+    "cherokee": "Dlo:ge̋:si winè:da tǔ:ya gà:yő:hli widinadági.",
     "cherokee_audio": [
       "ssw-audio/Lessons31_to_40-dlogesi wineda tuya gayohli widinadagi.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "Let's go to the garden and pick a few beans.",
+    "english_audio": [
+      "source/en/lets_go_to_the_garden_and_pick_a_Kendra_14d31b9e066b9affdec98a84ab3fed2e237920a2.mp3",
+      "source/en/lets_go_to_the_garden_and_pick_a_Joey_14d31b9e066b9affdec98a84ab3fed2e237920a2.mp3"
+    ],
+    "syllabary": "ᏠᎨᏏ ᏫᏁᏓ ᏚᏯ ᎦᏲᏟ ᏫᏗᎾᏓᎩ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ani:yv:wi:ya̋ dà:nadlo:sga.",
-    "syllabary": "ᎠᏂᏴᏫᏯ ᏓᎾᏠᏍᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The Indians are having a meeting.",
     "cherokee_audio": ["ssw-audio/0510-Lessons31_to_40-000121705.mp3"],
-    "english_audio": []
+    "english": "The Indians are having a meeting.",
+    "english_audio": [
+      "source/en/the_indians_are_having_a_meeting_Kendra_5db62850c5cfc3da4e5d18b31fa2cf1eb088bb65.mp3",
+      "source/en/the_indians_are_having_a_meeting_Joey_5db62850c5cfc3da4e5d18b31fa2cf1eb088bb65.mp3"
+    ],
+    "syllabary": "ᎠᏂᏴᏫᏯ ᏓᎾᏠᏍᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Niga̋:da ani:yv:wi:ya̋ ù:natloyâ:sdiha.",
-    "syllabary": "ᏂᎦᏓ ᎠᏂᏴᏫᏯ ᎤᎾᏠᏯᏍᏗᎭ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "All Indians are included.",
     "cherokee_audio": ["ssw-audio/0512-Lessons31_to_40-000127525.mp3"],
-    "english_audio": []
+    "english": "All Indians are included.",
+    "english_audio": [
+      "source/en/all_indians_are_included_Kendra_877976342fb6faa5b2c8fe1bc9b881bbaa8b459c.mp3",
+      "source/en/all_indians_are_included_Joey_877976342fb6faa5b2c8fe1bc9b881bbaa8b459c.mp3"
+    ],
+    "syllabary": "ᏂᎦᏓ ᎠᏂᏴᏫᏯ ᎤᎾᏠᏯᏍᏗᎭ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ama sgidlì:sdasi.",
-    "syllabary": "ᎠᎹ ᏍᎩᏟᏍᏓᏏ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Pour me some water.",
     "cherokee_audio": ["ssw-audio/0519-Lessons31_to_40-000149825.mp3"],
-    "english_audio": []
+    "english": "Pour me some water.",
+    "english_audio": [
+      "source/en/pour_me_some_water_Kendra_7f8a5040b5bb25ec5dbc108b5577467f14414b57.mp3",
+      "source/en/pour_me_some_water_Joey_7f8a5040b5bb25ec5dbc108b5577467f14414b57.mp3"
+    ],
+    "syllabary": "ᎠᎹ ᏍᎩᏟᏍᏓᏏ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ǔ:gáma à:gwadu:lí.",
-    "syllabary": "ᎤᎦᎹ ᎠᏆᏚᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I want some soup.",
     "cherokee_audio": ["ssw-audio/0521-Lessons31_to_40-000154525.mp3"],
-    "english_audio": []
+    "english": "I want some soup.",
+    "english_audio": [
+      "source/en/i_want_some_soup_Kendra_f177b92e219b23d3a94b989158d7ea7166c6bb5d.mp3",
+      "source/en/i_want_some_soup_Joey_f177b92e219b23d3a94b989158d7ea7166c6bb5d.mp3"
+    ],
+    "syllabary": "ᎤᎦᎹ ᎠᏆᏚᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Kilő anisgaya danidô:ga.",
-    "syllabary": "ᎩᎶ ᎠᏂᏍᎦᏯ ᏓᏂᏙᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Some men are standing.",
     "cherokee_audio": ["ssw-audio/0531-Lessons31_to_40-000182805.mp3"],
-    "english_audio": []
+    "english": "Some men are standing.",
+    "english_audio": [
+      "source/en/some_men_are_standing_Kendra_351e19123e126f0495012af13205f220c0592323.mp3",
+      "source/en/some_men_are_standing_Joey_351e19123e126f0495012af13205f220c0592323.mp3"
+    ],
+    "syllabary": "ᎩᎶ ᎠᏂᏍᎦᏯ ᏓᏂᏙᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ǐ:náda gahnǐ:dô na asgaya.",
-    "syllabary": "ᎢᎾᏓ ᎦᏂᏙ Ꮎ ᎠᏍᎦᏯ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The man is handling a snake.",
     "cherokee_audio": ["ssw-audio/0533-Lessons31_to_40-000188125.mp3"],
-    "english_audio": []
+    "english": "The man is handling a snake.",
+    "english_audio": [
+      "source/en/the_man_is_handling_a_snake_Kendra_319a0faf6f1b9d1e329086c915b551f314080ce9.mp3",
+      "source/en/the_man_is_handling_a_snake_Joey_319a0faf6f1b9d1e329086c915b551f314080ce9.mp3"
+    ],
+    "syllabary": "ᎢᎾᏓ ᎦᏂᏙ Ꮎ ᎠᏍᎦᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gadogi u:sdi?",
-    "syllabary": "ᎦᏙᎩ ᎤᏍᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "What (did you say)?",
     "cherokee_audio": ["ssw-audio/0535-Lessons31_to_40-000195795.mp3"],
-    "english_audio": []
+    "english": "What (did you say)?",
+    "english_audio": [
+      "source/en/what_did_you_say_Kendra_f7d6f5de1223dd9efe3ff939632b50e0c65da394.mp3",
+      "source/en/what_did_you_say_Joey_f7d6f5de1223dd9efe3ff939632b50e0c65da394.mp3"
+    ],
+    "syllabary": "ᎦᏙᎩ ᎤᏍᏗ"
   },
   {
-    "cherokee": "Di:là:sǔ:lo dù:wà:dù:la:chisi na à:lâ:sgalǐ:sgi.",
-    "syllabary": "ᏗᎳᏑᎶ ᏚᏩᏚᎳᏥᏏ Ꮎ ᎠᎳᏍᎦᎵᏍᎩ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "The ball player's shoes got wet.",
+    "cherokee": "Di:là:sǔ:lo dù:wà:dù:la:chisi na à:lâ:sgalǐ:sgi.",
     "cherokee_audio": [
       "ssw-audio/Lessons31_to_40-dilasulo duwadulachisi na alasgalisgi.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "The ball player's shoes got wet.",
+    "english_audio": [
+      "source/en/the_ball_players_shoes_got_wet_Kendra_eb447ed55934ff15921112c6e213a80f4147dcc7.mp3",
+      "source/en/the_ball_players_shoes_got_wet_Joey_eb447ed55934ff15921112c6e213a80f4147dcc7.mp3"
+    ],
+    "syllabary": "ᏗᎳᏑᎶ ᏚᏩᏚᎳᏥᏏ Ꮎ ᎠᎳᏍᎦᎵᏍᎩ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Idalà:sgala.",
-    "syllabary": "ᎢᏓᎳᏍᎦᎳ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Let's play ball.",
     "cherokee_audio": ["ssw-audio/0545-Lessons31_to_40-000227715.mp3"],
-    "english_audio": []
+    "english": "Let's play ball.",
+    "english_audio": [
+      "source/en/lets_play_ball_Kendra_4bf691ed8e66cdf2d1daf4fa3142f399e06f20c2.mp3",
+      "source/en/lets_play_ball_Joey_4bf691ed8e66cdf2d1daf4fa3142f399e06f20c2.mp3"
+    ],
+    "syllabary": "ᎢᏓᎳᏍᎦᎳ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Jǒ:lani",
-    "syllabary": "ᏦᎳᏂ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "window",
     "cherokee_audio": ["ssw-audio/0562-Lessons31_to_40-000273975.mp3"],
-    "english_audio": []
+    "english": "window",
+    "english_audio": [
+      "source/en/window_Kendra_320ad267d8d969f285eda5c184f5455bd29c8c95.mp3",
+      "source/en/window_Joey_320ad267d8d969f285eda5c184f5455bd29c8c95.mp3"
+    ],
+    "syllabary": "ᏦᎳᏂ"
   },
   {
-    "cherokee": "Jǒ:lani ù:kiɂla wě:sa.",
-    "syllabary": "ᏦᎳᏂ ᎤᎩᎳ ᏪᏌ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "A cat is sitting in the window.",
+    "cherokee": "Jǒ:lani ù:kiɂla wě:sa.",
     "cherokee_audio": [
       "ssw-audio/Lessons31_to_40-jolani ukila wesa.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "A cat is sitting in the window.",
+    "english_audio": [
+      "source/en/a_cat_is_sitting_in_the_window_Kendra_627c48508fae3f07b91260fdc88e536ab28436e0.mp3",
+      "source/en/a_cat_is_sitting_in_the_window_Joey_627c48508fae3f07b91260fdc88e536ab28436e0.mp3"
+    ],
+    "syllabary": "ᏦᎳᏂ ᎤᎩᎳ ᏪᏌ"
   },
   {
-    "cherokee": "Joɂi iyáni wě:sa ani̋:da à:ni:hlína.",
-    "syllabary": "ᏦᎢ ᎢᏯᏂ ᏪᏌ ᎠᏂᏓ ᎠᏂᏟᎾ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "There are three kittens sleeping.",
+    "cherokee": "Joɂi iyáni wě:sa ani̋:da à:ni:hlína.",
     "cherokee_audio": [
       "ssw-audio/Lessons31_to_40-joi iyani wesa anida anihlina.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "There are three kittens sleeping.",
+    "english_audio": [
+      "source/en/there_are_three_kittens_sleeping_Kendra_9d8ba9c0a40dd006112340c7a9b5d32bd426971f.mp3",
+      "source/en/there_are_three_kittens_sleeping_Joey_9d8ba9c0a40dd006112340c7a9b5d32bd426971f.mp3"
+    ],
+    "syllabary": "ᏦᎢ ᎢᏯᏂ ᏪᏌ ᎠᏂᏓ ᎠᏂᏟᎾ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Jǒ:lani tisduɂi.",
-    "syllabary": "ᏦᎳᏂ ᏘᏍᏚᎢ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Open the windows.",
     "cherokee_audio": ["ssw-audio/Lessons31_to_40-jolani tisdui.-bespoke.wav"],
-    "english_audio": []
+    "english": "Open the windows.",
+    "english_audio": [
+      "source/en/open_the_windows_Kendra_c82f6714a418f5362b60460e5fed4c15eebf74f2.mp3",
+      "source/en/open_the_windows_Joey_c82f6714a418f5362b60460e5fed4c15eebf74f2.mp3"
+    ],
+    "syllabary": "ᏦᎳᏂ ᏘᏍᏚᎢ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Da:hnawa à:sgwaliha.",
-    "syllabary": "ᏓᎿᏩ ᎠᏍᏆᎵᎭ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "There is a war going on.",
     "cherokee_audio": ["ssw-audio/0573-Lessons31_to_40-000300775.mp3"],
-    "english_audio": []
+    "english": "There is a war going on.",
+    "english_audio": [
+      "source/en/there_is_a_war_going_on_Kendra_e5ce80511cf52f67c727f7629542668b177b141e.mp3",
+      "source/en/there_is_a_war_going_on_Joey_e5ce80511cf52f67c727f7629542668b177b141e.mp3"
+    ],
+    "syllabary": "ᏓᎿᏩ ᎠᏍᏆᎵᎭ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ayő:hli ù:hnawâ:sdiha.",
-    "syllabary": "ᎠᏲᏟ ᎤᎿᏩᏍᏗᎭ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A child has a chill.",
     "cherokee_audio": ["ssw-audio/0575-Lessons31_to_40-000306765.mp3"],
-    "english_audio": []
+    "english": "A child has a chill.",
+    "english_audio": [
+      "source/en/a_child_has_a_chill_Kendra_3605e186356450c41a72e8d9f4e9f6a213a2234b.mp3",
+      "source/en/a_child_has_a_chill_Joey_3605e186356450c41a72e8d9f4e9f6a213a2234b.mp3"
+    ],
+    "syllabary": "ᎠᏲᏟ ᎤᎿᏩᏍᏗᎭ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Uwě:hnaɂi ganě:la na jididá:ne:la.",
-    "syllabary": "ᎤᏪᎿᎢ ᎦᏁᎳ Ꮎ ᏥᏗᏓᏁᎳ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A rich person lives in that house.",
     "cherokee_audio": ["ssw-audio/0577-Lessons31_to_40-000313455.mp3"],
-    "english_audio": []
+    "english": "A rich person lives in that house.",
+    "english_audio": [
+      "source/en/a_rich_person_lives_in_that_hous_Kendra_2d46e5cdc76207ff8f1d5ba427bb81c4694361a6.mp3",
+      "source/en/a_rich_person_lives_in_that_hous_Joey_2d46e5cdc76207ff8f1d5ba427bb81c4694361a6.mp3"
+    ],
+    "syllabary": "ᎤᏪᎿᎢ ᎦᏁᎳ Ꮎ ᏥᏗᏓᏁᎳ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Awǒ:háɂli u:gì:dáhli gà:nǐ:dô na ayv:wi:ya̋.",
-    "syllabary": "ᎠᏬᎭᎵ ᎤᎩᏓᏟ ᎦᏂᏙ Ꮎ ᎠᏴᏫᏯ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The Indian is handling an eagle feather.",
     "cherokee_audio": ["ssw-audio/0588-Lessons31_to_40-000341175.mp3"],
-    "english_audio": []
+    "english": "The Indian is handling an eagle feather.",
+    "english_audio": [
+      "source/en/the_indian_is_handling_an_eagle__Kendra_efc35c7366efe2d746af4c79d28e6b2c4fbe5cea.mp3",
+      "source/en/the_indian_is_handling_an_eagle__Joey_efc35c7366efe2d746af4c79d28e6b2c4fbe5cea.mp3"
+    ],
+    "syllabary": "ᎠᏬᎭᎵ ᎤᎩᏓᏟ ᎦᏂᏙ Ꮎ ᎠᏴᏫᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Jalagi gawó:ni na ayó:ne:ga.",
-    "syllabary": "ᏣᎳᎩ ᎦᏬᏂ Ꮎ ᎠᏲᏁᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "That white person is speaking Cherokee.",
     "cherokee_audio": ["ssw-audio/0591-Lessons31_to_40-000351565.mp3"],
-    "english_audio": []
+    "english": "That white person is speaking Cherokee.",
+    "english_audio": [
+      "source/en/that_white_person_is_speaking_ch_Kendra_ef492a6b46783a1d88cb764d1cf77ac53a832078.mp3",
+      "source/en/that_white_person_is_speaking_ch_Joey_ef492a6b46783a1d88cb764d1cf77ac53a832078.mp3"
+    ],
+    "syllabary": "ᏣᎳᎩ ᎦᏬᏂ Ꮎ ᎠᏲᏁᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Nv:wô:ti ù:du:lí na udanili.",
-    "syllabary": "ᏅᏬᏘ ᎤᏚᎵ Ꮎ ᏅᏓᏂᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "That sick person wants some medicine",
     "cherokee_audio": ["ssw-audio/0593-Lessons31_to_40-000358425.mp3"],
-    "english_audio": []
+    "english": "That sick person wants some medicine",
+    "english_audio": [
+      "source/en/that_sick_person_wants_some_medi_Kendra_d4fced2666a04f3d1bba6c514f2b7ae9f6255985.mp3",
+      "source/en/that_sick_person_wants_some_medi_Joey_d4fced2666a04f3d1bba6c514f2b7ae9f6255985.mp3"
+    ],
+    "syllabary": "ᏅᏬᏘ ᎤᏚᎵ Ꮎ ᎤᏓᏂᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Kanu:na nigaweɂa.",
-    "syllabary": "ᎧᏄᎾ ᏂᎦᏪᎠ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A bull frog is croaking",
     "cherokee_audio": ["ssw-audio/0622-Lessons41_to_50-000034345.mp3"],
-    "english_audio": []
+    "english": "A bull frog is croaking",
+    "english_audio": [
+      "source/en/a_bull_frog_is_croaking_Kendra_83c07cf91f42eb3c1535c8f340fa2fb36a84f7a8.mp3",
+      "source/en/a_bull_frog_is_croaking_Joey_83c07cf91f42eb3c1535c8f340fa2fb36a84f7a8.mp3"
+    ],
+    "syllabary": "ᎧᏄᎾ ᏂᎦᏪᎠ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "U:sdi̋ kanawô:ga.",
-    "syllabary": "ᎤᏍᏗ ᎧᎾᏬᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A baby is cold.",
     "cherokee_audio": ["ssw-audio/0624-Lessons41_to_50-000038945.mp3"],
-    "english_audio": []
+    "english": "A baby is cold.",
+    "english_audio": [
+      "source/en/a_baby_is_cold_Kendra_1117b010f9737d027d130ecd3e453480a8888f2b.mp3",
+      "source/en/a_baby_is_cold_Joey_1117b010f9737d027d130ecd3e453480a8888f2b.mp3"
+    ],
+    "syllabary": "ᎤᏍᏗ ᎧᎾᏬᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Kǎ:hwi widayù:hwasi dì:da:náɂnv̋:i.",
-    "syllabary": "ᎧᏫ ᏫᏓᏳᏩᏏ ᏗᏓᎾᏅᎢ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she is going to the store to buy some coffee",
     "cherokee_audio": ["ssw-audio/0626-Lessons41_to_50-000044125.mp3"],
-    "english_audio": []
+    "english": "He or she is going to the store to buy some coffee",
+    "english_audio": [
+      "source/en/he_or_she_is_going_to_the_store__Kendra_1b75ac06739b8f2fbd3362c70c69375981d5942b.mp3",
+      "source/en/he_or_she_is_going_to_the_store__Joey_1b75ac06739b8f2fbd3362c70c69375981d5942b.mp3"
+    ],
+    "syllabary": "ᎧᏫ ᏫᏓᏳᏩᏏ ᏗᏓᎾᏅᎢ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Di:sésdi dù:wo:hwě:lâ.",
-    "syllabary": "ᏗᏎᏍᏗ ᏚᏬᏪᎳ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she has numbers written down.",
     "cherokee_audio": ["ssw-audio/0634-Lessons41_to_50-000063815.mp3"],
-    "english_audio": []
+    "english": "He or she has numbers written down.",
+    "english_audio": [
+      "source/en/he_or_she_has_numbers_written_do_Kendra_db79b6a3f6c98c3f05fb55471b5caab65229bbb4.mp3",
+      "source/en/he_or_she_has_numbers_written_do_Joey_db79b6a3f6c98c3f05fb55471b5caab65229bbb4.mp3"
+    ],
+    "syllabary": "ᏗᏎᏍᏗ ᏚᏬᏪᎳ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Kalsě:ji ù:du:lí na ayő:hli.",
-    "syllabary": "ᎧᎵᏎᏥ ᎤᏚᎵ Ꮎ ᎠᏲᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The child wants some candy.",
     "cherokee_audio": ["ssw-audio/0636-Lessons41_to_50-000069215.mp3"],
-    "english_audio": []
+    "english": "The child wants some candy.",
+    "english_audio": [
+      "source/en/the_child_wants_some_candy_Kendra_665bec986610b15f67fcdcd61e65f47921379206.mp3",
+      "source/en/the_child_wants_some_candy_Joey_665bec986610b15f67fcdcd61e65f47921379206.mp3"
+    ],
+    "syllabary": "ᎧᎵᏎᏥ ᎤᏚᎵ Ꮎ ᎠᏲᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sě:di dà:gíɂa na salǒ:li.",
-    "syllabary": "ᏎᏗ ᏓᎩᎠ Ꮎ ᏌᎶᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The squirrel is eating some walnuts.",
     "cherokee_audio": ["ssw-audio/0638-Lessons41_to_50-000075315.mp3"],
-    "english_audio": []
+    "english": "The squirrel is eating some walnuts.",
+    "english_audio": [
+      "source/en/the_squirrel_is_eating_some_waln_Kendra_10e9f1b724e71b8422833352639575db233897f3.mp3",
+      "source/en/the_squirrel_is_eating_some_waln_Joey_10e9f1b724e71b8422833352639575db233897f3.mp3"
+    ],
+    "syllabary": "ᏎᏗ ᏓᎩᎠ Ꮎ ᏌᎶᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sgiga:ɂdu ù:dalula nvhgi.",
-    "syllabary": "ᏍᎩᎦᏚ ᎤᏓᎷᎳ ᏅᎩ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "It is fifteen before four.",
     "cherokee_audio": ["ssw-audio/0645-Lessons41_to_50-000099425.mp3"],
-    "english_audio": []
+    "english": "It is fifteen before four.",
+    "english_audio": [
+      "source/en/it_is_fifteen_before_four_Kendra_595cbf6d3ba308f95dc5a4c09580599959b6d736.mp3",
+      "source/en/it_is_fifteen_before_four_Joey_595cbf6d3ba308f95dc5a4c09580599959b6d736.mp3"
+    ],
+    "syllabary": "ᏍᎩᎦᏚ ᎤᏓᎷᎳ ᏅᎩ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Digadv́:di.",
-    "syllabary": "ᏗᎦᏛᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "scales",
     "cherokee_audio": ["ssw-audio/0654-Lessons41_to_50-000124515.mp3"],
-    "english_audio": []
+    "english": "scales",
+    "english_audio": [
+      "source/en/scales_Kendra_39cbaa68e8aedb3b186ad53e76bf2f1256e5ac80.mp3",
+      "source/en/scales_Joey_39cbaa68e8aedb3b186ad53e76bf2f1256e5ac80.mp3"
+    ],
+    "syllabary": "ᏗᎦᏛᏗ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gadò hà:dv́:ne?",
-    "syllabary": "ᎦᏙ ᎭᏛᏁ?",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "What are you doing?",
     "cherokee_audio": ["ssw-audio/0656-Lessons41_to_50-000128405.mp3"],
-    "english_audio": []
+    "english": "What are you doing?",
+    "english_audio": [
+      "source/en/what_are_you_doing_Kendra_6344c3791feae35554b0a0fe2f8e0cdb8479c1df.mp3",
+      "source/en/what_are_you_doing_Joey_6344c3791feae35554b0a0fe2f8e0cdb8479c1df.mp3"
+    ],
+    "syllabary": "ᎦᏙ ᎭᏛᏁ?"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Digadv́:di à:yo:sda na ù:da:ge̋:da achű:ja.",
-    "syllabary": "ᏗᎦᏛᏗ ᎠᏲᏍᏓ Ꮎ ᏅᏓᎨᏓ ᎠᏧᏣ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The heavy boy broke the scales.",
     "cherokee_audio": ["ssw-audio/0661-Lessons41_to_50-000140195.mp3"],
-    "english_audio": []
+    "english": "The heavy boy broke the scales.",
+    "english_audio": [
+      "source/en/the_heavy_boy_broke_the_scales_Kendra_3abf19b7fa134c84a21fd185cbdc0db89e5c4f57.mp3",
+      "source/en/the_heavy_boy_broke_the_scales_Joey_3abf19b7fa134c84a21fd185cbdc0db89e5c4f57.mp3"
+    ],
+    "syllabary": "ᏗᎦᏛᏗ ᎠᏲᏍᏓ Ꮎ ᎤᏓᎨᏓ ᎠᏧᏣ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "A:dlawáɂdv̋",
-    "syllabary": "ᎠᏜᏩᏛ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "pocket",
     "cherokee_audio": ["ssw-audio/0668-Lessons41_to_50-000158325.mp3"],
-    "english_audio": []
+    "english": "pocket",
+    "english_audio": [
+      "source/en/pocket_Kendra_5a1504e6868c65bff47083cb638192decf095210.mp3",
+      "source/en/pocket_Joey_5a1504e6868c65bff47083cb638192decf095210.mp3"
+    ],
+    "syllabary": "ᎠᏜᏩᏛ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "U:hyv:dla ama à:gwadu:lí.",
-    "syllabary": "ᎤᏴᏜ ᎠᎹ ᎠᏆᏚᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I want some cold water.",
     "cherokee_audio": ["ssw-audio/0671-Lessons41_to_50-000167195.mp3"],
-    "english_audio": []
+    "english": "I want some cold water.",
+    "english_audio": [
+      "source/en/i_want_some_cold_water_Kendra_bba24bb15ad62d37466729548fb3e49baa1227f2.mp3",
+      "source/en/i_want_some_cold_water_Joey_bba24bb15ad62d37466729548fb3e49baa1227f2.mp3"
+    ],
+    "syllabary": "ᎤᏴᏜ ᎠᎹ ᎠᏆᏚᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Áhani ù:dlanv:da.",
-    "syllabary": "ᎠᎭᏂ ᎤᏜᏅᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "There is an opening here.",
     "cherokee_audio": ["ssw-audio/0673-Lessons41_to_50-000172355.mp3"],
-    "english_audio": []
+    "english": "There is an opening here.",
+    "english_audio": [
+      "source/en/there_is_an_opening_here_Kendra_051ca6e02681720b6e0b9823ca69449c2f85509c.mp3",
+      "source/en/there_is_an_opening_here_Joey_051ca6e02681720b6e0b9823ca69449c2f85509c.mp3"
+    ],
+    "syllabary": "ᎠᎭᏂ ᎤᏜᏅᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hisgi",
-    "syllabary": "ᎯᏍᎩ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "five",
     "cherokee_audio": ["ssw-audio/0679-Lessons41_to_50-000190235.mp3"],
-    "english_audio": []
+    "english": "five",
+    "english_audio": [
+      "source/en/five_Kendra_4db2c1df4610cd6c0da6b9197b066bfb4e9b9d00.mp3",
+      "source/en/five_Joey_4db2c1df4610cd6c0da6b9197b066bfb4e9b9d00.mp3"
+    ],
+    "syllabary": "ᎯᏍᎩ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hi:yo:lì:gis na asgaya?",
-    "syllabary": "ᎯᏲᎵᎩᏍ Ꮎ ᎠᏍᎦᏯ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Do you know that man?",
     "cherokee_audio": ["ssw-audio/0682-Lessons41_to_50-000197445.mp3"],
-    "english_audio": []
+    "english": "Do you know that man?",
+    "english_audio": [
+      "source/en/do_you_know_that_man_Kendra_021df44625ee4bda29a77eb116aaca424f9a43fb.mp3",
+      "source/en/do_you_know_that_man_Joey_021df44625ee4bda29a77eb116aaca424f9a43fb.mp3"
+    ],
+    "syllabary": "ᎯᏲᎵᎩᏍ Ꮎ ᎠᏍᎦᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ganv:hi̋:da ù:stihga na age:hyű:ja.",
-    "syllabary": "ᎦᏅᎯᏓ ᎤᏍᏘᎦ Ꮎ ᎠᎨᏳᏣ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "That girl has long hair.",
     "cherokee_audio": ["ssw-audio/0684-Lessons41_to_50-000202745.mp3"],
-    "english_audio": []
+    "english": "That girl has long hair.",
+    "english_audio": [
+      "source/en/that_girl_has_long_hair_Kendra_ed49c8b4796be6b83b5a7af921681656c36308b1.mp3",
+      "source/en/that_girl_has_long_hair_Joey_ed49c8b4796be6b83b5a7af921681656c36308b1.mp3"
+    ],
+    "syllabary": "ᎦᏅᎯᏓ ᎤᏍᏘᎦ Ꮎ ᎠᎨᏳᏣ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hisgi aye̋:hli à:hlíɂili.",
-    "syllabary": "ᎯᏍᎩ ᎠᏰᏟ ᎠᏟᎢᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The time is five-thirty.",
     "cherokee_audio": ["ssw-audio/0691-Lessons41_to_50-000227775.mp3"],
-    "english_audio": []
+    "english": "The time is five-thirty.",
+    "english_audio": [
+      "source/en/the_time_is_fivethirty_Kendra_0cee6b4711be8e02331181777f77c47a763f9649.mp3",
+      "source/en/the_time_is_fivethirty_Joey_0cee6b4711be8e02331181777f77c47a763f9649.mp3"
+    ],
+    "syllabary": "ᎯᏍᎩ ᎠᏰᏟ ᎠᏟᎢᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "I:ga e̋:hi nv:da kala.",
-    "syllabary": "ᎢᎦ ᎡᎯ ᏅᏓ ᎧᎳ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The sun is out",
     "cherokee_audio": ["ssw-audio/0699-Lessons41_to_50-000260745.mp3"],
-    "english_audio": []
+    "english": "The sun is out",
+    "english_audio": [
+      "source/en/the_sun_is_out_Kendra_35b47948f22d10332eb5ac13fc8a131d33c6f177.mp3",
+      "source/en/the_sun_is_out_Joey_35b47948f22d10332eb5ac13fc8a131d33c6f177.mp3"
+    ],
+    "syllabary": "ᎢᎦ ᎡᎯ ᏅᏓ ᎧᎳ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hiɂa e:do:da.",
-    "syllabary": "ᎯᎠ ᎡᏙᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "This is my father",
     "cherokee_audio": ["ssw-audio/0701-Lessons41_to_50-000265875.mp3"],
-    "english_audio": []
+    "english": "This is my father",
+    "english_audio": [
+      "source/en/this_is_my_father_Kendra_672f92b87367b06bef419a4977b519783c1fc290.mp3",
+      "source/en/this_is_my_father_Joey_672f92b87367b06bef419a4977b519783c1fc290.mp3"
+    ],
+    "syllabary": "ᎯᎠ ᎡᏙᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Áhani jǒ:hlê:sdi.",
-    "syllabary": "ᎠᎭᏂ ᏦᏞᏍᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Sit here.",
     "cherokee_audio": ["ssw-audio/0709-Lessons41_to_50-000291285.mp3"],
-    "english_audio": []
+    "english": "Sit here.",
+    "english_audio": [
+      "source/en/sit_here_Kendra_1cdd90ecee899bcb9a2f1c0a0dd0dcb25888c4af.mp3",
+      "source/en/sit_here_Joey_1cdd90ecee899bcb9a2f1c0a0dd0dcb25888c4af.mp3"
+    ],
+    "syllabary": "ᎠᎭᏂ ᏦᏞᏍᏗ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Di:da:náɂnv̋ widage:doli hle̋:ga.",
-    "syllabary": "ᏗᏓᎾᏅ ᏫᏓᎨᏙᎵ ᏞᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I am going to the store for awhile.",
     "cherokee_audio": ["ssw-audio/0711-Lessons41_to_50-000295455.mp3"],
-    "english_audio": []
+    "english": "I am going to the store for awhile.",
+    "english_audio": [
+      "source/en/i_am_going_to_the_store_for_awhi_Kendra_1dbba5d9b0d33b3801539776d2c4b653ec1e56c6.mp3",
+      "source/en/i_am_going_to_the_store_for_awhi_Joey_1dbba5d9b0d33b3801539776d2c4b653ec1e56c6.mp3"
+    ],
+    "syllabary": "ᏗᏓᎾᏅ ᏫᏓᎨᏙᎵ ᏞᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "U:do:hiyű ù:di:hléhga.",
-    "syllabary": "ᎤᏙᎯᏳ ᎤᏗᏞᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "It is very hot.",
     "cherokee_audio": ["ssw-audio/0713-Lessons41_to_50-000300895.mp3"],
-    "english_audio": []
+    "english": "It is very hot.",
+    "english_audio": [
+      "source/en/it_is_very_hot_Kendra_59feaceea0574f85cebe6e3b95453eb11ce9cada.mp3",
+      "source/en/it_is_very_hot_Joey_59feaceea0574f85cebe6e3b95453eb11ce9cada.mp3"
+    ],
+    "syllabary": "ᎤᏙᎯᏳ ᎤᏗᏞᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ganv:gwalő:sdi e:sgv́hsi.",
-    "syllabary": "ᎦᏅᏆᎶᏍᏗ ᎡᏍᎬᏏ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Hand me a hammer.",
     "cherokee_audio": ["ssw-audio/0727-Lessons51_to_60-000018125.mp3"],
-    "english_audio": []
+    "english": "Hand me a hammer.",
+    "english_audio": [
+      "source/en/hand_me_a_hammer_Kendra_5a540dd79454fe50d89c413a1597fc43e4d7212a.mp3",
+      "source/en/hand_me_a_hammer_Joey_5a540dd79454fe50d89c413a1597fc43e4d7212a.mp3"
+    ],
+    "syllabary": "ᎦᏅᏆᎶᏍᏗ ᎡᏍᎬᏏ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Wě:sa nigawè:sgv́ gà:tv:gí:ɂa.",
-    "syllabary": "ᏪᏌ ᏂᎦᏪᏍᎬ ᎦᏛᎩᎠ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I hear a cat meowing.",
     "cherokee_audio": ["ssw-audio/0729-Lessons51_to_60-000023385.mp3"],
-    "english_audio": []
+    "english": "I hear a cat meowing.",
+    "english_audio": [
+      "source/en/i_hear_a_cat_meowing_Kendra_cc74646cc854203cb696c25b673b5dea3a975da6.mp3",
+      "source/en/i_hear_a_cat_meowing_Joey_cc74646cc854203cb696c25b673b5dea3a975da6.mp3"
+    ],
+    "syllabary": "ᏪᏌ ᏂᎦᏪᏍᎬ ᎦᏛᎩᎠ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gadō u:sdi à:gowhtí na gi:tli.",
-    "syllabary": "ᎦᏙ ᎤᏍᏗ ᎠᎪᏩᏘ Ꮎ ᎩᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "What does the dog see?",
     "cherokee_audio": ["ssw-audio/0734-Lessons51_to_60-000039135.mp3"],
-    "english_audio": []
+    "english": "What does the dog see?",
+    "english_audio": [
+      "source/en/what_does_the_dog_see_Kendra_f9699ca99031ff54552f5a631a49cd06838ecc2b.mp3",
+      "source/en/what_does_the_dog_see_Joey_f9699ca99031ff54552f5a631a49cd06838ecc2b.mp3"
+    ],
+    "syllabary": "ᎦᏙ ᎤᏍᏗ ᎠᎪᏩᏘ Ꮎ ᎩᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Digo:hwě:lò:di è:sgidisi.",
-    "syllabary": "ᏗᎪᏪᎶᏗ ᎡᏍᎩᏗᏏ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Hand me something to write with (pencil/pen/chalk/marker, etc.)",
     "cherokee_audio": ["ssw-audio/0738-Lessons51_to_60-000052875.mp3"],
-    "english_audio": []
+    "english": "Hand me something to write with (pencil/pen/chalk/marker, etc.)",
+    "english_audio": [
+      "source/en/hand_me_something_to_write_with__Kendra_3368528fbc04d25dd5511b6d0082f55fa0d58a5c.mp3",
+      "source/en/hand_me_something_to_write_with__Joey_3368528fbc04d25dd5511b6d0082f55fa0d58a5c.mp3"
+    ],
+    "syllabary": "ᏗᎪᏪᎶᏗ ᎡᏍᎩᏗᏏ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ji:sdu ate:sda na gi:tli.",
-    "syllabary": "ᏥᏍᏚ ᎠᏖᏍᏓ Ꮎ ᎩᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The dog scared a rabbit away.",
     "cherokee_audio": ["ssw-audio/0744-Lessons51_to_60-000075495.mp3"],
-    "english_audio": []
+    "english": "The dog scared a rabbit away.",
+    "english_audio": [
+      "source/en/the_dog_scared_a_rabbit_away_Kendra_ddd418ea55886f92b2d2fb69e90c4038153102f3.mp3",
+      "source/en/the_dog_scared_a_rabbit_away_Joey_ddd418ea55886f92b2d2fb69e90c4038153102f3.mp3"
+    ],
+    "syllabary": "ᏥᏍᏚ ᎠᏖᏍᏓ Ꮎ ᎩᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Dihnawo dà:tě:sga.",
-    "syllabary": "ᏗᎿᏬ ᏓᏖᏍᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she is ironing clothes.",
     "cherokee_audio": ["ssw-audio/0747-Lessons51_to_60-000087515.mp3"],
-    "english_audio": []
+    "english": "He or she is ironing clothes.",
+    "english_audio": [
+      "source/en/he_or_she_is_ironing_clothes_Kendra_411ca924413a7d3e2dabf970ce74a5fc8cb40044.mp3",
+      "source/en/he_or_she_is_ironing_clothes_Joey_411ca924413a7d3e2dabf970ce74a5fc8cb40044.mp3"
+    ],
+    "syllabary": "ᏗᎿᏬ ᏓᏖᏍᎦ"
   },
   {
-    "cherokee": "Ǔ:tana yǒ:na ji:gò:wahtā.",
-    "syllabary": "ᎤᏔᎾ ᏲᎾ ᏥᎪᏩᏔ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "I saw a big bear.",
+    "cherokee": "Ǔ:tana yǒ:na ji:gò:wahtā.",
     "cherokee_audio": [
       "ssw-audio/Lessons51_to_60-utana yona jigowahta.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "I saw a big bear.",
+    "english_audio": [
+      "source/en/i_saw_a_big_bear_Kendra_276fad3bbdffda13e187e8f273897b20e683d3ea.mp3",
+      "source/en/i_saw_a_big_bear_Joey_276fad3bbdffda13e187e8f273897b20e683d3ea.mp3"
+    ],
+    "syllabary": "ᎤᏔᎾ ᏲᎾ ᏥᎪᏩᏔ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gv:he anahliha gi:hli.",
-    "syllabary": "ᎬᎮ ᎠᎾᏟᎭ ᎩᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A bobcat and a dog are fighting.",
     "cherokee_audio": ["ssw-audio/0762-Lessons51_to_60-000141285.mp3"],
-    "english_audio": []
+    "english": "A bobcat and a dog are fighting.",
+    "english_audio": [
+      "source/en/a_bobcat_and_a_dog_are_fighting_Kendra_8f86078802ab6efbb5f68ed7c164641e910674c1.mp3",
+      "source/en/a_bobcat_and_a_dog_are_fighting_Joey_8f86078802ab6efbb5f68ed7c164641e910674c1.mp3"
+    ],
+    "syllabary": "ᎬᎮ ᎠᎾᏟᎭ ᎩᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Wǎ:húhi nigawè:sgv́ gà:tv:gíɂa.",
-    "syllabary": "ᏩᎱᎯ ᏂᎦᏪᏍᎬ ᎦᏛᎩᎠ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I hear an owl.",
     "cherokee_audio": ["ssw-audio/0771-Lessons51_to_60-000171325.mp3"],
-    "english_audio": []
+    "english": "I hear an owl.",
+    "english_audio": [
+      "source/en/i_hear_an_owl_Kendra_9e1fe0ff63dd152ccafd6815ba342cc9effe04ad.mp3",
+      "source/en/i_hear_an_owl_Joey_9e1fe0ff63dd152ccafd6815ba342cc9effe04ad.mp3"
+    ],
+    "syllabary": "ᏩᎱᎯ ᏂᎦᏪᏍᎬ ᎦᏛᎩᎠ"
   },
   {
-    "cherokee": "Ni! Go:hű:sdi nigaweɂa.",
-    "syllabary": "Ꮒ! ᎪᎱᏍᏗ ᏂᎦᏪᎠ.",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "Listen! An animal is making its sound.",
+    "cherokee": "Ni! Go:hű:sdi nigaweɂa.",
     "cherokee_audio": [
       "ssw-audio/Lessons51_to_60-ni! gohusdi nigawea.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "Listen! An animal is making its sound.",
+    "english_audio": [
+      "source/en/listen_an_animal_is_making_its_s_Kendra_ed769ffa955b1faa65b596673f412dd524d70c02.mp3",
+      "source/en/listen_an_animal_is_making_its_s_Joey_ed769ffa955b1faa65b596673f412dd524d70c02.mp3"
+    ],
+    "syllabary": "Ꮒ! ᎪᎱᏍᏗ ᏂᎦᏪᎠ."
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hila̋ Ijade:tiyv̋:da",
-    "syllabary": "ᎯᎳ ᎢᏣᏕᏘᏴᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "How old are you?",
     "cherokee_audio": ["ssw-audio/0783-Lessons51_to_60-000209645.mp3"],
-    "english_audio": []
+    "english": "How old are you?",
+    "english_audio": [
+      "source/en/how_old_are_you_Kendra_f666f82a7b3e86a09c51987978e28daefb2d7891.mp3",
+      "source/en/how_old_are_you_Joey_f666f82a7b3e86a09c51987978e28daefb2d7891.mp3"
+    ],
+    "syllabary": "ᎯᎳ ᎢᏣᏕᏘᏴᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sohi aninv:hi̋:da dinute:suga.",
-    "syllabary": "ᏐᎯ ᎠᏂᏅᎯᏓ ᏗᏄᏖᏑᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Let us two go pick some pecans (long nuts).",
     "cherokee_audio": ["ssw-audio/0790-Lessons51_to_60-000239875.mp3"],
-    "english_audio": []
+    "english": "Let us two go pick some pecans (long nuts).",
+    "english_audio": [
+      "source/en/let_us_two_go_pick_some_pecans_l_Kendra_2f95893f5e0e3cfd607341b5829872203ab30c46.mp3",
+      "source/en/let_us_two_go_pick_some_pecans_l_Joey_2f95893f5e0e3cfd607341b5829872203ab30c46.mp3"
+    ],
+    "syllabary": "ᏐᎯ ᎠᏂᏅᎯᏓ ᏗᏄᏖᏑᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sóhně:la aye̋:hli à:tlíɂili",
-    "syllabary": "ᏐᏁᎳ ᎠᏰᏟ ᎠᏟᎵᎢ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The time is nine thirty.",
     "cherokee_audio": ["ssw-audio/0792-Lessons51_to_60-000246265.mp3"],
-    "english_audio": []
+    "english": "The time is nine thirty.",
+    "english_audio": [
+      "source/en/the_time_is_nine_thirty_Kendra_f9b953bddd22b5dce5879155b2762b2d26390855.mp3",
+      "source/en/the_time_is_nine_thirty_Joey_f9b953bddd22b5dce5879155b2762b2d26390855.mp3"
+    ],
+    "syllabary": "ᏐᏁᎳ ᎠᏰᏟ ᎠᏟᎵᎢ"
   },
   {
-    "cherokee": "À:sǒ:hyv̋ ù:kila jitǎ:ga.",
-    "syllabary": "ᎠᏐᏴ ᎤᎩᎳ ᏥᏔᎦ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "A chicken is sitting on a fence.",
+    "cherokee": "À:sǒ:hyv̋ ù:kila jitǎ:ga.",
     "cherokee_audio": [
       "ssw-audio/Lessons51_to_60-asohyv ukila jitaga.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "A chicken is sitting on a fence.",
+    "english_audio": [
+      "source/en/a_chicken_is_sitting_on_a_fence_Kendra_2c3f2e2598de1483b4c1dce2b3300a84801db652.mp3",
+      "source/en/a_chicken_is_sitting_on_a_fence_Joey_2c3f2e2598de1483b4c1dce2b3300a84801db652.mp3"
+    ],
+    "syllabary": "ᎠᏐᏴ ᎤᎩᎳ ᏥᏔᎦ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hila̋ ǐ:ga̋ juwě:ji dejadu:lí?",
-    "syllabary": "ᎯᎳ ᎢᎦ ᏧᏪᏥ ᏕᏣᏚᎵ?",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "How many eggs do you want?",
     "cherokee_audio": ["ssw-audio/0801-Lessons51_to_60-000279235.mp3"],
-    "english_audio": []
+    "english": "How many eggs do you want?",
+    "english_audio": [
+      "source/en/how_many_eggs_do_you_want_Kendra_9baa57109810f3790acaea198c5a6d58d87f8e30.mp3",
+      "source/en/how_many_eggs_do_you_want_Joey_9baa57109810f3790acaea198c5a6d58d87f8e30.mp3"
+    ],
+    "syllabary": "ᎯᎳ ᎢᎦ ᏧᏪᏥ ᏕᏣᏚᎵ?"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hila̋ iyú:de:tiyv̋:da hiɂa achű:ja.",
-    "syllabary": "ᎯᎳ ᎢᏳᏕᏘᏴᏓ ᎯᎠ ᎠᏧᏣ?",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "How old is the boy?",
     "cherokee_audio": ["ssw-audio/0803-Lessons51_to_60-000285555.mp3"],
-    "english_audio": []
+    "english": "How old is the boy?",
+    "english_audio": [
+      "source/en/how_old_is_the_boy_Kendra_9dffee1472dd6601215332346300990f9de5ec7c.mp3",
+      "source/en/how_old_is_the_boy_Joey_9dffee1472dd6601215332346300990f9de5ec7c.mp3"
+    ],
+    "syllabary": "ᎯᎳ ᎢᏳᏕᏘᏴᏓ ᎯᎠ ᎠᏧᏣ?"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ju:ni:là:wisdi̋ idè:na.",
-    "syllabary": "ᏧᏂᎳᏫᏍᏗ ᎢᏕᎾ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Let's all go to church.",
     "cherokee_audio": ["ssw-audio/0805-Lessons51_to_60-000292645.mp3"],
-    "english_audio": []
+    "english": "Let's all go to church.",
+    "english_audio": [
+      "source/en/lets_all_go_to_church_Kendra_2a9d8e2f42c3db1b34aeb65d254cfe13ae741622.mp3",
+      "source/en/lets_all_go_to_church_Joey_2a9d8e2f42c3db1b34aeb65d254cfe13ae741622.mp3"
+    ],
+    "syllabary": "ᏧᏂᎳᏫᏍᏗ ᎢᏕᎾ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gwiligi dù:do:ɂa achű:ja.",
-    "syllabary": "ᏈᎵᎩ ᏚᏙᎠ ᎯᎠ ᎠᏧᏣ.",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "This boy's name is Phillip",
     "cherokee_audio": ["ssw-audio/0813-Lessons51_to_60-000324475.mp3"],
-    "english_audio": []
+    "english": "This boy's name is Phillip",
+    "english_audio": [
+      "source/en/this_boys_name_is_phillip_Kendra_e0c233ea1fd8ef5ed83f7c413a1c71b05472da48.mp3",
+      "source/en/this_boys_name_is_phillip_Joey_e0c233ea1fd8ef5ed83f7c413a1c71b05472da48.mp3"
+    ],
+    "syllabary": "ᏈᎵᎩ ᏚᏙᎠ ᎯᎠ ᎠᏧᏣ."
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gano:hali:dő:hi gano:halǐ:dô:ha.",
-    "syllabary": "ᎦᏃᎭᎵᏙᎯ ᎦᏃᎭᎵᏙᎭ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A hunter is hunting.",
     "cherokee_audio": ["ssw-audio/0835-Lessons61_to_70-000016965.mp3"],
-    "english_audio": []
+    "english": "A hunter is hunting.",
+    "english_audio": [
+      "source/en/a_hunter_is_hunting_Kendra_bd354d8b32b50b4d096d8c54ca797a0ddb79e1fd.mp3",
+      "source/en/a_hunter_is_hunting_Joey_bd354d8b32b50b4d096d8c54ca797a0ddb79e1fd.mp3"
+    ],
+    "syllabary": "ᎦᏃᎭᎵᏙᎯ ᎦᏃᎭᎵᏙᎭ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gá:gō sdà:hlino:héha.",
-    "syllabary": "ᎦᎪ ᏍᏓᏟᏃᎮᎭ?",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Who are you speaking to?",
     "cherokee_audio": ["ssw-audio/0837-Lessons61_to_70-000022545.mp3"],
-    "english_audio": []
+    "english": "Who are you speaking to?",
+    "english_audio": [
+      "source/en/who_are_you_speaking_to_Kendra_4b6fe0c7089e118a1afb76b2ae033edd8b8877f6.mp3",
+      "source/en/who_are_you_speaking_to_Joey_4b6fe0c7089e118a1afb76b2ae033edd8b8877f6.mp3"
+    ],
+    "syllabary": "ᎦᎪ ᏍᏓᏟᏃᎮᎭ?"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Jí:sdv:na du:gwe:nù:gi na achű:ja.",
-    "syllabary": "ᏥᏍᏛᎾ ᏚᏇᏄᎩ Ꮎ ᎠᏧᏣ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A crawdad pinched the boy.",
     "cherokee_audio": ["ssw-audio/0842-Lessons61_to_70-000039725.mp3"],
-    "english_audio": []
+    "english": "A crawdad pinched the boy.",
+    "english_audio": [
+      "source/en/a_crawdad_pinched_the_boy_Kendra_b07d884d9ac8b864a1d176815d895ec0cf054fd1.mp3",
+      "source/en/a_crawdad_pinched_the_boy_Joey_b07d884d9ac8b864a1d176815d895ec0cf054fd1.mp3"
+    ],
+    "syllabary": "ᏥᏍᏛᎾ ᏚᏇᏄᎩ Ꮎ ᎠᏧᏣ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gè:hv́ ǐ:gó:hi̋:da gina:li̋ gè:sé:sdi.",
-    "syllabary": "ᎦᎥ ᎢᎪᎯᏓ ᎩᎾᎵ ᎨᏎᏍᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "We will be friends as long as I live.",
     "cherokee_audio": ["ssw-audio/0851-Lessons61_to_70-000077145.mp3"],
-    "english_audio": []
+    "english": "We will be friends as long as I live.",
+    "english_audio": [
+      "source/en/we_will_be_friends_as_long_as_i__Kendra_84273c43a8f507a38cb80f472d6a82d5029199dc.mp3",
+      "source/en/we_will_be_friends_as_long_as_i__Joey_84273c43a8f507a38cb80f472d6a82d5029199dc.mp3"
+    ],
+    "syllabary": "ᎦᎥ ᎢᎪᎯᏓ ᎩᎾᎵ ᎨᏎᏍᏗ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Dù:do:ɂa go:hwě:lí:ɂa.",
-    "syllabary": "ᏚᏙᎥ ᎪᏪᎵᎠ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He is writing his name",
     "cherokee_audio": ["ssw-audio/Lessons61_to_70-dudoa gohwelia.-bespoke.wav"],
-    "english_audio": []
+    "english": "He is writing his name",
+    "english_audio": [
+      "source/en/he_is_writing_his_name_Kendra_ef6322d88b3c529f657d213eb36c307bcbd9e9ea.mp3",
+      "source/en/he_is_writing_his_name_Joey_ef6322d88b3c529f657d213eb36c307bcbd9e9ea.mp3"
+    ],
+    "syllabary": "ᏚᏙᎥ ᎪᏪᎵᎠ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Dejadó:ɂa hohwě:lâ:nvɂi.",
-    "syllabary": "ᏕᏣᏙᎥ ᎰᏪᎳᏅᎢ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Write your name (later)",
     "cherokee_audio": ["ssw-audio/0861-Lessons61_to_70-000105615.mp3"],
-    "english_audio": []
+    "english": "Write your name (later)",
+    "english_audio": [
+      "source/en/write_your_name_later_Kendra_a36ca7430b8e49119eec31b4afc0fa9496623abf.mp3",
+      "source/en/write_your_name_later_Joey_a36ca7430b8e49119eec31b4afc0fa9496623abf.mp3"
+    ],
+    "syllabary": "ᏕᏣᏙᎥ ᎰᏪᎳᏅᎢ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Howa hada.",
-    "syllabary": "ᎰᏩ ᎭᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Say okay.",
     "cherokee_audio": ["ssw-audio/0863-Lessons61_to_70-000110935.mp3"],
-    "english_audio": []
+    "english": "Say okay.",
+    "english_audio": [
+      "source/en/say_okay_Kendra_e2e8f9dda0a1e8204941136b9cf0fa2354670f02.mp3",
+      "source/en/say_okay_Joey_e2e8f9dda0a1e8204941136b9cf0fa2354670f02.mp3"
+    ],
+    "syllabary": "ᎰᏩ ᎭᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ahő:li ù:wanhga sgwà:hle̋:sdi.",
-    "syllabary": "ᎠᎰᎵ ᎤᏩᏂᎦ ᏍᏆᏞᏍᏗ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "A ball hit him or her in the mouth.",
     "cherokee_audio": ["ssw-audio/0865-Lessons61_to_70-000114805.mp3"],
-    "english_audio": []
+    "english": "A ball hit him or her in the mouth.",
+    "english_audio": [
+      "source/en/a_ball_hit_him_or_her_in_the_mou_Kendra_0c83d12cf9f53a480f8e99bb7a305813e6ab1fd1.mp3",
+      "source/en/a_ball_hit_him_or_her_in_the_mou_Joey_0c83d12cf9f53a480f8e99bb7a305813e6ab1fd1.mp3"
+    ],
+    "syllabary": "ᎠᎰᎵ ᎤᏩᏂᎦ ᏍᏆᏞᏍᏗ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hale:hwisda.",
-    "syllabary": "ᎭᎴᏫᏍᏓ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Stop!",
     "cherokee_audio": ["ssw-audio/0869-Lessons61_to_70-000132215.mp3"],
-    "english_audio": []
+    "english": "Stop!",
+    "english_audio": [
+      "source/en/stop_Kendra_6d13e37b2e2e1446ec6b1396fdbc2911d0fab4db.mp3",
+      "source/en/stop_Joey_6d13e37b2e2e1446ec6b1396fdbc2911d0fab4db.mp3"
+    ],
+    "syllabary": "ᎭᎴᏫᏍᏓ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ǐ:jú:la jalagi ale yó:ne:ga degawó:ni.",
-    "syllabary": "ᎢᏧᎳ ᏣᎳᎩ ᎠᎴ ᏲᏁᎦ ᏕᎦᏪᏂ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she speaks both Cherokee and English.",
     "cherokee_audio": ["ssw-audio/0871-Lessons61_to_70-000136275.mp3"],
-    "english_audio": []
+    "english": "He or she speaks both Cherokee and English.",
+    "english_audio": [
+      "source/en/he_or_she_speaks_both_cherokee_a_Kendra_606d9bbe667b6e79ab499fae0651c183b168dee9.mp3",
+      "source/en/he_or_she_speaks_both_cherokee_a_Joey_606d9bbe667b6e79ab499fae0651c183b168dee9.mp3"
+    ],
+    "syllabary": "ᎢᏧᎳ ᏣᎳᎩ ᎠᎴ ᏲᏁᎦ ᏕᎦᏪᏂ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Gaɂle̋:ni ù:we:hisdâ:neha na ayő:hli.",
-    "syllabary": "ᎦᎴᏂ ᎤᏪᎯᏍᏓᏁ Ꮎ ᎠᏲᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The child has an earache.",
     "cherokee_audio": ["ssw-audio/0873-Lessons61_to_70-000143465.mp3"],
-    "english_audio": []
+    "english": "The child has an earache.",
+    "english_audio": [
+      "source/en/the_child_has_an_earache_Kendra_229630b4e4c8ab01b674d074e1d42a5682c333f3.mp3",
+      "source/en/the_child_has_an_earache_Joey_229630b4e4c8ab01b674d074e1d42a5682c333f3.mp3"
+    ],
+    "syllabary": "ᎦᎴᏂ ᎤᏪᎯᏍᏓᏁ Ꮎ ᎠᏲᏟ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hila̋ɂiyv à:dale:nǐ:sgó gő:la.",
-    "syllabary": "ᎯᎳᎢᏴ ᎠᏓᎴᏂᏍᎪ ᎪᎳ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "When does winter begin?",
     "cherokee_audio": ["ssw-audio/0875-Lessons61_to_70-000149495.mp3"],
-    "english_audio": []
+    "english": "When does winter begin?",
+    "english_audio": [
+      "source/en/when_does_winter_begin_Kendra_88c2be3ec87d5ce09546d971f3e518eafdc4bb83.mp3",
+      "source/en/when_does_winter_begin_Joey_88c2be3ec87d5ce09546d971f3e518eafdc4bb83.mp3"
+    ],
+    "syllabary": "ᎯᎳᎢᏴ ᎠᏓᎴᏂᏍᎪ ᎪᎳ"
   },
   {
-    "cherokee": "Ijéɂiyű:sdi ulsǔ:hwi:da ù:hnû:wa.",
-    "syllabary": "ᎢᏤᏳᏍᏗ ᎤᎵᏑᏫᏓ ᎤᏄᏩ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "He or she is wearing a green shirt.",
+    "cherokee": "Ijéɂiyű:sdi ulsǔ:hwi:da ù:hnû:wa.",
     "cherokee_audio": [
       "ssw-audio/Lessons61_to_70-ijeiyusdi ulsuhwida uhnuwa.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "He or she is wearing a green shirt.",
+    "english_audio": [
+      "source/en/he_or_she_is_wearing_a_green_shi_Kendra_e6b9782fe126a94c5774d14a0021c89c39778a0b.mp3",
+      "source/en/he_or_she_is_wearing_a_green_shi_Joey_e6b9782fe126a94c5774d14a0021c89c39778a0b.mp3"
+    ],
+    "syllabary": "ᎢᏤᏳᏍᏗ ᎤᎵᏑᏫᏓ ᎤᏄᏩ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Ama à:jě:wíɂa na achű:ja.",
-    "syllabary": "ᎠᎹ ᎠᏤᏫᎠ Ꮎ ᎠᏧᏣ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The boy is wasting water.",
     "cherokee_audio": ["ssw-audio/0885-Lessons61_to_70-000182445.mp3"],
-    "english_audio": []
+    "english": "The boy is wasting water.",
+    "english_audio": [
+      "source/en/the_boy_is_wasting_water_Kendra_c41b5c8f8a9b083808516733b221a5b9ceb40d34.mp3",
+      "source/en/the_boy_is_wasting_water_Joey_c41b5c8f8a9b083808516733b221a5b9ceb40d34.mp3"
+    ],
+    "syllabary": "ᎠᎹ ᎠᏤᏫᎠ Ꮎ ᎠᏧᏣ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Di:je̋ dilà:sǔ:lo dù:du:lí.",
-    "syllabary": "ᏗᏤ ᏗᎳᏑᎶ ᏚᏚᎵ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "He or she wants new shoes.",
     "cherokee_audio": ["ssw-audio/0887-Lessons61_to_70-000188525.mp3"],
-    "english_audio": []
+    "english": "He or she wants new shoes.",
+    "english_audio": [
+      "source/en/he_or_she_wants_new_shoes_Kendra_b8e2c13b1351a76446c6378f7b99d65420936562.mp3",
+      "source/en/he_or_she_wants_new_shoes_Joey_b8e2c13b1351a76446c6378f7b99d65420936562.mp3"
+    ],
+    "syllabary": "ᏗᏤ ᏗᎳᏑᎶ ᏚᏚᎵ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Akǔ:gi̋:sdi è:sgidisi.",
-    "syllabary": "ᎠᎫᎩᏍᏗ ᎡᏍᎩᏗᏏ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Hand me a dipper.",
     "cherokee_audio": ["ssw-audio/0893-Lessons61_to_70-000211525.mp3"],
-    "english_audio": []
+    "english": "Hand me a dipper.",
+    "english_audio": [
+      "source/en/hand_me_a_dipper_Kendra_0e2cc295abf63f4defa7b594f1311a62c0e45d50.mp3",
+      "source/en/hand_me_a_dipper_Joey_0e2cc295abf63f4defa7b594f1311a62c0e45d50.mp3"
+    ],
+    "syllabary": "ᎠᎫᎩᏍᏗ ᎡᏍᎩᏗᏏ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "U:gù:ku nigawè:sgv́ gà:tv:gí:ɂa.",
-    "syllabary": "ᎤᎫᎫ ᏂᎦᏪᏍᎬ ᎦᏛᎩᎠ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "I hear a hoot howl hooting.",
     "cherokee_audio": ["ssw-audio/0895-Lessons61_to_70-000218175.mp3"],
-    "english_audio": []
+    "english": "I hear a hoot howl hooting.",
+    "english_audio": [
+      "source/en/i_hear_a_hoot_howl_hooting_Kendra_e7a2c5a2d5d70aa7884c355bb13b9ce03320e5b3.mp3",
+      "source/en/i_hear_a_hoot_howl_hooting_Joey_e7a2c5a2d5d70aa7884c355bb13b9ce03320e5b3.mp3"
+    ],
+    "syllabary": "ᎤᎫᎫ ᏂᎦᏪᏍᎬ ᎦᏛᎩᎠ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Hila̋ɂiyv gvnsgó kuwa:ya.",
-    "syllabary": "ᎯᎳᎢᏴ ᎬᏂᏍᎪ ᎫᏩᏯ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "When do huckleberries get ripe?",
     "cherokee_audio": ["ssw-audio/0897-Lessons61_to_70-000224065.mp3"],
-    "english_audio": []
+    "english": "When do huckleberries get ripe?",
+    "english_audio": [
+      "source/en/when_do_huckleberries_get_ripe_Kendra_9e52868d72fd2b64ff0f7a96efdc5fc183ad1b3a.mp3",
+      "source/en/when_do_huckleberries_get_ripe_Joey_9e52868d72fd2b64ff0f7a96efdc5fc183ad1b3a.mp3"
+    ],
+    "syllabary": "ᎯᎳᎢᏴ ᎬᏂᏍᎪ ᎫᏩᏯ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "U:sgwo:hli̋ ù:we:hisdâ:ne na ayő:hli.",
-    "syllabary": "ᎤᏍᏉᏟ ᎤᏪᎯᏍᏓᏁ Ꮎ ᎠᏲᏟ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "The child has a stomach ache.",
     "cherokee_audio": ["ssw-audio/0906-Lessons61_to_70-000253125.mp3"],
-    "english_audio": []
+    "english": "The child has a stomach ache.",
+    "english_audio": [
+      "source/en/the_child_has_a_stomach_ache_Kendra_fa20326d571647b70d50b0d66ba8fa7fa97e4164.mp3",
+      "source/en/the_child_has_a_stomach_ache_Joey_fa20326d571647b70d50b0d66ba8fa7fa97e4164.mp3"
+    ],
+    "syllabary": "ᎤᏍᏉᏟ ᎤᏪᎯᏍᏓᏁ Ꮎ ᎠᏲᏟ"
   },
   {
-    "cherokee": "Dijalagi digwo:hwě:lô:di gadè:lohgwáɂa.",
-    "syllabary": "ᏗᏣᎳᎩ ᏗᏉᏪᎶᏗ ᎦᏕᎶᏆᎠ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "I am learning to write in Cherokee.",
+    "cherokee": "Dijalagi digwo:hwě:lô:di gadè:lohgwáɂa.",
     "cherokee_audio": [
       "ssw-audio/Lessons61_to_70-dijalagi digwohwelodi gadelohgwaa.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "I am learning to write in Cherokee.",
+    "english_audio": [
+      "source/en/i_am_learning_to_write_in_cherok_Kendra_e7d2a3603e3068e22b040e74af7b90612e17ed92.mp3",
+      "source/en/i_am_learning_to_write_in_cherok_Joey_e7d2a3603e3068e22b040e74af7b90612e17ed92.mp3"
+    ],
+    "syllabary": "ᏗᏣᎳᎩ ᏗᏉᏪᎶᏗ ᎦᏕᎶᏆᎠ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "U:dlv̋:gi",
-    "syllabary": "ᎤᏢᎩ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "patient",
     "cherokee_audio": ["ssw-audio/1051-Lessons71_to_84-000320215.mp3"],
-    "english_audio": []
+    "english": "patient",
+    "english_audio": [
+      "source/en/patient_Kendra_b1b0b8de8a6228f6501c0560365d3a7d74ffcd8e.mp3",
+      "source/en/patient_Joey_b1b0b8de8a6228f6501c0560365d3a7d74ffcd8e.mp3"
+    ],
+    "syllabary": "ᎤᏢᎩ"
   },
   {
-    "cherokee": "Na u:sdi̋ gahlv:sga.",
-    "syllabary": "Ꮎ ᎤᏍᏗ ᎦᏢᏍᎦ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "That baby is sleepy",
+    "cherokee": "Na u:sdi̋ gahlv:sga.",
     "cherokee_audio": [
       "ssw-audio/Lessons61_to_70-na usdi gahlvsga.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "That baby is sleepy",
+    "english_audio": [
+      "source/en/that_baby_is_sleepy_Kendra_99506df2d45d43ea3d6fd705cc7b544970cf14ba.mp3",
+      "source/en/that_baby_is_sleepy_Joey_99506df2d45d43ea3d6fd705cc7b544970cf14ba.mp3"
+    ],
+    "syllabary": "Ꮎ ᎤᏍᏗ ᎦᏢᏍᎦ"
   },
   {
-    "cherokee": "Sv:do:ni kali̋ kanù:gahli gadagi.",
-    "syllabary": "ᏒᏙᏂ ᎧᎵ ᎧᏄᎦᏟ ᎦᏓᎩ",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "I picked a bucket full of blackberries.",
+    "cherokee": "Sv:do:ni kali̋ kanù:gahli gadagi.",
     "cherokee_audio": [
       "ssw-audio/Lessons61_to_70-svdoni kali kanugahli gadagi.-bespoke.wav"
     ],
-    "english_audio": []
+    "english": "I picked a bucket full of blackberries.",
+    "english_audio": [
+      "source/en/i_picked_a_bucket_full_of_blackb_Kendra_483b2610c5ee5d508e0b3ca56114a63cf2711718.mp3",
+      "source/en/i_picked_a_bucket_full_of_blackb_Joey_483b2610c5ee5d508e0b3ca56114a63cf2711718.mp3"
+    ],
+    "syllabary": "ᏒᏙᏂ ᎧᎵ ᎧᏄᎦᏟ ᎦᏓᎩ"
   },
   {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
     "cherokee": "Sv̀:gi ǐ:náge̋ e̋:hi giniyalú:ga.",
-    "syllabary": "ᏒᎩ ᎢᎾᎨᎡᎯ ᎩᏂᏯᎷᎦ",
-    "alternate_pronunciations": [],
-    "alternate_syllabary": [],
-    "english": "Let's go hunt for some wild onions.",
     "cherokee_audio": ["ssw-audio/0928-Lessons61_to_70-000323415.mp3"],
-    "english_audio": []
+    "english": "Let's go hunt for some wild onions.",
+    "english_audio": [
+      "source/en/lets_go_hunt_for_some_wild_onion_Kendra_c4692ded79f74a6c0a58b92e9ecd07973eff7dad.mp3",
+      "source/en/lets_go_hunt_for_some_wild_onion_Joey_c4692ded79f74a6c0a58b92e9ecd07973eff7dad.mp3"
+    ],
+    "syllabary": "ᏒᎩ ᎢᎾᎨᎡᎯ ᎩᏂᏯᎷᎦ"
   },
   {
-    "cherokee": "Ha:dlv wijě:dô:lě sv:hi?",
-    "syllabary": "ᎭᏢ ᏫᏤᏙᎴ ᏒᎯ?",
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
-    "english": "Where did you go yesterday?",
+    "cherokee": "Ha:dlv wijě:dô:lě sv:hi?",
     "cherokee_audio": ["ssw-audio/0930-Lessons61_to_70-000329165.mp3"],
-    "english_audio": []
+    "english": "Where did you go yesterday?",
+    "english_audio": [
+      "source/en/where_did_you_go_yesterday_Kendra_ff0b5b762bc038de08138efc835625354928d4ed.mp3",
+      "source/en/where_did_you_go_yesterday_Joey_ff0b5b762bc038de08138efc835625354928d4ed.mp3"
+    ],
+    "syllabary": "ᎭᏢ ᏫᏤᏙᎴ ᏒᎯ?"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Igv:yi̋, taɂli:ne̋, joɂi:ne̋, nvhgi:ne̋,",
+    "cherokee_audio": ["ssw-audio/0949-Lessons71_to_84-000011955.mp3"],
+    "english": "First, second, third, fourth.",
+    "english_audio": [
+      "source/en/first_second_third_fourth_Kendra_f274dc0bb2b13e621a1b97bd34c7e1e6290f6a06.mp3",
+      "source/en/first_second_third_fourth_Joey_f274dc0bb2b13e621a1b97bd34c7e1e6290f6a06.mp3"
+    ],
+    "syllabary": "ᎢᎬᏱ, ᏔᎵᏁ, ᏦᎢᏁ, ᏅᎩᏁ."
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Wǎ:ji dà:sdá:yidiɂa.",
+    "cherokee_audio": ["ssw-audio/0951-Lessons71_to_84-000017655.mp3"],
+    "english": "He or she is winding a watch.",
+    "english_audio": [
+      "source/en/he_or_she_is_winding_a_watch_Kendra_a7f82bfbf1b57b3a13842cd5e84d43bffa6e0512.mp3",
+      "source/en/he_or_she_is_winding_a_watch_Joey_a7f82bfbf1b57b3a13842cd5e84d43bffa6e0512.mp3"
+    ],
+    "syllabary": "ᏩᏥ ᏓᏍᏓᏱᏗᎠ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Wo:yi nigawè:sgv́ gà:tv:gí:ɂa.",
+    "cherokee_audio": ["ssw-audio/0953-Lessons71_to_84-000022515.mp3"],
+    "english": "I hear a pigeon cooing.",
+    "english_audio": [
+      "source/en/i_hear_a_pigeon_cooing_Kendra_b1ab83bef414826a3fe272bee5a1b6c78c4b9a50.mp3",
+      "source/en/i_hear_a_pigeon_cooing_Joey_b1ab83bef414826a3fe272bee5a1b6c78c4b9a50.mp3"
+    ],
+    "syllabary": "ᏬᏂ ᏂᎦᏁᏍᎬ ᎦᏛᎩᎠ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Gaɂlo:hni kaɂlv̋ anvnsgó unitelvládi.",
+    "cherokee_audio": ["ssw-audio/0958-Lessons71_to_84-000036615.mp3"],
+    "english": "Grapes get ripe in the month of August.",
+    "english_audio": [
+      "source/en/grapes_get_ripe_in_the_month_of__Kendra_9cfa457da16bcd2ca676e3a3f04408f0477fe0f1.mp3",
+      "source/en/grapes_get_ripe_in_the_month_of__Joey_9cfa457da16bcd2ca676e3a3f04408f0477fe0f1.mp3"
+    ],
+    "syllabary": "ᎦᎶᏂ ᎧᎸ ᎠᏅᏂᏍᎪ ᎤᏂᏖᎸᎳᏗ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Íhě:dô:lv:ɂi.",
+    "cherokee_audio": ["ssw-audio/0962-Lessons71_to_84-000049405.mp3"],
+    "english": "Come again!",
+    "english_audio": [
+      "source/en/come_again_Kendra_01e3242f874c23fa70b7f997d4cd19b8b5f06e55.mp3",
+      "source/en/come_again_Joey_01e3242f874c23fa70b7f997d4cd19b8b5f06e55.mp3"
+    ],
+    "syllabary": "ᎢᎮᏙᎸᎢ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Ajvgalí:yé:di ga:nǐ:dô:ha.",
+    "cherokee_audio": ["ssw-audio/0969-Lessons71_to_84-000069665.mp3"],
+    "english": "He or she is handling a fire poker.",
+    "english_audio": [
+      "source/en/he_or_she_is_handling_a_fire_pok_Kendra_98197c643820f4f3b1a607bac524eba22fbd806e.mp3",
+      "source/en/he_or_she_is_handling_a_fire_pok_Joey_98197c643820f4f3b1a607bac524eba22fbd806e.mp3"
+    ],
+    "syllabary": "ᎠᏨᎦᎵᏰᏗ ᎦᏂᏙᎭ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "De:jv̋ysdv dekdlǒ:hi.",
+    "cherokee_audio": ["ssw-audio/0971-Lessons71_to_84-000075485.mp3"],
+    "english": "The lights went out.",
+    "english_audio": [
+      "source/en/the_lights_went_out_Kendra_25a764dee53f8890197c9a4025711aa787a26de3.mp3",
+      "source/en/the_lights_went_out_Joey_25a764dee53f8890197c9a4025711aa787a26de3.mp3"
+    ],
+    "syllabary": "ᏓᏨᏍᏛ ᏕᎬᏠᎯ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Hi:yo:lì:gis kilő dludlu jù:do:ɂǐ:da?",
+    "cherokee_audio": ["ssw-audio/0978-Lessons71_to_84-000097635.mp3"],
+    "english": "Do you know someone named Martin?",
+    "english_audio": [
+      "source/en/do_you_know_someone_named_martin_Kendra_9f925ea6742418032db2d0452c6e5ab1e64e6f46.mp3",
+      "source/en/do_you_know_someone_named_martin_Joey_9f925ea6742418032db2d0452c6e5ab1e64e6f46.mp3"
+    ],
+    "syllabary": "ᎯᏲᎵᎩᏍ ᎩᎶ ᏡᏡ ᏧᏙᎢᏓ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Ada ti:sdlû:hya.",
+    "cherokee_audio": ["ssw-audio/0980-Lessons71_to_84-000104225.mp3"],
+    "english": "Split some wood.",
+    "english_audio": [
+      "source/en/split_some_wood_Kendra_99c3af62cf6b139514bb2cf6b0725b6ddf07ccdd.mp3",
+      "source/en/split_some_wood_Joey_99c3af62cf6b139514bb2cf6b0725b6ddf07ccdd.mp3"
+    ],
+    "syllabary": "ᎠᏓ ᏘᏍᏡᏯ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Ha:dlv dajì:hluni hiɂa gǎ:da?",
+    "cherokee_audio": ["ssw-audio/0982-Lessons71_to_84-000110135.mp3"],
+    "english": "Where am I going to pile up this dirt?",
+    "english_audio": [
+      "source/en/where_am_i_going_to_pile_up_this_Kendra_abc513185e802c5776d343b1160fa87f52cc3168.mp3",
+      "source/en/where_am_i_going_to_pile_up_this_Joey_abc513185e802c5776d343b1160fa87f52cc3168.mp3"
+    ],
+    "syllabary": "ᎭᏢ ᏓᏥᏡᏂ ᎯᎠ ᎦᏓ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "E:li̋:gwu.",
+    "cherokee_audio": ["ssw-audio/0989-Lessons71_to_84-000130995.mp3"],
+    "english": "That's enough; It's possible",
+    "english_audio": [
+      "source/en/thats_enough_its_possible_Kendra_fa805c5c8281fd27f81b24157572af9c109108fb.mp3",
+      "source/en/thats_enough_its_possible_Joey_fa805c5c8281fd27f81b24157572af9c109108fb.mp3"
+    ],
+    "syllabary": "ᎡᎵᏊ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Sǐ:gwu jinihiwi.",
+    "cherokee_audio": ["ssw-audio/0992-Lessons71_to_84-000140885.mp3"],
+    "english": "Say it again.",
+    "english_audio": [
+      "source/en/say_it_again_Kendra_6994bc3e93f64beaf2feba761285a6c9cfe945b6.mp3",
+      "source/en/say_it_again_Joey_6994bc3e93f64beaf2feba761285a6c9cfe945b6.mp3"
+    ],
+    "syllabary": "ᏏᏊ ᏥᏂᎯᏫ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Sà:gwű aye̋:hli à:tlíɂili.",
+    "cherokee_audio": ["ssw-audio/0994-Lessons71_to_84-000146255.mp3"],
+    "english": "The time is one-thirty.",
+    "english_audio": [
+      "source/en/the_time_is_onethirty_Kendra_8c5b1b558fe44f3c427ad40b54ba7d37b9901176.mp3",
+      "source/en/the_time_is_onethirty_Joey_8c5b1b558fe44f3c427ad40b54ba7d37b9901176.mp3"
+    ],
+    "syllabary": "ᏌᏊ ᎠᏰᏟ ᎠᏟᎢᎵ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Hla go:hű:sdi yigà:tv:gí:ɂa.",
+    "cherokee_audio": ["ssw-audio/1001-Lessons71_to_84-000167925.mp3"],
+    "english": "I don't hear anything.",
+    "english_audio": [
+      "source/en/i_dont_hear_anything_Kendra_8ad9b718c4731f5762789d905ee44a96f23bc321.mp3",
+      "source/en/i_dont_hear_anything_Joey_8ad9b718c4731f5762789d905ee44a96f23bc321.mp3"
+    ],
+    "syllabary": "Ꮭ ᎪᎱᏍᏗ ᏱᎦᏛᎩᎠ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Hlawò:tu:hi̋ nigalsdi:sgó yù:ga:hnana.",
+    "cherokee_audio": ["ssw-audio/1004-Lessons71_to_84-000174705.mp3"],
+    "english": "It gets muddy when it rains.",
+    "english_audio": [
+      "source/en/it_gets_muddy_when_it_rains_Kendra_ac4065209c2c1a4e3a0a217e39f4ca5c7a305deb.mp3",
+      "source/en/it_gets_muddy_when_it_rains_Joey_ac4065209c2c1a4e3a0a217e39f4ca5c7a305deb.mp3"
+    ],
+    "syllabary": "ᏝᏬᏚᎯ ᏂᎦᎵᏍᏗᏍᎪ ᏳᎦᎿᎾ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Hla yà:gwanhta.",
+    "cherokee_audio": ["ssw-audio/1006-Lessons71_to_84-000180875.mp3"],
+    "english": "I don't know",
+    "english_audio": [
+      "source/en/i_dont_know_Kendra_e3c93d7487cad4e9f0af60354ae071d6b02ff9d9.mp3",
+      "source/en/i_dont_know_Joey_e3c93d7487cad4e9f0af60354ae071d6b02ff9d9.mp3"
+    ],
+    "syllabary": "Ꮭ ᏯᏆᏅᏔ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Nű:la! À:gwv:nv́:ga.",
+    "cherokee_audio": ["ssw-audio/Lessons71_to_84-nula! agwvnvga.-bespoke.wav"],
+    "english": "Hurry! I'm in a hurry.",
+    "english_audio": [
+      "source/en/hurry_im_in_a_hurry_Kendra_f3ea515dfa7199032bc86536d1a3b157df568ba5.mp3",
+      "source/en/hurry_im_in_a_hurry_Joey_f3ea515dfa7199032bc86536d1a3b157df568ba5.mp3"
+    ],
+    "syllabary": "ᏄᎳ ᎠᏋᏅᎦ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Agwa̋:sa wigě:dôli dida:náɂnv̋ɂi.",
+    "cherokee_audio": ["ssw-audio/1016-Lessons71_to_84-000209275.mp3"],
+    "english": "I am going to the store by myself.",
+    "english_audio": [
+      "source/en/i_am_going_to_the_store_by_mysel_Kendra_74aab2923939d3eaaec65d12c3c3bd9624b3ca0e.mp3",
+      "source/en/i_am_going_to_the_store_by_mysel_Joey_74aab2923939d3eaaec65d12c3c3bd9624b3ca0e.mp3"
+    ],
+    "syllabary": "ᎠᏋᏌ ᏫᏓᎨᏙᎵ ᏗᏓᎾᏅᎢ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "À:gwv̌:ké:wa dejadó:ɂv̌:ɂi.",
+    "cherokee_audio": ["ssw-audio/1018-Lessons71_to_84-000214905.mp3"],
+    "english": "I forgot your name.",
+    "english_audio": [
+      "source/en/i_forgot_your_name_Kendra_2113272a8e4ed13dd3dbb359721c94a8f01b7b73.mp3",
+      "source/en/i_forgot_your_name_Joey_2113272a8e4ed13dd3dbb359721c94a8f01b7b73.mp3"
+    ],
+    "syllabary": "ᎠᏋᎨᏩ ᏕᏣᏙᎥᎢ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Hihv̌:na.",
+    "cherokee_audio": ["ssw-audio/1023-Lessons71_to_84-000231435.mp3"],
+    "english": "Move it.",
+    "english_audio": [
+      "source/en/move_it_Kendra_ab9512f9db9d8456aca5ac95f9d2b0b8a0965974.mp3",
+      "source/en/move_it_Joey_ab9512f9db9d8456aca5ac95f9d2b0b8a0965974.mp3"
+    ],
+    "syllabary": "ᎯᎲᎾ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Dijalagi digigo:lǐ:yê:di disgwé:hyo:hv̀:ga.",
+    "cherokee_audio": ["ssw-audio/1025-Lessons71_to_84-000235995.mp3"],
+    "english": "Teach me to read Cherokee.",
+    "english_audio": [
+      "source/en/teach_me_to_read_cherokee_Kendra_5f9d321ea4cfebf738dae3a73f83ef20121b8c3f.mp3",
+      "source/en/teach_me_to_read_cherokee_Joey_5f9d321ea4cfebf738dae3a73f83ef20121b8c3f.mp3"
+    ],
+    "syllabary": "ᏗᏣᎳᎩ ᏗᎩᎪᎵᏰᏗ ᏗᏍᏊᏲᎲᎦ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Idalsdà:yv:hv̀:ga.",
+    "cherokee_audio": ["ssw-audio/1027-Lessons71_to_84-000243085.mp3"],
+    "english": "Let's eat.",
+    "english_audio": [
+      "source/en/lets_eat_Kendra_a9debf15b49838fb276df376301f720dab6cb062.mp3",
+      "source/en/lets_eat_Joey_a9debf15b49838fb276df376301f720dab6cb062.mp3"
+    ],
+    "syllabary": "ᎢᏓᎵᏍᏓᏴᎲᎦ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Tale:hv̀:ga.",
+    "cherokee_audio": ["ssw-audio/1029-Lessons71_to_84-000247435.mp3"],
+    "english": "Stand up; Get up; Rise.",
+    "english_audio": [
+      "source/en/stand_up_get_up_rise_Kendra_7a01a5b8403509aacbf67a2a2f56ad4d19401006.mp3",
+      "source/en/stand_up_get_up_rise_Joey_7a01a5b8403509aacbf67a2a2f56ad4d19401006.mp3"
+    ],
+    "syllabary": "ᏔᎴᎲᎦ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Wǔ:tanv̋ gahljǒ:de ù:su:yé:sv̌.",
+    "cherokee_audio": ["ssw-audio/1038-Lessons71_to_84-000277455.mp3"],
+    "english": "He or she chose the biggest house.",
+    "english_audio": [
+      "source/en/he_or_she_chose_the_biggest_hous_Kendra_486a3ff81094c8d7a70929d0a2ae436d322eb0e7.mp3",
+      "source/en/he_or_she_chose_the_biggest_hous_Joey_486a3ff81094c8d7a70929d0a2ae436d322eb0e7.mp3"
+    ],
+    "syllabary": "ᏭᏔᏅ ᎦᎵᏦᏕ ᎤᏑᏰᏒ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Wǔ:dé:lì:gv̋ idí:dla wǔ:dé:lì:gi nv:da.",
+    "cherokee_audio": ["ssw-audio/1040-Lessons71_to_84-000282545.mp3"],
+    "english": "The sun went down towards the west.",
+    "english_audio": [
+      "source/en/the_sun_went_down_towards_the_we_Kendra_65e3cc5e5164ec02cc788ae86b905065859bd6c8.mp3",
+      "source/en/the_sun_went_down_towards_the_we_Joey_65e3cc5e5164ec02cc788ae86b905065859bd6c8.mp3"
+    ],
+    "syllabary": "ᏭᏕᎵᎬ ᎢᏗᏜ ᏭᏕᎵᎩ ᏅᏓ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Jǔ:gá:nawv̋.",
+    "cherokee_audio": ["ssw-audio/1045-Lessons71_to_84-000305695.mp3"],
+    "english": "south",
+    "english_audio": [
+      "source/en/south_Kendra_7e3fb5d99b37e07fcb9f0c90fd94bfeb96f93045.mp3",
+      "source/en/south_Joey_7e3fb5d99b37e07fcb9f0c90fd94bfeb96f93045.mp3"
+    ],
+    "syllabary": "ᏧᎦᎾᏮ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Jǔ:gá:nawv̋ wanikti sasa.",
+    "cherokee_audio": ["ssw-audio/1047-Lessons71_to_84-000309255.mp3"],
+    "english": "The geese are headed south.",
+    "english_audio": [
+      "source/en/the_geese_are_headed_south_Kendra_0b02802b545f2ab5b6317638882c08ed59e7ac33.mp3",
+      "source/en/the_geese_are_headed_south_Joey_0b02802b545f2ab5b6317638882c08ed59e7ac33.mp3"
+    ],
+    "syllabary": "ᏧᎦᎾᏮ ᏩᏂᎦᏘ ᏌᏌ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "E:li̋:gwus dida:náɂnv̋ yiwvhé:da?",
+    "cherokee_audio": ["ssw-audio/1049-Lessons71_to_84-000314205.mp3"],
+    "english": "Can you go to the store again?",
+    "english_audio": [
+      "source/en/can_you_go_to_the_store_again_Kendra_1fc59bb15427a51b6de827c19373d8bb9d5171e2.mp3",
+      "source/en/can_you_go_to_the_store_again_Joey_1fc59bb15427a51b6de827c19373d8bb9d5171e2.mp3"
+    ],
+    "syllabary": "ᎡᎵᏊᏍ ᏗᏓᎾᏅ ᏱᏮᎮᏓ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "U:dlv̋:gi kanv:wv̀:ga na gáɂnakti.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons71_to_84-udlvgi kanvwvga na ganakti.-bespoke.wav"
+    ],
+    "english": "The doctor cured a patient.",
+    "english_audio": [
+      "source/en/the_doctor_cured_a_patient_Kendra_53cc002bc317d6262d2a626d8eadf25959176a0d.mp3",
+      "source/en/the_doctor_cured_a_patient_Joey_53cc002bc317d6262d2a626d8eadf25959176a0d.mp3"
+    ],
+    "syllabary": "ᎤᏢᎩ ᎸᏅᏮᎦ Ꮎ ᎦᎾᎦᏘ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Me:li.",
+    "cherokee_audio": ["ssw-audio/1058-Lessons71_to_84-000348625.mp3"],
+    "english": "Mary",
+    "english_audio": [
+      "source/en/mary_Kendra_5665331b9b819ac358165f8c38970dc8c7ddb47d.mp3",
+      "source/en/mary_Joey_5665331b9b819ac358165f8c38970dc8c7ddb47d.mp3"
+    ],
+    "syllabary": "ᎺᎵ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Amé:gwő de:gá:sóhgi áyosgi.",
+    "cherokee_audio": ["ssw-audio/1061-Lessons71_to_84-000357725.mp3"],
+    "english": "A soldier crossed the ocean or sea.",
+    "english_audio": [
+      "source/en/a_soldier_crossed_the_ocean_or_s_Kendra_0e780049f22996f3c985fc501dc709cb92f77495.mp3",
+      "source/en/a_soldier_crossed_the_ocean_or_s_Joey_0e780049f22996f3c985fc501dc709cb92f77495.mp3"
+    ],
+    "syllabary": "ᎠᎺᏉ ᏕᎦᏐᎩ ᎠᏲᏍᎩ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Jimi dù:do:ɂa hiɂa achű:ja.",
+    "cherokee_audio": ["ssw-audio/1066-Lessons71_to_84-000374265.mp3"],
+    "english": "This boy's name is Jim.",
+    "english_audio": [
+      "source/en/this_boys_name_is_jim_Kendra_31d7337689553b624e2fdfda27ee6defba39fbbc.mp3",
+      "source/en/this_boys_name_is_jim_Joey_31d7337689553b624e2fdfda27ee6defba39fbbc.mp3"
+    ],
+    "syllabary": "ᏥᎻ ᏚᏙᎠ ᎯᎠ ᎠᏧᏣ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Kě:míli ù:kilv̀:di ji:gò:wahta.",
+    "cherokee_audio": ["ssw-audio/1068-Lessons71_to_84-000380455.mp3"],
+    "english": "I saw one riding a camel.",
+    "english_audio": [
+      "source/en/i_saw_one_riding_a_camel_Kendra_e24fe10d8a4fb0b92c0b417436cd00ae8d94849c.mp3",
+      "source/en/i_saw_one_riding_a_camel_Joey_e24fe10d8a4fb0b92c0b417436cd00ae8d94849c.mp3"
+    ],
+    "syllabary": "ᎨᎻᎵ ᎤᎩᎸᏗ ᏥᎪᏩᏔ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Maga sóhně:line̋ à:yâ:tohlv̋ ajino:héha Mosi.",
+    "cherokee_audio": [
+      "ssw-audio/Lessons71_to_84-maga sohneline ayatohlv ajinoheha mosi.-bespoke.wav"
+    ],
+    "english": "Moses is spoken of in Mark chapter nine.",
+    "english_audio": [
+      "source/en/moses_is_spoken_of_in_mark_chapt_Kendra_fc360968edff7440f4c2bfd2359adbf97220f33d.mp3",
+      "source/en/moses_is_spoken_of_in_mark_chapt_Joey_fc360968edff7440f4c2bfd2359adbf97220f33d.mp3"
+    ],
+    "syllabary": "ᎹᏚ ᏐᏁᎵᏁ ᎠᏯᏙᏢ ᎠᏥᏃᎮᎭ ᎼᏏ"
+  },
+  {
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "cherokee": "Jedô:lvhis mu:di?",
+    "cherokee_audio": ["ssw-audio/1082-Lessons71_to_84-000428115.mp3"],
+    "english": "Have you been to Moodys?",
+    "english_audio": [
+      "source/en/have_you_been_to_moodys_Kendra_c9419a02a107d1cb2a4847d77ee8a0e29ec010ad.mp3",
+      "source/en/have_you_been_to_moodys_Joey_c9419a02a107d1cb2a4847d77ee8a0e29ec010ad.mp3"
+    ],
+    "syllabary": "ᏤᏙᎸᎯᏍ ᎽᏗ"
   }
 ]
