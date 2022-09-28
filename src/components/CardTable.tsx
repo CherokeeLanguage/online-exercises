@@ -1,5 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Card } from "../data/cards";
+import { useUserStateContext } from "../state/UserStateProvider";
 import { createIssueForAudioInNewTab } from "../utils/createIssue";
 import { Button } from "./Button";
 import { Modal } from "./Modal";
@@ -108,17 +109,14 @@ function CardAudioModalContent({ card }: { card: Card }) {
 }
 
 function AudioRow({ src, term }: { src: string; term: string }) {
+  const { groupId } = useUserStateContext();
   return (
     <tr>
       <td>
         <audio src={src} controls style={{ width: "100%" }} />
       </td>
       <td>
-        <button
-          onClick={() =>
-            createIssueForAudioInNewTab([src], JSON.stringify({ term }))
-          }
-        >
+        <button onClick={() => createIssueForAudioInNewTab(groupId, term)}>
           Flag issue
         </button>
       </td>

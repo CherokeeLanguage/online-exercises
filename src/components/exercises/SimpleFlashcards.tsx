@@ -9,6 +9,7 @@ import { useKeyPressEvent } from "react-use";
 import styled from "styled-components";
 import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
+import { useUserStateContext } from "../../state/UserStateProvider";
 import { theme } from "../../theme";
 import { createIssueForAudioInNewTab } from "../../utils/createIssue";
 import { useAudio } from "../../utils/useAudio";
@@ -73,6 +74,7 @@ export function Flashcard({
   card: TermCardWithStats<Card>;
   reviewCurrentCard: (correct: boolean) => void;
 }) {
+  const { groupId } = useUserStateContext();
   const [cardFlipped, setCardFlipped] = useState(false);
   const [startSide, setStartSide] = useState<"cherokee" | "english">(
     "cherokee"
@@ -150,14 +152,7 @@ export function Flashcard({
         <p>{side === "cherokee" ? card.card.syllabary : card.card.english}</p>
       </StyledFlashcardBody>
       <FlashcardControls playAudio={play} reviewCard={reviewCardOrFlip} />
-      <button
-        onClick={() =>
-          createIssueForAudioInNewTab(
-            [cherokeeAudio, englishAudio],
-            JSON.stringify({ term: card.term })
-          )
-        }
-      >
+      <button onClick={() => createIssueForAudioInNewTab(groupId, card.term)}>
         Flag an issue with this audio
       </button>
     </FlashcardWrapper>

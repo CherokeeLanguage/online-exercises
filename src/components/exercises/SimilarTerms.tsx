@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
+import { useUserStateContext } from "../../state/UserStateProvider";
 import { theme } from "../../theme";
 import { createIssueForAudioInNewTab } from "../../utils/createIssue";
 import { useAudio } from "../../utils/useAudio";
@@ -59,6 +60,8 @@ export function SimilarTerms({
   lessonCards,
   reviewCurrentCard,
 }: ExerciseComponentProps): ReactElement {
+  const { groupId } = useUserStateContext();
+
   const challenge = useMemo(
     () => newChallenge(currentCard, lessonCards),
     [currentCard]
@@ -115,14 +118,7 @@ export function SimilarTerms({
       </Answers>
       {/* <Progress cardsPerLevel={cardsPerLevel} /> */}
       <button
-        onClick={() =>
-          createIssueForAudioInNewTab(
-            [cherokee_audio],
-            JSON.stringify({
-              term: currentCard.term,
-            })
-          )
-        }
+        onClick={() => createIssueForAudioInNewTab(groupId, currentCard.term)}
       >
         Flag an issue with this audio
       </button>
