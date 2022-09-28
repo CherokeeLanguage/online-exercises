@@ -7,12 +7,14 @@ export interface Group {
   defaultCollectionId?: string;
 }
 
+export const OPEN_BETA_ID = "03e2ec2d-4877-48d7-96c1-c74a907c65ae";
+
 const __groups = {
   "3f1089ca-57c5-4d85-ba44-289b896c0f6e": {
     name: "Cherokee Community of Pudget Sound Beginners Group",
     defaultCollectionId: SEE_SAY_WRITE_COLLECTION,
   },
-  "03e2ec2d-4877-48d7-96c1-c74a907c65ae": {
+  [OPEN_BETA_ID]: {
     name: "Open beta (not affiliated)",
   },
 } as const;
