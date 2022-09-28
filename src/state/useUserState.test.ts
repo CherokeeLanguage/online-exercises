@@ -92,6 +92,7 @@ describe("useUserState", () => {
             lessons: {},
             sets: {},
             upstreamCollection: undefined,
+            groupId: undefined,
           },
           initializationProps: {
             leitnerBoxes: {
@@ -176,6 +177,7 @@ describe("useUserState", () => {
         lessons: {},
         sets: {},
         upstreamCollection: undefined,
+        groupId: undefined,
       });
     });
 

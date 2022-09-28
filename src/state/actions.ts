@@ -1,3 +1,4 @@
+import { GroupId, GROUPS } from "./reducers/groupId";
 import { ReviewResult } from "./reducers/leitnerBoxes";
 import { Lesson } from "./reducers/lessons";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
@@ -23,6 +24,11 @@ export type SetAction = AddSetAction | RemoveSetAction;
 export type SetUpstreamCollectionAction = {
   type: "SET_UPSTREAM_COLLECTION";
   newCollectionId: string | undefined;
+};
+
+export type RegisterWithGroupAction = {
+  type: "REGISTER_GROUP";
+  groupId: GroupId;
 };
 
 export type LoadStateAction = {
@@ -63,6 +69,7 @@ export type HandleSetChangesAction = {
 
 export type UserStateAction =
   | SetUpstreamCollectionAction
+  | RegisterWithGroupAction
   | LoadStateAction
   | ResizeLeitnerBoxesAction
   | SetAction
