@@ -29,7 +29,10 @@ ${meta}
 `;
 }
 
-export function createIssueForAudioInNewTab(files: string[], meta: string) {
+export function createGithubIssueForAudioInNewTab(
+  files: string[],
+  meta: string
+) {
   const a = document.createElement("a");
   a.href = `https://github.com/CherokeeLanguage/online-exercises/issues/new?title=${encodeURIComponent(
     "Issue with term"
@@ -39,3 +42,16 @@ export function createIssueForAudioInNewTab(files: string[], meta: string) {
   a.target = "_BLANK";
   a.click();
 }
+
+export function createIssueForAudioInNewTab(
+  groupId: string | undefined,
+  termKey: string
+) {
+  const a = document.createElement("a");
+  a.href = getGoogleFormsLink(groupId ?? "unregistered", termKey);
+  a.target = "_BLANK";
+  a.click();
+}
+
+const getGoogleFormsLink = (groupId: string, termKey: string) =>
+  `https://docs.google.com/forms/d/e/1FAIpQLSdF0B0g3zLfuhifjDng-7N5H1JWfHNOgxe5SBJiYDluQ7_ORg/viewform?usp=pp_url&entry.1765053485=${groupId}&entry.1353555636=${termKey}`;

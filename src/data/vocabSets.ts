@@ -56,8 +56,8 @@ export const SEE_SAY_WRITE_COLLECTION = SSW.id;
 
 // additional sets can be added here
 export const collections: Record<string, Collection> = {
-  [CHEROKEE_LANGUAGE_LESSONS_COLLLECTION]: cleanCollection(CLL1),
   [SEE_SAY_WRITE_COLLECTION]: cleanCollection(SSW),
+  [CHEROKEE_LANGUAGE_LESSONS_COLLLECTION]: cleanCollection(CLL1),
 };
 
 export const vocabSets: Record<string, VocabSet> = Object.fromEntries(

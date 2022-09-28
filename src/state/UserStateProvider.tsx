@@ -27,6 +27,8 @@ import {
 } from "./reducers/userSets";
 import { UserStateAction } from "./actions";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
+import { GroupId, GROUPS, isGroupId, reduceGroupId } from "./reducers/groupId";
+import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -45,10 +47,13 @@ export interface UserState {
   sets: UserSetsState;
   /** The collection from which new sets should be pulled when the user is ready for new terms */
   upstreamCollection: string | undefined;
+  /** Group registration */
+  groupId: GroupId | undefined;
 }
 
 interface MiscInteractors {
   setUpstreamCollection: (collectionId: string) => void;
+  registerGroup: (groupId: string) => void;
   loadState: (state: UserState) => void;
 }
 
@@ -62,6 +67,9 @@ function reduceUpstreamCollection(
   action: UserStateAction
 ): string | undefined {
   if (action.type === "SET_UPSTREAM_COLLECTION") return action.newCollectionId;
+  if (action.type === "REGISTER_GROUP")
+    // if no upstream collection, set to group default
+    return upstreamCollection ?? GROUPS[action.groupId].defaultCollectionId;
   else return upstreamCollection;
 }
 
@@ -83,6 +91,7 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
     sets: reduceUserSetsState(state, action),
     upstreamCollection: reduceUpstreamCollection(state, action),
     lessonCreationError: reduceLessonCreationError(state, action),
+    groupId: reduceGroupId(state, action),
   };
 }
 
@@ -104,6 +113,7 @@ function initializeUserState({
       },
       upstreamCollection: undefined,
       lessonCreationError: undefined,
+      groupId: undefined,
     };
 }
 
@@ -142,6 +152,14 @@ export function useUserState(props: {
           type: "SET_UPSTREAM_COLLECTION",
           newCollectionId: collectionId,
         });
+      },
+      registerGroup(groupId: string) {
+        if (isGroupId(groupId)) {
+          dispatch({
+            type: "REGISTER_GROUP",
+            groupId,
+          });
+        }
       },
       loadState(state: UserState) {
         dispatch({
@@ -214,6 +232,9 @@ export function UserStateProvider({
   return (
     <userStateContext.Provider value={{ ...state, ...interactors }}>
       {children}
+      {state.groupId === undefined && (
+        <GroupRegistrationModal registerGroup={interactors.registerGroup} />
+      )}
     </userStateContext.Provider>
   );
 }

@@ -26,6 +26,7 @@ export function DeveloperTools() {
       lessons: null,
       sets: null,
       upstreamCollection: null,
+      groupId: null,
     };
 
     const stateToSave = Object.keys(fieldsToSave).reduce(
