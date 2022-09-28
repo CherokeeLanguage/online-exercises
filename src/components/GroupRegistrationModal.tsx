@@ -3,8 +3,6 @@ import { GROUPS } from "../state/reducers/groupId";
 import { Button } from "./Button";
 import { Modal } from "./Modal";
 
-// const GroupRegistrationRadioGroup = styled.fieldset;
-
 export function GroupRegistrationModal({
   registerGroup,
 }: {
