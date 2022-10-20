@@ -199,7 +199,9 @@
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
     "cherokee": "I:sa à:gíɂa sa:sa",
-    "cherokee_audio": ["ssw-audio/Lessons01_to_10-isa agia sasa-bespoke.wav"],
+    "cherokee_audio": [
+      "online-exercises-audio/Lessons01_to_10-isa agia sasa-bespoke.wav"
+    ],
     "english": "A goose is eating flour.",
     "english_audio": [
       "source/en/a_goose_is_eating_flour_Kendra_20026ea1e19bb5853ae6c0ac19496e6d6603dcc2.mp3",
@@ -338,7 +340,7 @@
     "alternate_syllabary": [],
     "cherokee": "Gà:du:li̋:da á:su:líɂa.",
     "cherokee_audio": [
-      "ssw-audio/Lessons11_to_20-gadulida asulia.-bespoke.wav"
+      "online-exercises-audio/Lessons11_to_20-gadulida asulia.-bespoke.wav"
     ],
     "english": "He or she is putting on wet pants.",
     "english_audio": [
@@ -450,7 +452,7 @@
     "alternate_syllabary": [],
     "cherokee": "U:nv̌:di ù:du:lí na u:sdi̋.",
     "cherokee_audio": [
-      "ssw-audio/Lessons11_to_20-unvdi uduli na usdi.-bespoke.wav"
+      "online-exercises-audio/Lessons11_to_20-unvdi uduli na usdi.-bespoke.wav"
     ],
     "english": "The baby wants milk.",
     "english_audio": [
@@ -464,7 +466,7 @@
     "alternate_syllabary": [],
     "cherokee": "Dina:da:hli:lò:sdi̋:sgi ù:nv:nv́:ga.",
     "cherokee_audio": [
-      "ssw-audio/Lessons11_to_20-dinadahlilosdisgi unvnvga.-bespoke.wav"
+      "online-exercises-audio/Lessons11_to_20-dinadahlilosdisgi unvnvga.-bespoke.wav"
     ],
     "english": "The photographers are in a hurry.",
     "english_audio": [
@@ -842,7 +844,7 @@
     "alternate_syllabary": [],
     "cherokee": "U:ni:ji:ya dù:hyoha na asgaya.",
     "cherokee_audio": [
-      "ssw-audio/Lessons21_to_30-unijiya duhyoha na asgaya.-bespoke.wav"
+      "online-exercises-audio/Lessons21_to_30-unijiya duhyoha na asgaya.-bespoke.wav"
     ],
     "english": "The man is looking for worms.",
     "english_audio": [
@@ -1108,7 +1110,7 @@
     "alternate_syllabary": [],
     "cherokee": "Dlo:ge̋:si winè:da tǔ:ya gà:yő:hli widinadági.",
     "cherokee_audio": [
-      "ssw-audio/Lessons31_to_40-dlogesi wineda tuya gayohli widinadagi.-bespoke.wav"
+      "online-exercises-audio/Lessons31_to_40-dlogesi wineda tuya gayohli widinadagi.-bespoke.wav"
     ],
     "english": "Let's go to the garden and pick a few beans.",
     "english_audio": [
@@ -1220,7 +1222,7 @@
     "alternate_syllabary": [],
     "cherokee": "Di:là:sǔ:lo dù:wà:dù:la:chisi na à:lâ:sgalǐ:sgi.",
     "cherokee_audio": [
-      "ssw-audio/Lessons31_to_40-dilasulo duwadulachisi na alasgalisgi.-bespoke.wav"
+      "online-exercises-audio/Lessons31_to_40-dilasulo duwadulachisi na alasgalisgi.-bespoke.wav"
     ],
     "english": "The ball player's shoes got wet.",
     "english_audio": [
@@ -1262,7 +1264,7 @@
     "alternate_syllabary": [],
     "cherokee": "Jǒ:lani ù:kiɂla wě:sa.",
     "cherokee_audio": [
-      "ssw-audio/Lessons31_to_40-jolani ukila wesa.-bespoke.wav"
+      "online-exercises-audio/Lessons31_to_40-jolani ukila wesa.-bespoke.wav"
     ],
     "english": "A cat is sitting in the window.",
     "english_audio": [
@@ -1276,7 +1278,7 @@
     "alternate_syllabary": [],
     "cherokee": "Joɂi iyáni wě:sa ani̋:da à:ni:hlína.",
     "cherokee_audio": [
-      "ssw-audio/Lessons31_to_40-joi iyani wesa anida anihlina.-bespoke.wav"
+      "online-exercises-audio/Lessons31_to_40-joi iyani wesa anida anihlina.-bespoke.wav"
     ],
     "english": "There are three kittens sleeping.",
     "english_audio": [
@@ -1289,7 +1291,9 @@
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
     "cherokee": "Jǒ:lani tisduɂi.",
-    "cherokee_audio": ["ssw-audio/Lessons31_to_40-jolani tisdui.-bespoke.wav"],
+    "cherokee_audio": [
+      "online-exercises-audio/Lessons31_to_40-jolani tisdui.-bespoke.wav"
+    ],
     "english": "Open the windows.",
     "english_audio": [
       "source/en/open_the_windows_Kendra_c82f6714a418f5362b60460e5fed4c15eebf74f2.mp3",
@@ -1778,7 +1782,7 @@
     "alternate_syllabary": [],
     "cherokee": "Ǔ:tana yǒ:na ji:gò:wahtā.",
     "cherokee_audio": [
-      "ssw-audio/Lessons51_to_60-utana yona jigowahta.-bespoke.wav"
+      "online-exercises-audio/Lessons51_to_60-utana yona jigowahta.-bespoke.wav"
     ],
     "english": "I saw a big bear.",
     "english_audio": [
@@ -1820,7 +1824,7 @@
     "alternate_syllabary": [],
     "cherokee": "Ni! Go:hű:sdi nigaweɂa.",
     "cherokee_audio": [
-      "ssw-audio/Lessons51_to_60-ni! gohusdi nigawea.-bespoke.wav"
+      "online-exercises-audio/Lessons51_to_60-ni! gohusdi nigawea.-bespoke.wav"
     ],
     "english": "Listen! An animal is making its sound.",
     "english_audio": [
@@ -1876,7 +1880,7 @@
     "alternate_syllabary": [],
     "cherokee": "À:sǒ:hyv̋ ù:kila jitǎ:ga.",
     "cherokee_audio": [
-      "ssw-audio/Lessons51_to_60-asohyv ukila jitaga.-bespoke.wav"
+      "online-exercises-audio/Lessons51_to_60-asohyv ukila jitaga.-bespoke.wav"
     ],
     "english": "A chicken is sitting on a fence.",
     "english_audio": [
@@ -2001,7 +2005,9 @@
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
     "cherokee": "Dù:do:ɂa go:hwě:lí:ɂa.",
-    "cherokee_audio": ["ssw-audio/Lessons61_to_70-dudoa gohwelia.-bespoke.wav"],
+    "cherokee_audio": [
+      "online-exercises-audio/Lessons61_to_70-dudoa gohwelia.-bespoke.wav"
+    ],
     "english": "He is writing his name",
     "english_audio": [
       "source/en/he_is_writing_his_name_Kendra_ef6322d88b3c529f657d213eb36c307bcbd9e9ea.mp3",
@@ -2112,7 +2118,7 @@
     "alternate_syllabary": [],
     "cherokee": "Ijéɂiyű:sdi ulsǔ:hwi:da ù:hnû:wa.",
     "cherokee_audio": [
-      "ssw-audio/Lessons61_to_70-ijeiyusdi ulsuhwida uhnuwa.-bespoke.wav"
+      "online-exercises-audio/Lessons61_to_70-ijeiyusdi ulsuhwida uhnuwa.-bespoke.wav"
     ],
     "english": "He or she is wearing a green shirt.",
     "english_audio": [
@@ -2210,7 +2216,7 @@
     "alternate_syllabary": [],
     "cherokee": "Dijalagi digwo:hwě:lô:di gadè:lohgwáɂa.",
     "cherokee_audio": [
-      "ssw-audio/Lessons61_to_70-dijalagi digwohwelodi gadelohgwaa.-bespoke.wav"
+      "online-exercises-audio/Lessons61_to_70-dijalagi digwohwelodi gadelohgwaa.-bespoke.wav"
     ],
     "english": "I am learning to write in Cherokee.",
     "english_audio": [
@@ -2238,7 +2244,7 @@
     "alternate_syllabary": [],
     "cherokee": "Na u:sdi̋ gahlv:sga.",
     "cherokee_audio": [
-      "ssw-audio/Lessons61_to_70-na usdi gahlvsga.-bespoke.wav"
+      "online-exercises-audio/Lessons61_to_70-na usdi gahlvsga.-bespoke.wav"
     ],
     "english": "That baby is sleepy",
     "english_audio": [
@@ -2252,7 +2258,7 @@
     "alternate_syllabary": [],
     "cherokee": "Sv:do:ni kali̋ kanù:gahli gadagi.",
     "cherokee_audio": [
-      "ssw-audio/Lessons61_to_70-svdoni kali kanugahli gadagi.-bespoke.wav"
+      "online-exercises-audio/Lessons61_to_70-svdoni kali kanugahli gadagi.-bespoke.wav"
     ],
     "english": "I picked a bucket full of blackberries.",
     "english_audio": [
@@ -2517,7 +2523,9 @@
     "alternate_pronunciations": [],
     "alternate_syllabary": [],
     "cherokee": "Nű:la! À:gwv:nv́:ga.",
-    "cherokee_audio": ["ssw-audio/Lessons71_to_84-nula! agwvnvga.-bespoke.wav"],
+    "cherokee_audio": [
+      "online-exercises-audio/Lessons71_to_84-nula! agwvnvga.-bespoke.wav"
+    ],
     "english": "Hurry! I'm in a hurry.",
     "english_audio": [
       "source/en/hurry_im_in_a_hurry_Kendra_f3ea515dfa7199032bc86536d1a3b157df568ba5.mp3",
@@ -2684,7 +2692,7 @@
     "alternate_syllabary": [],
     "cherokee": "U:dlv̋:gi kanv:wv̀:ga na gáɂnakti.",
     "cherokee_audio": [
-      "ssw-audio/Lessons71_to_84-udlvgi kanvwvga na ganakti.-bespoke.wav"
+      "online-exercises-audio/Lessons71_to_84-udlvgi kanvwvga na ganakti.-bespoke.wav"
     ],
     "english": "The doctor cured a patient.",
     "english_audio": [
@@ -2754,7 +2762,7 @@
     "alternate_syllabary": [],
     "cherokee": "Maga sóhně:line̋ à:yâ:tohlv̋ ajino:héha Mosi.",
     "cherokee_audio": [
-      "ssw-audio/Lessons71_to_84-maga sohneline ayatohlv ajinoheha mosi.-bespoke.wav"
+      "online-exercises-audio/Lessons71_to_84-maga sohneline ayatohlv ajinoheha mosi.-bespoke.wav"
     ],
     "english": "Moses is spoken of in Mark chapter nine.",
     "english_audio": [
