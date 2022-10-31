@@ -18,7 +18,7 @@ export const exercises: {
     path: "flashcards",
     name: "Flashcards",
     description:
-      "Practice terms by reviewing them as flashcards with Cherokee and English audio. Takes about twenty 10-20 minutes.",
+      "Practice terms by reviewing them as flashcards with Cherokee and English audio. Takes about 10-20 minutes.",
     Component: SimpleFlashcards,
   },
   {
