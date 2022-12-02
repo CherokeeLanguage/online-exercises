@@ -1,7 +1,3 @@
-import { UserStateAction } from "../actions";
-import { UserState } from "../UserStateProvider";
-import { GROUPS } from "./groupId";
-
 export enum PhoneticsPreference {
   NoPhonetics = "NO_PHONETICS",
   Simple = "SIMPLE",
@@ -10,7 +6,7 @@ export enum PhoneticsPreference {
 
 export const PREFERENCE_LITERATES: Record<PhoneticsPreference, string> = {
   NO_PHONETICS: "Do not show phonetics if syllabary is shown.",
-  SIMPLE: "Show phonetics broken up by syllable. Eg. 'A-hyv-da-gwa-lo-s-gi'",
+  SIMPLE: "Show phonetics without tone or vowel length. Eg. 'Ahyvdagwalosgi'",
   DETAILED:
     "Show rich phonetics that show vowel length and tone. Eg. 'Ahyv:dagwalò:sgi'",
 };
@@ -19,17 +15,4 @@ export function isPhoneticsPreference(str: string): str is PhoneticsPreference {
   // we can't do "hasOwn" on PhoneticsPreference because it also contains
   // reverse mapping ("NO_PHONETICS": "NoPhonetics")
   return Object.hasOwn(PREFERENCE_LITERATES, str);
-}
-
-export function reducePhoneticsPreference(
-  state: UserState,
-  action: UserStateAction
-): PhoneticsPreference | undefined {
-  if (action.type === "SET_PHONETICS_PREFERENCE") return action.newPreference;
-  if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
-    // if no preference, set to group default when a user registers
-    return (
-      state.phoneticsPreference ?? GROUPS[action.groupId].phoneticsPreference
-    );
-  else return state.phoneticsPreference;
 }

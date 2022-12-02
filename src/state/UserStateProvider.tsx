@@ -29,10 +29,7 @@ import { UserStateAction } from "./actions";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { GroupId, GROUPS, isGroupId, reduceGroupId } from "./reducers/groupId";
 import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
-import {
-  PhoneticsPreference,
-  reducePhoneticsPreference,
-} from "./reducers/phoneticsPreference";
+import { PhoneticsPreference } from "./reducers/phoneticsPreference";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -78,6 +75,19 @@ function reduceUpstreamCollection(
     // if no upstream collection, set to group default
     return upstreamCollection ?? GROUPS[action.groupId].defaultCollectionId;
   else return upstreamCollection;
+}
+
+function reducePhoneticsPreference(
+  state: UserState,
+  action: UserStateAction
+): PhoneticsPreference | undefined {
+  if (action.type === "SET_PHONETICS_PREFERENCE") return action.newPreference;
+  if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
+    // if no preference, set to group default when a user registers
+    return (
+      state.phoneticsPreference ?? GROUPS[action.groupId].phoneticsPreference
+    );
+  else return state.phoneticsPreference;
 }
 
 function reduceLessonCreationError(
