@@ -12,6 +12,7 @@ import { TermCardWithStats } from "../../spaced-repetition/types";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { theme } from "../../theme";
 import { createIssueForAudioInNewTab } from "../../utils/createIssue";
+import { getPhonetics } from "../../utils/phonetics";
 import { useAudio } from "../../utils/useAudio";
 import { ExerciseComponentProps } from "./Exercise";
 
@@ -57,7 +58,7 @@ const StyledFlashcardBody = styled.button`
   margin: 30px auto;
   padding: 8px;
   box-shadow: 1px 1px 8px #666;
-  display: flex;
+  display: block;
   align-items: center;
   outline: none;
   p {
@@ -74,12 +75,16 @@ export function Flashcard({
   card: TermCardWithStats<Card>;
   reviewCurrentCard: (correct: boolean) => void;
 }) {
-  const { groupId } = useUserStateContext();
+  const { groupId, phoneticsPreference } = useUserStateContext();
   const [cardFlipped, setCardFlipped] = useState(false);
   const [startSide, setStartSide] = useState<"cherokee" | "english">(
     "cherokee"
   );
   const [side, setSide] = useState(startSide);
+  const phonetics = useMemo(
+    () => getPhonetics(card.card, phoneticsPreference),
+    [card]
+  );
 
   function flipCard() {
     console.log("Flipping card...");
@@ -132,7 +137,7 @@ export function Flashcard({
     ];
   }, [card]);
 
-  const { play, playing } = useAudio({
+  const { play } = useAudio({
     src: side === "cherokee" ? cherokeeAudio : englishAudio,
     autoplay: true,
   });
@@ -150,6 +155,16 @@ export function Flashcard({
       </form>
       <StyledFlashcardBody onClick={() => flipCard()}>
         <p>{side === "cherokee" ? card.card.syllabary : card.card.english}</p>
+        {phonetics && side === "cherokee" && (
+          <p
+            style={{
+              fontFamily:
+                "sans-serif" /** need to have font support combining diacritic marks (eg. double acute accent i̋) */,
+            }}
+          >
+            {phonetics}
+          </p>
+        )}
       </StyledFlashcardBody>
       <FlashcardControls playAudio={play} reviewCard={reviewCardOrFlip} />
       <button onClick={() => createIssueForAudioInNewTab(groupId, card.term)}>
