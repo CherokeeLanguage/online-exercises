@@ -28,7 +28,7 @@ export type SetUpstreamCollectionAction = {
 };
 
 export type RegisterWithGroupAction = {
-  type: "REGISTER_GROUP";
+  type: "REGISTER_GROUP_AND_APPLY_DEFAULTS";
   groupId: GroupId;
 };
 

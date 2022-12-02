@@ -36,6 +36,7 @@ export function reduceGroupId(
   state: UserState,
   action: UserStateAction
 ): GroupId | undefined {
-  if (action.type === "REGISTER_GROUP") return action.groupId;
+  if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
+    return action.groupId;
   else return state.groupId;
 }

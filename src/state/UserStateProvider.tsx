@@ -74,7 +74,7 @@ function reduceUpstreamCollection(
   action: UserStateAction
 ): string | undefined {
   if (action.type === "SET_UPSTREAM_COLLECTION") return action.newCollectionId;
-  if (action.type === "REGISTER_GROUP")
+  if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
     // if no upstream collection, set to group default
     return upstreamCollection ?? GROUPS[action.groupId].defaultCollectionId;
   else return upstreamCollection;
@@ -165,7 +165,7 @@ export function useUserState(props: {
       registerGroup(groupId: string) {
         if (isGroupId(groupId)) {
           dispatch({
-            type: "REGISTER_GROUP",
+            type: "REGISTER_GROUP_AND_APPLY_DEFAULTS",
             groupId,
           });
         }
@@ -196,6 +196,12 @@ export function useUserState(props: {
       leitnerBoxesInteractors.resize(
         props.initializationProps.leitnerBoxes.numBoxes
       );
+    if (state.groupId) {
+      dispatch({
+        groupId: state.groupId,
+        type: "REGISTER_GROUP_AND_APPLY_DEFAULTS",
+      });
+    }
     dispatch({ type: "HANDLE_SET_CHANGES" });
   }, []);
 
