@@ -1,6 +1,6 @@
 import { UserStateAction } from "../actions";
 import { UserState } from "../UserStateProvider";
-import { GroupId } from "./groupId";
+import { GROUPS } from "./groupId";
 
 export enum PhoneticsPreference {
   NoPhonetics = "NO_PHONETICS",
@@ -26,5 +26,10 @@ export function reducePhoneticsPreference(
   action: UserStateAction
 ): PhoneticsPreference | undefined {
   if (action.type === "SET_PHONETICS_PREFERENCE") return action.newPreference;
+  if (action.type === "REGISTER_GROUP")
+    // if no preference, set to group default when a user registers
+    return (
+      state.phoneticsPreference ?? GROUPS[action.groupId].phoneticsPreference
+    );
   else return state.phoneticsPreference;
 }
