@@ -93,6 +93,7 @@ describe("useUserState", () => {
             sets: {},
             upstreamCollection: undefined,
             groupId: undefined,
+            phoneticsPreference: undefined,
           },
           initializationProps: {
             leitnerBoxes: {
@@ -178,6 +179,7 @@ describe("useUserState", () => {
         sets: {},
         upstreamCollection: undefined,
         groupId: undefined,
+        phoneticsPreference: undefined,
       });
     });
 

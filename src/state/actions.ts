@@ -2,6 +2,7 @@ import { GroupId, GROUPS } from "./reducers/groupId";
 import { ReviewResult } from "./reducers/leitnerBoxes";
 import { Lesson } from "./reducers/lessons";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
+import { PhoneticsPreference } from "./reducers/phoneticsPreference";
 import { UserState } from "./UserStateProvider";
 
 export type ResizeLeitnerBoxesAction = {
@@ -67,6 +68,12 @@ export type HandleSetChangesAction = {
   type: "HANDLE_SET_CHANGES";
 };
 
+// FIXME: I think 'preferences' could get moved into a separate part of the codebase so this doesn't keep getting longer
+export type SetPhoneticsPreferenceAction = {
+  type: "SET_PHONETICS_PREFERENCE";
+  newPreference: PhoneticsPreference;
+};
+
 export type UserStateAction =
   | SetUpstreamCollectionAction
   | RegisterWithGroupAction
@@ -74,4 +81,5 @@ export type UserStateAction =
   | ResizeLeitnerBoxesAction
   | SetAction
   | LessonsAction
-  | HandleSetChangesAction;
+  | HandleSetChangesAction
+  | SetPhoneticsPreferenceAction;

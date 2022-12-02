@@ -29,6 +29,10 @@ import { UserStateAction } from "./actions";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { GroupId, GROUPS, isGroupId, reduceGroupId } from "./reducers/groupId";
 import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
+import {
+  PhoneticsPreference,
+  reducePhoneticsPreference,
+} from "./reducers/phoneticsPreference";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -49,11 +53,14 @@ export interface UserState {
   upstreamCollection: string | undefined;
   /** Group registration */
   groupId: GroupId | undefined;
+  /** Preference for how phonetics are shown */
+  phoneticsPreference: PhoneticsPreference | undefined;
 }
 
 interface MiscInteractors {
   setUpstreamCollection: (collectionId: string) => void;
   registerGroup: (groupId: string) => void;
+  setPhoneticsPreference: (newPreference: PhoneticsPreference) => void;
   loadState: (state: UserState) => void;
 }
 
@@ -92,6 +99,7 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
     upstreamCollection: reduceUpstreamCollection(state, action),
     lessonCreationError: reduceLessonCreationError(state, action),
     groupId: reduceGroupId(state, action),
+    phoneticsPreference: reducePhoneticsPreference(state, action),
   };
 }
 
@@ -114,6 +122,7 @@ function initializeUserState({
       upstreamCollection: undefined,
       lessonCreationError: undefined,
       groupId: undefined,
+      phoneticsPreference: undefined,
     };
 }
 
@@ -167,6 +176,12 @@ export function useUserState(props: {
           state,
         });
         dispatch({ type: "HANDLE_SET_CHANGES" });
+      },
+      setPhoneticsPreference(newPreference) {
+        dispatch({
+          type: "SET_PHONETICS_PREFERENCE",
+          newPreference,
+        });
       },
     }),
     []
