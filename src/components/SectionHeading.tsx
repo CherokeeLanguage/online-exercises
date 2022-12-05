@@ -5,4 +5,5 @@ export const SectionHeading = styled.h2`
   font-size: ${theme.fontSizes.md};
   color: ${theme.colors.TEXT_GRAY};
   margin: 0;
+  margin-bottom: 8px;
 `;
