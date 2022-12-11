@@ -7,7 +7,7 @@ export interface UseAudioProps {
 
 export interface UseAudioReturn {
   audio: HTMLAudioElement;
-  play: () => void;
+  play: (restartOk?: boolean) => void;
   playing: boolean;
 }
 
@@ -39,8 +39,12 @@ export function useAudio({
   }, [audio, autoplay]);
 
   return {
-    play() {
-      if (!playing) {
+    play(restartOk = false) {
+      if (restartOk) {
+        setPlaying(true);
+        audio.currentTime = 0;
+        audio.play();
+      } else if (!playing) {
         setPlaying(true);
         audio.play();
       }
