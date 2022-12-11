@@ -83,7 +83,7 @@ export function Flashcard({
   const [side, setSide] = useState(startSide);
   const phonetics = useMemo(
     () => getPhonetics(card.card, phoneticsPreference),
-    [card]
+    [card, phoneticsPreference]
   );
 
   function flipCard() {
@@ -155,16 +155,7 @@ export function Flashcard({
       </form>
       <StyledFlashcardBody onClick={() => flipCard()}>
         <p>{side === "cherokee" ? card.card.syllabary : card.card.english}</p>
-        {phonetics && side === "cherokee" && (
-          <p
-            style={{
-              fontFamily:
-                "sans-serif" /** need to have font support combining diacritic marks (eg. double acute accent i̋) */,
-            }}
-          >
-            {phonetics}
-          </p>
-        )}
+        {phonetics && side === "cherokee" && <p>{phonetics}</p>}
       </StyledFlashcardBody>
       <FlashcardControls playAudio={play} reviewCard={reviewCardOrFlip} />
       <button onClick={() => createIssueForAudioInNewTab(groupId, card.term)}>

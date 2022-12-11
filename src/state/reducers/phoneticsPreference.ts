@@ -6,9 +6,9 @@ export enum PhoneticsPreference {
 
 export const PREFERENCE_LITERATES: Record<PhoneticsPreference, string> = {
   NO_PHONETICS: "Do not show phonetics if syllabary is shown.",
-  SIMPLE: "Show phonetics without tone or vowel length. Eg. 'Ahyvdagwalosgi'",
+  SIMPLE: "Show phonetics without tone or vowel length. Eg. 'ahyvdagwalosgi'",
   DETAILED:
-    "Show rich phonetics that show vowel length and tone. Eg. 'Ahyv:dagwalò:sgi'",
+    "Show rich phonetics that show vowel length and tone. Eg. 'a²hyv²²da²gwa²lo¹¹sgi'",
 };
 
 export function isPhoneticsPreference(str: string): str is PhoneticsPreference {
