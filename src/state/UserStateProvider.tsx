@@ -29,6 +29,7 @@ import { UserStateAction } from "./actions";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { GroupId, GROUPS, isGroupId, reduceGroupId } from "./reducers/groupId";
 import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
+import { PhoneticsPreference } from "./reducers/phoneticsPreference";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -49,11 +50,14 @@ export interface UserState {
   upstreamCollection: string | undefined;
   /** Group registration */
   groupId: GroupId | undefined;
+  /** Preference for how phonetics are shown */
+  phoneticsPreference: PhoneticsPreference | undefined;
 }
 
 interface MiscInteractors {
   setUpstreamCollection: (collectionId: string) => void;
   registerGroup: (groupId: string) => void;
+  setPhoneticsPreference: (newPreference: PhoneticsPreference) => void;
   loadState: (state: UserState) => void;
 }
 
@@ -67,10 +71,23 @@ function reduceUpstreamCollection(
   action: UserStateAction
 ): string | undefined {
   if (action.type === "SET_UPSTREAM_COLLECTION") return action.newCollectionId;
-  if (action.type === "REGISTER_GROUP")
+  if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
     // if no upstream collection, set to group default
     return upstreamCollection ?? GROUPS[action.groupId].defaultCollectionId;
   else return upstreamCollection;
+}
+
+function reducePhoneticsPreference(
+  state: UserState,
+  action: UserStateAction
+): PhoneticsPreference | undefined {
+  if (action.type === "SET_PHONETICS_PREFERENCE") return action.newPreference;
+  if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
+    // if no preference, set to group default when a user registers
+    return (
+      state.phoneticsPreference ?? GROUPS[action.groupId].phoneticsPreference
+    );
+  else return state.phoneticsPreference;
 }
 
 function reduceLessonCreationError(
@@ -92,6 +109,7 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
     upstreamCollection: reduceUpstreamCollection(state, action),
     lessonCreationError: reduceLessonCreationError(state, action),
     groupId: reduceGroupId(state, action),
+    phoneticsPreference: reducePhoneticsPreference(state, action),
   };
 }
 
@@ -114,6 +132,7 @@ function initializeUserState({
       upstreamCollection: undefined,
       lessonCreationError: undefined,
       groupId: undefined,
+      phoneticsPreference: undefined,
     };
 }
 
@@ -156,7 +175,7 @@ export function useUserState(props: {
       registerGroup(groupId: string) {
         if (isGroupId(groupId)) {
           dispatch({
-            type: "REGISTER_GROUP",
+            type: "REGISTER_GROUP_AND_APPLY_DEFAULTS",
             groupId,
           });
         }
@@ -167,6 +186,12 @@ export function useUserState(props: {
           state,
         });
         dispatch({ type: "HANDLE_SET_CHANGES" });
+      },
+      setPhoneticsPreference(newPreference) {
+        dispatch({
+          type: "SET_PHONETICS_PREFERENCE",
+          newPreference,
+        });
       },
     }),
     []
@@ -181,6 +206,12 @@ export function useUserState(props: {
       leitnerBoxesInteractors.resize(
         props.initializationProps.leitnerBoxes.numBoxes
       );
+    if (state.groupId) {
+      dispatch({
+        groupId: state.groupId,
+        type: "REGISTER_GROUP_AND_APPLY_DEFAULTS",
+      });
+    }
     dispatch({ type: "HANDLE_SET_CHANGES" });
   }, []);
 
