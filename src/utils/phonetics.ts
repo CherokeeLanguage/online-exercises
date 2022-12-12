@@ -37,6 +37,7 @@ export function mcoToWebsterTones(cherokee: string): string {
   // ¹²³⁴
   // conversion based on Uchihara 2013, p. 14
   return cherokee
+    .replaceAll(/\u0304/g, "") // remove macron accents if present (just mark low tone)
     .replaceAll(/([aeiouv])\u0300:/g, "$1¹¹") // combining grave accent, long
     .replaceAll(/([aeiouv]):/g, "$1²²") // long vowel with no diacritic
     .replaceAll(/([aeiouv])\u0301:/g, "$1³³") // combining acute accent, long
