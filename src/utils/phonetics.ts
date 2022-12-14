@@ -13,8 +13,8 @@ function getRawPhonetics(
   phoneticsPreference: PhoneticsPreference | undefined
 ): string {
   switch (phoneticsPreference) {
-    case PhoneticsPreference.Detailed:
-      return mcoToWebsterTones(normalizeAndRemovePunctuation(card.cherokee));
+    // case PhoneticsPreference.Detailed:
+    //   return mcoToWebsterTones(normalizeAndRemovePunctuation(card.cherokee));
     case PhoneticsPreference.Simple:
       return simplifyPhonetics(card.cherokee);
     case undefined:

@@ -66,18 +66,18 @@ describe("mcoToWebsterTones", () => {
   );
 });
 
-describe("getPhonetics", () => {
-  it("removes all diacritics from all terms", () => {
-    const termsWithDiacriticsLeft = cards.reduce<string[]>((arr, card) => {
-      const websterTones = getPhonetics(card, PhoneticsPreference.Detailed);
-      return websterTones.normalize("NFD").match(/[:\u0300-\u036f]/g) === null
-        ? arr
-        : [...arr, `original: ${card.cherokee} -- actual: ${websterTones}`];
-    }, []);
-    assert.deepStrictEqual(
-      termsWithDiacriticsLeft,
-      [],
-      "there should be no terms with diacritics left"
-    );
-  });
-});
+// describe("getPhonetics", () => {
+//   it("removes all diacritics from all terms", () => {
+//     const termsWithDiacriticsLeft = cards.reduce<string[]>((arr, card) => {
+//       const websterTones = getPhonetics(card, PhoneticsPreference.Detailed);
+//       return websterTones.normalize("NFD").match(/[:\u0300-\u036f]/g) === null
+//         ? arr
+//         : [...arr, `original: ${card.cherokee} -- actual: ${websterTones}`];
+//     }, []);
+//     assert.deepStrictEqual(
+//       termsWithDiacriticsLeft,
+//       [],
+//       "there should be no terms with diacritics left"
+//     );
+//   });
+// });
