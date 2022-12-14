@@ -76,8 +76,8 @@ export function NavigationBar(): ReactElement {
         </StyledNavLink>
       </StyledNav>
       <AdvancedSettings>
-        <StyledNavLink as={NavLink} to="/developer-tools">
-          Developers
+        <StyledNavLink as={NavLink} to="/settings">
+          Settings
         </StyledNavLink>
       </AdvancedSettings>
     </NavbarWrapper>

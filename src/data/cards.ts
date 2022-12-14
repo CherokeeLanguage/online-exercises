@@ -48,10 +48,7 @@ export const cards: Card[] = mergeSets(
 );
 
 export function cherokeeToKey(cherokee: string) {
-  return cherokee
-    .trim()
-    .toLowerCase()
-    .replaceAll(/[\.\?\,]/g, "");
+  return cherokee.trim().toLowerCase().replaceAll(/[.?,]/g, "");
 }
 
 export function keyForCard(card: Card): string {

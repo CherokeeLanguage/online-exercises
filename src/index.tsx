@@ -16,7 +16,7 @@ import { PracticeLesson } from "./views/practice/PracticeLesson";
 import { NewLesson } from "./views/lessons/NewLesson";
 import { ViewCollection } from "./views/collections/ViewCollection";
 import { MyTerms } from "./views/terms/MyTerms";
-import { DeveloperTools } from "./views/developer-tools/DeveloperTools";
+import { Settings } from "./views/settings/Settings";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -54,7 +54,7 @@ root.render(
               <Route index element={<Navigate to="/lessons/" replace />} />
               <Route path=":lessonId/*" element={<PracticeLesson />}></Route>
             </Route>
-            <Route path="developer-tools" element={<DeveloperTools />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
       </UserStateProvider>

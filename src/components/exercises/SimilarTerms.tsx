@@ -8,6 +8,7 @@ import { useUserStateContext } from "../../state/UserStateProvider";
 import { theme } from "../../theme";
 import { createIssueForAudioInNewTab } from "../../utils/createIssue";
 import { useAudio } from "../../utils/useAudio";
+import { useFeedbackChimes } from "../../utils/useFeedbackChimes";
 import { useTransition } from "../../utils/useTransition";
 import { ExerciseComponentProps } from "./Exercise";
 
@@ -67,11 +68,14 @@ export function SimilarTerms({
     [currentCard]
   );
 
+  const { playCorrectChime, playIncorrectChime } = useFeedbackChimes();
+
   const [answerState, setAnswerState] = useState(AnswerState.UNANSWERED);
   const { transitioning, startTransition } = useTransition({ duration: 250 });
 
   function onTermClicked(correct: boolean) {
     setAnswerState(correct ? AnswerState.CORRECT : AnswerState.INCORRECT);
+    (correct ? playCorrectChime : playIncorrectChime)();
     startTransition(() => {
       reviewCurrentCard(correct);
       setAnswerState(AnswerState.UNANSWERED);
@@ -102,7 +106,7 @@ export function SimilarTerms({
       }}
     >
       {/* <p> {leitnerBoxState.cardsToReview.length} left in session </p> */}
-      <button onClick={play} disabled={playing}>
+      <button onClick={() => play()} disabled={playing}>
         Listen again
       </button>
       <Answers transitioning={transitioning}>

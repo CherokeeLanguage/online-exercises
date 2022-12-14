@@ -1,8 +1,13 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useId, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { Button } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
 import { lessonKey } from "../../state/reducers/lessons";
+import {
+  isPhoneticsPreference,
+  PREFERENCE_LITERATES,
+} from "../../state/reducers/phoneticsPreference";
 import { UserState, useUserStateContext } from "../../state/UserStateProvider";
 
 interface ExportedLessonData {
@@ -11,7 +16,63 @@ interface ExportedLessonData {
   timings: string | null;
 }
 
-export function DeveloperTools() {
+export function Settings() {
+  return (
+    <div>
+      <Preferences />
+      <br />
+      <hr />
+      <p>
+        <em>
+          Settings below this point might not be much use to you unless a
+          maintainer of this website contacted you.
+        </em>
+      </p>
+      <ImportExportDataConsole />
+    </div>
+  );
+}
+
+const PreferencesForm = styled.form`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 8px;
+`;
+
+function Preferences() {
+  const { setPhoneticsPreference, phoneticsPreference } = useUserStateContext();
+  const phoneticsPreferenceId = useId();
+
+  function onPhoneticsPreferenceChanged(event: ChangeEvent<HTMLSelectElement>) {
+    event.preventDefault();
+    const newPreference = event.target.value;
+    if (isPhoneticsPreference(newPreference)) {
+      setPhoneticsPreference(newPreference);
+    }
+  }
+
+  return (
+    <div>
+      <SectionHeading>Preferences</SectionHeading>
+      <PreferencesForm>
+        <label htmlFor={phoneticsPreferenceId}>Phonetics preference</label>
+        <select
+          id={phoneticsPreferenceId}
+          value={phoneticsPreference}
+          onChange={onPhoneticsPreferenceChanged}
+        >
+          {Object.entries(PREFERENCE_LITERATES).map(([value, literate], i) => (
+            <option key={i} value={value}>
+              {literate}
+            </option>
+          ))}
+        </select>
+      </PreferencesForm>
+    </div>
+  );
+}
+
+function ImportExportDataConsole() {
   const userState = useUserStateContext();
   const [fileToLoad, setFileToLoad] = useState<File | null>(null);
   const navigate = useNavigate();
@@ -27,6 +88,7 @@ export function DeveloperTools() {
       sets: null,
       upstreamCollection: null,
       groupId: null,
+      phoneticsPreference: null,
     };
 
     const stateToSave = Object.keys(fieldsToSave).reduce(
@@ -90,17 +152,12 @@ export function DeveloperTools() {
         navigate("/");
       });
   }
-
   return (
     <div>
-      <SectionHeading>Developer tools</SectionHeading>
-      <p>
-        These settings probably aren't much use to you unless a maintainer of
-        this website contacted you.
-      </p>
       <SectionHeading>Export data</SectionHeading>
       <Button onClick={downloadAllData}>Download all data</Button>
-      <hr />
+      <br />
+      <br />
       <SectionHeading>Import data</SectionHeading>
       <form onSubmit={loadData}>
         <label htmlFor="loadDataFile">Select a file to load data from</label>
