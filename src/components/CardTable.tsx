@@ -1,7 +1,12 @@
 import { ReactElement, useState } from "react";
 import { Card } from "../data/cards";
+import {
+  PhoneticsPreference,
+  showPhonetics,
+} from "../state/reducers/phoneticsPreference";
 import { useUserStateContext } from "../state/UserStateProvider";
 import { createIssueForAudioInNewTab } from "../utils/createIssue";
+import { getPhonetics } from "../utils/phonetics";
 import { Button } from "./Button";
 import { Modal } from "./Modal";
 import { StyledTable } from "./StyledTable";
@@ -51,10 +56,16 @@ function CardRow({
   card: Card;
   showDetailsForCard: (card: Card) => void;
 }) {
+  const { phoneticsPreference } = useUserStateContext();
   return (
     <>
       <tr>
-        <td>{card.syllabary}</td>
+        <td>
+          {card.syllabary}
+          {showPhonetics(phoneticsPreference) && (
+            <span> | {getPhonetics(card, phoneticsPreference)}</span>
+          )}
+        </td>
         <td>{card.english}</td>
         <td>
           <Button
@@ -78,12 +89,23 @@ function CardDetailsModal({ card, close }: { card: Card; close: () => void }) {
 }
 
 function CardAudioModalContent({ card }: { card: Card }) {
+  const { phoneticsPreference } = useUserStateContext();
   return (
     <div>
-      <h4>Alternate spellings</h4>
-      {card.alternate_syllabary.map((s) => (
-        <p>{s}</p>
-      ))}
+      {showPhonetics(phoneticsPreference) && (
+        <>
+          <h4>Phonetics</h4>
+          <p>{getPhonetics(card, phoneticsPreference)}</p>
+        </>
+      )}
+      {card.alternate_syllabary.length > 0 && (
+        <>
+          <h4>Alternate spellings</h4>
+          {card.alternate_syllabary.map((s) => (
+            <p>{s}</p>
+          ))}
+        </>
+      )}
       <h4>English translation</h4>
       {card.english}
       <hr></hr>
