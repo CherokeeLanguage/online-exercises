@@ -69,7 +69,7 @@ describe("mcoToWebsterTones", () => {
 describe("getPhonetics", () => {
   it("(simple) removes all diacritics from all terms", () => {
     const termsWithDiacriticsLeft = cards.reduce<string[]>((arr, card) => {
-      const websterTones = getPhonetics(card, PhoneticsPreference.Simple);
+      const websterTones = getPhonetics(card, PhoneticsPreference.Detailed);
       return websterTones.normalize("NFD").match(/[:\u0300-\u036f]/g) === null
         ? arr
         : [...arr, `original: ${card.cherokee} -- actual: ${websterTones}`];
