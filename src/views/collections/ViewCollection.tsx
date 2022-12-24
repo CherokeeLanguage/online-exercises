@@ -15,5 +15,7 @@ export function ViewCollectionPage({
   collectionId: string;
 }): ReactElement {
   const collection = collections[collectionId];
-  return <CollectionDetails collection={collection} showAddedSets />;
+  return (
+    <CollectionDetails collection={collection} showAddedSets showCredits />
+  );
 }
