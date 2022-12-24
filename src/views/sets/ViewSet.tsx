@@ -10,6 +10,7 @@ import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
 import { UserSetData } from "../../state/reducers/userSets";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
+import { CollectionCredits } from "../collections/CollectionCredits";
 
 export function ViewSet(): ReactElement {
   const { setId } = useParams();
@@ -43,8 +44,7 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
 
   const navigate = useNavigate();
   const setCards = useCardsForTerms(cards, set.terms, keyForCard);
-  const collectionName =
-    (set.collection && collections[set.collection].title) ?? "";
+  const collection = collections[set.collection];
 
   function addSetAndRedirect() {
     addSet(set.id);
@@ -60,7 +60,7 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
     <div>
       <StyledHeadingWithButton>
         <SectionHeading>
-          {collectionName && `${collectionName} - `}
+          {collection.title && `${collection.title} - `}
           {set.title}
         </SectionHeading>
         {userSetData ? (
@@ -71,7 +71,7 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
           </Button>
         )}
       </StyledHeadingWithButton>
-
+      <CollectionCredits collection={collection} />
       <CardTable cards={Object.values(setCards)} />
       <RemoveSetWrapper>
         <Button onClick={() => setModalOpen(true)}>

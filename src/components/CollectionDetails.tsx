@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Collection } from "../data/vocabSets";
 import { useUserStateContext } from "../state/UserStateProvider";
+import { CollectionCredits } from "../views/collections/CollectionCredits";
 import { Button } from "./Button";
 import { StyledLink } from "./StyledLink";
 import { StyledTable } from "./StyledTable";
@@ -41,9 +42,11 @@ function MakeUpstreamCollectionButton({
 export function CollectionDetails({
   collection,
   showAddedSets = false,
+  showCredits = false,
 }: {
   collection: Collection;
   showAddedSets?: boolean;
+  showCredits?: boolean;
 }) {
   const { upstreamCollection, sets } = useUserStateContext();
   const setsToShow = showAddedSets
@@ -60,7 +63,7 @@ export function CollectionDetails({
           <MakeUpstreamCollectionButton collectionId={collection.id} />
         )}
       </StyledCollectionHeader>
-
+      {showCredits && <CollectionCredits collection={collection} />}
       <StyledTable>
         <thead>
           <tr>

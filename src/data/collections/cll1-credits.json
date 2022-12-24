@@ -1,0 +1,20 @@
+{
+  "author": "Michael Conrad",
+  "description": "This collection contains terms with text-to-speech audio generateed from Michael Conrad's Cherokee Language Lessons 1 textbook (third edition).",
+  "externalResources": [
+    {
+      "name": "Cherokee Language Lessons website",
+      "href": "https://www.cherokeelessons.com/",
+      "notes": "An online collection of resources Michael Conrad has collected or produced."
+    },
+    {
+      "name": "Textbook download (second edition)",
+      "href": "https://language.cherokee.org/media/a5adru4x/see-say-write.zip"
+    },
+    {
+      "name": "Prerecorded audio exercises (third edition)",
+      "href": "https://www.cherokeelessons.com/lesson-audio/cherokee-language-lessons-1---audio-exercises/",
+      "notes": "Good for car rides and other scenarios when you do not have a computer available."
+    }
+  ]
+}
