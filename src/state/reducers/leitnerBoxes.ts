@@ -6,8 +6,7 @@ import { ImperativeBlock } from "../../utils/useReducerWithImperative";
 import { UserState } from "../UserStateProvider";
 import { vocabSets } from "../../data/vocabSets";
 import { UserStateAction } from "../actions";
-import { migration } from "../../data/migrations/2022-08-25";
-import { applyMigration } from "../../data/migrations";
+import { migrateTerm } from "../../data/migrations";
 
 interface NewUseLeitnerBoxesProps {
   type: "NEW";
@@ -176,7 +175,7 @@ export function reduceLeitnerBoxState(
       );
       const termsWithMigrations = Object.fromEntries(
         Object.entries(terms).map(([term, stats]) => {
-          const newTerm = applyMigration(term, migration);
+          const newTerm = migrateTerm(term);
           return [newTerm, { ...stats, key: newTerm }];
         })
       );
