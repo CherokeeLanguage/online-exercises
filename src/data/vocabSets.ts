@@ -78,7 +78,7 @@ export interface ExternalResource {
 }
 
 export interface CollectionCredits {
-  author: string;
+  credits: { role: string; name: string }[];
   description: string;
   externalResources: ExternalResource[];
 }

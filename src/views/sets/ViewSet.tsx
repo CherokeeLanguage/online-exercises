@@ -72,6 +72,7 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
         )}
       </StyledHeadingWithButton>
       <CollectionCredits collection={collection} />
+      <h3>Terms in this set</h3>
       <CardTable cards={Object.values(setCards)} />
       <RemoveSetWrapper>
         <Button onClick={() => setModalOpen(true)}>

@@ -1,5 +1,5 @@
 {
-  "author": "Cherokee Nation",
+  "credits": [{ "role": "Author", "name": "Cherokee Nation" }],
   "description": "This collection contains terms lifted from a textbook aimed at teaching first-language speakers to read and write the syllabary.",
   "externalResources": [
     {

@@ -64,6 +64,7 @@ export function CollectionDetails({
         )}
       </StyledCollectionHeader>
       {showCredits && <CollectionCredits collection={collection} />}
+      <h3>Sets in this collection</h3>
       <StyledTable>
         <thead>
           <tr>

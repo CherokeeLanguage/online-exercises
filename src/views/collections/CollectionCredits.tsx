@@ -8,10 +8,15 @@ export function CollectionCredits({
 }): ReactElement {
   return (
     <div>
-      <p>
-        <strong>Author:</strong> {credits.author}
-      </p>
       <p>{credits.description}</p>
+      <h3>Credits</h3>
+      <ul>
+        {credits.credits.map(({ role, name }) => (
+          <li>
+            <strong>{role}</strong>: {name}
+          </li>
+        ))}
+      </ul>
       {credits.externalResources.length > 0 && (
         <>
           <h3>External resources</h3>

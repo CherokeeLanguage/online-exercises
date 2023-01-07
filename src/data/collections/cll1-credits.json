@@ -1,5 +1,8 @@
 {
-  "author": "Michael Conrad",
+  "credits": [
+    { "role": "Author", "name": "Michael Conrad" },
+    { "role": "speaker", "name": "Text-to-speech" }
+  ],
   "description": "This collection contains terms with text-to-speech audio generateed from Michael Conrad's Cherokee Language Lessons 1 textbook (third edition).",
   "externalResources": [
     {
