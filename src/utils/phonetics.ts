@@ -1,4 +1,4 @@
-import { Card } from "../data/cards";
+import { Card, PhoneticOrthography } from "../data/cards";
 import { PhoneticsPreference } from "../state/reducers/phoneticsPreference";
 
 export function getPhonetics(
@@ -14,12 +14,21 @@ function getRawPhonetics(
 ): string {
   switch (phoneticsPreference) {
     case PhoneticsPreference.Detailed:
-      return mcoToWebsterTones(normalizeAndRemovePunctuation(card.cherokee));
+      return detailedPhonetics(card);
     case PhoneticsPreference.Simple:
-      return simplifyPhonetics(card.cherokee);
+      return simplifyPhonetics(card);
     case undefined:
     case PhoneticsPreference.NoPhonetics:
       return "";
+  }
+}
+
+function detailedPhonetics({ cherokee, phoneticOrthography }: Card) {
+  switch (phoneticOrthography) {
+    case PhoneticOrthography.MCO:
+      return mcoToWebsterTones(normalizeAndRemovePunctuation(cherokee));
+    case PhoneticOrthography.WEBSTER:
+      return normalizeAndRemovePunctuation(cherokee);
   }
 }
 
@@ -27,7 +36,7 @@ export function normalizeAndRemovePunctuation(cherokee: string): string {
   return cherokee
     .toLowerCase()
     .replaceAll(/[.?]/g, "")
-    .replaceAll(/(ch)|(j)/g, "ts")
+    .replaceAll(/j/g, "ts")
     .replaceAll(/qu/g, "gw")
     .replaceAll(/[Ɂʔ]/g, "ɂ")
     .normalize("NFKD");
@@ -55,10 +64,22 @@ export function mcoToWebsterTones(cherokee: string): string {
   );
 }
 
-export function removeTonesAndMarkers(cherokee: string): string {
+export function simplifyMCO(cherokee: string): string {
   return cherokee.replace(/[:\u0300-\u036f]/g, "");
 }
 
-export function simplifyPhonetics(cherokee: string): string {
-  return removeTonesAndMarkers(normalizeAndRemovePunctuation(cherokee));
+export function simplifyWebster(cherokee: string): string {
+  return cherokee.replace(/¹²³⁴/g, "");
+}
+
+export function simplifyPhonetics({
+  cherokee,
+  phoneticOrthography,
+}: Card): string {
+  switch (phoneticOrthography) {
+    case PhoneticOrthography.MCO:
+      return simplifyMCO(normalizeAndRemovePunctuation(cherokee));
+    case PhoneticOrthography.WEBSTER:
+      return simplifyWebster(normalizeAndRemovePunctuation(cherokee));
+  }
 }

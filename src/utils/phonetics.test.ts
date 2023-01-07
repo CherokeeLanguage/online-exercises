@@ -5,10 +5,10 @@ import {
   getPhonetics,
   mcoToWebsterTones,
   normalizeAndRemovePunctuation,
-  removeTonesAndMarkers,
+  simplifyMCO,
 } from "./phonetics";
 
-describe("normalization and tone removal", () => {
+describe("MCO", () => {
   it.each([
     ["sǔ:dáli", "sǔ:dáli".normalize("NFKD"), "sudali"],
     ["Sa:sa aná:ɂi", "sa:sa aná:ɂi".normalize("NFKD"), "sasa anaɂi"],
@@ -19,8 +19,8 @@ describe("normalization and tone removal", () => {
     ],
     [
       "na yǒ:na achű:ja já:ni dù:dó:ʔa",
-      "na yǒ:na atsű:tsa tsá:ni dù:dó:ɂa".normalize("NFKD"),
-      "na yona atsutsa tsani dudoɂa",
+      "na yǒ:na achű:tsa tsá:ni dù:dó:ɂa".normalize("NFKD"),
+      "na yona achutsa tsani dudoɂa",
     ],
   ])(
     "works for a bunch of examples",
@@ -32,7 +32,7 @@ describe("normalization and tone removal", () => {
         "Should produce expected normalized output"
       );
 
-      const actualSimplified = removeTonesAndMarkers(actualNormalized);
+      const actualSimplified = simplifyMCO(actualNormalized);
       assert.deepStrictEqual(
         actualSimplified,
         expectedSimplified,
@@ -48,7 +48,7 @@ describe("mcoToWebsterTones", () => {
     ["sadv́:di à:gowhtíha", "sa²dv³³di a¹¹go²whti³ha"],
     [
       "na yǒ:na achű:ja já:ni dù:dó:ʔa",
-      "na yo²³na a²tsu⁴⁴tsa tsa³³ni du¹¹do³³ɂa",
+      "na yo²³na a²chu⁴⁴tsa tsa³³ni du¹¹do³³ɂa",
     ],
     ["Ahyv:dagwalò:sgi", "a²hyv²²da²gwa²lo¹¹sgi"],
     ["Ayv:wi:ya̋", "a²yv²²wi²²ya⁴"],
@@ -67,7 +67,22 @@ describe("mcoToWebsterTones", () => {
 });
 
 describe("getPhonetics", () => {
-  it("(simple) removes all diacritics from all terms", () => {
+  it("(simple) removes all diacritics and superscripts from all terms", () => {
+    const termsWithDiacriticsLeft = cards.reduce<string[]>((arr, card) => {
+      const websterTones = getPhonetics(card, PhoneticsPreference.Simple);
+      return websterTones.normalize("NFD").match(/[:\u0300-\u036f¹²³⁴]/g) ===
+        null
+        ? arr
+        : [...arr, `original: ${card.cherokee} -- actual: ${websterTones}`];
+    }, []);
+    assert.deepStrictEqual(
+      termsWithDiacriticsLeft,
+      [],
+      "there should be no terms with diacritics or superscripts left"
+    );
+  });
+
+  it("(detailed) removes all diacritics from all terms", () => {
     const termsWithDiacriticsLeft = cards.reduce<string[]>((arr, card) => {
       const websterTones = getPhonetics(card, PhoneticsPreference.Detailed);
       return websterTones.normalize("NFD").match(/[:\u0300-\u036f]/g) === null

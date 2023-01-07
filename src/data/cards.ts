@@ -1,6 +1,38 @@
 import cllCards from "./collections/cll1-cards.json";
 import sswCards from "./collections/ssw-cards.json";
 
+export enum PhoneticOrthography {
+  MCO = "MCO",
+  WEBSTER = "WEBSTER",
+}
+
+const DEFAULT_ORTHOGRAPHY = PhoneticOrthography.MCO;
+
+function phoneticOrthographyOrThrow(
+  orthography: string | undefined
+): PhoneticOrthography {
+  if (orthography === undefined) return DEFAULT_ORTHOGRAPHY;
+  if (orthography in PhoneticOrthography)
+    return orthography as PhoneticOrthography;
+  else
+    throw new Error(
+      `Invalid string for phonetic orthography (got: ${JSON.stringify(
+        orthography
+      )})`
+    );
+}
+
+interface DiskCard {
+  cherokee: string;
+  syllabary: string;
+  alternate_pronunciations: string[];
+  alternate_syllabary: string[];
+  english: string;
+  cherokee_audio: string[];
+  english_audio: string[];
+  phoneticOrthography?: string;
+}
+
 export interface Card {
   cherokee: string;
   syllabary: string;
@@ -9,6 +41,7 @@ export interface Card {
   english: string;
   cherokee_audio: string[];
   english_audio: string[];
+  phoneticOrthography: PhoneticOrthography;
 }
 
 export function prefixAudio(path: string) {
@@ -42,9 +75,16 @@ function prefixAudioForCards(card: Card): Card {
   };
 }
 
+function cleanCard({ phoneticOrthography, ...card }: DiskCard): Card {
+  return prefixAudioForCards({
+    ...card,
+    phoneticOrthography: phoneticOrthographyOrThrow(phoneticOrthography),
+  });
+}
+
 export const cards: Card[] = mergeSets(
-  cllCards.map(prefixAudioForCards),
-  sswCards.map(prefixAudioForCards)
+  cllCards.map(cleanCard),
+  sswCards.map(cleanCard)
 );
 
 export function cherokeeToKey(cherokee: string) {
