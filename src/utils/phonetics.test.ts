@@ -10,16 +10,16 @@ import {
 
 describe("MCO", () => {
   it.each([
-    ["sǔ:dáli", "sǔ:dáli".normalize("NFKD"), "sudali"],
-    ["Sa:sa aná:ɂi", "sa:sa aná:ɂi".normalize("NFKD"), "sasa anaɂi"],
+    ["sǔ:dáli", "sǔ:dáli".normalize("NFD"), "sudali"],
+    ["Sa:sa aná:ɂi", "sa:sa aná:ɂi".normalize("NFD"), "sasa anaɂi"],
     [
       "U:ni:ji:ya dù:hyoha na asgaya",
-      "u:ni:tsi:ya dù:hyoha na asgaya".normalize("NFKD"),
+      "u:ni:tsi:ya dù:hyoha na asgaya".normalize("NFD"),
       "unitsiya duhyoha na asgaya",
     ],
     [
       "na yǒ:na achű:ja já:ni dù:dó:ʔa",
-      "na yǒ:na achű:tsa tsá:ni dù:dó:ɂa".normalize("NFKD"),
+      "na yǒ:na achű:tsa tsá:ni dù:dó:ɂa".normalize("NFD"),
       "na yona achutsa tsani dudoɂa",
     ],
   ])(

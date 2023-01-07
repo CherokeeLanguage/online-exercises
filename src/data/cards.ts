@@ -1,5 +1,6 @@
 import cllCards from "./collections/cll1-cards.json";
 import sswCards from "./collections/ssw-cards.json";
+import jwLivingPhrases from "./collections/jw-living-phrases-cards.json";
 
 export enum PhoneticOrthography {
   MCO = "MCO",
@@ -84,7 +85,8 @@ function cleanCard({ phoneticOrthography, ...card }: DiskCard): Card {
 
 export const cards: Card[] = mergeSets(
   cllCards.map(cleanCard),
-  sswCards.map(cleanCard)
+  sswCards.map(cleanCard),
+  jwLivingPhrases.map(cleanCard)
 );
 
 export function cherokeeToKey(cherokee: string) {

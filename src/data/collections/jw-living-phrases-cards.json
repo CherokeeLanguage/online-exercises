@@ -1,0 +1,1774 @@
+[
+  {
+    "cherokee": "ga²²da²²ha⁴",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_da_ha__0.mp3"
+    ],
+    "syllabary": "ᎦᏓᎭ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "dirty",
+    "english_audio": ["data/jw-living-phrases/split_audio/english_dirty_0.mp3"],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²si²²nv,di² ka²nv³³su²²lv⁴",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_si_nv_di_ka_nv_su_lv__0.mp3"
+    ],
+    "syllabary": "ᎠᏍᏏᏅᏗ ᎧᏅᏍᏑᎸ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "bedroom",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_bedroom_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ga²ni²³hli²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_ni_hli__0.mp3"
+    ],
+    "syllabary": "ᎦᏂᎵ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "bed",
+    "english_audio": ["data/jw-living-phrases/split_audio/english_bed_0.mp3"],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "o⁴⁴sda² hǎnv¹¹ga² ga²ni²³hli²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_o_sda_ha_nv_ga_ga_ni_hli__0.mp3",
+      "data/jw-living-phrases/split_audio/cherokee_o_sda_ha_nv_ga_ga_ni_hli__1.mp3"
+    ],
+    "syllabary": "ᎣᏍᏓ ᎭᏅᎦ ᎦᏂᎵ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Make your bed",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Make_your_bed_0.mp3",
+      "data/jw-living-phrases/split_audio/english_Make_your_bed_1.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ti²ne³³dli²²yv¹¹na² di²²kv³³hi²da²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ti_ne_dli_yv_na_di_kv_hi_da__0.mp3"
+    ],
+    "syllabary": "ᏘᏁᏟᏴᎾ ᏗᎬᎯᏓ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Change your sheets",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Change_your_sheets_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²tsi³ne³²dli²²yv²²na² di²²kv³³hi²da² ko²²hi² sa²na³³le⁴",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_tsi_ne_dli_yv_na_di_kv_hi_da_ko_hi_sa_na_le__0.mp3"
+    ],
+    "syllabary": "ᏕᏥᏁᏟᏴᎾ ᏗᎬᎯᏓ ᎪᎯ ᏍᏌᎾᎴ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I changed my sheets this morning",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_changed_my_sheets_this_morning_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²kwi,sdo³",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_kwi_sdo__0.mp3"
+    ],
+    "syllabary": "ᎠᏈᏍᏙ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "pillow",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_pillow_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hwi²tlv²³na²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hwi_tlv_na__0.mp3"
+    ],
+    "syllabary": "ᏫᎯᏢᎾ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Go to sleep",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Go_to_sleep_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²tlv²³na²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_tlv_na__0.mp3"
+    ],
+    "syllabary": "ᎯᏢᎾ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Go to sleep while in bed",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Go_to_sleep_while_in_bed_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "o²²si²²tsu³ hi²tlv²²na²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_o_si_tsu_hi_tlv_na__0.mp3"
+    ],
+    "syllabary": "ᎣᏍᏏᏧ ᎯᏢᎾ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "How did you sleep",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_How_did_you_sleep_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²²kv³³hi²da²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_kv_hi_da__0.mp3"
+    ],
+    "syllabary": "ᏗᎬᎯᏓ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "sheets",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_sheets_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "u²²ne²²gv²²ha⁴",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_u_ne_gv_ha__0.mp3"
+    ],
+    "syllabary": "ᎤᏁᎬᎭ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "blanket",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_blanket_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "u²²ne²²gv²²ha⁴ hi²²yv³hgwi²do²²si¹¹ya²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_u_ne_gv_ha_hi_yv_hgwi_do_si_ya__0.mp3"
+    ],
+    "syllabary": "ᎤᏁᎬᎭ ᎯᏴᏈᏙᏍᏏᏯ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Fold the blanket",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Fold_the_blanket_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "so³ʔi² u²²ne²²gv²²ha⁴ di²²sgi²nv²ʔsi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_so_i_u_ne_gv_ha_di_sgi_nv_si__0.mp3"
+    ],
+    "syllabary": "ᏍᏐᎢ ᎤᏁᎬᎭ ᏗᏍᎩᏅᏍᏏ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Get me another blanket",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Get_me_another_blanket_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "sgo²³hi, yu³³tli²²lo³³da, tsi²ʔlv²²na, u²sv² tsi²ge²²sv² ",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_sgo_hi_yu_tli_lo_da_tsi_lv_na_u_sv_tsi_ge_sv__0.mp3"
+    ],
+    "syllabary": "ᏍᎪᎯ ᏳᏟᎶᏓ ᏥᎸᎾ ᎤᏍᏒ ᏥᎨᏍᏒ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I slept for ten hours last night",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_slept_for_ten_hours_last_night_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²la² i²³go³³hi⁴⁴da, hi²hlv²²na, u²sv² tsi²ge²²sv²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_la_i_go_hi_da_hi_hlv_na_u_sv_tsi_ge_sv__0.mp3"
+    ],
+    "syllabary": "ᎯᎳ ᎢᎪᎯᏓ ᎯᏢᎾ ᎤᏍᏒ ᏥᎨᏍᏒ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "How long did you sleep last night?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_How_long_did_you_sleep_last_night__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²la² i²³go³³hi⁴⁴da, hi²hlv²²na²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_la_i_go_hi_da_hi_hlv_na__0.mp3"
+    ],
+    "syllabary": "ᎯᎳ ᎢᎪᎯᏓ ᎯᏢᎾ ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "How long did you sleep? after waking",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_How_long_did_you_sleep_after_waking_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²la³²yv⁴ ha²di²²da²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_la_yv_ha_di_da__0.mp3"
+    ],
+    "syllabary": "ᎯᎳᏴ ᎭᏗᏓ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "When did you get up?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_When_did_you_get_up__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²la³²yv⁴ tsa²di²²dv²²he³ sv²²hi² tsi²ge²²sv²³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_la_yv_tsa_di_dv_he_sv_hi_tsi_ge_sv_i__0.mp3"
+    ],
+    "syllabary": "ᎯᎳᏴ ᏣᏗᏛᎮ ᏍᏒᎯ ᏥᎨᏍᏒᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "When did you get up yesterday?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_When_did_you_get_up_yesterday__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²la³²yv⁴ wi²tsa²²na,si²ne³³ʔi² u²sv² tsi²ge²²sv²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_la_yv_wi_tsa_na_si_ne_i_u_sv_tsi_ge_sv__0.mp3"
+    ],
+    "syllabary": "ᎯᎳᏴ ᏫᏣᎾᏍᏏᏁᎢ ᎤᏍᏒ ᏥᎨᏍᏒ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "When did you go to bed last night?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_When_did_you_go_to_bed_last_night__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "sgo²³hi, tsa²²hli²²ʔi³li²²sv² tsa²²gi²ye³³tsv² ko²²hi, sa²na³³le⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_sgo_hi_tsa_hli_i_li_sv_tsa_gi_ye_tsv_ko_hi_sa_na_le_i__0.mp3"
+    ],
+    "syllabary": "ᏍᎪᎯ ᏣᎵᎢᎵᏍᏒ ᏣᎩᏰᏨ ᎪᎯ ᏍᏌᎾᎴᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I went to bed at ten last night?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_went_to_bed_at_ten_last_night__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²sgi² tsi²ge²²sv² tsa²²hli²²ʔi³li²²sv² tsa²²gi²ye³³tsv² ko²²hi, sa²na³³le⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_sgi_tsi_ge_sv_tsa_hli_i_li_sv_tsa_gi_ye_tsv_ko_hi_sa_na_le_i__0.mp3"
+    ],
+    "syllabary": "ᎯᏍᎩ ᏥᎨᏍᏒ ᏣᏟᎢᎵᏍᏒ ᏣᎩᏰᏨ ᎪᎯ ᏍᏌᎾᎴᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I woke up at five this morning",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_woke_up_at_five_this_morning_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "tsi²wu²²nv,si²nv²³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_tsi_wu_nv_si_nv_i__0.mp3"
+    ],
+    "syllabary": "ᏥᏭᏅᏍᏏᏅᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she got in bed not sleeping yet",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_got_in_bed_not_sleeping_yet_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²tsa³ya²we³³ga²s",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_tsa_ya_we_ga_s_0.mp3"
+    ],
+    "syllabary": "ᏕᏣᏰᏪᎦᏍ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Are you tired?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Are_you_tired__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²hlv²²sga²s",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_hlv_sga_s_0.mp3"
+    ],
+    "syllabary": "ᎯᎸᏍᎦᏍ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Are you sleepy?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Are_you_sleepy__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do²²yu³ da²²gi²²ya²we³³ga,",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_yu_da_gi_ya_we_ga__0.mp3"
+    ],
+    "syllabary": "ᏙᏳ ᏓᎩᏯᏪᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I’m very tired",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_m_very_tired_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hv²htla²da² a²tsv²³ya,sdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hv_htla_da_a_tsv_ya_sdi__0.mp3"
+    ],
+    "syllabary": "ᎲᏝᏓ ᎠᏨᏯᏍᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Turn off the light̀",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Turn_off_the_light__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²tsv²²ya,sdv¹¹ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_tsv_ya_sdv_ga__0.mp3"
+    ],
+    "syllabary": "ᎯᏨᏯᏍᏛᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Turn on the light",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Turn_on_the_light_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²²ya,to³³la,dv²³di² ti²²sdu²ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_ya_to_la_dv_di_ti_sdu_i__0.mp3"
+    ],
+    "syllabary": "ᏗᏯᏙᎳᏛᏗ ᏘᏍᏚᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Open the curtains",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Open_the_curtains_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²²ya,to³³la,dv²³di² de²²hi³sdu²²hv¹¹ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_ya_to_la_dv_di_de_hi_sdu_hv_ga__0.mp3"
+    ],
+    "syllabary": "ᏗᏯᏙᎳᏛᏗ ᏕᎯᏍᏚᎲᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Close the curtains",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Close_the_curtains_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "go²²hwe²³lo³²di² ga²²sgi²lo³",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_go_hwe_lo_di_ga_sgi_lo__0.mp3"
+    ],
+    "syllabary": "ᎪᏪᎶᏗ ᎦᏍᎩᎶ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "desk",
+    "english_audio": ["data/jw-living-phrases/split_audio/english_desk_0.mp3"],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "go²²hwe²³lo³²di² ga²²sgi²lo³ wu²²wo²³tla²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_go_hwe_lo_di_ga_sgi_lo_wu_wo_tla__0.mp3"
+    ],
+    "syllabary": "ᎪᏪᎶᏗ ᎦᏍᎩᎶ ᏭᏬᏝ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is sitting at the desk",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_sitting_at_the_desk_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²da²²hye²²sdi²³sgi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_da_hye_sdi_sgi__0.mp3"
+    ],
+    "syllabary": "ᎠᏓᏰᏍᏗᏍᎩ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "alarm clock",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_alarm_clock_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "wa²³tsi² a²da²²hye²²sdi²³sgi, u¹¹no²²hyv³hga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_wa_tsi_a_da_hye_sdi_sgi_u_no_hyv_hga__0.mp3"
+    ],
+    "syllabary": "ᏩᏥ ᎠᏓᏰᏍᏗᏍᎩ ᎤᏃᏴᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The alarm is going off",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_The_alarm_is_going_off_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "wa²³tsi² a²da²²hye²²sdi²³sgi, a¹¹gwa²tse²²li³ su²³da³li, ge²²sv² u¹¹no²²hyv³hgo³³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_wa_tsi_a_da_hye_sdi_sgi_a_gwa_tse_li_su_da_li_ge_sv_u_no_hyv_hgo_i__0.mp3"
+    ],
+    "syllabary": "ᏩᏥ ᎠᏓᏰᏍᏗᏍᎩ ᎠᏆᏤᎵ ᏍᏑᏓᎵ ᎨᏍᏒ ᎤᏃᏴᎪᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "My alarm goes off at six",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_My_alarm_goes_off_at_six_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ga³³go, yu²²wa²³tsi² a²da²²hye²²sdi²³sgi, u¹¹no²²hyv³hga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_go_yu_wa_tsi_a_da_hye_sdi_sgi_u_no_hyv_hga__0.mp3"
+    ],
+    "syllabary": "ᎦᎪ ᏳᏩᏥ ᎠᏓᏰᏍᏗᏍᎩ ᎤᏃᏴᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Whose alarm is going off?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Whose_alarm_is_going_off__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²hi³na,do³hgv⁴ ti²nv²²ga²la²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_hi_na_do_hgv_ti_nv_ga_la__0.mp3"
+    ],
+    "syllabary": "ᏕᎯᎾᏙᎬ ᏘᏅᎦᎳ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Brush your teeth",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Brush_your_teeth_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²tsi³na²²do³hgv⁴ da²²gi²nv²²ga²lv²²hv²³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_tsi_na_do_hgv_da_gi_nv_ga_lv_hv_i__0.mp3"
+    ],
+    "syllabary": "ᏕᏥᎾᏙᎬ ᏓᎩᏅᎦᎸᎲᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I brushed my teeth in the past",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_brushed_my_teeth_in_the_past_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²tsi³na²²do³hgv⁴ de²²tsi³nv²²ga²li²²sgo³³ʔi² ni²go²³lv⁴",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_tsi_na_do_hgv_de_tsi_nv_ga_li_sgo_i_ni_go_lv__0.mp3"
+    ],
+    "syllabary": "ᏕᏥᎾᏙᎬ ᏕᏥᏅᎦᎵᏍᎪᎢ ᏂᎪᎸ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I always brush my teeth",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_always_brush_my_teeth_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²tsi³³na²²do³hgv⁴ da²²tsi²nv²²ga²lv²²li, no²³gwu, tsi³gi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_tsi_na_do_hgv_da_tsi_nv_ga_lv_li_no_gwu_tsi_gi__0.mp3"
+    ],
+    "syllabary": "ᏕᏥᎾᏙᎬ ᏓᏥᏅᎦᎸᎵ ᏃᏊ ᏥᎩ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I’m going to brush my teeth now",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_m_going_to_brush_my_teeth_now_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²tsi³na²²do³hgv⁴ de²²tsi³nv²²ga²lv²²ʔe³³ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_tsi_na_do_hgv_de_tsi_nv_ga_lv_e_ga__0.mp3"
+    ],
+    "syllabary": "ᏕᏥᎾᏙᎬ ᏕᏥᏅᎦᎸᎡᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I’m leaving to go brush my teeth",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_m_leaving_to_go_brush_my_teeth_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²hi³nv²²ga²le³³s de²²hi³na,do³hgv⁴ ko²²hi, sa²na³³le⁴",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_hi_nv_ga_le_s_de_hi_na_do_hgv_ko_hi_sa_na_le__0.mp3"
+    ],
+    "syllabary": "ᏕᎯᏅᎦᎴᏍ ᏕᎯᎾᏙᎬ ᎪᎯ ᏍᏌᎾᎴ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Did you brush your teeth this morning?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Did_you_brush_your_teeth_this_morning__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²hi³na,do³hgv⁴ de²²hi³nv²²ga²lv²²hv² ha²li,sda¹¹yv,hno³nv²³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_hi_na_do_hgv_de_hi_nv_ga_lv_hv_ha_li_sda_yv_hno_nv_i__0.mp3"
+    ],
+    "syllabary": "ᏕᎯᎾᏙᎬ ᏕᎯᏅᎦᎸᎲ ᎭᎵᏍᏓᏴᏃᏅᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Brush your teeth later after you eat",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Brush_your_teeth_later_after_you_eat_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ki²la²² ga²da²wo³̀ʔo³hna²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ki_la_ga_da_wo_o_hna__0.mp3"
+    ],
+    "syllabary": "ᎩᎳ ᎦᏓᏬᎣᎿ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I just took a bath",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_just_took_a_bath_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a¹¹gwa²da²wo²²sdi² nu⁴⁴sdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_gwa_da_wo_sdi_nu_sdi__0.mp3"
+    ],
+    "syllabary": "ᎠᏆᏓᏬᏍᏗ ᏄᏍᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I need to take a bath",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_need_to_take_a_bath_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²da²wo²²sdi⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_da_wo_sdi_i__0.mp3"
+    ],
+    "syllabary": "ᎠᏓᏬᏍᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "bathtub",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_bathtub_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "tsu²²ni²²ga,sdi⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_tsu_ni_ga_sdi_i__0.mp3"
+    ],
+    "syllabary": "ᏧᏂᎦᏍᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "toilet",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_toilet_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²²su²³hlo,do²hdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_su_hlo_do_hdi__0.mp3"
+    ],
+    "syllabary": "ᏗᏍᏑᎶᏙᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "toilet paper",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_toilet_paper_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²da²²ke³hdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_da_ke_hdi__0.mp3"
+    ],
+    "syllabary": "ᎠᏓᎨᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "mirror",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_mirror_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²da²²ke³hdi² a²²yo³³gi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_da_ke_hdi_a_yo_gi__0.mp3"
+    ],
+    "syllabary": "ᎠᏓᎨᏗ ᎠᏲᎩ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The mirrow just broke",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_The_mirrow_just_broke_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²da²²ke³hdi² u²²ka²ha²da²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_da_ke_hdi_u_ka_ha_da__0.mp3",
+      "data/jw-living-phrases/split_audio/cherokee_a_da_ke_hdi_u_ka_ha_da__1.mp3"
+    ],
+    "syllabary": "ᎠᏓᎨᏗ ᎤᎧᎭᏓ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The mirror is fogged up",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_The_mirror_is_fogged_up_0.mp3",
+      "data/jw-living-phrases/split_audio/english_The_mirror_is_fogged_up_1.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "u²²da²yv²³la,tv⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_u_da_yv_la_tv_i__0.mp3"
+    ],
+    "syllabary": "ᎤᏓᏴᎳᏛᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "his or her reflection",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_his_or_her_reflection_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²sdo²²ye³³ʔa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_sdo_ye_a__0.mp3"
+    ],
+    "syllabary": "ᎠᏍᏙᏰᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "he or she is shaving",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_he_or_she_is_shaving_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²²ga²nv²²sge³³ni² da²sdo²²ye³³ʔa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_ga_nv_sge_ni_da_sdo_ye_a__0.mp3"
+    ],
+    "syllabary": "ᏗᎦᏅᏍᎨᏂ ᏓᏍᏙᏰᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "he or she is shaving his or her legs",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_he_or_she_is_shaving_his_or_her_legs_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "da²ga²li³²sdo²²ye²²ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_da_ga_li_sdo_ye_i__0.mp3"
+    ],
+    "syllabary": "ᏓᎦᎵᏍᏙᏰᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I’m going to shave",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_m_going_to_shave_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ga²li²²sdo²²ye³³ʔo³hna²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_li_sdo_ye_o_hna__0.mp3"
+    ],
+    "syllabary": "ᎦᎵᏍᏙᏰᎣᎿ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I just now shaved",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_just_now_shaved_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do²²yi, tsu²²ne²³da¹¹sdi² wa²²ya³ʔa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_yi_tsu_ne_da_sdi_wa_ya_a__0.mp3"
+    ],
+    "syllabary": "ᏙᏱ ᏧᏁᏓᏍᏗ ᏩᏯᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is in the bathroom",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_in_the_bathroom_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "o²²hla²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_o_hla__0.mp3"
+    ],
+    "syllabary": "ᎣᎭᎳ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "soap",
+    "english_audio": ["data/jw-living-phrases/split_audio/english_soap_0.mp3"],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²sdu²³hli,do²hdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_sdu_hli_do_hdi__0.mp3"
+    ],
+    "syllabary": "ᎠᏍᏚᎵᏙᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "shampoo",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_shampoo_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ta²ʔsu²³li²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ta_su_li__0.mp3"
+    ],
+    "syllabary": "ᏔᏍᏑᎵ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Wash your hands",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Wash_your_hands_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ha²gv²²sgwo²²tsa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ha_gv_sgwo_tsa__0.mp3"
+    ],
+    "syllabary": "ᎭᎬᏍᏉᏣ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Wash your face",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Wash_your_face_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ha²li,sdu²³li²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ha_li_sdu_li__0.mp3"
+    ],
+    "syllabary": "ᎭᎵᏍᏚᎵ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Wash your hair",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Wash_your_hair_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ta²ʔda²nv²ʔsu²³li²²lo²³tsa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ta_da_nv_su_li_lo_tsa__0.mp3"
+    ],
+    "syllabary": "ᏔᏓᏅᏍᏑᎵᎶᏣ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Wash your feet",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Wash_your_feet_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "he³³sdi, tsi²²tsv²²ke²²wa,s, di²²tsa²nv²²ga²hlv,di² ti²ʔle³³ni² o²hni,di³³tlv²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_he_sdi_tsi_tsv_ke_wa_s_di_tsa_nv_ga_hlv_di_ti_le_ni_o_hni_di_tlv__0.mp3"
+    ],
+    "syllabary": "ᎮᏍᏗ ᏥᏨᎨᏩᏍᏏ ᏗᏣᏅᎦᎸᏗ ᏘᎴᏂ ᎣᏂᏗᏢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Don’t forget to wash behind your ears",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Don_t_forget_to_wash_behind_your_ears_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "da²²su²³le³³ʔa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_da_su_le_a__0.mp3"
+    ],
+    "syllabary": "ᏓᏍᏑᎴᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is washing his or her hands",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_washing_his_or_her_hands_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "de²²ga³³su²³le³³ʔa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_de_ga_su_le_a__0.mp3"
+    ],
+    "syllabary": "ᏕᎦᏍᏑᎴᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I’m washing my hands",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_m_washing_my_hands_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²²li,sdu²³le³³ʔa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_li_sdu_le_a__0.mp3"
+    ],
+    "syllabary": "ᎠᎵᏍᏚᎴᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is washing his or her hair",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_washing_his_or_her_hair_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ga²gv²²sgwo³³ʔa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_gv_sgwo_a__0.mp3"
+    ],
+    "syllabary": "ᎦᎬᏍᏉᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I’m washing my face",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_m_washing_my_face_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "tla³ ya³gwv²²ke²²wa²da, di²²gi²nv²²ga²hlv,di² di²²tsi²ʔle³³ni² o²hni,di³³tlv²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_tla_ya_gwv_ke_wa_da_di_gi_nv_ga_hlv_di_di_tsi_le_ni_o_hni_di_tlv__0.mp3"
+    ],
+    "syllabary": "Ꮭ ᏯᏋᎨᏩᏓ ᏗᎩᏅᎦᎸᏗ ᏗᏥᎴᏂ ᎣᏂᏗᏢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I didn’t forget to wash behind my ears",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_didn_t_forget_to_wash_behind_my_ears_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "dv²²ga²²nv,do³hgv⁴ di²²ga²nv²²ga²hlv,do²hdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_dv_ga_nv_do_hgv_di_ga_nv_ga_hlv_do_hdi__0.mp3"
+    ],
+    "syllabary": "ᏛᎦᏅᏙᎬ ᏗᎦᏅᎦᎸᏙᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "toothbrush",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_toothbrush_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "dv²²ga²²nv,do³hgv⁴ di²²ga²nv²²ga²hlv,do²hdi² o²²hla²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_dv_ga_nv_do_hgv_di_ga_nv_ga_hlv_do_hdi_o_hla__0.mp3"
+    ],
+    "syllabary": "ᏛᎦᏅᏙᎬ ᏗᎦᏅᎦᎸᏙᏗ ᎣᎭᎳ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "toothpaste",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_toothpaste_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ti²ʔsgwa²lv¹¹ya²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ti_sgwa_lv_ya__0.mp3"
+    ],
+    "syllabary": "ᏘᏍᏆᎸᏯ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "chop them long",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_chop_them_long_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²gv²²ha²lu³²ya²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_gv_ha_lu_ya__0.mp3"
+    ],
+    "syllabary": "ᏗᎬᎭᎷᏯ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "chop them flexible",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_chop_them_flexible_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²dli¹¹ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_dli_ga__0.mp3"
+    ],
+    "syllabary": "ᎯᏟᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "pour it in",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_pour_it_in_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "nu²³na, ti²ne³³ga²la²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_nu_na_ti_ne_ga_la__0.mp3"
+    ],
+    "syllabary": "ᏄᎾ ᏘᏁᎦᎳ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "peel the potatoes",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_peel_the_potatoes_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do²²chi²la³³ni²tsu³ nu²³na²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_chi_la_ni_tsu_nu_na__0.mp3"
+    ],
+    "syllabary": "ᏙᏥᎳᏂᏧ ᏄᎾ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Do you want me to put the potatoes in?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Do_you_want_me_to_put_the_potatoes_in__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a³³ma²dv³³ ga²lu²³lo³²ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_ma_dv_ga_lu_lo_ga__0.mp3"
+    ],
+    "syllabary": "ᎠᎹᏛ ᎦᎷᎶᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "This needs more salt",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_This_needs_more_salt_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²ma² tsi²²te³³hdi²³ha²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_ma_tsi_te_hdi_ha__0.mp3",
+      "data/jw-living-phrases/split_audio/cherokee_a_ma_tsi_te_hdi_ha__1.mp3"
+    ],
+    "syllabary": "ᎠᎹ ᏥᏖᏗᎭ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "The water is boiling",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_The_water_is_boiling_0.mp3",
+      "data/jw-living-phrases/split_audio/english_The_water_is_boiling_1.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "sgwu³dv³³ tsi²ga²²ta² a¹¹gwv²²ni³sdo²hdi⁴³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_sgwu_dv_tsi_ga_ta_a_gwv_ni_sdo_hdi_i__0.mp3"
+    ],
+    "syllabary": "ᏍᏊᏛ ᏥᎦᏔ ᎠᏋᏂᏍᏙᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Because that’s the only thing I know how to cook",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Because_that_s_the_only_thing_I_know_how_to_cook_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do²²yu³ o⁴⁴sda, a²²sv¹¹ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_yu_o_sda_a_sv_ga__0.mp3"
+    ],
+    "syllabary": "ᏙᏳ ᎣᏍᏓ ᎠᏍᏒᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "It smells really good",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_It_smells_really_good_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do² u⁴⁴sdi, na² tsa²²sv¹¹ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_u_sdi_na_tsa_sv_ga__0.mp3"
+    ],
+    "syllabary": "Ꮩ ᎤᏍᏗ Ꮎ ᏣᏍᏒᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "What is that smell?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_What_is_that_smell__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do² u⁴⁴sdi, e²³li³²sdi² a²²sv¹¹ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_u_sdi_e_li_sdi_a_sv_ga__0.mp3"
+    ],
+    "syllabary": "Ꮩ ᎤᏍᏗ ᎡᎵᏍᏗ ᎠᏍᏒᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "What does it smell like?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_What_does_it_smell_like__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "sv²²ga,ta²wu, e²³li³²sdi, ga²²wa,sv¹¹ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_sv_ga_ta_wu_e_li_sdi_ga_wa_sv_ga__0.mp3"
+    ],
+    "syllabary": "ᏍᏒᎦᏔᏭ ᎡᎵᏍᏗ ᎦᏩᏍᏒᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "It smells like apples",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_It_smells_like_apples_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do² u⁴⁴sdi, hi²tlv¹¹ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_u_sdi_hi_tlv_ga__0.mp3"
+    ],
+    "syllabary": "Ꮩ ᎤᏍᏗ ᎯᏢᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "What did you put in this?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_What_did_you_put_in_this__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do² u⁴⁴sdi, ha²su²²yv¹¹ʔa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_u_sdi_ha_su_yv_a__0.mp3"
+    ],
+    "syllabary": "Ꮩ ᎤᏍᏗ ᎭᏍᏑᏴᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "What did you mix in this?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_What_did_you_mix_in_this__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "sv¹¹gi² ta²ma²³tli²hnv³ de²²tsi³ʔlv¹¹ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_sv_gi_ta_ma_tli_hnv_de_tsi_lv_ga__0.mp3"
+    ],
+    "syllabary": "ᏍᏒᎩ ᏔᎹᏟᏅ ᏕᏥᎸᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I put onions and tomatoes in it",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_put_onions_and_tomatoes_in_it_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²²tla²hnv²²di²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_tla_hnv_di__0.mp3"
+    ],
+    "syllabary": "ᎠᏝᏅᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "pantry",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_pantry_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²hyv²²dla²di²²sdo²hdi⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_hyv_dla_di_sdo_hdi_i__0.mp3"
+    ],
+    "syllabary": "ᎠᏴᏜᏗᏍᏙᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "fridge",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_fridge_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "e²²li³³wu³ke³ tsu²²we²³tsi, yi²de³³hi²le²gi² a²hyv²²dla²di²²sdo²hdi⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_e_li_wu_ke_tsu_we_tsi_yi_de_hi_le_gi_a_hyv_dla_di_sdo_hdi_i__0.mp3"
+    ],
+    "syllabary": "ᎡᎵᏭᎨ ᏧᏪᏥ ᏱᏕᎯᎴᎩ ᎠᏴᏜᏗᏍᏙᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Can you get the eggs out of the fridge?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Can_you_get_the_eggs_out_of_the_fridge__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²ʔa²nv³ hwi²²gi²hlv¹¹ga² a²hyv²²dla²di²²sdo²hdi⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_a_nv_hwi_gi_hlv_ga_a_hyv_dla_di_sdo_hdi_i__0.mp3"
+    ],
+    "syllabary": "ᎯᎠᏅ ᏫᎯᎩᏢᎦ ᎠᏴᏜᏗᏍᏙᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Put this back in the fridge",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Put_this_back_in_the_fridge_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "u²²ti²²yv²³hnv, da²tsi²²sgwa²²ni,go¹¹ta²ni²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_u_ti_yv_hnv_da_tsi_sgwa_ni_go_ta_ni__0.mp3"
+    ],
+    "syllabary": "ᎤᏘᏴᏅ ᏓᏥᏍᏆᏂᎪᏔᏂ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I have to put the leftovers away",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_have_to_put_the_leftovers_away_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "e²²li³³wu³ke³ yi²ki,sde²²la, di²gv²²di²²ye³ʔv²³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_e_li_wu_ke_yi_ki_sde_la_di_gv_di_ye_v_i__0.mp3"
+    ],
+    "syllabary": "ᎡᎵᏭᎨ ᏱᏍᎩᏍᏕᎳ ᏗᎬᏗᏰᎥᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Can you help me with the dishes?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Can_you_help_me_with_the_dishes__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "e²²li³³wu³ke³ hyi²²sde²²la² de²²gv³³di²²ye³³sgv²³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_e_li_wu_ke_hyi_sde_la_de_gv_di_ye_sgv_i__0.mp3"
+    ],
+    "syllabary": "ᎡᎵᏭᎨ ᏱᎯᏍᏕᎳ ᏕᎬᏗᏰᏍᎬᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Can you help him or her with the dishes?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Can_you_help_him_or_her_with_the_dishes__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²hya²ta²na²²lv⁴ ga²nv²²ga²la²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_hya_ta_na_lv_ga_nv_ga_la__0.mp3"
+    ],
+    "syllabary": "ᎠᏯᏔᎾᎸ ᎦᏅᎦᎳ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she cleaned the counter",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_cleaned_the_counter_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "wa²²gi²lv²³gwo,dv² te²²li,do³ tsi²²yo³³sda²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_wa_gi_lv_gwo_dv_te_li_do_tsi_yo_sda__0.mp3"
+    ],
+    "syllabary": "ᏩᎩᎸᏉᏛ ᏖᎵᏙ ᏥᏲᏍᏓ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I just broke my favorite plate",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_just_broke_my_favorite_plate_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "u²²li²²sgwi³ʔdi² e²²skv²ʔsi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_u_li_sgwi_di_e_skv_si__0.mp3"
+    ],
+    "syllabary": "ᎤᎵᏍᏈᏗ ᎡᏍᎬᏍᏏ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Hand me a cup",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Hand_me_a_cup_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "go²²hu⁴⁴sdi²s tsa²du²²li³ tsa²di³³ta²sdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_go_hu_sdi_s_tsa_du_li_tsa_di_ta_sdi__0.mp3"
+    ],
+    "syllabary": "ᎪᎱᏍᏗᏍ ᏣᏚᎵ ᏣᏗᏔᏍᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Do you want anything to drink?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Do_you_want_anything_to_drink__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ka²³wi² a¹¹gwa²du²²li³",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ka_wi_a_gwa_du_li__0.mp3"
+    ],
+    "syllabary": "ᎧᏫ ᎠᏆᏚᎵ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I want some coffee",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_want_some_coffee_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "tsa²³yi² u²dli³ na²²gi²lv²³gwo,di, ka²³wi² ni²ge³³sv²³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_tsa_yi_u_dli_na_gi_lv_gwo_di_ka_wi_ni_ge_sv_i__0.mp3"
+    ],
+    "syllabary": "ᏣᏱ ᎤᏟ ᎾᎩᎸᏉᏗ ᎧᏫ ᏂᎨᏍᏒᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I like tea better than coffee",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_like_tea_better_than_coffee_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²²sgi²di³²si, na² a²ga²²ha²lu³²ya,sdi⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_sgi_di_si_na_a_ga_ha_lu_ya_sdi_i__0.mp3"
+    ],
+    "syllabary": "ᏗᏍᎩᏗᏍᏏ Ꮎ ᎠᎦᎭᎷᏯᏍᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Hand me the cutting board",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Hand_me_the_cutting_board_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²²sgi²di³²si, ha²ye²²la,sdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_sgi_di_si_ha_ye_la_sdi__0.mp3"
+    ],
+    "syllabary": "ᏗᏍᎩᏗᏍᏏ ᎭᏰᎳᏍᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Hand me a knife",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Hand_me_a_knife_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²²sda²ga²²yv,da² ga³³du²ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_sda_ga_yv_da_ga_du_i__0.mp3"
+    ],
+    "syllabary": "ᎯᏍᏓᎦᏴᏓ ᎦᏚᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Toast the bread",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Toast_the_bread_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "go²²hlv²²nv² ga²nv²²li²³ye³ʔa² ga³³du² a²²sda²ga²²yv,ta²nv²³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_go_hlv_nv_ga_nv_li_ye_a_ga_du_a_sda_ga_yv_ta_nv_i__0.mp3"
+    ],
+    "syllabary": "ᎪᏢᏅ ᎦᏅᎵᏰᎠ ᎦᏚ ᎠᏍᏓᎦᏴᏔᏅᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is buttering the toast",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_buttering_the_toast_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "tsa²du²²li³³s go²²hlv²²nv² ga²nv²²li²³ye³³da² ga³³du² a²²sda²ga³³yv,ta²nv²³ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_tsa_du_li_s_go_hlv_nv_ga_nv_li_ye_da_ga_du_a_sda_ga_yv_ta_nv_i__0.mp3",
+      "data/jw-living-phrases/split_audio/cherokee_tsa_du_li_s_go_hlv_nv_ga_nv_li_ye_da_ga_du_a_sda_ga_yv_ta_nv_i__1.mp3"
+    ],
+    "syllabary": "ᏣᏚᎵᏍ ᎪᏢᏅ ᎦᏅᎵᏰᏓ ᎦᏚ ᎠᏍᏓᎦᏴᏔᏅᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Do you want butter on your toast?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Do_you_want_butter_on_your_toast__0.mp3",
+      "data/jw-living-phrases/split_audio/english_Do_you_want_butter_on_your_toast__1.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²gv²²di²²ye³³sgi² da²²tsi²le³³sv²²hni²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_gv_di_ye_sgi_da_tsi_le_sv_hni__0.mp3"
+    ],
+    "syllabary": "ᏗᎬᏗᏰᏍᎩ ᏓᏥᎴᏒᏂ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I’m going to empty the dishwasher",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_m_going_to_empty_the_dishwasher_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ni²ga⁴⁴da, ti²le³³sv²²hv¹¹ga² di²gv²²di²²ye³³sgi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ni_ga_da_ti_le_sv_hv_ga_di_gv_di_ye_sgi__0.mp3"
+    ],
+    "syllabary": "ᏂᎦᏓ ᏘᎴᏍᏒᎲᎦ ᏗᎬᏗᏰᏍᎩ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Empty the dishwasher",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Empty_the_dishwasher_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "di²gv²²di²²ye³³sgi² ga²²hla²nv³sga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_di_gv_di_ye_sgi_ga_hla_nv_sga__0.mp3"
+    ],
+    "syllabary": "ᏗᎬᏗᏰᏍᎩ ᎦᎳᏅᏍᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is loading the dishwasher",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_loading_the_dishwasher_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ni²ga⁴⁴da, de²²tsi³le³²sv²²sgo³ di²gv²²di²²ye³³sgi² sa²na³³le⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ni_ga_da_de_tsi_le_sv_sgo_di_gv_di_ye_sgi_sa_na_le_i__0.mp3"
+    ],
+    "syllabary": "ᏂᎦᏓ ᏕᏥᎴᏍᏒᏍᎪ ᏗᎬᏗᏰᏍᎩ ᏍᏌᎾᎴᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I always empty the dishwasher in the morning",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_always_empty_the_dishwasher_in_the_morning_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²da²²sda¹¹yv,di⁴⁴ʔi²",
+    "cherokee_audio": [],
+    "syllabary": "ᎠᏓᏍᏓᏴᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "kitchen",
+    "english_audio": [],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ka²³wi²s a¹¹gwo²²tlv²hdi² tsa²du²²li³³ha²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ka_wi_s_a_gwo_tlv_hdi_tsa_du_li_ha__0.mp3"
+    ],
+    "syllabary": "ᎧᏫᏍ ᎠᏉᏢᏗ ᏣᏚᎵᎭ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Do you want me to make some coffee?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Do_you_want_me_to_make_some_coffee__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "da²go²²tlv²²hni²ke³ ka²³wi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_da_go_tlv_hni_ke_ka_wi__0.mp3"
+    ],
+    "syllabary": "ᏓᎪᏢᏂᎨ ᎧᏫ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Am I to make coffee?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Am_I_to_make_coffee__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do² u²²li,sta²nv² ka²³wi, a²tli²²sdo²hdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_u_li_sta_nv_ka_wi_a_tli_sdo_hdi__0.mp3"
+    ],
+    "syllabary": "Ꮩ ᎤᎵᏍᏔᏅ ᎧᏫ ᎠᏟᏍᏙᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "What’s wrong with the coffee pot?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_What_s_wrong_with_the_coffee_pot__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "u²²yo³²tsv²³dv³ ge²²li³ʔa² a²tse³dv³³ a²²se³ a¹¹ki²wa²hi²sdi² ge²²se³³sdi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_u_yo_tsv_dv_ge_li_a_a_tse_dv_a_se_a_ki_wa_hi_sdi_ge_se_sdi__0.mp3"
+    ],
+    "syllabary": "ᎤᏲᏨᏛ ᎨᎵᎠ.  ᎠᏤᏛ ᎠᏍᏎ ᎠᎩᏩᎯᏍᏗ ᎨᏍᏎᏍᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I think it’s broke.  I’ll have to buy a new one",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_think_it_s_broke_I_ll_have_to_buy_a_new_one_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ga³³go, tsu²²tse²²li³ di²²te²li²²do⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_go_tsu_tse_li_di_te_li_do_i__0.mp3"
+    ],
+    "syllabary": "ᎦᎪ ᏧᏤᎵ ᏗᏖᎵᏙᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Whose dishes are those?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Whose_dishes_are_those__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²²da²yv²³la,tv²sgi² da²tsi²²ga²²to²³sta²ni²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_da_yv_la_tv_sgi_da_tsi_ga_to_sta_ni__0.mp3"
+    ],
+    "syllabary": "ᎠᏓᏴᎳᏛᏍᎩ ᏓᏥᎦᏙᏍᏔᏂ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I’m going to watch television",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_m_going_to_watch_television_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "tsa²du²²li³³s gu⁴⁴sdi² hyi²ga²²to²³sdo²hdi⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_tsa_du_li_s_gu_sdi_hyi_ga_to_sdo_hdi_i__0.mp3"
+    ],
+    "syllabary": "ᏣᏚᎵᏍ ᎫᏍᏗ ᏱᎯᎦᏙᏍᏙᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "Do you want to go watch something?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_Do_you_want_to_go_watch_something__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "hi²la² du²²ga²²nv,da³ʔdv⁴ di²²tsa²go²²li²³ye³³da²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_hi_la_du_ga_nv_da_dv_di_tsa_go_li_ye_da__0.mp3"
+    ],
+    "syllabary": "ᎯᎳ ᏚᎦᏅᏓᏛ ᏗᏣᎪᎵᏰᏓ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "How many pages have you read?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_How_many_pages_have_you_read__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do² u⁴⁴sdi, hi²go²²li²³ye³ʔa²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_u_sdi_hi_go_li_ye_a__0.mp3"
+    ],
+    "syllabary": "Ꮩ ᎤᏍᏗ ᎯᎪᎵᏰᎠ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "What are you reading?",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_What_are_you_reading__0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "sgi²²ga²du² du²²ga²²nv,da³ʔdv⁴ de²²tsi³go²²li²³ye³ʔa² tsu²²na,de²³hlo,gwa¹¹sdi² u²²gv²³wa²hli²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_sgi_ga_du_du_ga_nv_da_dv_de_tsi_go_li_ye_a_tsu_na_de_hlo_gwa_sdi_u_gv_wa_hli__0.mp3"
+    ],
+    "syllabary": "ᏍᎩᎦᏚ ᏚᎦᏅᏓᏛ ᏕᏥᎪᎵᏰᎠ ᏧᎾᏕᏠᏆᏍᏗ ᎤᎬᏩᎵ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "I read fifteen pages for school",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_I_read_fifteen_pages_for_school_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "u²²ne²²gv²²ha⁴ u²²du³³hlv²²di²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_u_ne_gv_ha_u_du_hlv_di__0.mp3"
+    ],
+    "syllabary": "ᎤᏁᎬᎭ ᎤᏚᏢᏗ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is under a blanket",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_under_a_blanket_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "o⁴⁴sda, u²²da²²nv,ta²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_o_sda_u_da_nv_ta__0.mp3"
+    ],
+    "syllabary": "ᎣᏍᏓ ᎤᏓᏅᏔ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is comfortable",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_comfortable_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ga²²sgi²lo³³gi² u²²wo²³tla²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_sgi_lo_gi_u_wo_tla__0.mp3"
+    ],
+    "syllabary": "ᎦᏍᎩᎶᎩ ᎤᏬᏝ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is sitting on the couch",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_sitting_on_the_couch_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ga²²sgi²lo³³gi² ga²²nv,ga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_sgi_lo_gi_ga_nv_ga__0.mp3"
+    ],
+    "syllabary": "ᎦᏍᎩᎶᎩ ᎦᏅᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is lying down on the couch",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_lying_down_on_the_couch_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "a²yv³²sdi⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_a_yv_sdi_i__0.mp3"
+    ],
+    "syllabary": "ᎠᏴᏍᏗᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "living room",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_living_room_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "do²²yi³³tlv⁴⁴ʔi²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_do_yi_tlv_i__0.mp3"
+    ],
+    "syllabary": "ᏙᏱᏢᎢ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "porch",
+    "english_audio": ["data/jw-living-phrases/split_audio/english_porch_0.mp3"],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ga²²sdlv³sga² a²²su²²lo³",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_sdlv_sga_a_su_lo__0.mp3"
+    ],
+    "syllabary": "ᎦᏍᏢᏍᎦ ᎠᏍᏑᎶ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is patching a pair of pants",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_patching_a_pair_of_pants_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  },
+  {
+    "cherokee": "ga²²ye²²wi,sga²",
+    "cherokee_audio": [
+      "data/jw-living-phrases/split_audio/cherokee_ga_ye_wi_sga__0.mp3"
+    ],
+    "syllabary": "ᎦᏰᏫᏍᎦ",
+    "alternate_pronunciations": [],
+    "alternate_syllabary": [],
+    "english": "He or she is sewing",
+    "english_audio": [
+      "data/jw-living-phrases/split_audio/english_He_or_she_is_sewing_0.mp3"
+    ],
+    "phoneticOrthography": "WEBSTER"
+  }
+]

@@ -39,7 +39,7 @@ export function normalizeAndRemovePunctuation(cherokee: string): string {
     .replaceAll(/j/g, "ts")
     .replaceAll(/qu/g, "gw")
     .replaceAll(/[Ɂʔ]/g, "ɂ")
-    .normalize("NFKD");
+    .normalize("NFD");
 }
 
 export function mcoToWebsterTones(cherokee: string): string {
