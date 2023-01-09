@@ -69,7 +69,7 @@ export function simplifyMCO(cherokee: string): string {
 }
 
 export function simplifyWebster(cherokee: string): string {
-  return cherokee.replace(/[¹²³⁴]/g, "");
+  return cherokee.replace(/[¹²³⁴]/g, "").replace(/[aeiouv],/g, ""); // JW's notation for drop vowel
 }
 
 export function simplifyPhonetics({
