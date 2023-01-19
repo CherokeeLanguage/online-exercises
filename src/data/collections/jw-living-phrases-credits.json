@@ -6,7 +6,8 @@
   "description": "This collection was created for a student of JW's based on word they thought would be useful around the house.",
   "externalResources": [
     {
-      "name": "JW's website where you can schedule one-on-one meetings or sign up for a regular class. All levels welcome.",
+      "name": "JW's website",
+      "notes": "You can schedule one-on-one meetings or sign up for a regular class. All levels welcome.",
       "href": "https://thinkcherokee.com/"
     }
   ]

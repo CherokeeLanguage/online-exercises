@@ -3,13 +3,13 @@
   "title": "Living phrases",
   "sets": [
     {
-      "id": "jw-living-phrases:all",
-      "title": "All terms",
+      "id": "jw-living-phrases:Bedroom",
+      "title": "Bedroom",
       "terms": [
         "ga²²da²²ha⁴",
         "a²si²²nv,di² ka²nv³³su²²lv⁴",
         "ga²ni²³hli²",
-        "o⁴⁴sda² hǎnv¹¹ga² ga²ni²³hli²",
+        "o⁴⁴sda² ha,nv¹¹ga² ga²ni²³hli²",
         "ti²ne³³dli²²yv¹¹na² di²²kv³³hi²da²",
         "de²²tsi³ne³²dli²²yv²²na² di²²kv³³hi²da² ko²²hi² sa²na³³le⁴",
         "a²kwi,sdo³",
@@ -26,7 +26,6 @@
         "hi²la³²yv⁴ ha²di²²da²",
         "hi²la³²yv⁴ tsa²di²²dv²²he³ sv²²hi² tsi²ge²²sv²³ʔi²",
         "hi²la³²yv⁴ wi²tsa²²na,si²ne³³ʔi² u²sv² tsi²ge²²sv²",
-        "sgo²³hi, tsa²²hli²²ʔi³li²²sv² tsa²²gi²ye³³tsv² ko²²hi, sa²na³³le⁴ʔi²",
         "hi²sgi² tsi²ge²²sv² tsa²²hli²²ʔi³li²²sv² tsa²²gi²ye³³tsv² ko²²hi, sa²na³³le⁴⁴ʔi²",
         "tsi²wu²²nv,si²nv²³ʔi²",
         "de²²tsa³ya²we³³ga²s",
@@ -40,7 +39,13 @@
         "go²²hwe²³lo³²di² ga²²sgi²lo³ wu²²wo²³tla²",
         "a²da²²hye²²sdi²³sgi²",
         "wa²³tsi² a²da²²hye²²sdi²³sgi, u¹¹no²²hyv³hga²",
-        "wa²³tsi² a²da²²hye²²sdi²³sgi, a¹¹gwa²tse²²li³ su²³da³li, ge²²sv² u¹¹no²²hyv³hgo³³ʔi²",
+        "wa²³tsi² a²da²²hye²²sdi²³sgi, a¹¹gwa²tse²²li³ su²³da³li, ge²²sv² u¹¹no²²hyv³hgo³³ʔi²"
+      ]
+    },
+    {
+      "id": "jw-living-phrases:Bathroom",
+      "title": "Bathroom",
+      "terms": [
         "ga³³go, yu²²wa²³tsi² a²da²²hye²²sdi²³sgi, u¹¹no²²hyv³hga²",
         "de²²hi³na,do³hgv⁴ ti²nv²²ga²la²",
         "de²²tsi³na²²do³hgv⁴ da²²gi²nv²²ga²lv²²hv²³ʔi²",
@@ -49,7 +54,7 @@
         "de²²tsi³na²²do³hgv⁴ de²²tsi³nv²²ga²lv²²ʔe³³ga²",
         "de²²hi³nv²²ga²le³³s de²²hi³na,do³hgv⁴ ko²²hi, sa²na³³le⁴",
         "de²²hi³na,do³hgv⁴ de²²hi³nv²²ga²lv²²hv² ha²li,sda¹¹yv,hno³nv²³ʔi²",
-        "ki²la²² ga²da²wo³̀ʔo³hna²",
+        "ki²la²² ga²da²wo³³ʔo³hna²",
         "a¹¹gwa²da²wo²²sdi² nu⁴⁴sdi²",
         "a²da²wo²²sdi⁴⁴ʔi²",
         "tsu²²ni²²ga,sdi⁴⁴ʔi²",
@@ -76,7 +81,13 @@
         "ga²gv²²sgwo³³ʔa²",
         "tla³ ya³gwv²²ke²²wa²da, di²²gi²nv²²ga²hlv,di² di²²tsi²ʔle³³ni² o²hni,di³³tlv²",
         "dv²²ga²²nv,do³hgv⁴ di²²ga²nv²²ga²hlv,do²hdi²",
-        "dv²²ga²²nv,do³hgv⁴ di²²ga²nv²²ga²hlv,do²hdi² o²²hla²",
+        "dv²²ga²²nv,do³hgv⁴ di²²ga²nv²²ga²hlv,do²hdi² o²²hla²"
+      ]
+    },
+    {
+      "id": "jw-living-phrases:Kitchen",
+      "title": "Kitchen",
+      "terms": [
         "ti²ʔsgwa²lv¹¹ya²",
         "di²gv²²ha²lu³²ya²",
         "hi²dli¹¹ga²",
@@ -118,7 +129,13 @@
         "da²go²²tlv²²hni²ke³ ka²³wi²",
         "do² u²²li,sta²nv² ka²³wi, a²tli²²sdo²hdi²",
         "u²²yo³²tsv²³dv³ ge²²li³ʔa² a²tse³dv³³ a²²se³ a¹¹ki²wa²hi²sdi² ge²²se³³sdi²",
-        "ga³³go, tsu²²tse²²li³ di²²te²li²²do⁴⁴ʔi²",
+        "ga³³go, tsu²²tse²²li³ di²²te²li²²do⁴⁴ʔi²"
+      ]
+    },
+    {
+      "id": "jw-living-phrases:Living room",
+      "title": "Living room",
+      "terms": [
         "a²²da²yv²³la,tv²sgi² da²tsi²²ga²²to²³sta²ni²",
         "tsa²du²²li³³s gu⁴⁴sdi² hyi²ga²²to²³sdo²hdi⁴⁴ʔi²",
         "hi²la² du²²ga²²nv,da³ʔdv⁴ di²²tsa²go²²li²³ye³³da²",
