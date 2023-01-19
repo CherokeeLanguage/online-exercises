@@ -54,7 +54,7 @@ const FlashcardWrapper = styled.div`
 const StyledFlashcardBody = styled.button`
   border: 1px solid #333;
   width: 300px;
-  height: 200px;
+  min-height: 200px;
   margin: 30px auto;
   padding: 8px;
   box-shadow: 1px 1px 8px #666;
