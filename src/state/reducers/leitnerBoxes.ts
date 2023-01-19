@@ -1,5 +1,5 @@
 import { DateTime, DurationLike } from "luxon";
-import { Dispatch, Reducer, useMemo, useReducer } from "react";
+import { Dispatch, useMemo } from "react";
 import { getToday } from "../../utils/dateUtils";
 import { TermStats } from "../../spaced-repetition/types";
 import { ImperativeBlock } from "../../utils/useReducerWithImperative";
