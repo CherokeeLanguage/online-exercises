@@ -5,6 +5,7 @@ export function getPhonetics(
   card: Card,
   phoneticsPreference: PhoneticsPreference | undefined
 ): string {
+  // this should be the ONLY time we use NFC -- and it is for user presentation
   return getRawPhonetics(card, phoneticsPreference).normalize("NFC");
 }
 
