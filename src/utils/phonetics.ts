@@ -29,7 +29,7 @@ function detailedPhonetics({ cherokee, phoneticOrthography }: Card) {
     case PhoneticOrthography.MCO:
       return mcoToWebsterTones(normalizeAndRemovePunctuation(cherokee));
     case PhoneticOrthography.WEBSTER:
-      return normalizeAndRemovePunctuation(cherokee);
+      return removeDropVowelsWebster(normalizeAndRemovePunctuation(cherokee));
   }
 }
 
@@ -69,8 +69,13 @@ export function simplifyMCO(cherokee: string): string {
   return cherokee.replace(/[:\u0300-\u036f]/g, "");
 }
 
+export function removeDropVowelsWebster(cherokee: string): string {
+  // JW's notation for drop vowel
+  return cherokee.replace(/[aeiouv],/g, "");
+}
+
 export function simplifyWebster(cherokee: string): string {
-  return cherokee.replace(/[¹²³⁴]/g, "").replace(/[aeiouv],/g, ""); // JW's notation for drop vowel
+  return removeDropVowelsWebster(cherokee.replace(/[¹²³⁴]/g, ""));
 }
 
 export function simplifyPhonetics({
