@@ -3,7 +3,7 @@
     { "role": "Author", "name": "Michael Conrad" },
     { "role": "speaker", "name": "Text-to-speech" }
   ],
-  "description": "This collection contains terms with text-to-speech audio generateed from Michael Conrad's Cherokee Language Lessons 1 textbook (third edition).",
+  "description": "This collection contains terms with text-to-speech audio generated from Michael Conrad's Cherokee Language Lessons 1 textbook (third edition).",
   "externalResources": [
     {
       "name": "Cherokee Language Lessons website",
@@ -12,7 +12,7 @@
     },
     {
       "name": "Textbook download (second edition)",
-      "href": "https://language.cherokee.org/media/a5adru4x/see-say-write.zip"
+      "href": "https://www.cherokeelessons.com/books/%EA%AE%B3%EA%AE%83%EA%AD%B9-%EA%AD%B6%EA%AE%BC%EA%AE%92%EA%AD%BF%EA%AE%9D%EA%AE%A7-%EA%AE%A7%EA%AE%A5%EA%AE%86%EA%AE%96%EA%AE%9D%EA%AE%A7-1/"
     },
     {
       "name": "Prerecorded audio exercises (third edition)",
