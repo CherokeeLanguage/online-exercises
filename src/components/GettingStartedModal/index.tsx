@@ -16,7 +16,6 @@ import { GroupRegistrationStep } from "./GroupRegistrationStep";
 
 export interface WizardState {
   groupId: string;
-  fakeOtherField: number;
 }
 
 export interface StepProps {
@@ -59,17 +58,14 @@ export function GettingStartedModal() {
    * Take all the data the user input and run actions for each step using it
    */
   function finish() {
-    // at the end of the workflow
-    if (stepNumber >= steps.length) {
-      // any part of wizard state could be undefined, so unpack it all
-      const { groupId, fakeOtherField } = wizardState;
-      // add checks here to make sure fields are defined
-      if (groupId !== undefined && fakeOtherField !== undefined) {
-        // reassemble state here (without Partial<>)
-        const fullState: WizardState = { groupId, fakeOtherField };
-        // dispatch the actions for each step
-        steps.forEach((step) => step.commitState(fullState, userStateContext));
-      }
+    // any part of wizard state could be undefined, so unpack it all
+    const { groupId } = wizardState;
+    // add checks here to make sure fields are defined
+    if (groupId !== undefined) {
+      // reassemble state here (without Partial<>)
+      const fullState: WizardState = { groupId };
+      // dispatch the actions for each step
+      steps.forEach((step) => step.commitState(fullState, userStateContext));
     }
   }
 
