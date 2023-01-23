@@ -28,7 +28,7 @@ import {
 import { UserStateAction } from "./actions";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { GroupId, GROUPS, isGroupId, reduceGroupId } from "./reducers/groupId";
-import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
+import { GettingStartedModal } from "../components/GettingStartedModal";
 import { PhoneticsPreference } from "./reducers/phoneticsPreference";
 
 export interface UserStateProps {
@@ -263,9 +263,7 @@ export function UserStateProvider({
   return (
     <userStateContext.Provider value={{ ...state, ...interactors }}>
       {children}
-      {state.groupId === undefined && (
-        <GroupRegistrationModal registerGroup={interactors.registerGroup} />
-      )}
+      {state.groupId === undefined && <GettingStartedModal />}
     </userStateContext.Provider>
   );
 }
