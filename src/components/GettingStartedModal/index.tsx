@@ -88,7 +88,7 @@ export function GettingStartedModal() {
         }
         goToNextStep={() => {
           const nextStep = stepNumber + 1;
-          if (stepNumber < steps.length) {
+          if (nextStep < steps.length) {
             setStepNumber(nextStep);
           } else {
             finish();
