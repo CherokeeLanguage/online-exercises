@@ -14,9 +14,11 @@ import { Modal } from "../Modal";
 import { FakeStep } from "./FakeStep";
 import { PhoneticsStep } from "./PhoneticsStep";
 import { GroupRegistrationStep } from "./GroupRegistrationStep";
+import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 
 export interface WizardState {
   groupId: string;
+  phoneticsPreference: PhoneticsPreference;
 }
 
 export interface StepProps {
@@ -60,11 +62,11 @@ export function GettingStartedModal() {
    */
   function finish() {
     // any part of wizard state could be undefined, so unpack it all
-    const { groupId } = wizardState;
+    const { groupId, phoneticsPreference } = wizardState;
     // add checks here to make sure fields are defined
-    if (groupId !== undefined) {
+    if (groupId !== undefined && phoneticsPreference !== undefined) {
       // reassemble state here (without Partial<>)
-      const fullState: WizardState = { groupId };
+      const fullState: WizardState = { groupId, phoneticsPreference };
       // dispatch the actions for each step
       steps.forEach((step) => step.commitState(fullState, userStateContext));
     }
@@ -110,7 +112,7 @@ export function NavigationButtons({
       {goToPreviousStep && (
         <Button onClick={() => goToPreviousStep()}>Back</Button>
       )}
-      {customNext || <Button onClick={() => goToNextStep()}>Back</Button>}
+      {customNext || <Button onClick={() => goToNextStep()}>Next</Button>}
     </div>
   );
 }
