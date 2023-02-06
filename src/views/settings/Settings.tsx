@@ -39,7 +39,7 @@ const PreferencesForm = styled.form`
   grid-gap: 8px;
 `;
 
-function Preferences() {
+export function Preferences() {
   const { setPhoneticsPreference, phoneticsPreference } = useUserStateContext();
   const phoneticsPreferenceId = useId();
 

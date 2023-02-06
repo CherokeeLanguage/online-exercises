@@ -12,6 +12,7 @@ import {
 import { Button } from "../Button";
 import { Modal } from "../Modal";
 import { FakeStep } from "./FakeStep";
+import { PhoneticsStep } from "./PhoneticsStep";
 import { GroupRegistrationStep } from "./GroupRegistrationStep";
 
 export interface WizardState {
@@ -44,7 +45,7 @@ export interface Step {
  *
  * You will need to add more steps here.
  */
-const steps: Step[] = [GroupRegistrationStep, FakeStep];
+const steps: Step[] = [GroupRegistrationStep, PhoneticsStep, FakeStep];
 
 export function GettingStartedModal() {
   const userStateContext = useUserStateContext();
