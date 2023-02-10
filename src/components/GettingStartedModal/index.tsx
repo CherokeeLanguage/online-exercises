@@ -15,10 +15,13 @@ import { FakeStep } from "./FakeStep";
 import { PhoneticsStep } from "./PhoneticsStep";
 import { GroupRegistrationStep } from "./GroupRegistrationStep";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
+import { ChooseSetStep } from "./ChooseSetStep";
 
 export interface WizardState {
   groupId: string;
   phoneticsPreference: PhoneticsPreference;
+  collectionId: string; 
+
 }
 
 export interface StepProps {
@@ -47,14 +50,14 @@ export interface Step {
  *
  * You will need to add more steps here.
  */
-const steps: Step[] = [GroupRegistrationStep, PhoneticsStep, FakeStep];
+const steps: Step[] = [GroupRegistrationStep, PhoneticsStep, ChooseSetStep,  FakeStep];
 
 export function GettingStartedModal() {
   const userStateContext = useUserStateContext();
 
   // keep track of which step of workflow we are on (start on first step)
   const [stepNumber, setStepNumber] = useState(0);
-  // keep track of what data the user has filled out
+  // keep track of what data the user has filled out 
   const [wizardState, setWizardState] = useState<Partial<WizardState>>({});
 
   /**
@@ -62,11 +65,11 @@ export function GettingStartedModal() {
    */
   function finish() {
     // any part of wizard state could be undefined, so unpack it all
-    const { groupId, phoneticsPreference } = wizardState;
+    const { groupId, phoneticsPreference, collectionId } = wizardState;
     // add checks here to make sure fields are defined
-    if (groupId !== undefined && phoneticsPreference !== undefined) {
+    if (groupId !== undefined && phoneticsPreference !== undefined && collectionId != null) {
       // reassemble state here (without Partial<>)
-      const fullState: WizardState = { groupId, phoneticsPreference };
+      const fullState: WizardState = { groupId, phoneticsPreference, collectionId };
       // dispatch the actions for each step
       steps.forEach((step) => step.commitState(fullState, userStateContext));
     }
