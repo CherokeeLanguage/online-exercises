@@ -75,11 +75,13 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
       <CollectionCredits collection={collection} />
       <h3>Terms in this set</h3>
       <CardTable cards={Object.values(setCards)} />
-      <RemoveSetWrapper>
-        <Button onClick={() => setRemoveSetModalOpen(true)}>
-          Stop practicing these terms
-        </Button>
-      </RemoveSetWrapper>
+      {set.id in sets && (
+        <RemoveSetWrapper>
+          <Button onClick={() => setRemoveSetModalOpen(true)}>
+            Stop practicing these terms
+          </Button>
+        </RemoveSetWrapper>
+      )}
       {modalIsOpen && (
         <ConfirmRemoveSetModal
           set={set}
