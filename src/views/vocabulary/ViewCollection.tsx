@@ -34,7 +34,7 @@ export function ViewCollectionPage({
         {upstreamCollection === collection.id ? (
           <UpstreamCollectionFlare />
         ) : (
-          <MakeUpstreamCollectionButton collectionId={collection.id} />
+          <MakeUpstreamCollectionButton collection={collection} />
         )}
       </StyledCollectionHeader>
 
