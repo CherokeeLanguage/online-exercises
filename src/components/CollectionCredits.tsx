@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Collection } from "../../data/vocabSets";
+import { Collection } from "../data/vocabSets";
 
 export function CollectionCredits({
   collection: { credits },
@@ -9,7 +9,7 @@ export function CollectionCredits({
   return (
     <div>
       <p>{credits.description}</p>
-      <h3>Credits</h3>
+      <h4>Credits</h4>
       <ul>
         {credits.credits.map(({ role, name }) => (
           <li>
@@ -19,7 +19,7 @@ export function CollectionCredits({
       </ul>
       {credits.externalResources.length > 0 && (
         <>
-          <h3>External resources</h3>
+          <h4>External resources</h4>
           <ul>
             {credits.externalResources.map((resource, i) => (
               <li key={i}>

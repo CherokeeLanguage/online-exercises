@@ -10,11 +10,11 @@ import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
 import { UserSetData } from "../../state/reducers/userSets";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
-import { CollectionCredits } from "../collections/CollectionCredits";
+import { CollectionCredits } from "../../components/CollectionCredits";
 
 export function ViewSet(): ReactElement {
   const { setId } = useParams();
-  if (!setId) return <Navigate to="sets/browse" replace />;
+  if (!setId) return <Navigate to="/vocabulary" replace />;
   const set = vocabSets[setId];
   return <_ViewSet set={set} />;
 }
@@ -38,7 +38,7 @@ const StyledHeadingWithButton = styled.div`
 
 function _ViewSet({ set }: { set: VocabSet }): ReactElement {
   const { addSet, sets, removeSet } = useUserStateContext();
-  const [modalIsOpen, setModalOpen] = useState(false);
+  const [modalIsOpen, setRemoveSetModalOpen] = useState(false);
 
   const userSetData = sets[set.id] as UserSetData | undefined;
 
@@ -71,18 +71,19 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
           </Button>
         )}
       </StyledHeadingWithButton>
+      <h3>Collection description</h3>
       <CollectionCredits collection={collection} />
       <h3>Terms in this set</h3>
       <CardTable cards={Object.values(setCards)} />
       <RemoveSetWrapper>
-        <Button onClick={() => setModalOpen(true)}>
+        <Button onClick={() => setRemoveSetModalOpen(true)}>
           Stop practicing these terms
         </Button>
       </RemoveSetWrapper>
       {modalIsOpen && (
         <ConfirmRemoveSetModal
           set={set}
-          close={() => setModalOpen(false)}
+          close={() => setRemoveSetModalOpen(false)}
           confirm={removeSetAndRedirect}
         />
       )}

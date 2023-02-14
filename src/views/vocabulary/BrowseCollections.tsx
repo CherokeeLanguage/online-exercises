@@ -3,13 +3,13 @@ import { CollectionDetails } from "../../components/CollectionDetails";
 import { SectionHeading } from "../../components/SectionHeading";
 import { collections } from "../../data/vocabSets";
 
-export function BrowseSets(): ReactElement {
+export function BrowseCollections(): ReactElement {
   return (
     <div>
       <SectionHeading>Find new vocabulary</SectionHeading>
       <p>
-        Here you can find new vocab sets. If it seems like a set is missing,
-        check the "Your sets" tab to see if you are already practicing.
+        Here you can find new collections of vocabulary. Click the title of a
+        collection to see the lessons and terms contained.
       </p>
       {Object.values(collections).map((collection, idx) => (
         <CollectionDetails collection={collection} key={idx} />

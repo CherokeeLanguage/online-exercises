@@ -10,8 +10,7 @@ export function GettingStartedWidget() {
       <ol>
         <li>
           Find a set of terms you want to learn in the{" "}
-          <StyledLink to="/sets/browse">find new vocabulary</StyledLink>{" "}
-          section.
+          <StyledLink to="/vocabulary">find new vocabulary</StyledLink> section.
         </li>
         <li>
           Add those terms to your lessons by clicking "Add set and return to
@@ -24,7 +23,7 @@ export function GettingStartedWidget() {
         If you want to work through a collection of sets automatically, without
         having to add each set as it's time to introduce more terms, you can
         click "Pull new terms from this collection" in the{" "}
-        <StyledLink to="/sets/browse">find new vocabulary</StyledLink> section.
+        <StyledLink to="/vocabulary">find new vocabulary</StyledLink> section.
       </p>
     </div>
   );

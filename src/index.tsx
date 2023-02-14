@@ -4,9 +4,10 @@ import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { BrowseSets } from "./views/sets/BrowseSets";
-import { MySets } from "./views/sets/MySets";
-import { ViewSet } from "./views/sets/ViewSet";
+import { BrowseCollections } from "./views/vocabulary/BrowseCollections";
+import { ViewCollection } from "./views/vocabulary/ViewCollection";
+import { MySets } from "./views/vocabulary/MySets";
+import { ViewSet } from "./views/vocabulary/ViewSet";
 // import { Overview } from "./Overview";
 import { UserStateProvider } from "./state/UserStateProvider";
 import { Dashboard } from "./views/dashboard/Dashboard";
@@ -14,7 +15,7 @@ import { LessonArchive } from "./views/lessons/LessonArchive";
 import { ViewLesson } from "./views/lessons/ViewLesson";
 import { PracticeLesson } from "./views/practice/PracticeLesson";
 import { NewLesson } from "./views/lessons/NewLesson";
-import { ViewCollection } from "./views/collections/ViewCollection";
+
 import { MyTerms } from "./views/terms/MyTerms";
 import { Settings } from "./views/settings/Settings";
 
@@ -29,17 +30,15 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="/" element={<Dashboard />} />
-            <Route
-              path="collections/:collectionId"
-              element={<ViewCollection />}
-            />
-            <Route path="sets">
-              <Route path="browse">
-                <Route index element={<BrowseSets />} />
-                <Route path=":setId" element={<ViewSet />} />
-              </Route>
-              <Route path="my" element={<MySets />} />
+            <Route path="vocabulary">
+              <Route index element={<BrowseCollections />} />
+              <Route path="set/:setId" element={<ViewSet />} />
+              <Route
+                path="collection/:collectionId"
+                element={<ViewCollection />}
+              />
             </Route>
+            <Route path="my-sets" element={<MySets />}></Route>
             <Route path="terms" element={<MyTerms />} />
             <Route path="lessons">
               <Route index element={<LessonArchive />} />

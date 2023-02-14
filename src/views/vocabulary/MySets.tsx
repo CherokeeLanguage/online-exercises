@@ -26,7 +26,7 @@ export function MySets(): ReactElement {
       ) : (
         <p>
           You haven't started learning any vocab sets yet. Browse available sets
-          and <StyledLink to="/sets/browse">find new vocabulary</StyledLink> to
+          and <StyledLink to="/vocabulary">find new vocabulary</StyledLink> to
           get started.
         </p>
       )}

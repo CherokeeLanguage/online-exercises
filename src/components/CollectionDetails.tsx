@@ -1,17 +1,16 @@
 import styled from "styled-components";
 import { Collection } from "../data/vocabSets";
 import { useUserStateContext } from "../state/UserStateProvider";
-import { CollectionCredits } from "../views/collections/CollectionCredits";
+import { CollectionCredits } from "./CollectionCredits";
 import { Button } from "./Button";
 import { StyledLink } from "./StyledLink";
-import { StyledTable } from "./StyledTable";
-import { VisuallyHidden } from "./VisuallyHidden";
 
-const StyledCollectionHeader = styled.div`
+export const StyledCollectionHeader = styled.div`
   display: flex;
   align-items: center;
   margin: 16px 0;
-  h3 {
+  h3,
+  h2 {
     margin: 0;
     margin-right: 8px;
     padding: 0;
@@ -19,11 +18,11 @@ const StyledCollectionHeader = styled.div`
   }
 `;
 
-function UpstreamCollectionFlare() {
+export function UpstreamCollectionFlare() {
   return <span>(new terms are pulled from this collection)</span>;
 }
 
-function MakeUpstreamCollectionButton({
+export function MakeUpstreamCollectionButton({
   collectionId,
 }: {
   collectionId: string;
@@ -39,23 +38,25 @@ function MakeUpstreamCollectionButton({
   );
 }
 
+const StyledCollectionDetails = styled.div`
+  margin-bottom: 60px;
+`;
+
 export function CollectionDetails({
   collection,
-  showAddedSets = false,
-  showCredits = false,
 }: {
   collection: Collection;
   showAddedSets?: boolean;
-  showCredits?: boolean;
 }) {
-  const { upstreamCollection, sets } = useUserStateContext();
-  const setsToShow = showAddedSets
-    ? collection.sets
-    : collection.sets.filter((set) => !(set.id in sets));
+  const { upstreamCollection } = useUserStateContext();
   return (
-    <div>
+    <StyledCollectionDetails>
       <StyledCollectionHeader>
-        <h3>{collection.title}</h3>
+        <h3>
+          <StyledLink to={`/vocabulary/collection/${collection.id}`}>
+            {collection.title}
+          </StyledLink>
+        </h3>
 
         {upstreamCollection === collection.id ? (
           <UpstreamCollectionFlare />
@@ -63,42 +64,8 @@ export function CollectionDetails({
           <MakeUpstreamCollectionButton collectionId={collection.id} />
         )}
       </StyledCollectionHeader>
-      {showCredits && <CollectionCredits collection={collection} />}
-      <h3>Sets in this collection</h3>
-      <StyledTable>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Number of terms</th>
-            {showAddedSets && <th>Started learning</th>}
-            <th>
-              <VisuallyHidden>Link to view set</VisuallyHidden>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {setsToShow.map((set, i) => {
-            return (
-              <tr key={i}>
-                <td>{set.title}</td>
-                <td>{set.terms.length}</td>
-                {showAddedSets && (
-                  <td>
-                    {set.id in sets
-                      ? new Date(sets[set.id].addedAt).toDateString()
-                      : "-"}
-                  </td>
-                )}
-                <td>
-                  <StyledLink to={`/sets/browse/${set.id}`}>
-                    View details
-                  </StyledLink>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </StyledTable>
-    </div>
+
+      <CollectionCredits collection={collection} />
+    </StyledCollectionDetails>
   );
 }

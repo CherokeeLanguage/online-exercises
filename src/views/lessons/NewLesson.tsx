@@ -61,7 +61,7 @@ function ErrorAdvice({
           <p>There are not enough new terms for a lesson.</p>
           <p>
             Consider adding some{" "}
-            <StyledLink to="/sets/browse">new terms</StyledLink> or wrapping up
+            <StyledLink to="/vocabulary">new terms</StyledLink> or wrapping up
             for the day!
           </p>
         </>
