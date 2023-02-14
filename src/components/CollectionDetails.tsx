@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { Collection } from "../data/vocabSets";
+import { Collection, collections } from "../data/vocabSets";
 import { useUserStateContext } from "../state/UserStateProvider";
 import { CollectionCredits } from "./CollectionCredits";
 import { Button } from "./Button";
 import { StyledLink } from "./StyledLink";
+import { useState } from "react";
+import { Modal } from "./Modal";
 
 export const StyledCollectionHeader = styled.div`
   display: flex;
@@ -19,22 +21,63 @@ export const StyledCollectionHeader = styled.div`
 `;
 
 export function UpstreamCollectionFlare() {
-  return <span>(new terms are pulled from this collection)</span>;
+  return <span>(new terms come from this collection)</span>;
 }
 
 export function MakeUpstreamCollectionButton({
-  collectionId,
+  collection,
 }: {
-  collectionId: string;
+  collection: Collection;
 }) {
-  const { setUpstreamCollection } = useUserStateContext();
+  const { setUpstreamCollection, upstreamCollection } = useUserStateContext();
+  const [modalOpen, setModalOpen] = useState(false);
   return (
-    <Button
-      onClick={() => setUpstreamCollection(collectionId)}
-      variant="primary"
-    >
-      Pull new terms from this collection
-    </Button>
+    <>
+      <Button
+        onClick={() => {
+          if (upstreamCollection) setModalOpen(true);
+          else setUpstreamCollection(collection.id);
+        }}
+        variant="primary"
+      >
+        Start studying this collection
+      </Button>
+      {modalOpen && (
+        <ConfirmChangeUpstreamCollectionModal
+          close={() => setModalOpen(false)}
+          newCollection={collection}
+        />
+      )}
+    </>
+  );
+}
+
+function ConfirmChangeUpstreamCollectionModal({
+  close,
+  newCollection,
+}: {
+  close: () => void;
+  newCollection: Collection;
+}) {
+  const { setUpstreamCollection, upstreamCollection } = useUserStateContext();
+  const currentUpstreamCollection = collections[upstreamCollection!];
+  return (
+    <Modal title="Switch collections" close={close}>
+      <p>
+        You are currently learning from the{" "}
+        <strong>{currentUpstreamCollection.title}</strong> collection.
+      </p>
+      <p></p>
+      <p>You can always go back and finish this collection later.</p>
+      <Button
+        onClick={() => {
+          setUpstreamCollection(newCollection.id);
+          close();
+        }}
+      >
+        Switch to learning <strong>{newCollection.title}</strong>
+      </Button>
+    </Modal>
   );
 }
 
@@ -61,7 +104,7 @@ export function CollectionDetails({
         {upstreamCollection === collection.id ? (
           <UpstreamCollectionFlare />
         ) : (
-          <MakeUpstreamCollectionButton collectionId={collection.id} />
+          <MakeUpstreamCollectionButton collection={collection} />
         )}
       </StyledCollectionHeader>
 
