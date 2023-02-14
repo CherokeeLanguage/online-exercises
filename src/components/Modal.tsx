@@ -19,7 +19,8 @@ const StyledModal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: min(80vw, 600px);
-  height: min(80vh, 800px);
+  min-height: min(80vh, 300px);
+  max-height: 80vh;
   background: ${theme.colors.WHITE};
   border-radius: 8px;
   padding: 8px;
