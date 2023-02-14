@@ -5,7 +5,7 @@ import { CollectionCredits } from "./CollectionCredits";
 import { Button } from "./Button";
 import { StyledLink } from "./StyledLink";
 import { useState } from "react";
-import { Modal } from "./Modal";
+import { ConfirmationModal } from "./ConfirmationModal";
 
 export const StyledCollectionHeader = styled.div`
   display: flex;
@@ -62,22 +62,22 @@ function ConfirmChangeUpstreamCollectionModal({
   const { setUpstreamCollection, upstreamCollection } = useUserStateContext();
   const currentUpstreamCollection = collections[upstreamCollection!];
   return (
-    <Modal title="Switch collections" close={close}>
+    <ConfirmationModal
+      title="Switch collections"
+      close={close}
+      confirm={() => setUpstreamCollection(newCollection.id)}
+      confirmContent={
+        <>
+          Switch to learning <strong>{newCollection.title}</strong>
+        </>
+      }
+    >
       <p>
         You are currently learning from the{" "}
         <strong>{currentUpstreamCollection.title}</strong> collection.
       </p>
-      <p></p>
       <p>You can always go back and finish this collection later.</p>
-      <Button
-        onClick={() => {
-          setUpstreamCollection(newCollection.id);
-          close();
-        }}
-      >
-        Switch to learning <strong>{newCollection.title}</strong>
-      </Button>
-    </Modal>
+    </ConfirmationModal>
   );
 }
 

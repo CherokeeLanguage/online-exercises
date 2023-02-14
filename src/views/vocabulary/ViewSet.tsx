@@ -3,7 +3,6 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../../components/Button";
 import { CardTable } from "../../components/CardTable";
-import { Modal } from "../../components/Modal";
 import { SectionHeading } from "../../components/SectionHeading";
 import { cards, keyForCard } from "../../data/cards";
 import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
@@ -11,6 +10,7 @@ import { UserSetData } from "../../state/reducers/userSets";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
 import { CollectionCredits } from "../../components/CollectionCredits";
+import { ConfirmationModal } from "../../components/ConfirmationModal";
 
 export function ViewSet(): ReactElement {
   const { setId } = useParams();
@@ -103,7 +103,12 @@ function ConfirmRemoveSetModal({
   confirm: () => void;
 }): ReactElement {
   return (
-    <Modal title={`Remove set ${set.title}`} close={close}>
+    <ConfirmationModal
+      title={`Remove set ${set.title}`}
+      close={close}
+      confirm={confirm}
+      confirmContent={<>Delete all data on up to {set.terms.length} terms</>}
+    >
       <p>
         If you remove this set, all your data on terms from this set will be
         deleted.
@@ -112,9 +117,6 @@ function ConfirmRemoveSetModal({
         You may still see terms from this set if they are in another set you are
         learning.
       </p>
-      <Button onClick={confirm}>
-        Delete all data on up to {set.terms.length} terms
-      </Button>
-    </Modal>
+    </ConfirmationModal>
   );
 }

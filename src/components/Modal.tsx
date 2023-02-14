@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { createPortal } from "react-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../theme";
 import { Button } from "./Button";
 
@@ -18,8 +18,9 @@ const StyledModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(80vw, 600px);
-  min-height: min(80vh, 300px);
+  max-width: min(80vw, 600px);
+  min-width: 300px;
+  /* min-height: min(80vh, 300px); */
   max-height: 80vh;
   background: ${theme.colors.WHITE};
   border-radius: 8px;
@@ -32,9 +33,15 @@ const StyledModal = styled.div`
   }
 `;
 
-const ModalContent = styled.div`
+const ModalContent = styled.div<{ flex: boolean }>`
   overflow-y: auto;
+  flex: 1;
   height: 100%;
+  ${({ flex }) =>
+    flex &&
+    css`
+      display: flex;
+    `};
 `;
 
 const modalContainer = document.getElementById("modal-root");
@@ -43,10 +50,12 @@ export function Modal({
   title,
   close,
   children,
+  flexContent = false,
 }: {
   title: string;
   close: () => void;
   children?: ReactNode;
+  flexContent?: boolean;
 }) {
   return createPortal(
     <>
@@ -61,7 +70,7 @@ export function Modal({
           </div>
           <hr />
         </div>
-        <ModalContent>{children}</ModalContent>
+        <ModalContent flex={flexContent}>{children}</ModalContent>
       </StyledModal>
     </>,
     modalContainer!
