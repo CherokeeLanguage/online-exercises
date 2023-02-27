@@ -20,7 +20,7 @@ function FakeStepComponent({
       <NavigationButtons
         goToNextStep={goToNextStep}
         goToPreviousStep={goToPreviousStep}
-        customNext={<Button onClick={() => goToNextStep()}>Finish!</Button>}
+        customNext = {<Button style={{float: 'right'}} onClick={() => goToNextStep()}>Submit</Button>} 
       />
     </div>
   );

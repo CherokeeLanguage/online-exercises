@@ -16,6 +16,8 @@ import { PhoneticsStep } from "./PhoneticsStep";
 import { GroupRegistrationStep } from "./GroupRegistrationStep";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 import { ChooseSetStep } from "./ChooseSetStep";
+import { StepIndicator } from "./StepIndicator";
+import { Preamble } from "./Preamble";
 
 export interface WizardState {
   groupId: string;
@@ -50,7 +52,7 @@ export interface Step {
  *
  * You will need to add more steps here.
  */
-const steps: Step[] = [GroupRegistrationStep, PhoneticsStep, ChooseSetStep,  FakeStep];
+const steps: Step[] = [Preamble, GroupRegistrationStep, PhoneticsStep, ChooseSetStep,  FakeStep];
 
 export function GettingStartedModal() {
   const userStateContext = useUserStateContext();
@@ -78,7 +80,7 @@ export function GettingStartedModal() {
   // render current step of workflow
   const currentStep = steps[stepNumber];
   return (
-    <Modal title={currentStep.title} close={() => {}}>
+    <Modal title={currentStep.title} >
       {/* Rendering a component from a variable! This is how we change the content from step to step */}
       <currentStep.Component
         goToPreviousStep={
@@ -99,7 +101,14 @@ export function GettingStartedModal() {
         setWizardState={setWizardState}
         wizardState={wizardState}
       />
+
+    <div>
+      <StepIndicator> {stepNumber + 1} / {steps.length}  </StepIndicator>
+        
+    </div>
     </Modal>
+
+   
   );
 }
 
@@ -107,15 +116,17 @@ export function NavigationButtons({
   goToPreviousStep,
   goToNextStep,
   customNext,
+  disabled
 }: Pick<StepProps, "goToPreviousStep" | "goToNextStep"> & {
   customNext?: ReactNode;
+  disabled?: boolean; 
 }) {
   return (
     <div>
       {goToPreviousStep && (
         <Button onClick={() => goToPreviousStep()}>Back</Button>
       )}
-      {customNext || <Button onClick={() => goToNextStep()}>Next</Button>}
+      {customNext || <Button disabled = {disabled} style={{float: 'right'}} onClick={() => goToNextStep()}>Next</Button>}
     </div>
   );
 }

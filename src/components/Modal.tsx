@@ -44,25 +44,45 @@ export function Modal({
   children,
 }: {
   title: string;
-  close: () => void;
+  close?: () => void;
   children?: ReactNode;
 }) {
-  return createPortal(
-    <>
-      <ModalBackground onClick={() => close()}></ModalBackground>
-      <StyledModal>
-        <div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <h3 style={{ flex: 1, margin: 0 }}>{title}</h3>
-            <Button style={{ flex: 0 }} onClick={() => close()}>
-              Close
-            </Button>
+  
+  if (close == undefined){
+    return  createPortal(
+      <>
+      
+        <StyledModal>
+          <div>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <h3 style={{ flex: 1, margin: 0 }}>{title}</h3>
+            </div>
+            <hr />
           </div>
-          <hr />
-        </div>
-        <ModalContent>{children}</ModalContent>
-      </StyledModal>
-    </>,
-    modalContainer!
-  );
+          <ModalContent>{children}</ModalContent>
+        </StyledModal>
+      </>,
+      modalContainer!
+    );
+  }else{
+    return createPortal(
+      <>
+        <ModalBackground onClick={() => close()}></ModalBackground>
+        <StyledModal>
+          <div>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <h3 style={{ flex: 1, margin: 0 }}>{title}</h3>
+              <Button style={{ flex: 0 }} onClick={() => close()}>
+                Close
+              </Button>
+            </div>
+            <hr />
+          </div>
+          <ModalContent>{children}</ModalContent>
+        </StyledModal>
+      </>,
+      modalContainer!
+    );
+  }
+  
 }

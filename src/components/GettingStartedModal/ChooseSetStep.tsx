@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, ReactElement, useEffect } from "react";
+import { ChangeEvent, FormEvent, ReactElement, useEffect , useState} from "react";
 import { NavigationButtons, Step, StepProps } from ".";
 import { Button } from "../Button";
 import {
@@ -25,11 +25,13 @@ export const ChooseSetStep: Step = {
 };
 
 function PhoneticsStepComponent({
+  
   wizardState: { collectionId, groupId },
   setWizardState,
   goToNextStep,
   goToPreviousStep,
 }: StepProps): ReactElement {
+  const [enabled, setEnbabled] = useState(collectionId != undefined); 
   function setWizardStateCollectionId(
     newCollectionId: string
   ) {
@@ -41,6 +43,7 @@ function PhoneticsStepComponent({
   function onRadioChanged(e: ChangeEvent<HTMLInputElement>) {
     const collectionId  = e.target.value;
       setWizardStateCollectionId(collectionId);
+      setEnbabled(true); 
   }
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -68,6 +71,7 @@ function PhoneticsStepComponent({
           : undefined;
       if (defaultCollectionId) {
         setWizardStateCollectionId(defaultCollectionId)
+        setEnbabled(true);
       }
     }
   }, [collectionId]);
@@ -102,7 +106,7 @@ function PhoneticsStepComponent({
         <NavigationButtons
           goToPreviousStep={goToPreviousStep}
           goToNextStep={goToNextStep}
-          customNext={<Button as={"input"} type="submit" value="Next" />}
+          disabled = {!enabled}
         />
       </form>
     </div>

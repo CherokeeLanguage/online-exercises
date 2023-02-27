@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, ReactElement, useEffect } from "react";
+import { ChangeEvent, FormEvent, ReactElement, useEffect, useState } from "react";
 import { NavigationButtons, Step, StepProps } from ".";
 import { Button } from "../Button";
 import {
@@ -22,6 +22,7 @@ function PhoneticsStepComponent({
   goToNextStep,
   goToPreviousStep,
 }: StepProps): ReactElement {
+  const [enabled, setEnbabled] = useState(phoneticsPreference != undefined); 
   function setWizardStatePhoneticsPreference(
     newPhoneticsPreference: PhoneticsPreference
   ) {
@@ -34,6 +35,7 @@ function PhoneticsStepComponent({
     const phoneticsPreference = e.target.value;
     if (isPhoneticsPreference(phoneticsPreference))
       setWizardStatePhoneticsPreference(phoneticsPreference);
+      setEnbabled(true); 
   }
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -48,6 +50,7 @@ function PhoneticsStepComponent({
           : undefined;
       if (defaultPhoneticsPreference) {
         setWizardStatePhoneticsPreference(defaultPhoneticsPreference);
+        setEnbabled(true); 
       }
     }
   }, [phoneticsPreference]);
@@ -76,7 +79,7 @@ function PhoneticsStepComponent({
         <NavigationButtons
           goToPreviousStep={goToPreviousStep}
           goToNextStep={goToNextStep}
-          customNext={<Button as={"input"} type="submit" value="Next" />}
+          disabled ={!enabled}
         />
       </form>
     </div>
