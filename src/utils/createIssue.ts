@@ -43,7 +43,7 @@ export function createGithubIssueForAudioInNewTab(
   a.click();
 }
 
-export function createIssueForAudioInNewTab(
+export function createIssueForTermInNewTab(
   groupId: string | undefined,
   termKey: string
 ) {

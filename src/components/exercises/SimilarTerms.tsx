@@ -6,7 +6,7 @@ import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { theme } from "../../theme";
-import { createIssueForAudioInNewTab } from "../../utils/createIssue";
+import { createIssueForTermInNewTab } from "../../utils/createIssue";
 import { useAudio } from "../../utils/useAudio";
 import { useFeedbackChimes } from "../../utils/useFeedbackChimes";
 import { useTransition } from "../../utils/useTransition";
@@ -122,9 +122,9 @@ export function SimilarTerms({
       </Answers>
       {/* <Progress cardsPerLevel={cardsPerLevel} /> */}
       <button
-        onClick={() => createIssueForAudioInNewTab(groupId, currentCard.term)}
+        onClick={() => createIssueForTermInNewTab(groupId, currentCard.term)}
       >
-        Flag an issue with this audio
+        Flag an issue with this term
       </button>
     </div>
   );
