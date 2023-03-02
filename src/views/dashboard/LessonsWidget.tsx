@@ -41,7 +41,7 @@ function newTermsText(upstreamCollection: Collection | undefined) {
     return (
       <p>
         Right now, new terms come from the{" "}
-        <StyledLink to={`/collections/${upstreamCollection.id}`}>
+        <StyledLink to={`/vocabulary/collection/${upstreamCollection.id}`}>
           {upstreamCollection.title}
         </StyledLink>{" "}
         collection.

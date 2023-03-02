@@ -5,7 +5,7 @@ import {
   showPhonetics,
 } from "../state/reducers/phoneticsPreference";
 import { useUserStateContext } from "../state/UserStateProvider";
-import { createIssueForAudioInNewTab } from "../utils/createIssue";
+import { createIssueForTermInNewTab } from "../utils/createIssue";
 import { getPhonetics } from "../utils/phonetics";
 import { Button } from "./Button";
 import { Modal } from "./Modal";
@@ -114,9 +114,7 @@ function CardAudioModalContent({ card }: { card: Card }) {
           <tr>
             <th>Cherokee audio</th>
             <th>
-              <VisuallyHidden>
-                Button to flag an issue with audio
-              </VisuallyHidden>
+              <VisuallyHidden>Button to flag an issue with term</VisuallyHidden>
             </th>
           </tr>
         </thead>
@@ -138,7 +136,7 @@ function AudioRow({ src, term }: { src: string; term: string }) {
         <audio src={src} controls style={{ width: "100%" }} />
       </td>
       <td>
-        <button onClick={() => createIssueForAudioInNewTab(groupId, term)}>
+        <button onClick={() => createIssueForTermInNewTab(groupId, term)}>
           Flag issue
         </button>
       </td>

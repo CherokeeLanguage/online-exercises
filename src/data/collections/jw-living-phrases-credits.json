@@ -1,0 +1,19 @@
+{
+  "credits": [
+    { "role": "Speaker", "name": "JW Webster" },
+    { "role": "Translator", "name": "JW Webster" }
+  ],
+  "description": "This collection was created for a student of JW's based on word they thought would be useful around the house. Terms are broken up by the most associated room in the house where they would be used.",
+  "externalResources": [
+    {
+      "name": "JW's website",
+      "notes": "You can schedule one-on-one meetings or sign up for a regular class. All levels welcome.",
+      "href": "https://thinkcherokee.com/"
+    },
+    {
+      "name": "Think Cherokee: A Cherokee Language Student Reference",
+      "notes": "JW's lastest book, a Cherokee Language Student Reference is designed to assist intermediate to advanced second-language learners with tone, syntax, morphology, and word creation.",
+      "href": "https://www.amazon.com/Think-Cherokee-Language-Student-Reference/dp/B0BV4LBSB4/"
+    }
+  ]
+}

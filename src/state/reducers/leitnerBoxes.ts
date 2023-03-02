@@ -1,13 +1,12 @@
 import { DateTime, DurationLike } from "luxon";
-import { Dispatch, Reducer, useMemo, useReducer } from "react";
+import { Dispatch, useMemo } from "react";
 import { getToday } from "../../utils/dateUtils";
 import { TermStats } from "../../spaced-repetition/types";
 import { ImperativeBlock } from "../../utils/useReducerWithImperative";
 import { UserState } from "../UserStateProvider";
 import { vocabSets } from "../../data/vocabSets";
 import { UserStateAction } from "../actions";
-import { migration } from "../../data/migrations/2022-08-25";
-import { applyMigration } from "../../data/migrations";
+import { migrateTerm } from "../../data/migrations";
 
 interface NewUseLeitnerBoxesProps {
   type: "NEW";
@@ -175,10 +174,12 @@ export function reduceLeitnerBoxState(
         (setId) => vocabSets[setId].terms
       );
       const termsWithMigrations = Object.fromEntries(
-        Object.entries(terms).map(([term, stats]) => {
-          const newTerm = applyMigration(term, migration);
-          return [newTerm, { ...stats, key: newTerm }];
-        })
+        Object.entries(terms)
+          .map(([term, stats]) => {
+            const newTerm = migrateTerm(term);
+            return [newTerm, { ...stats, key: newTerm }];
+          })
+          .filter(([newTerm, _]) => newTerm !== null)
       );
       return {
         terms: addNewTermsIfMissing(

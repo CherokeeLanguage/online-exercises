@@ -62,10 +62,10 @@ export function NavigationBar(): ReactElement {
         <StyledNavLink as={NavLink} to={"/"}>
           Dashboard
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/sets/browse"}>
+        <StyledNavLink as={NavLink} to={"/vocabulary"}>
           Find new vocabulary
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/sets/my"}>
+        <StyledNavLink as={NavLink} to={"/my-sets"}>
           Your sets
         </StyledNavLink>
         <StyledNavLink as={NavLink} to={"/terms"}>

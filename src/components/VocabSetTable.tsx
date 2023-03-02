@@ -65,7 +65,7 @@ function VocabSetRow({
         <LastCell set={set} />
       </td>
       <td>
-        <StyledLink to={`/sets/browse/${set.id}`}>View</StyledLink>
+        <StyledLink to={`/vocabulary/set/${set.id}`}>View</StyledLink>
       </td>
     </tr>
   );

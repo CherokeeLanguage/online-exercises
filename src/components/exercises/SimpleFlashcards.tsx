@@ -11,7 +11,7 @@ import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { theme } from "../../theme";
-import { createIssueForAudioInNewTab } from "../../utils/createIssue";
+import { createIssueForTermInNewTab } from "../../utils/createIssue";
 import { getPhonetics } from "../../utils/phonetics";
 import { useAudio } from "../../utils/useAudio";
 import { ExerciseComponentProps } from "./Exercise";
@@ -54,7 +54,7 @@ const FlashcardWrapper = styled.div`
 const StyledFlashcardBody = styled.button`
   border: 1px solid #333;
   width: 300px;
-  height: 200px;
+  min-height: 200px;
   margin: 30px auto;
   padding: 8px;
   box-shadow: 1px 1px 8px #666;
@@ -158,8 +158,8 @@ export function Flashcard({
         {phonetics && side === "cherokee" && <p>{phonetics}</p>}
       </StyledFlashcardBody>
       <FlashcardControls playAudio={play} reviewCard={reviewCardOrFlip} />
-      <button onClick={() => createIssueForAudioInNewTab(groupId, card.term)}>
-        Flag an issue with this audio
+      <button onClick={() => createIssueForTermInNewTab(groupId, card.term)}>
+        Flag an issue with this term
       </button>
     </FlashcardWrapper>
   );

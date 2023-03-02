@@ -2,27 +2,36 @@ import assert from "assert";
 import { statSync } from "fs";
 import { cleanCollection, collections } from "./vocabSets";
 import { cards, cherokeeToKey, keyForCard } from "./cards";
-import { applyMigration } from "./migrations";
-import { migration } from "./migrations/2022-08-25";
-import oldCLL1 from "./backup/cll1.json";
+import { migrateTerm } from "./migrations";
+import { migrations } from "./migrations/all";
 
 test("migration references real terms", () => {
-  const unknownTerms = Object.values(migration).filter(
-    (newTerm) =>
-      cards.find((card) => keyForCard(card) === cherokeeToKey(newTerm)) ===
-      undefined
-  );
-  assert.deepStrictEqual(unknownTerms, []);
+  migrations.map((migration) => {
+    const unknownTerms = Object.values(migration).filter(
+      (newTerm) =>
+        // either term is dropped
+        newTerm === null ||
+        // or references a real card we have now
+        cards.find((card) => keyForCard(card) === cherokeeToKey(newTerm)) ===
+          undefined
+    );
+    assert.deepStrictEqual(unknownTerms, []);
+  });
 });
 
 test("after migration, all terms have cards", () => {
   // terms in the cached set
   // mapped through the migration if it affects them
   // should all now exist
-  const missingTermsAfterMigration = oldCLL1.sets.flatMap((s) =>
-    s.terms
-      .map((t) => cherokeeToKey(applyMigration(t, migration)))
-      .filter((key) => cards.find((c) => keyForCard(c) === key) === undefined)
+  const missingTermsAfterMigration = Object.values(collections).flatMap(
+    (collection) =>
+      collection.sets.flatMap((s) =>
+        s.terms
+          .map((t) => migrateTerm(t))
+          .filter(
+            (key) => cards.find((c) => keyForCard(c) === key) === undefined
+          )
+      )
   );
   assert.deepStrictEqual(missingTermsAfterMigration, []);
 });

@@ -243,7 +243,7 @@ export function UserStateProvider({
     {
       raw: false,
       serializer: JSON.stringify,
-      deserializer: JSON.parse,
+      deserializer: (s) => JSON.parse(s.normalize("NFD")), // ensure everything is NFD!
     }
   );
 

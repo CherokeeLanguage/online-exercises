@@ -23,7 +23,7 @@ export function SetsWidget(): ReactElement {
             key={idx}
             title={set.title}
             action={
-              <StyledLink to={`sets/browse/${set.id}`}>View set</StyledLink>
+              <StyledLink to={`/vocabulary/set/${set.id}`}>View set</StyledLink>
             }
           >
             {set.terms.length} terms
