@@ -12,7 +12,10 @@ import { TermCardWithStats } from "../../spaced-repetition/types";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { theme } from "../../theme";
 import { createIssueForTermInNewTab } from "../../utils/createIssue";
-import { getPhonetics } from "../../utils/phonetics";
+import {
+  alignSyllabaryAndPhonetics,
+  getPhonetics,
+} from "../../utils/phonetics";
 import { useAudio } from "../../utils/useAudio";
 import { ExerciseComponentProps } from "./Exercise";
 
@@ -61,6 +64,10 @@ const StyledFlashcardBody = styled.button`
   display: block;
   align-items: center;
   outline: none;
+  background: ${theme.colors.LIGHTER_GRAY};
+  &:hover {
+    background: ${theme.colors.LIGHT_GRAY};
+  }
   p {
     flex: 1;
     text-align: center;
@@ -154,14 +161,87 @@ export function Flashcard({
         </select>
       </form>
       <StyledFlashcardBody onClick={() => flipCard()}>
-        <p>{side === "cherokee" ? card.card.syllabary : card.card.english}</p>
-        {phonetics && side === "cherokee" && <p>{phonetics}</p>}
+        {side === "english" ? (
+          <p>{card.card.english}</p>
+        ) : (
+          <AlignedCherokee
+            syllabary={card.card.syllabary}
+            phonetics={phonetics}
+          ></AlignedCherokee>
+        )}
       </StyledFlashcardBody>
       <FlashcardControls playAudio={play} reviewCard={reviewCardOrFlip} />
       <button onClick={() => createIssueForTermInNewTab(groupId, card.term)}>
         Flag an issue with this term
       </button>
     </FlashcardWrapper>
+  );
+}
+
+function AlignedCherokee({
+  syllabary,
+  phonetics,
+}: {
+  syllabary: string;
+  phonetics: string | undefined;
+}): ReactElement {
+  const [alignedSyllabaryWords, alignedPhoneticWords] = useMemo(
+    () =>
+      phonetics
+        ? alignSyllabaryAndPhonetics(syllabary, phonetics)
+        : [syllabary.split(" ").map((word) => word.split("")), []],
+    [syllabary, phonetics]
+  );
+  const [[hoveredWordIdx, hoveredSegmentIdx], setHoveredIdx] = useState<
+    [number | null, number | null]
+  >([null, null]);
+  return (
+    <div>
+      <p>
+        {alignedSyllabaryWords.map((word, wordIdx) => (
+          <>
+            {wordIdx === 0 ? "" : " "}
+            {word.map((segment, segmentIdx) => (
+              <span
+                onMouseOver={() => setHoveredIdx([wordIdx, segmentIdx])}
+                onMouseOut={() => setHoveredIdx([null, null])}
+                style={{
+                  color:
+                    hoveredWordIdx === wordIdx &&
+                    hoveredSegmentIdx === segmentIdx
+                      ? "red"
+                      : "black",
+                }}
+              >
+                {segment}
+              </span>
+            ))}
+          </>
+        ))}
+      </p>
+      <p>
+        {alignedPhoneticWords.map((word, wordIdx) => (
+          <>
+            {wordIdx === 0 ? "" : " "}
+            {word.map((segment, segmentIdx) => (
+              <span
+                onMouseOver={() => setHoveredIdx([wordIdx, segmentIdx])}
+                onMouseOut={() => setHoveredIdx([null, null])}
+                style={{
+                  color:
+                    hoveredWordIdx === wordIdx &&
+                    hoveredSegmentIdx === segmentIdx
+                      ? "red"
+                      : "black",
+                }}
+              >
+                {segment}
+              </span>
+            ))}
+          </>
+        ))}
+      </p>
+    </div>
   );
 }
 

@@ -2,6 +2,7 @@ import assert from "assert";
 import { cards } from "../data/cards";
 import { PhoneticsPreference } from "../state/reducers/phoneticsPreference";
 import {
+  alignSyllabaryAndPhonetics,
   getPhonetics,
   mcoToWebsterTones,
   normalizeAndRemovePunctuation,
@@ -93,6 +94,67 @@ describe("getPhonetics", () => {
       termsWithDiacriticsLeft,
       [],
       "there should be no terms with diacritics left"
+    );
+  });
+});
+
+describe("alignSyllabaryAndPhonetics", () => {
+  it.each([
+    ["ᎣᏏᏲ", "osiyo", ["Ꭳ", "Ꮟ", "Ᏺ"], ["o", "si", "yo"]],
+    // the following contain drop vowels
+    [
+      "ᏅᏃᎱᎵᏗ",
+      "nvnohuhldi",
+      ["Ꮕ", "Ꮓ", "Ꮁ", "Ꮅ", "Ꮧ"],
+      ["nv", "no", "hu", "hl", "di"],
+    ],
+    ["ᎠᏍᎦᏯ", "asgay", ["Ꭰ", "Ꮝ", "Ꭶ", "Ꮿ"], ["a", "s", "ga", "y"]],
+    // the below differ only in syllabary spelling
+    ["ᎢᏡᎬᎢ", "ihlgvi", ["Ꭲ", "Ꮱ", "Ꭼ", "Ꭲ"], ["i", "hl", "gv", "i"]],
+    ["ᎢᎵᎬᎢ", "ihlgvi", ["Ꭲ", "Ꮅ", "Ꭼ", "Ꭲ"], ["i", "hl", "gv", "i"]],
+    // more stuff
+    ["ᎤᏛᏛᏁ", "utvdvhne", ["Ꭴ", "Ꮫ", "Ꮫ", "Ꮑ"], ["u", "tv", "dv", "hne"]],
+    ["ᏚᏯ", "tuya", ["Ꮪ", "Ꮿ"], ["tu", "ya"]],
+    // works with / without dropped vowel
+    ["ᏗᏂᏲᏟ", "diniyotl", ["Ꮧ", "Ꮒ", "Ᏺ", "Ꮯ"], ["di", "ni", "yo", "tl"]],
+    ["ᏗᏂᏲᏟ", "diniyotli", ["Ꮧ", "Ꮒ", "Ᏺ", "Ꮯ"], ["di", "ni", "yo", "tli"]],
+    ["ᏩᏯ", "wahya", ["Ꮹ", "Ꮿ"], ["wa", "hya"]],
+    ["ᏩᎭᏯ", "wahya", ["Ꮹ", "Ꭽ", "Ꮿ"], ["wa", "h", "ya"]],
+    // ti / di stuff
+    ["ᏍᏚᏗ", "sdudi", ["Ꮝ", "Ꮪ", "Ꮧ"], ["s", "du", "di"]],
+    [
+      "ᎠᏴᏓᏆᎶᏍᎩ",
+      "a²hyv²²da²gwa²lo¹¹sgi",
+      ["Ꭰ", "Ᏼ", "Ꮣ", "Ꮖ", "Ꮆ", "Ꮝ", "Ꭹ"],
+      ["a²", "hyv²²", "da²", "gwa²", "lo¹¹", "s", "gi"],
+    ],
+  ])(
+    "works idk",
+    (syllabary, phonetics, expectedSyllabary, expectedPhonetics) => {
+      const result = alignSyllabaryAndPhonetics(syllabary, phonetics);
+      assert.deepStrictEqual(result, [
+        [expectedSyllabary],
+        [expectedPhonetics],
+      ]);
+    }
+  );
+
+  it("doesn't blow up for any terms", () => {
+    const termsThatExploded = cards.reduce<string[]>((arr, card) => {
+      try {
+        const _res = alignSyllabaryAndPhonetics(
+          card.syllabary,
+          getPhonetics(card, PhoneticsPreference.Detailed)
+        );
+      } catch (err) {
+        return [...arr, "" + err];
+      }
+      return arr;
+    }, []);
+    assert.deepStrictEqual(
+      termsThatExploded,
+      [],
+      "there should be no terms that error out"
     );
   });
 });
