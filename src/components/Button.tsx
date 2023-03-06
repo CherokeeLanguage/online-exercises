@@ -1,14 +1,10 @@
-import React, { Component, HTMLProps, ReactElement, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import styled, {
-  css,
-  IntrinsicElementsKeys,
-  StyledComponent,
-} from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../theme";
 import { styledWithDefault } from "../utils/styledWithDefault";
 
-type ButtonVariant = "primary";
+type ButtonVariant = "primary" | "negative";
 
 interface RequiredButtonProps {}
 
@@ -36,6 +32,17 @@ export const Button = styledWithDefault(
         background: ${theme.colors.HARD_YELLOW};
         color: ${theme.colors.TEXT_GRAY};
         border: 1px solid ${theme.colors.MED_GRAY};
+        &:hover {
+          border: 1px solid ${theme.colors.TEXT_GRAY};
+        }
+      `}
+
+    ${({ variant }) =>
+      variant === "negative" &&
+      css`
+        background: ${theme.colors.DARK_RED};
+        color: ${theme.colors.LIGHTER_GRAY};
+        border: 1px solid ${theme.colors.LIGHTER_GRAY};
         &:hover {
           border: 1px solid ${theme.colors.TEXT_GRAY};
         }
