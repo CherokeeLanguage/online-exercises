@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { theme } from "../theme";
 import { styledWithDefault } from "../utils/styledWithDefault";
 
-type ButtonVariant = "primary" | "negative";
+export type ButtonVariant = "primary" | "negative";
 
 interface RequiredButtonProps {}
 
@@ -50,7 +50,7 @@ export const Button = styledWithDefault(
   `,
   {
     variant: "primary",
-  }
+  } as ButtonProps
 );
 
 export function ButtonLink({

@@ -125,6 +125,7 @@ function ConfirmRemoveSetModal({
       title={`Remove set ${set.title}`}
       close={close}
       confirm={confirm}
+      confirmVariant="negative"
       confirmContent={<>Delete all data on up to {set.terms.length} terms</>}
     >
       <p>
