@@ -91,40 +91,42 @@ export function simplifyPhonetics({
   }
 }
 
-function prototypicalSyllable(syllabary: string): string {
-  // handle Ꮝ-prefixed s sounds (eg. ᏍᏏᏉᏯ - sigwoya)
-  if (syllabary.length == 2 && syllabary.startsWith("Ꮝ"))
-    return prototypicalSyllable(syllabary[1]);
+function prototypicalSyllable(grapheme: string): string {
+  if (grapheme.length == 2) {
+    // handle Ꮝ-prefixed s sounds (eg. ᏍᏏᏉᏯ - sigwoya), by pretending first Ꮝ isn't there
+    if (grapheme.startsWith("Ꮝ")) return prototypicalSyllable(grapheme[1]);
+    // handle fused prefixes by keeping prefix in -i form and standardizing second sound
+    else return grapheme[0] + prototypicalSyllable(grapheme[1]);
+  }
 
   // see https://en.wikipedia.org/wiki/Cherokee_(Unicode_block)
-  if (["Ꮤ", "Ꮨ", "Ꮦ"].includes(syllabary)) return "Ꮤ";
-  if (["Ꭷ", "Ꮝ", "Ꮏ", "Ᏽ", "Ꮬ", "Ꮏ", ".", "?", ",", "!"].includes(syllabary))
-    return syllabary;
+  if (["Ꮤ", "Ꮨ", "Ꮦ"].includes(grapheme)) return "Ꮤ";
+  if (["Ꭷ", "Ꮝ", "Ꮏ", "Ᏽ", "Ꮬ", "Ꮏ", ".", "?", ",", "!"].includes(grapheme))
+    return grapheme;
 
+  // list MUST BE in reverse alphabetical order (by unicode codepoint)
+  // to reverse sort in vi, select the block and run :sort!
   const breaks = [
-    "Ꭰ",
-    "Ꭶ",
-    "Ꭽ",
-    "Ꮃ",
-    "Ꮉ",
-    "Ꮎ",
-    "Ꮖ",
-    "Ꮜ",
-    "Ꮣ",
-    "Ꮭ",
-    "Ꮳ",
-    "Ꮹ",
     "Ꮿ",
+    "Ꮹ",
+    "Ꮳ",
+    "Ꮭ",
+    "Ꮣ",
+    "Ꮜ",
+    "Ꮖ",
+    "Ꮎ",
+    "Ꮉ",
+    "Ꮃ",
+    "Ꭽ",
+    "Ꭶ",
+    "Ꭰ",
   ];
   const breakCodes = breaks.map((b) => b.charCodeAt(0));
-  const syllabaryCode = syllabary.charCodeAt(0);
-  const hit =
-    breakCodes.length -
-    1 -
-    breakCodes.reverse().findIndex((code) => code <= syllabaryCode);
-  if (hit === breakCodes.length)
+  const graphemeCode = grapheme.charCodeAt(0);
+  const hit = breakCodes.findIndex((code) => code <= graphemeCode);
+  if (hit === -1)
     throw new Error(
-      `Could not find prototypical representation for: ${syllabary}`
+      `Could not find prototypical representation for: ${grapheme}`
     );
 
   return breaks[hit];
@@ -159,57 +161,76 @@ function alignSyllabaryAndPhoneticsWord(
     Ꮿ: /y([aeiouv][¹²³⁴]*)?/,
   };
 
+  /**
+   * Some speakers/writers will use Ꮝ before any sound starting with s, including Ꮜ,Ꮞ,etc.
+   * This code merges an Ꮝ preceding a Ꮜ family character into one segment
+   */
+  function fuseLoneᏍToSyllables(combined: string[], nextCharacter: string) {
+    const previousCharacter: string | undefined = combined[combined.length - 1];
+    const nextProto = prototypicalSyllable(nextCharacter);
+    // an s syllable proceeded by an Ꮝ can be fused
+    // TODO: can this be solved like /h/ metathesis rules
+    if (previousCharacter === "Ꮝ" && nextProto === "Ꮜ") {
+      return [
+        ...combined.slice(0, combined.length - 1), // chop off prev segment that contained Ꮝ
+        "Ꮝ" + nextCharacter,
+      ];
+    }
+
+    return [...combined, nextCharacter];
+  }
+
   const [_remaining, splitSyllabary, splitPhonetics] = syllabary
     .trim()
     .split("")
-    .reduce<string[]>(
-      (fixed, nextCharacter) =>
-        prototypicalSyllable(nextCharacter) === "Ꮜ" &&
-        fixed[fixed.length - 1] === "Ꮝ"
-          ? [...fixed.slice(0, fixed.length - 1), "Ꮝ" + nextCharacter]
-          : [...fixed, nextCharacter],
-      []
-    )
+    .reduce<string[]>(fuseLoneᏍToSyllables, [])
     .reduce<[string, string[], string[]]>(
       (
         [remainingPhonetics, splitSyllabary, splitPhonetics],
-        syllabaryCharacter
+        syllabaryGrapheme
       ) => {
-        const nextRegexp =
-          syllabarySounds[prototypicalSyllable(syllabaryCharacter)];
+        const graphemeProto = prototypicalSyllable(syllabaryGrapheme);
+        const nextRegexp = syllabarySounds[graphemeProto];
         if (nextRegexp === undefined)
-          throw new Error(`No regexp found for: ${syllabaryCharacter}`);
+          throw new Error(`No regexp found for: ${syllabaryGrapheme}`);
         const matchRes = nextRegexp.exec(remainingPhonetics);
-        if (matchRes === null)
-          throw new Error(
-            `Could not match next syllabary grapheme [${phonetics} / ${syllabary}]: ${remainingPhonetics}, ${syllabaryCharacter}, ${prototypicalSyllable(
-              syllabaryCharacter
-            )}, ${nextRegexp}`
-          );
+        if (
+          matchRes === null ||
+          (matchRes.index > 0 &&
+            // the following allows for intrusive /h/s ie. unmarked aspiration to be part of any syllable
+            !["h", "ɂ"].includes(
+              remainingPhonetics.substring(0, matchRes.index)
+            ))
+        ) {
+          // in the case we are trying to match an h and the previous sound was
+          // a prefix which could fuse with an h, we will join the h syllabary
+          // grapheme to the previous syllabary segment
+          if (
+            graphemeProto === "Ꭽ" &&
+            splitPhonetics[splitPhonetics.length - 1].startsWith("h") &&
+            ["Ꮻ", "Ᏹ"].includes(splitSyllabary[splitSyllabary.length - 1])
+          ) {
+            return [
+              remainingPhonetics,
+              [
+                ...splitSyllabary.slice(0, splitSyllabary.length - 1),
+                splitSyllabary[splitSyllabary.length - 1] + syllabaryGrapheme,
+              ],
+              splitPhonetics,
+            ];
+          } else {
+            throw new Error(
+              `Could not match: [${phonetics} / ${syllabary}]: ${remainingPhonetics} --> ${matchRes} (${graphemeProto} / ${nextRegexp})`
+            );
+          }
+        }
+
         const foundAt = matchRes.index;
         const matchedPhonetics = matchRes[0];
-        if (foundAt > 1)
-          throw new Error(
-            `Match found too deep [${phonetics} / ${syllabary}]: ${remainingPhonetics} --> ${matchedPhonetics} (${nextRegexp})`
-          );
-        if (
-          foundAt === 1 &&
-          remainingPhonetics[0] !== "h" &&
-          remainingPhonetics[0] !== "ɂ"
-        )
-          throw new Error(
-            `Match expected intrusive h [${phonetics} / ${syllabary}]: ${remainingPhonetics}, ${nextRegexp}, ${splitPhonetics}`
-          );
 
-        // console.log(
-        //   remainingPhonetics,
-        //   syllabaryCharacter,
-        //   prototypicalSyllable(syllabaryCharacter),
-        //   matchedPhonetics
-        // );
         return [
           remainingPhonetics.substring(matchedPhonetics.length + foundAt),
-          [...splitSyllabary, syllabaryCharacter],
+          [...splitSyllabary, syllabaryGrapheme],
           [
             ...splitPhonetics,
             remainingPhonetics.substring(0, matchedPhonetics.length + foundAt),
@@ -219,7 +240,6 @@ function alignSyllabaryAndPhoneticsWord(
       [phonetics.trim(), [], []]
     );
 
-  // rest: do the thing shit...
   return [splitSyllabary, splitPhonetics];
 }
 

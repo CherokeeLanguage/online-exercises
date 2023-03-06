@@ -128,6 +128,14 @@ describe("alignSyllabaryAndPhonetics", () => {
       ["Ꭰ", "Ᏼ", "Ꮣ", "Ꮖ", "Ꮆ", "Ꮝ", "Ꭹ"],
       ["a²", "hyv²²", "da²", "gwa²", "lo¹¹", "s", "gi"],
     ],
+    // handle Ꮝ prefixed s sounds
+    ["ᏍᏏᏓᏁᎳ", "sidanela", ["ᏍᏏ", "Ꮣ", "Ꮑ", "Ꮃ"], ["si", "da", "ne", "la"]],
+    ["ᏏᏓᏁᎳ", "sidanela", ["Ꮟ", "Ꮣ", "Ꮑ", "Ꮃ"], ["si", "da", "ne", "la"]],
+    // the following handle fused sounds
+    ["ᏫᎯᏢᎾ", "hwitlvna", ["ᏫᎯ", "Ꮲ", "Ꮎ"], ["hwi", "tlv", "na"]],
+    ["ᏱᎯᏍᏕᎳ", "hyisdela", ["ᏱᎯ", "Ꮝ", "Ꮥ", "Ꮃ"], ["hyi", "s", "de", "la"]],
+    // sounds are not fused if they do not need to be
+    ["ᏘᏫᎯ", "tiwihi", ["Ꮨ", "Ꮻ", "Ꭿ"], ["ti", "wi", "hi"]],
   ])(
     "works idk",
     (syllabary, phonetics, expectedSyllabary, expectedPhonetics) => {
