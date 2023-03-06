@@ -136,9 +136,12 @@ function AudioRow({ src, term }: { src: string; term: string }) {
         <audio src={src} controls style={{ width: "100%" }} />
       </td>
       <td>
-        <button onClick={() => createIssueForTermInNewTab(groupId, term)}>
+        <Button
+          variant="negative"
+          onClick={() => createIssueForTermInNewTab(groupId, term)}
+        >
           Flag issue
-        </button>
+        </Button>
       </td>
     </tr>
   );
