@@ -55,23 +55,32 @@ const FlashcardWrapper = styled.div`
 `;
 
 const StyledFlashcardBody = styled.button`
-  border: 1px solid #333;
-  width: 300px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
   min-height: 200px;
   margin: 30px auto;
   padding: 8px;
-  box-shadow: 1px 1px 8px #666;
   display: block;
   align-items: center;
   outline: none;
-  background: ${theme.colors.LIGHTER_GRAY};
+  background: none;
+  transition: box-shadow 0.1s linear;
+  box-shadow: 1px 1px 0px #6660;
   &:hover {
-    background: ${theme.colors.LIGHT_GRAY};
+    /* border: 1px solid #333; */
+    box-shadow: 1px 1px 5px #666;
+    /* background: ${theme.colors.LIGHTER_GRAY}; */
   }
   p {
     flex: 1;
     text-align: center;
     font-size: ${theme.fontSizes.lg};
+  }
+  mark {
+    background: none;
+    color: red;
+    text-decoration: underline;
   }
 `;
 
@@ -113,7 +122,8 @@ export function Flashcard({
     }
   }
 
-  useKeyPressEvent(" ", () => {
+  useKeyPressEvent(" ", (event) => {
+    event.preventDefault(); // sometimes button will try to get clicked too
     flipCard();
   });
 
@@ -178,6 +188,39 @@ export function Flashcard({
   );
 }
 
+function AlignedTextRow({
+  words,
+  setHoveredIdx,
+  hoveredIdx: [hoveredWordIdx, hoveredSegmentIdx],
+}: {
+  words: string[][];
+  hoveredIdx: [number | null, number | null];
+  setHoveredIdx: (idx: [number | null, number | null]) => void;
+}) {
+  return (
+    <p>
+      {words.map((word, wordIdx) => (
+        <>
+          {wordIdx === 0 ? "" : " "}
+          {word.map((segment, segmentIdx) => (
+            <span
+              onMouseOver={() => setHoveredIdx([wordIdx, segmentIdx])}
+              onMouseOut={() => setHoveredIdx([null, null])}
+            >
+              {hoveredWordIdx === wordIdx &&
+              hoveredSegmentIdx === segmentIdx ? (
+                <mark>{segment}</mark>
+              ) : (
+                segment
+              )}
+            </span>
+          ))}
+        </>
+      ))}
+    </p>
+  );
+}
+
 function AlignedCherokee({
   syllabary,
   phonetics,
@@ -192,55 +235,27 @@ function AlignedCherokee({
         : [syllabary.split(" ").map((word) => word.split("")), []],
     [syllabary, phonetics]
   );
-  const [[hoveredWordIdx, hoveredSegmentIdx], setHoveredIdx] = useState<
-    [number | null, number | null]
-  >([null, null]);
+  const [hoveredIdx, setHoveredIdx] = useState<[number | null, number | null]>([
+    null,
+    null,
+  ]);
   return (
     <div>
-      <p>
-        {alignedSyllabaryWords.map((word, wordIdx) => (
-          <>
-            {wordIdx === 0 ? "" : " "}
-            {word.map((segment, segmentIdx) => (
-              <span
-                onMouseOver={() => setHoveredIdx([wordIdx, segmentIdx])}
-                onMouseOut={() => setHoveredIdx([null, null])}
-                style={{
-                  color:
-                    hoveredWordIdx === wordIdx &&
-                    hoveredSegmentIdx === segmentIdx
-                      ? "red"
-                      : "black",
-                }}
-              >
-                {segment}
-              </span>
-            ))}
-          </>
-        ))}
-      </p>
-      <p>
-        {alignedPhoneticWords.map((word, wordIdx) => (
-          <>
-            {wordIdx === 0 ? "" : " "}
-            {word.map((segment, segmentIdx) => (
-              <span
-                onMouseOver={() => setHoveredIdx([wordIdx, segmentIdx])}
-                onMouseOut={() => setHoveredIdx([null, null])}
-                style={{
-                  color:
-                    hoveredWordIdx === wordIdx &&
-                    hoveredSegmentIdx === segmentIdx
-                      ? "red"
-                      : "black",
-                }}
-              >
-                {segment}
-              </span>
-            ))}
-          </>
-        ))}
-      </p>
+      <AlignedTextRow
+        words={alignedSyllabaryWords}
+        setHoveredIdx={setHoveredIdx}
+        hoveredIdx={hoveredIdx}
+      />
+      {phonetics && (
+        <>
+          <hr />
+          <AlignedTextRow
+            words={alignedPhoneticWords}
+            setHoveredIdx={setHoveredIdx}
+            hoveredIdx={hoveredIdx}
+          />
+        </>
+      )}
     </div>
   );
 }
