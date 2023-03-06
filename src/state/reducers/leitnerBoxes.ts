@@ -119,6 +119,8 @@ export function reduceLeitnerBoxState(
         numBoxes,
       };
     case "CONCLUDE_LESSON":
+      if (action.lesson.type === "PRACTICE") return { terms, numBoxes };
+      // do not move terms for practice lessons
       return {
         terms: Object.entries(action.reviewedTerms).reduce(
           (newTerms, [term, result]) => ({
@@ -222,4 +224,18 @@ export function useLeitnerBoxesInteractors(
     }),
     [dispatch]
   );
+}
+
+/**
+ * Create an empty leitner box state for a practice lesson (ie. progress not counted).
+ */
+export function practiceLessonLeitnerBoxes(
+  terms: string[],
+  numBoxes: number
+): LeitnerBoxState {
+  const today = getToday();
+  return {
+    terms: Object.fromEntries(terms.map((t) => [t, newTermStats(t, today)])),
+    numBoxes,
+  };
 }

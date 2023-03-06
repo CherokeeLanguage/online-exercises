@@ -7,14 +7,16 @@ import { Act, ImperativeBlock } from "../../../utils/useReducerWithImperative";
 import { ReviewResult } from "../leitnerBoxes";
 import { createLessonTransaction } from "./createNewLesson";
 import { UserStateAction } from "../../actions";
+import { showsPerSessionForBox } from "../../../spaced-repetition/usePimsleurTimings";
+import { cherokeeToKey } from "../../../data/cards";
 
 export interface DailyLesson {
   type: "DAILY";
 }
 
-export interface SetLesson {
-  type: "SET";
-  setId: string;
+export interface PracticeLesson {
+  type: "PRACTICE";
+  includedSets: string[];
 }
 
 export interface LessonMixin {
@@ -34,7 +36,7 @@ export interface LessonMixin {
   numChallenges: number;
 }
 
-type LessonMeta = SetLesson | DailyLesson;
+type LessonMeta = PracticeLesson | DailyLesson;
 
 export type Lesson = LessonMixin & LessonMeta;
 
@@ -46,9 +48,10 @@ export function nameForLesson(lesson: Lesson) {
   switch (lesson.type) {
     case "DAILY":
       return `Daily lesson on ${new Date(lesson.createdFor).toDateString()}`;
-    case "SET":
-      const set = vocabSets[lesson.setId];
-      return `Lesson for set '${set.title}'`;
+    case "PRACTICE":
+      return `Practice lesson with ${lesson.includedSets
+        .map((setId) => `'${vocabSets[setId].title}'`)
+        .join(", ")}`;
   }
 }
 
@@ -57,7 +60,7 @@ export type LessonsState = Record<string, Lesson>;
 export interface LessonsInteractors {
   startLesson: (lessonId: string) => void;
   concludeLesson: (
-    lessonId: string,
+    lesson: Lesson,
     reviewedTerms: Record<string, ReviewResult>
   ) => void;
   createNewLesson: (
@@ -65,6 +68,7 @@ export interface LessonsInteractors {
     numChallenges: number,
     reviewOnly: boolean
   ) => void;
+  createPracticeLesson: (desiredId: string, setsToInclude: string[]) => void;
 }
 
 export function reduceLessonsState(
@@ -88,13 +92,37 @@ export function reduceLessonsState(
     case "CONCLUDE_LESSON":
       return {
         ...lessons,
-        [action.lessonId]: {
-          ...lessons[action.lessonId],
+        [action.lesson.id]: {
+          ...lessons[action.lesson.id],
           completedAt: Date.now(),
         },
       };
   }
   return lessons;
+}
+
+/**
+ * Create a `Lesson` object for practicing specific terms outside of tracked
+ * progress.
+ */
+function practiceLessonForSets(
+  desiredId: string,
+  setsToInclude: string[]
+): Lesson {
+  const sets = setsToInclude.map((id) => vocabSets[id]);
+  const terms = sets.flatMap((s) => s.terms);
+  const numChallenges = showsPerSessionForBox(0) * terms.length;
+  return {
+    id: desiredId,
+    terms: terms.map((t) => cherokeeToKey(t)),
+    startedAt: null,
+    completedAt: null,
+    createdAt: Date.now(),
+    createdFor: getToday(),
+    numChallenges,
+    includedSets: setsToInclude,
+    type: "PRACTICE",
+  };
 }
 
 export function useLessonsInteractors(
@@ -119,13 +147,20 @@ export function useLessonsInteractors(
         lessonId,
       });
     },
-    concludeLesson(lessonId, reviewedTerms) {
+    concludeLesson(lesson, reviewedTerms) {
       dispatch({
         type: "CONCLUDE_LESSON",
-        lessonId,
+        lesson,
         reviewedTerms,
       });
     },
     createNewLesson,
+    createPracticeLesson(lessonId, setsToInclude) {
+      const lesson = practiceLessonForSets(lessonId, setsToInclude);
+      dispatch({
+        type: "ADD_LESSON",
+        lesson,
+      });
+    },
   };
 }

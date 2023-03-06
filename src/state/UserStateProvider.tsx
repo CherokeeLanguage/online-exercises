@@ -113,15 +113,7 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
   };
 }
 
-function initializeUserState({
-  storedUserState,
-  initializationProps,
-}: {
-  storedUserState?: UserState;
-  initializationProps: UserStateProps;
-}): UserState {
-  if (storedUserState) return storedUserState;
-  else
+function createBlankUserState(initializationProps: UserStateProps): UserState {
     return {
       lessons: {},
       sets: {},
@@ -134,6 +126,19 @@ function initializeUserState({
       groupId: undefined,
       phoneticsPreference: undefined,
     };
+}
+
+function initializeUserState({
+  storedUserState,
+  initializationProps,
+}: {
+  storedUserState?: UserState;
+  initializationProps: UserStateProps;
+}): UserState {
+  const blankState = createBlankUserState(initializationProps);
+  // this ensures all expected keys exist at least
+  if (storedUserState) return Object.assign(blankState, storedUserState);
+  else return blankState;
 }
 
 export function useUserState(props: {
@@ -206,12 +211,14 @@ export function useUserState(props: {
       leitnerBoxesInteractors.resize(
         props.initializationProps.leitnerBoxes.numBoxes
       );
+
     if (state.groupId) {
       dispatch({
         groupId: state.groupId,
         type: "REGISTER_GROUP_AND_APPLY_DEFAULTS",
       });
     }
+
     dispatch({ type: "HANDLE_SET_CHANGES" });
   }, []);
 
