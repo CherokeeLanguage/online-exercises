@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { theme } from "../theme";
 import { Button } from "./Button";
 
-const ModalBackground = styled.div`
+export const ModalBackground = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
