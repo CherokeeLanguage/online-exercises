@@ -1,9 +1,10 @@
+import { logEvent } from "firebase/analytics";
 import { onValue, ref, set } from "firebase/database";
 import { useEffect, useMemo, useState } from "react";
-import { db } from ".";
+import { analytics, db } from ".";
 
 type LoadingState = { ready: false };
-type DataState<T> = { ready: true; data: T };
+type DataState<T> = { ready: true; data: T | null };
 
 type FirebaseState<T> = LoadingState | DataState<T>;
 
@@ -33,4 +34,23 @@ export function useFirebase<T>(
   );
 
   return [state, setFirebaseState];
+}
+
+export function useFirebaseCollection<
+  R extends Record<T, D>,
+  T extends string,
+  D
+>(path: string) {
+  return [];
+}
+
+/**
+ * Makes sure this route is tracked in Google Analytics.
+ */
+export function useAnalyticsPageName(pageName: string): void {
+  useEffect(() => {
+    logEvent(analytics, "page_view", {
+      page_title: pageName,
+    });
+  }, [pageName]);
 }

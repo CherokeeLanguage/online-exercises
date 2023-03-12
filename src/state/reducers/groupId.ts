@@ -38,5 +38,5 @@ export function reduceGroupId(
 ): GroupId | null {
   if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
     return action.groupId;
-  else return state.groupId;
+  else return state.config.groupId;
 }

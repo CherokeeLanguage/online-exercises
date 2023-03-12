@@ -135,7 +135,7 @@ export function reduceLeitnerBoxState(
       const setToRemove = vocabSets[action.setToRemove];
       // we need to figure out which terms are used ONLY by the set we are removing
       // to do this, we remove any terms which appear in another set
-      const termsUniqueToSet = Object.values(globalState.sets)
+      const termsUniqueToSet = Object.values(globalState.config.sets)
         // get all other sets
         .filter((stats) => stats.setId !== setToRemove.id)
         // get terms for those sets
@@ -172,7 +172,7 @@ export function reduceLeitnerBoxState(
         numBoxes: action.newNumBoxes,
       };
     case "HANDLE_SET_CHANGES":
-      const termsFromAllSets = Object.keys(globalState.sets).flatMap(
+      const termsFromAllSets = Object.keys(globalState.config.sets).flatMap(
         (setId) => vocabSets[setId].terms
       );
       const termsWithMigrations = Object.fromEntries(

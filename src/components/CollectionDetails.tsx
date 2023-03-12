@@ -29,7 +29,10 @@ export function MakeUpstreamCollectionButton({
 }: {
   collection: Collection;
 }) {
-  const { setUpstreamCollection, upstreamCollection } = useUserStateContext();
+  const {
+    setUpstreamCollection,
+    config: { upstreamCollection },
+  } = useUserStateContext();
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
@@ -59,7 +62,10 @@ function ConfirmChangeUpstreamCollectionModal({
   close: () => void;
   newCollection: Collection;
 }) {
-  const { setUpstreamCollection, upstreamCollection } = useUserStateContext();
+  const {
+    setUpstreamCollection,
+    config: { upstreamCollection },
+  } = useUserStateContext();
   const currentUpstreamCollection = collections[upstreamCollection!];
   return (
     <ConfirmationModal
@@ -91,7 +97,9 @@ export function CollectionDetails({
   collection: Collection;
   showAddedSets?: boolean;
 }) {
-  const { upstreamCollection } = useUserStateContext();
+  const {
+    config: { upstreamCollection },
+  } = useUserStateContext();
   return (
     <StyledCollectionDetails>
       <StyledCollectionHeader>

@@ -64,13 +64,13 @@ export function pullNewSets(
   state: UserState,
   numNewTermsNeeded: number
 ): [VocabSet[], number] {
-  if (state.upstreamCollection === null)
+  if (state.config.upstreamCollection === null)
     throw new Error(
       "No upstream collection. This should have been checked before calling."
     );
-  const collection = collections[state.upstreamCollection];
+  const collection = collections[state.config.upstreamCollection];
   const remainingSetsInCollection = collection.sets.filter(
-    (set) => !(set.id in state.sets)
+    (set) => !(set.id in state.config.sets)
   );
 
   const [setsToAdd, termsFound] = scanWhile(
@@ -95,7 +95,7 @@ function fetchNewTermsIfNeeded(
   if (potentialNewTerms.length >= numNewTermsToInclude) return act();
 
   // we don't have enough terms AND there's nowhere to get more
-  if (state.upstreamCollection === undefined)
+  if (state.config.upstreamCollection === undefined)
     return act({
       type: "LESSON_CREATE_ERROR",
       error: {
@@ -183,7 +183,8 @@ export function createLessonTransaction(
     act
   ).then((state, act) => {
     // if something has gone wrong, bail
-    if (state.lessonCreationError?.lessonId === desiredId) return act();
+    if (state.ephemeral.lessonCreationError?.lessonId === desiredId)
+      return act();
 
     // split terms into review terms and new terms
     const [potentialReviewTerms, potentialNewTerms] = splitNewTerms(state);

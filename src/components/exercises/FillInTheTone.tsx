@@ -128,7 +128,9 @@ export function FillInTheTone({
   currentCard,
   reviewCurrentCard,
 }: ExerciseComponentProps): ReactElement {
-  const { groupId } = useUserStateContext();
+  const {
+    config: { groupId },
+  } = useUserStateContext();
 
   const phonetics = useMemo(
     () => getPhonetics(currentCard.card, PhoneticsPreference.Detailed),

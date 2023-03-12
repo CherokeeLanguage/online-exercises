@@ -4,12 +4,14 @@ import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import { StyledTable } from "../../components/StyledTable";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 import { Lesson, nameForLesson } from "../../state/reducers/lessons";
 import { useUserStateContext } from "../../state/UserStateProvider";
 
 type FinishedLesson = Lesson & { startedAt: number; completedAt: number };
 
 export function LessonArchive(): ReactElement {
+  useAnalyticsPageName("Lesson archive");
   const { lessons } = useUserStateContext();
   const finishedLessons = Object.values(lessons)
     .filter((l): l is FinishedLesson => Boolean(l.completedAt && l.startedAt))

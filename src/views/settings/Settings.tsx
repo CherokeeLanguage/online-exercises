@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 import { lessonKey } from "../../state/reducers/lessons";
 import {
   isPhoneticsPreference,
@@ -17,6 +18,7 @@ interface ExportedLessonData {
 }
 
 export function Settings() {
+  useAnalyticsPageName("Settings");
   return (
     <div>
       <Preferences />
@@ -40,7 +42,10 @@ const PreferencesForm = styled.form`
 `;
 
 function Preferences() {
-  const { setPhoneticsPreference, phoneticsPreference } = useUserStateContext();
+  const {
+    setPhoneticsPreference,
+    config: { phoneticsPreference },
+  } = useUserStateContext();
   const phoneticsPreferenceId = useId();
 
   function onPhoneticsPreferenceChanged(event: ChangeEvent<HTMLSelectElement>) {
@@ -83,12 +88,9 @@ function ImportExportDataConsole() {
     // state, and need to add that key here.
     const fieldsToSave: Record<keyof UserState, null> = {
       leitnerBoxes: null,
-      lessonCreationError: null,
       lessons: null,
-      sets: null,
-      upstreamCollection: null,
-      groupId: null,
-      phoneticsPreference: null,
+      ephemeral: null,
+      config: null,
     };
 
     const stateToSave = Object.keys(fieldsToSave).reduce(

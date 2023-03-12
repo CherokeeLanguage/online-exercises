@@ -48,11 +48,13 @@ export function PracticeLesson(): ReactElement {
   return (
     <Routes>
       <Route index element={<PickExercise lessonId={lessonId} />} />
-      {exercises.map(({ path, Component }, idx) => (
+      {exercises.map(({ path, Component, name }, idx) => (
         <Route
           key={idx}
           path={path}
-          element={<Exercise Component={Component} lessonId={lessonId} />}
+          element={
+            <Exercise Component={Component} lessonId={lessonId} name={name} />
+          }
         />
       ))}
     </Routes>

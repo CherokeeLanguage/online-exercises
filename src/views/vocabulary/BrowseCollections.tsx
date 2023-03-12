@@ -2,11 +2,14 @@ import React, { ReactElement, useMemo } from "react";
 import { CollectionDetails } from "../../components/CollectionDetails";
 import { SectionHeading } from "../../components/SectionHeading";
 import { Collection, collections } from "../../data/vocabSets";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 import { useUserStateContext } from "../../state/UserStateProvider";
 
 export function BrowseCollections(): ReactElement {
-  const { sets, upstreamCollection: upstreamCollectionId } =
-    useUserStateContext();
+  useAnalyticsPageName("Find new vocabulary");
+  const {
+    config: { sets, upstreamCollection: upstreamCollectionId },
+  } = useUserStateContext();
   // split collections into three:
   // - collection user is learning now
   // - collections user could start learning

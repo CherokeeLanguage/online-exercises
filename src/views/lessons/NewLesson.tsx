@@ -3,6 +3,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { v4 } from "uuid";
 import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 import {
   LessonCreationError,
   LessonCreationErrorType,
@@ -23,8 +24,11 @@ export function NewLesson() {
 
   const newLessonId = useMemo(() => v4(), [numChallenges, reviewOnly]);
 
-  const { createNewLesson, lessons, lessonCreationError } =
-    useUserStateContext();
+  const {
+    createNewLesson,
+    lessons,
+    ephemeral: { lessonCreationError },
+  } = useUserStateContext();
 
   const lessonError =
     lessonCreationError?.lessonId === newLessonId ? lessonCreationError : null;
@@ -54,6 +58,7 @@ function ErrorAdvice({
   error: LessonCreationError;
   numChallenges: number;
 }): ReactElement {
+  useAnalyticsPageName("Lesson creation error");
   switch (error.type) {
     case LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON:
       return (

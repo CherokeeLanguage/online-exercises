@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ButtonLink } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
 import { useLesson } from "../../state/useLesson";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 import { theme } from "../../theme";
 import { exercises } from "./PracticeLesson";
 
@@ -19,6 +20,7 @@ const ExercisesWrapper = styled.div`
  */
 export function PickExercise({ lessonId }: { lessonId: string }) {
   const { lesson } = useLesson(lessonId);
+  useAnalyticsPageName("Pick exercise");
   return (
     <div>
       <SectionHeading>Pick an exercise</SectionHeading>

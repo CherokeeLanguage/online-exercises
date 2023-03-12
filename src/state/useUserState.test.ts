@@ -53,17 +53,21 @@ describe("useUserState", () => {
           ),
           numBoxes: 6,
         },
-        lessonCreationError: null,
-        lessons: {},
-        sets: {
-          [setToAdd.id]: {
-            setId: setToAdd.id,
-            addedAt: now,
-          },
+        ephemeral: {
+          lessonCreationError: null,
         },
-        upstreamCollection: null,
-        groupId: null,
-        phoneticsPreference: null,
+        lessons: {},
+        config: {
+          sets: {
+            [setToAdd.id]: {
+              setId: setToAdd.id,
+              addedAt: now,
+            },
+          },
+          upstreamCollection: null,
+          groupId: null,
+          phoneticsPreference: null,
+        },
       });
     });
 
@@ -90,12 +94,16 @@ describe("useUserState", () => {
               },
               numBoxes: 6,
             },
-            lessonCreationError: null,
             lessons: {},
-            sets: {},
-            upstreamCollection: null,
-            groupId: null,
-            phoneticsPreference: null,
+            ephemeral: {
+              lessonCreationError: null,
+            },
+            config: {
+              sets: {},
+              upstreamCollection: null,
+              groupId: null,
+              phoneticsPreference: null,
+            },
           },
           initializationProps: {
             leitnerBoxes: {
@@ -107,7 +115,7 @@ describe("useUserState", () => {
 
       act(() => ref.result.current.interactors.addSet(setToAdd.id));
 
-      assert.deepStrictEqual(ref.result.current.state.sets, {
+      assert.deepStrictEqual(ref.result.current.state.config.sets, {
         [setToAdd.id]: {
           setId: setToAdd.id,
           addedAt: now,
@@ -136,17 +144,21 @@ describe("useUserState", () => {
           ]),
           numBoxes: 6,
         },
-        lessonCreationError: null,
-        lessons: {},
-        sets: {
-          [setToAdd.id]: {
-            setId: setToAdd.id,
-            addedAt: now,
-          },
+        ephemeral: {
+          lessonCreationError: null,
         },
-        upstreamCollection: null,
-        groupId: null,
-        phoneticsPreference: null,
+        lessons: {},
+        config: {
+          sets: {
+            [setToAdd.id]: {
+              setId: setToAdd.id,
+              addedAt: now,
+            },
+          },
+          upstreamCollection: null,
+          groupId: null,
+          phoneticsPreference: null,
+        },
       });
     });
   });
@@ -178,12 +190,16 @@ describe("useUserState", () => {
           terms: {},
           numBoxes: 6,
         },
-        lessonCreationError: null,
         lessons: {},
-        sets: {},
-        upstreamCollection: null,
-        groupId: null,
-        phoneticsPreference: null,
+        ephemeral: {
+          lessonCreationError: null,
+        },
+        config: {
+          sets: {},
+          upstreamCollection: null,
+          groupId: null,
+          phoneticsPreference: null,
+        },
       });
     });
 
@@ -232,17 +248,21 @@ describe("useUserState", () => {
           ),
           numBoxes: 6,
         },
-        lessonCreationError: null,
         lessons: {},
-        sets: {
-          [sswSetWithAyv.id]: {
-            setId: sswSetWithAyv.id,
-            addedAt: now,
-          },
+        ephemeral: {
+          lessonCreationError: null,
         },
-        upstreamCollection: null,
-        groupId: null,
-        phoneticsPreference: null,
+        config: {
+          sets: {
+            [sswSetWithAyv.id]: {
+              setId: sswSetWithAyv.id,
+              addedAt: now,
+            },
+          },
+          upstreamCollection: null,
+          groupId: null,
+          phoneticsPreference: null,
+        },
       });
     });
   });

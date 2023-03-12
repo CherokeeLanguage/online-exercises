@@ -12,6 +12,7 @@ import { practiceLessonLeitnerBoxes } from "../../state/reducers/leitnerBoxes";
 import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
 import { PracticeLesson } from "../../state/reducers/lessons";
 import { StyledLink } from "../StyledLink";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 
 export interface ExerciseComponentProps {
   currentCard: TermCardWithStats<Card>;
@@ -21,6 +22,7 @@ export interface ExerciseComponentProps {
 
 export interface ExerciseProps {
   lessonId: string;
+  name: string;
   Component: (props: ExerciseComponentProps) => ReactElement;
 }
 
@@ -28,12 +30,17 @@ const ExerciseWrapper = styled.div`
   margin-bottom: 16px;
 `;
 
-export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
+export function Exercise({
+  lessonId,
+  Component,
+  name,
+}: ExerciseProps): ReactElement {
   const { leitnerBoxes: userLeitnerBoxes } = useUserStateContext();
   const { lesson, startLesson, concludeLesson, reviewTerm } =
     useLesson(lessonId);
   const lessonCards = useCardsForTerms(cards, lesson.terms, keyForCard);
   const navigate = useNavigate();
+  useAnalyticsPageName(`Exercise (${name})`);
 
   const leitnerBoxesForSession = useMemo(
     () =>

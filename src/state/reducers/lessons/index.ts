@@ -9,6 +9,8 @@ import { createLessonTransaction } from "./createNewLesson";
 import { UserStateAction } from "../../actions";
 import { showsPerSessionForBox } from "../../../spaced-repetition/usePimsleurTimings";
 import { cherokeeToKey } from "../../../data/cards";
+import { logEvent } from "firebase/analytics";
+import { analytics } from "../../../firebase";
 
 export interface DailyLesson {
   type: "DAILY";
@@ -155,12 +157,18 @@ export function useLessonsInteractors(
 
   return {
     startLesson(lessonId) {
+      logEvent(analytics, "lesson_started", {
+        lessonId,
+      });
       dispatch({
         type: "START_LESSON",
         lessonId,
       });
     },
     concludeLesson(lesson, reviewedTerms) {
+      logEvent(analytics, "lesson_finished", {
+        lessonId: lesson.id,
+      });
       dispatch({
         type: "CONCLUDE_LESSON",
         lesson,
