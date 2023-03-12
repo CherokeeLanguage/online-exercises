@@ -24,7 +24,7 @@ export type SetAction = AddSetAction | RemoveSetAction;
 
 export type SetUpstreamCollectionAction = {
   type: "SET_UPSTREAM_COLLECTION";
-  newCollectionId: string | undefined;
+  newCollectionId: string | null;
 };
 
 export type RegisterWithGroupAction = {

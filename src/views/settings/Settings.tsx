@@ -58,7 +58,7 @@ function Preferences() {
         <label htmlFor={phoneticsPreferenceId}>Phonetics preference</label>
         <select
           id={phoneticsPreferenceId}
-          value={phoneticsPreference}
+          value={phoneticsPreference ?? undefined}
           onChange={onPhoneticsPreferenceChanged}
         >
           {Object.entries(PREFERENCE_LITERATES).map(([value, literate], i) => (

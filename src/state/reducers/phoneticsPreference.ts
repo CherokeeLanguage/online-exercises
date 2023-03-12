@@ -14,12 +14,8 @@ export const PREFERENCE_LITERATES: Record<PhoneticsPreference, string> = {
 /**
  * Decide if phonetics should be shown
  */
-export function showPhonetics(
-  preference: PhoneticsPreference | undefined
-): boolean {
-  return (
-    preference !== undefined && preference !== PhoneticsPreference.NoPhonetics
-  );
+export function showPhonetics(preference: PhoneticsPreference | null): boolean {
+  return preference !== null && preference !== PhoneticsPreference.NoPhonetics;
 }
 
 export function isPhoneticsPreference(str: string): str is PhoneticsPreference {

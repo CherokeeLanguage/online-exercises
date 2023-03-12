@@ -53,7 +53,7 @@ describe("useUserState", () => {
           ),
           numBoxes: 6,
         },
-        lessonCreationError: undefined,
+        lessonCreationError: null,
         lessons: {},
         sets: {
           [setToAdd.id]: {
@@ -61,9 +61,9 @@ describe("useUserState", () => {
             addedAt: now,
           },
         },
-        upstreamCollection: undefined,
-        groupId: undefined,
-        phoneticsPreference: undefined,
+        upstreamCollection: null,
+        groupId: null,
+        phoneticsPreference: null,
       });
     });
 
@@ -90,12 +90,12 @@ describe("useUserState", () => {
               },
               numBoxes: 6,
             },
-            lessonCreationError: undefined,
+            lessonCreationError: null,
             lessons: {},
             sets: {},
-            upstreamCollection: undefined,
-            groupId: undefined,
-            phoneticsPreference: undefined,
+            upstreamCollection: null,
+            groupId: null,
+            phoneticsPreference: null,
           },
           initializationProps: {
             leitnerBoxes: {
@@ -136,7 +136,7 @@ describe("useUserState", () => {
           ]),
           numBoxes: 6,
         },
-        lessonCreationError: undefined,
+        lessonCreationError: null,
         lessons: {},
         sets: {
           [setToAdd.id]: {
@@ -144,9 +144,9 @@ describe("useUserState", () => {
             addedAt: now,
           },
         },
-        upstreamCollection: undefined,
-        groupId: undefined,
-        phoneticsPreference: undefined,
+        upstreamCollection: null,
+        groupId: null,
+        phoneticsPreference: null,
       });
     });
   });
@@ -178,12 +178,12 @@ describe("useUserState", () => {
           terms: {},
           numBoxes: 6,
         },
-        lessonCreationError: undefined,
+        lessonCreationError: null,
         lessons: {},
         sets: {},
-        upstreamCollection: undefined,
-        groupId: undefined,
-        phoneticsPreference: undefined,
+        upstreamCollection: null,
+        groupId: null,
+        phoneticsPreference: null,
       });
     });
 
@@ -232,7 +232,7 @@ describe("useUserState", () => {
           ),
           numBoxes: 6,
         },
-        lessonCreationError: undefined,
+        lessonCreationError: null,
         lessons: {},
         sets: {
           [sswSetWithAyv.id]: {
@@ -240,9 +240,9 @@ describe("useUserState", () => {
             addedAt: now,
           },
         },
-        upstreamCollection: undefined,
-        groupId: undefined,
-        phoneticsPreference: undefined,
+        upstreamCollection: null,
+        groupId: null,
+        phoneticsPreference: null,
       });
     });
   });

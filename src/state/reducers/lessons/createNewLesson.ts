@@ -64,7 +64,7 @@ export function pullNewSets(
   state: UserState,
   numNewTermsNeeded: number
 ): [VocabSet[], number] {
-  if (state.upstreamCollection === undefined)
+  if (state.upstreamCollection === null)
     throw new Error(
       "No upstream collection. This should have been checked before calling."
     );

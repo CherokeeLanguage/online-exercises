@@ -30,6 +30,7 @@ import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { GroupId, GROUPS, isGroupId, reduceGroupId } from "./reducers/groupId";
 import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
 import { PhoneticsPreference } from "./reducers/phoneticsPreference";
+import { useFirebase } from "../firebase/hooks";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -43,15 +44,15 @@ export interface UserState {
   /** Lessons that have been created for the user */
   lessons: LessonsState;
   /** Latest error describing why a lesson could not be created */
-  lessonCreationError: LessonCreationError | undefined;
+  lessonCreationError: LessonCreationError | null;
   /** Sets the user is learning */
   sets: UserSetsState;
   /** The collection from which new sets should be pulled when the user is ready for new terms */
-  upstreamCollection: string | undefined;
+  upstreamCollection: string | null;
   /** Group registration */
-  groupId: GroupId | undefined;
+  groupId: GroupId | null;
   /** Preference for how phonetics are shown */
-  phoneticsPreference: PhoneticsPreference | undefined;
+  phoneticsPreference: PhoneticsPreference | null;
 }
 
 interface MiscInteractors {
@@ -69,23 +70,27 @@ export type UserInteractors = UserSetsInteractors &
 function reduceUpstreamCollection(
   { upstreamCollection }: UserState,
   action: UserStateAction
-): string | undefined {
+): string | null {
   if (action.type === "SET_UPSTREAM_COLLECTION") return action.newCollectionId;
   if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
     // if no upstream collection, set to group default
-    return upstreamCollection ?? GROUPS[action.groupId].defaultCollectionId;
+    return (
+      upstreamCollection ?? GROUPS[action.groupId].defaultCollectionId ?? null
+    );
   else return upstreamCollection;
 }
 
 function reducePhoneticsPreference(
   state: UserState,
   action: UserStateAction
-): PhoneticsPreference | undefined {
+): PhoneticsPreference | null {
   if (action.type === "SET_PHONETICS_PREFERENCE") return action.newPreference;
   if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
     // if no preference, set to group default when a user registers
     return (
-      state.phoneticsPreference ?? GROUPS[action.groupId].phoneticsPreference
+      state.phoneticsPreference ??
+      GROUPS[action.groupId].phoneticsPreference ??
+      null
     );
   else return state.phoneticsPreference;
 }
@@ -93,7 +98,7 @@ function reducePhoneticsPreference(
 function reduceLessonCreationError(
   { lessonCreationError }: UserState,
   action: UserStateAction
-): LessonCreationError | undefined {
+): LessonCreationError | null {
   if (action.type === "LESSON_CREATE_ERROR") return action.error;
   else return lessonCreationError;
 }
@@ -113,19 +118,19 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
   };
 }
 
-function createBlankUserState(initializationProps: UserStateProps): UserState {
-    return {
-      lessons: {},
-      sets: {},
-      leitnerBoxes: {
-        numBoxes: initializationProps.leitnerBoxes.numBoxes,
-        terms: {},
-      },
-      upstreamCollection: undefined,
-      lessonCreationError: undefined,
-      groupId: undefined,
-      phoneticsPreference: undefined,
-    };
+function blankUserState(initializationProps: UserStateProps): UserState {
+  return {
+    lessons: {},
+    sets: {},
+    leitnerBoxes: {
+      numBoxes: initializationProps.leitnerBoxes.numBoxes,
+      terms: {},
+    },
+    upstreamCollection: null,
+    lessonCreationError: null,
+    groupId: null,
+    phoneticsPreference: null,
+  };
 }
 
 function initializeUserState({
@@ -135,9 +140,15 @@ function initializeUserState({
   storedUserState?: UserState;
   initializationProps: UserStateProps;
 }): UserState {
-  const blankState = createBlankUserState(initializationProps);
-  // this ensures all expected keys exist at least
-  if (storedUserState) return Object.assign(blankState, storedUserState);
+  // This blank state nonsense ensures undefined and missing properties are upgraded to null
+  const blankState = blankUserState(initializationProps);
+  if (storedUserState)
+    return Object.assign(
+      blankState,
+      Object.fromEntries(
+        Object.entries(storedUserState).filter(([k, v]) => v !== undefined)
+      )
+    );
   else return blankState;
 }
 
@@ -171,7 +182,7 @@ export function useUserState(props: {
 
   const miscInteractors: MiscInteractors = useMemo(
     () => ({
-      setUpstreamCollection(collectionId: string | undefined) {
+      setUpstreamCollection(collectionId: string | null) {
         dispatch({
           type: "SET_UPSTREAM_COLLECTION",
           newCollectionId: collectionId,
@@ -254,6 +265,8 @@ export function UserStateProvider({
     }
   );
 
+  const [firebaseState, setFirebaseState] = useFirebase<UserState>("test");
+
   const { state, interactors } = useUserState({
     storedUserState,
     initializationProps: {
@@ -265,6 +278,7 @@ export function UserStateProvider({
 
   useEffect(() => {
     setStoredUserState(state);
+    setFirebaseState(state);
   }, [state]);
 
   return (
