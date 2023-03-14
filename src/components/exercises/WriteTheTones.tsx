@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo } from "react";
+import React, { ReactElement, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 import { useUserStateContext } from "../../state/UserStateProvider";
@@ -75,6 +75,53 @@ const MaskedSyllable = styled.mark`
   display: inline-block;
 `;
 
+interface MaskedToneReturn {
+  maskedWordIdx: number;
+  maskedSyllableIdx: number;
+  maskedSyllables: string[];
+  allOptions: string[];
+  correctIdx: number;
+}
+
+function useMaskedTone(phoneticsWords: string[]): MaskedToneReturn | null {
+  return useMemo(() => {
+    const validWords = validWordsToHide(phoneticsWords);
+    if (validWords.length === 0) return null;
+
+    const [maskedWordIdx, wordToMask] = pickRandomElement(validWords);
+
+    const syllables = toneSyllables(wordToMask);
+    const lastSyllableHasDistinctiveTone =
+      syllables[syllables.length - 1].match(/[¹²³⁴]/);
+
+    const maskedSyllableIdx = Math.floor(
+      Math.random() *
+        (lastSyllableHasDistinctiveTone
+          ? syllables.length
+          : syllables.length - 1)
+    );
+    const [maskedSyllables, hiddenTone] = maskTonesOnSyllable(
+      syllables,
+      maskedSyllableIdx
+    );
+
+    const allOptions = pickNRandom(
+      possibleTones.filter((t) => t !== hiddenTone),
+      3
+    );
+    const correctIdx = Math.floor(Math.random() * 4);
+    allOptions.splice(correctIdx, 0, hiddenTone);
+
+    return {
+      maskedWordIdx,
+      maskedSyllableIdx,
+      maskedSyllables,
+      allOptions,
+      correctIdx,
+    };
+  }, [phoneticsWords]);
+}
+
 export function WriteTheTones({
   currentCard,
   reviewCurrentCard,
@@ -88,38 +135,7 @@ export function WriteTheTones({
 
   const phoneticsWords = useMemo(() => phonetics.split(" "), [phonetics]);
 
-  // a'ni makes this exploded
-  const [maskedWordIdx, wordToMask] = useMemo(
-    () => pickRandomElement(validWordsToHide(phoneticsWords)),
-    [phonetics]
-  );
-
-  const [maskedSyllableIdx, hiddenTone, maskedSyllables] = useMemo(() => {
-    const syllables = toneSyllables(wordToMask);
-    const lastSyllableHasDistinctiveTone =
-      syllables[syllables.length - 1].match(/[¹²³⁴]/);
-    const syllableToMask = Math.floor(
-      Math.random() *
-        (lastSyllableHasDistinctiveTone
-          ? syllables.length
-          : syllables.length - 1)
-    );
-    const [maskedSyllables, hiddenTone] = maskTonesOnSyllable(
-      syllables,
-      syllableToMask
-    );
-    return [syllableToMask, hiddenTone, maskedSyllables];
-  }, [wordToMask]);
-
-  const [allOptions, correctIdx] = useMemo(() => {
-    const options = pickNRandom(
-      possibleTones.filter((t) => t !== hiddenTone),
-      3
-    );
-    const correctIdx = Math.floor(Math.random() * 4);
-    options.splice(correctIdx, 0, hiddenTone);
-    return [options, correctIdx];
-  }, [hiddenTone]);
+  const maskedToneHook = useMaskedTone(phoneticsWords);
 
   // pick random voice to use
   const cherokeeAudio = useMemo(
@@ -131,6 +147,22 @@ export function WriteTheTones({
     src: cherokeeAudio,
     autoplay: true,
   });
+
+  useEffect(() => {
+    if (maskedToneHook === null) reviewCurrentCard(true);
+  }, [maskedToneHook]);
+
+  if (!maskedToneHook) {
+    return <em>Loading...</em>;
+  }
+
+  const {
+    maskedWordIdx,
+    maskedSyllableIdx,
+    maskedSyllables,
+    allOptions,
+    correctIdx,
+  } = maskedToneHook;
 
   return (
     <div style={{ maxWidth: "800px", margin: "auto" }}>
