@@ -243,9 +243,17 @@ function alignSyllabaryAndPhoneticsWord(
   return [splitSyllabary, splitPhonetics];
 }
 
+/**
+ * Present an array of aligned segments for syllabary and phonetics.
+ * @param syllabary
+ * @param phonetics
+ * @param suppressErrors - if true words that fail to be matched will be aligned with syllabary on a per word basis.
+ * @returns `[syllabaryWords, phoneticsWords]`, where each `*Words` array contains a list of string segements.
+ */
 export function alignSyllabaryAndPhonetics(
   syllabary: string,
-  phonetics: string
+  phonetics: string,
+  suppressErrors = true
 ): [string[][], string[][]] {
   const syllabaryWords = syllabary
     .trim()
@@ -263,12 +271,23 @@ export function alignSyllabaryAndPhonetics(
 
   return syllabaryWords.reduce<[string[][], string[][]]>(
     ([syllabarySplit, phoneticsSplit], syllabaryWord, idx) => {
-      const [newSyllabarySplit, newPhoneticsSplit] =
-        alignSyllabaryAndPhoneticsWord(syllabaryWord, phoneticsWords[idx]);
-      return [
-        [...syllabarySplit, newSyllabarySplit],
-        [...phoneticsSplit, newPhoneticsSplit],
-      ];
+      try {
+        const [newSyllabarySplit, newPhoneticsSplit] =
+          alignSyllabaryAndPhoneticsWord(syllabaryWord, phoneticsWords[idx]);
+        return [
+          [...syllabarySplit, newSyllabarySplit],
+          [...phoneticsSplit, newPhoneticsSplit],
+        ];
+      } catch (e) {
+        if (suppressErrors) {
+          return [
+            [...syllabarySplit, [syllabaryWord]],
+            [...phoneticsSplit, [phoneticsWords[idx]]],
+          ];
+        } else {
+          throw e;
+        }
+      }
     },
     [[], []]
   );

@@ -1,5 +1,5 @@
 import assert from "assert";
-import { cards } from "../data/cards";
+import { Card, cards, PhoneticOrthography } from "../data/cards";
 import { PhoneticsPreference } from "../state/reducers/phoneticsPreference";
 import {
   alignSyllabaryAndPhonetics,
@@ -152,17 +152,36 @@ describe("alignSyllabaryAndPhonetics", () => {
       try {
         const _res = alignSyllabaryAndPhonetics(
           card.syllabary,
-          getPhonetics(card, PhoneticsPreference.Detailed)
+          getPhonetics(card, PhoneticsPreference.Detailed),
+          false
         );
       } catch (err) {
-        return [...arr, "" + err];
+        return [...arr, card.cherokee];
       }
       return arr;
     }, []);
     assert.deepStrictEqual(
       termsThatExploded,
-      [],
+      // actively talking to first language speakers about this term:
+      ["e²²li³³wu³ke³ yi²ki,sde²²la, di²gv²²di²²ye³ʔv²³ʔi²"],
       "there should be no terms that error out"
     );
+  });
+
+  it("fails gracefully", () => {
+    const [syllabary, phonetics] = alignSyllabaryAndPhonetics(
+      "ᎡᎵᏭᎨ ᏱᏍᎩᏍᏕᎳ ᏗᎬᏗᏰᎥᎢ",
+      "e²²li³³wu³ke³ yi²ksde²²l di²gv²²di²²ye³ɂv²³ɂi²"
+    );
+    assert.deepStrictEqual(syllabary, [
+      ["Ꭱ", "Ꮅ", "Ꮽ", "Ꭸ"],
+      ["ᏱᏍᎩᏍᏕᎳ"],
+      ["Ꮧ", "Ꭼ", "Ꮧ", "Ᏸ", "Ꭵ", "Ꭲ"],
+    ]);
+    assert.deepStrictEqual(phonetics, [
+      ["e²²", "li³³", "wu³", "ke³"],
+      ["yi²ksde²²l"],
+      ["di²", "gv²²", "di²²", "ye³", "ɂv²³", "ɂi²"],
+    ]);
   });
 });
