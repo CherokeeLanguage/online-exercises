@@ -62,6 +62,8 @@ describe("useUserState", () => {
           },
         },
         upstreamCollection: undefined,
+        groupId: undefined,
+        phoneticsPreference: undefined,
       });
     });
 
@@ -143,6 +145,8 @@ describe("useUserState", () => {
           },
         },
         upstreamCollection: undefined,
+        groupId: undefined,
+        phoneticsPreference: undefined,
       });
     });
   });
@@ -237,6 +241,8 @@ describe("useUserState", () => {
           },
         },
         upstreamCollection: undefined,
+        groupId: undefined,
+        phoneticsPreference: undefined,
       });
     });
   });

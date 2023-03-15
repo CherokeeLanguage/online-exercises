@@ -49,7 +49,7 @@ export type StartLessonAction = {
 
 export type ConcludeLessonAction = {
   type: "CONCLUDE_LESSON";
-  lessonId: string;
+  lesson: Lesson;
   reviewedTerms: Record<string, ReviewResult>;
 };
 

@@ -25,7 +25,7 @@ export function useLesson(lessonId: string): UseLessonReturn {
   return {
     lesson,
     ...reviewedTerms,
-    concludeLesson: () => concludeLesson(lessonId, reviewedTerms.reviewedTerms),
+    concludeLesson: () => concludeLesson(lesson, reviewedTerms.reviewedTerms),
     startLesson: () => startLesson(lessonId),
   };
 }

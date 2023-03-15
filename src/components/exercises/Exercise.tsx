@@ -8,6 +8,7 @@ import { useCardsForTerms } from "../../utils/useCardsForTerms";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import styled from "styled-components";
 import { theme } from "../../theme";
+import { practiceLessonLeitnerBoxes } from "../../state/reducers/leitnerBoxes";
 
 export interface ExerciseComponentProps {
   currentCard: TermCardWithStats<Card>;
@@ -25,11 +26,19 @@ const ExerciseWrapper = styled.div`
 `;
 
 export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
-  const { leitnerBoxes } = useUserStateContext();
+  const { leitnerBoxes: userLeitnerBoxes } = useUserStateContext();
   const { lesson, startLesson, concludeLesson, reviewTerm } =
     useLesson(lessonId);
   const lessonCards = useCardsForTerms(cards, lesson.terms, keyForCard);
   const navigate = useNavigate();
+
+  const leitnerBoxesForSession = useMemo(
+    () =>
+      lesson.type === "PRACTICE"
+        ? practiceLessonLeitnerBoxes(lesson.terms, userLeitnerBoxes.numBoxes)
+        : userLeitnerBoxes,
+    [lesson, userLeitnerBoxes]
+  );
 
   const {
     currentCard,
@@ -38,7 +47,12 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
     numTermsToIntroduce,
     numActiveTerms,
     numFinishedTerms,
-  } = useReviewSession(leitnerBoxes, lessonCards, lessonId, reviewTerm);
+  } = useReviewSession(
+    leitnerBoxesForSession,
+    lessonCards,
+    lessonId,
+    reviewTerm
+  );
 
   useEffect(() => {
     if (lesson.startedAt === null) startLesson();

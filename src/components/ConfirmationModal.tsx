@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
-import { Button } from "./Button";
+import { Button, ButtonVariant } from "./Button";
 import { Modal } from "./Modal";
 
 const ConfirmModalWrapper = styled.div`
@@ -28,12 +28,14 @@ export function ConfirmationModal({
   close,
   confirm,
   confirmContent,
+  confirmVariant,
   children,
 }: {
   title: string;
   close: () => void;
   confirm: () => void;
   confirmContent: ReactNode;
+  confirmVariant?: ButtonVariant;
   children: ReactNode;
 }): ReactElement {
   return (
@@ -42,6 +44,7 @@ export function ConfirmationModal({
         <ConfirmModalContent>{children}</ConfirmModalContent>
         <ConfirmModalActions>
           <Button
+            variant={confirmVariant}
             onClick={() => {
               confirm();
               close();
