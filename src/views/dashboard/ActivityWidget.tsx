@@ -1,6 +1,7 @@
 import { SectionHeading } from "../../components/SectionHeading";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { getToday } from "../../utils/dateUtils";
+import { DashboardWidget } from "./DashboardWidget";
 
 export function ActivityWidget() {
   const { leitnerBoxes, upstreamCollection } = useUserStateContext();
@@ -22,9 +23,7 @@ export function ActivityWidget() {
   );
 
   return (
-    <div>
-      <SectionHeading>Activity</SectionHeading>
-
+    <DashboardWidget title="Activity">
       {upstreamCollection === undefined && newTermsForToday.length > 0 && (
         <p>
           You have{" "}
@@ -65,6 +64,6 @@ export function ActivityWidget() {
           below to start learning!
         </p>
       )}
-    </div>
+    </DashboardWidget>
   );
 }

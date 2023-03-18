@@ -3,20 +3,7 @@ import styled from "styled-components";
 import { SectionHeading } from "../../components/SectionHeading";
 
 const StyledDashboardWidget = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-`;
-
-const WidgetScrollSection = styled.div`
-  overflow-x: auto;
-`;
-
-const CardContainer = styled.div`
-  display: flex;
-  gap: 16px;
-  flex-wrap: nowrap;
-  padding: 8px;
+  margin-bottom: 20px;
 `;
 
 export interface DashboardWidgetProps {
@@ -31,9 +18,7 @@ export function DashboardWidget({
   return (
     <StyledDashboardWidget>
       <SectionHeading>{title}</SectionHeading>
-      <WidgetScrollSection>
-        <CardContainer>{children}</CardContainer>
-      </WidgetScrollSection>
+      {children}
     </StyledDashboardWidget>
   );
 }

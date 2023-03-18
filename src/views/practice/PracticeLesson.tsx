@@ -14,6 +14,8 @@ export const exercises: {
   name: string;
   description: string;
   Component: (props: ExerciseComponentProps) => ReactElement;
+  // set to true if game is a minigame that does not require the user to have vocab
+  minigame?: boolean;
 }[] = [
   {
     path: "flashcards",
@@ -30,11 +32,12 @@ export const exercises: {
     Component: SimilarTerms,
   },
   {
-    path: "write-the-tones",
-    name: "Write the tones",
+    path: "fill-in-the-tone",
+    name: "Fill in the tone",
     description:
       "Practice your tone accuracy by filling in the tone sequence for the missing word in the term.",
     Component: WriteTheTones,
+    minigame: true,
   },
 ];
 
@@ -44,7 +47,7 @@ export function PracticeLesson(): ReactElement {
   if (lessonId === undefined) throw new Error("Must have a lesson to practice");
   return (
     <Routes>
-      <Route index element={<PickExercise />} />
+      <Route index element={<PickExercise lessonId={lessonId} />} />
       {exercises.map(({ path, Component }, idx) => (
         <Route
           key={idx}

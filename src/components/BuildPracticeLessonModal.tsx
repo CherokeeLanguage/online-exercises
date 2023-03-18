@@ -16,7 +16,7 @@ export function BuildPracticeLessonModal({
   const navigate = useNavigate();
   function startPracticeLesson() {
     const id = v4();
-    createPracticeLesson(id, [set.id]);
+    createPracticeLesson(id, [set.id], false);
     navigate(`/practice/${id}`);
   }
 

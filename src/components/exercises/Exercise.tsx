@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useEffect, useMemo } from "react";
+import { Fragment, ReactElement, ReactNode, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, cards, keyForCard } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
@@ -9,6 +9,9 @@ import { useUserStateContext } from "../../state/UserStateProvider";
 import styled from "styled-components";
 import { theme } from "../../theme";
 import { practiceLessonLeitnerBoxes } from "../../state/reducers/leitnerBoxes";
+import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
+import { PracticeLesson } from "../../state/reducers/lessons";
+import { StyledLink } from "../StyledLink";
 
 export interface ExerciseComponentProps {
   currentCard: TermCardWithStats<Card>;
@@ -78,6 +81,9 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
         lessonCards={lessonCards}
         reviewCurrentCard={reviewCurrentCard}
       />
+      {lesson.type === "PRACTICE" && (
+        <PracticeLessonContentsMemo lesson={lesson} />
+      )}
       <ChallengesProgressBar
         challengesRemaining={challengesRemaining}
         totalChallenges={lesson.numChallenges}
@@ -85,6 +91,46 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
     </ExerciseWrapper>
   ) : (
     <></>
+  );
+}
+
+const StyledPracticeLessonContentsMemo = styled.p`
+  text-align: center;
+  margin-top: 16px;
+`;
+
+function PracticeLessonContentsMemo({ lesson }: { lesson: PracticeLesson }) {
+  return (
+    <StyledPracticeLessonContentsMemo>
+      You are seeing terms from:
+      {Object.entries(
+        lesson.includedSets.reduce<Record<string, VocabSet[]>>(
+          (collected, setId) => {
+            const set = vocabSets[setId];
+            const collection = collections[set.collection];
+            return {
+              ...collected,
+              [collection.title]: [...(collected[collection.title] ?? []), set],
+            };
+          },
+          {}
+        )
+      ).map(([collectionTitle, sets]) => (
+        <p>
+          <em>
+            <strong>{collectionTitle}</strong>:{" "}
+            {sets.map((s, i) => (
+              <Fragment key={i}>
+                {i > 0 && ", "}
+                <StyledLink to={`/vocabulary/set/${s.id}`}>
+                  {s.title}
+                </StyledLink>
+              </Fragment>
+            ))}
+          </em>
+        </p>
+      ))}
+    </StyledPracticeLessonContentsMemo>
   );
 }
 

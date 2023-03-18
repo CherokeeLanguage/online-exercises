@@ -68,7 +68,11 @@ export interface LessonsInteractors {
     numChallenges: number,
     reviewOnly: boolean
   ) => void;
-  createPracticeLesson: (desiredId: string, setsToInclude: string[]) => void;
+  createPracticeLesson: (
+    desiredId: string,
+    setsToInclude: string[],
+    shuffleTerms: boolean
+  ) => void;
 }
 
 export function reduceLessonsState(
@@ -101,20 +105,29 @@ export function reduceLessonsState(
   return lessons;
 }
 
+function shuffled<T>(list: T[]): T[] {
+  return list
+    .map((item) => [Math.random(), item] as const)
+    .sort(([a], [b]) => a - b)
+    .map(([, item]) => item);
+}
+
 /**
  * Create a `Lesson` object for practicing specific terms outside of tracked
  * progress.
  */
 function practiceLessonForSets(
   desiredId: string,
-  setsToInclude: string[]
+  setsToInclude: string[],
+  shuffleTerms: boolean
 ): Lesson {
   const sets = setsToInclude.map((id) => vocabSets[id]);
   const terms = sets.flatMap((s) => s.terms);
   const numChallenges = showsPerSessionForBox(0) * terms.length;
+  const termKeys = terms.map((t) => cherokeeToKey(t));
   return {
     id: desiredId,
-    terms: terms.map((t) => cherokeeToKey(t)),
+    terms: shuffleTerms ? shuffled(termKeys) : termKeys,
     startedAt: null,
     completedAt: null,
     createdAt: Date.now(),
@@ -155,8 +168,12 @@ export function useLessonsInteractors(
       });
     },
     createNewLesson,
-    createPracticeLesson(lessonId, setsToInclude) {
-      const lesson = practiceLessonForSets(lessonId, setsToInclude);
+    createPracticeLesson(lessonId, setsToInclude, shuffleTerms) {
+      const lesson = practiceLessonForSets(
+        lessonId,
+        setsToInclude,
+        shuffleTerms
+      );
       dispatch({
         type: "ADD_LESSON",
         lesson,

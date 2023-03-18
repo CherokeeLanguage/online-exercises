@@ -4,6 +4,7 @@ import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import { Collection, collections } from "../../data/vocabSets";
 import { useUserStateContext } from "../../state/UserStateProvider";
+import { DashboardWidget } from "./DashboardWidget";
 
 const CHALLENGES_IN_15_MINUTE_LESSON = 90;
 
@@ -18,8 +19,7 @@ export function LessonsWidget(): ReactElement {
   }
 
   return (
-    <div>
-      <SectionHeading>Learn now</SectionHeading>
+    <DashboardWidget title="Practice vocab!">
       <p>You should try to do at least one lesson with new terms a day.</p>
       {newTermsText(upstreamCollection)}
       <div style={{ gap: "16px", display: "flex" }}>
@@ -32,7 +32,7 @@ export function LessonsWidget(): ReactElement {
           15 minute review session
         </ButtonLink>
       </div>
-    </div>
+    </DashboardWidget>
   );
 }
 
