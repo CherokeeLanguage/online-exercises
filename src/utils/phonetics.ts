@@ -93,10 +93,10 @@ export function simplifyPhonetics({
 
 function prototypicalSyllable(grapheme: string): string {
   if (grapheme.length == 2) {
+    const secondProto = prototypicalSyllable(grapheme[1]);
     // handle Ꮝ-prefixed s sounds (eg. ᏍᏏᏉᏯ - sigwoya), by pretending first Ꮝ isn't there
-    if (grapheme.startsWith("Ꮝ")) return prototypicalSyllable(grapheme[1]);
-    // handle fused prefixes by keeping prefix in -i form and standardizing second sound
-    else return grapheme[0] + prototypicalSyllable(grapheme[1]);
+    if (grapheme[0] === "Ꮝ" && secondProto === "Ꮜ") return "Ꮜ";
+    else return prototypicalSyllable(grapheme[0]) + secondProto;
   }
 
   // see https://en.wikipedia.org/wiki/Cherokee_(Unicode_block)
@@ -132,45 +132,192 @@ function prototypicalSyllable(grapheme: string): string {
   return breaks[hit];
 }
 
+const syllabarySounds: Record<string, RegExp> = {
+  ".": /\.?/,
+  ",": /,?/,
+  "?": /\??/,
+  "!": /\!?/,
+  Ꭰ: /[aeiouv][¹²³⁴]*/,
+  Ꭶ: /[gk]([aeiouv][¹²³⁴]*)?/,
+  Ꭷ: /k([aeiouv][¹²³⁴]*)?/,
+  Ꭽ: /h([aeiouv][¹²³⁴]*)?/,
+  Ꮃ: /[ht]?l([aeiouv][¹²³⁴]*)?/,
+  Ꮉ: /m([aeiouv][¹²³⁴]*)?/,
+  Ꮎ: /n([aeiouv][¹²³⁴]*)?/,
+  Ꮏ: /hn([aeiouv][¹²³⁴]*)?/,
+  Ꮖ: /((gw)|(qu)|(kw))([aeiouv][¹²³⁴]*)?/,
+  Ꮝ: /s(?![aeiouv])/, // s not followed by vowel
+  Ꮜ: /s([aeiouv][¹²³⁴]*)?/, // always followed by vowel
+  Ꮣ: /[td]([aeiouv][¹²³⁴]*)?/,
+  Ꮤ: /t([aei][¹²³⁴]*)?/, // ta only represents ta, ti, te
+  Ꮭ: /((tl)|(hl)|(dl))([aeiouv][¹²³⁴]*)?/, // support tla for hla
+  Ꮬ: /((tl)|(hl)|(dl))([aeiouv][¹²³⁴]*)?/, // dla
+  Ꮳ: /((j)|(ts)|(ch))([aeiouv][¹²³⁴]*)?/,
+  Ꮹ: /w([aeiouv][¹²³⁴]*)?/,
+  Ꮿ: /y([aeiouv][¹²³⁴]*)?/,
+
+  // FUSED SOUNDS
+  // dropped Ꮝ sound in sgi/sgw pronoun 2sg>1sg.
+  ᏍᎦ: /[kg]/,
+  ᏍᏆ: /((gw)|(qu)|(kw))/,
+  // fused h from second person set A pronoun
+  ᏯᎭ: /y([aeiouv][¹²³⁴]*)?/,
+  ᏩᎭ: /w([aeiouv][¹²³⁴]*)?/,
+};
+
+function lazyMapFind<T, U>(
+  items: T[],
+  map: (e: T) => U,
+  predicate: (e: U) => boolean
+): U | undefined {
+  for (const elm of items) {
+    const res = map(elm);
+    if (predicate(res)) return res;
+  }
+}
+
+function matchPrototypicalSyllable({
+  graphemeProto,
+  remainingPhonetics,
+}: {
+  remainingPhonetics: string;
+  graphemeProto: string;
+}): { matchedPhonetics: string; foundAt: number } | undefined {
+  const nextRegexp = syllabarySounds[graphemeProto];
+  if (nextRegexp === undefined)
+    throw new Error(
+      `No regexp found for prototypically grapheme: ${graphemeProto}`
+    );
+  const matchRes = nextRegexp.exec(remainingPhonetics);
+  if (
+    matchRes === null ||
+    (matchRes.index > 0 &&
+      // the following allows for intrusive /h/s ie. unmarked aspiration to be part of any syllable
+      !["h", "ɂ"].includes(remainingPhonetics.substring(0, matchRes.index)))
+  ) {
+    return undefined;
+  }
+
+  const foundAt = matchRes.index;
+  const matchedPhonetics = matchRes[0];
+
+  return { matchedPhonetics, foundAt };
+}
+
+/**
+ * Match a syllabary grapheme against a set of phonetics.
+ * Handles fused sounds by first attempting to match unfused versions.
+ * Returns `undefined` if the grapheme couldn't be matched.
+ */
+function matchGrapheme({
+  syllabaryGrapheme,
+  remainingPhonetics,
+}: {
+  syllabaryGrapheme: string;
+  remainingPhonetics: string;
+}):
+  | {
+      remainingPhonetics: string;
+      splitPhonetics: string[];
+      splitSyllabary: string[];
+    }
+  | undefined {
+  const graphemeProto = prototypicalSyllable(syllabaryGrapheme);
+
+  const thingsToTry =
+    graphemeProto.length === 1
+      ? [[syllabaryGrapheme]]
+      : [syllabaryGrapheme.split(""), [syllabaryGrapheme]];
+
+  const res = lazyMapFind(
+    thingsToTry,
+    (syllabaryGraphemesToMatch) =>
+      syllabaryGraphemesToMatch.reduce<
+        [string, string[], string[]] | undefined
+      >(
+        (accumulator, syllabaryGrapheme) => {
+          if (accumulator === undefined) return undefined;
+
+          const [remainingPhonetics, splitSyllabary, splitPhonetics] =
+            accumulator;
+          const graphemeProto = prototypicalSyllable(syllabaryGrapheme);
+          const match = matchPrototypicalSyllable({
+            remainingPhonetics,
+            graphemeProto,
+          });
+
+          if (match)
+            return [
+              remainingPhonetics.substring(
+                match.matchedPhonetics.length + match.foundAt
+              ),
+              [...splitSyllabary, syllabaryGrapheme],
+              [
+                ...splitPhonetics,
+                remainingPhonetics.substring(
+                  0,
+                  match.matchedPhonetics.length + match.foundAt
+                ),
+              ],
+            ];
+          else {
+            return undefined;
+          }
+        },
+        [remainingPhonetics, [], []]
+      ),
+    (e) => e !== undefined
+  );
+
+  if (res) {
+    const [remainingPhonetics, splitSyllabary, splitPhonetics] = res;
+    return { remainingPhonetics, splitSyllabary, splitPhonetics };
+  }
+}
+
 function alignSyllabaryAndPhoneticsWord(
   syllabary: string,
   phonetics: string
 ): [string[], string[]] {
-  const syllabarySounds: Record<string, RegExp> = {
-    ".": /\.?/,
-    ",": /,?/,
-    "?": /\??/,
-    "!": /\!?/,
-    Ꭰ: /[aeiouv][¹²³⁴]*/,
-    Ꭶ: /[gk]([aeiouv][¹²³⁴]*)?/,
-    Ꭷ: /k([aeiouv][¹²³⁴]*)?/,
-    Ꭽ: /h([aeiouv][¹²³⁴]*)?/,
-    Ꮃ: /[ht]?l([aeiouv][¹²³⁴]*)?/,
-    Ꮉ: /m([aeiouv][¹²³⁴]*)?/,
-    Ꮎ: /n([aeiouv][¹²³⁴]*)?/,
-    Ꮏ: /hn([aeiouv][¹²³⁴]*)?/,
-    Ꮖ: /((gw)|(qu)|(kw))([aeiouv][¹²³⁴]*)?/,
-    Ꮝ: /s(?![aeiouv])/, // s not followed by vowel
-    Ꮜ: /s([aeiouv][¹²³⁴]*)?/, // always followed by vowel
-    Ꮣ: /[td]([aeiouv][¹²³⁴]*)?/,
-    Ꮤ: /t([aei][¹²³⁴]*)?/, // ta only represents ta, ti, te
-    Ꮭ: /((tl)|(hl)|(dl))([aeiouv][¹²³⁴]*)?/, // support tla for hla
-    Ꮬ: /((tl)|(hl)|(dl))([aeiouv][¹²³⁴]*)?/, // dla
-    Ꮳ: /((j)|(ts)|(ch))([aeiouv][¹²³⁴]*)?/,
-    Ꮹ: /w([aeiouv][¹²³⁴]*)?/,
-    Ꮿ: /y([aeiouv][¹²³⁴]*)?/,
-  };
-
   /**
    * Some speakers/writers will use Ꮝ before any sound starting with s, including Ꮜ,Ꮞ,etc.
    * This code merges an Ꮝ preceding a Ꮜ family character into one segment
    */
-  function fuseLoneᏍToSyllables(combined: string[], nextCharacter: string) {
+  function combinePossiblyFusedSounds(
+    combined: string[],
+    nextCharacter: string
+  ) {
     const previousCharacter: string | undefined = combined[combined.length - 1];
+    const previousProto: string | undefined =
+      previousCharacter && prototypicalSyllable(previousCharacter);
     const nextProto = prototypicalSyllable(nextCharacter);
     // an s syllable proceeded by an Ꮝ can be fused
     // TODO: can this be solved like /h/ metathesis rules
     if (previousCharacter === "Ꮝ" && nextProto === "Ꮜ") {
+      return [
+        ...combined.slice(0, combined.length - 1), // chop off prev segment that contained Ꮝ
+        "Ꮝ" + nextCharacter,
+      ];
+    }
+
+    // identify prefix sounds that could fuse a pronominal h
+    if (
+      (previousProto === "Ꮿ" ||
+        previousProto === "Ꮹ" ||
+        previousProto === "Ꮎ") &&
+      nextProto === "Ꭽ"
+    ) {
+      return [
+        ...combined.slice(0, combined.length - 1), // chop off prev segment that contained prefix
+        previousCharacter + nextCharacter,
+      ];
+    }
+
+    // identify ᏍᎩ / ᏍᏆ 2sg -> 1sg pronoun
+    if (
+      previousCharacter === "Ꮝ" &&
+      (nextCharacter === "Ꭹ" || nextProto === "Ꮖ")
+    ) {
       return [
         ...combined.slice(0, combined.length - 1), // chop off prev segment that contained Ꮝ
         "Ꮝ" + nextCharacter,
@@ -183,58 +330,27 @@ function alignSyllabaryAndPhoneticsWord(
   const [_remaining, splitSyllabary, splitPhonetics] = syllabary
     .trim()
     .split("")
-    .reduce<string[]>(fuseLoneᏍToSyllables, [])
+    .reduce<string[]>(combinePossiblyFusedSounds, [])
     .reduce<[string, string[], string[]]>(
       (
         [remainingPhonetics, splitSyllabary, splitPhonetics],
         syllabaryGrapheme
       ) => {
-        const graphemeProto = prototypicalSyllable(syllabaryGrapheme);
-        const nextRegexp = syllabarySounds[graphemeProto];
-        if (nextRegexp === undefined)
-          throw new Error(`No regexp found for: ${syllabaryGrapheme}`);
-        const matchRes = nextRegexp.exec(remainingPhonetics);
-        if (
-          matchRes === null ||
-          (matchRes.index > 0 &&
-            // the following allows for intrusive /h/s ie. unmarked aspiration to be part of any syllable
-            !["h", "ɂ"].includes(
-              remainingPhonetics.substring(0, matchRes.index)
-            ))
-        ) {
-          // in the case we are trying to match an h and the previous sound was
-          // a prefix which could fuse with an h, we will join the h syllabary
-          // grapheme to the previous syllabary segment
-          if (
-            graphemeProto === "Ꭽ" &&
-            splitPhonetics[splitPhonetics.length - 1].startsWith("h") &&
-            ["Ꮻ", "Ᏹ"].includes(splitSyllabary[splitSyllabary.length - 1])
-          ) {
-            return [
-              remainingPhonetics,
-              [
-                ...splitSyllabary.slice(0, splitSyllabary.length - 1),
-                splitSyllabary[splitSyllabary.length - 1] + syllabaryGrapheme,
-              ],
-              splitPhonetics,
-            ];
-          } else {
-            throw new Error(
-              `Could not match: [${phonetics} / ${syllabary}]: ${remainingPhonetics} --> ${matchRes} (${graphemeProto} / ${nextRegexp})`
-            );
-          }
+        const match = matchGrapheme({
+          syllabaryGrapheme,
+          remainingPhonetics,
+        });
+
+        if (!match) {
+          throw new Error(
+            `Failed to match ${syllabaryGrapheme} against ${remainingPhonetics}`
+          );
         }
 
-        const foundAt = matchRes.index;
-        const matchedPhonetics = matchRes[0];
-
         return [
-          remainingPhonetics.substring(matchedPhonetics.length + foundAt),
-          [...splitSyllabary, syllabaryGrapheme],
-          [
-            ...splitPhonetics,
-            remainingPhonetics.substring(0, matchedPhonetics.length + foundAt),
-          ],
+          match.remainingPhonetics,
+          [...splitSyllabary, ...match.splitSyllabary],
+          [...splitPhonetics, ...match.splitPhonetics],
         ];
       },
       [phonetics.trim(), [], []]
