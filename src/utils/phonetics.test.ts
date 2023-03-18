@@ -53,6 +53,7 @@ describe("mcoToWebsterTones", () => {
     ],
     ["Ahyv:dagwalò:sgi", "a²hyv²²da²gwa²lo¹¹sgi"],
     ["Ayv:wi:ya̋", "a²yv²²wi²²ya⁴"],
+    ["Salǒ:li gaɂnǐ:ya na gi:hli.", "sa²lo²³li ga²ɂni²³ya na gi²²hli"],
   ])(
     "converts from diacritic- to superscript-based orthographies",
     (mco, expected) => {

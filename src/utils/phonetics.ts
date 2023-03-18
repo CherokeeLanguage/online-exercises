@@ -62,7 +62,7 @@ export function mcoToWebsterTones(cherokee: string): string {
       .replaceAll(/([aeiouv])\u0302(?=\s|$)/g, "$1³$2") // combining circumflex accent, short
       .replaceAll(/([aeiouv])\u0300/g, "$1¹") // combining grave accent, short
       .replaceAll(/([aeiouv])\u0301/g, "$1³") // combining acute accent, short
-      .replaceAll(/([aeiouv])(?![¹²³⁴])(?=\w)/g, "$1²") // non-final vowel not followed by any tone yet
+      .replaceAll(/([aeiouv])(?![¹²³⁴])(?=[ɂ\w])/g, "$1²") // non-final vowel not followed by any tone yet
   );
 }
 
