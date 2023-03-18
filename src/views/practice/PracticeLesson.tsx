@@ -6,6 +6,7 @@ import {
 } from "../../components/exercises/Exercise";
 import { SimilarTerms } from "../../components/exercises/SimilarTerms";
 import { SimpleFlashcards } from "../../components/exercises/SimpleFlashcards";
+import { WriteTheTones } from "../../components/exercises/WriteTheTones";
 import { PickExercise } from "./PickExercise";
 
 export const exercises: {
@@ -27,6 +28,13 @@ export const exercises: {
     description:
       "Practice terms by listening to Cherokee audio and choosing between similar sounding answers. Often takes less time than flashcards, but often leads to more mistakes.",
     Component: SimilarTerms,
+  },
+  {
+    path: "write-the-tones",
+    name: "Write the tones",
+    description:
+      "Practice your tone accuracy by filling in the tone sequence for the missing word in the term.",
+    Component: WriteTheTones,
   },
 ];
 

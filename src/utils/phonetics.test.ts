@@ -134,12 +134,24 @@ describe("alignSyllabaryAndPhonetics", () => {
     // the following handle fused sounds
     ["ᏫᎯᏢᎾ", "hwitlvna", ["ᏫᎯ", "Ꮲ", "Ꮎ"], ["hwi", "tlv", "na"]],
     ["ᏱᎯᏍᏕᎳ", "hyisdela", ["ᏱᎯ", "Ꮝ", "Ꮥ", "Ꮃ"], ["hyi", "s", "de", "la"]],
+    [
+      "ᏱᏍᎩᏍᏕᎳ",
+      "yiksdela",
+      ["Ᏹ", "ᏍᎩ", "Ꮝ", "Ꮥ", "Ꮃ"],
+      ["yi", "k", "s", "de", "la"],
+    ],
     // sounds are not fused if they do not need to be
     ["ᏘᏫᎯ", "tiwihi", ["Ꮨ", "Ꮻ", "Ꭿ"], ["ti", "wi", "hi"]],
+    [
+      "ᏍᎩᏃᎯᏍᏏ",
+      "sginohisi",
+      ["Ꮝ", "Ꭹ", "Ꮓ", "Ꭿ", "ᏍᏏ"],
+      ["s", "gi", "no", "hi", "si"],
+    ],
   ])(
     "works idk",
     (syllabary, phonetics, expectedSyllabary, expectedPhonetics) => {
-      const result = alignSyllabaryAndPhonetics(syllabary, phonetics);
+      const result = alignSyllabaryAndPhonetics(syllabary, phonetics, false);
       assert.deepStrictEqual(result, [
         [expectedSyllabary],
         [expectedPhonetics],
@@ -163,7 +175,8 @@ describe("alignSyllabaryAndPhonetics", () => {
     assert.deepStrictEqual(
       termsThatExploded,
       // actively talking to first language speakers about this term:
-      ["e²²li³³wu³ke³ yi²ki,sde²²la, di²gv²²di²²ye³ʔv²³ʔi²"],
+      // ["e²²li³³wu³ke³ yi²ki,sde²²la, di²gv²²di²²ye³ʔv²³ʔi²"],
+      [],
       "there should be no terms that error out"
     );
   });
@@ -173,15 +186,20 @@ describe("alignSyllabaryAndPhonetics", () => {
       "ᎡᎵᏭᎨ ᏱᏍᎩᏍᏕᎳ ᏗᎬᏗᏰᎥᎢ",
       "e²²li³³wu³ke³ yi²ksde²²l di²gv²²di²²ye³ɂv²³ɂi²"
     );
-    assert.deepStrictEqual(syllabary, [
-      ["Ꭱ", "Ꮅ", "Ꮽ", "Ꭸ"],
-      ["ᏱᏍᎩᏍᏕᎳ"],
-      ["Ꮧ", "Ꭼ", "Ꮧ", "Ᏸ", "Ꭵ", "Ꭲ"],
-    ]);
-    assert.deepStrictEqual(phonetics, [
-      ["e²²", "li³³", "wu³", "ke³"],
-      ["yi²ksde²²l"],
-      ["di²", "gv²²", "di²²", "ye³", "ɂv²³", "ɂi²"],
-    ]);
+    assert.deepStrictEqual(
+      [syllabary, phonetics],
+      [
+        [
+          ["Ꭱ", "Ꮅ", "Ꮽ", "Ꭸ"],
+          ["Ᏹ", "ᏍᎩ", "Ꮝ", "Ꮥ", "Ꮃ"],
+          ["Ꮧ", "Ꭼ", "Ꮧ", "Ᏸ", "Ꭵ", "Ꭲ"],
+        ],
+        [
+          ["e²²", "li³³", "wu³", "ke³"],
+          ["yi²", "k", "s", "de²²", "l"],
+          ["di²", "gv²²", "di²²", "ye³", "ɂv²³", "ɂi²"],
+        ],
+      ]
+    );
   });
 });
