@@ -18,10 +18,27 @@ interface ExportedLessonData {
 }
 
 export function Settings() {
+  const {
+    config: { userEmail },
+  } = useUserStateContext();
   useAnalyticsPageName("Settings");
   return (
     <div>
       <Preferences />
+      <br />
+      <SectionHeading>User identity</SectionHeading>
+      <p>
+        We have your email on file as: <code>{userEmail}</code>
+      </p>
+      <p>
+        <em>
+          Wrong address? Contact the maintainer at{" "}
+          <a href="mailto:charliemcvicker@protonmail.com">
+            charliemcvicker@protonmail.com
+          </a>
+        </em>
+      </p>
+      <br />
       <br />
       <hr />
       <p>

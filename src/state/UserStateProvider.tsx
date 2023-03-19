@@ -70,6 +70,8 @@ export interface UserConfig {
   groupId: GroupId | null;
   /** Preference for how phonetics are shown */
   phoneticsPreference: PhoneticsPreference | null;
+  /** Email address to contact the user */
+  userEmail: string | null;
 }
 
 /**
@@ -93,6 +95,7 @@ interface MiscInteractors {
   setUpstreamCollection: (collectionId: string) => void;
   registerGroup: (groupId: string) => void;
   setPhoneticsPreference: (newPreference: PhoneticsPreference) => void;
+  setUserEmail: (newUserEmail: string) => void;
   loadState: (state: UserState) => void;
 }
 
@@ -127,6 +130,14 @@ function reducePhoneticsPreference(
   else return phoneticsPreference;
 }
 
+function reduceUserEmail(
+  { config: { userEmail } }: UserState,
+  action: UserStateAction
+): string | null {
+  if (action.type === "SET_USER_EMAIL") return action.newUserEmail;
+  else return userEmail;
+}
+
 function reduceLessonCreationError(
   { ephemeral: { lessonCreationError } }: UserState,
   action: UserStateAction
@@ -145,6 +156,7 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
       upstreamCollection: reduceUpstreamCollection(state, action),
       groupId: reduceGroupId(state, action),
       phoneticsPreference: reducePhoneticsPreference(state, action),
+      userEmail: reduceUserEmail(state, action),
     },
     leitnerBoxes: reduceLeitnerBoxState(state, action),
     lessons: reduceLessonsState(state, action),
@@ -162,6 +174,7 @@ function blankUserState(initializationProps: UserStateProps): UserState {
       upstreamCollection: null,
       groupId: null,
       phoneticsPreference: null,
+      userEmail: null,
     },
     ephemeral: {
       lessonCreationError: null,
@@ -180,6 +193,7 @@ function convertLegacyState(state: LegacyUserState): UserState {
       groupId: state.groupId ?? null,
       phoneticsPreference: state.phoneticsPreference ?? null,
       upstreamCollection: state.upstreamCollection ?? null,
+      userEmail: null,
     },
     lessons: state.lessons,
     leitnerBoxes: state.leitnerBoxes,
@@ -284,6 +298,13 @@ export function useUserState(props: {
         dispatch({
           type: "SET_PHONETICS_PREFERENCE",
           newPreference,
+        });
+      },
+      setUserEmail(newUserEmail) {
+        logEvent(analytics, "set_user_email");
+        dispatch({
+          type: "SET_USER_EMAIL",
+          newUserEmail,
         });
       },
     }),
@@ -437,8 +458,8 @@ function WrappedUserStateProvider({
   return (
     <userStateContext.Provider value={{ ...state, ...interactors }}>
       {children}
-      {state.config.groupId === null && (
-        <GroupRegistrationModal registerGroup={interactors.registerGroup} />
+      {(state.config.userEmail === null || state.config.groupId === null) && (
+        <GroupRegistrationModal />
       )}
     </userStateContext.Provider>
   );

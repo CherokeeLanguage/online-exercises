@@ -73,6 +73,10 @@ export type SetPhoneticsPreferenceAction = {
   type: "SET_PHONETICS_PREFERENCE";
   newPreference: PhoneticsPreference;
 };
+export type SetUserEmailAction = {
+  type: "SET_USER_EMAIL";
+  newUserEmail: string;
+};
 
 export type UserStateAction =
   | SetUpstreamCollectionAction
@@ -82,4 +86,5 @@ export type UserStateAction =
   | SetAction
   | LessonsAction
   | HandleSetChangesAction
-  | SetPhoneticsPreferenceAction;
+  | SetPhoneticsPreferenceAction
+  | SetUserEmailAction;

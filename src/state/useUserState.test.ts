@@ -67,6 +67,7 @@ describe("useUserState", () => {
           upstreamCollection: null,
           groupId: null,
           phoneticsPreference: null,
+          userEmail: null,
         },
       });
     });
@@ -103,6 +104,7 @@ describe("useUserState", () => {
               upstreamCollection: null,
               groupId: null,
               phoneticsPreference: null,
+              userEmail: null,
             },
           },
           initializationProps: {
@@ -158,6 +160,7 @@ describe("useUserState", () => {
           upstreamCollection: null,
           groupId: null,
           phoneticsPreference: null,
+          userEmail: null,
         },
       });
     });
@@ -199,6 +202,7 @@ describe("useUserState", () => {
           upstreamCollection: null,
           groupId: null,
           phoneticsPreference: null,
+          userEmail: null,
         },
       });
     });
@@ -262,6 +266,7 @@ describe("useUserState", () => {
           upstreamCollection: null,
           groupId: null,
           phoneticsPreference: null,
+          userEmail: null,
         },
       });
     });
