@@ -6,7 +6,7 @@ import {
 } from "../../components/exercises/Exercise";
 import { SimilarTerms } from "../../components/exercises/SimilarTerms";
 import { SimpleFlashcards } from "../../components/exercises/SimpleFlashcards";
-import { WriteTheTones } from "../../components/exercises/WriteTheTones";
+import { FillInTheTone } from "../../components/exercises/FillInTheTone";
 import { PickExercise } from "./PickExercise";
 
 export const exercises: {
@@ -36,7 +36,7 @@ export const exercises: {
     name: "Fill in the tone",
     description:
       "Practice your tone accuracy by filling in the tone sequence for the missing word in the term.",
-    Component: WriteTheTones,
+    Component: FillInTheTone,
     minigame: true,
   },
 ];

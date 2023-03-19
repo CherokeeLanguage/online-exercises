@@ -4,7 +4,10 @@ import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { theme } from "../../theme";
 import { createIssueForTermInNewTab } from "../../utils/createIssue";
-import { getPhonetics } from "../../utils/phonetics";
+import {
+  alignSyllabaryAndPhonetics,
+  getPhonetics,
+} from "../../utils/phonetics";
 import { useAudio } from "../../utils/useAudio";
 import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
 import { ExerciseComponentProps } from "./Exercise";
@@ -39,17 +42,21 @@ export function pickNRandom<T>(options: T[], n: number): T[] {
   return picked;
 }
 
-export function validWordsToHide(phoneticsWords: string[]): [number, string][] {
+export function validWordsToHide(
+  phoneticsWords: string[][]
+): [number, string][] {
   return phoneticsWords
-    .map<[number, string]>((word, i) => [i, word])
+    .map<[number, string]>((word, i) => [i, word.join("")])
     .filter(([_idx, word]) => (word.match(/[¹²³⁴]/g)?.length ?? 0) >= 2); // only include words with at least two tones to match
 }
 
-export function toneSyllables(word: string) {
-  return word
-    .replaceAll(/([¹²³⁴]+)/g, "$1===")
-    .split("===")
-    .filter((syllable) => syllable !== "");
+export function validSyllablesToHide(syllables: string[]) {
+  return (
+    syllables
+      .map<[number, string]>((s, i) => [i, s])
+      // make sure syllable has tones
+      .filter(([_idx, syllable]) => syllable.match(/[¹²³⁴]/))
+  );
 }
 
 export function maskTonesOnSyllable(
@@ -83,23 +90,18 @@ interface MaskedToneReturn {
   correctIdx: number;
 }
 
-function useMaskedTone(phoneticsWords: string[]): MaskedToneReturn | null {
+function useMaskedTone(phoneticsWords: string[][]): MaskedToneReturn | null {
   return useMemo(() => {
     const validWords = validWordsToHide(phoneticsWords);
     if (validWords.length === 0) return null;
 
-    const [maskedWordIdx, wordToMask] = pickRandomElement(validWords);
+    const [maskedWordIdx] = pickRandomElement(validWords);
 
-    const syllables = toneSyllables(wordToMask);
-    const lastSyllableHasDistinctiveTone =
-      syllables[syllables.length - 1].match(/[¹²³⁴]/);
-
-    const maskedSyllableIdx = Math.floor(
-      Math.random() *
-        (lastSyllableHasDistinctiveTone
-          ? syllables.length
-          : syllables.length - 1)
+    const syllables = phoneticsWords[maskedWordIdx];
+    const [maskedSyllableIdx] = pickRandomElement(
+      validSyllablesToHide(syllables)
     );
+
     const [maskedSyllables, hiddenTone] = maskTonesOnSyllable(
       syllables,
       maskedSyllableIdx
@@ -122,7 +124,7 @@ function useMaskedTone(phoneticsWords: string[]): MaskedToneReturn | null {
   }, [phoneticsWords]);
 }
 
-export function WriteTheTones({
+export function FillInTheTone({
   currentCard,
   reviewCurrentCard,
 }: ExerciseComponentProps): ReactElement {
@@ -133,9 +135,14 @@ export function WriteTheTones({
     [currentCard]
   );
 
-  const phoneticsWords = useMemo(() => phonetics.split(" "), [phonetics]);
+  const [syllabarySegments, phoneticsSegments] = useMemo(
+    () => alignSyllabaryAndPhonetics(currentCard.card.syllabary, phonetics),
+    [phonetics]
+  );
 
-  const maskedToneHook = useMaskedTone(phoneticsWords);
+  // const phoneticsWords = useMemo(() => phonetics.split(" "), [phonetics]);
+
+  const maskedToneHook = useMaskedTone(phoneticsSegments);
 
   // pick random voice to use
   const cherokeeAudio = useMemo(
@@ -176,7 +183,7 @@ export function WriteTheTones({
             {currentCard.card.syllabary}
           </p>
           <p>
-            {phoneticsWords.map((word, idx) => (
+            {phoneticsSegments.map((word, idx) => (
               <>
                 {idx > 0 && " "}
                 {idx === maskedWordIdx ? (
