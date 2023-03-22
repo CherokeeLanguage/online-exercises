@@ -91,7 +91,9 @@ export function Flashcard({
   card: TermCardWithStats<Card>;
   reviewCurrentCard: (correct: boolean) => void;
 }) {
-  const { groupId, phoneticsPreference } = useUserStateContext();
+  const {
+    config: { groupId, phoneticsPreference },
+  } = useUserStateContext();
   const [cardFlipped, setCardFlipped] = useState(false);
   const [startSide, setStartSide] = useState<"cherokee" | "english">(
     "cherokee"

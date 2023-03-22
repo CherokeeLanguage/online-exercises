@@ -2,7 +2,7 @@ import { Fragment, ReactElement, ReactNode, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, cards, keyForCard } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
-import { useLesson } from "../../state/useLesson";
+import { useLesson } from "../../providers/LessonProvider";
 import { useReviewSession } from "../../spaced-repetition/useReviewSession";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
 import { useUserStateContext } from "../../state/UserStateProvider";
@@ -12,6 +12,7 @@ import { practiceLessonLeitnerBoxes } from "../../state/reducers/leitnerBoxes";
 import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
 import { PracticeLesson } from "../../state/reducers/lessons";
 import { StyledLink } from "../StyledLink";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 
 export interface ExerciseComponentProps {
   currentCard: TermCardWithStats<Card>;
@@ -20,7 +21,7 @@ export interface ExerciseComponentProps {
 }
 
 export interface ExerciseProps {
-  lessonId: string;
+  name: string;
   Component: (props: ExerciseComponentProps) => ReactElement;
 }
 
@@ -28,12 +29,17 @@ const ExerciseWrapper = styled.div`
   margin-bottom: 16px;
 `;
 
-export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
+export function Exercise(props: ExerciseProps): ReactElement {
+  return <ExerciseComponentWrapper {...props} />;
+}
+
+function ExerciseComponentWrapper({ Component, name }: ExerciseProps) {
   const { leitnerBoxes: userLeitnerBoxes } = useUserStateContext();
-  const { lesson, startLesson, concludeLesson, reviewTerm } =
-    useLesson(lessonId);
+  const { lesson, startLesson, concludeLesson, reviewTerm } = useLesson();
+
   const lessonCards = useCardsForTerms(cards, lesson.terms, keyForCard);
   const navigate = useNavigate();
+  useAnalyticsPageName(`Exercise (${name})`);
 
   const leitnerBoxesForSession = useMemo(
     () =>
@@ -53,7 +59,7 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
   } = useReviewSession(
     leitnerBoxesForSession,
     lessonCards,
-    lessonId,
+    lesson.id,
     reviewTerm
   );
 
@@ -65,7 +71,7 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
     if (currentCard === undefined) {
       // then we are done!
       concludeLesson();
-      navigate(`/lessons/${lessonId}`);
+      navigate(`/lessons/${lesson.id}`);
     }
   }, [currentCard]);
 

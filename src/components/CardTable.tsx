@@ -56,7 +56,9 @@ function CardRow({
   card: Card;
   showDetailsForCard: (card: Card) => void;
 }) {
-  const { phoneticsPreference } = useUserStateContext();
+  const {
+    config: { phoneticsPreference },
+  } = useUserStateContext();
   return (
     <>
       <tr>
@@ -89,7 +91,9 @@ function CardDetailsModal({ card, close }: { card: Card; close: () => void }) {
 }
 
 function CardAudioModalContent({ card }: { card: Card }) {
-  const { phoneticsPreference } = useUserStateContext();
+  const {
+    config: { phoneticsPreference },
+  } = useUserStateContext();
   return (
     <div>
       {showPhonetics(phoneticsPreference) && (
@@ -129,7 +133,9 @@ function CardAudioModalContent({ card }: { card: Card }) {
 }
 
 function AudioRow({ src, term }: { src: string; term: string }) {
-  const { groupId } = useUserStateContext();
+  const {
+    config: { groupId },
+  } = useUserStateContext();
   return (
     <tr>
       <td>

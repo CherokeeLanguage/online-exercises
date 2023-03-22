@@ -44,7 +44,9 @@ export function SimilarTerms({
   lessonCards,
   reviewCurrentCard,
 }: ExerciseComponentProps): ReactElement {
-  const { groupId } = useUserStateContext();
+  const {
+    config: { groupId },
+  } = useUserStateContext();
 
   const challenge = useMemo(
     () => newChallenge(currentCard, lessonCards),

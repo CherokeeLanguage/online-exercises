@@ -9,7 +9,9 @@ import { DashboardWidget } from "./DashboardWidget";
 const CHALLENGES_IN_15_MINUTE_LESSON = 90;
 
 export function LessonsWidget(): ReactElement {
-  const { upstreamCollection: collectionId } = useUserStateContext();
+  const {
+    config: { upstreamCollection: collectionId },
+  } = useUserStateContext();
   const upstreamCollection = collectionId
     ? collections[collectionId]
     : undefined;

@@ -11,6 +11,7 @@ import { useCardsForTerms } from "../../utils/useCardsForTerms";
 import { CollectionCredits } from "../../components/CollectionCredits";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
 import { BuildPracticeLessonModal } from "../../components/BuildPracticeLessonModal";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 
 export function ViewSet(): ReactElement {
   const { setId } = useParams();
@@ -39,10 +40,15 @@ const StyledHeadingWithButton = styled.div`
 `;
 
 function _ViewSet({ set }: { set: VocabSet }): ReactElement {
-  const { sets, addSet, removeSet } = useUserStateContext();
   const [removeSetModalOpen, setRemoveSetModalOpen] = useState(false);
   const [buildPracticeLessonModalOpen, setBuildPracticeLessonModalOpen] =
     useState(false);
+  useAnalyticsPageName(`Set view (${set.id})`);
+  const {
+    addSet,
+    removeSet,
+    config: { sets },
+  } = useUserStateContext();
 
   const isLearningSet = set.id in sets;
 

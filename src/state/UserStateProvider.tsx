@@ -9,13 +9,13 @@ import { useLocalStorage } from "react-use";
 import {
   LessonsInteractors,
   LessonsState,
-  reduceLessonsState,
-  useLessonsInteractors,
+  useLessonInteractors,
 } from "./reducers/lessons";
 import {
   LeitnerBoxesInteractors,
   LeitnerBoxState,
   reduceLeitnerBoxState,
+  ReviewResult,
   useLeitnerBoxesInteractors,
 } from "./reducers/leitnerBoxes";
 import { useReducerWithImperative } from "../utils/useReducerWithImperative";
@@ -30,6 +30,20 @@ import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { GroupId, GROUPS, isGroupId, reduceGroupId } from "./reducers/groupId";
 import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
 import { PhoneticsPreference } from "./reducers/phoneticsPreference";
+import {
+  useFirebaseUserConfig,
+  useFirebaseLeitnerBoxes,
+} from "../firebase/hooks";
+import { analytics, auth } from "../firebase";
+import { logEvent } from "firebase/analytics";
+import { useAuth } from "../firebase/AuthProvider";
+import { child, DatabaseReference, set } from "firebase/database";
+import {
+  lessonMetadataPath,
+  lessonReviewedTermsPath,
+  setTyped,
+} from "../firebase/paths";
+import { uploadAllLessonDataFromLocalStorage } from "../firebase/migration";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -37,7 +51,7 @@ export interface UserStateProps {
   };
 }
 
-export interface UserState {
+export interface LegacyUserState {
   /** Terms the user is learning and ther progress */
   leitnerBoxes: LeitnerBoxState;
   /** Lessons that have been created for the user */
@@ -52,13 +66,47 @@ export interface UserState {
   groupId: GroupId | undefined;
   /** Preference for how phonetics are shown */
   phoneticsPreference: PhoneticsPreference | undefined;
+  /** Has this state been uploaded to Firestore? */
+  HAS_BEEN_UPLOADED?: true;
+}
+
+/**
+ * Like legacy state but no lessons
+ */
+export interface UserConfig {
+  /** Sets the user is learning */
+  sets: UserSetsState;
+  /** The collection from which new sets should be pulled when the user is ready for new terms */
+  upstreamCollection: string | null;
+  /** Group registration */
+  groupId: GroupId | null;
+  /** Preference for how phonetics are shown */
+  phoneticsPreference: PhoneticsPreference | null;
+  /** Email address to contact the user */
+  userEmail: string | null;
+}
+
+/**
+ * Two slices of user state, managed separately by firebase
+ */
+export interface UserState {
+  /** Simple config and data we are comfortable fetching all at once */
+  config: UserConfig;
+  /** Terms the user is learning and ther progress - split from config for semantic and scaling reasons */
+  leitnerBoxes: LeitnerBoxState;
+  /** Data we don't care about and don't save to the db */
+  ephemeral: {
+    /** Latest error describing why a lesson could not be created */
+    lessonCreationError: LessonCreationError | null;
+  };
 }
 
 interface MiscInteractors {
   setUpstreamCollection: (collectionId: string) => void;
   registerGroup: (groupId: string) => void;
   setPhoneticsPreference: (newPreference: PhoneticsPreference) => void;
-  loadState: (state: UserState) => void;
+  setUserEmail: (newUserEmail: string) => void;
+  loadState: (state: LegacyUserState) => void;
 }
 
 export type UserInteractors = UserSetsInteractors &
@@ -67,82 +115,135 @@ export type UserInteractors = UserSetsInteractors &
   MiscInteractors;
 
 function reduceUpstreamCollection(
-  { upstreamCollection }: UserState,
+  { config: { upstreamCollection } }: UserState,
   action: UserStateAction
-): string | undefined {
+): string | null {
   if (action.type === "SET_UPSTREAM_COLLECTION") return action.newCollectionId;
   if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
     // if no upstream collection, set to group default
-    return upstreamCollection ?? GROUPS[action.groupId].defaultCollectionId;
+    return (
+      upstreamCollection ?? GROUPS[action.groupId].defaultCollectionId ?? null
+    );
   else return upstreamCollection;
 }
 
 function reducePhoneticsPreference(
-  state: UserState,
+  { config: { phoneticsPreference } }: UserState,
   action: UserStateAction
-): PhoneticsPreference | undefined {
+): PhoneticsPreference | null {
   if (action.type === "SET_PHONETICS_PREFERENCE") return action.newPreference;
   if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
     // if no preference, set to group default when a user registers
     return (
-      state.phoneticsPreference ?? GROUPS[action.groupId].phoneticsPreference
+      phoneticsPreference ?? GROUPS[action.groupId].phoneticsPreference ?? null
     );
-  else return state.phoneticsPreference;
+  else return phoneticsPreference;
+}
+
+function reduceUserEmail(
+  { config: { userEmail } }: UserState,
+  action: UserStateAction
+): string | null {
+  if (action.type === "SET_USER_EMAIL") return action.newUserEmail;
+  else return userEmail;
 }
 
 function reduceLessonCreationError(
-  { lessonCreationError }: UserState,
+  { ephemeral: { lessonCreationError } }: UserState,
   action: UserStateAction
-): LessonCreationError | undefined {
+): LessonCreationError | null {
   if (action.type === "LESSON_CREATE_ERROR") return action.error;
   else return lessonCreationError;
 }
 
 function reduceUserState(state: UserState, action: UserStateAction): UserState {
   // bail on individual resovlers if loading state
-  if (action.type === "LOAD_STATE") return action.state;
+  if (action.type === "LOAD_STATE") return convertLegacyState(action.state);
 
   return {
+    config: {
+      sets: reduceUserSetsState(state, action),
+      upstreamCollection: reduceUpstreamCollection(state, action),
+      groupId: reduceGroupId(state, action),
+      phoneticsPreference: reducePhoneticsPreference(state, action),
+      userEmail: reduceUserEmail(state, action),
+    },
     leitnerBoxes: reduceLeitnerBoxState(state, action),
-    lessons: reduceLessonsState(state, action),
-    sets: reduceUserSetsState(state, action),
-    upstreamCollection: reduceUpstreamCollection(state, action),
-    lessonCreationError: reduceLessonCreationError(state, action),
-    groupId: reduceGroupId(state, action),
-    phoneticsPreference: reducePhoneticsPreference(state, action),
+    ephemeral: {
+      lessonCreationError: reduceLessonCreationError(state, action),
+    },
   };
 }
 
-function createBlankUserState(initializationProps: UserStateProps): UserState {
-    return {
-      lessons: {},
+function blankUserState(initializationProps: UserStateProps): UserState {
+  return {
+    config: {
       sets: {},
-      leitnerBoxes: {
-        numBoxes: initializationProps.leitnerBoxes.numBoxes,
-        terms: {},
-      },
-      upstreamCollection: undefined,
-      lessonCreationError: undefined,
-      groupId: undefined,
-      phoneticsPreference: undefined,
-    };
+      upstreamCollection: null,
+      groupId: null,
+      phoneticsPreference: null,
+      userEmail: null,
+    },
+    ephemeral: {
+      lessonCreationError: null,
+    },
+    leitnerBoxes: {
+      numBoxes: initializationProps.leitnerBoxes.numBoxes,
+      terms: {},
+    },
+  };
 }
+
+function convertLegacyState(state: LegacyUserState): UserState {
+  return {
+    config: {
+      sets: state.sets,
+      groupId: state.groupId ?? null,
+      phoneticsPreference: state.phoneticsPreference ?? null,
+      upstreamCollection: state.upstreamCollection ?? null,
+      userEmail: null,
+    },
+    leitnerBoxes: state.leitnerBoxes,
+    ephemeral: { lessonCreationError: state.lessonCreationError ?? null },
+  };
+}
+
+/**
+ * We don't really need the ephemeral parts to initialize the state
+ */
+type InitializerState = Omit<UserState, "ephemeral"> & {
+  ephemeral?: UserState["ephemeral"];
+};
 
 function initializeUserState({
   storedUserState,
   initializationProps,
 }: {
-  storedUserState?: UserState;
+  storedUserState?: InitializerState;
   initializationProps: UserStateProps;
 }): UserState {
-  const blankState = createBlankUserState(initializationProps);
-  // this ensures all expected keys exist at least
-  if (storedUserState) return Object.assign(blankState, storedUserState);
+  // This blank state nonsense ensures undefined and missing properties are upgraded to null
+  const blankState = blankUserState(initializationProps);
+  if (storedUserState)
+    // deep assign to each slice
+    return Object.fromEntries(
+      Object.entries(blankState).map(([sliceKey, blankSlice]) => [
+        sliceKey,
+        Object.assign(
+          blankSlice,
+          Object.fromEntries(
+            Object.entries(
+              storedUserState[sliceKey as keyof UserState] ?? {}
+            ).filter(([k, v]) => v !== undefined)
+          )
+        ),
+      ])
+    ) as UserState;
   else return blankState;
 }
 
 export function useUserState(props: {
-  storedUserState?: UserState;
+  storedUserState?: InitializerState;
   initializationProps: UserStateProps;
 }) {
   const [state, dispatch, dispatchImperativeBlock] = useReducerWithImperative(
@@ -157,11 +258,7 @@ export function useUserState(props: {
     dispatchImperativeBlock
   );
 
-  const lessonsInteractors = useLessonsInteractors(
-    state,
-    dispatch,
-    dispatchImperativeBlock
-  );
+  const lessonsInteractors = useLessonInteractors(state, dispatch);
 
   const leitnerBoxesInteractors = useLeitnerBoxesInteractors(
     state,
@@ -171,7 +268,11 @@ export function useUserState(props: {
 
   const miscInteractors: MiscInteractors = useMemo(
     () => ({
-      setUpstreamCollection(collectionId: string | undefined) {
+      setUpstreamCollection(collectionId: string | null) {
+        logEvent(analytics, "change_upstream_collection", {
+          oldCollection: state.config.upstreamCollection,
+          newCollection: collectionId,
+        });
         dispatch({
           type: "SET_UPSTREAM_COLLECTION",
           newCollectionId: collectionId,
@@ -185,17 +286,31 @@ export function useUserState(props: {
           });
         }
       },
-      loadState(state: UserState) {
+      loadState(state: LegacyUserState) {
         dispatch({
           type: "LOAD_STATE",
           state,
         });
         dispatch({ type: "HANDLE_SET_CHANGES" });
+        localStorage.setItem("user-state", JSON.stringify(state));
+        auth.currentUser &&
+          uploadAllLessonDataFromLocalStorage(auth.currentUser);
       },
       setPhoneticsPreference(newPreference) {
+        logEvent(analytics, "change_phonetics_preference", {
+          oldPreference: state.config.phoneticsPreference,
+          newPreference,
+        });
         dispatch({
           type: "SET_PHONETICS_PREFERENCE",
           newPreference,
+        });
+      },
+      setUserEmail(newUserEmail) {
+        logEvent(analytics, "set_user_email");
+        dispatch({
+          type: "SET_USER_EMAIL",
+          newUserEmail,
         });
       },
     }),
@@ -212,9 +327,9 @@ export function useUserState(props: {
         props.initializationProps.leitnerBoxes.numBoxes
       );
 
-    if (state.groupId) {
+    if (state.config.groupId) {
       dispatch({
-        groupId: state.groupId,
+        groupId: state.config.groupId,
         type: "REGISTER_GROUP_AND_APPLY_DEFAULTS",
       });
     }
@@ -230,31 +345,107 @@ export function useUserState(props: {
       ...leitnerBoxesInteractors,
       ...miscInteractors,
     },
+    dispatch,
   };
 }
 
 // context provider
 
-export interface UserStateContext extends UserState, UserInteractors {}
+export interface UserStateContext extends UserState, UserInteractors {
+  dispatch: React.Dispatch<UserStateAction>;
+}
 
 const userStateContext = React.createContext<UserStateContext | null>(null);
 
-export function UserStateProvider({
+export interface UserStatePersistenceContext {
+  // browser stored state
+  localStorageUserState?: LegacyUserState;
+  flagLocalStateAndUploadLessons: () => void;
+  // -- Firebase slices --
+  // config
+  config: UserConfig | null;
+  setConfig: (newConfig: UserConfig) => void;
+  // leitner boxes
+  leitnerBoxes: LeitnerBoxState | null;
+  setLeitnerBoxes: (newLeitnerBoxes: LeitnerBoxState) => void;
+}
+export const userStatePersistenceContext =
+  React.createContext<UserStatePersistenceContext | null>(null);
+
+function UserStatePersistenceProvider({
+  children,
+}: {
+  children: ReactElement;
+}) {
+  const { user } = useAuth();
+  const [localStorageUserState, setLocalStorageUserState] =
+    useLocalStorage<LegacyUserState>("user-state", undefined, {
+      raw: false,
+      serializer: JSON.stringify,
+      deserializer: (s) => JSON.parse(s.normalize("NFD")), // ensure everything is NFD!
+    });
+
+  const [leitnerBoxes, setLeitnerBoxes] = useFirebaseLeitnerBoxes(user);
+  const [config, setConfig] = useFirebaseUserConfig(user);
+
+  if (config.ready && leitnerBoxes.ready) {
+    return (
+      <userStatePersistenceContext.Provider
+        value={{
+          localStorageUserState,
+          flagLocalStateAndUploadLessons() {
+            if (
+              !localStorageUserState ||
+              localStorageUserState.HAS_BEEN_UPLOADED
+            )
+              return;
+            setLocalStorageUserState({
+              ...localStorageUserState,
+              HAS_BEEN_UPLOADED: true,
+            });
+            uploadAllLessonDataFromLocalStorage(user);
+          },
+          config: config.data,
+          setConfig,
+          leitnerBoxes: leitnerBoxes.data,
+          setLeitnerBoxes,
+        }}
+      >
+        {children}
+      </userStatePersistenceContext.Provider>
+    );
+  } else {
+    return <em>Loading...</em>;
+  }
+}
+
+function WrappedUserStateProvider({
   children,
 }: {
   children: ReactNode;
 }): ReactElement {
-  const [storedUserState, setStoredUserState] = useLocalStorage<UserState>(
-    "user-state",
-    undefined,
-    {
-      raw: false,
-      serializer: JSON.stringify,
-      deserializer: (s) => JSON.parse(s.normalize("NFD")), // ensure everything is NFD!
-    }
-  );
+  const persistenceContext = useContext(userStatePersistenceContext);
+  if (persistenceContext === null) throw new Error("explode");
+  const {
+    localStorageUserState,
+    flagLocalStateAndUploadLessons,
+    config,
+    setConfig,
+    leitnerBoxes,
+    setLeitnerBoxes,
+  } = persistenceContext;
 
-  const { state, interactors } = useUserState({
+  const storedUserState = useMemo(() => {
+    if (config === null || leitnerBoxes === null) {
+      if (localStorageUserState === undefined) return undefined;
+      flagLocalStateAndUploadLessons();
+      return convertLegacyState(localStorageUserState);
+    } else {
+      return { config, leitnerBoxes };
+    }
+  }, [localStorageUserState, config, leitnerBoxes]);
+
+  const { state, interactors, dispatch } = useUserState({
     storedUserState,
     initializationProps: {
       leitnerBoxes: {
@@ -263,17 +454,29 @@ export function UserStateProvider({
     },
   });
 
+  // sync segments of state independently
   useEffect(() => {
-    setStoredUserState(state);
-  }, [state]);
+    setConfig(state.config);
+  }, [state.config]);
+  useEffect(() => {
+    setLeitnerBoxes(state.leitnerBoxes);
+  }, [state.leitnerBoxes]);
 
   return (
-    <userStateContext.Provider value={{ ...state, ...interactors }}>
+    <userStateContext.Provider value={{ ...state, ...interactors, dispatch }}>
       {children}
-      {state.groupId === undefined && (
-        <GroupRegistrationModal registerGroup={interactors.registerGroup} />
+      {(state.config.userEmail === null || state.config.groupId === null) && (
+        <GroupRegistrationModal />
       )}
     </userStateContext.Provider>
+  );
+}
+
+export function UserStateProvider({ children }: { children?: ReactNode }) {
+  return (
+    <UserStatePersistenceProvider>
+      <WrappedUserStateProvider>{children}</WrappedUserStateProvider>
+    </UserStatePersistenceProvider>
   );
 }
 

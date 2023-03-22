@@ -12,6 +12,7 @@ import { VisuallyHidden } from "../../components/VisuallyHidden";
 import { collections } from "../../data/vocabSets";
 import { useUserStateContext } from "../../state/UserStateProvider";
 import { CollectionCredits } from "../../components/CollectionCredits";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 
 export function ViewCollection(): ReactElement {
   const { collectionId } = useParams();
@@ -25,7 +26,10 @@ export function ViewCollectionPage({
   collectionId: string;
 }): ReactElement {
   const collection = collections[collectionId];
-  const { sets, upstreamCollection } = useUserStateContext();
+  useAnalyticsPageName(`View collection (${collection.title})`);
+  const {
+    config: { sets, upstreamCollection },
+  } = useUserStateContext();
   return (
     <div>
       <StyledCollectionHeader>

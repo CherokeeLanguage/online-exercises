@@ -44,7 +44,7 @@ export function createGithubIssueForAudioInNewTab(
 }
 
 export function createIssueForTermInNewTab(
-  groupId: string | undefined,
+  groupId: string | null,
   termKey: string
 ) {
   const a = document.createElement("a");

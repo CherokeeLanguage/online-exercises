@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import {
   Exercise,
   ExerciseComponentProps,
@@ -8,6 +8,7 @@ import { SimilarTerms } from "../../components/exercises/SimilarTerms";
 import { SimpleFlashcards } from "../../components/exercises/SimpleFlashcards";
 import { FillInTheTone } from "../../components/exercises/FillInTheTone";
 import { PickExercise } from "./PickExercise";
+import { LessonProvider } from "../../providers/LessonProvider";
 
 export const exercises: {
   path: string;
@@ -45,16 +46,22 @@ export function PracticeLesson(): ReactElement {
   const { lessonId } = useParams();
   // TODO: navigate instead
   if (lessonId === undefined) throw new Error("Must have a lesson to practice");
+  const navigate = useNavigate();
   return (
-    <Routes>
-      <Route index element={<PickExercise lessonId={lessonId} />} />
-      {exercises.map(({ path, Component }, idx) => (
-        <Route
-          key={idx}
-          path={path}
-          element={<Exercise Component={Component} lessonId={lessonId} />}
-        />
-      ))}
-    </Routes>
+    <LessonProvider
+      lessonId={lessonId}
+      onLessonDoesNotExist={() => navigate("/")}
+    >
+      <Routes>
+        <Route index element={<PickExercise />} />
+        {exercises.map(({ path, Component, name }, idx) => (
+          <Route
+            key={idx}
+            path={path}
+            element={<Exercise Component={Component} name={name} />}
+          />
+        ))}
+      </Routes>
+    </LessonProvider>
   );
 }

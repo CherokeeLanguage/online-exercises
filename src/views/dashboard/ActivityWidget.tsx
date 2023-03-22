@@ -4,7 +4,10 @@ import { getToday } from "../../utils/dateUtils";
 import { DashboardWidget } from "./DashboardWidget";
 
 export function ActivityWidget() {
-  const { leitnerBoxes, upstreamCollection } = useUserStateContext();
+  const {
+    leitnerBoxes,
+    config: { upstreamCollection },
+  } = useUserStateContext();
   const today = getToday();
 
   const termsToStudyToday = Object.values(leitnerBoxes.terms).filter(

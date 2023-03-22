@@ -1,18 +1,28 @@
 import React, { ReactElement } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Card, cards, keyForCard } from "../../data/cards";
 import { nameForLesson } from "../../state/reducers/lessons";
 import { ReviewResult } from "../../state/reducers/leitnerBoxes";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
-import { useLesson } from "../../state/useLesson";
+import { LessonProvider, useLesson } from "../../providers/LessonProvider";
 import { SectionHeading } from "../../components/SectionHeading";
 import { CardTable } from "../../components/CardTable";
 import { StyledLink } from "../../components/StyledLink";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 
 export function ViewLesson(): ReactElement {
+  useAnalyticsPageName("View lesson");
   const { lessonId } = useParams();
+  const navigate = useNavigate();
   if (!lessonId) return <Navigate to={"/lessons"} replace />;
-  return <_ViewLesson lessonId={lessonId} />;
+  return (
+    <LessonProvider
+      lessonId={lessonId}
+      onLessonDoesNotExist={() => navigate("/lessons", { replace: true })}
+    >
+      <_ViewLesson />
+    </LessonProvider>
+  );
 }
 
 const reviewResultNames: Record<ReviewResult, string> = {
@@ -21,8 +31,8 @@ const reviewResultNames: Record<ReviewResult, string> = {
   REPEAT_MISTAKE: "Multiple mistakes",
 };
 
-export function _ViewLesson({ lessonId }: { lessonId: string }): ReactElement {
-  const { lesson, reviewedTerms } = useLesson(lessonId);
+export function _ViewLesson(): ReactElement {
+  const { lesson, reviewedTerms } = useLesson();
   const reviewedCards = useCardsForTerms(
     cards,
     Object.keys(reviewedTerms),

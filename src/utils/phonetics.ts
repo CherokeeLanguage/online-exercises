@@ -3,7 +3,7 @@ import { PhoneticsPreference } from "../state/reducers/phoneticsPreference";
 
 export function getPhonetics(
   card: Card,
-  phoneticsPreference: PhoneticsPreference | undefined
+  phoneticsPreference: PhoneticsPreference | null
 ): string {
   // this should be the ONLY time we use NFC -- and it is for user presentation
   return getRawPhonetics(card, phoneticsPreference).normalize("NFC");
@@ -11,14 +11,14 @@ export function getPhonetics(
 
 function getRawPhonetics(
   card: Card,
-  phoneticsPreference: PhoneticsPreference | undefined
+  phoneticsPreference: PhoneticsPreference | null
 ): string {
   switch (phoneticsPreference) {
     case PhoneticsPreference.Detailed:
       return detailedPhonetics(card);
     case PhoneticsPreference.Simple:
       return simplifyPhonetics(card);
-    case undefined:
+    case null:
     case PhoneticsPreference.NoPhonetics:
       return "";
   }

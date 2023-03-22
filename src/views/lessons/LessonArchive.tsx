@@ -4,13 +4,25 @@ import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import { StyledTable } from "../../components/StyledTable";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
+import { useAuth } from "../../firebase/AuthProvider";
+import {
+  useAnalyticsPageName,
+  useFirebaseAllLessonMetadata,
+  useFirebaseLessonMetadata,
+} from "../../firebase/hooks";
 import { Lesson, nameForLesson } from "../../state/reducers/lessons";
 import { useUserStateContext } from "../../state/UserStateProvider";
 
 type FinishedLesson = Lesson & { startedAt: number; completedAt: number };
 
 export function LessonArchive(): ReactElement {
-  const { lessons } = useUserStateContext();
+  useAnalyticsPageName("Lesson archive");
+  const { user } = useAuth();
+
+  const [firebaseResult, _] = useFirebaseAllLessonMetadata(user);
+  if (!firebaseResult.ready) return <em>Loading...</em>;
+  const lessons = firebaseResult.data ?? {};
+
   const finishedLessons = Object.values(lessons)
     .filter((l): l is FinishedLesson => Boolean(l.completedAt && l.startedAt))
     // most recent first

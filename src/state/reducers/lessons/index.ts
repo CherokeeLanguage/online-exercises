@@ -1,14 +1,16 @@
 import React, { Dispatch } from "react";
 import { getToday } from "../../../utils/dateUtils";
-import { v4 } from "uuid";
 import { vocabSets } from "../../../data/vocabSets";
 import { UserState } from "../../UserStateProvider";
-import { Act, ImperativeBlock } from "../../../utils/useReducerWithImperative";
-import { ReviewResult } from "../leitnerBoxes";
-import { createLessonTransaction } from "./createNewLesson";
-import { UserStateAction } from "../../actions";
+import { createLessonAndFindSetsToAdd } from "./createNewLesson";
+import { LessonsAction, UserStateAction } from "../../actions";
 import { showsPerSessionForBox } from "../../../spaced-repetition/usePimsleurTimings";
 import { cherokeeToKey } from "../../../data/cards";
+import { logEvent } from "firebase/analytics";
+import { analytics } from "../../../firebase";
+import { useAuth } from "../../../firebase/AuthProvider";
+import { lessonMetadataPath } from "../../../firebase/paths";
+import { set } from "firebase/database";
 
 export interface DailyLesson {
   type: "DAILY";
@@ -58,51 +60,32 @@ export function nameForLesson(lesson: Lesson) {
 export type LessonsState = Record<string, Lesson>;
 
 export interface LessonsInteractors {
-  startLesson: (lessonId: string) => void;
-  concludeLesson: (
-    lesson: Lesson,
-    reviewedTerms: Record<string, ReviewResult>
-  ) => void;
   createNewLesson: (
     desiredId: string,
     numChallenges: number,
     reviewOnly: boolean
-  ) => void;
+  ) => Promise<void>;
   createPracticeLesson: (
     desiredId: string,
     setsToInclude: string[],
     shuffleTerms: boolean
-  ) => void;
+  ) => Promise<void>;
 }
 
-export function reduceLessonsState(
-  { lessons }: UserState,
-  action: UserStateAction
-): Record<string, Lesson> {
+export function reduceLesson(lesson: Lesson, action: LessonsAction): Lesson {
   switch (action.type) {
-    case "ADD_LESSON":
-      return {
-        ...lessons,
-        [action.lesson.id]: action.lesson,
-      };
     case "START_LESSON":
       return {
-        ...lessons,
-        [action.lessonId]: {
-          ...lessons[action.lessonId],
-          startedAt: Date.now(),
-        },
+        ...lesson,
+        startedAt: Date.now(),
       };
     case "CONCLUDE_LESSON":
       return {
-        ...lessons,
-        [action.lesson.id]: {
-          ...lessons[action.lesson.id],
-          completedAt: Date.now(),
-        },
+        ...lesson,
+        completedAt: Date.now(),
       };
   }
-  return lessons;
+  return lesson;
 }
 
 function shuffled<T>(list: T[]): T[] {
@@ -138,46 +121,55 @@ function practiceLessonForSets(
   };
 }
 
-export function useLessonsInteractors(
-  _state: UserState,
-  dispatch: Dispatch<UserStateAction>,
-  dispatchImperativeBlock: Dispatch<ImperativeBlock<UserState, UserStateAction>>
+/**
+ * Global state interactors for lessons;
+ */
+export function useLessonInteractors(
+  state: UserState,
+  dispatch: Dispatch<UserStateAction>
 ): LessonsInteractors {
-  function createNewLesson(
-    desiredId: string,
-    numChallenges: number,
-    reviewOnly: boolean
-  ) {
-    dispatchImperativeBlock((state, act) =>
-      createLessonTransaction(desiredId, numChallenges, reviewOnly, state, act)
-    );
-  }
-
+  const { user } = useAuth();
   return {
-    startLesson(lessonId) {
-      dispatch({
-        type: "START_LESSON",
-        lessonId,
-      });
+    createNewLesson(desiredId, numChallenges, reviewOnly) {
+      const result = createLessonAndFindSetsToAdd(
+        desiredId,
+        numChallenges,
+        reviewOnly,
+        state
+      );
+      if (result.type === "ERROR") {
+        logEvent(analytics, "lesson_creation_error", {
+          error: result.error,
+          reviewOnly,
+        });
+        dispatch({
+          type: "LESSON_CREATE_ERROR",
+          error: {
+            lessonId: desiredId,
+            type: result.error,
+          },
+        });
+        return Promise.reject();
+      } else {
+        result.result.setsToAdd.forEach((setToAdd) =>
+          dispatch({
+            type: "ADD_SET",
+            setToAdd,
+          })
+        );
+        return set(
+          lessonMetadataPath(user, result.result.lesson.id).ref,
+          result.result.lesson
+        );
+      }
     },
-    concludeLesson(lesson, reviewedTerms) {
-      dispatch({
-        type: "CONCLUDE_LESSON",
-        lesson,
-        reviewedTerms,
-      });
-    },
-    createNewLesson,
     createPracticeLesson(lessonId, setsToInclude, shuffleTerms) {
       const lesson = practiceLessonForSets(
         lessonId,
         setsToInclude,
         shuffleTerms
       );
-      dispatch({
-        type: "ADD_LESSON",
-        lesson,
-      });
+      return set(lessonMetadataPath(user, lesson.id).ref, lesson);
     },
   };
 }

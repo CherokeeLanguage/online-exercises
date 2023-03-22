@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 import { lessonKey } from "../../state/reducers/lessons";
 import {
   isPhoneticsPreference,
@@ -17,9 +18,27 @@ interface ExportedLessonData {
 }
 
 export function Settings() {
+  const {
+    config: { userEmail },
+  } = useUserStateContext();
+  useAnalyticsPageName("Settings");
   return (
     <div>
       <Preferences />
+      <br />
+      <SectionHeading>User identity</SectionHeading>
+      <p>
+        We have your email on file as: <code>{userEmail}</code>
+      </p>
+      <p>
+        <em>
+          Wrong address? Contact the maintainer at{" "}
+          <a href="mailto:charliemcvicker@protonmail.com">
+            charliemcvicker@protonmail.com
+          </a>
+        </em>
+      </p>
+      <br />
       <br />
       <hr />
       <p>
@@ -40,7 +59,10 @@ const PreferencesForm = styled.form`
 `;
 
 function Preferences() {
-  const { setPhoneticsPreference, phoneticsPreference } = useUserStateContext();
+  const {
+    setPhoneticsPreference,
+    config: { phoneticsPreference },
+  } = useUserStateContext();
   const phoneticsPreferenceId = useId();
 
   function onPhoneticsPreferenceChanged(event: ChangeEvent<HTMLSelectElement>) {
@@ -58,7 +80,7 @@ function Preferences() {
         <label htmlFor={phoneticsPreferenceId}>Phonetics preference</label>
         <select
           id={phoneticsPreferenceId}
-          value={phoneticsPreference}
+          value={phoneticsPreference ?? undefined}
           onChange={onPhoneticsPreferenceChanged}
         >
           {Object.entries(PREFERENCE_LITERATES).map(([value, literate], i) => (
@@ -83,12 +105,9 @@ function ImportExportDataConsole() {
     // state, and need to add that key here.
     const fieldsToSave: Record<keyof UserState, null> = {
       leitnerBoxes: null,
-      lessonCreationError: null,
-      lessons: null,
-      sets: null,
-      upstreamCollection: null,
-      groupId: null,
-      phoneticsPreference: null,
+      // lessons: null,
+      ephemeral: null,
+      config: null,
     };
 
     const stateToSave = Object.keys(fieldsToSave).reduce(
@@ -96,19 +115,19 @@ function ImportExportDataConsole() {
       {}
     );
 
-    const lessonData: ExportedLessonData[] = Object.keys(userState.lessons).map(
-      (lessonId) => ({
-        lessonId,
-        reviewedTerms: window.localStorage.getItem(
-          lessonKey(lessonId) + "/reviewed-terms"
-        ),
-        timings: window.localStorage.getItem(lessonKey(lessonId) + "/timings"),
-      })
-    );
+    // const lessonData: ExportedLessonData[] = Object.keys(userState).map(
+    //   (lessonId) => ({
+    //     lessonId,
+    //     reviewedTerms: window.localStorage.getItem(
+    //       lessonKey(lessonId) + "/reviewed-terms"
+    //     ),
+    //     timings: window.localStorage.getItem(lessonKey(lessonId) + "/timings"),
+    //   })
+    // );
 
     const dataStr =
       "data:text/json;charset=utf-8," +
-      encodeURIComponent(JSON.stringify({ ...stateToSave, lessonData }));
+      encodeURIComponent(JSON.stringify({ ...stateToSave /** lessonData */ }));
     const dlAnchorElem = document.createElement("a");
 
     dlAnchorElem.setAttribute("href", dataStr);
@@ -131,7 +150,7 @@ function ImportExportDataConsole() {
       fileToLoad.text().then((data) => {
         const { lessonData, ...state } = JSON.parse(data);
         // load lesson data
-        lessonData.forEach((exported: ExportedLessonData) => {
+        (lessonData ?? []).forEach((exported: ExportedLessonData) => {
           if (exported.reviewedTerms) {
             window.localStorage.setItem(
               lessonKey(exported.lessonId) + "/reviewed-terms",
@@ -148,7 +167,9 @@ function ImportExportDataConsole() {
         });
 
         // load larger user state
-        userState.loadState(state);
+        // userState.loadState(state);
+        localStorage.setItem("user-state", JSON.stringify(state));
+
         navigate("/");
       });
   }

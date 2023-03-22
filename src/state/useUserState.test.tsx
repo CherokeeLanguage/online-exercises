@@ -1,4 +1,4 @@
-import { UserState, useUserState } from "./UserStateProvider";
+import { UserState, UserStateProps, useUserState } from "./UserStateProvider";
 import { renderHook, act } from "@testing-library/react";
 import {
   CHEROKEE_LANGUAGE_LESSONS_COLLLECTION,
@@ -7,6 +7,25 @@ import {
 } from "../data/vocabSets";
 import assert from "assert";
 import { TermStats } from "../spaced-repetition/types";
+import { MockAuthProvider } from "../firebase/AuthProvider";
+import { LessonCreationError } from "./reducers/lessons/createNewLesson";
+
+function renderUserStateHook(props: {
+  storedUserState?:
+    | (Omit<UserState, "ephemeral"> & {
+        ephemeral?:
+          | { lessonCreationError: LessonCreationError | null }
+          | undefined;
+      })
+    | undefined;
+  initializationProps: UserStateProps;
+}) {
+  return renderHook(() => useUserState(props), {
+    wrapper: ({ children }) => (
+      <MockAuthProvider userId="TEST_ID">{children}</MockAuthProvider>
+    ),
+  });
+}
 
 describe("useUserState", () => {
   const now = 1661985522163;
@@ -26,15 +45,13 @@ describe("useUserState", () => {
       const setToAdd =
         collections[CHEROKEE_LANGUAGE_LESSONS_COLLLECTION].sets[0];
 
-      const ref = renderHook(() =>
-        useUserState({
-          initializationProps: {
-            leitnerBoxes: {
-              numBoxes: 6,
-            },
+      const ref = renderUserStateHook({
+        initializationProps: {
+          leitnerBoxes: {
+            numBoxes: 6,
           },
-        })
-      );
+        },
+      });
 
       act(() => ref.result.current.interactors.addSet(setToAdd.id));
 
@@ -53,17 +70,21 @@ describe("useUserState", () => {
           ),
           numBoxes: 6,
         },
-        lessonCreationError: undefined,
-        lessons: {},
-        sets: {
-          [setToAdd.id]: {
-            setId: setToAdd.id,
-            addedAt: now,
-          },
+        ephemeral: {
+          lessonCreationError: null,
         },
-        upstreamCollection: undefined,
-        groupId: undefined,
-        phoneticsPreference: undefined,
+        config: {
+          sets: {
+            [setToAdd.id]: {
+              setId: setToAdd.id,
+              addedAt: now,
+            },
+          },
+          upstreamCollection: null,
+          groupId: null,
+          phoneticsPreference: null,
+          userEmail: null,
+        },
       });
     });
 
@@ -81,33 +102,35 @@ describe("useUserState", () => {
         nextShowDate: 0,
       };
 
-      const ref = renderHook(() =>
-        useUserState({
-          storedUserState: {
-            leitnerBoxes: {
-              terms: {
-                [termAlreadyAdded]: existingTermStats,
-              },
-              numBoxes: 6,
+      const ref = renderUserStateHook({
+        storedUserState: {
+          leitnerBoxes: {
+            terms: {
+              [termAlreadyAdded]: existingTermStats,
             },
-            lessonCreationError: undefined,
-            lessons: {},
+            numBoxes: 6,
+          },
+          ephemeral: {
+            lessonCreationError: null,
+          },
+          config: {
             sets: {},
-            upstreamCollection: undefined,
-            groupId: undefined,
-            phoneticsPreference: undefined,
+            upstreamCollection: null,
+            groupId: null,
+            phoneticsPreference: null,
+            userEmail: null,
           },
-          initializationProps: {
-            leitnerBoxes: {
-              numBoxes: 6,
-            },
+        },
+        initializationProps: {
+          leitnerBoxes: {
+            numBoxes: 6,
           },
-        })
-      );
+        },
+      });
 
       act(() => ref.result.current.interactors.addSet(setToAdd.id));
 
-      assert.deepStrictEqual(ref.result.current.state.sets, {
+      assert.deepStrictEqual(ref.result.current.state.config.sets, {
         [setToAdd.id]: {
           setId: setToAdd.id,
           addedAt: now,
@@ -136,17 +159,21 @@ describe("useUserState", () => {
           ]),
           numBoxes: 6,
         },
-        lessonCreationError: undefined,
-        lessons: {},
-        sets: {
-          [setToAdd.id]: {
-            setId: setToAdd.id,
-            addedAt: now,
-          },
+        ephemeral: {
+          lessonCreationError: null,
         },
-        upstreamCollection: undefined,
-        groupId: undefined,
-        phoneticsPreference: undefined,
+        config: {
+          sets: {
+            [setToAdd.id]: {
+              setId: setToAdd.id,
+              addedAt: now,
+            },
+          },
+          upstreamCollection: null,
+          groupId: null,
+          phoneticsPreference: null,
+          userEmail: null,
+        },
       });
     });
   });
@@ -156,15 +183,13 @@ describe("useUserState", () => {
       const setToAddThenRemove =
         collections[CHEROKEE_LANGUAGE_LESSONS_COLLLECTION].sets[0];
 
-      const ref = renderHook(() =>
-        useUserState({
-          initializationProps: {
-            leitnerBoxes: {
-              numBoxes: 6,
-            },
+      const ref = renderUserStateHook({
+        initializationProps: {
+          leitnerBoxes: {
+            numBoxes: 6,
           },
-        })
-      );
+        },
+      });
 
       act(() => ref.result.current.interactors.addSet(setToAddThenRemove.id));
       // we already test to ensure it was added correctly
@@ -178,12 +203,16 @@ describe("useUserState", () => {
           terms: {},
           numBoxes: 6,
         },
-        lessonCreationError: undefined,
-        lessons: {},
-        sets: {},
-        upstreamCollection: undefined,
-        groupId: undefined,
-        phoneticsPreference: undefined,
+        ephemeral: {
+          lessonCreationError: null,
+        },
+        config: {
+          sets: {},
+          upstreamCollection: null,
+          groupId: null,
+          phoneticsPreference: null,
+          userEmail: null,
+        },
       });
     });
 
@@ -201,15 +230,13 @@ describe("useUserState", () => {
       assert(cllSetWithAyv);
       assert(sswSetWithAyv);
 
-      const ref = renderHook(() =>
-        useUserState({
-          initializationProps: {
-            leitnerBoxes: {
-              numBoxes: 6,
-            },
+      const ref = renderUserStateHook({
+        initializationProps: {
+          leitnerBoxes: {
+            numBoxes: 6,
           },
-        })
-      );
+        },
+      });
 
       act(() => ref.result.current.interactors.addSet(cllSetWithAyv.id));
       act(() => ref.result.current.interactors.addSet(sswSetWithAyv.id));
@@ -232,17 +259,21 @@ describe("useUserState", () => {
           ),
           numBoxes: 6,
         },
-        lessonCreationError: undefined,
-        lessons: {},
-        sets: {
-          [sswSetWithAyv.id]: {
-            setId: sswSetWithAyv.id,
-            addedAt: now,
-          },
+        ephemeral: {
+          lessonCreationError: null,
         },
-        upstreamCollection: undefined,
-        groupId: undefined,
-        phoneticsPreference: undefined,
+        config: {
+          sets: {
+            [sswSetWithAyv.id]: {
+              setId: sswSetWithAyv.id,
+              addedAt: now,
+            },
+          },
+          upstreamCollection: null,
+          groupId: null,
+          phoneticsPreference: null,
+          userEmail: null,
+        },
       });
     });
   });

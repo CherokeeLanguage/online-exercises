@@ -3,10 +3,14 @@ import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import { VocabSetTable } from "../../components/VocabSetTable";
 import { vocabSets } from "../../data/vocabSets";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 import { useUserStateContext } from "../../state/UserStateProvider";
 
 export function MySets(): ReactElement {
-  const { sets } = useUserStateContext();
+  useAnalyticsPageName("My sets");
+  const {
+    config: { sets },
+  } = useUserStateContext();
   const userSets = Object.values(sets)
     .sort((a, b) => a.addedAt - b.addedAt)
     .map((metadata) => vocabSets[metadata.setId]);
