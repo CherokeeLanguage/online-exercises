@@ -3,7 +3,7 @@ import { ReviewResult } from "./reducers/leitnerBoxes";
 import { Lesson } from "./reducers/lessons";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { PhoneticsPreference } from "./reducers/phoneticsPreference";
-import { UserState } from "./UserStateProvider";
+import { LegacyUserState, UserState } from "./UserStateProvider";
 
 export type ResizeLeitnerBoxesAction = {
   type: "RESIZE_LEITNER_BOXES";
@@ -34,12 +34,7 @@ export type RegisterWithGroupAction = {
 
 export type LoadStateAction = {
   type: "LOAD_STATE";
-  state: UserState;
-};
-
-export type AddLessonAction = {
-  type: "ADD_LESSON";
-  lesson: Lesson;
+  state: LegacyUserState;
 };
 
 export type StartLessonAction = {
@@ -59,7 +54,6 @@ export type FlagLessonCreationError = {
 };
 
 export type LessonsAction =
-  | AddLessonAction
   | ConcludeLessonAction
   | StartLessonAction
   | FlagLessonCreationError;

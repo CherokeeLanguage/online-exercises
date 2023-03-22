@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ButtonLink } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
-import { useLesson } from "../../state/useLesson";
+import { useLesson } from "../../providers/LessonProvider";
 import { useAnalyticsPageName } from "../../firebase/hooks";
 import { theme } from "../../theme";
 import { exercises } from "./PracticeLesson";
@@ -18,8 +18,8 @@ const ExercisesWrapper = styled.div`
 /**
  * Show a list of options for execises a user can do to complete their vocab lesson.
  */
-export function PickExercise({ lessonId }: { lessonId: string }) {
-  const { lesson } = useLesson(lessonId);
+export function PickExercise() {
+  const { lesson } = useLesson();
   useAnalyticsPageName("Pick exercise");
   return (
     <div>

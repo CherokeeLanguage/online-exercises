@@ -51,3 +51,17 @@ export function useAuth(): AuthContext {
   if (context === null) throw new Error("Must be used under an AuthProvider");
   return context;
 }
+
+export function MockAuthProvider({
+  userId,
+  children,
+}: {
+  userId: string;
+  children?: ReactNode;
+}) {
+  return (
+    <authContext.Provider value={{ user: { uid: userId } as User }}>
+      {children}
+    </authContext.Provider>
+  );
+}

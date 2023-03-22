@@ -105,7 +105,7 @@ function ImportExportDataConsole() {
     // state, and need to add that key here.
     const fieldsToSave: Record<keyof UserState, null> = {
       leitnerBoxes: null,
-      lessons: null,
+      // lessons: null,
       ephemeral: null,
       config: null,
     };
@@ -115,19 +115,19 @@ function ImportExportDataConsole() {
       {}
     );
 
-    const lessonData: ExportedLessonData[] = Object.keys(userState.lessons).map(
-      (lessonId) => ({
-        lessonId,
-        reviewedTerms: window.localStorage.getItem(
-          lessonKey(lessonId) + "/reviewed-terms"
-        ),
-        timings: window.localStorage.getItem(lessonKey(lessonId) + "/timings"),
-      })
-    );
+    // const lessonData: ExportedLessonData[] = Object.keys(userState).map(
+    //   (lessonId) => ({
+    //     lessonId,
+    //     reviewedTerms: window.localStorage.getItem(
+    //       lessonKey(lessonId) + "/reviewed-terms"
+    //     ),
+    //     timings: window.localStorage.getItem(lessonKey(lessonId) + "/timings"),
+    //   })
+    // );
 
     const dataStr =
       "data:text/json;charset=utf-8," +
-      encodeURIComponent(JSON.stringify({ ...stateToSave, lessonData }));
+      encodeURIComponent(JSON.stringify({ ...stateToSave /** lessonData */ }));
     const dlAnchorElem = document.createElement("a");
 
     dlAnchorElem.setAttribute("href", dataStr);
@@ -150,7 +150,7 @@ function ImportExportDataConsole() {
       fileToLoad.text().then((data) => {
         const { lessonData, ...state } = JSON.parse(data);
         // load lesson data
-        lessonData.forEach((exported: ExportedLessonData) => {
+        (lessonData ?? []).forEach((exported: ExportedLessonData) => {
           if (exported.reviewedTerms) {
             window.localStorage.setItem(
               lessonKey(exported.lessonId) + "/reviewed-terms",
@@ -167,7 +167,9 @@ function ImportExportDataConsole() {
         });
 
         // load larger user state
-        userState.loadState(state);
+        // userState.loadState(state);
+        localStorage.setItem("user-state", JSON.stringify(state));
+
         navigate("/");
       });
   }

@@ -7,6 +7,18 @@ import { Act, StateWithThen } from "../../../utils/useReducerWithImperative";
 import { UserStateAction } from "../../actions";
 import { UserState } from "../../UserStateProvider";
 
+export type Result<T, E> =
+  | { type: "SUCCESS"; result: T }
+  | { type: "ERROR"; error: E };
+
+export type CreateLessonResult = Result<
+  {
+    setsToAdd: string[]; // new sets that have terms used in the lesson
+    lesson: Lesson;
+  },
+  LessonCreationErrorType
+>;
+
 export enum LessonCreationErrorType {
   "NOT_ENOUGH_TERMS_FOR_REVIEW_LESSON",
   "NOT_ENOUGH_NEW_TERMS_FOR_LESSON",
@@ -63,7 +75,7 @@ export function scanWhile<A, T>(
 export function pullNewSets(
   state: UserState,
   numNewTermsNeeded: number
-): [VocabSet[], number] {
+): [VocabSet[], string[], number] {
   if (state.config.upstreamCollection === null)
     throw new Error(
       "No upstream collection. This should have been checked before calling."
@@ -73,56 +85,65 @@ export function pullNewSets(
     (set) => !(set.id in state.config.sets)
   );
 
-  const [setsToAdd, termsFound] = scanWhile(
+  const [setsToAdd, { termsFound, count }] = scanWhile<
+    {
+      termsFound: string[];
+      count: number;
+    },
+    VocabSet
+  >(
     remainingSetsInCollection,
-    (termsFound, set) => termsFound + set.terms.length,
-    (termsFound) => termsFound <= numNewTermsNeeded,
-    0
+    ({ termsFound, count }, set) => ({
+      count: count + set.terms.length,
+      termsFound: [...termsFound, ...set.terms],
+    }),
+    ({ count }) => count <= numNewTermsNeeded,
+    { termsFound: [], count: 0 }
   );
 
-  return [setsToAdd, termsFound];
+  return [setsToAdd, termsFound, count];
 }
 
-function fetchNewTermsIfNeeded(
-  desiredId: string,
+function findNewTermsIfNeeded(
   numNewTermsToInclude: number,
-  state: UserState,
-  act: Act<UserState, UserStateAction>
-) {
+  state: UserState
+): Result<
+  { setsToAdd: VocabSet[]; termsFound: string[] },
+  LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON
+> {
   const [_, potentialNewTerms] = splitNewTerms(state);
 
   // we have enough terms
-  if (potentialNewTerms.length >= numNewTermsToInclude) return act();
+  if (potentialNewTerms.length >= numNewTermsToInclude)
+    return {
+      type: "SUCCESS",
+      result: { setsToAdd: [], termsFound: [] },
+    };
 
   // we don't have enough terms AND there's nowhere to get more
   if (state.config.upstreamCollection === undefined)
-    return act({
-      type: "LESSON_CREATE_ERROR",
-      error: {
-        lessonId: desiredId,
-        type: LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON,
-      },
-    });
+    return {
+      type: "ERROR",
+      error: LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON,
+    };
 
   const numTermsToFind = numNewTermsToInclude - potentialNewTerms.length;
 
-  const [setsToAdd, termsFound] = pullNewSets(state, numTermsToFind);
-
-  if (termsFound < numTermsToFind)
-    return act({
-      type: "LESSON_CREATE_ERROR",
-      error: {
-        lessonId: desiredId,
-        type: LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON,
-      },
-    });
-
-  return act(
-    ...setsToAdd.map((set) => ({
-      type: "ADD_SET" as const,
-      setToAdd: set.id,
-    }))
+  const [setsToAdd, termsFound, numTermsFound] = pullNewSets(
+    state,
+    numTermsToFind
   );
+
+  if (numTermsFound < numTermsToFind)
+    return {
+      type: "ERROR",
+      error: LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON,
+    };
+
+  return {
+    type: "SUCCESS",
+    result: { setsToAdd, termsFound },
+  };
 }
 
 /**
@@ -144,26 +165,17 @@ function splitNewTerms(state: UserState) {
 }
 
 /**
- * Creates a lesson with approximately the numChallenges requested.
- *
- * Acts as a single dispatch against the global user state reducer.
- *
- * See `dispatchImperativeBlock`.
- * @param desiredNumChallenges
- * @param state
- * @param act
- * @returns
+ * Create a lesson, possibly using new terms that will need to be added for the user.
  */
-export function createLessonTransaction(
+export function createLessonAndFindSetsToAdd(
   desiredId: string,
   desiredNumChallenges: number,
   reviewOnly: boolean,
   state: UserState,
-  act: Act<UserState, UserStateAction>,
   suggestedNewTermsToInclude?: number
-): StateWithThen<UserState, UserStateAction> {
-  // if the lesson was already created, don't make it again
-  if (desiredId in state.lessons) return act();
+): CreateLessonResult {
+  // // if the lesson was already created, don't make it again
+  // if (desiredId in state.lessons) return act();
 
   // 10 terms for 15 minute lesson
   // TODO: finetune this
@@ -176,87 +188,81 @@ export function createLessonTransaction(
     ? 0.5 * desiredNumChallenges // review only lessons can be shorter (so your last reivew lesson can be completed more often)
     : 0.85 * desiredNumChallenges; // lessons with new terms should always be about full length
 
-  return fetchNewTermsIfNeeded(
-    desiredId,
-    numNewTermsToInclude,
-    state,
-    act
-  ).then((state, act) => {
-    // if something has gone wrong, bail
-    if (state.ephemeral.lessonCreationError?.lessonId === desiredId)
-      return act();
+  const newTermsResult = findNewTermsIfNeeded(numNewTermsToInclude, state);
 
-    // split terms into review terms and new terms
-    const [potentialReviewTerms, potentialNewTerms] = splitNewTerms(state);
+  if (newTermsResult.type === "ERROR") return newTermsResult;
+  const {
+    result: { setsToAdd, termsFound: newTermsFromSetsToAdd },
+  } = newTermsResult;
 
-    console.log({
-      potentialReviewTerms: potentialReviewTerms.length,
-      potentialNewTerms: potentialNewTerms.length,
-    });
+  // split terms into review terms and new terms
+  const [potentialReviewTerms, newTermsAlreadyAdded] = splitNewTerms(state);
 
-    // new terms are in box 0, by definition
-    const numNewTermChallenges =
-      numNewTermsToInclude * showsPerSessionForBox(0);
-    const numReviewTermChallenges = desiredNumChallenges - numNewTermChallenges;
+  const potentialNewTerms = [
+    ...newTermsAlreadyAdded.map((t) => t.key),
+    ...newTermsFromSetsToAdd,
+  ];
 
-    // select review terms until we max number of challenges
-    const [reviewTerms, reviewChallengesFound] = scanWhile(
-      potentialReviewTerms,
-      (count, term) => count + showsPerSessionForBox(term.box),
-      (count) => count <= numReviewTermChallenges,
-      0
-    );
+  // new terms are in box 0, by definition
+  const numNewTermChallenges = numNewTermsToInclude * showsPerSessionForBox(0);
+  const numReviewTermChallenges = desiredNumChallenges - numNewTermChallenges;
 
-    // if there aren't enough terms...
-    if (reviewChallengesFound + numNewTermChallenges < minChallenges) {
-      if (reviewOnly) {
-        console.log(
-          "Not enough review terms for a lesson! But a review only lesson was requested!"
-        );
-        return act({
-          type: "LESSON_CREATE_ERROR",
-          error: {
-            lessonId: desiredId,
-            type: LessonCreationErrorType.NOT_ENOUGH_TERMS_FOR_REVIEW_LESSON,
-          },
-        });
-      } else {
-        // try to fill lesson with new terms
-        return createLessonTransaction(
-          desiredId,
-          desiredNumChallenges,
-          reviewOnly,
-          state,
-          act,
-          Math.floor(
-            // remaining challenges / challenges per new term
-            (desiredNumChallenges - reviewChallengesFound) /
-              showsPerSessionForBox(0)
-          )
-        );
-      }
+  // select review terms until we max number of challenges
+  const [reviewTerms, reviewChallengesFound] = scanWhile(
+    potentialReviewTerms,
+    (count, term) => count + showsPerSessionForBox(term.box),
+    (count) => count <= numReviewTermChallenges,
+    0
+  );
+
+  // if there aren't enough terms...
+  if (reviewChallengesFound + numNewTermChallenges < minChallenges) {
+    if (reviewOnly) {
+      console.log(
+        "Not enough review terms for a lesson! But a review only lesson was requested!"
+      );
+      return {
+        type: "ERROR",
+        error: LessonCreationErrorType.NOT_ENOUGH_TERMS_FOR_REVIEW_LESSON,
+      };
+    } else {
+      // try to fill lesson with new terms
+      return createLessonAndFindSetsToAdd(
+        desiredId,
+        desiredNumChallenges,
+        reviewOnly,
+        state,
+        Math.floor(
+          // remaining challenges / challenges per new term
+          (desiredNumChallenges - reviewChallengesFound) /
+            showsPerSessionForBox(0)
+        )
+      );
     }
+  }
 
-    // if we have enough terms...
-    const newTerms = potentialNewTerms.slice(0, numNewTermsToInclude);
+  // if we have enough terms...
+  const newTerms = potentialNewTerms.slice(0, numNewTermsToInclude);
 
-    const realNumChallenges =
-      reviewChallengesFound + newTerms.length * showsPerSessionForBox(0);
+  const realNumChallenges =
+    reviewChallengesFound + newTerms.length * showsPerSessionForBox(0);
 
-    const lesson: Lesson = {
-      id: desiredId,
-      terms: [...newTerms, ...reviewTerms].map((t) => t.key),
-      startedAt: null,
-      completedAt: null,
-      createdAt: Date.now(),
-      createdFor: getToday(),
-      numChallenges: realNumChallenges,
-      type: "DAILY",
-    };
+  const lesson: Lesson = {
+    id: desiredId,
+    terms: [...newTerms, ...reviewTerms.map((t) => t.key)],
+    startedAt: null,
+    completedAt: null,
+    createdAt: Date.now(),
+    createdFor: getToday(),
+    numChallenges: realNumChallenges,
+    type: "DAILY",
+  };
 
-    return act({
-      type: "ADD_LESSON",
+  return {
+    type: "SUCCESS",
+    result: {
       lesson,
-    });
-  });
+      setsToAdd: setsToAdd.map((s) => s.id),
+    },
+  };
 }

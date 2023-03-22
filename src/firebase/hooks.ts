@@ -1,47 +1,45 @@
 import { logEvent } from "firebase/analytics";
-import { onValue, ref, set } from "firebase/database";
+import { User } from "firebase/auth";
+import { onValue, set } from "firebase/database";
 import { useEffect, useMemo, useState } from "react";
-import { analytics, db } from ".";
+import { analytics } from ".";
+import {
+  allLessonMetadataPath,
+  lessonMetadataPath,
+  lessonReviewedTermsPath,
+  TypedRef,
+  userConfigPath,
+  userLeitnerBoxesPath,
+} from "./paths";
 
-type LoadingState = { ready: false };
-type DataState<T> = { ready: true; data: T | null };
+export type LoadingState = { ready: false };
+export type DataState<T> = { ready: true; data: T | null };
 
-type FirebaseState<T> = LoadingState | DataState<T>;
+export type FirebaseState<T> = LoadingState | DataState<T>;
 
 /**
  * Like `useState` or `useLocalStorage` but its in Firebase.
  */
 export function useFirebase<T>(
-  path: string
-): [FirebaseState<T>, (newState: T) => void] {
+  typedRef: TypedRef<T>
+): [FirebaseState<T>, (newState: T) => Promise<void>] {
   const [state, setInternalState] = useState<FirebaseState<T>>({
     ready: false,
   });
-  const dataRef = useMemo(() => ref(db, path), [path]);
 
   useEffect(() => {
-    onValue(dataRef, (snapshot) => {
+    onValue(typedRef.ref, (snapshot) => {
       const data = snapshot.val() ?? null;
       setInternalState({ ready: true, data });
     });
-  }, [dataRef]);
+  }, [typedRef]);
 
   const setFirebaseState = useMemo(
-    () => (newState: T) => {
-      set(dataRef, newState);
-    },
-    [dataRef]
+    () => (newState: T) => set(typedRef.ref, newState),
+    [typedRef]
   );
 
   return [state, setFirebaseState];
-}
-
-export function useFirebaseCollection<
-  R extends Record<T, D>,
-  T extends string,
-  D
->(path: string) {
-  return [];
 }
 
 /**
@@ -53,4 +51,34 @@ export function useAnalyticsPageName(pageName: string): void {
       page_title: pageName,
     });
   }, [pageName]);
+}
+
+export function useFirebaseLeitnerBoxes(user: User) {
+  const ref = useMemo(() => userLeitnerBoxesPath(user), [user]);
+  return useFirebase(ref);
+}
+
+export function useFirebaseUserConfig(user: User) {
+  const ref = useMemo(() => userConfigPath(user), [user]);
+  return useFirebase(ref);
+}
+
+export function useFirebaseLessonMetadata(user: User, lessonId: string) {
+  const ref = useMemo(
+    () => lessonMetadataPath(user, lessonId),
+    [user, lessonId]
+  );
+  return useFirebase(ref);
+}
+export function useFirebaseAllLessonMetadata(user: User) {
+  const ref = useMemo(() => allLessonMetadataPath(user), [user]);
+  return useFirebase(ref);
+}
+
+export function useFirebaseReviewedTerms(user: User, lessonId: string) {
+  const ref = useMemo(
+    () => lessonReviewedTermsPath(user, lessonId),
+    [user, lessonId]
+  );
+  return useFirebase(ref);
 }
