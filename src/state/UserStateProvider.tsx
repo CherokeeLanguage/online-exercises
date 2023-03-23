@@ -37,13 +37,8 @@ import {
 import { analytics, auth } from "../firebase";
 import { logEvent } from "firebase/analytics";
 import { useAuth } from "../firebase/AuthProvider";
-import { child, DatabaseReference, set } from "firebase/database";
-import {
-  lessonMetadataPath,
-  lessonReviewedTermsPath,
-  setTyped,
-} from "../firebase/paths";
 import { uploadAllLessonDataFromLocalStorage } from "../firebase/migration";
+import { LoadingPage } from "../components/Loader";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -415,7 +410,11 @@ function UserStatePersistenceProvider({
       </userStatePersistenceContext.Provider>
     );
   } else {
-    return <em>Loading...</em>;
+    return (
+      <LoadingPage>
+        <p>Loading your data...</p>
+      </LoadingPage>
+    );
   }
 }
 

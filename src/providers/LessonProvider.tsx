@@ -8,6 +8,7 @@ import { FirebaseState, useFirebaseLessonMetadata } from "../firebase/hooks";
 import { useAuth } from "../firebase/AuthProvider";
 import { LessonsAction } from "../state/actions";
 import React, { ReactNode, useContext, useEffect } from "react";
+import { Loader, SmallLoader } from "../components/Loader";
 
 interface UseLessonData {
   lesson: Lesson;
@@ -94,7 +95,8 @@ export function LessonProvider({
     }
   }, [result]);
 
-  if (!result.ready) return <em>Loading...</em>;
+  if (!result.ready)
+    return <SmallLoader below={<p>Fetching lesson data...</p>} />;
   if (result.data === null) return <em>Lesson not found</em>;
 
   return (

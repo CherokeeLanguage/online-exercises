@@ -7,6 +7,7 @@ import {
 } from "react";
 import { auth } from ".";
 import { onAuthStateChanged, signInAnonymously, User } from "firebase/auth";
+import { LoadingPage } from "../components/Loader";
 
 export interface AuthContext {
   user: User;
@@ -42,7 +43,11 @@ export function AuthProvider({ children }: { children?: ReactNode }) {
       <authContext.Provider value={{ user }}>{children}</authContext.Provider>
     );
   else {
-    return <em>Loading...</em>;
+    return (
+      <LoadingPage>
+        <p>Connecting...</p>
+      </LoadingPage>
+    );
   }
 }
 

@@ -10,6 +10,7 @@ import {
 } from "../../utils/phonetics";
 import { useAudio } from "../../utils/useAudio";
 import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
+import { Loader } from "../Loader";
 import { ExerciseComponentProps } from "./Exercise";
 
 export function pickRandomElement<T>(options: T[]) {
@@ -162,7 +163,8 @@ export function FillInTheTone({
   }, [maskedToneHook]);
 
   if (!maskedToneHook) {
-    return <em>Loading...</em>;
+    // why do we have this branch?
+    return <Loader />;
   }
 
   const {

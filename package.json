@@ -22,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-spinners": "^0.13.8",
     "react-use": "^17.4.0",
     "styled-components": "^5.3.5",
     "trigram-similarity": "^1.0.7",
