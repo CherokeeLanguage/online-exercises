@@ -1,7 +1,7 @@
 import { User } from "firebase/auth";
 import { ReviewResult } from "../state/reducers/leitnerBoxes";
 import { lessonKey } from "../state/reducers/lessons";
-import { LegacyUserState } from "../state/UserStateProvider";
+import { LegacyUserState } from "../state/useUserState";
 import { setTyped, lessonMetadataPath, lessonReviewedTermsPath } from "./paths";
 
 export async function uploadAllLessonDataFromLocalStorage(

@@ -6,7 +6,7 @@ import { CardTable } from "../../components/CardTable";
 import { SectionHeading } from "../../components/SectionHeading";
 import { cards, keyForCard } from "../../data/cards";
 import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
 import { CollectionCredits } from "../../components/CollectionCredits";
 import { ConfirmationModal } from "../../components/ConfirmationModal";

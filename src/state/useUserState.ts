@@ -1,44 +1,34 @@
-import React, {
-  ReactElement,
-  ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-} from "react";
-import { useLocalStorage } from "react-use";
+import { useEffect, useMemo } from "react";
 import {
   LessonsInteractors,
   LessonsState,
   useLessonInteractors,
-} from "./reducers/lessons";
+} from "../state/reducers/lessons";
 import {
   LeitnerBoxesInteractors,
   LeitnerBoxState,
   reduceLeitnerBoxState,
-  ReviewResult,
   useLeitnerBoxesInteractors,
-} from "./reducers/leitnerBoxes";
+} from "../state/reducers/leitnerBoxes";
 import { useReducerWithImperative } from "../utils/useReducerWithImperative";
 import {
   reduceUserSetsState,
   UserSetsInteractors,
   UserSetsState,
   useUserSetsInteractors,
-} from "./reducers/userSets";
-import { UserStateAction } from "./actions";
-import { LessonCreationError } from "./reducers/lessons/createNewLesson";
-import { GroupId, GROUPS, isGroupId, reduceGroupId } from "./reducers/groupId";
-import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
-import { PhoneticsPreference } from "./reducers/phoneticsPreference";
+} from "../state/reducers/userSets";
+import { UserStateAction } from "../state/actions";
+import { LessonCreationError } from "../state/reducers/lessons/createNewLesson";
 import {
-  useFirebaseUserConfig,
-  useFirebaseLeitnerBoxes,
-} from "../firebase/hooks";
+  GroupId,
+  GROUPS,
+  isGroupId,
+  reduceGroupId,
+} from "../state/reducers/groupId";
+import { PhoneticsPreference } from "../state/reducers/phoneticsPreference";
 import { analytics, auth } from "../firebase";
 import { logEvent } from "firebase/analytics";
-import { useAuth } from "../firebase/AuthProvider";
 import { uploadAllLessonDataFromLocalStorage } from "../firebase/migration";
-import { LoadingPage } from "../components/Loader";
 
 export interface UserStateProps {
   leitnerBoxes: {
@@ -189,7 +179,7 @@ function blankUserState(initializationProps: UserStateProps): UserState {
   };
 }
 
-function convertLegacyState(state: LegacyUserState): UserState {
+export function convertLegacyState(state: LegacyUserState): UserState {
   return {
     config: {
       sets: state.sets,
@@ -345,142 +335,3 @@ export function useUserState(props: {
 }
 
 // context provider
-
-export interface UserStateContext extends UserState, UserInteractors {
-  dispatch: React.Dispatch<UserStateAction>;
-}
-
-const userStateContext = React.createContext<UserStateContext | null>(null);
-
-export interface UserStatePersistenceContext {
-  // browser stored state
-  localStorageUserState?: LegacyUserState;
-  flagLocalStateAndUploadLessons: () => void;
-  // -- Firebase slices --
-  // config
-  config: UserConfig | null;
-  setConfig: (newConfig: UserConfig) => void;
-  // leitner boxes
-  leitnerBoxes: LeitnerBoxState | null;
-  setLeitnerBoxes: (newLeitnerBoxes: LeitnerBoxState) => void;
-}
-export const userStatePersistenceContext =
-  React.createContext<UserStatePersistenceContext | null>(null);
-
-function UserStatePersistenceProvider({
-  children,
-}: {
-  children: ReactElement;
-}) {
-  const { user } = useAuth();
-  const [localStorageUserState, setLocalStorageUserState] =
-    useLocalStorage<LegacyUserState>("user-state", undefined, {
-      raw: false,
-      serializer: JSON.stringify,
-      deserializer: (s) => JSON.parse(s.normalize("NFD")), // ensure everything is NFD!
-    });
-
-  const [leitnerBoxes, setLeitnerBoxes] = useFirebaseLeitnerBoxes(user);
-  const [config, setConfig] = useFirebaseUserConfig(user);
-
-  if (config.ready && leitnerBoxes.ready) {
-    return (
-      <userStatePersistenceContext.Provider
-        value={{
-          localStorageUserState,
-          flagLocalStateAndUploadLessons() {
-            if (
-              !localStorageUserState ||
-              localStorageUserState.HAS_BEEN_UPLOADED
-            )
-              return;
-            setLocalStorageUserState({
-              ...localStorageUserState,
-              HAS_BEEN_UPLOADED: true,
-            });
-            uploadAllLessonDataFromLocalStorage(user);
-          },
-          config: config.data,
-          setConfig,
-          leitnerBoxes: leitnerBoxes.data,
-          setLeitnerBoxes,
-        }}
-      >
-        {children}
-      </userStatePersistenceContext.Provider>
-    );
-  } else {
-    return (
-      <LoadingPage>
-        <p>Loading your data...</p>
-      </LoadingPage>
-    );
-  }
-}
-
-function WrappedUserStateProvider({
-  children,
-}: {
-  children: ReactNode;
-}): ReactElement {
-  const persistenceContext = useContext(userStatePersistenceContext);
-  if (persistenceContext === null) throw new Error("explode");
-  const {
-    localStorageUserState,
-    flagLocalStateAndUploadLessons,
-    config,
-    setConfig,
-    leitnerBoxes,
-    setLeitnerBoxes,
-  } = persistenceContext;
-
-  const storedUserState = useMemo(() => {
-    if (config === null || leitnerBoxes === null) {
-      if (localStorageUserState === undefined) return undefined;
-      flagLocalStateAndUploadLessons();
-      return convertLegacyState(localStorageUserState);
-    } else {
-      return { config, leitnerBoxes };
-    }
-  }, [localStorageUserState, config, leitnerBoxes]);
-
-  const { state, interactors, dispatch } = useUserState({
-    storedUserState,
-    initializationProps: {
-      leitnerBoxes: {
-        numBoxes: 6,
-      },
-    },
-  });
-
-  // sync segments of state independently
-  useEffect(() => {
-    setConfig(state.config);
-  }, [state.config]);
-  useEffect(() => {
-    setLeitnerBoxes(state.leitnerBoxes);
-  }, [state.leitnerBoxes]);
-
-  return (
-    <userStateContext.Provider value={{ ...state, ...interactors, dispatch }}>
-      {children}
-      {(state.config.userEmail === null || state.config.groupId === null) && (
-        <GroupRegistrationModal />
-      )}
-    </userStateContext.Provider>
-  );
-}
-
-export function UserStateProvider({ children }: { children?: ReactNode }) {
-  return (
-    <UserStatePersistenceProvider>
-      <WrappedUserStateProvider>{children}</WrappedUserStateProvider>
-    </UserStatePersistenceProvider>
-  );
-}
-
-export function useUserStateContext(): UserStateContext {
-  const value = useContext(userStateContext);
-  if (value === null) throw new Error("Must be used under a UserStateProvider");
-  return value;
-}

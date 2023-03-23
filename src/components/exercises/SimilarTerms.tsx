@@ -3,7 +3,7 @@ import React, { ReactElement, useState, useMemo, useEffect } from "react";
 import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { createIssueForTermInNewTab } from "../../utils/createIssue";
 import { useAudio } from "../../utils/useAudio";
 import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";

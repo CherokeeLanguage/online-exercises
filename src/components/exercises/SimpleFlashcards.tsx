@@ -9,7 +9,7 @@ import { useKeyPressEvent } from "react-use";
 import styled from "styled-components";
 import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { theme } from "../../theme";
 import { createIssueForTermInNewTab } from "../../utils/createIssue";
 import {

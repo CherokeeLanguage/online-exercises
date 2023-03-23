@@ -3,7 +3,7 @@ import { LessonsWidget } from "./LessonsWidget";
 // import { SetsWidget } from "./SetsWidget";
 import { ActivityWidget } from "./ActivityWidget";
 import { GettingStartedWidget } from "./GettingStartedWidget";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { OPEN_BETA_ID } from "../../state/reducers/groupId";
 import { MinigameWidget } from "./MinigameWidget";
 import { useAnalyticsPageName } from "../../firebase/hooks";

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { v4 } from "uuid";
 import { Button } from "../../components/Button";
 import { collections, JW_LIVING_PHRASES } from "../../data/vocabSets";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { DashboardWidget } from "./DashboardWidget";
 
 export function MinigameWidget(): ReactElement {

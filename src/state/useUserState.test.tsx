@@ -1,4 +1,4 @@
-import { UserState, UserStateProps, useUserState } from "./UserStateProvider";
+import { UserState, UserStateProps, useUserState } from "./useUserState";
 import { renderHook, act } from "@testing-library/react";
 import {
   CHEROKEE_LANGUAGE_LESSONS_COLLLECTION,

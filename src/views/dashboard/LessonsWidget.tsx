@@ -3,7 +3,7 @@ import { ButtonLink } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import { Collection, collections } from "../../data/vocabSets";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { DashboardWidget } from "./DashboardWidget";
 
 const CHALLENGES_IN_15_MINUTE_LESSON = 90;

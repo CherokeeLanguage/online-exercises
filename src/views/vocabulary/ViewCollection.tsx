@@ -10,7 +10,7 @@ import { StyledLink } from "../../components/StyledLink";
 import { StyledTable } from "../../components/StyledTable";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
 import { collections } from "../../data/vocabSets";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { CollectionCredits } from "../../components/CollectionCredits";
 import { useAnalyticsPageName } from "../../firebase/hooks";
 

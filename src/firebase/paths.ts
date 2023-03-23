@@ -4,7 +4,7 @@ import { db } from ".";
 import { FirebaseReviewedTerms } from "../spaced-repetition/useReviewSession";
 import { LeitnerBoxState } from "../state/reducers/leitnerBoxes";
 import { Lesson } from "../state/reducers/lessons";
-import { UserConfig } from "../state/UserStateProvider";
+import { UserConfig } from "../state/useUserState";
 
 export type TypedRef<T> = {
   ref: DatabaseReference;

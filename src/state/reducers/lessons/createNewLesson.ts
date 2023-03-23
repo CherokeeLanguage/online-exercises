@@ -3,9 +3,7 @@ import { VocabSet, collections } from "../../../data/vocabSets";
 import { TermStats } from "../../../spaced-repetition/types";
 import { showsPerSessionForBox } from "../../../spaced-repetition/usePimsleurTimings";
 import { DAY, getToday } from "../../../utils/dateUtils";
-import { Act, StateWithThen } from "../../../utils/useReducerWithImperative";
-import { UserStateAction } from "../../actions";
-import { UserState } from "../../UserStateProvider";
+import { UserState } from "../../useUserState";
 
 export type Result<T, E> =
   | { type: "SUCCESS"; result: T }

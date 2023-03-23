@@ -4,7 +4,7 @@ import { StyledLink } from "../../components/StyledLink";
 import { VocabSetTable } from "../../components/VocabSetTable";
 import { vocabSets } from "../../data/vocabSets";
 import { useAnalyticsPageName } from "../../firebase/hooks";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 
 export function MySets(): ReactElement {
   useAnalyticsPageName("My sets");

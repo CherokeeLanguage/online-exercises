@@ -1,6 +1,6 @@
 import React, { Dispatch, useMemo } from "react";
 import { ImperativeBlock } from "../../utils/useReducerWithImperative";
-import { UserState } from "../UserStateProvider";
+import { UserState } from "../useUserState";
 import { UserStateAction } from "../actions";
 
 export interface UserSetData {

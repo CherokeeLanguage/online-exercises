@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Collection, collections } from "../data/vocabSets";
-import { useUserStateContext } from "../state/UserStateProvider";
+import { useUserStateContext } from "../providers/UserStateProvider";
 import { CollectionCredits } from "./CollectionCredits";
 import { Button } from "./Button";
 import { StyledLink } from "./StyledLink";

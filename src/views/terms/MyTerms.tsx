@@ -7,7 +7,7 @@ import {
 } from "../../components/TermsByProficiencyLevelChart";
 import { cards, keyForCard } from "../../data/cards";
 import { useAnalyticsPageName } from "../../firebase/hooks";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
 
 export function MyTerms(): ReactElement {

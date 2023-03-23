@@ -5,7 +5,7 @@ import { TermCardWithStats } from "../../spaced-repetition/types";
 import { useLesson } from "../../providers/LessonProvider";
 import { useReviewSession } from "../../spaced-repetition/useReviewSession";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import styled from "styled-components";
 import { theme } from "../../theme";
 import { practiceLessonLeitnerBoxes } from "../../state/reducers/leitnerBoxes";

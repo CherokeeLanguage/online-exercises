@@ -3,7 +3,7 @@ import { CollectionDetails } from "../../components/CollectionDetails";
 import { SectionHeading } from "../../components/SectionHeading";
 import { Collection, collections } from "../../data/vocabSets";
 import { useAnalyticsPageName } from "../../firebase/hooks";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 
 export function BrowseCollections(): ReactElement {
   useAnalyticsPageName("Find new vocabulary");

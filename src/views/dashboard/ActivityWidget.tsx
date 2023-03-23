@@ -1,5 +1,5 @@
 import { SectionHeading } from "../../components/SectionHeading";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { getToday } from "../../utils/dateUtils";
 import { DashboardWidget } from "./DashboardWidget";
 

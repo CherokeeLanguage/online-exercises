@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import { GROUPS, OPEN_BETA_ID } from "../state/reducers/groupId";
-import { useUserStateContext } from "../state/UserStateProvider";
+import { useUserStateContext } from "../providers/UserStateProvider";
 import { Button } from "./Button";
 import { Modal } from "./Modal";
 

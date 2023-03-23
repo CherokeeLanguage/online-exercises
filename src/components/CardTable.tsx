@@ -4,7 +4,7 @@ import {
   PhoneticsPreference,
   showPhonetics,
 } from "../state/reducers/phoneticsPreference";
-import { useUserStateContext } from "../state/UserStateProvider";
+import { useUserStateContext } from "../providers/UserStateProvider";
 import { createIssueForTermInNewTab } from "../utils/createIssue";
 import { getPhonetics } from "../utils/phonetics";
 import { Button } from "./Button";

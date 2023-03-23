@@ -1,7 +1,7 @@
 import { useReviewedTerms } from "../spaced-repetition/useReviewSession";
 import { Lesson, reduceLesson } from "../state/reducers/lessons";
 import { ReviewResult } from "../state/reducers/leitnerBoxes";
-import { useUserStateContext } from "../state/UserStateProvider";
+import { useUserStateContext } from "./UserStateProvider";
 import { analytics } from "../firebase";
 import { logEvent } from "firebase/analytics";
 import { FirebaseState, useFirebaseLessonMetadata } from "../firebase/hooks";

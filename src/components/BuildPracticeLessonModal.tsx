@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import { collections, VocabSet, vocabSets } from "../data/vocabSets";
-import { useUserStateContext } from "../state/UserStateProvider";
+import { useUserStateContext } from "../providers/UserStateProvider";
 import { ConfirmationModal } from "./ConfirmationModal";
 
 export function BuildPracticeLessonModal({

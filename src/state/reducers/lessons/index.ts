@@ -1,7 +1,7 @@
 import React, { Dispatch } from "react";
 import { getToday } from "../../../utils/dateUtils";
 import { vocabSets } from "../../../data/vocabSets";
-import { UserState } from "../../UserStateProvider";
+import { UserState } from "../../useUserState";
 import { createLessonAndFindSetsToAdd } from "./createNewLesson";
 import { LessonsAction, UserStateAction } from "../../actions";
 import { showsPerSessionForBox } from "../../../spaced-repetition/usePimsleurTimings";

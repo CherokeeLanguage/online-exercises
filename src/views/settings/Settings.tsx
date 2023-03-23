@@ -9,7 +9,8 @@ import {
   isPhoneticsPreference,
   PREFERENCE_LITERATES,
 } from "../../state/reducers/phoneticsPreference";
-import { UserState, useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
+import { UserState } from "../../state/useUserState";
 
 interface ExportedLessonData {
   lessonId: string;

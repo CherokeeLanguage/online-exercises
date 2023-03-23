@@ -9,7 +9,7 @@ import { ViewCollection } from "./views/vocabulary/ViewCollection";
 import { MySets } from "./views/vocabulary/MySets";
 import { ViewSet } from "./views/vocabulary/ViewSet";
 // import { Overview } from "./Overview";
-import { UserStateProvider } from "./state/UserStateProvider";
+import { UserStateProvider } from "./providers/UserStateProvider";
 import { Dashboard } from "./views/dashboard/Dashboard";
 import { LessonArchive } from "./views/lessons/LessonArchive";
 import { ViewLesson } from "./views/lessons/ViewLesson";

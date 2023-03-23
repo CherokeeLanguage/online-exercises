@@ -8,7 +8,7 @@ import {
   LessonCreationError,
   LessonCreationErrorType,
 } from "../../state/reducers/lessons/createNewLesson";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 
 export function NewLesson() {
   const {

@@ -1,6 +1,6 @@
 import { SEE_SAY_WRITE_COLLECTION } from "../../data/vocabSets";
 import { UserStateAction } from "../actions";
-import { UserState } from "../UserStateProvider";
+import { UserState } from "../useUserState";
 import { PhoneticsPreference } from "./phoneticsPreference";
 
 export interface Group {

@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { theme } from "../../theme";
 import { createIssueForTermInNewTab } from "../../utils/createIssue";
 import {

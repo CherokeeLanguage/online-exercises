@@ -3,7 +3,7 @@ import { ReviewResult } from "./reducers/leitnerBoxes";
 import { Lesson } from "./reducers/lessons";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { PhoneticsPreference } from "./reducers/phoneticsPreference";
-import { LegacyUserState, UserState } from "./UserStateProvider";
+import { LegacyUserState, UserState } from "./useUserState";
 
 export type ResizeLeitnerBoxesAction = {
   type: "RESIZE_LEITNER_BOXES";

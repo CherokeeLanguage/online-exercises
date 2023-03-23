@@ -3,7 +3,7 @@ import { Dispatch, useMemo } from "react";
 import { getToday } from "../../utils/dateUtils";
 import { TermStats } from "../../spaced-repetition/types";
 import { ImperativeBlock } from "../../utils/useReducerWithImperative";
-import { UserState } from "../UserStateProvider";
+import { UserState } from "../useUserState";
 import { vocabSets } from "../../data/vocabSets";
 import { UserStateAction } from "../actions";
 import { migrateTerm } from "../../data/migrations";
