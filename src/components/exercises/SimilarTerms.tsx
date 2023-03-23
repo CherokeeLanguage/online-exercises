@@ -4,10 +4,10 @@ import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { useUserStateContext } from "../../providers/UserStateProvider";
-import { createIssueForTermInNewTab } from "../../utils/createIssue";
 import { useAudio } from "../../utils/useAudio";
 import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
 import { ExerciseComponentProps } from "./Exercise";
+import { FlagIssueButton } from "../FlagIssueModal";
 
 interface Challenge {
   terms: Card[];
@@ -88,11 +88,10 @@ export function SimilarTerms({
         ))}
       </AnswersWithFeedback>
       {/* <Progress cardsPerLevel={cardsPerLevel} /> */}
-      <button
-        onClick={() => createIssueForTermInNewTab(groupId, currentCard.term)}
-      >
-        Flag an issue with this term
-      </button>
+      <FlagIssueButton
+        problematicAudio={cherokee_audio}
+        card={currentCard.card}
+      />
     </div>
   );
 }

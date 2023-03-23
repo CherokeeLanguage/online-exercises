@@ -5,6 +5,7 @@ import { FirebaseReviewedTerms } from "../spaced-repetition/useReviewSession";
 import { LeitnerBoxState } from "../state/reducers/leitnerBoxes";
 import { Lesson } from "../state/reducers/lessons";
 import { UserConfig } from "../state/useUserState";
+import { IssueReport } from "./types";
 
 export type TypedRef<T> = {
   ref: DatabaseReference;
@@ -51,5 +52,11 @@ export function lessonReviewedTermsPath(
 ): TypedRef<FirebaseReviewedTerms> {
   return {
     ref: ref(db, `users/${user.uid}/lessonReviewedTerms/${lessonId}/`),
+  };
+}
+
+export function issueReportPath(issueId: string): TypedRef<IssueReport> {
+  return {
+    ref: ref(db, `issueReports/${issueId}`),
   };
 }

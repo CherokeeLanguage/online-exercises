@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { theme } from "../../theme";
-import { createIssueForTermInNewTab } from "../../utils/createIssue";
 import {
   alignSyllabaryAndPhonetics,
   getPhonetics,
@@ -12,6 +11,7 @@ import { useAudio } from "../../utils/useAudio";
 import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
 import { Loader } from "../Loader";
 import { ExerciseComponentProps } from "./Exercise";
+import { FlagIssueButton } from "../FlagIssueModal";
 
 export function pickRandomElement<T>(options: T[]) {
   return options[Math.floor(Math.random() * options.length)];
@@ -223,11 +223,10 @@ export function FillInTheTone({
           ))}
         </AnswersWithFeedback>
         <button onClick={() => play()}>Listen again</button>
-        <button
-          onClick={() => createIssueForTermInNewTab(groupId, currentCard.term)}
-        >
-          Flag an issue with this term
-        </button>
+        <FlagIssueButton
+          problematicAudio={cherokeeAudio}
+          card={currentCard.card}
+        />
       </div>
     </div>
   );

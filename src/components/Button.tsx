@@ -47,6 +47,16 @@ export const Button = styledWithDefault(
           border: 1px solid ${theme.colors.TEXT_GRAY};
         }
       `}
+
+    &:disabled {
+      background: ${theme.colors.MED_GRAY};
+      color: ${theme.colors.TEXT_GRAY};
+      border: 1px solid ${theme.colors.MED_GRAY};
+      cursor: not-allowed;
+      &:hover {
+        border: 1px solid ${theme.colors.MED_GRAY};
+      }
+    }
   `,
   {
     variant: "primary",

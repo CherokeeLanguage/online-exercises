@@ -1,16 +1,13 @@
 import { ReactElement, useState } from "react";
 import { Card } from "../data/cards";
-import {
-  PhoneticsPreference,
-  showPhonetics,
-} from "../state/reducers/phoneticsPreference";
+import { showPhonetics } from "../state/reducers/phoneticsPreference";
 import { useUserStateContext } from "../providers/UserStateProvider";
-import { createIssueForTermInNewTab } from "../utils/createIssue";
 import { getPhonetics } from "../utils/phonetics";
 import { Button } from "./Button";
 import { Modal } from "./Modal";
 import { StyledTable } from "./StyledTable";
 import { VisuallyHidden } from "./VisuallyHidden";
+import { FlagIssueButton } from "./FlagIssueModal";
 
 export function CardTable({ cards }: { cards: Card[] }): ReactElement {
   const [modalOpenForCard, showDetailsForCard] = useState<Card | undefined>(
@@ -124,7 +121,7 @@ function CardAudioModalContent({ card }: { card: Card }) {
         </thead>
         <tbody>
           {card.cherokee_audio.map((src, idx) => (
-            <AudioRow src={src} term={card.cherokee} key={idx} />
+            <AudioRow src={src} card={card} key={idx} />
           ))}
         </tbody>
       </StyledTable>
@@ -132,23 +129,17 @@ function CardAudioModalContent({ card }: { card: Card }) {
   );
 }
 
-function AudioRow({ src, term }: { src: string; term: string }) {
-  const {
-    config: { groupId },
-  } = useUserStateContext();
+function AudioRow({ src, card }: { src: string; card: Card }) {
   return (
-    <tr>
-      <td>
-        <audio src={src} controls style={{ width: "100%" }} />
-      </td>
-      <td>
-        <Button
-          variant="negative"
-          onClick={() => createIssueForTermInNewTab(groupId, term)}
-        >
-          Flag issue
-        </Button>
-      </td>
-    </tr>
+    <>
+      <tr>
+        <td>
+          <audio src={src} controls style={{ width: "100%" }} />
+        </td>
+        <td>
+          <FlagIssueButton problematicAudio={src} card={card} />
+        </td>
+      </tr>
+    </>
   );
 }

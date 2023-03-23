@@ -11,13 +11,13 @@ import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { theme } from "../../theme";
-import { createIssueForTermInNewTab } from "../../utils/createIssue";
 import {
   alignSyllabaryAndPhonetics,
   getPhonetics,
 } from "../../utils/phonetics";
 import { useAudio } from "../../utils/useAudio";
 import { ExerciseComponentProps } from "./Exercise";
+import { FlagIssueButton } from "../FlagIssueModal";
 
 function pickRandomElement<T>(options: T[]) {
   return options[Math.floor(Math.random() * options.length)];
@@ -183,9 +183,7 @@ export function Flashcard({
         )}
       </StyledFlashcardBody>
       <FlashcardControls playAudio={play} reviewCard={reviewCardOrFlip} />
-      <button onClick={() => createIssueForTermInNewTab(groupId, card.term)}>
-        Flag an issue with this term
-      </button>
+      <FlagIssueButton problematicAudio={cherokeeAudio} card={card.card} />
     </FlashcardWrapper>
   );
 }
