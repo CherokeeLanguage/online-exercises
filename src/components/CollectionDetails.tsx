@@ -6,6 +6,7 @@ import { Button } from "./Button";
 import { StyledLink } from "./StyledLink";
 import { useState } from "react";
 import { ConfirmationModal } from "./ConfirmationModal";
+import { ViewCollectionPath } from "../routing/paths";
 
 export const StyledCollectionHeader = styled.div`
   display: flex;
@@ -104,7 +105,7 @@ export function CollectionDetails({
     <StyledCollectionDetails>
       <StyledCollectionHeader>
         <h3>
-          <StyledLink to={`/vocabulary/collection/${collection.id}`}>
+          <StyledLink to={ViewCollectionPath(collection.id)}>
             {collection.title}
           </StyledLink>
         </h3>

@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
 import { useParams } from "react-router-dom";
 import {
-  CollectionDetails,
   MakeUpstreamCollectionButton,
   StyledCollectionHeader,
   UpstreamCollectionFlare,
@@ -13,6 +12,7 @@ import { collections } from "../../data/vocabSets";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { CollectionCredits } from "../../components/CollectionCredits";
 import { useAnalyticsPageName } from "../../firebase/hooks";
+import { ViewSetPath } from "../../routing/paths";
 
 export function ViewCollection(): ReactElement {
   const { collectionId } = useParams();
@@ -70,9 +70,7 @@ export function ViewCollectionPage({
                 </td>
 
                 <td>
-                  <StyledLink to={`/vocabulary/set/${set.id}`}>
-                    View details
-                  </StyledLink>
+                  <StyledLink to={ViewSetPath(set.id)}>View details</StyledLink>
                 </td>
               </tr>
             );

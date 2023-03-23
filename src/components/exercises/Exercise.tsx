@@ -13,6 +13,7 @@ import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
 import { PracticeLesson } from "../../state/reducers/lessons";
 import { StyledLink } from "../StyledLink";
 import { useAnalyticsPageName } from "../../firebase/hooks";
+import { ViewSetPath } from "../../routing/paths";
 
 export interface ExerciseComponentProps {
   currentCard: TermCardWithStats<Card>;
@@ -128,9 +129,7 @@ function PracticeLessonContentsMemo({ lesson }: { lesson: PracticeLesson }) {
             {sets.map((s, i) => (
               <Fragment key={i}>
                 {i > 0 && ", "}
-                <StyledLink to={`/vocabulary/set/${s.id}`}>
-                  {s.title}
-                </StyledLink>
+                <StyledLink to={ViewSetPath(s.id)}>{s.title}</StyledLink>
               </Fragment>
             ))}
           </em>

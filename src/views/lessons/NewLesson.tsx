@@ -9,6 +9,7 @@ import {
   LessonCreationErrorType,
 } from "../../state/reducers/lessons/createNewLesson";
 import { useUserStateContext } from "../../providers/UserStateProvider";
+import { NewLessonPath } from "../../routing/paths";
 
 export function NewLesson() {
   const {
@@ -84,7 +85,7 @@ function ErrorAdvice({
           </p>
           <p>
             Consider doing a lesson with{" "}
-            <StyledLink to={`/lessons/new/${numChallenges}`}>
+            <StyledLink to={NewLessonPath(numChallenges)}>
               some new vocabulary
             </StyledLink>
             .

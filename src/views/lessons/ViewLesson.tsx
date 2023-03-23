@@ -9,12 +9,13 @@ import { SectionHeading } from "../../components/SectionHeading";
 import { CardTable } from "../../components/CardTable";
 import { StyledLink } from "../../components/StyledLink";
 import { useAnalyticsPageName } from "../../firebase/hooks";
+import { LessonsPath } from "../../routing/paths";
 
 export function ViewLesson(): ReactElement {
   useAnalyticsPageName("View lesson");
   const { lessonId } = useParams();
   const navigate = useNavigate();
-  if (!lessonId) return <Navigate to={"/lessons"} replace />;
+  if (!lessonId) return <Navigate to={LessonsPath} replace />;
   return (
     <LessonProvider
       lessonId={lessonId}

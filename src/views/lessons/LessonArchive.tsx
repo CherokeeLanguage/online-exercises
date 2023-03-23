@@ -11,6 +11,7 @@ import {
   useFirebaseAllLessonMetadata,
 } from "../../firebase/hooks";
 import { Lesson, nameForLesson } from "../../state/reducers/lessons";
+import { ViewLessonPath } from "../../routing/paths";
 
 type FinishedLesson = Lesson & { startedAt: number; completedAt: number };
 
@@ -83,7 +84,7 @@ function FinishedLessonRow({ lesson }: { lesson: FinishedLesson }) {
           .toHuman()}
       </td>
       <td>
-        <StyledLink to={`/lessons/${lesson.id}`}>Details</StyledLink>
+        <StyledLink to={ViewLessonPath(lesson.id)}>Details</StyledLink>
       </td>
     </tr>
   );
