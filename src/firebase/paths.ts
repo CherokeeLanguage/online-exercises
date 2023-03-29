@@ -4,7 +4,7 @@ import { db } from ".";
 import { FirebaseReviewedTerms } from "../spaced-repetition/useReviewSession";
 import { LeitnerBoxState } from "../state/reducers/leitnerBoxes";
 import { Lesson } from "../state/reducers/lessons";
-import { UserConfig } from "../state/useUserState";
+import { LegacyUserState, UserConfig } from "../state/useUserState";
 import { IssueReport } from "./types";
 
 export type TypedRef<T> = {
@@ -26,6 +26,14 @@ export function userLeitnerBoxesPath(user: User): TypedRef<LeitnerBoxState> {
 export function userConfigPath(user: User): TypedRef<UserConfig> {
   return {
     ref: ref(db, `users/${user.uid}/config`),
+  };
+}
+
+export function localStorageStateBackupPath(
+  user: User
+): TypedRef<LegacyUserState> {
+  return {
+    ref: ref(db, `users/${user.uid}/backupLocalStorageState`),
   };
 }
 

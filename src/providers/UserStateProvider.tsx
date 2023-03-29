@@ -11,6 +11,7 @@ import { LoadingPage } from "../components/Loader";
 import { useAuth } from "../firebase/AuthProvider";
 import {
   useFirebaseLeitnerBoxes,
+  useFirebaseLocalStorageStateBackup,
   useFirebaseUserConfig,
 } from "../firebase/hooks";
 import { uploadAllLessonDataFromLocalStorage } from "../firebase/migration";
@@ -61,6 +62,19 @@ function UserStatePersistenceProvider({
 
   const [leitnerBoxes, setLeitnerBoxes] = useFirebaseLeitnerBoxes(user);
   const [config, setConfig] = useFirebaseUserConfig(user);
+  const [localStorageStateBackup, setLocalStorageStateBackup] =
+    useFirebaseLocalStorageStateBackup(user);
+
+  useEffect(() => {
+    // if there is no backup of the user's local storage state, upload whatever is in local storage
+    if (
+      localStorageStateBackup.ready &&
+      localStorageStateBackup.data === null
+    ) {
+      if (localStorageUserState !== undefined)
+        setLocalStorageStateBackup(localStorageUserState);
+    }
+  }, [localStorageStateBackup]);
 
   if (config.ready && leitnerBoxes.ready) {
     return (

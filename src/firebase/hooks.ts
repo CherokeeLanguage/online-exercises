@@ -7,6 +7,7 @@ import {
   allLessonMetadataPath,
   lessonMetadataPath,
   lessonReviewedTermsPath,
+  localStorageStateBackupPath,
   TypedRef,
   userConfigPath,
   userLeitnerBoxesPath,
@@ -60,6 +61,11 @@ export function useFirebaseLeitnerBoxes(user: User) {
 
 export function useFirebaseUserConfig(user: User) {
   const ref = useMemo(() => userConfigPath(user), [user]);
+  return useFirebase(ref);
+}
+
+export function useFirebaseLocalStorageStateBackup(user: User) {
+  const ref = useMemo(() => localStorageStateBackupPath(user), [user]);
   return useFirebase(ref);
 }
 
