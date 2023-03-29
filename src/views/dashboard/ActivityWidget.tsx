@@ -1,9 +1,13 @@
 import { SectionHeading } from "../../components/SectionHeading";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { getToday } from "../../utils/dateUtils";
+import { DashboardWidget } from "./DashboardWidget";
 
 export function ActivityWidget() {
-  const { leitnerBoxes, upstreamCollection } = useUserStateContext();
+  const {
+    leitnerBoxes,
+    config: { upstreamCollection },
+  } = useUserStateContext();
   const today = getToday();
 
   const termsToStudyToday = Object.values(leitnerBoxes.terms).filter(
@@ -22,9 +26,7 @@ export function ActivityWidget() {
   );
 
   return (
-    <div>
-      <SectionHeading>Activity</SectionHeading>
-
+    <DashboardWidget title="Activity">
       {upstreamCollection === undefined && newTermsForToday.length > 0 && (
         <p>
           You have{" "}
@@ -65,6 +67,6 @@ export function ActivityWidget() {
           below to start learning!
         </p>
       )}
-    </div>
+    </DashboardWidget>
   );
 }

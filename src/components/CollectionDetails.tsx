@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { Collection, collections } from "../data/vocabSets";
-import { useUserStateContext } from "../state/UserStateProvider";
+import { useUserStateContext } from "../providers/UserStateProvider";
 import { CollectionCredits } from "./CollectionCredits";
 import { Button } from "./Button";
 import { StyledLink } from "./StyledLink";
 import { useState } from "react";
 import { ConfirmationModal } from "./ConfirmationModal";
+import { ViewCollectionPath } from "../routing/paths";
 
 export const StyledCollectionHeader = styled.div`
   display: flex;
@@ -29,7 +30,10 @@ export function MakeUpstreamCollectionButton({
 }: {
   collection: Collection;
 }) {
-  const { setUpstreamCollection, upstreamCollection } = useUserStateContext();
+  const {
+    setUpstreamCollection,
+    config: { upstreamCollection },
+  } = useUserStateContext();
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
@@ -59,7 +63,10 @@ function ConfirmChangeUpstreamCollectionModal({
   close: () => void;
   newCollection: Collection;
 }) {
-  const { setUpstreamCollection, upstreamCollection } = useUserStateContext();
+  const {
+    setUpstreamCollection,
+    config: { upstreamCollection },
+  } = useUserStateContext();
   const currentUpstreamCollection = collections[upstreamCollection!];
   return (
     <ConfirmationModal
@@ -91,12 +98,14 @@ export function CollectionDetails({
   collection: Collection;
   showAddedSets?: boolean;
 }) {
-  const { upstreamCollection } = useUserStateContext();
+  const {
+    config: { upstreamCollection },
+  } = useUserStateContext();
   return (
     <StyledCollectionDetails>
       <StyledCollectionHeader>
         <h3>
-          <StyledLink to={`/vocabulary/collection/${collection.id}`}>
+          <StyledLink to={ViewCollectionPath(collection.id)}>
             {collection.title}
           </StyledLink>
         </h3>

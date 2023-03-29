@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Removing terms and updating phonetics for existing terms
+
+If you need to update a vocab set and your updates will include _changing the written phonetics_ for the terms in the set, you need to write a **migration**. **THIS INCLUDES CHANGES THAT REMOVE TERMS**. These are files found in the [src/data/migrations](src/data/migrations) folder. Import `addMigration` and call it with a dictionary that maps `oldPhonetics` to `newPhonetics`. This ensures terms being tracked for a user are properly transfered to the new phonetics based key when they load the site after the changes deploy. (This system is cobbled together and totally needs love.)
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -5,21 +5,37 @@ import { cards, cherokeeToKey, keyForCard } from "./cards";
 import { migrateTerm } from "./migrations";
 import { migrations } from "./migrations/all";
 
-test("migration references real terms", () => {
-  migrations.map((migration) => {
-    const unknownTerms = Object.values(migration).filter(
-      (newTerm) =>
-        // either term is dropped
-        newTerm === null ||
-        // or references a real card we have now
+test("no unmatched terms after migrating", () => {
+  const termsAffectedByMigrations = migrations.reduce<string[]>(
+    (terms, migration) => [...terms, ...Object.keys(migration)],
+    []
+  );
+  const unmatchedTermsAfterMigration = termsAffectedByMigrations.filter(
+    (term) => {
+      const newTerm = migrateTerm(term);
+      return (
+        // a term is unmatched
+        // if the term is not dropped
+        // but but there is no corresponding card
+        newTerm !== null &&
         cards.find((card) => keyForCard(card) === cherokeeToKey(newTerm)) ===
           undefined
-    );
-    assert.deepStrictEqual(unknownTerms, []);
-  });
+      );
+    }
+  );
+
+  assert.deepStrictEqual(
+    unmatchedTermsAfterMigration.map((t) => [t, migrateTerm(t)]),
+    [],
+    "There should be no terms that are unmatched after being migrated."
+  );
 });
 
 test("after migration, all terms have cards", () => {
+  // TODO: this test doesn't seem to make sense -- why are we migrating the
+  // terms loaded in the app? shouldn't we only migrate terms that are in the
+  // users stored term data?
+
   // terms in the cached set
   // mapped through the migration if it affects them
   // should all now exist

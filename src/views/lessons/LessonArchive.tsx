@@ -1,16 +1,35 @@
-import { DateTime, Duration } from "luxon";
 import React, { ReactElement } from "react";
+import { Duration } from "luxon";
+import { SmallLoader } from "../../components/Loader";
 import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import { StyledTable } from "../../components/StyledTable";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
+import { useAuth } from "../../firebase/AuthProvider";
+import {
+  useAnalyticsPageName,
+  useFirebaseAllLessonMetadata,
+} from "../../firebase/hooks";
 import { Lesson, nameForLesson } from "../../state/reducers/lessons";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { ViewLessonPath } from "../../routing/paths";
 
 type FinishedLesson = Lesson & { startedAt: number; completedAt: number };
 
 export function LessonArchive(): ReactElement {
-  const { lessons } = useUserStateContext();
+  useAnalyticsPageName("Lesson archive");
+  const { user } = useAuth();
+
+  const [firebaseResult, _] = useFirebaseAllLessonMetadata(user);
+
+  if (!firebaseResult.ready)
+    return (
+      <div style={{ width: "100%" }}>
+        <SmallLoader below={"Loading lesson data..."} />
+      </div>
+    );
+
+  const lessons = firebaseResult.data ?? {};
+
   const finishedLessons = Object.values(lessons)
     .filter((l): l is FinishedLesson => Boolean(l.completedAt && l.startedAt))
     // most recent first
@@ -65,7 +84,7 @@ function FinishedLessonRow({ lesson }: { lesson: FinishedLesson }) {
           .toHuman()}
       </td>
       <td>
-        <StyledLink to={`/lessons/${lesson.id}`}>Details</StyledLink>
+        <StyledLink to={ViewLessonPath(lesson.id)}>Details</StyledLink>
       </td>
     </tr>
   );

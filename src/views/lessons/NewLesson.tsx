@@ -1,13 +1,15 @@
-import { ReactElement, useEffect, useMemo } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { ReactElement, useEffect, useMemo, useState } from "react";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { v4 } from "uuid";
 import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 import {
   LessonCreationError,
   LessonCreationErrorType,
 } from "../../state/reducers/lessons/createNewLesson";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
+import { NewLessonPath } from "../../routing/paths";
 
 export function NewLesson() {
   const {
@@ -23,17 +25,27 @@ export function NewLesson() {
 
   const newLessonId = useMemo(() => v4(), [numChallenges, reviewOnly]);
 
-  const { createNewLesson, lessons, lessonCreationError } =
-    useUserStateContext();
+  const navigate = useNavigate();
+
+  const {
+    createNewLesson,
+    ephemeral: { lessonCreationError },
+  } = useUserStateContext();
 
   const lessonError =
     lessonCreationError?.lessonId === newLessonId ? lessonCreationError : null;
 
+  const [creatingLesson, setCreatingLesson] = useState(false);
+
   useEffect(() => {
-    if (!(newLessonId in lessons)) {
-      createNewLesson(newLessonId, numChallenges, reviewOnly);
+    if (!creatingLesson) {
+      setCreatingLesson(true);
+      createNewLesson(newLessonId, numChallenges, reviewOnly)
+        .then(() => navigate(`/practice/${newLessonId}`))
+        // if this fails, it will update state
+        .catch();
     }
-  }, [lessons, newLessonId]);
+  }, [newLessonId]);
 
   if (lessonError)
     return (
@@ -42,8 +54,6 @@ export function NewLesson() {
         <ErrorAdvice error={lessonError} numChallenges={numChallenges} />
       </div>
     );
-  else if (newLessonId in lessons)
-    return <Navigate to={`/practice/${newLessonId}`} />;
   else return <SectionHeading>Creating lesson...</SectionHeading>;
 }
 
@@ -54,6 +64,7 @@ function ErrorAdvice({
   error: LessonCreationError;
   numChallenges: number;
 }): ReactElement {
+  useAnalyticsPageName("Lesson creation error");
   switch (error.type) {
     case LessonCreationErrorType.NOT_ENOUGH_NEW_TERMS_FOR_LESSON:
       return (
@@ -74,7 +85,7 @@ function ErrorAdvice({
           </p>
           <p>
             Consider doing a lesson with{" "}
-            <StyledLink to={`/lessons/new/${numChallenges}`}>
+            <StyledLink to={NewLessonPath(numChallenges)}>
               some new vocabulary
             </StyledLink>
             .

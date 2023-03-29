@@ -1,11 +1,11 @@
 import React from "react";
 import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
+import { DashboardWidget } from "./DashboardWidget";
 
 export function GettingStartedWidget() {
   return (
-    <div>
-      <SectionHeading>Getting started</SectionHeading>
+    <DashboardWidget title="Getting started">
       <p>There are four main steps to get started.</p>
       <ol>
         <li>
@@ -25,6 +25,6 @@ export function GettingStartedWidget() {
         click "Pull new terms from this collection" in the{" "}
         <StyledLink to="/vocabulary">find new vocabulary</StyledLink> section.
       </p>
-    </div>
+    </DashboardWidget>
   );
 }

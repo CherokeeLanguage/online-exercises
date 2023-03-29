@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
 import { useParams } from "react-router-dom";
 import {
-  CollectionDetails,
   MakeUpstreamCollectionButton,
   StyledCollectionHeader,
   UpstreamCollectionFlare,
@@ -10,8 +9,10 @@ import { StyledLink } from "../../components/StyledLink";
 import { StyledTable } from "../../components/StyledTable";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
 import { collections } from "../../data/vocabSets";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { CollectionCredits } from "../../components/CollectionCredits";
+import { useAnalyticsPageName } from "../../firebase/hooks";
+import { ViewSetPath } from "../../routing/paths";
 
 export function ViewCollection(): ReactElement {
   const { collectionId } = useParams();
@@ -25,7 +26,10 @@ export function ViewCollectionPage({
   collectionId: string;
 }): ReactElement {
   const collection = collections[collectionId];
-  const { sets, upstreamCollection } = useUserStateContext();
+  useAnalyticsPageName(`View collection (${collection.title})`);
+  const {
+    config: { sets, upstreamCollection },
+  } = useUserStateContext();
   return (
     <div>
       <StyledCollectionHeader>
@@ -66,9 +70,7 @@ export function ViewCollectionPage({
                 </td>
 
                 <td>
-                  <StyledLink to={`/vocabulary/set/${set.id}`}>
-                    View details
-                  </StyledLink>
+                  <StyledLink to={ViewSetPath(set.id)}>View details</StyledLink>
                 </td>
               </tr>
             );

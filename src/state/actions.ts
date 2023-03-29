@@ -3,7 +3,7 @@ import { ReviewResult } from "./reducers/leitnerBoxes";
 import { Lesson } from "./reducers/lessons";
 import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { PhoneticsPreference } from "./reducers/phoneticsPreference";
-import { UserState } from "./UserStateProvider";
+import { LegacyUserState, UserState } from "./useUserState";
 
 export type ResizeLeitnerBoxesAction = {
   type: "RESIZE_LEITNER_BOXES";
@@ -24,7 +24,7 @@ export type SetAction = AddSetAction | RemoveSetAction;
 
 export type SetUpstreamCollectionAction = {
   type: "SET_UPSTREAM_COLLECTION";
-  newCollectionId: string | undefined;
+  newCollectionId: string | null;
 };
 
 export type RegisterWithGroupAction = {
@@ -34,12 +34,7 @@ export type RegisterWithGroupAction = {
 
 export type LoadStateAction = {
   type: "LOAD_STATE";
-  state: UserState;
-};
-
-export type AddLessonAction = {
-  type: "ADD_LESSON";
-  lesson: Lesson;
+  state: LegacyUserState;
 };
 
 export type StartLessonAction = {
@@ -49,7 +44,7 @@ export type StartLessonAction = {
 
 export type ConcludeLessonAction = {
   type: "CONCLUDE_LESSON";
-  lessonId: string;
+  lesson: Lesson;
   reviewedTerms: Record<string, ReviewResult>;
 };
 
@@ -59,7 +54,6 @@ export type FlagLessonCreationError = {
 };
 
 export type LessonsAction =
-  | AddLessonAction
   | ConcludeLessonAction
   | StartLessonAction
   | FlagLessonCreationError;
@@ -73,6 +67,10 @@ export type SetPhoneticsPreferenceAction = {
   type: "SET_PHONETICS_PREFERENCE";
   newPreference: PhoneticsPreference;
 };
+export type SetUserEmailAction = {
+  type: "SET_USER_EMAIL";
+  newUserEmail: string;
+};
 
 export type UserStateAction =
   | SetUpstreamCollectionAction
@@ -82,4 +80,5 @@ export type UserStateAction =
   | SetAction
   | LessonsAction
   | HandleSetChangesAction
-  | SetPhoneticsPreferenceAction;
+  | SetPhoneticsPreferenceAction
+  | SetUserEmailAction;

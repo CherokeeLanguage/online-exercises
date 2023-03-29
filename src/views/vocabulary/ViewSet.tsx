@@ -6,11 +6,12 @@ import { CardTable } from "../../components/CardTable";
 import { SectionHeading } from "../../components/SectionHeading";
 import { cards, keyForCard } from "../../data/cards";
 import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
-import { UserSetData } from "../../state/reducers/userSets";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
 import { CollectionCredits } from "../../components/CollectionCredits";
 import { ConfirmationModal } from "../../components/ConfirmationModal";
+import { BuildPracticeLessonModal } from "../../components/BuildPracticeLessonModal";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 
 export function ViewSet(): ReactElement {
   const { setId } = useParams();
@@ -19,9 +20,11 @@ export function ViewSet(): ReactElement {
   return <_ViewSet set={set} />;
 }
 
-const RemoveSetWrapper = styled.div`
+const SetActionsWrapper = styled.div`
   text-align: center;
   margin-bottom: 16px;
+  display: flex;
+  justify-content: space-around;
 `;
 
 const StyledHeadingWithButton = styled.div`
@@ -37,10 +40,17 @@ const StyledHeadingWithButton = styled.div`
 `;
 
 function _ViewSet({ set }: { set: VocabSet }): ReactElement {
-  const { addSet, sets, removeSet } = useUserStateContext();
-  const [modalIsOpen, setRemoveSetModalOpen] = useState(false);
+  const [removeSetModalOpen, setRemoveSetModalOpen] = useState(false);
+  const [buildPracticeLessonModalOpen, setBuildPracticeLessonModalOpen] =
+    useState(false);
+  useAnalyticsPageName(`Set view (${set.id})`);
+  const {
+    addSet,
+    removeSet,
+    config: { sets },
+  } = useUserStateContext();
 
-  const userSetData = sets[set.id] as UserSetData | undefined;
+  const isLearningSet = set.id in sets;
 
   const navigate = useNavigate();
   const setCards = useCardsForTerms(cards, set.terms, keyForCard);
@@ -63,7 +73,7 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
           {collection.title && `${collection.title} - `}
           {set.title}
         </SectionHeading>
-        {userSetData ? (
+        {isLearningSet ? (
           <span>(you are already learning this set)</span>
         ) : (
           <Button onClick={addSetAndRedirect}>
@@ -75,14 +85,28 @@ function _ViewSet({ set }: { set: VocabSet }): ReactElement {
       <CollectionCredits collection={collection} />
       <h3>Terms in this set</h3>
       <CardTable cards={Object.values(setCards)} />
-      {set.id in sets && (
-        <RemoveSetWrapper>
-          <Button onClick={() => setRemoveSetModalOpen(true)}>
-            Stop practicing these terms
+
+      <SetActionsWrapper>
+        <Button onClick={() => setBuildPracticeLessonModalOpen(true)}>
+          Practice just these terms
+        </Button>
+        {set.id in sets && (
+          <Button
+            onClick={() => setRemoveSetModalOpen(true)}
+            variant="negative"
+          >
+            Stop learning these terms
           </Button>
-        </RemoveSetWrapper>
+        )}
+      </SetActionsWrapper>
+
+      {buildPracticeLessonModalOpen && (
+        <BuildPracticeLessonModal
+          set={set}
+          close={() => setBuildPracticeLessonModalOpen(false)}
+        />
       )}
-      {modalIsOpen && (
+      {removeSetModalOpen && (
         <ConfirmRemoveSetModal
           set={set}
           close={() => setRemoveSetModalOpen(false)}
@@ -107,6 +131,7 @@ function ConfirmRemoveSetModal({
       title={`Remove set ${set.title}`}
       close={close}
       confirm={confirm}
+      confirmVariant="negative"
       confirmContent={<>Delete all data on up to {set.terms.length} terms</>}
     >
       <p>

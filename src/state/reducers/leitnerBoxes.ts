@@ -3,7 +3,7 @@ import { Dispatch, useMemo } from "react";
 import { getToday } from "../../utils/dateUtils";
 import { TermStats } from "../../spaced-repetition/types";
 import { ImperativeBlock } from "../../utils/useReducerWithImperative";
-import { UserState } from "../UserStateProvider";
+import { UserState } from "../useUserState";
 import { vocabSets } from "../../data/vocabSets";
 import { UserStateAction } from "../actions";
 import { migrateTerm } from "../../data/migrations";
@@ -119,6 +119,8 @@ export function reduceLeitnerBoxState(
         numBoxes,
       };
     case "CONCLUDE_LESSON":
+      if (action.lesson.type === "PRACTICE") return { terms, numBoxes };
+      // do not move terms for practice lessons
       return {
         terms: Object.entries(action.reviewedTerms).reduce(
           (newTerms, [term, result]) => ({
@@ -133,7 +135,7 @@ export function reduceLeitnerBoxState(
       const setToRemove = vocabSets[action.setToRemove];
       // we need to figure out which terms are used ONLY by the set we are removing
       // to do this, we remove any terms which appear in another set
-      const termsUniqueToSet = Object.values(globalState.sets)
+      const termsUniqueToSet = Object.values(globalState.config.sets)
         // get all other sets
         .filter((stats) => stats.setId !== setToRemove.id)
         // get terms for those sets
@@ -170,7 +172,7 @@ export function reduceLeitnerBoxState(
         numBoxes: action.newNumBoxes,
       };
     case "HANDLE_SET_CHANGES":
-      const termsFromAllSets = Object.keys(globalState.sets).flatMap(
+      const termsFromAllSets = Object.keys(globalState.config.sets).flatMap(
         (setId) => vocabSets[setId].terms
       );
       const termsWithMigrations = Object.fromEntries(
@@ -222,4 +224,18 @@ export function useLeitnerBoxesInteractors(
     }),
     [dispatch]
   );
+}
+
+/**
+ * Create an empty leitner box state for a practice lesson (ie. progress not counted).
+ */
+export function practiceLessonLeitnerBoxes(
+  terms: string[],
+  numBoxes: number
+): LeitnerBoxState {
+  const today = getToday();
+  return {
+    terms: Object.fromEntries(terms.map((t) => [t, newTermStats(t, today)])),
+    numBoxes,
+  };
 }

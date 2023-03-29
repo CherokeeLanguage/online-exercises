@@ -3,18 +3,23 @@ import { LessonsWidget } from "./LessonsWidget";
 // import { SetsWidget } from "./SetsWidget";
 import { ActivityWidget } from "./ActivityWidget";
 import { GettingStartedWidget } from "./GettingStartedWidget";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { OPEN_BETA_ID } from "../../state/reducers/groupId";
+import { MinigameWidget } from "./MinigameWidget";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 
 export function Dashboard(): ReactElement {
-  const { groupId } = useUserStateContext();
+  const {
+    config: { groupId },
+  } = useUserStateContext();
+  useAnalyticsPageName("Dashboard");
   return (
     <div>
       {/** Only show getting started for folks in open beta */}
       {groupId === OPEN_BETA_ID && <GettingStartedWidget />}
+      <MinigameWidget />
       <ActivityWidget />
       <LessonsWidget />
-      {/* <SetsWidget /> */}
     </div>
   );
 }

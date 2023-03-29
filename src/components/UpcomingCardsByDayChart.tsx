@@ -1,6 +1,6 @@
 import d3 from "d3";
 import { useRef, useEffect } from "react";
-import { useUserStateContext } from "../state/UserStateProvider";
+import { useUserStateContext } from "../providers/UserStateProvider";
 import { getToday, DAY, WEEK } from "../utils/dateUtils";
 
 export function UpcomingCardsByDayChart() {

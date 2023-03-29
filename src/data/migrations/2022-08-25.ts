@@ -1,6 +1,6 @@
-import { migrations } from "./all";
+import { addMigration } from "./all";
 
-migrations.push({
+addMigration({
   vhla: "v́ːhla",
   "ayo!": "ayő!",
   "v̀:hla ő:sda yi̋gi": "v́ːhla ő:sda yi̋gi.",

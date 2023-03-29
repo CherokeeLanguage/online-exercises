@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { useRef, useEffect } from "react";
-import { useUserStateContext } from "../state/UserStateProvider";
+import { useUserStateContext } from "../providers/UserStateProvider";
 import { theme } from "../theme";
 
 export const PROFICIENCY_LEVELS = [

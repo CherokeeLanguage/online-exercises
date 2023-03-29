@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { collections, VocabSet } from "../data/vocabSets";
+import { ViewSetPath } from "../routing/paths";
 import { StyledLink } from "./StyledLink";
 import { StyledTable } from "./StyledTable";
 import { VisuallyHidden } from "./VisuallyHidden";
@@ -65,7 +66,7 @@ function VocabSetRow({
         <LastCell set={set} />
       </td>
       <td>
-        <StyledLink to={`/vocabulary/set/${set.id}`}>View</StyledLink>
+        <StyledLink to={ViewSetPath(set.id)}>View</StyledLink>
       </td>
     </tr>
   );

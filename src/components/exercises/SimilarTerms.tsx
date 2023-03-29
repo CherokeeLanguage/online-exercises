@@ -1,16 +1,15 @@
-import React, { ReactElement, useState, useMemo, useEffect } from "react";
-import styled, { css } from "styled-components";
+import React, { ReactElement, useMemo } from "react";
 // @ts-ignore
 import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
-import { useUserStateContext } from "../../state/UserStateProvider";
-import { theme } from "../../theme";
-import { createIssueForTermInNewTab } from "../../utils/createIssue";
 import { useAudio } from "../../utils/useAudio";
-import { useFeedbackChimes } from "../../utils/useFeedbackChimes";
-import { useTransition } from "../../utils/useTransition";
+import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
 import { ExerciseComponentProps } from "./Exercise";
+import { FlagIssueButton } from "../FlagIssueModal";
+import { ListenAgainButton } from "../ListenAgainButton";
+import { ContentWrapper } from "./ContentWrapper";
+import { pickNRandom, pickRandomElement, spliceInAtRandomIndex } from "./utils";
 
 interface Challenge {
   terms: Card[];
@@ -19,41 +18,29 @@ interface Challenge {
 
 function newChallenge(
   correctCard: TermCardWithStats<Card>,
-  lessonCards: Record<string, Card>
+  lessonCards: Record<string, Card>,
+  numOptions: number
 ): Challenge {
-  const temptingTerm = Object.keys(lessonCards)
+  const similarTerms = Object.keys(lessonCards)
     .slice(0)
     .sort(
       (a, b) =>
         trigramSimilarity(b, correctCard.card.cherokee) -
         trigramSimilarity(a, correctCard.card.cherokee)
-    )[1 + Math.floor(Math.random() * 2)]; // get a close match
+    )
+    .slice(1, 1 + Math.ceil((numOptions - 1) * 1.5));
+  const temptingTerms = pickNRandom(similarTerms, numOptions - 1);
+  const temptingCards = temptingTerms.map((t) => lessonCards[t]);
 
-  const temptingCard = lessonCards[temptingTerm];
-
-  const correctTermIdx = Math.floor(Math.random() * 2);
+  const [correctTermIdx, terms] = spliceInAtRandomIndex(
+    temptingCards,
+    correctCard.card
+  );
 
   return {
-    terms:
-      correctTermIdx === 0
-        ? [correctCard.card, temptingCard]
-        : [temptingCard, correctCard.card],
+    terms,
     correctTermIdx,
   };
-}
-
-const Answers = styled.div<{ transitioning: boolean }>`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  transition-property: opacity 250msec;
-  opacity: ${({ transitioning }) => (transitioning ? "70%" : "100%")};
-`;
-
-enum AnswerState {
-  CORRECT = "CORRECT",
-  INCORRECT = "INCORRECT",
-  UNANSWERED = "UNANSWERED",
 }
 
 export function SimilarTerms({
@@ -61,118 +48,50 @@ export function SimilarTerms({
   lessonCards,
   reviewCurrentCard,
 }: ExerciseComponentProps): ReactElement {
-  const { groupId } = useUserStateContext();
-
   const challenge = useMemo(
-    () => newChallenge(currentCard, lessonCards),
+    () => newChallenge(currentCard, lessonCards, 2),
     [currentCard]
   );
 
-  const { playCorrectChime, playIncorrectChime } = useFeedbackChimes();
-
-  const [answerState, setAnswerState] = useState(AnswerState.UNANSWERED);
-  const { transitioning, startTransition } = useTransition({ duration: 250 });
-
-  function onTermClicked(correct: boolean) {
-    setAnswerState(correct ? AnswerState.CORRECT : AnswerState.INCORRECT);
-    (correct ? playCorrectChime : playIncorrectChime)();
-    startTransition(() => {
-      reviewCurrentCard(correct);
-      setAnswerState(AnswerState.UNANSWERED);
-    });
-  }
-
   // pick random cherokee voice to use
-  const cherokee_audio = useMemo(
+  const cherokeeAudio = useMemo(
     () =>
-      challenge.terms[challenge.correctTermIdx].cherokee_audio[
-        Math.floor(
-          Math.random() *
-            challenge.terms[challenge.correctTermIdx].cherokee_audio.length
-        )
-      ],
+      pickRandomElement(
+        challenge.terms[challenge.correctTermIdx].cherokee_audio
+      ),
     [challenge]
   );
 
   const { play, playing } = useAudio({
-    src: cherokee_audio,
+    src: cherokeeAudio,
     autoplay: true,
   });
 
   return (
-    <div
-      style={{
-        display: "grid",
-      }}
-    >
-      {/* <p> {leitnerBoxState.cardsToReview.length} left in session </p> */}
-      <button onClick={() => play()} disabled={playing}>
-        Listen again
-      </button>
-      <Answers transitioning={transitioning}>
-        {challenge.terms.map((term, idx) => (
-          <AnswerCard
-            key={idx}
-            term={term}
-            onClick={() => onTermClicked(idx === challenge.correctTermIdx)}
-            correct={idx === challenge.correctTermIdx}
-            answerState={answerState}
-          />
-        ))}
-      </Answers>
-      {/* <Progress cardsPerLevel={cardsPerLevel} /> */}
-      <button
-        onClick={() => createIssueForTermInNewTab(groupId, currentCard.term)}
+    <div>
+      <p>
+        Listen to the Cherokee word or phrase and then pick the correct
+        translation. Read carefully! We will try to find similar terms for the
+        wrong answer.
+      </p>
+      <ContentWrapper
+        style={{
+          display: "grid",
+        }}
       >
-        Flag an issue with this term
-      </button>
+        <ListenAgainButton playAudio={play} playing={playing} />
+        <AnswersWithFeedback reviewCurrentCard={reviewCurrentCard}>
+          {challenge.terms.map((term, idx) => (
+            <AnswerCard key={idx} correct={idx === challenge.correctTermIdx}>
+              {term.english}
+            </AnswerCard>
+          ))}
+        </AnswersWithFeedback>
+        <FlagIssueButton
+          problematicAudio={cherokeeAudio}
+          card={currentCard.card}
+        />
+      </ContentWrapper>
     </div>
-  );
-}
-
-const StyledAnswerCard = styled.button<{
-  answerState: AnswerState;
-  correct: boolean;
-}>`
-  background: #111;
-  border: 1px solid #222;
-  ${({ answerState, correct }) =>
-    correct &&
-    answerState === AnswerState.CORRECT &&
-    css`
-      background: ${theme.colors.DARK_GREEN};
-    `}
-  ${({ answerState, correct }) =>
-    !correct &&
-    answerState === AnswerState.INCORRECT &&
-    css`
-      background: ${theme.colors.DARK_RED};
-    `}
-  padding: 24px;
-  font-size: ${theme.fontSizes.sm};
-  margin: 16px;
-  color: white;
-  flex: 1;
-`;
-
-function AnswerCard({
-  term,
-  onClick,
-  correct,
-  answerState,
-}: {
-  term: Card;
-  onClick: () => void;
-  correct: boolean;
-  answerState: AnswerState;
-}): ReactElement {
-  return (
-    <StyledAnswerCard
-      onClick={onClick}
-      answerState={answerState}
-      correct={correct}
-    >
-      {term.english}
-    </StyledAnswerCard>
   );
 }

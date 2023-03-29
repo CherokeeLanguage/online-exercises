@@ -1,24 +1,37 @@
 import styled from "styled-components";
 import { ButtonLink } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
+import { useLesson } from "../../providers/LessonProvider";
+import { useAnalyticsPageName } from "../../firebase/hooks";
 import { theme } from "../../theme";
 import { exercises } from "./PracticeLesson";
 
 const ExercisesWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
+/**
+ * Show a list of options for execises a user can do to complete their vocab lesson.
+ */
 export function PickExercise() {
+  const { lesson } = useLesson();
+  useAnalyticsPageName("Pick exercise");
   return (
     <div>
       <SectionHeading>Pick an exercise</SectionHeading>
       <br />
       <ExercisesWrapper>
-        {exercises.map((exercise, idx) => (
-          <ExerciseCard exercise={exercise} key={idx} />
-        ))}
+        {exercises
+          // minigames are only allowed for _practice_ lessons
+          .filter((e) => lesson.type === "PRACTICE" || !e.minigame)
+          .map((exercise, idx) => (
+            <ExerciseCard exercise={exercise} key={idx} />
+          ))}
       </ExercisesWrapper>
     </div>
   );
