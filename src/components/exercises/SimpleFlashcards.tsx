@@ -21,6 +21,7 @@ import { FlagIssueButton } from "../FlagIssueModal";
 import { IconButton } from "../IconButton";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { ListenAgainButton } from "../ListenAgainButton";
+import { ContentWrapper } from "./ContentWrapper";
 
 function pickRandomElement<T>(options: T[]) {
   return options[Math.floor(Math.random() * options.length)];
@@ -50,12 +51,6 @@ export function SimpleFlashcards({
     </div>
   );
 }
-
-const FlashcardWrapper = styled.div`
-  max-width: 600px;
-  margin: auto;
-  text-align: center;
-`;
 
 const StyledFlashcardBody = styled.button`
   border: none;
@@ -182,7 +177,7 @@ export function Flashcard({
   const selectId = useId();
 
   return (
-    <FlashcardWrapper>
+    <ContentWrapper>
       <form>
         <label htmlFor={selectId}>Start with</label>
         <select id={selectId} value={startSide} onChange={onStartSideChange}>
@@ -206,7 +201,7 @@ export function Flashcard({
         playing={playing}
       />
       <FlagIssueButton problematicAudio={cherokeeAudio} card={card.card} />
-    </FlashcardWrapper>
+    </ContentWrapper>
   );
 }
 

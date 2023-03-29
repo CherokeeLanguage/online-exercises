@@ -1,7 +1,6 @@
 import React, { ReactElement, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
-import { useUserStateContext } from "../../providers/UserStateProvider";
 import { theme } from "../../theme";
 import {
   alignSyllabaryAndPhonetics,
@@ -13,6 +12,7 @@ import { Loader } from "../Loader";
 import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
 import { ListenAgainButton } from "../ListenAgainButton";
+import { ContentWrapper } from "./ContentWrapper";
 
 export function pickRandomElement<T>(options: T[]) {
   return options[Math.floor(Math.random() * options.length)];
@@ -130,16 +130,12 @@ export function FillInTheTone({
   currentCard,
   reviewCurrentCard,
 }: ExerciseComponentProps): ReactElement {
-  const {
-    config: { groupId },
-  } = useUserStateContext();
-
   const phonetics = useMemo(
     () => getPhonetics(currentCard.card, PhoneticsPreference.Detailed),
     [currentCard]
   );
 
-  const [syllabarySegments, phoneticsSegments] = useMemo(
+  const [_syllabarySegments, phoneticsSegments] = useMemo(
     () => alignSyllabaryAndPhonetics(currentCard.card.syllabary, phonetics),
     [phonetics]
   );
@@ -177,44 +173,24 @@ export function FillInTheTone({
   } = maskedToneHook;
 
   return (
-    <div style={{ maxWidth: "800px", margin: "auto" }}>
+    <div>
       <p>
         Here you can practice working with tone by filling in the missing tone
         sequence.
       </p>
-      <div style={{ fontSize: "1.5em", position: "relative" }}>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ position: "absolute", top: 0, right: 0 }}></div>
-          <p style={{ fontWeight: "bold", fontSize: "2em", marginBottom: 0 }}>
-            {currentCard.card.syllabary}
-          </p>
-          <p>
-            {phoneticsSegments.map((word, idx) => (
-              <>
-                {idx > 0 && " "}
-                {idx === maskedWordIdx ? (
-                  <span>
-                    {maskedSyllables.map((syllable, syllableIdx) =>
-                      syllableIdx === maskedSyllableIdx ? (
-                        <MaskedSyllable>
-                          {syllable}
-                          <sup>??</sup>
-                        </MaskedSyllable>
-                      ) : (
-                        syllable
-                      )
-                    )}
-                  </span>
-                ) : (
-                  <span>{word}</span>
-                )}
-              </>
-            ))}
-          </p>
-          <div style={{ fontSize: "0.75em" }}>
-            <ListenAgainButton playAudio={play} playing={playing} />
-          </div>
+      <ContentWrapper style={{ fontSize: "1.5em" }}>
+        <BigSyllabaryWithMaskedPhonetics
+          syllabary={currentCard.card.syllabary}
+          phoneticsSegments={phoneticsSegments}
+          maskedWordIdx={maskedWordIdx}
+          maskedSyllables={maskedSyllables}
+          maskedSyllableIdx={maskedSyllableIdx}
+        />
+
+        <div style={{ fontSize: "0.75em" }}>
+          <ListenAgainButton playAudio={play} playing={playing} />
         </div>
+
         <AnswersWithFeedback
           reviewCurrentCard={reviewCurrentCard}
           feedbackDuration={500}
@@ -227,13 +203,57 @@ export function FillInTheTone({
             </AnswerCard>
           ))}
         </AnswersWithFeedback>
-        <div style={{ textAlign: "center" }}>
-          <FlagIssueButton
-            problematicAudio={cherokeeAudio}
-            card={currentCard.card}
-          />
-        </div>
-      </div>
+
+        <FlagIssueButton
+          problematicAudio={cherokeeAudio}
+          card={currentCard.card}
+        />
+      </ContentWrapper>
     </div>
+  );
+}
+
+function BigSyllabaryWithMaskedPhonetics({
+  syllabary,
+  phoneticsSegments,
+  maskedWordIdx,
+  maskedSyllables,
+  maskedSyllableIdx,
+}: {
+  syllabary: string;
+  phoneticsSegments: string[][];
+  maskedWordIdx: number;
+  maskedSyllables: string[];
+  maskedSyllableIdx: number;
+}) {
+  return (
+    <>
+      <p style={{ fontWeight: "bold", fontSize: "2em", marginBottom: 0 }}>
+        {syllabary}
+      </p>
+      <p>
+        {phoneticsSegments.map((word, idx) => (
+          <>
+            {idx > 0 && " "}
+            {idx === maskedWordIdx ? (
+              <span>
+                {maskedSyllables.map((syllable, syllableIdx) =>
+                  syllableIdx === maskedSyllableIdx ? (
+                    <MaskedSyllable>
+                      {syllable}
+                      <sup>??</sup>
+                    </MaskedSyllable>
+                  ) : (
+                    syllable
+                  )
+                )}
+              </span>
+            ) : (
+              <span>{word}</span>
+            )}
+          </>
+        ))}
+      </p>
+    </>
   );
 }

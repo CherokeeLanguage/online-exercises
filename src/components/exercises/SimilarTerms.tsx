@@ -3,12 +3,12 @@ import React, { ReactElement, useMemo } from "react";
 import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
-import { useUserStateContext } from "../../providers/UserStateProvider";
 import { useAudio } from "../../utils/useAudio";
 import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
 import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
 import { ListenAgainButton } from "../ListenAgainButton";
+import { ContentWrapper } from "./ContentWrapper";
 
 interface Challenge {
   terms: Card[];
@@ -45,10 +45,6 @@ export function SimilarTerms({
   lessonCards,
   reviewCurrentCard,
 }: ExerciseComponentProps): ReactElement {
-  const {
-    config: { groupId },
-  } = useUserStateContext();
-
   const challenge = useMemo(
     () => newChallenge(currentCard, lessonCards),
     [currentCard]
@@ -72,25 +68,30 @@ export function SimilarTerms({
   });
 
   return (
-    <div
-      style={{
-        display: "grid",
-      }}
-    >
-      {/* <p> {leitnerBoxState.cardsToReview.length} left in session </p> */}
-      <ListenAgainButton playAudio={play} playing={playing} />
-      <AnswersWithFeedback reviewCurrentCard={reviewCurrentCard}>
-        {challenge.terms.map((term, idx) => (
-          <AnswerCard key={idx} correct={idx === challenge.correctTermIdx}>
-            {term.english}
-          </AnswerCard>
-        ))}
-      </AnswersWithFeedback>
-      {/* <Progress cardsPerLevel={cardsPerLevel} /> */}
-      <FlagIssueButton
-        problematicAudio={cherokee_audio}
-        card={currentCard.card}
-      />
+    <div>
+      <p>
+        Listen to the Cherokee word or phrase and then pick the correct
+        translation. Read carefully! We will try to find similar terms for the
+        wrong answer.
+      </p>
+      <ContentWrapper
+        style={{
+          display: "grid",
+        }}
+      >
+        <ListenAgainButton playAudio={play} playing={playing} />
+        <AnswersWithFeedback reviewCurrentCard={reviewCurrentCard}>
+          {challenge.terms.map((term, idx) => (
+            <AnswerCard key={idx} correct={idx === challenge.correctTermIdx}>
+              {term.english}
+            </AnswerCard>
+          ))}
+        </AnswersWithFeedback>
+        <FlagIssueButton
+          problematicAudio={cherokee_audio}
+          card={currentCard.card}
+        />
+      </ContentWrapper>
     </div>
   );
 }
