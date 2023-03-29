@@ -69,10 +69,10 @@ const StyledFlashcardBody = styled.button`
   outline: none;
   background: none;
   transition: box-shadow 0.1s linear;
-  box-shadow: 1px 1px 0px #6660;
+  box-shadow: 2px 2px 8px #6664;
   &:hover {
     /* border: 1px solid #333; */
-    box-shadow: 1px 1px 5px #666;
+    box-shadow: 2px 2px 8px #666a;
     /* background: ${theme.colors.LIGHTER_GRAY}; */
   }
   p {
