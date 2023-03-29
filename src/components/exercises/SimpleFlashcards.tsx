@@ -22,10 +22,7 @@ import { IconButton } from "../IconButton";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { ListenAgainButton } from "../ListenAgainButton";
 import { ContentWrapper } from "./ContentWrapper";
-
-function pickRandomElement<T>(options: T[]) {
-  return options[Math.floor(Math.random() * options.length)];
-}
+import { pickRandomElement } from "./utils";
 
 export function SimpleFlashcards({
   currentCard,

@@ -9,6 +9,7 @@ import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
 import { ListenAgainButton } from "../ListenAgainButton";
 import { ContentWrapper } from "./ContentWrapper";
+import { pickNRandom, pickRandomElement, spliceInAtRandomIndex } from "./utils";
 
 interface Challenge {
   terms: Card[];
@@ -17,25 +18,27 @@ interface Challenge {
 
 function newChallenge(
   correctCard: TermCardWithStats<Card>,
-  lessonCards: Record<string, Card>
+  lessonCards: Record<string, Card>,
+  numOptions: number
 ): Challenge {
-  const temptingTerm = Object.keys(lessonCards)
+  const similarTerms = Object.keys(lessonCards)
     .slice(0)
     .sort(
       (a, b) =>
         trigramSimilarity(b, correctCard.card.cherokee) -
         trigramSimilarity(a, correctCard.card.cherokee)
-    )[1 + Math.floor(Math.random() * 2)]; // get a close match
+    )
+    .slice(1, 1 + Math.ceil((numOptions - 1) * 1.5));
+  const temptingTerms = pickNRandom(similarTerms, numOptions - 1);
+  const temptingCards = temptingTerms.map((t) => lessonCards[t]);
 
-  const temptingCard = lessonCards[temptingTerm];
-
-  const correctTermIdx = Math.floor(Math.random() * 2);
+  const [correctTermIdx, terms] = spliceInAtRandomIndex(
+    temptingCards,
+    correctCard.card
+  );
 
   return {
-    terms:
-      correctTermIdx === 0
-        ? [correctCard.card, temptingCard]
-        : [temptingCard, correctCard.card],
+    terms,
     correctTermIdx,
   };
 }
@@ -46,24 +49,21 @@ export function SimilarTerms({
   reviewCurrentCard,
 }: ExerciseComponentProps): ReactElement {
   const challenge = useMemo(
-    () => newChallenge(currentCard, lessonCards),
+    () => newChallenge(currentCard, lessonCards, 2),
     [currentCard]
   );
 
   // pick random cherokee voice to use
-  const cherokee_audio = useMemo(
+  const cherokeeAudio = useMemo(
     () =>
-      challenge.terms[challenge.correctTermIdx].cherokee_audio[
-        Math.floor(
-          Math.random() *
-            challenge.terms[challenge.correctTermIdx].cherokee_audio.length
-        )
-      ],
+      pickRandomElement(
+        challenge.terms[challenge.correctTermIdx].cherokee_audio
+      ),
     [challenge]
   );
 
   const { play, playing } = useAudio({
-    src: cherokee_audio,
+    src: cherokeeAudio,
     autoplay: true,
   });
 
@@ -88,7 +88,7 @@ export function SimilarTerms({
           ))}
         </AnswersWithFeedback>
         <FlagIssueButton
-          problematicAudio={cherokee_audio}
+          problematicAudio={cherokeeAudio}
           card={currentCard.card}
         />
       </ContentWrapper>

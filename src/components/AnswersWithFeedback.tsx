@@ -34,7 +34,7 @@ enum AnswerState {
 
 export function AnswersWithFeedback({
   reviewCurrentCard,
-  feedbackDuration = 250,
+  feedbackDuration = 500,
   children,
 }: {
   reviewCurrentCard: (correct: boolean) => void;
