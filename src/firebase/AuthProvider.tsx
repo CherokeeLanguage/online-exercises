@@ -5,9 +5,10 @@ import {
   useEffect,
   useState,
 } from "react";
-import { auth } from ".";
+import { analytics, auth } from ".";
 import { onAuthStateChanged, signInAnonymously, User } from "firebase/auth";
 import { LoadingPage } from "../components/Loader";
+import { setUserId } from "firebase/analytics";
 
 export interface AuthContext {
   user: User;
@@ -25,6 +26,9 @@ function useFirebaseUser() {
   useEffect(() => {
     return onAuthStateChanged(auth, (newUser) => {
       setUser(newUser);
+      if (newUser) {
+        setUserId(analytics, newUser.uid);
+      }
     });
   });
   return user;
