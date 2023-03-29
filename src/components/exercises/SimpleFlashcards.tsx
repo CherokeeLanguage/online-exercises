@@ -95,20 +95,21 @@ export function Flashcard({
   reviewCurrentCard: (correct: boolean) => void;
 }) {
   const {
-    config: { groupId, phoneticsPreference },
+    config: { phoneticsPreference },
   } = useUserStateContext();
+
   const [cardFlipped, setCardFlipped] = useState(false);
   const [startSide, setStartSide] = useState<"cherokee" | "english">(
     "cherokee"
   );
   const [side, setSide] = useState(startSide);
+
   const phonetics = useMemo(
     () => getPhonetics(card.card, phoneticsPreference),
     [card, phoneticsPreference]
   );
 
   function flipCard() {
-    console.log("Flipping card...");
     setSide(side === "cherokee" ? "english" : "cherokee");
     setCardFlipped(true);
   }
@@ -127,17 +128,31 @@ export function Flashcard({
     }
   }
 
+  function shouldIgnoreKeyboardEvent(event: KeyboardEvent) {
+    // this makes sure we bail if the keyboard event was targeted outside of the exercise (eg. at the issue modal)
+    return (
+      event.target instanceof HTMLElement &&
+      event.target !== document.body &&
+      !document.getElementById("root")!.contains(event.target)
+    );
+  }
+
   useKeyPressEvent(" ", (event) => {
+    if (shouldIgnoreKeyboardEvent(event)) return;
     event.preventDefault(); // sometimes button will try to get clicked too
+    event.stopPropagation();
     flipCard();
   });
 
-  useKeyPressEvent("x", () => {
+  useKeyPressEvent("x", (event) => {
+    if (shouldIgnoreKeyboardEvent(event)) return;
     reviewCardOrFlip(false);
   });
 
   useKeyPressEvent("Enter", (event) => {
+    if (shouldIgnoreKeyboardEvent(event)) return;
     event.preventDefault(); // sometimes the button will try to get clicked too
+    event.stopPropagation();
     reviewCardOrFlip(true);
   });
 
