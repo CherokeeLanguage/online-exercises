@@ -12,6 +12,7 @@ import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
 import { Loader } from "../Loader";
 import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
+import { ListenAgainButton } from "../ListenAgainButton";
 
 export function pickRandomElement<T>(options: T[]) {
   return options[Math.floor(Math.random() * options.length)];
@@ -153,7 +154,7 @@ export function FillInTheTone({
     [currentCard]
   );
 
-  const { play } = useAudio({
+  const { play, playing } = useAudio({
     src: cherokeeAudio,
     autoplay: true,
   });
@@ -181,9 +182,10 @@ export function FillInTheTone({
         Here you can practice working with tone by filling in the missing tone
         sequence.
       </p>
-      <div style={{ fontSize: 24 }}>
+      <div style={{ fontSize: "1.5em", position: "relative" }}>
         <div style={{ textAlign: "center" }}>
-          <p style={{ fontWeight: "bold", fontSize: "2em" }}>
+          <div style={{ position: "absolute", top: 0, right: 0 }}></div>
+          <p style={{ fontWeight: "bold", fontSize: "2em", marginBottom: 0 }}>
             {currentCard.card.syllabary}
           </p>
           <p>
@@ -209,6 +211,9 @@ export function FillInTheTone({
               </>
             ))}
           </p>
+          <div style={{ fontSize: "0.75em" }}>
+            <ListenAgainButton playAudio={play} playing={playing} />
+          </div>
         </div>
         <AnswersWithFeedback
           reviewCurrentCard={reviewCurrentCard}
@@ -222,11 +227,12 @@ export function FillInTheTone({
             </AnswerCard>
           ))}
         </AnswersWithFeedback>
-        <button onClick={() => play()}>Listen again</button>
-        <FlagIssueButton
-          problematicAudio={cherokeeAudio}
-          card={currentCard.card}
-        />
+        <div style={{ textAlign: "center" }}>
+          <FlagIssueButton
+            problematicAudio={cherokeeAudio}
+            card={currentCard.card}
+          />
+        </div>
       </div>
     </div>
   );

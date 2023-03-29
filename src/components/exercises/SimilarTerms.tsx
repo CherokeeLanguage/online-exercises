@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useMemo, useEffect } from "react";
+import React, { ReactElement, useMemo } from "react";
 // @ts-ignore
 import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../data/cards";
@@ -8,6 +8,7 @@ import { useAudio } from "../../utils/useAudio";
 import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
 import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
+import { ListenAgainButton } from "../ListenAgainButton";
 
 interface Challenge {
   terms: Card[];
@@ -77,9 +78,7 @@ export function SimilarTerms({
       }}
     >
       {/* <p> {leitnerBoxState.cardsToReview.length} left in session </p> */}
-      <button onClick={() => play()} disabled={playing}>
-        Listen again
-      </button>
+      <ListenAgainButton playAudio={play} playing={playing} />
       <AnswersWithFeedback reviewCurrentCard={reviewCurrentCard}>
         {challenge.terms.map((term, idx) => (
           <AnswerCard key={idx} correct={idx === challenge.correctTermIdx}>

@@ -18,6 +18,9 @@ import {
 import { useAudio } from "../../utils/useAudio";
 import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
+import { IconButton } from "../IconButton";
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
+import { ListenAgainButton } from "../ListenAgainButton";
 
 function pickRandomElement<T>(options: T[]) {
   return options[Math.floor(Math.random() * options.length)];
@@ -156,7 +159,7 @@ export function Flashcard({
     ];
   }, [card]);
 
-  const { play } = useAudio({
+  const { play, playing } = useAudio({
     src: side === "cherokee" ? cherokeeAudio : englishAudio,
     autoplay: true,
   });
@@ -182,7 +185,11 @@ export function Flashcard({
           ></AlignedCherokee>
         )}
       </StyledFlashcardBody>
-      <FlashcardControls playAudio={play} reviewCard={reviewCardOrFlip} />
+      <FlashcardControls
+        playAudio={play}
+        reviewCard={reviewCardOrFlip}
+        playing={playing}
+      />
       <FlagIssueButton problematicAudio={cherokeeAudio} card={card.card} />
     </FlashcardWrapper>
   );
@@ -263,15 +270,41 @@ function AlignedCherokee({
 function FlashcardControls({
   reviewCard,
   playAudio,
+  playing,
 }: {
   reviewCard: (correct: boolean) => void;
   playAudio: () => void;
+  playing: boolean;
 }): ReactElement {
   return (
-    <div>
-      <button onClick={() => reviewCard(false)}>Answered incorrectly</button>
-      <button onClick={() => playAudio()}>Listen again</button>
-      <button onClick={() => reviewCard(true)}>Answered correctly</button>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        marginBottom: "16px",
+      }}
+    >
+      <div style={{ flex: "1" }}>
+        <IconButton
+          Icon={AiOutlineCloseCircle}
+          onClick={() => reviewCard(false)}
+          color={theme.colors.DARK_RED}
+        >
+          Answered incorrectly
+        </IconButton>
+      </div>
+      <div style={{ flex: "1" }}>
+        <ListenAgainButton playAudio={playAudio} playing={playing} />
+      </div>
+      <div style={{ flex: "1" }}>
+        <IconButton
+          Icon={AiOutlineCheckCircle}
+          onClick={() => reviewCard(true)}
+          color={theme.colors.DARK_GREEN}
+        >
+          Answered correctly
+        </IconButton>
+      </div>
     </div>
   );
 }
