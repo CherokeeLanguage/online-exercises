@@ -7,13 +7,18 @@ import {
   getPhonetics,
 } from "../../utils/phonetics";
 import { useAudio } from "../../utils/useAudio";
-import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
+import {
+  AnswerCard,
+  AnswersWithFeedback,
+  useAnswersWithFeedback,
+} from "../AnswersWithFeedback";
 import { Loader } from "../Loader";
 import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
 import { ListenAgainButton } from "../ListenAgainButton";
 import { ContentWrapper } from "./ContentWrapper";
 import { pickNRandom, pickRandomElement, spliceInAtRandomIndex } from "./utils";
+import { Button } from "../Button";
 
 export function validWordsToHide(
   phoneticsWords: string[][]
@@ -164,9 +169,22 @@ export function FillInTheTone({
           <ListenAgainButton playAudio={play} playing={playing} />
         </div>
 
-        <AnswersWithFeedback reviewCurrentCard={reviewCurrentCard}>
+        <AnswersWithFeedback
+          reviewCurrentCard={reviewCurrentCard}
+          hintLocation={"overAnswers"}
+          IncorrectAnswerHint={() => (
+            <FillInTheToneHint
+              correctAnswer={
+                maskedSyllables[maskedSyllableIdx] + allOptions[correctIdx]
+              }
+              options={allOptions.map(
+                (option) => maskedSyllables[maskedSyllableIdx] + option
+              )}
+            />
+          )}
+        >
           {allOptions.map((option, idx) => (
-            <AnswerCard correct={idx === correctIdx}>
+            <AnswerCard correct={idx === correctIdx} idx={idx} key={idx}>
               <span style={{ fontSize: 24 }}>
                 {maskedSyllables[maskedSyllableIdx] + option}
               </span>
@@ -225,5 +243,30 @@ function BigSyllabaryWithMaskedPhonetics({
         ))}
       </p>
     </>
+  );
+}
+
+function FillInTheToneHint({
+  correctAnswer,
+  options,
+}: {
+  correctAnswer: string;
+  options: string[];
+}): ReactElement {
+  const { selectedAnswer, endFeedback } = useAnswersWithFeedback();
+  if (selectedAnswer === null)
+    throw new Error("Answer should be selected if we are providing feedback");
+  return (
+    <div>
+      <p>
+        Correct answer: <strong>{correctAnswer}</strong>
+      </p>
+      <p>
+        <em>
+          You said: <strong>{options[selectedAnswer]}</strong>
+        </em>
+      </p>
+      <Button onClick={endFeedback}>Continue</Button>
+    </div>
   );
 }

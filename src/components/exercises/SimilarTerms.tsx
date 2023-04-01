@@ -4,12 +4,17 @@ import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
 import { useAudio } from "../../utils/useAudio";
-import { AnswerCard, AnswersWithFeedback } from "../AnswersWithFeedback";
+import {
+  AnswerCard,
+  AnswersWithFeedback,
+  useAnswersWithFeedback,
+} from "../AnswersWithFeedback";
 import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
 import { ListenAgainButton } from "../ListenAgainButton";
 import { ContentWrapper } from "./ContentWrapper";
 import { pickNRandom, pickRandomElement, spliceInAtRandomIndex } from "./utils";
+import { Button } from "../Button";
 
 interface Challenge {
   terms: Card[];
@@ -74,15 +79,24 @@ export function SimilarTerms({
         translation. Read carefully! We will try to find similar terms for the
         wrong answer.
       </p>
-      <ContentWrapper
-        style={{
-          display: "grid",
-        }}
-      >
+      <ContentWrapper>
         <ListenAgainButton playAudio={play} playing={playing} />
-        <AnswersWithFeedback reviewCurrentCard={reviewCurrentCard}>
+        <AnswersWithFeedback
+          reviewCurrentCard={reviewCurrentCard}
+          hintLocation={"underAnswers"}
+          IncorrectAnswerHint={() => (
+            <SimilarTermsHint
+              correctAnswerIdx={challenge.correctTermIdx}
+              options={challenge.terms}
+            />
+          )}
+        >
           {challenge.terms.map((term, idx) => (
-            <AnswerCard key={idx} correct={idx === challenge.correctTermIdx}>
+            <AnswerCard
+              key={idx}
+              idx={idx}
+              correct={idx === challenge.correctTermIdx}
+            >
               {term.english}
             </AnswerCard>
           ))}
@@ -92,6 +106,32 @@ export function SimilarTerms({
           card={currentCard.card}
         />
       </ContentWrapper>
+    </div>
+  );
+}
+
+function SimilarTermsHint({
+  correctAnswerIdx,
+  options,
+}: {
+  correctAnswerIdx: number;
+  options: Card[];
+}): ReactElement {
+  const { selectedAnswer, endFeedback } = useAnswersWithFeedback();
+  if (selectedAnswer === null)
+    throw new Error("Answer should be selected if we are providing feedback");
+  return (
+    <div>
+      <p>
+        Correct answer: <strong>{options[correctAnswerIdx].syllabary}</strong> /{" "}
+        <strong>{options[correctAnswerIdx].english}</strong>
+      </p>
+      <p>
+        <em>
+          You said: <strong>{options[selectedAnswer].english}</strong>
+        </em>
+      </p>
+      <Button onClick={endFeedback}>Continue</Button>
     </div>
   );
 }
