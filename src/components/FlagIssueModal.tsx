@@ -34,6 +34,7 @@ export function FlagIssueModal({
       userId: user.uid,
       problematicAudio,
       description,
+      createdAt: Date.now(),
     }).then(() => {
       setSaving(false);
       close();
