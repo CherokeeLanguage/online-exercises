@@ -60,9 +60,12 @@ function CardRow({
     <>
       <tr>
         <td>
-          {card.syllabary}
+          <strong>{card.syllabary}</strong>
           {showPhonetics(phoneticsPreference) && (
-            <span> | {getPhonetics(card, phoneticsPreference)}</span>
+            <>
+              <br />
+              {getPhonetics(card, phoneticsPreference)}
+            </>
           )}
         </td>
         <td>{card.english}</td>
