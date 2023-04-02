@@ -6,28 +6,49 @@ export interface UseTransitionProps {
 
 export interface UseTransitionReturn {
   transitioning: boolean;
-  startTransition: (newCallback?: () => void) => void;
+  startTransition: (waitForUser: boolean, newCallback: () => void) => void;
+  endTransition: () => void;
 }
 
-export function useTransition({ duration }: UseTransitionProps) {
+/**
+ * Help a component that has a transition state that is either timed or waits for a user's input.
+ *
+ * To start a timed transition, call startTransition with `waitForUser=false`.
+ * To start a transition that waits until the user interacts use
+ * `waitForUser=true` and then call `endTransition` when the transition should
+ * be released.
+ */
+export function useTransition({
+  duration,
+}: UseTransitionProps): UseTransitionReturn {
   const [transitioning, setTransitioning] = useState(false);
   const [callback, setCallback] = useState<{ cb?: () => void }>({
     cb: undefined,
   });
+  const [waitForUser, setWaitForUser] = useState(false);
   useEffect(() => {
     if (transitioning) {
-      const timeout = setTimeout(() => {
-        setTransitioning(false);
-        callback.cb && callback.cb();
-      }, duration);
-      return () => window.clearTimeout(timeout);
+      if (!waitForUser) {
+        const timeout = setTimeout(() => {
+          setTransitioning(false);
+          callback.cb && callback.cb();
+        }, duration);
+        return () => window.clearTimeout(timeout);
+      }
+    } else {
     }
-  }, [transitioning, callback]);
+  }, [transitioning, waitForUser, callback]);
   return {
     transitioning,
-    startTransition: (newCallback?: () => void) => {
+    startTransition(waitForUser, newCallback) {
       setTransitioning(true);
+      setWaitForUser(waitForUser);
       setCallback({ cb: newCallback });
+    },
+    endTransition() {
+      // call cb if we have one
+      callback.cb?.();
+      setTransitioning(false);
     },
   };
 }
