@@ -7,7 +7,10 @@ export function GetHelpWidget() {
     <DashboardWidget title="Get help">
       <p>
         If you have any questions about the site, please read over our{" "}
-        <StyledAnchor href="https://github.com/CherokeeLanguage/online-exercises/wiki/Frequently-Asked-Questions">
+        <StyledAnchor
+          href="https://github.com/CherokeeLanguage/online-exercises/wiki/Frequently-Asked-Questions"
+          target="_blank"
+        >
           Frequently Asked Questions
         </StyledAnchor>
         .
