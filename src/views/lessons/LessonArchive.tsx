@@ -13,7 +13,7 @@ import {
 import { Lesson, nameForLesson } from "../../state/reducers/lessons";
 import { ViewLessonPath } from "../../routing/paths";
 
-type FinishedLesson = Lesson & { startedAt: number; completedAt: number };
+type FinishedLesson = Lesson & { completedAt: number };
 
 export function LessonArchive(): ReactElement {
   useAnalyticsPageName("Lesson archive");
@@ -31,7 +31,7 @@ export function LessonArchive(): ReactElement {
   const lessons = firebaseResult.data ?? {};
 
   const finishedLessons = Object.values(lessons)
-    .filter((l): l is FinishedLesson => Boolean(l.completedAt && l.startedAt))
+    .filter((l): l is FinishedLesson => Boolean(l.completedAt))
     // most recent first
     .sort((a, b) => b.completedAt - a.completedAt);
   return (
@@ -75,13 +75,15 @@ function FinishedLessonRow({ lesson }: { lesson: FinishedLesson }) {
       <td>{nameForLesson(lesson)}</td>
       <td>{lesson.numChallenges || "Unknown number of challenges"}</td>
       <td>
-        {Duration.fromObject({
-          milliseconds: lesson.completedAt - lesson.startedAt,
-        })
-          .shiftTo("minutes", "seconds", "milliseconds")
-          .mapUnits((x, u) => (u === "milliseconds" ? 0 : x))
-          .shiftTo("minutes", "seconds")
-          .toHuman()}
+        {lesson.startedAt
+          ? Duration.fromObject({
+              milliseconds: lesson.completedAt - lesson.startedAt,
+            })
+              .shiftTo("minutes", "seconds", "milliseconds")
+              .mapUnits((x, u) => (u === "milliseconds" ? 0 : x))
+              .shiftTo("minutes", "seconds")
+              .toHuman()
+          : "--"}
       </td>
       <td>
         <StyledLink to={ViewLessonPath(lesson.id)}>Details</StyledLink>
