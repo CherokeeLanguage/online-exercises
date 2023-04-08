@@ -65,7 +65,7 @@ function ExerciseComponentWrapper({ Component, name }: ExerciseProps) {
   );
 
   useEffect(() => {
-    if (lesson.startedAt === null) startLesson();
+    if (!lesson.startedAt) startLesson();
   }, [lesson.startedAt]);
 
   useEffect(() => {
