@@ -3,6 +3,7 @@ import { cherokeeToKey } from "../cards";
 import "./2022-08-25";
 import "./2022-12-16";
 import "./2023-03-06-phonetics-fixes";
+import "./2023-03-31-corrections";
 import { migrations } from "./all";
 
 function applyMigration(
