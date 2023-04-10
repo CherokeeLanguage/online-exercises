@@ -1,0 +1,21 @@
+{
+  "credits": [{ "role": "Author", "name": "Cherokee Nation" }],
+  "description": "This collection contains terms lifted from a textbook aimed at teaching first-language speakers to read and write the syllabary.",
+  "externalResources": [
+    {
+      "name": "Online self-study course from Cherokee Nation",
+      "href": "https://learn.cherokee.org/course/index.php?categoryid=3",
+      "notes": "You must make a free account to view the book here"
+    },
+    {
+      "name": "Cherokee Nation Language Department Homepage",
+      "href": "https://language.cherokee.org/",
+      "notes": "Has many great free resources, including posters and other print outs."
+    },
+    {
+      "name": "Book download with audio from Cherokee Nation",
+      "href": "https://language.cherokee.org/media/a5adru4x/see-say-write.zip",
+      "notes": "Download your copy of the See Say Write textbook. Try printing out exercise pages to practice writing!"
+    }
+  ]
+}

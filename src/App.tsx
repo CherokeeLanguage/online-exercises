@@ -26,7 +26,7 @@ const AppContent = styled.div`
   margin: 0 auto;
 `;
 
-function App() {
+export function App() {
   return (
     <AppWrapper>
       <NavigationBar />
@@ -38,5 +38,3 @@ function App() {
     </AppWrapper>
   );
 }
-
-export default App;

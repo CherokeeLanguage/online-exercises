@@ -11,7 +11,7 @@ import { SectionHeading } from "../SectionHeading";
 import { CollectionDetails } from "../CollectionDetails";
 
 import { collections, VocabSet } from "../../data/vocabSets"; 
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import { TermsByProficiencyLevelChart } from "../TermsByProficiencyLevelChart";
 
 export const ChooseSetStep: Step = {

@@ -1,18 +1,37 @@
-import { DateTime, Duration } from "luxon";
 import React, { ReactElement } from "react";
+import { Duration } from "luxon";
+import { SmallLoader } from "../../components/Loader";
 import { SectionHeading } from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
 import { StyledTable } from "../../components/StyledTable";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
+import { useAuth } from "../../firebase/AuthProvider";
+import {
+  useAnalyticsPageName,
+  useFirebaseAllLessonMetadata,
+} from "../../firebase/hooks";
 import { Lesson, nameForLesson } from "../../state/reducers/lessons";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { ViewLessonPath } from "../../routing/paths";
 
-type FinishedLesson = Lesson & { startedAt: number; completedAt: number };
+type FinishedLesson = Lesson & { completedAt: number };
 
 export function LessonArchive(): ReactElement {
-  const { lessons } = useUserStateContext();
+  useAnalyticsPageName("Lesson archive");
+  const { user } = useAuth();
+
+  const [firebaseResult, _] = useFirebaseAllLessonMetadata(user);
+
+  if (!firebaseResult.ready)
+    return (
+      <div style={{ width: "100%" }}>
+        <SmallLoader below={"Loading lesson data..."} />
+      </div>
+    );
+
+  const lessons = firebaseResult.data ?? {};
+
   const finishedLessons = Object.values(lessons)
-    .filter((l): l is FinishedLesson => Boolean(l.completedAt && l.startedAt))
+    .filter((l): l is FinishedLesson => Boolean(l.completedAt))
     // most recent first
     .sort((a, b) => b.completedAt - a.completedAt);
   return (
@@ -56,16 +75,18 @@ function FinishedLessonRow({ lesson }: { lesson: FinishedLesson }) {
       <td>{nameForLesson(lesson)}</td>
       <td>{lesson.numChallenges || "Unknown number of challenges"}</td>
       <td>
-        {Duration.fromObject({
-          milliseconds: lesson.completedAt - lesson.startedAt,
-        })
-          .shiftTo("minutes", "seconds", "milliseconds")
-          .mapUnits((x, u) => (u === "milliseconds" ? 0 : x))
-          .shiftTo("minutes", "seconds")
-          .toHuman()}
+        {lesson.startedAt
+          ? Duration.fromObject({
+              milliseconds: lesson.completedAt - lesson.startedAt,
+            })
+              .shiftTo("minutes", "seconds", "milliseconds")
+              .mapUnits((x, u) => (u === "milliseconds" ? 0 : x))
+              .shiftTo("minutes", "seconds")
+              .toHuman()
+          : "--"}
       </td>
       <td>
-        <StyledLink to={`/lessons/${lesson.id}`}>Details</StyledLink>
+        <StyledLink to={ViewLessonPath(lesson.id)}>Details</StyledLink>
       </td>
     </tr>
   );

@@ -10,7 +10,7 @@ export const StyledAnchor = styled.a<StyledAnchorProps>`
   border-radius: 8px;
   cursor: pointer;
   display: inline-block;
-  text-decoration: none;
+  text-decoration: underline;
   color: ${theme.colors.DARK_RED};
   ${({ disabled }) =>
     disabled &&

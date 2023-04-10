@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { useLocalStorage } from "react-use";
+import { useFirebase, useFirebaseReviewedTerms } from "../firebase/hooks";
 import { TermCardWithStats, TermStats } from "./types";
 import { LeitnerBoxState, ReviewResult } from "../state/reducers/leitnerBoxes";
 import { lessonKey } from "../state/reducers/lessons";
@@ -9,10 +9,17 @@ import {
   showsPerSessionForBox,
   usePimsleurTimings,
 } from "./usePimsleurTimings";
+import { useAuth } from "../firebase/AuthProvider";
+import { useLocalStorage } from "react-use";
 
 export interface UseLeitnerReviewSessionReturn<T> {
   current: TermCardWithStats<T>;
   next: (result: ReviewResult) => void;
+}
+
+export interface FirebaseReviewedTerms {
+  reviewedTerms: Record<string, ReviewResult>;
+  lessonId: string;
 }
 
 function updateReviewResult(
@@ -41,22 +48,31 @@ function updateReviewResult(
   }
 }
 
-export function useReviewedTerms(lessonId: string) {
-  const [storedReviewedTerms, setReviewedTerms] = useLocalStorage<
-    Record<string, ReviewResult>
-  >(`${lessonKey(lessonId)}/reviewed-terms`, undefined, {
-    raw: false,
-    serializer: JSON.stringify,
-    deserializer: JSON.parse,
-  });
-  const reviewedTerms = storedReviewedTerms ?? {};
+export function useReviewedTerms(lessonId: string): {
+  reviewedTerms: Record<string, ReviewResult>;
+  reviewTerm: (term: string, correct: boolean) => void;
+} {
+  const { user } = useAuth();
+  const [firebaseReviewedTerms, setReviewedTerms] = useFirebaseReviewedTerms(
+    user,
+    lessonId
+  );
+  const reviewedTerms =
+    (firebaseReviewedTerms.ready &&
+      firebaseReviewedTerms.data?.reviewedTerms) ||
+    {};
 
   return {
     reviewedTerms,
     reviewTerm(term: string, correct: boolean) {
+      // there is sort of a race condition here where we could commit a result
+      // with our dummy state `{}` and overwrite the database.
       setReviewedTerms({
-        ...reviewedTerms,
-        [term]: updateReviewResult(reviewedTerms[term], correct),
+        lessonId,
+        reviewedTerms: {
+          ...reviewedTerms,
+          [term]: updateReviewResult(reviewedTerms[term], correct),
+        },
       });
     },
   };

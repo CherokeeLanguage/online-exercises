@@ -1,6 +1,6 @@
 import { SEE_SAY_WRITE_COLLECTION } from "../../data/vocabSets";
 import { UserStateAction } from "../actions";
-import { UserState } from "../UserStateProvider";
+import { UserState } from "../useUserState";
 import { PhoneticsPreference } from "./phoneticsPreference";
 
 export interface Group {
@@ -18,7 +18,7 @@ const __groups = {
     phoneticsPreference: PhoneticsPreference.Simple,
   },
   [OPEN_BETA_ID]: {
-    name: "Open beta (not affiliated)",
+    name: "Other / not affiliated",
   },
 } as const;
 
@@ -35,8 +35,8 @@ export function isGroupId(id: string): id is GroupId {
 export function reduceGroupId(
   state: UserState,
   action: UserStateAction
-): GroupId | undefined {
+): GroupId | null {
   if (action.type === "REGISTER_GROUP_AND_APPLY_DEFAULTS")
     return action.groupId;
-  else return state.groupId;
+  else return state.config.groupId;
 }

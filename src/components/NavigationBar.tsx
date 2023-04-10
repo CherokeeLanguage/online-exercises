@@ -1,6 +1,14 @@
 import React, { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import {
+  BrowseCollectionsPath,
+  DashboardPath,
+  LessonsPath,
+  MySetsPath,
+  MyTermsPath,
+  SettingsPath,
+} from "../routing/paths";
 import { theme } from "../theme";
 
 const NavbarWrapper = styled.div`
@@ -40,7 +48,7 @@ const StyledNavLink = styled.a`
   }
 `;
 
-const StyledHeading = styled.h1`
+export const StyledHeading = styled.h1`
   font-weight: bold;
   font-size: ${theme.fontSizes.lg};
   margin: 0;
@@ -59,24 +67,24 @@ export function NavigationBar(): ReactElement {
     <NavbarWrapper>
       <StyledHeading>Cherokee Language Exercises</StyledHeading>
       <StyledNav>
-        <StyledNavLink as={NavLink} to={"/"}>
+        <StyledNavLink as={NavLink} to={DashboardPath}>
           Dashboard
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/sets/browse"}>
+        <StyledNavLink as={NavLink} to={BrowseCollectionsPath}>
           Find new vocabulary
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/sets/my"}>
+        <StyledNavLink as={NavLink} to={MySetsPath}>
           Your sets
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/terms"}>
+        <StyledNavLink as={NavLink} to={MyTermsPath}>
           Your terms
         </StyledNavLink>
-        <StyledNavLink as={NavLink} to={"/lessons"}>
+        <StyledNavLink as={NavLink} to={LessonsPath}>
           Lesson archive
         </StyledNavLink>
       </StyledNav>
       <AdvancedSettings>
-        <StyledNavLink as={NavLink} to="/settings">
+        <StyledNavLink as={NavLink} to={SettingsPath}>
           Settings
         </StyledNavLink>
       </AdvancedSettings>

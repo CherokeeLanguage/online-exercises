@@ -1,16 +1,19 @@
 import styled from "styled-components";
-import { Collection } from "../data/vocabSets";
-import { useUserStateContext } from "../state/UserStateProvider";
+import { Collection, collections } from "../data/vocabSets";
+import { useUserStateContext } from "../providers/UserStateProvider";
+import { CollectionCredits } from "./CollectionCredits";
 import { Button } from "./Button";
 import { StyledLink } from "./StyledLink";
-import { StyledTable } from "./StyledTable";
-import { VisuallyHidden } from "./VisuallyHidden";
+import { useState } from "react";
+import { ConfirmationModal } from "./ConfirmationModal";
+import { ViewCollectionPath } from "../routing/paths";
 
-const StyledCollectionHeader = styled.div`
+export const StyledCollectionHeader = styled.div`
   display: flex;
   align-items: center;
   margin: 16px 0;
-  h3 {
+  h3,
+  h2 {
     margin: 0;
     margin-right: 8px;
     padding: 0;
@@ -18,83 +21,103 @@ const StyledCollectionHeader = styled.div`
   }
 `;
 
-function UpstreamCollectionFlare() {
-  return <span>(new terms are pulled from this collection)</span>;
+export function UpstreamCollectionFlare() {
+  return <span>(new terms come from this collection)</span>;
 }
 
-function MakeUpstreamCollectionButton({
-  collectionId,
+export function MakeUpstreamCollectionButton({
+  collection,
 }: {
-  collectionId: string;
+  collection: Collection;
 }) {
-  const { setUpstreamCollection } = useUserStateContext();
+  const {
+    setUpstreamCollection,
+    config: { upstreamCollection },
+  } = useUserStateContext();
+  const [modalOpen, setModalOpen] = useState(false);
   return (
-    <Button
-      onClick={() => setUpstreamCollection(collectionId)}
-      variant="primary"
-    >
-      Pull new terms from this collection
-    </Button>
+    <>
+      <Button
+        onClick={() => {
+          if (upstreamCollection) setModalOpen(true);
+          else setUpstreamCollection(collection.id);
+        }}
+        variant="primary"
+      >
+        Start studying this collection
+      </Button>
+      {modalOpen && (
+        <ConfirmChangeUpstreamCollectionModal
+          close={() => setModalOpen(false)}
+          newCollection={collection}
+        />
+      )}
+    </>
   );
 }
 
+function ConfirmChangeUpstreamCollectionModal({
+  close,
+  newCollection,
+}: {
+  close: () => void;
+  newCollection: Collection;
+}) {
+  const {
+    setUpstreamCollection,
+    config: { upstreamCollection },
+  } = useUserStateContext();
+  const currentUpstreamCollection = collections[upstreamCollection!];
+  return (
+    <ConfirmationModal
+      title="Switch collections"
+      close={close}
+      confirm={() => setUpstreamCollection(newCollection.id)}
+      confirmContent={
+        <>
+          Switch to learning <strong>{newCollection.title}</strong>
+        </>
+      }
+    >
+      <p>
+        You are currently learning from the{" "}
+        <strong>{currentUpstreamCollection.title}</strong> collection.
+      </p>
+      <p>You can always go back and finish this collection later.</p>
+    </ConfirmationModal>
+  );
+}
+
+const StyledCollectionDetails = styled.div`
+  margin-bottom: 60px;
+`;
+
 export function CollectionDetails({
   collection,
-  showAddedSets = false,
 }: {
   collection: Collection;
   showAddedSets?: boolean;
 }) {
-  const { upstreamCollection, sets } = useUserStateContext();
-  const setsToShow = showAddedSets
-    ? collection.sets
-    : collection.sets.filter((set) => !(set.id in sets));
+  const {
+    config: { upstreamCollection },
+  } = useUserStateContext();
   return (
-    <div>
+    <StyledCollectionDetails>
       <StyledCollectionHeader>
-        <h3>{collection.title}</h3>
+        <h3>
+          <StyledLink to={ViewCollectionPath(collection.id)}>
+            {collection.title}
+          </StyledLink>
+        </h3>
 
         {upstreamCollection === collection.id ? (
           <UpstreamCollectionFlare />
         ) : (
-          <MakeUpstreamCollectionButton collectionId={collection.id} />
+          <MakeUpstreamCollectionButton collection={collection} />
         )}
       </StyledCollectionHeader>
 
-      <StyledTable>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Number of terms</th>
-            {showAddedSets && <th>Started learning</th>}
-            <th>
-              <VisuallyHidden>Link to view set</VisuallyHidden>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {setsToShow.map((set, i) => {
-            return (
-              <tr key={i}>
-                <td>{set.title}</td>
-                <td>{set.terms.length}</td>
-                {showAddedSets && (
-                  <td>
-                    {set.id in sets
-                      ? new Date(sets[set.id].addedAt).toDateString()
-                      : "-"}
-                  </td>
-                )}
-                <td>
-                  <StyledLink to={`/sets/browse/${set.id}`}>
-                    View details
-                  </StyledLink>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </StyledTable>
-    </div>
+      <CollectionCredits collection={collection} />
+    </StyledCollectionDetails>
   );
 }

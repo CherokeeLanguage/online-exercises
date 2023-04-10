@@ -1,8 +1,15 @@
 import { cherokeeToKey } from "./cards";
 import CLL1 from "./collections/cll1.json";
+import CLL1Credits from "./collections/cll1-credits.json";
+import JWLivingPhrases from "./collections/jw-living-phrases.json";
+import JWLivingPhrasesCredits from "./collections/jw-living-phrases-credits.json";
 import SSW from "./collections/ssw.json";
+import SSWCredits from "./collections/ssw-credits.json";
 
-function cleanSet(set: VocabSet, collectionId: string): VocabSet {
+function cleanSet(
+  set: Omit<VocabSet, "collection">,
+  collectionId: string
+): VocabSet {
   return {
     ...set,
     collection: collectionId,
@@ -10,11 +17,27 @@ function cleanSet(set: VocabSet, collectionId: string): VocabSet {
   };
 }
 
-export function cleanCollection({ id, title, sets }: Collection): Collection {
+export function cleanCollection({
+  id,
+  title,
+  sets,
+}: Omit<DiskCollection, "credits">): Omit<Collection, "credits"> {
   return {
     id,
     title,
     sets: sets.map((set) => cleanSet(set, id)),
+  };
+}
+
+function addCredits(
+  { id, title, sets }: Omit<Collection, "credits">,
+  credits: CollectionCredits
+) {
+  return {
+    id,
+    title,
+    sets: sets.map((set) => cleanSet(set, id)),
+    credits,
   };
 }
 
@@ -38,26 +61,52 @@ export function applyMigrationsToCollection(
   };
 }
 
+interface DiskCollection {
+  id: string;
+  title: string;
+  sets: Omit<VocabSet, "collection">[];
+}
 export interface Collection {
   id: string;
   title: string;
   sets: VocabSet[];
+  credits: CollectionCredits;
+}
+
+export interface ExternalResource {
+  name: string;
+  href: string;
+  notes?: string;
+}
+
+export interface CollectionCredits {
+  credits: { role: string; name: string }[];
+  description: string;
+  externalResources: ExternalResource[];
 }
 
 export interface VocabSet {
   id: string;
   title: string;
-  collection?: string;
+  collection: string;
   terms: string[];
 }
 
 export const CHEROKEE_LANGUAGE_LESSONS_COLLLECTION = CLL1.id;
 export const SEE_SAY_WRITE_COLLECTION = SSW.id;
+export const JW_LIVING_PHRASES = JWLivingPhrases.id;
 
 // additional sets can be added here
 export const collections: Record<string, Collection> = {
-  [SEE_SAY_WRITE_COLLECTION]: cleanCollection(SSW),
-  [CHEROKEE_LANGUAGE_LESSONS_COLLLECTION]: cleanCollection(CLL1),
+  [SEE_SAY_WRITE_COLLECTION]: addCredits(cleanCollection(SSW), SSWCredits),
+  [JW_LIVING_PHRASES]: addCredits(
+    cleanCollection(JWLivingPhrases),
+    JWLivingPhrasesCredits
+  ),
+  [CHEROKEE_LANGUAGE_LESSONS_COLLLECTION]: addCredits(
+    cleanCollection(CLL1),
+    CLL1Credits
+  ),
 };
 
 export const vocabSets: Record<string, VocabSet> = Object.fromEntries(

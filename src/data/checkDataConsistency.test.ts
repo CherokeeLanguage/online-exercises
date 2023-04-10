@@ -2,27 +2,52 @@ import assert from "assert";
 import { statSync } from "fs";
 import { cleanCollection, collections } from "./vocabSets";
 import { cards, cherokeeToKey, keyForCard } from "./cards";
-import { applyMigration } from "./migrations";
-import { migration } from "./migrations/2022-08-25";
-import oldCLL1 from "./backup/cll1.json";
+import { migrateTerm } from "./migrations";
+import { migrations } from "./migrations/all";
 
-test("migration references real terms", () => {
-  const unknownTerms = Object.values(migration).filter(
-    (newTerm) =>
-      cards.find((card) => keyForCard(card) === cherokeeToKey(newTerm)) ===
-      undefined
+test("no unmatched terms after migrating", () => {
+  const termsAffectedByMigrations = migrations.reduce<string[]>(
+    (terms, migration) => [...terms, ...Object.keys(migration)],
+    []
   );
-  assert.deepStrictEqual(unknownTerms, []);
+  const unmatchedTermsAfterMigration = termsAffectedByMigrations.filter(
+    (term) => {
+      const newTerm = migrateTerm(term);
+      return (
+        // a term is unmatched
+        // if the term is not dropped
+        // but but there is no corresponding card
+        newTerm !== null &&
+        cards.find((card) => keyForCard(card) === cherokeeToKey(newTerm)) ===
+          undefined
+      );
+    }
+  );
+
+  assert.deepStrictEqual(
+    unmatchedTermsAfterMigration.map((t) => [t, migrateTerm(t)]),
+    [],
+    "There should be no terms that are unmatched after being migrated."
+  );
 });
 
 test("after migration, all terms have cards", () => {
+  // TODO: this test doesn't seem to make sense -- why are we migrating the
+  // terms loaded in the app? shouldn't we only migrate terms that are in the
+  // users stored term data?
+
   // terms in the cached set
   // mapped through the migration if it affects them
   // should all now exist
-  const missingTermsAfterMigration = oldCLL1.sets.flatMap((s) =>
-    s.terms
-      .map((t) => cherokeeToKey(applyMigration(t, migration)))
-      .filter((key) => cards.find((c) => keyForCard(c) === key) === undefined)
+  const missingTermsAfterMigration = Object.values(collections).flatMap(
+    (collection) =>
+      collection.sets.flatMap((s) =>
+        s.terms
+          .map((t) => migrateTerm(t))
+          .filter(
+            (key) => cards.find((c) => keyForCard(c) === key) === undefined
+          )
+      )
   );
   assert.deepStrictEqual(missingTermsAfterMigration, []);
 });

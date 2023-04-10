@@ -1,4 +1,6 @@
-export const migration = {
+import { addMigration } from "./all";
+
+addMigration({
   vhla: "v́ːhla",
   "ayo!": "ayő!",
   "v̀:hla ő:sda yi̋gi": "v́ːhla ő:sda yi̋gi.",
@@ -54,4 +56,4 @@ export const migration = {
   nagwu: "v̀:sginagwu",
   wahayaju: "wahayagwuju",
   naj: "naju",
-};
+});

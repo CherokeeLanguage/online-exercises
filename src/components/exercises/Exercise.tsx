@@ -1,13 +1,19 @@
-import { ReactElement, ReactNode, useEffect, useMemo } from "react";
+import { Fragment, ReactElement, ReactNode, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, cards, keyForCard } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
-import { useLesson } from "../../state/useLesson";
+import { useLesson } from "../../providers/LessonProvider";
 import { useReviewSession } from "../../spaced-repetition/useReviewSession";
 import { useCardsForTerms } from "../../utils/useCardsForTerms";
-import { useUserStateContext } from "../../state/UserStateProvider";
+import { useUserStateContext } from "../../providers/UserStateProvider";
 import styled from "styled-components";
 import { theme } from "../../theme";
+import { practiceLessonLeitnerBoxes } from "../../state/reducers/leitnerBoxes";
+import { collections, VocabSet, vocabSets } from "../../data/vocabSets";
+import { PracticeLesson } from "../../state/reducers/lessons";
+import { StyledLink } from "../StyledLink";
+import { useAnalyticsPageName } from "../../firebase/hooks";
+import { ViewSetPath } from "../../routing/paths";
 
 export interface ExerciseComponentProps {
   currentCard: TermCardWithStats<Card>;
@@ -16,7 +22,7 @@ export interface ExerciseComponentProps {
 }
 
 export interface ExerciseProps {
-  lessonId: string;
+  name: string;
   Component: (props: ExerciseComponentProps) => ReactElement;
 }
 
@@ -24,12 +30,25 @@ const ExerciseWrapper = styled.div`
   margin-bottom: 16px;
 `;
 
-export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
-  const { leitnerBoxes } = useUserStateContext();
-  const { lesson, startLesson, concludeLesson, reviewTerm } =
-    useLesson(lessonId);
+export function Exercise(props: ExerciseProps): ReactElement {
+  return <ExerciseComponentWrapper {...props} />;
+}
+
+function ExerciseComponentWrapper({ Component, name }: ExerciseProps) {
+  const { leitnerBoxes: userLeitnerBoxes } = useUserStateContext();
+  const { lesson, startLesson, concludeLesson, reviewTerm } = useLesson();
+
   const lessonCards = useCardsForTerms(cards, lesson.terms, keyForCard);
   const navigate = useNavigate();
+  useAnalyticsPageName(`Exercise (${name})`);
+
+  const leitnerBoxesForSession = useMemo(
+    () =>
+      lesson.type === "PRACTICE"
+        ? practiceLessonLeitnerBoxes(lesson.terms, userLeitnerBoxes.numBoxes)
+        : userLeitnerBoxes,
+    [lesson, userLeitnerBoxes]
+  );
 
   const {
     currentCard,
@@ -38,17 +57,22 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
     numTermsToIntroduce,
     numActiveTerms,
     numFinishedTerms,
-  } = useReviewSession(leitnerBoxes, lessonCards, lessonId, reviewTerm);
+  } = useReviewSession(
+    leitnerBoxesForSession,
+    lessonCards,
+    lesson.id,
+    reviewTerm
+  );
 
   useEffect(() => {
-    if (lesson.startedAt === null) startLesson();
+    if (!lesson.startedAt) startLesson();
   }, [lesson.startedAt]);
 
   useEffect(() => {
     if (currentCard === undefined) {
       // then we are done!
       concludeLesson();
-      navigate(`/lessons/${lessonId}`);
+      navigate(`/lessons/${lesson.id}`);
     }
   }, [currentCard]);
 
@@ -64,6 +88,9 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
         lessonCards={lessonCards}
         reviewCurrentCard={reviewCurrentCard}
       />
+      {lesson.type === "PRACTICE" && (
+        <PracticeLessonContentsMemo lesson={lesson} />
+      )}
       <ChallengesProgressBar
         challengesRemaining={challengesRemaining}
         totalChallenges={lesson.numChallenges}
@@ -71,6 +98,44 @@ export function Exercise({ lessonId, Component }: ExerciseProps): ReactElement {
     </ExerciseWrapper>
   ) : (
     <></>
+  );
+}
+
+const StyledPracticeLessonContentsMemo = styled.p`
+  text-align: center;
+  margin-top: 16px;
+`;
+
+function PracticeLessonContentsMemo({ lesson }: { lesson: PracticeLesson }) {
+  return (
+    <StyledPracticeLessonContentsMemo>
+      You are seeing terms from:
+      {Object.entries(
+        lesson.includedSets.reduce<Record<string, VocabSet[]>>(
+          (collected, setId) => {
+            const set = vocabSets[setId];
+            const collection = collections[set.collection];
+            return {
+              ...collected,
+              [collection.title]: [...(collected[collection.title] ?? []), set],
+            };
+          },
+          {}
+        )
+      ).map(([collectionTitle, sets]) => (
+        <p>
+          <em>
+            <strong>{collectionTitle}</strong>:{" "}
+            {sets.map((s, i) => (
+              <Fragment key={i}>
+                {i > 0 && ", "}
+                <StyledLink to={ViewSetPath(s.id)}>{s.title}</StyledLink>
+              </Fragment>
+            ))}
+          </em>
+        </p>
+      ))}
+    </StyledPracticeLessonContentsMemo>
   );
 }
 

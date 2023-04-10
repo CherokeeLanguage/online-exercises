@@ -5,10 +5,6 @@ import {
   SetStateAction,
   useState,
 } from "react";
-import {
-  UserInteractors,
-  useUserStateContext,
-} from "../../state/UserStateProvider";
 import { Button } from "../Button";
 import { Modal } from "../Modal";
 import { FakeStep } from "./FakeStep";
@@ -18,6 +14,8 @@ import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 import { ChooseSetStep } from "./ChooseSetStep";
 import { StepIndicator } from "./StepIndicator";
 import { Preamble } from "./Preamble";
+import { useUserStateContext } from "../../providers/UserStateProvider";
+import { UserInteractors } from "../../state/useUserState";
 
 export interface WizardState {
   groupId: string;

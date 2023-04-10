@@ -45,7 +45,7 @@ export function useCardsForTerms<T>(
       lookupTermsAndCollectMissing(
         terms,
         allCards,
-        (s) => s,
+        (s) => s.normalize("NFD"), // used for keys
         keyFn,
         (term, card) => card
       ),
