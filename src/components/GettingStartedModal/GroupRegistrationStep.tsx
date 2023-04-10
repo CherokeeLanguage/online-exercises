@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { NavigationButtons, Step, StepProps } from ".";
 import { GROUPS } from "../../state/reducers/groupId";
 import { Button } from "../Button";
@@ -17,9 +17,11 @@ export function GroupRegistrationForm({
   goToNextStep,
   goToPreviousStep,
 }: StepProps) {
+  const [enabled, setEnbabled] = useState(groupId!=undefined); 
   function onRadioChanged(e: ChangeEvent<HTMLInputElement>) {
     const groupId = e.target.value;
     setWizardState((s) => ({ ...s, groupId }));
+    setEnbabled(true); 
   }
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -51,7 +53,7 @@ export function GroupRegistrationForm({
         <NavigationButtons
           goToPreviousStep={goToPreviousStep}
           goToNextStep={goToNextStep}
-          customNext={<Button as={"input"} type="submit" value="Next" />}
+          disabled = {!enabled} 
         />
       </form>
     </>
