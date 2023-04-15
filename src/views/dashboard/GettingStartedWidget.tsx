@@ -6,7 +6,7 @@ import { DashboardWidget } from "./DashboardWidget";
 export function GettingStartedWidget() {
   return (
     <DashboardWidget title="Getting started">
-      <p>There are four main steps to get started.</p>
+      <p>There are three steps to get started.</p>
       <ol>
         <li>
           Find a set of terms you want to learn in the{" "}
