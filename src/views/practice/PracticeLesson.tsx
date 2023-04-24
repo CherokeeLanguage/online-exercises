@@ -9,6 +9,7 @@ import { SimpleFlashcards } from "../../components/exercises/SimpleFlashcards";
 import { FillInTheTone } from "../../components/exercises/FillInTheTone";
 import { PickExercise } from "./PickExercise";
 import { LessonProvider } from "../../providers/LessonProvider";
+import { FillInTheBlank, FillIntheWord } from "../../components/exercises/FillInWordTemplate";
 
 export const exercises: {
   path: string;
@@ -39,6 +40,13 @@ export const exercises: {
       "Practice your tone accuracy by filling in the tone sequence for the missing word in the term.",
     Component: FillInTheTone,
     minigame: true,
+  },{
+    path: "fill-in-the-word",
+    name: "Fill in the word",
+    description:
+      "Practice your tone accuracy by filling in the missing word in the term.",
+    Component: FillIntheWord,
+    minigame: true,
   },
 ];
 
@@ -65,3 +73,5 @@ export function PracticeLesson(): ReactElement {
     </LessonProvider>
   );
 }
+
+

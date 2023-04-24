@@ -1,3 +1,9 @@
+import { TermCardWithStats } from "../../spaced-repetition/types";
+
+// @ts-ignore
+import trigramSimilarity from "trigram-similarity";
+import { Card } from "../../data/cards";
+
 export function pickRandomElement<T>(options: T[]) {
   return options[Math.floor(Math.random() * options.length)];
 }
@@ -36,4 +42,23 @@ export function spliceInAtRandomIndex<T>(
   const insertionIdx = Math.floor(Math.random() * (list.length + 1));
   listCopy.splice(insertionIdx, 0, newElement);
   return [insertionIdx, listCopy];
+}
+
+export function getSimilarTerms(
+  correctCard: TermCardWithStats<Card>,
+  lessonCards: Record<string, Card>,
+  numOptions: number
+): Card[] {
+  const similarTerms = Object.keys(lessonCards)
+    .slice(0)
+    .sort(
+      (a, b) =>
+        trigramSimilarity(b, correctCard.card.cherokee) -
+        trigramSimilarity(a, correctCard.card.cherokee)
+    )
+    .slice(1, 1 + Math.ceil((numOptions - 1) * 1.5));
+  const temptingTerms = pickNRandom(similarTerms, numOptions - 1);
+  const temptingCards = temptingTerms.map((t) => lessonCards[t]);
+
+  return temptingCards;
 }
