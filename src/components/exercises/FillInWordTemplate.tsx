@@ -51,17 +51,18 @@ export function maskWords(
   hideWordIdx: number
 ): [string[], string] {
     return [words.map((word, idx) =>
-    idx === hideWordIdx ? "_".repeat(word.length) : word
+    idx === hideWordIdx ? "_".repeat(5) : word
   ),
   words[hideWordIdx] ,
   ];
 }
 
-export function RandomWords(currentCard: TermCardWithStats<Card, TermStats>, lessonCards: Record<string, Card>,): string[]{
+export function RandomWords(currentCard: TermCardWithStats<Card, TermStats>, lessonCards: Record<string, Card>, wordIdx: number): string[]{
     // return a list of of other possible words 
     // that are not the masked word 
 
-    return getSimilarTerms(currentCard, lessonCards, 3).map((word, idx) => word.syllabary);
+    const terms = getSimilarTerms(currentCard, lessonCards, 4).map((word, idx) => word.syllabary.split(" "));
+    return terms.map((term, idx) => term.length <= wordIdx ? term[wordIdx] : term[term.length -1])
 }
 
 function ToQuestion(maskedWords: string[], maskInt: number): ReactElement{
@@ -85,19 +86,26 @@ function ToQuestion(maskedWords: string[], maskInt: number): ReactElement{
   </p>); 
 }
 function CanUseQuestion(card :TermCardWithStats<Card, TermStats> ){
-  return wordsInTerm(card.card).length > ; 
+  return wordsInTerm(card.card).length > 1; 
 }
 function ToOptions(words: string[]): ReactElement[]{
   // create an array of react elements from possible words 
   return words.map((word, idx) => (<span>{word}</span>)); 
 }
 
-function Feedback(){
+function Feedback(currentCard: Card, options: ReactElement[], correctIdx: number){
   const { selectedAnswer, endFeedback } = useAnswersWithFeedback();
   return (<div>
     <p>
-    You were wrong 
+    Correct answer: <strong>{options[correctIdx]}</strong>
     </p>
+
+    <p>
+      Full Cheorkee: <span> {currentCard.cherokee}</span>
+      
+    </p>
+
+    <p>Full English: <span> {currentCard.english}</span></p>
     
     <Button onClick={endFeedback}>Continue</Button>
   </div>) 
@@ -116,7 +124,7 @@ function CreateFillInWordQuestion({
 
   // randomly choose other words as options 
   const otherWords = useMemo(
-    () => RandomWords(currentCard, lessonCards),
+    () => RandomWords(currentCard, lessonCards, hiddenIdx),
     [currentCard]
   );
 
@@ -143,7 +151,8 @@ export function FillInTheBlank( props: ExerciseComponentProps,
   
     
   
-    const contents = useMemo(() => createQuestion(props), [props.currentCard]); 
+    const contents = createQuestion(props); 
+    const card = props.currentCard; 
     const question = contents[0]; 
     const options = contents[1]; 
     const correctIdx = contents[2]; 
@@ -160,13 +169,11 @@ export function FillInTheBlank( props: ExerciseComponentProps,
     autoplay: true,
   });
   
-    /*useEffect(() => {
-      if (!canUseQuestion(props.currentCard)) props.reviewCurrentCard(true);
-    }, [question]);*/ 
-
     useEffect(() => {
-      if (false) props.reviewCurrentCard(true);
+      if (!canUseQuestion(props.currentCard)) props.reviewCurrentCard(true);
     }, [question]);
+
+    
   
     
     return (
@@ -184,7 +191,7 @@ export function FillInTheBlank( props: ExerciseComponentProps,
           <AnswersWithFeedback
             reviewCurrentCard={props.reviewCurrentCard}
             hintLocation={"overAnswers"}
-            IncorrectAnswerHint = {() => answerFeedback()}
+            IncorrectAnswerHint = {() => answerFeedback(card, options, correctIdx )}
           >
             {options.map((option, idx) => (
               <AnswerCard correct={idx === correctIdx} idx={idx} key={idx}>

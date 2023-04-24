@@ -62,3 +62,4 @@ export function getSimilarTerms(
 
   return temptingCards;
 }
+
