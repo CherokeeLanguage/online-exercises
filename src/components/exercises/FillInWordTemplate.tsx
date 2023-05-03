@@ -17,22 +17,23 @@ import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
 import { ListenAgainButton } from "../ListenAgainButton";
 import { ContentWrapper } from "./ContentWrapper";
-import { pickNRandom, pickRandomElement, spliceInAtRandomIndex, getSimilarTerms } from "./utils";
+import {
+  pickNRandom,
+  pickRandomElement,
+  spliceInAtRandomIndex,
+  getSimilarTerms,
+  wordsInTerm,
+  wordsInLesson,
+  getSimilarWords,
+} from "./utils";
 import { Button } from "../Button";
 import { Card } from "../../data/cards";
 import { TermCardWithStats, TermStats } from "../../spaced-repetition/types";
 
-export function pickRandomIndex<T>(options: T[]) : number {
+export function pickRandomIndex<T>(options: T[]): number {
   return Math.floor(Math.random() * options.length);
 }
 
-
-
-export function wordsInTerm(
-  card: Card 
-): string[] {
-  return card.syllabary.split(" "); 
-}
 // maybe change
 const MaskedWord = styled.mark`
   /* text-decoration: underline;
@@ -44,121 +45,222 @@ const MaskedWord = styled.mark`
   display: inline-block;
 `;
 
-
-
 export function maskWords(
-  words: string[],
+  syllabary: string[],
+  cherokee: string[],
   hideWordIdx: number
-): [string[], string] {
-    return [words.map((word, idx) =>
+): [string[][], string[]] {
+  const maskedSyllabary = syllabary.map((word, idx) =>
     idx === hideWordIdx ? "_".repeat(5) : word
-  ),
-  words[hideWordIdx] ,
+  );
+
+  const maskedCherokee = cherokee.map((word, idx) =>
+    idx === hideWordIdx ? "_".repeat(5) : word
+  );
+
+  return [
+    [maskedSyllabary, maskedCherokee],
+    [syllabary[hideWordIdx], cherokee[hideWordIdx]],
   ];
 }
 
-export function RandomWords(currentCard: TermCardWithStats<Card, TermStats>, lessonCards: Record<string, Card>, wordIdx: number): string[]{
-    // return a list of of other possible words 
-    // that are not the masked word 
-
-    const terms = getSimilarTerms(currentCard, lessonCards, 4).map((word, idx) => word.syllabary.split(" "));
-    return terms.map((term, idx) => term.length <= wordIdx ? term[wordIdx] : term[term.length -1])
+function chooseTermRecurs(term: string[], wordIdx: number): string {
+  if (wordIdx < 0) {
+    return "";
+  } else if (term.length <= wordIdx && term[wordIdx].length > 0) {
+    return term[wordIdx];
+  } else {
+    return chooseTermRecurs(term, wordIdx - 1);
+  }
 }
 
-function ToQuestion(maskedWords: string[], maskInt: number): ReactElement{
-  // create a question elements from a list of masked words 
-  return (<p>
-    {maskedWords.map((word, idx) => (
-      <>
-        {idx > 0 && " "}
-        {idx === maskInt ? (
-          <span>
-            <MaskedWord>
-            <sup> {"?".repeat(word.length)} </sup>
-            </MaskedWord>
-           
-          </span>
-        ) : (
-          <span>{word}</span>
-        )}
-      </>
-    ))}
-  </p>); 
-}
-function CanUseQuestion(card :TermCardWithStats<Card, TermStats> ){
-  return wordsInTerm(card.card).length > 1; 
-}
-function ToOptions(words: string[]): ReactElement[]{
-  // create an array of react elements from possible words 
-  return words.map((word, idx) => (<span>{word}</span>)); 
+function chooseTerm(term: string[][], wordIdx: number): string[] {
+  return [term[0][term.length - 1], term[1][term.length - 1]];
+  if (term.length <= wordIdx && term[wordIdx].length > 0) {
+    return term[wordIdx];
+  } else {
+    return term[term.length - 1];
+  }
 }
 
-function Feedback(currentCard: Card, options: ReactElement[], correctIdx: number){
+export function RandomWords(
+  currentCard: TermCardWithStats<Card, TermStats>,
+  lessonCards: Record<string, Card>,
+  wordIdx: number
+): string[][] {
+  // return a list of of other possible words
+  // that are not the masked word
+
+  const terms = getSimilarTerms(currentCard, lessonCards, 4).map(
+    (word, idx) => [word.syllabary.split(" "), word.cherokee.split(" ")]
+  );
+  return terms.map((term, idx) => chooseTerm(term, wordIdx));
+}
+
+function ToQuestion(
+  maskedSyllabary: string[],
+  maskedCherokee: string[],
+  maskInt: number
+): ReactElement {
+  // create a question elements from a list of masked words
+  return (
+    <div>
+      <p>
+        {maskedSyllabary.map((word, idx) => (
+          <>
+            {idx > 0 && " "}
+            {idx === maskInt ? (
+              <span>
+                <MaskedWord>
+                  <sup> {"?".repeat(word.length)} </sup>
+                </MaskedWord>
+              </span>
+            ) : (
+              <span>{word}</span>
+            )}
+          </>
+        ))}
+      </p>
+
+      <p>
+        {maskedCherokee.map((word, idx) => (
+          <>
+            {idx > 0 && " "}
+            {idx === maskInt ? (
+              <span>
+                <MaskedWord>
+                  <sup> {"?".repeat(word.length)} </sup>
+                </MaskedWord>
+              </span>
+            ) : (
+              <span>{word}</span>
+            )}
+          </>
+        ))}
+      </p>
+    </div>
+  );
+}
+function CanUseQuestion(card: TermCardWithStats<Card, TermStats>) {
+  return wordsInTerm(card.card)[0].length > 1;
+}
+function ToOptions(words: string[][]): ReactElement[] {
+  // create an array of react elements from possible words
+  return words.map((word, idx) => (
+    <div>
+      {" "}
+      <p> {word[0]}</p> <p> {word[1]}</p>{" "}
+    </div>
+  ));
+}
+
+interface FeedbackProps {
+  currentCard: Card;
+  options: ReactElement[];
+  correctIdx: number;
+}
+
+function Feedback({
+  currentCard,
+  options,
+  correctIdx,
+}: FeedbackProps): ReactElement {
   const { selectedAnswer, endFeedback } = useAnswersWithFeedback();
-  return (<div>
-    <p>
-    Correct answer: <strong>{options[correctIdx]}</strong>
-    </p>
+  return (
+    <div>
+      <p>
+        Correct answer: <strong>{options[correctIdx]}</strong>
+      </p>
 
-    <p>
-      Full Cheorkee: <span> {currentCard.cherokee}</span>
-      
-    </p>
+      <p>
+        Full Cheorkee: <span> {currentCard.cherokee}</span>
+      </p>
 
-    <p>Full English: <span> {currentCard.english}</span></p>
-    
-    <Button onClick={endFeedback}>Continue</Button>
-  </div>) 
+      <p>
+        Full English: <span> {currentCard.english}</span>
+      </p>
+
+      <Button onClick={endFeedback}>Continue</Button>
+    </div>
+  );
 }
 
+interface QuestionProps {
+  question: ReactElement;
+  options: ReactElement[];
+  correctIdx: number;
+  AnswerFeedback: (props: FeedbackProps) => ReactElement;
+}
 
 function CreateFillInWordQuestion({
   currentCard,
   lessonCards,
-}: ExerciseComponentProps): [ ReactElement,  ReactElement[],  number,  any ]{
-  // create a list of words in the term 
-  const words = wordsInTerm(currentCard.card); 
+}: ExerciseComponentProps): QuestionProps {
+  // create a list of words in the term
+  const words = useMemo(() => wordsInTerm(currentCard.card), [currentCard]);
 
-  // randomly choose word to mask 
-  const hiddenIdx = pickRandomIndex(words); 
+  // randomly choose word to mask
+  const hiddenIdx = pickRandomIndex(words[0]);
 
-  // randomly choose other words as options 
+  //get words in lesson
+  const lessonWords = useMemo(() => wordsInLesson(lessonCards), [lessonCards]);
+
+  // randomly choose other words as options
   const otherWords = useMemo(
-    () => RandomWords(currentCard, lessonCards, hiddenIdx),
-    [currentCard]
+    () =>
+      getSimilarWords(
+        [words[0][hiddenIdx], words[1][hiddenIdx]],
+        lessonWords,
+        4
+      ),
+    [words]
   );
 
-  // turn question and options into react elements 
-  const maskedWords = maskWords(words, hiddenIdx); 
-  const question = ToQuestion(maskedWords[0], hiddenIdx); 
-
-  
-  const [correctIdx, allOptions] = spliceInAtRandomIndex(
-    otherWords,
-    maskedWords[1]
+  // turn question and options into react elements
+  const maskedWords = useMemo(
+    () => maskWords(words[0], words[1], hiddenIdx),
+    [words]
+  );
+  const question = useMemo(
+    () => ToQuestion(maskedWords[0][0], maskedWords[0][1], hiddenIdx),
+    [maskedWords]
   );
 
-  const options = ToOptions(allOptions); 
+  const [correctIdx, allOptions] = useMemo(
+    () => spliceInAtRandomIndex(otherWords, maskedWords[1]),
+    [otherWords, maskedWords]
+  );
 
-  // create an answerfeedback elements 
+  const options = useMemo(() => ToOptions(allOptions), [allOptions]);
 
-  return [question, options, correctIdx, Feedback]; 
+  // create props objects
+
+  const props: QuestionProps = {
+    question: question,
+    options: options,
+    correctIdx: correctIdx,
+    AnswerFeedback: Feedback,
+  };
+  return props;
 }
 
-export function FillInTheBlank( props: ExerciseComponentProps, 
-   canUseQuestion: (arg0: TermCardWithStats<Card, TermStats>) => boolean, createQuestion: (arg0: ExerciseComponentProps) => [ ReactElement,  ReactElement[],  number,  any ], 
-   playAudio: boolean, instructions: String): ReactElement {
-  
-    
-  
-    const contents = createQuestion(props); 
-    const card = props.currentCard; 
-    const question = contents[0]; 
-    const options = contents[1]; 
-    const correctIdx = contents[2]; 
-    const answerFeedback = contents[3]; 
+interface FillInTheBlankProps extends ExerciseComponentProps {
+  canUseQuestion: (card: TermCardWithStats<Card, TermStats>) => boolean;
+  createQuestion: (props: ExerciseComponentProps) => QuestionProps;
+  playAudio: boolean;
+  instructions: String;
+}
 
-  
+export function FillInTheBlank({
+  canUseQuestion,
+  createQuestion,
+  playAudio,
+  instructions,
+  ...props
+}: FillInTheBlankProps): ReactElement {
+  const { question, options, correctIdx, AnswerFeedback } =
+    createQuestion(props);
+
   // pick random voice to use
   const cherokeeAudio = useMemo(
     () => pickRandomElement(props.currentCard.card.cherokee_audio),
@@ -168,59 +270,54 @@ export function FillInTheBlank( props: ExerciseComponentProps,
     src: cherokeeAudio,
     autoplay: true,
   });
-  
-    useEffect(() => {
-      if (!canUseQuestion(props.currentCard)) props.reviewCurrentCard(true);
-    }, [question]);
 
-    
-  
-    
-    return (
-      <ContentWrapper style={{ fontSize: "1.5em" }}>
+  useEffect(() => {
+    if (!canUseQuestion(props.currentCard)) props.reviewCurrentCard(true);
+  }, [question]);
+
+  return (
+    <ContentWrapper style={{ fontSize: "1.5em" }}>
       <div style={{ maxWidth: "800px", margin: "auto" }}>
-        <p>
-          {instructions}
-        </p>
-        <div style={{ fontSize: 24 }}>
-          {question}  
-          </div>
-          <div style={{ fontSize: "0.75em" }}>
+        <p>{instructions}</p>
+        <div style={{ fontSize: 24 }}>{question}</div>
+        <div style={{ fontSize: "0.75em" }}>
           <ListenAgainButton playAudio={play} playing={playing} />
         </div>
-          <AnswersWithFeedback
-            reviewCurrentCard={props.reviewCurrentCard}
-            hintLocation={"overAnswers"}
-            IncorrectAnswerHint = {() => answerFeedback(card, options, correctIdx )}
-          >
-            {options.map((option, idx) => (
-              <AnswerCard correct={idx === correctIdx} idx={idx} key={idx}>
-                <span style={{ fontSize: 24 }}>
-                  {option}
-                </span>
-              </AnswerCard>
-            ))}
-          </AnswersWithFeedback>
-          
-          <FlagIssueButton
+        <AnswersWithFeedback
+          reviewCurrentCard={props.reviewCurrentCard}
+          hintLocation={"overAnswers"}
+          IncorrectAnswerHint={() => (
+            <AnswerFeedback
+              currentCard={props.currentCard.card}
+              options={options}
+              correctIdx={correctIdx}
+            />
+          )}
+        >
+          {options.map((option, idx) => (
+            <AnswerCard correct={idx === correctIdx} idx={idx} key={idx}>
+              <span style={{ fontSize: 24 }}>{option}</span>
+            </AnswerCard>
+          ))}
+        </AnswersWithFeedback>
+
+        <FlagIssueButton
           problematicAudio={cherokeeAudio}
           card={props.currentCard.card}
         />
-        </div>
-        </ContentWrapper>
-    );
-
-  
-
-  
+      </div>
+    </ContentWrapper>
+  );
 }
 
-function CreateFeedback({feedbackFunction} :{feedbackFunction : () => ReactElement}): ReactElement{
-  return feedbackFunction(); 
+export function FillIntheWord(exercise: ExerciseComponentProps) {
+  const props: FillInTheBlankProps = {
+    canUseQuestion: CanUseQuestion,
+    createQuestion: CreateFillInWordQuestion,
+    playAudio: true,
+    instructions: "Choose the correct word",
+    ...exercise,
+  };
+
+  return FillInTheBlank(props);
 }
-
-export function FillIntheWord(exercise: ExerciseComponentProps){
-  return(FillInTheBlank(exercise, CanUseQuestion, CreateFillInWordQuestion, true, "Choose the correct word"));
-}
-
-

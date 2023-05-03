@@ -63,3 +63,67 @@ export function getSimilarTerms(
   return temptingCards;
 }
 
+export function wordsInTerm(card: Card): string[][] {
+  return [card.syllabary.split(" "), card.cherokee.split(" ")];
+}
+
+export function wordPairs(card: Card){
+  const words = wordsInTerm(card); 
+  return words[0].map((syll, idx) => [syll, words[1][idx]]); 
+}
+
+function arrayEqual(a: string[], b: string[]) {
+  if (a.length !== b.length) { return false; }
+  for (var i = 0; i < a.length; ++i) {
+      if (a[i] !== b[i]) {
+          return false;
+      }
+  }
+  return true;
+}
+
+function contains(array: string[][], item: string[]) {
+  for (var i = 0; i < array.length; ++i) {
+      if (arrayEqual(array[i], item)) {
+          return true;
+      }
+  }
+  return false;
+}
+
+function normalize(array: string[][]) {
+  var result = [];
+  for (var i = 0; i < array.length; ++i) {
+      if (!contains(result, array[i])) {
+          result.push(array[i]);
+      }
+  }
+  return result;
+}
+
+
+export function wordsInLesson(lessonCards: Record<string, Card>): string[][]{
+  const nestedWordPairs = Object.values(lessonCards).map((card, idx) => wordPairs(card)); 
+  const flattened = nestedWordPairs.flat(); 
+  //const s = new Set(flattened); 
+  
+  return normalize(flattened); 
+
+}
+
+export function getSimilarWords(
+  correctWord: string[],
+  possibleWords: string[][],
+  numOptions: number
+): string[][] {
+  const similarTerms = possibleWords
+    .sort(
+      (a, b) =>
+        trigramSimilarity(b[1], correctWord[1]) -
+        trigramSimilarity(a[1], correctWord[1])
+    )
+    .slice(1, 1 + Math.ceil((numOptions - 1) * 1.5));
+  const temptingTerms = pickNRandom(similarTerms, numOptions - 1);
+
+  return temptingTerms;
+}
