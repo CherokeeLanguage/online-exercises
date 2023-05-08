@@ -157,7 +157,7 @@ function WrappedUserStateProvider({
   return (
     <userStateContext.Provider value={{ ...state, ...interactors, dispatch }}>
       {children}
-      {(state.config.userEmail === null || state.config.groupId === null) && (
+      {(state.config.userEmail === null || state.config.groupId === null && state.config.inWizard == true) && (
         <GettingStartedModal />
       )}
     </userStateContext.Provider>

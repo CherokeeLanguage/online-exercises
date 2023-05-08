@@ -15,9 +15,9 @@ import { useUserStateContext } from "../../providers/UserStateProvider";
 import { TermsByProficiencyLevelChart } from "../TermsByProficiencyLevelChart";
 
 export const ChooseSetStep: Step = {
-
+  // creates an instance of the step interface
   
-  title: "Phonetics",
+  title: "Choose your first set",
   commitState: ({ collectionId }, {setUpstreamCollection}) => {
     setUpstreamCollection(collectionId);
   },
@@ -47,7 +47,7 @@ function PhoneticsStepComponent({
   }
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (collectionId) goToNextStep();
+    if (collectionId && goToNextStep) goToNextStep();
   }
 
 
@@ -60,8 +60,6 @@ function PhoneticsStepComponent({
 
     return t; 
   } 
-
-
 
   useEffect(() => {
     if (!collectionId) {
@@ -79,11 +77,11 @@ function PhoneticsStepComponent({
   return (
     <div>
 
-      <p>Choose your first set</p>
+      <p></p>
 
       <form onSubmit={onSubmit}>
         <fieldset>
-          <legend>Choose your collection</legend>
+          <legend>Select a collection</legend>
 
           {Object.values(collections).map((collection, idx) => (
             <div key={idx}>

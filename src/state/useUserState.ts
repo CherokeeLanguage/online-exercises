@@ -37,6 +37,7 @@ export interface UserStateProps {
 }
 
 export interface LegacyUserState {
+  inWizard: boolean;
   /** Terms the user is learning and ther progress */
   leitnerBoxes: LeitnerBoxState;
   /** Lessons that have been created for the user */
@@ -59,6 +60,7 @@ export interface LegacyUserState {
  * Like legacy state but no lessons
  */
 export interface UserConfig {
+  inWizard: boolean;
   /** Sets the user is learning */
   sets: UserSetsState;
   /** The collection from which new sets should be pulled when the user is ready for new terms */
@@ -147,6 +149,7 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
 
   return {
     config: {
+      inWizard: state.config.inWizard, 
       sets: reduceUserSetsState(state, action),
       upstreamCollection: reduceUpstreamCollection(state, action),
       groupId: reduceGroupId(state, action),
@@ -163,6 +166,7 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
 function blankUserState(initializationProps: UserStateProps): UserState {
   return {
     config: {
+      inWizard: true,
       sets: {},
       upstreamCollection: null,
       groupId: null,
@@ -182,6 +186,7 @@ function blankUserState(initializationProps: UserStateProps): UserState {
 export function convertLegacyState(state: LegacyUserState): UserState {
   return {
     config: {
+      inWizard: state.inWizard,
       sets: state.sets,
       groupId: state.groupId ?? null,
       phoneticsPreference: state.phoneticsPreference ?? null,

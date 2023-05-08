@@ -18,10 +18,13 @@ import { useUserStateContext } from "../../providers/UserStateProvider";
 import { UserInteractors } from "../../state/useUserState";
 
 export interface WizardState {
+  // gives us information about the state of the entire wizard
   groupId: string;
-  phoneticsPreference: PhoneticsPreference;
+  email?: string;
+  whereFound?: string;
+  phoneticsPreference: PhoneticsPreference | null;
   collectionId: string; 
-
+  inWizard: boolean;
 }
 
 export interface StepProps {
@@ -33,7 +36,8 @@ export interface StepProps {
   // these functions let us navigate through the steps
   // undefiend if on first step
   goToPreviousStep?: () => void;
-  goToNextStep: () => void;
+  goToNextStep?: () => void; 
+  exitWizard?: () => void;
 }
 
 export interface Step {
@@ -48,9 +52,8 @@ export interface Step {
 /**
  * This is the list of steps for the getting started modal.
  *
- * You will need to add more steps here.
  */
-const steps: Step[] = [Preamble, GroupRegistrationStep, PhoneticsStep, ChooseSetStep,  FakeStep];
+const steps: Step[] = [Preamble, GroupRegistrationStep, PhoneticsStep, ChooseSetStep];
 
 export function GettingStartedModal() {
   const userStateContext = useUserStateContext();
@@ -58,18 +61,26 @@ export function GettingStartedModal() {
   // keep track of which step of workflow we are on (start on first step)
   const [stepNumber, setStepNumber] = useState(0);
   // keep track of what data the user has filled out 
-  const [wizardState, setWizardState] = useState<Partial<WizardState>>({});
+  const [wizardState, setWizardState] = useState<Partial<WizardState>>({ });
+
+  //const [fullState, setFullState] = useState<WizardState | null>(null);
+  const [fullState, setFullState] = useState<WizardState>({groupId: '', phoneticsPreference: null, collectionId: '', inWizard: true, email: '', whereFound: ''});
+  
+  function exitWizard(){
+    setWizardState((s) => ({ ...s, inWizard: false}));
+
+  }
 
   /**
    * Take all the data the user input and run actions for each step using it
    */
   function finish() {
     // any part of wizard state could be undefined, so unpack it all
-    const { groupId, phoneticsPreference, collectionId } = wizardState;
+    const { groupId, email, phoneticsPreference, collectionId, inWizard} = wizardState;
     // add checks here to make sure fields are defined
-    if (groupId !== undefined && phoneticsPreference !== undefined && collectionId != null) {
+    if (groupId !== undefined && email !== undefined && phoneticsPreference !== undefined && collectionId != null && inWizard !== undefined) {
       // reassemble state here (without Partial<>)
-      const fullState: WizardState = { groupId, phoneticsPreference, collectionId };
+      const fullState: WizardState = { groupId, email, phoneticsPreference, collectionId, inWizard};
       // dispatch the actions for each step
       steps.forEach((step) => step.commitState(fullState, userStateContext));
     }
@@ -82,9 +93,8 @@ export function GettingStartedModal() {
       {/* Rendering a component from a variable! This is how we change the content from step to step */}
       <currentStep.Component
         goToPreviousStep={
-          stepNumber === 0
-            ? undefined
-            : () => {
+          stepNumber === 0 ? undefined // if step one, is undefined
+            : () => { //otherwise, decrement
                 setStepNumber(stepNumber - 1);
               }
         }
@@ -96,6 +106,10 @@ export function GettingStartedModal() {
             finish();
           }
         }}
+        exitWizard={() => {
+            finish(); 
+            exitWizard();
+        }}
         setWizardState={setWizardState}
         wizardState={wizardState}
       />
@@ -105,26 +119,46 @@ export function GettingStartedModal() {
         
     </div>
     </Modal>
-
-   
   );
 }
 
 export function NavigationButtons({
   goToPreviousStep,
   goToNextStep,
-  customNext,
+  exitWizard,
   disabled
-}: Pick<StepProps, "goToPreviousStep" | "goToNextStep"> & {
-  customNext?: ReactNode;
+}: Pick<StepProps, "goToPreviousStep" | "goToNextStep" | "exitWizard"> & {
   disabled?: boolean; 
+  children?: React.ReactNode;
 }) {
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       {goToPreviousStep && (
         <Button onClick={() => goToPreviousStep()}>Back</Button>
       )}
-      {customNext || <Button disabled = {disabled} style={{float: 'right'}} onClick={() => goToNextStep()}>Next</Button>}
+      {goToNextStep && (
+        <Button onClick={() => goToNextStep()}
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+          }}
+        >
+          Next
+        </Button>
+      )}
+      {exitWizard && (
+        <Button onClick={() => exitWizard()}
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          Exit
+        </Button>
+      )}
     </div>
   );
 }

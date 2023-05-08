@@ -74,6 +74,7 @@ describe("useUserState", () => {
           lessonCreationError: null,
         },
         config: {
+          inWizard: true,
           sets: {
             [setToAdd.id]: {
               setId: setToAdd.id,
@@ -114,6 +115,7 @@ describe("useUserState", () => {
             lessonCreationError: null,
           },
           config: {
+            inWizard: true,
             sets: {},
             upstreamCollection: null,
             groupId: null,
@@ -207,6 +209,7 @@ describe("useUserState", () => {
           lessonCreationError: null,
         },
         config: {
+          inWizard: true,
           sets: {},
           upstreamCollection: null,
           groupId: null,

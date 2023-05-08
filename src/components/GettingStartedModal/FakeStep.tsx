@@ -16,11 +16,10 @@ function FakeStepComponent({
   return (
     <div>
       <p>Debug final step!</p>
-      <p>{JSON.stringify(wizardState)}</p>
+      <p>{JSON.stringify(wizardState)}</p> 
       <NavigationButtons
         goToNextStep={goToNextStep}
         goToPreviousStep={goToPreviousStep}
-        customNext = {<Button style={{float: 'right'}} onClick={() => goToNextStep()}>Submit</Button>} 
       />
     </div>
   );

@@ -11,7 +11,7 @@ import { GROUPS, isGroupId } from "../../state/reducers/groupId";
 export const PhoneticsStep: Step = {
   title: "Phonetics",
   commitState: ({ phoneticsPreference }, { setPhoneticsPreference }) => {
-    setPhoneticsPreference(phoneticsPreference);
+    if (phoneticsPreference) { setPhoneticsPreference(phoneticsPreference); }
   },
   Component: PhoneticsStepComponent,
 };
@@ -39,7 +39,7 @@ function PhoneticsStepComponent({
   }
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (phoneticsPreference) goToNextStep();
+    if (phoneticsPreference && goToNextStep) goToNextStep();
   }
 
   useEffect(() => {
