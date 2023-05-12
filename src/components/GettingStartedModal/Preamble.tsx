@@ -3,12 +3,18 @@ import { NavigationButtons, Step, StepProps } from ".";
 import { Button } from "../Button";
 
 export const Preamble: Step = {
+  /*
+   * Defines the preamble step. Welcomes users to the site. 
+   */
   title: "Welcome to Cheroke Language Exercises!",
   commitState: () => {},
-  Component: FakeStepComponent,
+  Component: FirstStepComponent,
 };
 
-function FakeStepComponent({
+function FirstStepComponent({
+  /*
+   * The first component of the wizard. Advances to the next step or redirects to FAQ page.
+   */
   wizardState,
   goToNextStep,
   goToPreviousStep,
@@ -21,11 +27,12 @@ function FakeStepComponent({
       <br></br>
       Code of Conduct:
       <br></br>
-        - Absolutely no being a poopyhead.
+        - Filler text 1.
         <br></br>
-        - Zero poopyhead behavior allowed.
+        - Filler text 2.
         <br></br>
-        - No poopyheads!
+        - Filler text 3.
+      <br></br>
       <br></br>
 
       <a href = "https://github.com/CherokeeLanguage/online-exercises/wiki/Frequently-Asked-Questions">FAQ</a>

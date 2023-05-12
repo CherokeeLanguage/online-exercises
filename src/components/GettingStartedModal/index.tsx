@@ -7,7 +7,6 @@ import {
 } from "react";
 import { Button } from "../Button";
 import { Modal } from "../Modal";
-import { FakeStep } from "./FakeStep";
 import { PhoneticsStep } from "./PhoneticsStep";
 import { GroupRegistrationStep } from "./GroupRegistrationStep";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
@@ -20,11 +19,10 @@ import { UserInteractors } from "../../state/useUserState";
 export interface WizardState {
   // gives us information about the state of the entire wizard
   groupId: string;
-  email?: string;
-  whereFound?: string;
-  phoneticsPreference: PhoneticsPreference | null;
-  collectionId: string; 
-  inWizard: boolean;
+  email: string;
+  whereFound: string;
+  phoneticsPreference?: PhoneticsPreference;
+  collectionId?: string; 
 }
 
 export interface StepProps {
@@ -63,24 +61,40 @@ export function GettingStartedModal() {
   // keep track of what data the user has filled out 
   const [wizardState, setWizardState] = useState<Partial<WizardState>>({ });
 
-  //const [fullState, setFullState] = useState<WizardState | null>(null);
-  const [fullState, setFullState] = useState<WizardState>({groupId: '', phoneticsPreference: null, collectionId: '', inWizard: true, email: '', whereFound: ''});
+  const [fullState, setFullState] = useState<WizardState | null>(null);
+  //const [fullState, setFullState] = useState<WizardState>({groupId: '', phoneticsPreference: null, collectionId: '', email: '', whereFound: ''});
   
   function exitWizard(){
-    setWizardState((s) => ({ ...s, inWizard: false}));
+    const { groupId, email, whereFound } = wizardState;
 
+    // check if all required fields have been filled out
+    if (groupId && email && whereFound) {
+      // if all fields are filled out, update user state and exit the modal
+      const fullState: WizardState = {
+        groupId,
+        email,
+        whereFound,
+      };
+      steps.forEach((step) => step.commitState(fullState, userStateContext));
+      setFullState(fullState);
+      // TODO: perform any necessary cleanup or finalization
+    } else {
+      // if any required fields are missing, show an error message or prevent the user from exiting
+      alert("Please fill out all required fields.");
+      // alternatively, you can disable the exit button until all required fields are filled out
+    }
   }
 
   /**
    * Take all the data the user input and run actions for each step using it
    */
-  function finish() {
+  function exitWizardAtEnd() {
     // any part of wizard state could be undefined, so unpack it all
-    const { groupId, email, phoneticsPreference, collectionId, inWizard} = wizardState;
+    const { groupId, email, phoneticsPreference, collectionId, whereFound} = wizardState;
     // add checks here to make sure fields are defined
-    if (groupId !== undefined && email !== undefined && phoneticsPreference !== undefined && collectionId != null && inWizard !== undefined) {
+    if (groupId !== undefined && email !== undefined && phoneticsPreference !== undefined && collectionId != undefined && whereFound !== undefined) {
       // reassemble state here (without Partial<>)
-      const fullState: WizardState = { groupId, email, phoneticsPreference, collectionId, inWizard};
+      const fullState: WizardState = { groupId, email, phoneticsPreference, collectionId, whereFound};
       // dispatch the actions for each step
       steps.forEach((step) => step.commitState(fullState, userStateContext));
     }
@@ -103,12 +117,11 @@ export function GettingStartedModal() {
           if (nextStep < steps.length) {
             setStepNumber(nextStep);
           } else {
-            finish();
+            exitWizardAtEnd();
           }
         }}
         exitWizard={() => {
-            finish(); 
-            exitWizard();
+            exitWizard(); 
         }}
         setWizardState={setWizardState}
         wizardState={wizardState}
@@ -123,6 +136,9 @@ export function GettingStartedModal() {
 }
 
 export function NavigationButtons({
+  /*
+   * Defines the buttons available to the user for steps of the Getting Started Modal.
+   */ 
   goToPreviousStep,
   goToNextStep,
   exitWizard,

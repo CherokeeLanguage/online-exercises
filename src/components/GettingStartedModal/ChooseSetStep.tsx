@@ -14,12 +14,12 @@ import { collections, VocabSet } from "../../data/vocabSets";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { TermsByProficiencyLevelChart } from "../TermsByProficiencyLevelChart";
 
-export const ChooseSetStep: Step = {
-  // creates an instance of the step interface
-  
+export const ChooseSetStep: Step = {  
   title: "Choose your first set",
   commitState: ({ collectionId }, {setUpstreamCollection}) => {
-    setUpstreamCollection(collectionId);
+    if (collectionId !== undefined){
+      setUpstreamCollection(collectionId);
+    }
   },
   Component: PhoneticsStepComponent,
 };

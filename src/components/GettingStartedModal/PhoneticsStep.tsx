@@ -6,9 +6,13 @@ import {
   PhoneticsPreference,
   PREFERENCE_LITERATES,
 } from "../../state/reducers/phoneticsPreference";
+
 import { GROUPS, isGroupId } from "../../state/reducers/groupId";
 
 export const PhoneticsStep: Step = {
+  /*
+   * Sets the phonetic preference to the wizard state.
+   */
   title: "Phonetics",
   commitState: ({ phoneticsPreference }, { setPhoneticsPreference }) => {
     if (phoneticsPreference) { setPhoneticsPreference(phoneticsPreference); }
@@ -17,6 +21,9 @@ export const PhoneticsStep: Step = {
 };
 
 function PhoneticsStepComponent({
+  /*
+   * Defines the phonetics step. Allows user to set phonetics preference, advance to the next step, or go to the previous step. Offers a default preference.
+   */
   wizardState: { phoneticsPreference, groupId },
   setWizardState,
   goToNextStep,

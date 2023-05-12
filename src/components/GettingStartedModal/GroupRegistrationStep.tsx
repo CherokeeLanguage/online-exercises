@@ -6,8 +6,10 @@ import { Button } from "../Button";
 export const GroupRegistrationStep: Step = {
   title: "Personal Information",
   Component: GroupRegistrationForm,
-  commitState: ({ groupId }, { registerGroup }) => {
+  commitState: ({ groupId, email, whereFound }, { registerGroup, setUserEmail, setWhereFound }) => {
     registerGroup(groupId);
+    setWhereFound(whereFound);
+    setUserEmail(email);
   },
 };
 
@@ -19,6 +21,7 @@ export function GroupRegistrationForm({
   exitWizard
 }: StepProps) {
   const [enabled, setEnabled] = useState(groupId!=undefined && email !== ''); 
+  
   function onRadioChanged(e: ChangeEvent<HTMLInputElement>) {
     const groupId = e.target.value;
     setWizardState((s) => ({ ...s, groupId }));
