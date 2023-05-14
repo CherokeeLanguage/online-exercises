@@ -25,7 +25,6 @@ export const ChooseSetStep: Step = {
 };
 
 function PhoneticsStepComponent({
-  
   wizardState: { collectionId, groupId },
   setWizardState,
   goToNextStep,
