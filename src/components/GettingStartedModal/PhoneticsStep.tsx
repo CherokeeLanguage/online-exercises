@@ -38,7 +38,7 @@ function PhoneticsStepComponent({
       phoneticsPreference: newPhoneticsPreference,
     }));
   }
-  function onRadioChanged(e: ChangeEvent<HTMLInputElement>) {
+  function onPreferenceChanged(e: ChangeEvent<HTMLInputElement>) {
     const phoneticsPreference = e.target.value;
     if (isPhoneticsPreference(phoneticsPreference))
       setWizardStatePhoneticsPreference(phoneticsPreference);
@@ -77,7 +77,7 @@ function PhoneticsStepComponent({
                 value={value}
                 id={value}
                 checked={phoneticsPreference === value}
-                onChange={onRadioChanged}
+                onChange={onPreferenceChanged}
               />
               <label htmlFor={value}>{literate}</label>
             </div>

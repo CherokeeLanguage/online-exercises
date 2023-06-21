@@ -11,10 +11,14 @@ import { PhoneticsStep } from "./PhoneticsStep";
 import { GroupRegistrationStep } from "./GroupRegistrationStep";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 import { ChooseSetStep } from "./ChooseSetStep";
-import { StepIndicator } from "./StepIndicator";
 import { Preamble } from "./Preamble";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { UserInteractors } from "../../state/useUserState";
+import styled from "styled-components";
+
+export const StepIndicator = styled.h4`
+  text-align: center
+`;
 
 export interface WizardState {
   // gives us information about the state of the entire wizard
@@ -62,9 +66,8 @@ export function GettingStartedModal() {
   const [wizardState, setWizardState] = useState<Partial<WizardState>>({ });
 
   const [fullState, setFullState] = useState<WizardState | null>(null);
-  //const [fullState, setFullState] = useState<WizardState>({groupId: '', phoneticsPreference: null, collectionId: '', email: '', whereFound: ''});
   
-  function exitWizard(){
+  function exitWizardNoAdvanced(){
     const { groupId, email, whereFound } = wizardState;
 
     // check if all required fields have been filled out
@@ -98,6 +101,10 @@ export function GettingStartedModal() {
       // dispatch the actions for each step
       steps.forEach((step) => step.commitState(fullState, userStateContext));
     }
+    else {
+      // if any required fields are missing, show an error message or prevent the user from exiting
+      alert("Please fill out all required fields.");
+    }
   }
 
   // render current step of workflow
@@ -121,7 +128,7 @@ export function GettingStartedModal() {
           }
         }}
         exitWizard={() => {
-            exitWizard(); 
+            exitWizardNoAdvanced(); 
         }}
         setWizardState={setWizardState}
         wizardState={wizardState}

@@ -30,7 +30,7 @@ function PhoneticsStepComponent({
   goToNextStep,
   goToPreviousStep,
 }: StepProps): ReactElement {
-  const [enabled, setEnbabled] = useState(collectionId != undefined); 
+  var canGoToNextStep = collectionId !== undefined; 
   function setWizardStateCollectionId(
     newCollectionId: string
   ) {
@@ -42,7 +42,7 @@ function PhoneticsStepComponent({
   function onRadioChanged(e: ChangeEvent<HTMLInputElement>) {
     const collectionId  = e.target.value;
       setWizardStateCollectionId(collectionId);
-      setEnbabled(true); 
+      canGoToNextStep = true; 
   }
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -68,7 +68,7 @@ function PhoneticsStepComponent({
           : undefined;
       if (defaultCollectionId) {
         setWizardStateCollectionId(defaultCollectionId)
-        setEnbabled(true);
+        canGoToNextStep = true;
       }
     }
   }, [collectionId]);
@@ -103,7 +103,7 @@ function PhoneticsStepComponent({
         <NavigationButtons
           goToPreviousStep={goToPreviousStep}
           goToNextStep={goToNextStep}
-          disabled = {!enabled}
+          disabled = {!canGoToNextStep}
         />
       </form>
     </div>

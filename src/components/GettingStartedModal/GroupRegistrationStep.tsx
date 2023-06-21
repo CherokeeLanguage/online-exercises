@@ -22,7 +22,7 @@ export function GroupRegistrationForm({
 }: StepProps) {
   const [enabled, setEnabled] = useState(groupId!=undefined && email !== ''); 
   
-  function onRadioChanged(e: ChangeEvent<HTMLInputElement>) {
+  function onGroupIdChanged(e: ChangeEvent<HTMLInputElement>) {
     const groupId = e.target.value;
     setWizardState((s) => ({ ...s, groupId }));
     setEnabled(email !== ''); 
@@ -54,7 +54,7 @@ export function GroupRegistrationForm({
       </p>
       <form onSubmit={onSubmit}>
         <fieldset>
-          <legend>Email Address</legend>
+          <label>Email Address</label>
           <input
             type = "email"
             name = "email"
@@ -63,7 +63,7 @@ export function GroupRegistrationForm({
           />
         </fieldset>
         <fieldset>
-          <legend>Where did you find us?</legend>
+          <label>Where did you find us?</label>
           <input
             type = "whereFound"
             name = "whereFound"
@@ -72,7 +72,7 @@ export function GroupRegistrationForm({
           />
         </fieldset>
         <fieldset>
-          <legend>Group</legend>
+          Group
           {Object.entries(GROUPS).map(([id, group]) => (
             <div key={id}>
               <input
@@ -81,7 +81,7 @@ export function GroupRegistrationForm({
                 value={id}
                 id={id}
                 checked={groupId === id}
-                onChange={onRadioChanged}
+                onChange={onGroupIdChanged}
               />
               <label htmlFor={id}>{group.name}</label>
             </div>

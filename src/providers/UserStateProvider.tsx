@@ -140,8 +140,8 @@ function WrappedUserStateProvider({
   const { state, interactors, dispatch } = useUserState({
     storedUserState,
     initializationProps: {
-      leitnerBoxes: {
-        numBoxes: 6,
+    leitnerBoxes: {
+      numBoxes: 6,
       },
     },
   });
@@ -157,7 +157,7 @@ function WrappedUserStateProvider({
   return (
     <userStateContext.Provider value={{ ...state, ...interactors, dispatch }}>
       {children}
-      {(state.config.userEmail === null || state.config.groupId === null) && (
+      {(state.config.userEmail === null || state.config.groupId === null || state.config.whereFound === null) && (
         <GettingStartedModal />
       )}
     </userStateContext.Provider>

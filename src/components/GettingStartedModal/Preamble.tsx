@@ -23,17 +23,10 @@ function FirstStepComponent({
   return (
     <div>
       This website is dedicated to helping users develop knowledge of the Cherokee language.
-      <br></br>
-      <br></br>
+    <ul>
       Code of Conduct:
-      <br></br>
-        - Filler text 1.
-        <br></br>
-        - Filler text 2.
-        <br></br>
-        - Filler text 3.
-      <br></br>
-      <br></br>
+      <li>Filler text</li>
+    </ul>
 
       <a href = "https://github.com/CherokeeLanguage/online-exercises/wiki/Frequently-Asked-Questions">FAQ</a>
 
