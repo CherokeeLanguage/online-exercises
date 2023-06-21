@@ -21,10 +21,10 @@ export const ChooseSetStep: Step = {
       setUpstreamCollection(collectionId);
     }
   },
-  Component: PhoneticsStepComponent,
+  Component: ChooseStepComponent,
 };
 
-function PhoneticsStepComponent({
+function ChooseStepComponent({
   wizardState: { collectionId, groupId },
   setWizardState,
   goToNextStep,

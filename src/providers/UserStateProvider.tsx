@@ -146,6 +146,7 @@ function WrappedUserStateProvider({
     },
   });
 
+  var userNeedsSetup: boolean = (state.config.userEmail === null || state.config.groupId === null || state.config.whereFound === null)
   // sync segments of state independently
   useEffect(() => {
     setConfig(state.config);
@@ -157,9 +158,7 @@ function WrappedUserStateProvider({
   return (
     <userStateContext.Provider value={{ ...state, ...interactors, dispatch }}>
       {children}
-      {(state.config.userEmail === null || state.config.groupId === null || state.config.whereFound === null) && (
-        <GettingStartedModal />
-      )}
+      {(userNeedsSetup) && (<GettingStartedModal />)}
     </userStateContext.Provider>
   );
 }
