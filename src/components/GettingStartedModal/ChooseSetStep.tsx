@@ -30,7 +30,7 @@ function ChooseStepComponent({
   goToNextStep,
   goToPreviousStep,
 }: StepProps): ReactElement {
-  var canGoToNextStep = collectionId !== undefined; 
+  let canGoToNextStep = collectionId !== undefined; 
   function setWizardStateCollectionId(
     newCollectionId: string
   ) {
