@@ -16,7 +16,7 @@ import { useAnalyticsPageName } from "../../firebase/hooks";
 import { ViewSetPath } from "../../routing/paths";
 
 export interface ExerciseComponentProps {
-  currentCard: TermCardWithStats<Card>;
+  currentCard: TermCardWithStats<Card> & { needsIntroduction: boolean };
   lessonCards: Record<string, Card>;
   reviewCurrentCard: (correct: boolean) => void;
 }

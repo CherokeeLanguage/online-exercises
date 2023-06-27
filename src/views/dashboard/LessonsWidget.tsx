@@ -7,6 +7,7 @@ import { NewLessonPath, ViewCollectionPath } from "../../routing/paths";
 import { getToday } from "../../utils/dateUtils";
 import { DashboardWidget } from "./DashboardWidget";
 
+// 40 is good for a five minute lesson
 const CHALLENGES_IN_15_MINUTE_LESSON = 90;
 
 export function LessonsWidget(): ReactElement {

@@ -61,7 +61,7 @@ export function AnswersWithFeedback({
   reviewCurrentCard,
   IncorrectAnswerHint,
   hintLocation,
-  feedbackDuration = 500,
+  feedbackDuration = 1500,
   children,
 }: {
   reviewCurrentCard: (correct: boolean) => void;

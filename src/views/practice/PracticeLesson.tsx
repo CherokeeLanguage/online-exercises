@@ -9,6 +9,7 @@ import { SimpleFlashcards } from "../../components/exercises/SimpleFlashcards";
 import { FillInTheTone } from "../../components/exercises/FillInTheTone";
 import { PickExercise } from "./PickExercise";
 import { LessonProvider } from "../../providers/LessonProvider";
+import { CombinedLesson } from "../../components/exercises/CombinedLesson";
 
 export const exercises: {
   path: string;
@@ -18,6 +19,13 @@ export const exercises: {
   // set to true if game is a minigame that does not require the user to have vocab
   minigame?: boolean;
 }[] = [
+  {
+    path: "combined-lesson",
+    name: "Combined lesson",
+    description:
+      "Practice with a mix of flashcards, multiple choice, listening exercises, and more!",
+    Component: CombinedLesson,
+  },
   {
     path: "flashcards",
     name: "Flashcards",

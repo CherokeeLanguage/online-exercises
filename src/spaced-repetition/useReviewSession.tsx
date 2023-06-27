@@ -78,6 +78,17 @@ export function useReviewedTerms(lessonId: string): {
   };
 }
 
+interface UseReviewSessionReturn<T> {
+  currentCard:
+    | (TermCardWithStats<T, TermStats> & { needsIntroduction: boolean })
+    | undefined;
+  challengesRemaining: number;
+  numTermsToIntroduce: number;
+  numActiveTerms: number;
+  numFinishedTerms: number;
+  reviewCurrentCard(correct: boolean): void;
+}
+
 /**
  * Start a review session with the given cards.
  *
@@ -88,7 +99,7 @@ export function useReviewSession<T>(
   lessonCards: Record<string, T>,
   lessonId: string,
   reviewTerm: (term: string, correct: boolean) => void
-) {
+): UseReviewSessionReturn<T> {
   const termStats = useMemo(
     () =>
       Object.fromEntries(
@@ -132,13 +143,16 @@ export function useReviewSession<T>(
     [timings.state.sortedTerms, timings.state.termsToIntroduce]
   );
 
-  const currentCard: TermCardWithStats<T, TermStats> | undefined = useMemo(
+  const currentCard = useMemo(
     () =>
       timings.nextTerm
         ? {
             term: timings.nextTerm,
             stats: leitnerBoxes.terms[timings.nextTerm],
             card: lessonCards[timings.nextTerm],
+            needsIntroduction:
+              leitnerBoxes.terms[timings.nextTerm].lastShownDate === 0 &&
+              Boolean(timings.state.termsToIntroduce[timings.nextTerm]),
           }
         : undefined,
     [timings.nextTerm, lessonCards]
