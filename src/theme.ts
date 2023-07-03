@@ -12,6 +12,17 @@ export const theme = {
     TEXT_GRAY: "#222222",
     WHITE: "#FFFFFF",
   },
+  hanehldaColors: {
+    CREAM: "#F5EBD5",
+    TEXT_CREAM: "#FFEA9F",
+    LIGHT_RED: "#DFBFAD",
+    DARK_RED: "#98342E",
+    BORDER_GRAY: "#D9D9D9",
+    TEXT_LIGHT_GRAY: "#898989",
+  },
+  borderRadii: {
+    md: "20px",
+  },
   fontSizes: {
     sm: "16px",
     md: "20px",
