@@ -22,7 +22,7 @@ export function CombinedLesson(props: ExerciseComponentProps): ReactElement {
   );
   return (
     <div style={{ maxWidth: "800px", margin: "auto" }}>
-      <Content {...props} />
+      <Content {...props} key={props.currentCard.term} />
     </div>
   );
 }
