@@ -1,6 +1,6 @@
-import { FormEvent, ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
-import { theme } from "../theme";
+import { devices, theme } from "../theme";
 import { Title } from "./Title";
 import { FcGoogle } from "react-icons/fc";
 import { TfiEmail } from "react-icons/tfi";
@@ -70,6 +70,7 @@ const SignInButton = styled.button`
 `;
 
 const StyledSignInMethodButton = styled.button`
+  box-sizing: border-box;
   border-radius: ${theme.borderRadii.md};
   outline: none;
   background-color: ${theme.colors.WHITE};
@@ -80,8 +81,14 @@ const StyledSignInMethodButton = styled.button`
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
 
-  color: ${theme.hanehldaColors.TEXT_LIGHT_GRAY};
+  /* color: ${theme.hanehldaColors.TEXT_LIGHT_GRAY}; */
   font-size: ${theme.fontSizes.md};
+
+  padding: 4px;
+
+  @media ${devices.tablet} {
+    padding: 8px;
+  }
 `;
 
 function SignInMethodButton({
@@ -95,15 +102,19 @@ function SignInMethodButton({
 }) {
   return (
     <StyledSignInMethodButton onClick={onClick}>
-      <Icon size="2em" style={{ padding: 12 }} />
+      <Icon size="2em" style={{ padding: 4 }} />
       <div>{children}</div>
     </StyledSignInMethodButton>
   );
 }
 
 const StyledSignInContent = styled.div`
-  max-width: 420px;
+  max-width: 100%;
+  @media ${devices.tablet} {
+    max-width: 420px;
+  }
   margin: auto;
+  padding: 32px;
   color: ${theme.hanehldaColors.TEXT_LIGHT_GRAY};
   font-size: ${theme.fontSizes.md};
   & > span {
@@ -165,7 +176,7 @@ export function SignInContent(): ReactElement {
 const StyledCreateAccountSection = styled.div`
   background: ${theme.hanehldaColors.LIGHT_RED};
   position: relative;
-  margin-top: 55px;
+  margin-top: 20px;
   padding: 40px;
   padding-top: 0;
   border-top: 4px solid ${theme.hanehldaColors.DARK_RED};
@@ -181,10 +192,16 @@ const StyledCreateAccountSection = styled.div`
 `;
 
 const CreateAccountOptions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  justify-content: center;
+  & > span {
+    margin: 12px 0;
+    display: block;
+  }
+  @media ${devices.tablet} {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+  }
 `;
 
 function CreateAccountSection() {

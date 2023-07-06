@@ -3,15 +3,15 @@ import { ButtonLink } from "../../components/Button";
 import { SectionHeading } from "../../components/SectionHeading";
 import { useLesson } from "../../providers/LessonProvider";
 import { useAnalyticsPageName } from "../../firebase/hooks";
-import { theme } from "../../theme";
+import { devices, theme } from "../../theme";
 import { exercises } from "./PracticeLesson";
 
 const ExercisesWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 16px;
-  @media screen and (max-width: 800px) {
-    grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
+  @media ${devices.laptop} {
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
@@ -49,7 +49,7 @@ const StyledExerciseCard = styled.div`
 function ExerciseCard({
   exercise: { path, name, description },
 }: {
-  exercise: typeof exercises[number];
+  exercise: (typeof exercises)[number];
 }) {
   return (
     <StyledExerciseCard>
