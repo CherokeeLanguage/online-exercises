@@ -58,8 +58,8 @@ export function mcoToWebsterTones(cherokee: string): string {
       .replaceAll(/([aeiouv])\u030B:/g, "$1⁴⁴") // combining double acute accent, long
       .replaceAll(/([aeiouv])\u030B/g, "$1⁴") // combining double acute accent, short (in cases where a final vowel is dropped and a highfall tone must become short)
       // BEGIN long vowels that need to be shortened because they are last in a word
-      .replaceAll(/([aeiouv])\u030C(?=\s|$)/g, "$1²$2") // combining caron accent, short
-      .replaceAll(/([aeiouv])\u0302(?=\s|$)/g, "$1³$2") // combining circumflex accent, short
+      .replaceAll(/([aeiouv])\u030C(?=\s|$)/g, "$1²") // combining caron accent, short
+      .replaceAll(/([aeiouv])\u0302(?=\s|$)/g, "$1³") // combining circumflex accent, short
       .replaceAll(/([aeiouv])\u0300/g, "$1¹") // combining grave accent, short
       .replaceAll(/([aeiouv])\u0301/g, "$1³") // combining acute accent, short
       .replaceAll(/([aeiouv])(?![¹²³⁴])(?=[ɂ\w])/g, "$1²") // non-final vowel not followed by any tone yet

@@ -97,6 +97,14 @@ describe("getPhonetics", () => {
       "there should be no terms with diacritics left"
     );
   });
+
+  it("has stable behavior", () => {
+    const normalizedWebsterTones = cards.map<string>((card) => {
+      const websterTones = getPhonetics(card, PhoneticsPreference.Detailed);
+      return websterTones.normalize("NFD");
+    }, []);
+    expect(normalizedWebsterTones).toMatchSnapshot();
+  });
 });
 
 describe("alignSyllabaryAndPhonetics", () => {
