@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode, useState } from "react";
 import styled from "styled-components";
 import { devices, theme } from "../../theme";
 import { Title } from "../../components/Title";
@@ -13,6 +13,8 @@ import {
   FormSubmitButton,
 } from "./common";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 export function SignInPage(): ReactElement {
   return (
@@ -94,12 +96,17 @@ const ForgotPasswordButton = styled.button`
 `;
 
 function SignInContent(): ReactElement {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   function signInWithGoogle() {
     // TODO
   }
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO
+    signInWithEmailAndPassword(auth, email, password).then((c) =>
+      navigate("/")
+    );
   }
   return (
     <StyledSignInContent>
@@ -108,8 +115,18 @@ function SignInContent(): ReactElement {
       </SignInMethodButton>
       <span>or</span>
       <Form onSubmit={onSubmit}>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <ForgotPasswordButton>Forgot your password?</ForgotPasswordButton>
         <FormSubmitButton>Sign in</FormSubmitButton>
       </Form>
