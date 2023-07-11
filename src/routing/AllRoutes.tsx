@@ -11,6 +11,8 @@ import { MySets } from "../views/vocabulary/MySets";
 import { ViewCollection } from "../views/vocabulary/ViewCollection";
 import { ViewSet } from "../views/vocabulary/ViewSet";
 import { Settings } from "../views/settings/Settings";
+import { SignInPage } from "../views/signin/SignInPage";
+import { CreateAccountPage } from "../views/signin/CreateAccountPage";
 
 /**
  * All the routes for the app.
@@ -21,6 +23,10 @@ import { Settings } from "../views/settings/Settings";
 export function AllRoutes() {
   return (
     <Routes>
+      <Route path="/signin">
+        <Route index element={<SignInPage />} />
+        <Route path="new" element={<CreateAccountPage />} />
+      </Route>
       <Route path="/" element={<App />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="vocabulary">

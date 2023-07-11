@@ -9,7 +9,8 @@ import { analytics, auth } from ".";
 import { onAuthStateChanged, signInAnonymously, User } from "firebase/auth";
 import { LoadingPage } from "../components/Loader";
 import { setUserId } from "firebase/analytics";
-import { SignInPage } from "../components/SignInPage";
+import { SignInPage } from "../views/signin/SignInPage";
+import { Navigate } from "react-router-dom";
 
 export interface AuthContext {
   user: User;
@@ -54,7 +55,7 @@ export function AuthProvider({ children }: { children?: ReactNode }) {
   }
   // auth has loaded but user is not signed in
   else if (user === null) {
-    return <SignInPage />;
+    return <Navigate to="/signin" />;
   }
   // auth has loaded and we have a user
   return (

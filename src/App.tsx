@@ -2,6 +2,8 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { NavigationBar } from "./components/NavigationBar";
+import { UserStateProvider } from "./providers/UserStateProvider";
+import { AuthProvider } from "./firebase/AuthProvider";
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -32,7 +34,11 @@ export function App() {
       <NavigationBar />
       <AppBody>
         <AppContent>
-          <Outlet />
+          <AuthProvider>
+            <UserStateProvider>
+              <Outlet />
+            </UserStateProvider>
+          </AuthProvider>
         </AppContent>
       </AppBody>
     </AppWrapper>

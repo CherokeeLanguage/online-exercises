@@ -15,11 +15,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <AuthProvider>
-        <UserStateProvider>
-          <AllRoutes />
-        </UserStateProvider>
-      </AuthProvider>
+      <AllRoutes />
     </HashRouter>
   </React.StrictMode>
 );

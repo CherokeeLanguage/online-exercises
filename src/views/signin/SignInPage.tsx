@@ -1,36 +1,18 @@
 import { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
-import { devices, theme } from "../theme";
-import { Title } from "./Title";
+import { devices, theme } from "../../theme";
+import { Title } from "../../components/Title";
 import { FcGoogle } from "react-icons/fc";
 import { TfiEmail } from "react-icons/tfi";
 import { IconType } from "react-icons";
-
-const Page = styled.div`
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  background-color: ${theme.hanehldaColors.CREAM};
-`;
-
-const ScrollWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  height: 100%;
-  overflow-x: auto;
-`;
-
-const PageContent = styled.div`
-  flex: 1;
-  /* max-width: min(800px, 100vw); */
-  margin: 0 auto;
-  text-align: center;
-  display: grid;
-  grid-template-rows: auto auto min(1fr, 300px);
-`;
+import {
+  Page,
+  ScrollWrapper,
+  PageContent,
+  Form,
+  FormSubmitButton,
+} from "./common";
+import { useNavigate } from "react-router-dom";
 
 export function SignInPage(): ReactElement {
   return (
@@ -45,29 +27,6 @@ export function SignInPage(): ReactElement {
     </Page>
   );
 }
-
-const SignInButton = styled.button`
-  text-transform: uppercase;
-
-  box-sizing: border-box;
-
-  background: #ffea9f;
-  border: 1px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
-
-  font-family: "Inika";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 52px;
-  text-align: center;
-
-  color: #464d50;
-
-  display: block;
-  width: 100%;
-`;
 
 const StyledSignInMethodButton = styled.button`
   box-sizing: border-box;
@@ -124,21 +83,6 @@ const StyledSignInContent = styled.div`
   }
 `;
 
-const Form = styled.form`
-  input {
-    margin: 6px 0;
-    box-sizing: border-box;
-    border-radius: ${theme.borderRadii.md};
-    outline: none;
-    background-color: ${theme.colors.WHITE};
-    border: 1px solid ${theme.hanehldaColors.BORDER_GRAY};
-    width: 100%;
-    padding: 16px;
-    color: ${theme.hanehldaColors.TEXT_LIGHT_GRAY};
-    font-size: ${theme.fontSizes.md};
-  }
-`;
-
 const ForgotPasswordButton = styled.button`
   color: ${theme.hanehldaColors.TEXT_LIGHT_GRAY};
   outline: none;
@@ -149,7 +93,7 @@ const ForgotPasswordButton = styled.button`
   color: #787b77;
 `;
 
-export function SignInContent(): ReactElement {
+function SignInContent(): ReactElement {
   function signInWithGoogle() {
     // TODO
   }
@@ -167,7 +111,7 @@ export function SignInContent(): ReactElement {
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Password" />
         <ForgotPasswordButton>Forgot your password?</ForgotPasswordButton>
-        <SignInButton>Sign in</SignInButton>
+        <FormSubmitButton>Sign in</FormSubmitButton>
       </Form>
     </StyledSignInContent>
   );
@@ -205,11 +149,12 @@ const CreateAccountOptions = styled.div`
 `;
 
 function CreateAccountSection() {
+  const navigate = useNavigate();
   function signUpWithGoogle() {
     // TODO
   }
   function signUpWithEmail() {
-    // TODO
+    navigate("/signin/new");
   }
   return (
     <StyledCreateAccountSection>

@@ -6,7 +6,7 @@ const StyledTitle = styled.h1`
   font-family: "Noto Sans Cherokee", "Noto Sans", sans-serif;
   text-align: center;
   color: ${theme.hanehldaColors.DARK_RED};
-  -webkit-text-stroke: 10px ${theme.colors.WHITE};
+  /* -webkit-text-stroke: 10px ${theme.colors.WHITE}; */
   paint-order: stroke fill;
   margin: 0;
   font-size: 70px;
