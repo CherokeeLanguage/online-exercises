@@ -11,6 +11,10 @@ import {
 import { HanehldaHeader } from "../../components/HanehldaHeader";
 import styled from "styled-components";
 import { theme } from "../../theme";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
+import { FirebaseError } from "firebase/app";
 
 export function CreateAccountPage(): ReactElement {
   return (
@@ -48,10 +52,19 @@ const SignUpFrom = styled(Form)`
 `;
 
 function CreateAccountContent(): ReactElement {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   function signUp(e: FormEvent) {
     e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((cred) => {
+        navigate("/");
+      })
+      .catch((err: FirebaseError) => {
+        if (err.code === "auth/email-already-exists") {
+        }
+      });
   }
   return (
     <StyledContent>
