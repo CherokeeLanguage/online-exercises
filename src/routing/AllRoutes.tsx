@@ -13,6 +13,7 @@ import { ViewSet } from "../views/vocabulary/ViewSet";
 import { Settings } from "../views/settings/Settings";
 import { SignInPage } from "../views/signin/SignInPage";
 import { CreateAccountPage } from "../views/signin/CreateAccountPage";
+import { SetupPage } from "../views/setup/SetupPage";
 
 /**
  * All the routes for the app.
@@ -26,6 +27,9 @@ export function AllRoutes() {
       <Route path="/signin">
         <Route index element={<SignInPage />} />
         <Route path="new" element={<CreateAccountPage />} />
+      </Route>
+      <Route path="/setup">
+        <Route index element={<SetupPage />} />
       </Route>
       <Route path="/" element={<App />}>
         <Route path="/" element={<Dashboard />} />

@@ -35,7 +35,7 @@ export function App() {
       <AppBody>
         <AppContent>
           <AuthProvider>
-            <UserStateProvider>
+            <UserStateProvider redirectToSetup>
               <Outlet />
             </UserStateProvider>
           </AuthProvider>

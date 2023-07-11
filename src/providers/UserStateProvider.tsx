@@ -6,7 +6,6 @@ import React, {
   useEffect,
 } from "react";
 import { useLocalStorage } from "react-use";
-import { GettingStartedModal } from "../components/GettingStartedModal";
 import { LoadingPage } from "../components/Loader";
 import { useAuth } from "../firebase/AuthProvider";
 import {
@@ -25,6 +24,7 @@ import {
   useUserState,
   convertLegacyState,
 } from "../state/useUserState";
+import { Navigate } from "react-router-dom";
 
 export interface UserStateContext extends UserState, UserInteractors {
   dispatch: React.Dispatch<UserStateAction>;
@@ -113,8 +113,10 @@ function UserStatePersistenceProvider({
 
 function WrappedUserStateProvider({
   children,
+  redirectToSetup,
 }: {
   children: ReactNode;
+  redirectToSetup: boolean;
 }): ReactElement {
   const persistenceContext = useContext(userStatePersistenceContext);
   if (persistenceContext === null) throw new Error("explode");
@@ -140,13 +142,16 @@ function WrappedUserStateProvider({
   const { state, interactors, dispatch } = useUserState({
     storedUserState,
     initializationProps: {
-    leitnerBoxes: {
-      numBoxes: 6,
+      leitnerBoxes: {
+        numBoxes: 6,
       },
     },
   });
 
-  var userNeedsSetup: boolean = (state.config.userEmail === null || state.config.groupId === null || state.config.whereFound === null)
+  var userNeedsSetup: boolean =
+    state.config.userEmail === null ||
+    state.config.groupId === null ||
+    state.config.whereFound === null;
   // sync segments of state independently
   useEffect(() => {
     setConfig(state.config);
@@ -155,18 +160,27 @@ function WrappedUserStateProvider({
     setLeitnerBoxes(state.leitnerBoxes);
   }, [state.leitnerBoxes]);
 
+  if (userNeedsSetup && redirectToSetup) return <Navigate to="setup/" />;
+
   return (
     <userStateContext.Provider value={{ ...state, ...interactors, dispatch }}>
       {children}
-      {(userNeedsSetup) && (<GettingStartedModal />)}
     </userStateContext.Provider>
   );
 }
 
-export function UserStateProvider({ children }: { children?: ReactNode }) {
+export function UserStateProvider({
+  children,
+  redirectToSetup,
+}: {
+  children?: ReactNode;
+  redirectToSetup: boolean;
+}) {
   return (
     <UserStatePersistenceProvider>
-      <WrappedUserStateProvider>{children}</WrappedUserStateProvider>
+      <WrappedUserStateProvider redirectToSetup={redirectToSetup}>
+        {children}
+      </WrappedUserStateProvider>
     </UserStatePersistenceProvider>
   );
 }
