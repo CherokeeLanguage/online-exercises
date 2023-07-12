@@ -3,17 +3,17 @@ import {
   FormEvent,
   ReactElement,
   useContext,
-  useEffect,
+  useMemo,
   useState,
 } from "react";
-import {
-  isPhoneticsPreference,
-  PhoneticsPreference,
-  PREFERENCE_LITERATES,
-} from "../../state/reducers/phoneticsPreference";
+import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 
-import { GROUPS, isGroupId } from "../../state/reducers/groupId";
 import { Step, wizardContext } from "./SetupWizard";
+import { Form, FormSubmitButton } from "../signin/common";
+import { RadioBar } from "../../components/RadioBar";
+import { getPhonetics } from "../../utils/phonetics";
+import { cards } from "../../data/cards";
+import { Hr } from "./common";
 
 export const InfoStep: Step = {
   name: "Info",
@@ -22,14 +22,17 @@ export const InfoStep: Step = {
 
 function Info(): ReactElement {
   const { finishInfo } = useContext(wizardContext);
-  const [phoneticsPreference, setPhoneticsPreference] =
-    useState<PhoneticsPreference>();
+  const [showTone, setShowTone] = useState<boolean>(true);
   const [whereFound, setWhereFound] = useState<string>();
 
-  function onPreferenceChanged(e: ChangeEvent<HTMLInputElement>) {
-    const phoneticsPreference = e.target.value;
-    if (isPhoneticsPreference(phoneticsPreference))
-      setPhoneticsPreference(phoneticsPreference);
+  const phoneticsPreference = useMemo(
+    () =>
+      showTone ? PhoneticsPreference.Detailed : PhoneticsPreference.Simple,
+    [showTone]
+  );
+
+  function onShowToneChanged(newValue: string) {
+    setShowTone(newValue === "yes");
   }
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -38,46 +41,63 @@ function Info(): ReactElement {
       finishInfo({ whereFound, phoneticsPreference });
   }
 
-  // useEffect(() => {
-  //   if (!phoneticsPreference) {
-  //     const defaultPhoneticsPreference =
-  //       groupId && isGroupId(groupId)
-  //         ? GROUPS[groupId].phoneticsPreference
-  //         : undefined;
-  //     if (defaultPhoneticsPreference) {
-  //       setWizardStatePhoneticsPreference(defaultPhoneticsPreference);
-  //       setEnbabled(true);
-  //     }
-  //   }
-  // }, [phoneticsPreference]);
+  const demoCard = useMemo(
+    () => cards.find((c) => c.syllabary === "ᎠᏴᏓᏆᎶᏍᎩ")!,
+    []
+  );
+
+  const phoneticsPreview = useMemo(
+    () => getPhonetics(demoCard, phoneticsPreference),
+    [phoneticsPreference]
+  );
 
   return (
     <div>
-      <p>Select your phonetics preference!</p>
+      <p>
+        <strong>We need to ask a couple questions to get started...</strong>
+      </p>
 
-      <form onSubmit={onSubmit}>
-        <fieldset>
-          <legend>Phonetics preference</legend>
-          {Object.entries(PREFERENCE_LITERATES).map(([value, literate], i) => (
-            <div key={i}>
-              <input
-                type="radio"
-                name="phoneticsPreference"
-                value={value}
-                id={value}
-                checked={phoneticsPreference === value}
-                onChange={onPreferenceChanged}
-              />
-              <label htmlFor={value}>{literate}</label>
-            </div>
-          ))}
-        </fieldset>
+      <Hr />
+      <Form standalone onSubmit={onSubmit}>
+        <div>
+          <label htmlFor="whereFound">Where did you hear about Hanehlda?</label>
+          <input
+            name="whereFound"
+            type="text"
+            placeholder="Facebook, word-of-mouth, etc."
+            onChange={(e) => setWhereFound(e.target.value)}
+          />
+        </div>
+        <Hr />
+        <div>
+          <RadioBar
+            label="Would you like to see tone markings?"
+            onChange={onShowToneChanged}
+            value={showTone ? "yes" : "no"}
+            options={[
+              { value: "no", text: "No" },
+              { value: "yes", text: "Yes" },
+            ]}
+          />
+          <p>
+            Example: <strong>{phoneticsPreview}</strong>
+          </p>
+
+          <p>
+            <em>
+              Tone is an important aspect of Cherokee, but can be daunting when
+              you're just getting started. You can always change this setting
+              later.
+            </em>
+          </p>
+        </div>
         {/* <NavigationButtons
           goToPreviousStep={goToPreviousStep}
           goToNextStep={goToNextStep}
           disabled={!enabled}
         /> */}
-      </form>
+        <FormSubmitButton type="submit">Move on</FormSubmitButton>
+      </Form>
     </div>
   );
 }

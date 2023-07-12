@@ -113,10 +113,8 @@ function UserStatePersistenceProvider({
 
 function WrappedUserStateProvider({
   children,
-  redirectToSetup,
 }: {
   children: ReactNode;
-  redirectToSetup: boolean;
 }): ReactElement {
   const persistenceContext = useContext(userStatePersistenceContext);
   if (persistenceContext === null) throw new Error("explode");
@@ -148,10 +146,6 @@ function WrappedUserStateProvider({
     },
   });
 
-  var userNeedsSetup: boolean =
-    state.config.userEmail === null ||
-    state.config.groupId === null ||
-    state.config.whereFound === null;
   // sync segments of state independently
   useEffect(() => {
     setConfig(state.config);
@@ -160,7 +154,11 @@ function WrappedUserStateProvider({
     setLeitnerBoxes(state.leitnerBoxes);
   }, [state.leitnerBoxes]);
 
-  if (userNeedsSetup && redirectToSetup) return <Navigate to="setup/" />;
+  console.log({
+    userEmail: state.config.userEmail === null,
+    groupid: state.config.groupId === null,
+    whereFound: state.config.whereFound === null,
+  });
 
   return (
     <userStateContext.Provider value={{ ...state, ...interactors, dispatch }}>
@@ -169,18 +167,10 @@ function WrappedUserStateProvider({
   );
 }
 
-export function UserStateProvider({
-  children,
-  redirectToSetup,
-}: {
-  children?: ReactNode;
-  redirectToSetup: boolean;
-}) {
+export function UserStateProvider({ children }: { children?: ReactNode }) {
   return (
     <UserStatePersistenceProvider>
-      <WrappedUserStateProvider redirectToSetup={redirectToSetup}>
-        {children}
-      </WrappedUserStateProvider>
+      <WrappedUserStateProvider>{children}</WrappedUserStateProvider>
     </UserStatePersistenceProvider>
   );
 }

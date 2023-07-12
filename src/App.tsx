@@ -1,9 +1,8 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { NavigationBar } from "./components/NavigationBar";
-import { UserStateProvider } from "./providers/UserStateProvider";
-import { AuthProvider } from "./firebase/AuthProvider";
+import { useUserStateContext } from "./providers/UserStateProvider";
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -29,16 +28,19 @@ const AppContent = styled.div`
 `;
 
 export function App() {
+  const { config } = useUserStateContext();
+  var userNeedsSetup: boolean =
+    config.userEmail === null ||
+    config.groupId === null ||
+    config.whereFound === null;
+  if (userNeedsSetup) return <Navigate to="setup/" />;
+
   return (
     <AppWrapper>
       <NavigationBar />
       <AppBody>
         <AppContent>
-          <AuthProvider>
-            <UserStateProvider redirectToSetup>
-              <Outlet />
-            </UserStateProvider>
-          </AuthProvider>
+          <Outlet />
         </AppContent>
       </AppBody>
     </AppWrapper>

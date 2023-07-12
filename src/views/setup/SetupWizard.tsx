@@ -6,8 +6,13 @@ import { CodeOfConductStep } from "./CodeOfConductStep";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import React from "react";
 import { useAuth } from "../../firebase/AuthProvider";
+import { HeaderLabel, Page, PageContent } from "../signin/common";
+import { HanehldaHeader } from "../../components/HanehldaHeader";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { HANEHLDA_ID } from "../../state/reducers/groupId";
 
-const STEPS = ["Code of Conduct", "Info", "Pick course", "Finalize"] as const;
+const STEPS = ["Code of Conduct", "Info", "Pick course"] as const;
 export type StepName = (typeof STEPS)[number];
 
 export interface Step {
@@ -37,16 +42,16 @@ type PickingCourseState = {
   data: InfoData;
 };
 
-type CompleteWizardState = {
-  step: "Finalize";
-  data: InfoData & PickCourseData;
-};
+// type CompleteWizardState = {
+//   step: "Finalize";
+//   data: InfoData & PickCourseData;
+// };
 
 export type WizardState =
   | InitialState
   | CollectingInfoState
-  | PickingCourseState
-  | CompleteWizardState;
+  | PickingCourseState;
+// | CompleteWizardState;
 
 /**
  * This is the list of steps for the getting started modal.
@@ -56,25 +61,23 @@ const steps: Record<StepName, Step> = {
   //   "Info": GroupRegistrationStep,
   Info: InfoStep,
   "Pick course": PickCourseStep,
-  Finalize: {
-    name: "Finalize",
-    Component(): ReactElement {
-      return <p>"Hi"</p>;
-    },
-  },
 };
 export interface WizardContext {
   finishCodeOfConduct: () => void;
   finishInfo: (data: InfoData) => void;
   finishPickCourse: (data: PickCourseData) => void;
-  finishSetup: () => void;
 }
 
 export const wizardContext = React.createContext({} as WizardContext);
 
+const ContentWrapper = styled.div`
+  padding: 0 20px;
+`;
+
 export function SetupWizard() {
   const { user } = useAuth();
   const userStateContext = useUserStateContext();
+  const navigate = useNavigate();
 
   const [setupState, setSetupState] = useState<WizardState>({
     step: "Code of Conduct",
@@ -91,34 +94,45 @@ export function SetupWizard() {
   }
 
   function finishPickCourse(data: PickCourseData) {
-    setSetupState((s) =>
-      s.step === "Pick course"
-        ? { step: "Finalize", data: { ...s.data, ...data } }
-        : s
-    );
+    if (setupState.step !== "Pick course") return;
+    finishSetup({ ...setupState.data, ...data });
   }
 
   /**
    * Take all the data the user input and run actions for each step using it
    */
-  function finishSetup() {
-    if (setupState.step !== "Finalize") return;
-
-    const { phoneticsPreference, collectionId, whereFound } = setupState.data;
-
+  function finishSetup({
+    phoneticsPreference,
+    collectionId,
+    whereFound,
+  }: PickCourseData & InfoData) {
     userStateContext.setPhoneticsPreference(phoneticsPreference);
     userStateContext.setUpstreamCollection(collectionId);
+    userStateContext.registerGroup(HANEHLDA_ID);
     userStateContext.setUserEmail(user.email!);
     userStateContext.setWhereFound(whereFound);
+    navigate("/");
   }
 
   // render current step of workflow
   const currentStep = steps[setupState.step];
+  const stepNo = STEPS.indexOf(setupState.step) + 1;
   return (
     <wizardContext.Provider
-      value={{ finishCodeOfConduct, finishInfo, finishPickCourse, finishSetup }}
+      value={{ finishCodeOfConduct, finishInfo, finishPickCourse }}
     >
-      <currentStep.Component />
+      <Page>
+        <HanehldaHeader>
+          <HeaderLabel>
+            Step {stepNo} of {STEPS.length}
+          </HeaderLabel>
+        </HanehldaHeader>
+        <PageContent>
+          <ContentWrapper>
+            <currentStep.Component />
+          </ContentWrapper>
+        </PageContent>
+      </Page>
     </wizardContext.Provider>
     // {/* Rendering a component from a variable! This is how we change the content from step to step */}
     // <currentStep.Component

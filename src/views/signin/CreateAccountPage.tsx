@@ -46,11 +46,6 @@ const StyledContent = styled.div`
   padding: 20px;
 `;
 
-const SignUpFrom = styled(Form)`
-  max-width: 400px;
-  margin: auto;
-`;
-
 function CreateAccountContent(): ReactElement {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -76,7 +71,7 @@ function CreateAccountContent(): ReactElement {
       <strong>
         <p>First, you will need to set up an account!</p>
       </strong>
-      <SignUpFrom onSubmit={signUp}>
+      <Form standalone onSubmit={signUp}>
         <input
           type="email"
           placeholder="Email"
@@ -92,7 +87,7 @@ function CreateAccountContent(): ReactElement {
         <FormSubmitButton style={{ marginTop: 20 }}>
           Create Account
         </FormSubmitButton>
-      </SignUpFrom>
+      </Form>
     </StyledContent>
   );
 }

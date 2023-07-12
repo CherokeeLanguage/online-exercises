@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
 export const Page = styled.div`
@@ -28,15 +28,20 @@ export const PageContent = styled.div`
 `;
 
 export const HeaderLabel = styled.h2`
-  font-size: 25px;
-  font-weight: 500;
+  font-size: 20px;
   font-family: "Noto Sans", sans-serif;
   margin: 0;
   flex: 1;
   text-align: right;
 `;
 
-export const Form = styled.form`
+export const Form = styled.form<{ standalone?: true }>`
+  ${({ standalone }) =>
+    standalone &&
+    css`
+      max-width: 400px;
+      margin: auto;
+    `}
   input {
     margin: 6px 0;
     box-sizing: border-box;

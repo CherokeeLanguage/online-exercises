@@ -2,6 +2,8 @@ import { ReactElement, useContext } from "react";
 // import { NavigationButtons, Step, StepProps } from "./SetupPage";
 import { Button } from "../../components/Button";
 import { Step, wizardContext } from "./SetupWizard";
+import { Hr } from "./common";
+import styled from "styled-components";
 
 export const CodeOfConductStep: Step = {
   /*
@@ -12,20 +14,32 @@ export const CodeOfConductStep: Step = {
   Component: CodeOfConduct,
 };
 
+const StyledList = styled.ul`
+  text-align: left;
+`;
+
 export function CodeOfConduct(): ReactElement {
   const { finishCodeOfConduct } = useContext(wizardContext);
   return (
     <div>
-      This website is dedicated to helping users develop knowledge of the
-      Cherokee language.
-      <h3>Code of Conduct:</h3>
-      <ul>
-        <li>Filler text</li>
-      </ul>
+      <p>
+        <strong>
+          This website is dedicated to helping users develop knowledge of the
+          Cherokee language.
+        </strong>
+      </p>
+      <Hr />
+
+      <h3>Code of Conduct</h3>
+      <StyledList>
+        <li>Report issues with content when you find them.</li>
+        <li>Share problems using the site with administators.</li>
+      </StyledList>
+      <Hr />
       <a href="https://github.com/CherokeeLanguage/online-exercises/wiki/Frequently-Asked-Questions">
         FAQ
       </a>
-      <Button onClick={finishCodeOfConduct}></Button>
+      <Button onClick={finishCodeOfConduct}>Accept -&gt;</Button>
       {/* <NavigationButtons
         goToNextStep={goToNextStep}
         goToPreviousStep={goToPreviousStep}
