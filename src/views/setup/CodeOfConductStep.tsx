@@ -1,8 +1,7 @@
 import { ReactElement, useContext } from "react";
 // import { NavigationButtons, Step, StepProps } from "./SetupPage";
-import { Button } from "../../components/Button";
 import { Step, wizardContext } from "./SetupWizard";
-import { Hr } from "./common";
+import { Hr, NavigationButtons, NextButton } from "./common";
 import styled from "styled-components";
 
 export const CodeOfConductStep: Step = {
@@ -39,11 +38,9 @@ export function CodeOfConduct(): ReactElement {
       <a href="https://github.com/CherokeeLanguage/online-exercises/wiki/Frequently-Asked-Questions">
         FAQ
       </a>
-      <Button onClick={finishCodeOfConduct}>Accept -&gt;</Button>
-      {/* <NavigationButtons
-        goToNextStep={goToNextStep}
-        goToPreviousStep={goToPreviousStep}
-      /> */}
+      <NavigationButtons
+        right={<NextButton onClick={finishCodeOfConduct}>Accept</NextButton>}
+      />
     </div>
   );
 }

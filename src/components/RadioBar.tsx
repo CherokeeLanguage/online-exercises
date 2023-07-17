@@ -32,7 +32,7 @@ const StyledLabel = styled.label<{
   ${({ checked }) =>
     checked &&
     css`
-      background-color: ${theme.hanehldaColors.DARK_YELLOW};
+      background-color: ${theme.hanehldaColors.DARK_BLUE};
       color: ${theme.colors.WHITE};
     `}
   ${({ first }) =>

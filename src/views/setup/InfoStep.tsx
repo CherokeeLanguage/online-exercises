@@ -1,11 +1,4 @@
-import {
-  ChangeEvent,
-  FormEvent,
-  ReactElement,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { FormEvent, ReactElement, useContext, useMemo, useState } from "react";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 
 import { Step, wizardContext } from "./SetupWizard";
@@ -13,7 +6,7 @@ import { Form, FormSubmitButton } from "../signin/common";
 import { RadioBar } from "../../components/RadioBar";
 import { getPhonetics } from "../../utils/phonetics";
 import { cards } from "../../data/cards";
-import { Hr } from "./common";
+import { BackButton, Hr, NavigationButtons, NextButton } from "./common";
 
 export const InfoStep: Step = {
   name: "Info",
@@ -21,9 +14,23 @@ export const InfoStep: Step = {
 };
 
 function Info(): ReactElement {
-  const { finishInfo } = useContext(wizardContext);
-  const [showTone, setShowTone] = useState<boolean>(true);
-  const [whereFound, setWhereFound] = useState<string>();
+  const {
+    finishInfo,
+    state: {
+      data: {
+        phoneticsPreference: initialPhoneticsPreference,
+        whereFound: initialWhereFound,
+      },
+    },
+  } = useContext(wizardContext);
+  const [showTone, setShowTone] = useState<boolean>(
+    initialPhoneticsPreference
+      ? initialPhoneticsPreference === PhoneticsPreference.Detailed
+      : true
+  );
+  const [whereFound, setWhereFound] = useState<string | undefined>(
+    initialWhereFound
+  );
 
   const phoneticsPreference = useMemo(
     () =>
@@ -65,7 +72,9 @@ function Info(): ReactElement {
             name="whereFound"
             type="text"
             placeholder="Facebook, word-of-mouth, etc."
+            value={whereFound}
             onChange={(e) => setWhereFound(e.target.value)}
+            required
           />
         </div>
         <Hr />
@@ -96,7 +105,11 @@ function Info(): ReactElement {
           goToNextStep={goToNextStep}
           disabled={!enabled}
         /> */}
-        <FormSubmitButton type="submit">Move on</FormSubmitButton>
+        {/* <FormSubmitButton type="submit">Move on</FormSubmitButton> */}
+        <NavigationButtons
+          left={<BackButton />}
+          right={<NextButton type="submit">Continue</NextButton>}
+        />
       </Form>
     </div>
   );

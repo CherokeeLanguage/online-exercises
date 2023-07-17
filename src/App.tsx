@@ -5,7 +5,7 @@ import { NavigationBar } from "./components/NavigationBar";
 import { useUserStateContext } from "./providers/UserStateProvider";
 
 const AppWrapper = styled.div`
-  height: 100vh;
+  height: 100dvh;
   padding: 0;
   margin: 0;
   display: flex;

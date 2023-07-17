@@ -25,7 +25,7 @@ import { Fieldset } from "../../components/Fieldset";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
-import { Hr } from "./common";
+import { BackButton, Hr, NavigationButtons, NextButton } from "./common";
 
 export const PickCourseStep: Step = {
   name: "Pick course",
@@ -55,13 +55,22 @@ const CourseLabel = styled.label<{ checked: boolean }>`
   ${({ checked }) =>
     checked &&
     css`
-      background-color: ${theme.hanehldaColors.DARK_RED};
+      background-color: ${theme.hanehldaColors.DARK_GREEN};
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     `}
 `;
 
 function PickCourse(): ReactElement {
-  const { finishPickCourse } = useContext(wizardContext);
-  const [collectionId, setCollectionId] = useState<string>();
+  const {
+    finishPickCourse,
+    state: {
+      data: { collectionId: initialId },
+    },
+  } = useContext(wizardContext);
+
+  const [collectionId, setCollectionId] = useState<string | undefined>(
+    initialId
+  );
 
   function onRadioChanged(e: ChangeEvent<HTMLInputElement>) {
     const collectionId = e.target.value;
@@ -89,7 +98,7 @@ function PickCourse(): ReactElement {
       </p>
 
       <Hr />
-      <Form onSubmit={onSubmit}>
+      <Form standalone onSubmit={onSubmit}>
         <Fieldset>
           <legend>Select your first course below</legend>
           <CourseList>
@@ -118,12 +127,10 @@ function PickCourse(): ReactElement {
           </CourseList>
         </Fieldset>
         <Hr />
-        <FormSubmitButton type="submit">continue</FormSubmitButton>
-        {/* <NavigationButtons
-          goToPreviousStep={goToPreviousStep}
-          goToNextStep={goToNextStep}
-          disabled={!canGoToNextStep}
-        /> */}
+        <NavigationButtons
+          left={<BackButton />}
+          right={<NextButton type="submit">Get started!</NextButton>}
+        />
       </Form>
     </div>
   );

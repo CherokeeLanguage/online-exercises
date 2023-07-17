@@ -21,7 +21,9 @@ export const theme = {
     DARK_RED: "#98342E",
     BORDER_GRAY: "#D9D9D9",
     DARK_GRAY: "#464D50",
+    LIGHT_GRAY: "#707070",
     TEXT_LIGHT_GRAY: "#898989",
+    DARK_GREEN: "#0B455E",
   },
   borderRadii: {
     md: "20px",

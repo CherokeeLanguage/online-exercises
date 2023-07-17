@@ -1,14 +1,31 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
+import { ReactElement, ReactNode, useRef } from "react";
 
-export const Page = styled.div`
-  height: 100vh;
+const StyledPage = styled.div`
+  height: 100dvh;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   background-color: ${theme.hanehldaColors.CREAM};
 `;
+
+export function Page({ children }: { children: ReactNode }): ReactElement {
+  const ref = useRef<HTMLDivElement>(null);
+  function scrollTop() {
+    if (ref.current) {
+      // ref.current.scrollTo({ top: 0 });
+      ref.current.scrollIntoView();
+      // window.alert("scrolling! scroll top:" + document.body.scrollTop);
+    }
+  }
+  return (
+    <StyledPage ref={ref} onBlur={scrollTop} onFocus={scrollTop}>
+      {children}
+    </StyledPage>
+  );
+}
 
 export const ScrollWrapper = styled.div`
   display: flex;
@@ -30,6 +47,7 @@ export const PageContent = styled.div`
 export const HeaderLabel = styled.h2`
   font-size: 20px;
   font-family: "Noto Sans", sans-serif;
+  color: ${theme.colors.WHITE};
   margin: 0;
   flex: 1;
   text-align: right;

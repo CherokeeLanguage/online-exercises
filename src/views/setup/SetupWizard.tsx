@@ -6,7 +6,12 @@ import { CodeOfConductStep } from "./CodeOfConductStep";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import React from "react";
 import { useAuth } from "../../firebase/AuthProvider";
-import { HeaderLabel, Page, PageContent } from "../signin/common";
+import {
+  HeaderLabel,
+  Page,
+  PageContent,
+  ScrollWrapper,
+} from "../signin/common";
 import { HanehldaHeader } from "../../components/HanehldaHeader";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -31,16 +36,20 @@ export interface PickCourseData {
 
 type InitialState = {
   step: "Code of Conduct";
+  data: Partial<AllData>;
 };
 
 type CollectingInfoState = {
   step: "Info";
+  data: Partial<AllData>;
 };
 
 type PickingCourseState = {
   step: "Pick course";
-  data: InfoData;
+  data: Partial<AllData> & InfoData;
 };
+
+type AllData = InfoData & PickCourseData;
 
 // type CompleteWizardState = {
 //   step: "Finalize";
@@ -63,6 +72,8 @@ const steps: Record<StepName, Step> = {
   "Pick course": PickCourseStep,
 };
 export interface WizardContext {
+  state: WizardState;
+  goBack: () => void;
   finishCodeOfConduct: () => void;
   finishInfo: (data: InfoData) => void;
   finishPickCourse: (data: PickCourseData) => void;
@@ -72,6 +83,8 @@ export const wizardContext = React.createContext({} as WizardContext);
 
 const ContentWrapper = styled.div`
   padding: 0 20px;
+  max-width: 500px;
+  margin: 0 auto;
 `;
 
 export function SetupWizard() {
@@ -81,21 +94,28 @@ export function SetupWizard() {
 
   const [setupState, setSetupState] = useState<WizardState>({
     step: "Code of Conduct",
+    data: {},
   });
 
   function finishCodeOfConduct() {
-    setSetupState((s) => (s.step === "Code of Conduct" ? { step: "Info" } : s));
+    setSetupState((s) =>
+      s.step === "Code of Conduct" ? { ...s, step: "Info" } : s
+    );
   }
 
   function finishInfo(data: InfoData) {
     setSetupState((s) =>
-      s.step === "Info" ? { step: "Pick course", data } : s
+      s.step === "Info"
+        ? { ...s, step: "Pick course", data: { ...s.data, ...data } }
+        : s
     );
   }
 
   function finishPickCourse(data: PickCourseData) {
     if (setupState.step !== "Pick course") return;
-    finishSetup({ ...setupState.data, ...data });
+    const allData = { ...setupState.data, ...data };
+    setSetupState({ ...setupState, step: "Pick course", data: allData });
+    finishSetup(allData);
   }
 
   /**
@@ -113,13 +133,27 @@ export function SetupWizard() {
     userStateContext.setWhereFound(whereFound);
     navigate("/");
   }
+  function goBack() {
+    setSetupState((s) => {
+      if (s.step === "Code of Conduct") return s;
+      else if (s.step === "Info") return { ...s, step: "Code of Conduct" };
+      else if (s.step === "Pick course") return { ...s, step: "Info" };
+      else return s;
+    });
+  }
 
   // render current step of workflow
   const currentStep = steps[setupState.step];
   const stepNo = STEPS.indexOf(setupState.step) + 1;
   return (
     <wizardContext.Provider
-      value={{ finishCodeOfConduct, finishInfo, finishPickCourse }}
+      value={{
+        state: setupState,
+        finishCodeOfConduct,
+        finishInfo,
+        finishPickCourse,
+        goBack,
+      }}
     >
       <Page>
         <HanehldaHeader>
@@ -127,11 +161,13 @@ export function SetupWizard() {
             Step {stepNo} of {STEPS.length}
           </HeaderLabel>
         </HanehldaHeader>
-        <PageContent>
-          <ContentWrapper>
-            <currentStep.Component />
-          </ContentWrapper>
-        </PageContent>
+        <ScrollWrapper>
+          <PageContent>
+            <ContentWrapper>
+              <currentStep.Component />
+            </ContentWrapper>
+          </PageContent>
+        </ScrollWrapper>
       </Page>
     </wizardContext.Provider>
     // {/* Rendering a component from a variable! This is how we change the content from step to step */}

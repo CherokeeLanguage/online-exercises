@@ -67,7 +67,7 @@ const PageLoaderWrapper = styled.div`
   text-align: center;
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
 `;
 
 export function LoadingPage({ children }: { children?: ReactNode }) {
