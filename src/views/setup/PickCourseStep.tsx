@@ -3,24 +3,11 @@ import {
   FormEvent,
   ReactElement,
   useContext,
-  useEffect,
   useState,
 } from "react";
-import { Button } from "../../components/Button";
-import {
-  isPhoneticsPreference,
-  PhoneticsPreference,
-  PREFERENCE_LITERATES,
-} from "../../state/reducers/phoneticsPreference";
-import { GROUPS, isGroupId } from "../../state/reducers/groupId";
-import { SectionHeading } from "../../components/SectionHeading";
-import { CollectionDetails } from "../../components/CollectionDetails";
-
 import { collections, VocabSet } from "../../data/vocabSets";
-import { useUserStateContext } from "../../providers/UserStateProvider";
-import { TermsByProficiencyLevelChart } from "../../components/TermsByProficiencyLevelChart";
 import { Step, wizardContext } from "./SetupWizard";
-import { Form, FormSubmitButton } from "../signin/common";
+import { Form } from "../signin/common";
 import { Fieldset } from "../../components/Fieldset";
 import { VisuallyHidden } from "../../components/VisuallyHidden";
 import styled, { css } from "styled-components";
@@ -110,12 +97,13 @@ function PickCourse(): ReactElement {
               >
                 <VisuallyHidden>
                   <input
-                    name={collection.title}
+                    name={"first-collection"}
                     type="radio"
                     value={collection.id}
                     id={collection.id}
                     onChange={onRadioChanged}
                     checked={collectionId == collection.id}
+                    required
                   />
                 </VisuallyHidden>
                 <span>

@@ -1,4 +1,4 @@
-import { FormEvent, ReactElement, useState } from "react";
+import { FormEvent, ReactElement, useContext, useState } from "react";
 import { Title } from "../../components/Title";
 import {
   Page,
@@ -11,21 +11,29 @@ import {
 import { HanehldaHeader } from "../../components/HanehldaHeader";
 import styled from "styled-components";
 import { theme } from "../../theme";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
+import {
+  ErrorBanner,
+  ErrorBannerProvider,
+  errorBannerContext,
+} from "../../components/ErrorBannerProvider";
 
 export function CreateAccountPage(): ReactElement {
   return (
     <Page>
       <ScrollWrapper>
-        <PageContent>
-          <HanehldaHeader>
-            <HeaderLabel>Account creation</HeaderLabel>
-          </HanehldaHeader>
-          <CreateAccountContent />
-        </PageContent>
+        <ErrorBannerProvider>
+          <PageContent>
+            <ErrorBanner />
+            <HanehldaHeader>
+              <HeaderLabel>Account creation</HeaderLabel>
+            </HanehldaHeader>
+            <CreateAccountContent />
+          </PageContent>
+        </ErrorBannerProvider>
       </ScrollWrapper>
     </Page>
   );
@@ -50,6 +58,7 @@ function CreateAccountContent(): ReactElement {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setError } = useContext(errorBannerContext);
   function signUp(e: FormEvent) {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
@@ -57,7 +66,22 @@ function CreateAccountContent(): ReactElement {
         navigate("/");
       })
       .catch((err: FirebaseError) => {
-        if (err.code === "auth/email-already-exists") {
+        if (err.code === AuthErrorCodes.EMAIL_EXISTS) {
+          setError(
+            <span>
+              You already have an account with that email.{" "}
+              <Link to="/signin">Would you like to sign in instead?</Link>
+            </span>
+          );
+        } else if (err.code === AuthErrorCodes.WEAK_PASSWORD) {
+          setError(<span>Password too short. Try a longer password.</span>);
+        } else {
+          setError(
+            <span>
+              Something went wrong. Try using a different email address or a
+              stronger password
+            </span>
+          );
         }
       });
   }

@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useState } from "react";
+import { ReactElement, ReactNode, useContext, useState } from "react";
 import styled from "styled-components";
 import { devices, theme } from "../../theme";
 import { Title } from "../../components/Title";
@@ -13,17 +13,31 @@ import {
   FormSubmitButton,
 } from "./common";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  AuthErrorCodes,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../../firebase";
+import { createGoogleProvider } from "../../firebase/AuthProvider";
+import { FirebaseError } from "firebase/app";
+import {
+  ErrorBanner,
+  ErrorBannerProvider,
+  errorBannerContext,
+} from "../../components/ErrorBannerProvider";
 
 export function SignInPage(): ReactElement {
   return (
     <Page>
       <ScrollWrapper>
         <PageContent>
-          <Title />
-          <SignInContent />
-          <CreateAccountSection />
+          <ErrorBannerProvider>
+            <ErrorBanner />
+            <Title />
+            <SignInContent />
+            <CreateAccountSection />
+          </ErrorBannerProvider>
         </PageContent>
       </ScrollWrapper>
     </Page>
@@ -99,14 +113,41 @@ function SignInContent(): ReactElement {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setError } = useContext(errorBannerContext);
   function signInWithGoogle() {
-    // TODO
+    signInWithPopup(auth, createGoogleProvider())
+      .then((res) => {
+        navigate("/");
+      })
+      .catch((err: FirebaseError) => {
+        if (err.code === AuthErrorCodes.EMAIL_EXISTS) {
+          setError(
+            "You have another account with that email address. Try signing in with an email and password below."
+          );
+        } else {
+          setError(
+            "Something went wrong. You can try again or contact an administrator for help."
+          );
+        }
+      });
   }
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password).then((c) =>
-      navigate("/")
-    );
+    signInWithEmailAndPassword(auth, email, password)
+      .then((c) => navigate("/"))
+      .catch((err) => {
+        if (err instanceof FirebaseError) {
+          switch (err.code) {
+            case AuthErrorCodes.USER_DELETED:
+              setError("Email address not found");
+              return;
+            case AuthErrorCodes.INVALID_PASSWORD:
+              setError("Double check your email and password");
+              return;
+          }
+        }
+        setError("Something when wrong");
+      });
   }
   return (
     <StyledSignInContent>
@@ -167,8 +208,23 @@ const CreateAccountOptions = styled.div`
 
 function CreateAccountSection() {
   const navigate = useNavigate();
+  const { setError } = useContext(errorBannerContext);
   function signUpWithGoogle() {
-    // TODO
+    signInWithPopup(auth, createGoogleProvider())
+      .then((res) => {
+        navigate("/");
+      })
+      .catch((err: FirebaseError) => {
+        if (err.code === AuthErrorCodes.EMAIL_EXISTS) {
+          setError(
+            "You have another account with that email address. Try signing in with an email and password below."
+          );
+        } else {
+          setError(
+            "Something went wrong. You can try again or contact an administrator for help."
+          );
+        }
+      });
   }
   function signUpWithEmail() {
     navigate("/signin/new");

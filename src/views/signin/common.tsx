@@ -36,6 +36,7 @@ export const ScrollWrapper = styled.div`
 `;
 
 export const PageContent = styled.div`
+  position: relative;
   flex: 1;
   /* max-width: min(800px, 100vw); */
   margin: 0 auto;

@@ -6,7 +6,12 @@ import {
   useState,
 } from "react";
 import { analytics, auth } from ".";
-import { onAuthStateChanged, signInAnonymously, User } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInAnonymously,
+  User,
+} from "firebase/auth";
 import { LoadingPage } from "../components/Loader";
 import { setUserId } from "firebase/analytics";
 import { SignInPage } from "../views/signin/SignInPage";
@@ -81,4 +86,11 @@ export function MockAuthProvider({
       {children}
     </authContext.Provider>
   );
+}
+
+export function createGoogleProvider() {
+  const provider = new GoogleAuthProvider();
+  provider.addScope("https://www.googleapis.com/auth/userinfo.email");
+  provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
+  return provider;
 }
