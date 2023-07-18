@@ -22,22 +22,22 @@ import { auth } from "../../firebase";
 import { createGoogleProvider } from "../../firebase/AuthProvider";
 import { FirebaseError } from "firebase/app";
 import {
-  ErrorBanner,
-  ErrorBannerProvider,
-  errorBannerContext,
-} from "../../components/ErrorBannerProvider";
+  StatusBanner,
+  StatusBannerProvider,
+  statusBannerContext,
+} from "../../components/StatusBannerProvider";
 
 export function SignInPage(): ReactElement {
   return (
     <Page>
       <ScrollWrapper>
         <PageContent>
-          <ErrorBannerProvider>
-            <ErrorBanner />
+          <StatusBannerProvider>
+            <StatusBanner />
             <Title />
             <SignInContent />
             <CreateAccountSection />
-          </ErrorBannerProvider>
+          </StatusBannerProvider>
         </PageContent>
       </ScrollWrapper>
     </Page>
@@ -113,7 +113,7 @@ function SignInContent(): ReactElement {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setError } = useContext(errorBannerContext);
+  const { setError } = useContext(statusBannerContext);
   function signInWithGoogle() {
     signInWithPopup(auth, createGoogleProvider())
       .then((res) => {
@@ -168,8 +168,13 @@ function SignInContent(): ReactElement {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <ForgotPasswordButton>Forgot your password?</ForgotPasswordButton>
-        <FormSubmitButton>Sign in</FormSubmitButton>
+        <ForgotPasswordButton
+          type="button"
+          onClick={() => navigate("/signin/forgot-password")}
+        >
+          Forgot your password?
+        </ForgotPasswordButton>
+        <FormSubmitButton type="submit">Sign in</FormSubmitButton>
       </Form>
     </StyledSignInContent>
   );
@@ -208,7 +213,7 @@ const CreateAccountOptions = styled.div`
 
 function CreateAccountSection() {
   const navigate = useNavigate();
-  const { setError } = useContext(errorBannerContext);
+  const { setError } = useContext(statusBannerContext);
   function signUpWithGoogle() {
     signInWithPopup(auth, createGoogleProvider())
       .then((res) => {

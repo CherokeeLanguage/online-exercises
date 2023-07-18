@@ -24,6 +24,7 @@ export const theme = {
     DARK_GRAY: "#464D50",
     LIGHT_GRAY: "#707070",
     TEXT_LIGHT_GRAY: "#898989",
+    LIGHT_GREEN: "#62B223",
     DARK_GREEN: "#0B455E",
   },
   borderRadii: {

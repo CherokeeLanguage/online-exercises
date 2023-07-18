@@ -11,7 +11,11 @@ import {
 import { HanehldaHeader } from "../../components/HanehldaHeader";
 import styled from "styled-components";
 import { theme } from "../../theme";
-import { AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  AuthErrorCodes,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { auth } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
@@ -21,14 +25,14 @@ import {
   statusBannerContext,
 } from "../../components/StatusBannerProvider";
 
-export function CreateAccountPage(): ReactElement {
+export function ForgotPasswordPage(): ReactElement {
   return (
     <Page>
       <ScrollWrapper>
         <StatusBannerProvider>
           <PageContent>
             <HanehldaHeader>
-              <HeaderLabel>Account creation</HeaderLabel>
+              <HeaderLabel>Forgot password</HeaderLabel>
             </HanehldaHeader>
             <CreateAccountContent />
           </PageContent>
@@ -56,29 +60,39 @@ const StyledContent = styled.div`
 function CreateAccountContent(): ReactElement {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { setError } = useContext(statusBannerContext);
+  const { setError, setStatus } = useContext(statusBannerContext);
   function signUp(e: FormEvent) {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
+    sendPasswordResetEmail(auth, email)
       .then((cred) => {
-        navigate("/");
+        console.log(cred);
+        setStatus({
+          type: "success",
+          node: (
+            <span>
+              A password reset email has been sent. Follow the instructions, and
+              then <Link to="/signin">sign in</Link>.
+            </span>
+          ),
+        });
+        // navigate("/");
       })
       .catch((err: FirebaseError) => {
-        if (err.code === AuthErrorCodes.EMAIL_EXISTS) {
+        console.log(err);
+        if (err.code === AuthErrorCodes.USER_DELETED) {
           setError(
             <span>
-              You already have an account with that email.{" "}
-              <Link to="/signin">Would you like to sign in instead?</Link>
+              There is no account with that email. Please double check the email
+              address.
             </span>
           );
-        } else if (err.code === AuthErrorCodes.WEAK_PASSWORD) {
-          setError(<span>Password too short. Try a longer password.</span>);
         } else {
           setError(
             <span>
-              Something went wrong. Try using a different email address or a
-              stronger password
+              Something went wrong. You can contact an administator at{" "}
+              <a href="mailto:charliemcvicker@protonmail.com">
+                charliemcvicker@protonmail.com
+              </a>
             </span>
           );
         }
@@ -86,30 +100,22 @@ function CreateAccountContent(): ReactElement {
   }
   return (
     <StyledContent>
-      <StyledWelcome>Welcome to Hanehlda!</StyledWelcome>
+      <StyledWelcome>Forgot your password?</StyledWelcome>
       <p>
-        This site helps users practice their Cherokee language skills in many
-        different ways.
+        Enter your email below and we will send you a link to reset your
+        password.
       </p>
-      <strong>
-        <p>First, you will need to set up an account!</p>
-      </strong>
       <StatusBanner />
       <Form standalone onSubmit={signUp}>
         <input
           type="email"
+          required
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
         <FormSubmitButton style={{ marginTop: 20 }}>
-          Create Account
+          Reset password
         </FormSubmitButton>
       </Form>
     </StyledContent>

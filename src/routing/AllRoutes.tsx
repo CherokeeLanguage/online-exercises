@@ -13,6 +13,7 @@ import { ViewSet } from "../views/vocabulary/ViewSet";
 import { Settings } from "../views/settings/Settings";
 import { SignInPage } from "../views/signin/SignInPage";
 import { CreateAccountPage } from "../views/signin/CreateAccountPage";
+import { ForgotPasswordPage } from "../views/signin/ForgotPasswordPage";
 import { SetupPage } from "../views/setup/SetupPage";
 import { Providers } from "../providers/Providers";
 
@@ -28,6 +29,7 @@ export function AllRoutes() {
       <Route path="/signin">
         <Route index element={<SignInPage />} />
         <Route path="new" element={<CreateAccountPage />} />
+        <Route path="forgot-password" element={<ForgotPasswordPage />} />
       </Route>
       <Route path="/" element={<Providers />}>
         <Route path="/setup">
