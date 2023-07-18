@@ -12,9 +12,47 @@ export const theme = {
     TEXT_GRAY: "#222222",
     WHITE: "#FFFFFF",
   },
+  hanehldaColors: {
+    CREAM: "#F5EBD5",
+    TEXT_CREAM: "#FFEA9F",
+    DARK_YELLOW: "#F7C85D",
+    DARK_BLUE: "#489ABD",
+    ERROR_RED: "#FFCED0",
+    LIGHT_RED: "#DFBFAD",
+    DARK_RED: "#98342E",
+    BORDER_GRAY: "#D9D9D9",
+    DARK_GRAY: "#464D50",
+    LIGHT_GRAY: "#707070",
+    TEXT_LIGHT_GRAY: "#898989",
+    LIGHT_GREEN: "#62B223",
+    DARK_GREEN: "#0B455E",
+  },
+  borderRadii: {
+    md: "20px",
+  },
   fontSizes: {
     sm: "16px",
     md: "20px",
     lg: "24px",
   },
+} as const;
+
+const sizes = {
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px",
+} as const;
+
+export const devices = {
+  mobileS: `(min-width: ${sizes.mobileS})`,
+  mobileM: `(min-width: ${sizes.mobileM})`,
+  mobileL: `(min-width: ${sizes.mobileL})`,
+  tablet: `(min-width: ${sizes.tablet})`,
+  laptop: `(min-width: ${sizes.laptop})`,
+  laptopL: `(min-width: ${sizes.laptopL})`,
+  desktop: `(min-width: ${sizes.desktop})`,
 } as const;

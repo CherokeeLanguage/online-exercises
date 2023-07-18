@@ -4,8 +4,6 @@ import { HashRouter } from "react-router-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 // import { Overview } from "./Overview";
-import { UserStateProvider } from "./providers/UserStateProvider";
-import { AuthProvider } from "./firebase/AuthProvider";
 import { AllRoutes } from "./routing/AllRoutes";
 
 const root = ReactDOM.createRoot(
@@ -15,11 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <AuthProvider>
-        <UserStateProvider>
-          <AllRoutes />
-        </UserStateProvider>
-      </AuthProvider>
+      <AllRoutes />
     </HashRouter>
   </React.StrictMode>
 );

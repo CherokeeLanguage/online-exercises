@@ -20,3 +20,8 @@ export const PracticePath = `/practice`;
 export const PracticeLessonPath = (lessonId: string) =>
   `${PracticePath}/${lessonId}`;
 export const SettingsPath = `/settings`;
+
+export const SignInPath = `/signin`;
+export const CreateAccountPath = `/signin/new`;
+
+export const SetupNewAccountPath = `/setup`;

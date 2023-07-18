@@ -6,9 +6,16 @@ import {
   useState,
 } from "react";
 import { analytics, auth } from ".";
-import { onAuthStateChanged, signInAnonymously, User } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInAnonymously,
+  User,
+} from "firebase/auth";
 import { LoadingPage } from "../components/Loader";
 import { setUserId } from "firebase/analytics";
+import { SignInPage } from "../views/signin/SignInPage";
+import { Navigate } from "react-router-dom";
 
 export interface AuthContext {
   user: User;
@@ -39,20 +46,26 @@ export function AuthProvider({ children }: { children?: ReactNode }) {
   useEffect(() => {
     // null means user is not signed in, but we have loaded the auth state
     if (user === null) {
-      signInAnonymously(auth).then((uc) => {});
+      console.log("User is not signed in");
+      // signInAnonymously(auth).then((uc) => {});
     }
   }, [user]);
-  if (user)
-    return (
-      <authContext.Provider value={{ user }}>{children}</authContext.Provider>
-    );
-  else {
+  // auth has not loaded
+  if (user === undefined) {
     return (
       <LoadingPage>
         <p>Connecting...</p>
       </LoadingPage>
     );
   }
+  // auth has loaded but user is not signed in
+  else if (user === null) {
+    return <Navigate to="/signin" />;
+  }
+  // auth has loaded and we have a user
+  return (
+    <authContext.Provider value={{ user }}>{children}</authContext.Provider>
+  );
 }
 
 export function useAuth(): AuthContext {
@@ -73,4 +86,11 @@ export function MockAuthProvider({
       {children}
     </authContext.Provider>
   );
+}
+
+export function createGoogleProvider() {
+  const provider = new GoogleAuthProvider();
+  provider.addScope("https://www.googleapis.com/auth/userinfo.email");
+  provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
+  return provider;
 }

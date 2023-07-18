@@ -11,6 +11,9 @@ import {
 } from "../../state/reducers/phoneticsPreference";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { UserState } from "../../state/useUserState";
+import { useAuth } from "../../firebase/AuthProvider";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 interface ExportedLessonData {
   lessonId: string;
@@ -22,6 +25,7 @@ export function Settings() {
   const {
     config: { userEmail },
   } = useUserStateContext();
+  const { user } = useAuth();
   useAnalyticsPageName("Settings");
   return (
     <div>
@@ -31,6 +35,9 @@ export function Settings() {
       <p>
         We have your email on file as: <code>{userEmail}</code>
       </p>
+      {!user.isAnonymous && (
+        <Button onClick={() => signOut(auth)}>Sign out</Button>
+      )}
       <p>
         <em>
           Wrong address? Contact the maintainer at{" "}

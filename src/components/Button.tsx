@@ -35,6 +35,13 @@ export const Button = styledWithDefault(
         &:hover {
           border: 1px solid ${theme.colors.TEXT_GRAY};
         }
+        &:disabled{
+          background: ${theme.colors.MED_GRAY};
+
+          &:hover {
+            border: 1px solid ${theme.colors.MED_GRAY};
+          }
+        }
       `}
 
     ${({ variant }) =>

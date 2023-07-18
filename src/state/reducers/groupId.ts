@@ -10,6 +10,7 @@ export interface Group {
 }
 
 export const OPEN_BETA_ID = "03e2ec2d-4877-48d7-96c1-c74a907c65ae";
+export const HANEHLDA_ID = "4842a4a1-8573-4c3a-a079-d06ccbe69705";
 
 const __groups = {
   "3f1089ca-57c5-4d85-ba44-289b896c0f6e": {
@@ -19,6 +20,9 @@ const __groups = {
   },
   [OPEN_BETA_ID]: {
     name: "Other / not affiliated",
+  },
+  [HANEHLDA_ID]: {
+    name: "Hanehlda user who registered on the new site",
   },
 } as const;
 

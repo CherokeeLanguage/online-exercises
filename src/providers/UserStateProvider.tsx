@@ -6,7 +6,6 @@ import React, {
   useEffect,
 } from "react";
 import { useLocalStorage } from "react-use";
-import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
 import { LoadingPage } from "../components/Loader";
 import { useAuth } from "../firebase/AuthProvider";
 import {
@@ -25,6 +24,7 @@ import {
   useUserState,
   convertLegacyState,
 } from "../state/useUserState";
+import { Navigate } from "react-router-dom";
 
 export interface UserStateContext extends UserState, UserInteractors {
   dispatch: React.Dispatch<UserStateAction>;
@@ -154,12 +154,15 @@ function WrappedUserStateProvider({
     setLeitnerBoxes(state.leitnerBoxes);
   }, [state.leitnerBoxes]);
 
+  console.log({
+    userEmail: state.config.userEmail === null,
+    groupid: state.config.groupId === null,
+    whereFound: state.config.whereFound === null,
+  });
+
   return (
     <userStateContext.Provider value={{ ...state, ...interactors, dispatch }}>
       {children}
-      {(state.config.userEmail === null || state.config.groupId === null) && (
-        <GroupRegistrationModal />
-      )}
     </userStateContext.Provider>
   );
 }

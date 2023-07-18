@@ -1,10 +1,11 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { NavigationBar } from "./components/NavigationBar";
+import { useUserStateContext } from "./providers/UserStateProvider";
 
 const AppWrapper = styled.div`
-  height: 100vh;
+  height: 100dvh;
   padding: 0;
   margin: 0;
   display: flex;
@@ -27,6 +28,13 @@ const AppContent = styled.div`
 `;
 
 export function App() {
+  const { config } = useUserStateContext();
+  var userNeedsSetup: boolean =
+    config.userEmail === null ||
+    config.groupId === null ||
+    config.whereFound === null;
+  if (userNeedsSetup) return <Navigate to="setup/" />;
+
   return (
     <AppWrapper>
       <NavigationBar />

@@ -63,6 +63,8 @@ export interface UserConfig {
   sets: UserSetsState;
   /** The collection from which new sets should be pulled when the user is ready for new terms */
   upstreamCollection: string | null;
+  /** Sets where the user fond the site*/
+  whereFound: string | null;
   /** Group registration */
   groupId: GroupId | null;
   /** Preference for how phonetics are shown */
@@ -91,6 +93,7 @@ interface MiscInteractors {
   registerGroup: (groupId: string) => void;
   setPhoneticsPreference: (newPreference: PhoneticsPreference) => void;
   setUserEmail: (newUserEmail: string) => void;
+  setWhereFound: (whereFound: string) => void;
   loadState: (state: LegacyUserState) => void;
 }
 
@@ -125,6 +128,12 @@ function reducePhoneticsPreference(
   else return phoneticsPreference;
 }
 
+function reduceWhereFound({config: {whereFound}}: UserState, action: UserStateAction
+  ): string | null{
+  if (action.type === "WHERE_FOUND") return action.whereFound;
+  else return whereFound;
+}
+
 function reduceUserEmail(
   { config: { userEmail } }: UserState,
   action: UserStateAction
@@ -152,6 +161,7 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
       groupId: reduceGroupId(state, action),
       phoneticsPreference: reducePhoneticsPreference(state, action),
       userEmail: reduceUserEmail(state, action),
+      whereFound: reduceWhereFound(state, action),
     },
     leitnerBoxes: reduceLeitnerBoxState(state, action),
     ephemeral: {
@@ -168,6 +178,7 @@ function blankUserState(initializationProps: UserStateProps): UserState {
       groupId: null,
       phoneticsPreference: null,
       userEmail: null,
+      whereFound: null,
     },
     ephemeral: {
       lessonCreationError: null,
@@ -187,6 +198,7 @@ export function convertLegacyState(state: LegacyUserState): UserState {
       phoneticsPreference: state.phoneticsPreference ?? null,
       upstreamCollection: state.upstreamCollection ?? null,
       userEmail: null,
+      whereFound: null,
     },
     leitnerBoxes: state.leitnerBoxes,
     ephemeral: { lessonCreationError: state.lessonCreationError ?? null },
@@ -270,6 +282,12 @@ export function useUserState(props: {
             groupId,
           });
         }
+      },
+      setWhereFound(whereFound: string){
+        dispatch({
+          type: "WHERE_FOUND",
+          whereFound,
+        })
       },
       loadState(state: LegacyUserState) {
         dispatch({
