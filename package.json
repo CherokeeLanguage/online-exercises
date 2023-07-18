@@ -1,7 +1,7 @@
 {
   "name": "online-exercises",
   "version": "0.1.0",
-  "homepage": "https://cherokeelanguage.github.io/online-exercises/",
+  "homepage": "https://app.hanehlda.org/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -33,7 +33,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build && gh-pages -d build -o dev-deploy",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
