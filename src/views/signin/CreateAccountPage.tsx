@@ -27,7 +27,6 @@ export function CreateAccountPage(): ReactElement {
       <ScrollWrapper>
         <ErrorBannerProvider>
           <PageContent>
-            <ErrorBanner />
             <HanehldaHeader>
               <HeaderLabel>Account creation</HeaderLabel>
             </HanehldaHeader>
@@ -95,6 +94,7 @@ function CreateAccountContent(): ReactElement {
       <strong>
         <p>First, you will need to set up an account!</p>
       </strong>
+      <ErrorBanner />
       <Form standalone onSubmit={signUp}>
         <input
           type="email"

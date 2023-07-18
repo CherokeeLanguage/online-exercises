@@ -17,6 +17,7 @@ export const theme = {
     TEXT_CREAM: "#FFEA9F",
     DARK_YELLOW: "#F7C85D",
     DARK_BLUE: "#489ABD",
+    ERROR_RED: "#FFCED0",
     LIGHT_RED: "#DFBFAD",
     DARK_RED: "#98342E",
     BORDER_GRAY: "#D9D9D9",
