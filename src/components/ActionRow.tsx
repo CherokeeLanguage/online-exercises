@@ -10,20 +10,21 @@ const Action = styled.div`
   font-size: ${theme.fontSizes.sm};
   text-align: center;
   justify-content: space-around;
+  margin: 0 auto;
 `;
 
 const StyledActionRow = styled.div`
   display: flex;
-  @media screen and (max-width: 400px) {
+  flex-wrap: wrap;
+  /* @media screen and (max-width: 400px) {
     flex-direction: column;
-  }
+  } */
 `;
 
 const Content = styled.div`
   display: flex;
   align-items: center;
-
-  flex: 1;
+  flex: 1 max-content;
 `;
 
 /**

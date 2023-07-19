@@ -15,7 +15,7 @@ import {
 import { Loader } from "../Loader";
 import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
-import { ListenAgainButton } from "../ListenAgainButton";
+import { ListenButton } from "../ListenButton";
 import { ChallengeContainer } from "../challenges/styled";
 import { pickNRandom, pickRandomElement, spliceInAtRandomIndex } from "./utils";
 import { Button } from "../Button";
@@ -166,7 +166,7 @@ export function FillInTheTone({
         />
 
         <div style={{ fontSize: "0.75em" }}>
-          <ListenAgainButton playAudio={play} playing={playing} />
+          <ListenButton playAudio={play} playing={playing} />
         </div>
 
         <AnswersWithFeedback

@@ -3,14 +3,12 @@ import { AiOutlineCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import { useKeyPressEvent } from "react-use";
 import { useAudio } from "../../utils/useAudio";
 import styled from "styled-components";
-import { Card } from "../../data/cards";
 import { useUserStateContext } from "../../providers/UserStateProvider";
-import { TermCardWithStats } from "../../spaced-repetition/types";
 import { theme } from "../../theme";
 import { getPhonetics } from "../../utils/phonetics";
 import { FlagIssueButton } from "../FlagIssueModal";
 import { IconButton } from "../IconButton";
-import { ListenAgainButton } from "../ListenAgainButton";
+import { ListenButton } from "../ListenButton";
 import { ChallengeContainer } from "./styled";
 import { pickRandomElement } from "../exercises/utils";
 import { AlignedCherokee } from "../AlignedCherokee";
@@ -193,7 +191,7 @@ function FlashcardControls({
         </IconButton>
       </div>
       <div style={{ flex: "1" }}>
-        <ListenAgainButton playAudio={playAudio} playing={playing} />
+        <ListenButton playAudio={playAudio} playing={playing} />
       </div>
       <div style={{ flex: "1" }}>
         <IconButton

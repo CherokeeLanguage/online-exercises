@@ -12,7 +12,7 @@ import {
 } from "../AnswersWithFeedback";
 import { Button } from "../Button";
 import { FlagIssueButton } from "../FlagIssueModal";
-import { ListenAgainButton } from "../ListenAgainButton";
+import { ListenButton } from "../ListenButton";
 import { ExerciseComponentProps } from "../exercises/Exercise";
 import {
   pickNRandom,
@@ -25,6 +25,11 @@ import { Challenge } from "./Challenge";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { AlignedCherokee } from "../AlignedCherokee";
 import { ActionRow } from "../ActionRow";
+import { IconButton } from "../IconButton";
+import { NextButton } from "../../views/setup/common";
+import { GrNext } from "react-icons/gr";
+import { StyledControl, StyledControlRow } from "./styled";
+import styled from "styled-components";
 
 interface Challenge {
   terms: Card[];
@@ -136,9 +141,7 @@ function ListeningQuestionContent({
   });
   return (
     <>
-      <ActionRow
-        action={<ListenAgainButton playAudio={play} playing={playing} />}
-      >
+      <ActionRow action={<ListenButton playAudio={play} playing={playing} />}>
         <AlignedCherokee
           syllabary={currentCard.card.syllabary}
           phonetics={phonetics}
@@ -147,7 +150,7 @@ function ListeningQuestionContent({
       <hr />
       <AnswersWithFeedback
         reviewCurrentCard={reviewCurrentCard}
-        hintLocation={"underAnswers"}
+        hintLocation="underAnswers"
         IncorrectAnswerHint={() => (
           <ListeningQuestionHint
             correctAnswerIdx={challenge.correctTermIdx}
@@ -169,6 +172,11 @@ function ListeningQuestionContent({
   );
 }
 
+const StyledContinue = styled.div`
+  text-align: center;
+  margin-top: 20px;
+`;
+
 function ListeningQuestionHint({
   correctAnswerIdx,
   options,
@@ -180,17 +188,10 @@ function ListeningQuestionHint({
   if (selectedAnswer === null)
     throw new Error("Answer should be selected if we are providing feedback");
   return (
-    <div>
-      <p>
-        Correct answer: <strong>{options[correctAnswerIdx].syllabary}</strong> /{" "}
-        <strong>{options[correctAnswerIdx].english}</strong>
-      </p>
-      <p>
-        <em>
-          You said: <strong>{options[selectedAnswer].english}</strong>
-        </em>
-      </p>
-      <Button onClick={endFeedback}>Continue</Button>
-    </div>
+    <StyledContinue>
+      <IconButton onClick={endFeedback} Icon={GrNext}>
+        Continue
+      </IconButton>
+    </StyledContinue>
   );
 }

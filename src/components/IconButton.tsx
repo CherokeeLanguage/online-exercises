@@ -7,6 +7,7 @@ const StyledIconButton = styled.button<{ highlightColor?: string }>`
   border: none;
   background: none;
   font-size: inherit;
+  color: black;
   :hover {
     color: ${({ highlightColor }) => highlightColor ?? theme.colors.DARK_RED};
     text-decoration: underline;

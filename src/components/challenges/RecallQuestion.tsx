@@ -9,20 +9,12 @@ import { getPhonetics } from "../../utils/phonetics";
 import { AlignedCherokee } from "../AlignedCherokee";
 import { FlagIssueButton } from "../FlagIssueModal";
 import { IconButton } from "../IconButton";
-import { ListenAgainButton } from "../ListenAgainButton";
+import { ListenButton } from "../ListenButton";
 import { StyledControlRow, StyledControl } from "./styled";
 import { ExerciseComponentProps } from "../exercises/Exercise";
 import { pickRandomElement } from "../exercises/utils";
 import { ActionRow } from "../ActionRow";
 import { Challenge } from "./Challenge";
-
-const Wrapper = styled.div`
-  font-size: ${theme.fontSizes.lg};
-  text-align: left;
-  p {
-    margin: 0;
-  }
-`;
 
 export function RecallQuestion({
   currentCard,
@@ -45,6 +37,7 @@ export function RecallQuestion({
 
   function revealAnswer() {
     setShowAnswer(true);
+    sourceAudio.stop();
     targetAudio.play();
   }
 
@@ -100,6 +93,7 @@ export function RecallQuestion({
           sourceContent={sourceContent}
           sourceAudio={sourceAudio}
           targetContent={targetContent}
+          targetAudio={targetContent === cherokeeContent ? targetAudio : null}
           showAnswer={showAnswer}
         />
       }
@@ -131,18 +125,20 @@ function RecallContent({
   sourceAudio,
   sourceContent,
   targetContent,
+  targetAudio,
   showAnswer,
 }: {
   sourceAudio: UseAudioReturn;
   sourceContent: ReactNode;
   targetContent: ReactNode;
+  targetAudio: UseAudioReturn | null;
   showAnswer: boolean;
 }) {
   return (
     <>
       <ActionRow
         action={
-          <ListenAgainButton
+          <ListenButton
             playAudio={sourceAudio.play}
             playing={sourceAudio.playing}
           />
@@ -154,7 +150,20 @@ function RecallContent({
         <>
           <hr />
           <div>
-            <em>{targetContent}</em>
+            {targetAudio ? (
+              <ActionRow
+                action={
+                  <ListenButton
+                    playAudio={targetAudio.play}
+                    playing={targetAudio.playing}
+                  />
+                }
+              >
+                {targetContent}
+              </ActionRow>
+            ) : (
+              <em>{targetContent}</em>
+            )}
           </div>
         </>
       )}
@@ -181,9 +190,6 @@ function FlashcardControls({
         >
           Answered incorrectly
         </IconButton>
-      </StyledControl>
-      <StyledControl>
-        <ListenAgainButton playAudio={playAudio} playing={playing} />
       </StyledControl>
       <StyledControl>
         <IconButton

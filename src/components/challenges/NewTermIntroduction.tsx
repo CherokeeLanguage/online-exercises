@@ -7,7 +7,7 @@ import { getPhonetics } from "../../utils/phonetics";
 import { useMemo, useState } from "react";
 import { useAudio } from "../../utils/useAudio";
 import { pickRandomElement } from "../exercises/utils";
-import { ListenAgainButton } from "../ListenAgainButton";
+import { ListenButton } from "../ListenButton";
 import { IconButton } from "../IconButton";
 import { GrNext } from "react-icons/gr";
 import { ActionRow } from "../ActionRow";
@@ -15,6 +15,7 @@ import { FlagIssueButton } from "../FlagIssueModal";
 import { Challenge } from "./Challenge";
 
 import { MultipleChoiceQuestion } from "./MultipleChoiceQuestion";
+import { StyledControl, StyledControlRow } from "./styled";
 
 export function NewTermIntroduction(props: ExerciseComponentProps) {
   const [showExampleQuestion, setShowExampleQuestion] = useState(false);
@@ -88,30 +89,29 @@ function IntroductionContent({
   return (
     <>
       <div>
-        <ActionRow
-          action={<ListenAgainButton playAudio={play} playing={playing} />}
-        >
-          <AlignedCherokee
-            syllabary={currentCard.card.syllabary}
-            phonetics={phonetics}
-          ></AlignedCherokee>
-        </ActionRow>
+        <AlignedCherokee
+          syllabary={currentCard.card.syllabary}
+          phonetics={phonetics}
+        ></AlignedCherokee>
       </div>
       <hr />
-      <ActionRow
-        action={
+      <p>
+        <em>{currentCard.card.english}</em>
+      </p>
+      <br />
+      <StyledControlRow>
+        <StyledControl>
+          <ListenButton playAudio={play} playing={playing} />
+        </StyledControl>
+        <StyledControl>
           <IconButton
             Icon={GrNext}
             onClick={() => setShowExampleQuestion(true)}
           >
             Next
           </IconButton>
-        }
-      >
-        <p>
-          <em>{currentCard.card.english}</em>
-        </p>
-      </ActionRow>
+        </StyledControl>
+      </StyledControlRow>
     </>
   );
 }

@@ -1,14 +1,6 @@
 import { FormEvent, ReactElement, useContext, useState } from "react";
-import { Title } from "../../components/Title";
-import {
-  Page,
-  ScrollWrapper,
-  PageContent,
-  HeaderLabel,
-  Form,
-  FormSubmitButton,
-} from "./common";
-import { HanehldaHeader } from "../../components/HanehldaHeader";
+import { Form, FormSubmitButton } from "./common";
+import { HanehldaHeader, HeaderLabel } from "../../components/HanehldaHeader";
 import styled from "styled-components";
 import { theme } from "../../theme";
 import { AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
@@ -20,21 +12,15 @@ import {
   StatusBannerProvider,
   statusBannerContext,
 } from "../../components/StatusBannerProvider";
+import { HanehldaView } from "../../components/HanehldaView";
 
 export function CreateAccountPage(): ReactElement {
   return (
-    <Page>
-      <ScrollWrapper>
-        <StatusBannerProvider>
-          <PageContent>
-            <HanehldaHeader>
-              <HeaderLabel>Account creation</HeaderLabel>
-            </HanehldaHeader>
-            <CreateAccountContent />
-          </PageContent>
-        </StatusBannerProvider>
-      </ScrollWrapper>
-    </Page>
+    <HanehldaView navControls={<HeaderLabel>Account creation</HeaderLabel>}>
+      <StatusBannerProvider>
+        <CreateAccountContent />
+      </StatusBannerProvider>
+    </HanehldaView>
   );
 }
 

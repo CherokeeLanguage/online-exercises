@@ -12,7 +12,7 @@ import {
 } from "../AnswersWithFeedback";
 import { Button } from "../Button";
 import { FlagIssueButton } from "../FlagIssueModal";
-import { ListenAgainButton } from "../ListenAgainButton";
+import { ListenButton } from "../ListenButton";
 import { ExerciseComponentProps } from "../exercises/Exercise";
 import {
   pickNRandom,
@@ -33,6 +33,9 @@ import { Challenge } from "./Challenge";
 import { ActionRow } from "../ActionRow";
 import { AlignedCherokee } from "../AlignedCherokee";
 import { useUserStateContext } from "../../providers/UserStateProvider";
+import { GrNext } from "react-icons/gr";
+import { IconButton } from "../IconButton";
+import styled from "styled-components";
 
 interface Challenge {
   terms: Card[];
@@ -139,7 +142,7 @@ function ListeningQuestionContent({
     <>
       <StyledControlRow>
         <StyledControl>
-          <ListenAgainButton playAudio={play} playing={playing} />
+          <ListenButton playAudio={play} playing={playing} />
         </StyledControl>
       </StyledControlRow>
       <AnswersWithFeedback
@@ -166,6 +169,13 @@ function ListeningQuestionContent({
   );
 }
 
+const StyledHint = styled.div`
+  p {
+    font-size: ${theme.fontSizes.md};
+    margin: 10px 0;
+  }
+`;
+
 function ListeningQuestionHint({
   correctAnswerIdx,
   options,
@@ -173,21 +183,30 @@ function ListeningQuestionHint({
   correctAnswerIdx: number;
   options: Card[];
 }): ReactElement {
+  const {
+    config: { phoneticsPreference },
+  } = useUserStateContext();
   const { selectedAnswer, endFeedback } = useAnswersWithFeedback();
   if (selectedAnswer === null)
     throw new Error("Answer should be selected if we are providing feedback");
+  const phonetics = useMemo(
+    () => getPhonetics(options[correctAnswerIdx], phoneticsPreference),
+    [phoneticsPreference, options, correctAnswerIdx]
+  );
   return (
-    <div>
+    <StyledHint>
       <p>
-        Correct answer: <strong>{options[correctAnswerIdx].syllabary}</strong> /{" "}
-        <strong>{options[correctAnswerIdx].english}</strong>
+        <strong>Correct answer: </strong>
+        {options[correctAnswerIdx].syllabary}
+        {phonetics && " / " + phonetics}
       </p>
-      <p>
-        <em>
-          You said: <strong>{options[selectedAnswer].english}</strong>
-        </em>
-      </p>
-      <Button onClick={endFeedback}>Continue</Button>
-    </div>
+      <StyledControlRow>
+        <StyledControl>
+          <IconButton onClick={endFeedback} Icon={GrNext}>
+            Continue
+          </IconButton>
+        </StyledControl>
+      </StyledControlRow>
+    </StyledHint>
   );
 }

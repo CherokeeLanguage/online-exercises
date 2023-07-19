@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { devices, theme } from "../../theme";
 
 export const ChallengeContainer = styled.div`
   margin: auto;
@@ -7,11 +7,11 @@ export const ChallengeContainer = styled.div`
 `;
 
 export const ChallengeContent = styled.div`
-  font-size: ${theme.fontSizes.lg};
   text-align: left;
   p {
     margin: 0;
   }
+  padding: 0 20px;
 `;
 
 export const ChallengeCard = styled.div`
@@ -21,30 +21,44 @@ export const ChallengeCard = styled.div`
   margin: 30px auto;
   padding: 24px;
   border-radius: 8px;
-  border: 1px solid ${theme.colors.MED_GRAY};
+  border: 1px solid black;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   align-items: center;
   outline: none;
   background: none;
-  font-size: ${theme.fontSizes.lg};
   p {
     flex: 1;
     text-align: left;
     margin: 0;
   }
-  background: ${theme.colors.LIGHTER_GRAY};
+  button {
+    font-size: ${theme.fontSizes.md};
+  }
+  background: ${theme.colors.WHITE};
+  color: black;
+  @media screen and (${devices.tablet}) {
+    font-size: ${theme.fontSizes.lg};
+  }
 `;
 
 export const ChallengeDescription = styled.p`
   margin: 16px !important;
+  font-size: ${theme.fontSizes.md};
+  font-weight: bold;
+  color: ${theme.hanehldaColors.DARK_GRAY};
+  text-align: center;
 `;
 
 export const StyledControlRow = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 16px;
+  justify-content: space-between;
+  /* margin-bottom: 16px; */
   text-align: center;
 `;
 
 export const StyledControl = styled.div`
-  flex: 1;
+  flex: 0 max-content;
+  &:only-child {
+    margin: 0 auto;
+  }
 `;

@@ -1,8 +1,10 @@
 import { ReactElement, useMemo, useState } from "react";
 import styled from "styled-components";
 import { alignSyllabaryAndPhonetics } from "../utils/phonetics";
+import { theme } from "../theme";
 
 const StyledAlignedCherokee = styled.div`
+  font-size: ${theme.fontSizes.md};
   mark {
     background: none;
     color: red;
@@ -67,7 +69,9 @@ function AlignedTextRow({
           {word.map((segment, segmentIdx) => (
             <span
               onMouseOver={() => setHoveredIdx([wordIdx, segmentIdx])}
+              onTouchStart={() => setHoveredIdx([wordIdx, segmentIdx])}
               onMouseOut={() => setHoveredIdx([null, null])}
+              onTouchCancel={() => setHoveredIdx([null, null])}
             >
               {hoveredWordIdx === wordIdx &&
               hoveredSegmentIdx === segmentIdx ? (

@@ -1,5 +1,11 @@
 import { ReactElement } from "react";
-import { Route, Routes, useNavigate, useParams } from "react-router-dom";
+import {
+  Outlet,
+  Route,
+  Routes,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import {
   Exercise,
   ExerciseComponentProps,
@@ -10,6 +16,8 @@ import { FillInTheTone } from "../../components/exercises/FillInTheTone";
 import { PickExercise } from "./PickExercise";
 import { LessonProvider } from "../../providers/LessonProvider";
 import { CombinedLesson } from "../../components/exercises/CombinedLesson";
+import { HanehldaView } from "../../components/HanehldaView";
+import { HeaderLabel, Nav, NavLink } from "../../components/HanehldaHeader";
 
 export const exercises: {
   path: string;
@@ -61,15 +69,31 @@ export function PracticeLesson(): ReactElement {
       onLessonDoesNotExist={() => navigate("/")}
     >
       <Routes>
-        <Route index element={<PickExercise />} />
-        {exercises.map(({ path, Component, name }, idx) => (
-          <Route
-            key={idx}
-            path={path}
-            element={<Exercise Component={Component} name={name} />}
-          />
-        ))}
+        <Route element={<LessonPage />}>
+          <Route index element={<PickExercise />} />
+          {exercises.map(({ path, Component, name }, idx) => (
+            <Route
+              key={idx}
+              path={path}
+              element={<Exercise Component={Component} name={name} />}
+            />
+          ))}
+        </Route>
       </Routes>
     </LessonProvider>
+  );
+}
+
+export function LessonPage() {
+  return (
+    <HanehldaView
+      navControls={
+        <Nav right={<NavLink to="/settings">Settings</NavLink>}>
+          <NavLink to="/">Exit</NavLink>
+        </Nav>
+      }
+    >
+      <Outlet />
+    </HanehldaView>
   );
 }

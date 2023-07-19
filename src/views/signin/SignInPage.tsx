@@ -5,13 +5,7 @@ import { Title } from "../../components/Title";
 import { FcGoogle } from "react-icons/fc";
 import { TfiEmail } from "react-icons/tfi";
 import { IconType } from "react-icons";
-import {
-  Page,
-  ScrollWrapper,
-  PageContent,
-  Form,
-  FormSubmitButton,
-} from "./common";
+import { Form, FormSubmitButton } from "./common";
 import { useNavigate } from "react-router-dom";
 import {
   AuthErrorCodes,
@@ -26,21 +20,23 @@ import {
   StatusBannerProvider,
   statusBannerContext,
 } from "../../components/StatusBannerProvider";
+import {
+  Page,
+  ScrollWrapper,
+  PageContent,
+} from "../../components/HanehldaView/Page";
+import { HanehldaView } from "../../components/HanehldaView";
 
 export function SignInPage(): ReactElement {
   return (
-    <Page>
-      <ScrollWrapper>
-        <PageContent>
-          <StatusBannerProvider>
-            <StatusBanner />
-            <Title />
-            <SignInContent />
-            <CreateAccountSection />
-          </StatusBannerProvider>
-        </PageContent>
-      </ScrollWrapper>
-    </Page>
+    <HanehldaView noHeader={true}>
+      <StatusBannerProvider>
+        <StatusBanner />
+        <Title />
+        <SignInContent />
+        <CreateAccountSection />
+      </StatusBannerProvider>
+    </HanehldaView>
   );
 }
 

@@ -1,21 +1,9 @@
 import { FormEvent, ReactElement, useContext, useState } from "react";
-import { Title } from "../../components/Title";
-import {
-  Page,
-  ScrollWrapper,
-  PageContent,
-  HeaderLabel,
-  Form,
-  FormSubmitButton,
-} from "./common";
-import { HanehldaHeader } from "../../components/HanehldaHeader";
+import { Form, FormSubmitButton } from "./common";
+import { HanehldaHeader, HeaderLabel } from "../../components/HanehldaHeader";
 import styled from "styled-components";
 import { theme } from "../../theme";
-import {
-  AuthErrorCodes,
-  createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
-} from "firebase/auth";
+import { AuthErrorCodes, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
@@ -24,21 +12,15 @@ import {
   StatusBannerProvider,
   statusBannerContext,
 } from "../../components/StatusBannerProvider";
+import { HanehldaView } from "../../components/HanehldaView";
 
 export function ForgotPasswordPage(): ReactElement {
   return (
-    <Page>
-      <ScrollWrapper>
-        <StatusBannerProvider>
-          <PageContent>
-            <HanehldaHeader>
-              <HeaderLabel>Forgot password</HeaderLabel>
-            </HanehldaHeader>
-            <CreateAccountContent />
-          </PageContent>
-        </StatusBannerProvider>
-      </ScrollWrapper>
-    </Page>
+    <HanehldaView navControls={<HeaderLabel>Forgot password</HeaderLabel>}>
+      <StatusBannerProvider>
+        <CreateAccountContent />
+      </StatusBannerProvider>
+    </HanehldaView>
   );
 }
 

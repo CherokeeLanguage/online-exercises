@@ -6,16 +6,16 @@ import { CodeOfConductStep } from "./CodeOfConductStep";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import React from "react";
 import { useAuth } from "../../firebase/AuthProvider";
-import {
-  HeaderLabel,
-  Page,
-  PageContent,
-  ScrollWrapper,
-} from "../signin/common";
-import { HanehldaHeader } from "../../components/HanehldaHeader";
+import { HanehldaHeader, HeaderLabel } from "../../components/HanehldaHeader";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { HANEHLDA_ID } from "../../state/reducers/groupId";
+import {
+  Page,
+  PageContent,
+  ScrollWrapper,
+} from "../../components/HanehldaView/Page";
+import { HanehldaView } from "../../components/HanehldaView";
 
 const STEPS = ["Code of Conduct", "Info", "Pick course"] as const;
 export type StepName = (typeof STEPS)[number];
@@ -155,98 +155,17 @@ export function SetupWizard() {
         goBack,
       }}
     >
-      <Page>
-        <HanehldaHeader>
+      <HanehldaView
+        navControls={
           <HeaderLabel>
             Step {stepNo} of {STEPS.length}
           </HeaderLabel>
-        </HanehldaHeader>
-        <ScrollWrapper>
-          <PageContent>
-            <ContentWrapper>
-              <currentStep.Component />
-            </ContentWrapper>
-          </PageContent>
-        </ScrollWrapper>
-      </Page>
+        }
+      >
+        <ContentWrapper>
+          <currentStep.Component />
+        </ContentWrapper>
+      </HanehldaView>
     </wizardContext.Provider>
-    // {/* Rendering a component from a variable! This is how we change the content from step to step */}
-    // <currentStep.Component
-    //   goToPreviousStep={
-    //     stepNumber === 0
-    //       ? undefined // if step one, is undefined
-    //       : () => {
-    //           //otherwise, decrement
-    //           setStepNumber(stepNumber - 1);
-    //         }
-    //   }
-    //   goToNextStep={() => {
-    //     const nextStep = stepNumber + 1;
-    //     if (nextStep < steps.length) {
-    //       setStepNumber(nextStep);
-    //     } else {
-    //       exitWizardAtEnd();
-    //     }
-    //   }}
-    //   exitWizard={() => {
-    //     exitWizardNoAdvanced();
-    //   }}
-    //   setWizardState={setWizardState}
-    //   wizardState={wizardState}
-    // />
-
-    //   <div>
-    //     <StepIndicator>
-    //       {" "}
-    //       {stepNumber + 1} / {steps.length}{" "}
-    //     </StepIndicator>
-    //   </div>
-    // </Modal>
   );
 }
-
-// export function NavigationButtons({
-//   /*
-//    * Defines the buttons available to the user for steps of the Getting Started Modal.
-//    */
-//   goToPreviousStep,
-//   goToNextStep,
-//   exitWizard,
-//   disabled,
-// }: Pick<StepProps, "goToPreviousStep" | "goToNextStep" | "exitWizard"> & {
-//   disabled?: boolean;
-//   children?: React.ReactNode;
-// }) {
-//   return (
-//     <div style={{ position: "relative" }}>
-//       {goToPreviousStep && (
-//         <Button onClick={() => goToPreviousStep()}>Back</Button>
-//       )}
-//       {goToNextStep && (
-//         <Button
-//           onClick={() => goToNextStep()}
-//           style={{
-//             position: "absolute",
-//             bottom: 0,
-//             right: 0,
-//           }}
-//         >
-//           Next
-//         </Button>
-//       )}
-//       {exitWizard && (
-//         <Button
-//           onClick={() => exitWizard()}
-//           style={{
-//             position: "absolute",
-//             bottom: 0,
-//             left: "50%",
-//             transform: "translateX(-50%)",
-//           }}
-//         >
-//           Exit
-//         </Button>
-//       )}
-//     </div>
-//   );
-// }
