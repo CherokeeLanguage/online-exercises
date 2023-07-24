@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { App } from "../App";
-import { Dashboard } from "../views/dashboard/Dashboard";
 import { LessonArchive } from "../views/lessons/LessonArchive";
 import { NewLesson } from "../views/lessons/NewLesson";
 import { ViewLesson } from "../views/lessons/ViewLesson";
@@ -16,6 +15,7 @@ import { CreateAccountPage } from "../views/signin/CreateAccountPage";
 import { ForgotPasswordPage } from "../views/signin/ForgotPasswordPage";
 import { SetupPage } from "../views/setup/SetupPage";
 import { Providers } from "../providers/Providers";
+import { LearnPage } from "../views/learn/LearnPage";
 
 /**
  * All the routes for the app.
@@ -36,7 +36,7 @@ export function AllRoutes() {
           <Route index element={<SetupPage />} />
         </Route>
         <Route path="/" element={<App />}>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<LearnPage />} />
           <Route path="vocabulary">
             <Route index element={<BrowseCollections />} />
             <Route path="set/:setId" element={<ViewSet />} />
