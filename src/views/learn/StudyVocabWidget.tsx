@@ -42,7 +42,7 @@ export function StudyVocabWidget() {
   const mostRecentSetFromUpstream = useMemo(
     () =>
       Object.values(sets)
-        .sort((a, b) => a.addedAt - b.addedAt)
+        .sort((a, b) => b.addedAt - a.addedAt)
         .map((s) => vocabSets[s.setId])
         .find((set) => upstreamCollection?.sets.some((s) => s.id === set.id)),
     [upstreamCollection, sets]
