@@ -7,8 +7,11 @@ import { logEvent } from "firebase/analytics";
 import { FirebaseState, useFirebaseLessonMetadata } from "../firebase/hooks";
 import { useAuth } from "../firebase/AuthProvider";
 import { LessonsAction } from "../state/actions";
-import React, { ReactNode, useContext, useEffect } from "react";
+import React, { ReactNode, useContext, useEffect, useMemo } from "react";
 import { Loader, SmallLoader } from "../components/Loader";
+import { AudioCacheProvider } from "./AudioCacheProvider";
+import { useCardsForTerms } from "../utils/useCardsForTerms";
+import { cards, keyForCard } from "../data/cards";
 
 interface UseLessonData {
   lesson: Lesson;
@@ -95,13 +98,31 @@ export function LessonProvider({
     }
   }, [result]);
 
+  const termCards = useCardsForTerms(
+    cards,
+    result.ready && result.data !== null ? result.data.lesson.terms : [],
+    keyForCard
+  );
+
+  const audioToCache = useMemo(() => {
+    if (result.ready && result.data !== null) {
+      return Object.values(termCards).flatMap((card) => [
+        ...card.cherokee_audio,
+        ...card.english_audio,
+      ]);
+    }
+    return [];
+  }, [result]);
+
   if (!result.ready)
     return <SmallLoader below={<p>Fetching lesson data...</p>} />;
   if (result.data === null) return <em>Lesson not found</em>;
 
   return (
     <lessonContext.Provider value={result.data}>
-      {children}
+      <AudioCacheProvider audioUrls={audioToCache}>
+        {children}
+      </AudioCacheProvider>
     </lessonContext.Provider>
   );
 }

@@ -1,4 +1,5 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useContext } from "react";
+import { audioCacheContext } from "../providers/AudioCacheProvider";
 
 export interface UseAudioProps {
   src: string;
@@ -12,26 +13,39 @@ export interface UseAudioReturn {
   playing: boolean;
 }
 
+const HAVE_ENOUGH_DATA = 4;
+
 export function useAudio({
   src,
   autoplay = false,
 }: UseAudioProps): UseAudioReturn {
   const [playing, setPlaying] = useState(false);
+  const { getCachedAudio } = useContext(audioCacheContext);
 
-  const audio = useMemo(() => new Audio(src), [src]);
+  const audio = useMemo(() => getCachedAudio(src) ?? new Audio(src), [src]);
 
   useEffect(() => {
     if (autoplay) {
-      audio.oncanplay = () => {
+      if (audio.readyState === HAVE_ENOUGH_DATA) {
+        console.log("trying to autoplay already loaded audio!");
         setPlaying(true);
         audio.play();
-      };
+      } else {
+        console.log("trying to autoplay not yet loaded audio!");
+        audio.oncanplaythrough = () => {
+          console.log("autoplaying now...");
+          setPlaying(true);
+          audio.play().catch((e) => {
+            console.log("autoplay failed");
+          });
+        };
+      }
     }
     audio.onended = () => {
       setPlaying(false);
     };
     return () => {
-      audio.oncanplay = () => {};
+      audio.oncanplaythrough = () => {};
       if (!audio.paused) {
         setPlaying(false);
         audio.pause();
