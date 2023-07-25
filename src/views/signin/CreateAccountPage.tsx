@@ -1,6 +1,6 @@
 import { FormEvent, ReactElement, useContext, useState } from "react";
 import { Form, FormSubmitButton } from "./common";
-import { HanehldaHeader, HeaderLabel } from "../../components/HanehldaHeader";
+import { HeaderLabel } from "../../components/HanehldaView/HanehldaHeader";
 import styled from "styled-components";
 import { theme } from "../../theme";
 import { AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
