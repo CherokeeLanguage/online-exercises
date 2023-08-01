@@ -11,7 +11,7 @@ export const StyledAnchor = styled.a<StyledAnchorProps>`
   cursor: pointer;
   display: inline-block;
   text-decoration: underline;
-  color: ${theme.colors.DARK_RED};
+  color: ${theme.hanehldaColors.DARK_RED};
   ${({ disabled }) =>
     disabled &&
     css`
