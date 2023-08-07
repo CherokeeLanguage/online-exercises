@@ -32,6 +32,7 @@ export function Settings() {
       <Preferences />
       <br />
       <SectionHeading>User identity</SectionHeading>
+      <p>User id: {user.uid}</p>
       <p>
         We have your email on file as: <code>{userEmail}</code>
       </p>

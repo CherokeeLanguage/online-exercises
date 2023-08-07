@@ -107,7 +107,11 @@ export function FlagIssueButton({
           close={() => setModalOpen(false)}
         />
       )}
-      <Button variant={"negative"} onClick={() => setModalOpen(true)}>
+      <Button
+        variant={"negative"}
+        onClick={() => setModalOpen(true)}
+        style={{ marginTop: 24 }}
+      >
         Flag issue
       </Button>
     </>

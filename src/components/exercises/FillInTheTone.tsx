@@ -15,8 +15,8 @@ import {
 import { Loader } from "../Loader";
 import { ExerciseComponentProps } from "./Exercise";
 import { FlagIssueButton } from "../FlagIssueModal";
-import { ListenAgainButton } from "../ListenAgainButton";
-import { ContentWrapper } from "./ContentWrapper";
+import { ListenButton } from "../ListenButton";
+import { ChallengeContainer } from "../challenges/styled";
 import { pickNRandom, pickRandomElement, spliceInAtRandomIndex } from "./utils";
 import { Button } from "../Button";
 
@@ -156,7 +156,7 @@ export function FillInTheTone({
         Here you can practice working with tone by filling in the missing tone
         sequence.
       </p>
-      <ContentWrapper style={{ fontSize: "1.5em" }}>
+      <ChallengeContainer style={{ fontSize: "1.5em" }}>
         <BigSyllabaryWithMaskedPhonetics
           syllabary={currentCard.card.syllabary}
           phoneticsSegments={phoneticsSegments}
@@ -166,7 +166,7 @@ export function FillInTheTone({
         />
 
         <div style={{ fontSize: "0.75em" }}>
-          <ListenAgainButton playAudio={play} playing={playing} />
+          <ListenButton playAudio={play} playing={playing} />
         </div>
 
         <AnswersWithFeedback
@@ -196,7 +196,7 @@ export function FillInTheTone({
           problematicAudio={cherokeeAudio}
           card={currentCard.card}
         />
-      </ContentWrapper>
+      </ChallengeContainer>
     </div>
   );
 }

@@ -8,6 +8,7 @@ export interface UseAudioProps {
 export interface UseAudioReturn {
   audio: HTMLAudioElement;
   play: (restartOk?: boolean) => void;
+  stop: () => void;
   playing: boolean;
 }
 
@@ -48,6 +49,10 @@ export function useAudio({
         setPlaying(true);
         audio.play();
       }
+    },
+    stop() {
+      setPlaying(false);
+      audio.pause();
     },
     playing,
     audio,

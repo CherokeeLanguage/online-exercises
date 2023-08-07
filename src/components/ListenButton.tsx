@@ -1,22 +1,19 @@
 import { IconButton } from "./IconButton";
 import { AiOutlineSound } from "react-icons/ai";
 
-export interface ListenAgainButonProps {
+export interface ListenButonProps {
   playAudio: () => void;
   playing: boolean;
 }
 
-export function ListenAgainButton({
-  playAudio,
-  playing,
-}: ListenAgainButonProps) {
+export function ListenButton({ playAudio, playing }: ListenButonProps) {
   return (
     <IconButton
       onClick={() => playAudio()}
       Icon={AiOutlineSound}
       disabled={playing}
     >
-      Listen again
+      Listen
     </IconButton>
   );
 }

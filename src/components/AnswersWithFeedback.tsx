@@ -7,7 +7,7 @@ import {
 } from "react";
 import { useTransition } from "../utils/useTransition";
 import styled, { css } from "styled-components";
-import { theme } from "../theme";
+import { devices, theme } from "../theme";
 import { useFeedbackChimes } from "../utils/useFeedbackChimes";
 
 export enum AnswerState {
@@ -18,23 +18,27 @@ export enum AnswerState {
 
 interface AnswersWithFeedbackContext {
   answerState: AnswerState;
-  onAnswerClicked: (correct: boolean, answerIdx: number) => void;
   selectedAnswer: number | null;
+  onAnswerClicked: (correct: boolean, answerIdx: number) => void;
   /** Hide user feedback and present next question */
   endFeedback: () => void;
 }
 
-const answersWithFeedbackContext =
-  createContext<AnswersWithFeedbackContext | null>(null);
+const answersWithFeedbackContext = createContext<AnswersWithFeedbackContext>(
+  {} as AnswersWithFeedbackContext
+);
 
 const AnswersWrapper = styled.div`
   position: relative;
-  margin-bottom: 24px;
 `;
 
 const Answers = styled.div<{ transitioning: boolean }>`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  @media screen and (${devices.laptop}) {
+    grid-template-columns: 1fr 1fr;
+  }
   grid-template-rows: auto auto;
   transition-property: opacity 250msec;
   opacity: ${({ transitioning }) => (transitioning ? "70%" : "100%")};
@@ -61,7 +65,7 @@ export function AnswersWithFeedback({
   reviewCurrentCard,
   IncorrectAnswerHint,
   hintLocation,
-  feedbackDuration = 500,
+  feedbackDuration = 1500,
   children,
 }: {
   reviewCurrentCard: (correct: boolean) => void;
@@ -111,11 +115,7 @@ export function AnswersWithFeedback({
             </HintContainter>
           )}
         {answerState === AnswerState.INCORRECT &&
-          hintLocation === "underAnswers" && (
-            <HintContent>
-              <IncorrectAnswerHint />
-            </HintContent>
-          )}
+          hintLocation === "underAnswers" && <IncorrectAnswerHint />}
       </AnswersWrapper>
     </answersWithFeedbackContext.Provider>
   );
@@ -123,34 +123,34 @@ export function AnswersWithFeedback({
 const StyledAnswerCard = styled.button<{
   answerState: AnswerState;
   correct: boolean;
+  selected: boolean;
 }>`
   background: #fff;
-  border: 4px solid ${theme.colors.TEXT_GRAY};
-  color: ${theme.colors.TEXT_GRAY};
-  font-weight: bold;
+  border: 2px solid ${theme.hanehldaColors.TEXT_LIGHT_GRAY};
+  color: ${theme.hanehldaColors.DARK_GRAY};
   border-radius: 8px;
-  padding: 24px;
+  @media screen and (${devices.laptop}) {
+    padding: 24px;
+  }
+  padding: 4px;
   font-size: ${theme.fontSizes.sm};
-  margin: 16px;
 
   ${({ answerState, correct }) =>
-    (correct &&
-      answerState === AnswerState.CORRECT &&
-      css`
-        border-color: ${theme.colors.DARK_GREEN};
-        color: ${theme.colors.DARK_GREEN};
-      `) ||
-    (answerState === AnswerState.INCORRECT &&
-      css`
-        border-color: ${theme.colors.HARD_YELLOW};
-        color: ${theme.colors.DARK_GREEN};
-      `)}
-  ${({ answerState, correct }) =>
-    !correct &&
-    answerState === AnswerState.INCORRECT &&
+    answerState !== AnswerState.UNANSWERED &&
+    (correct
+      ? css`
+          border-color: ${theme.hanehldaColors.LIGHT_GREEN};
+          color: ${theme.hanehldaColors.LIGHT_GREEN};
+        `
+      : css`
+          background-color: ${theme.hanehldaColors.ERROR_RED};
+          border-color: ${theme.hanehldaColors.DARK_RED};
+          color: ${theme.hanehldaColors.DARK_RED};
+        `)}
+  ${({ selected }) =>
+    selected &&
     css`
-      border-color: ${theme.colors.DARK_RED};
-      color: ${theme.colors.DARK_RED};
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     `}
 
     &:disabled {
@@ -176,12 +176,14 @@ export function AnswerCard({
   correct: boolean;
   idx: number;
 }): ReactElement {
-  const { onAnswerClicked, answerState } = useAnswersWithFeedback();
+  const { onAnswerClicked, answerState, selectedAnswer } =
+    useAnswersWithFeedback();
   return (
     <StyledAnswerCard
       onClick={() => onAnswerClicked(correct, idx)}
       answerState={answerState}
       correct={correct}
+      selected={selectedAnswer === idx}
       disabled={answerState !== AnswerState.UNANSWERED}
     >
       {children}

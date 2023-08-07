@@ -16,7 +16,7 @@ import { useAnalyticsPageName } from "../../firebase/hooks";
 import { ViewSetPath } from "../../routing/paths";
 
 export interface ExerciseComponentProps {
-  currentCard: TermCardWithStats<Card>;
+  currentCard: TermCardWithStats<Card> & { needsIntroduction: boolean };
   lessonCards: Record<string, Card>;
   reviewCurrentCard: (correct: boolean) => void;
 }
@@ -27,7 +27,7 @@ export interface ExerciseProps {
 }
 
 const ExerciseWrapper = styled.div`
-  margin-bottom: 16px;
+  padding-bottom: 32px;
 `;
 
 export function Exercise(props: ExerciseProps): ReactElement {
@@ -154,7 +154,7 @@ function ChallengesProgressBar({
       viewBox={`0 0 ${totalChallenges} ${figureHeight}`}
       preserveAspectRatio="none"
       style={{
-        position: "absolute",
+        position: "fixed",
         bottom: 0,
         left: 0,
         right: 0,
@@ -165,14 +165,14 @@ function ChallengesProgressBar({
         y={0}
         width={totalChallenges}
         height={figureHeight}
-        fill={theme.colors.LIGHT_GRAY}
+        fill={theme.hanehldaColors.BORDER_GRAY}
       ></rect>
       <rect
         x={0}
         y={0}
         width={totalChallenges - challengesRemaining}
         height={figureHeight}
-        fill={theme.colors.DARK_RED}
+        fill={theme.hanehldaColors.DARK_RED}
       ></rect>
     </svg>
   );
@@ -190,13 +190,13 @@ function TermStatusProgressBar({
   // challenges remaining, unseen terms, finished terms
   const barCounts = [numTermsToIntroduce, numActiveTerms, numFinishedTerms];
   const barColors = [
-    theme.colors.DARK_RED,
+    theme.hanehldaColors.BORDER_GRAY,
     theme.colors.HARD_YELLOW,
-    theme.colors.MED_GREEN,
+    theme.hanehldaColors.LIGHT_GREEN,
   ];
   const totalTerms = barCounts.reduce((total, count) => total + count);
   const figureWidth = 100;
-  const figureHeight = 4;
+  const figureHeight = 20;
   const barWidths = barCounts.map(
     (count) => (count / totalTerms) * figureWidth
   );
@@ -206,7 +206,7 @@ function TermStatusProgressBar({
       width="100%"
       height={figureHeight}
       preserveAspectRatio="none"
-      viewBox="0 0 100 4"
+      viewBox={`0 0 100 ${figureHeight}`}
     >
       {
         barWidths.reduce<{ offsetX: number; renderedElements: ReactNode[] }>(

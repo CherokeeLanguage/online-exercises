@@ -35,14 +35,5 @@ export function App() {
     config.whereFound === null;
   if (userNeedsSetup) return <Navigate to="setup/" />;
 
-  return (
-    <AppWrapper>
-      <NavigationBar />
-      <AppBody>
-        <AppContent>
-          <Outlet />
-        </AppContent>
-      </AppBody>
-    </AppWrapper>
-  );
+  return <Outlet />;
 }

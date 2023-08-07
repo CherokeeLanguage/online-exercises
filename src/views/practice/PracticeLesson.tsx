@@ -1,5 +1,11 @@
 import { ReactElement } from "react";
-import { Route, Routes, useNavigate, useParams } from "react-router-dom";
+import {
+  Outlet,
+  Route,
+  Routes,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import {
   Exercise,
   ExerciseComponentProps,
@@ -9,6 +15,9 @@ import { SimpleFlashcards } from "../../components/exercises/SimpleFlashcards";
 import { FillInTheTone } from "../../components/exercises/FillInTheTone";
 import { PickExercise } from "./PickExercise";
 import { LessonProvider } from "../../providers/LessonProvider";
+import { CombinedLesson } from "../../components/exercises/CombinedLesson";
+import { HanehldaView } from "../../components/HanehldaView";
+import { HeaderLabel, Nav, NavLink } from "../../components/HanehldaHeader";
 
 export const exercises: {
   path: string;
@@ -18,6 +27,13 @@ export const exercises: {
   // set to true if game is a minigame that does not require the user to have vocab
   minigame?: boolean;
 }[] = [
+  {
+    path: "combined-lesson",
+    name: "Combined lesson",
+    description:
+      "Practice with a mix of flashcards, multiple choice, listening exercises, and more!",
+    Component: CombinedLesson,
+  },
   {
     path: "flashcards",
     name: "Flashcards",
@@ -53,15 +69,31 @@ export function PracticeLesson(): ReactElement {
       onLessonDoesNotExist={() => navigate("/")}
     >
       <Routes>
-        <Route index element={<PickExercise />} />
-        {exercises.map(({ path, Component, name }, idx) => (
-          <Route
-            key={idx}
-            path={path}
-            element={<Exercise Component={Component} name={name} />}
-          />
-        ))}
+        <Route element={<LessonPage />}>
+          <Route index element={<PickExercise />} />
+          {exercises.map(({ path, Component, name }, idx) => (
+            <Route
+              key={idx}
+              path={path}
+              element={<Exercise Component={Component} name={name} />}
+            />
+          ))}
+        </Route>
       </Routes>
     </LessonProvider>
+  );
+}
+
+export function LessonPage() {
+  return (
+    <HanehldaView
+      navControls={
+        <Nav right={<NavLink to="/settings">Settings</NavLink>}>
+          <NavLink to="/">Exit</NavLink>
+        </Nav>
+      }
+    >
+      <Outlet />
+    </HanehldaView>
   );
 }
