@@ -1,11 +1,54 @@
 import { Lesson } from ".";
 import { collections } from "../../../data/vocabSets";
+import { TermStats } from "../../../spaced-repetition/types";
 import { showsPerSessionForBox } from "../../../spaced-repetition/usePimsleurTimings";
-import { getToday } from "../../../utils/dateUtils";
+import { DAY, getToday } from "../../../utils/dateUtils";
 import { UserState } from "../../useUserState";
-import { scanWhile, termNeedsPractice } from "./createNewLesson";
 
-interface LessonPlan {
+export function termNeedsPractice(
+  term: TermStats | undefined,
+  today: number
+): boolean {
+  // needs practice if never reviewed
+  if (!term) return true;
+  // term needs practice if next show date is before tomorrow
+  else return term.nextShowDate < today + DAY;
+}
+
+/**
+ * Scan a list and perform takeWhile on the scan results.
+ *
+ * Scanning happens _after_ predicate is called. Ie. the predicate receives the
+ * value of the accumulator _without_ the item reduced.
+ *
+ * @param list List to scan + takeWhile
+ * @param reducer Scaning function
+ * @param predicate Return false to stop scanning
+ * @param initialValue Initial value for scan function
+ * @returns
+ */
+export function scanWhile<A, T>(
+  list: T[],
+  reducer: (accumulator: A, item: T) => A,
+  predicate: (accumulatorWithoutItem: A, item: T) => boolean,
+  initialValue: A
+): [T[], A] {
+  let accumulatedValue = initialValue;
+
+  for (let i = 0; i < list.length; i++) {
+    const item = list[i];
+
+    if (!predicate(accumulatedValue, item))
+      // we return the old accumulated value, not including the current item's impact
+      return [list.slice(0, i), accumulatedValue];
+
+    accumulatedValue = reducer(accumulatedValue, item);
+  }
+
+  return [list, accumulatedValue];
+}
+
+export interface LessonPlan {
   lesson: Omit<Lesson, "id"> & { content: "ALL_NEW" | "ALL_REVIEW" | "MIXED" };
   setsToAdd: string[];
 }

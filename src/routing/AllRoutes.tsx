@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { App } from "../App";
 import { LessonArchive } from "../views/lessons/LessonArchive";
-import { NewLesson } from "../views/lessons/NewLesson";
 import { ViewLesson } from "../views/lessons/ViewLesson";
 import { PracticeLesson } from "../views/practice/PracticeLesson";
 import { MyTerms } from "../views/terms/MyTerms";
@@ -50,11 +49,6 @@ export function AllRoutes() {
           <Route path="lessons">
             <Route index element={<LessonArchive />} />
             <Route path=":lessonId" element={<ViewLesson />} />
-            {/* "reviewOnly" is an optional parameter so we make two routes https://stackoverflow.com/questions/70005601/alternate-way-for-optional-parameters-in-v6 */}
-            <Route path="new/:numChallenges/">
-              <Route path="" element={<NewLesson />} />
-              <Route path=":reviewOnly" element={<NewLesson />} />
-            </Route>
           </Route>
           <Route path="practice">
             <Route index element={<Navigate to="/lessons/" replace />} />

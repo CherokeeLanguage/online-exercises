@@ -18,7 +18,6 @@ import {
   useUserSetsInteractors,
 } from "../state/reducers/userSets";
 import { UserStateAction } from "../state/actions";
-import { LessonCreationError } from "../state/reducers/lessons/createNewLesson";
 import {
   GroupId,
   GROUPS,
@@ -41,8 +40,6 @@ export interface LegacyUserState {
   leitnerBoxes: LeitnerBoxState;
   /** Lessons that have been created for the user */
   lessons: LessonsState;
-  /** Latest error describing why a lesson could not be created */
-  lessonCreationError: LessonCreationError | undefined;
   /** Sets the user is learning */
   sets: UserSetsState;
   /** The collection from which new sets should be pulled when the user is ready for new terms */
@@ -81,11 +78,6 @@ export interface UserState {
   config: UserConfig;
   /** Terms the user is learning and ther progress - split from config for semantic and scaling reasons */
   leitnerBoxes: LeitnerBoxState;
-  /** Data we don't care about and don't save to the db */
-  ephemeral: {
-    /** Latest error describing why a lesson could not be created */
-    lessonCreationError: LessonCreationError | null;
-  };
 }
 
 interface MiscInteractors {
@@ -128,8 +120,10 @@ function reducePhoneticsPreference(
   else return phoneticsPreference;
 }
 
-function reduceWhereFound({config: {whereFound}}: UserState, action: UserStateAction
-  ): string | null{
+function reduceWhereFound(
+  { config: { whereFound } }: UserState,
+  action: UserStateAction
+): string | null {
   if (action.type === "WHERE_FOUND") return action.whereFound;
   else return whereFound;
 }
@@ -140,14 +134,6 @@ function reduceUserEmail(
 ): string | null {
   if (action.type === "SET_USER_EMAIL") return action.newUserEmail;
   else return userEmail;
-}
-
-function reduceLessonCreationError(
-  { ephemeral: { lessonCreationError } }: UserState,
-  action: UserStateAction
-): LessonCreationError | null {
-  if (action.type === "LESSON_CREATE_ERROR") return action.error;
-  else return lessonCreationError;
 }
 
 function reduceUserState(state: UserState, action: UserStateAction): UserState {
@@ -164,9 +150,6 @@ function reduceUserState(state: UserState, action: UserStateAction): UserState {
       whereFound: reduceWhereFound(state, action),
     },
     leitnerBoxes: reduceLeitnerBoxState(state, action),
-    ephemeral: {
-      lessonCreationError: reduceLessonCreationError(state, action),
-    },
   };
 }
 
@@ -179,9 +162,6 @@ function blankUserState(initializationProps: UserStateProps): UserState {
       phoneticsPreference: null,
       userEmail: null,
       whereFound: null,
-    },
-    ephemeral: {
-      lessonCreationError: null,
     },
     leitnerBoxes: {
       numBoxes: initializationProps.leitnerBoxes.numBoxes,
@@ -201,16 +181,13 @@ export function convertLegacyState(state: LegacyUserState): UserState {
       whereFound: null,
     },
     leitnerBoxes: state.leitnerBoxes,
-    ephemeral: { lessonCreationError: state.lessonCreationError ?? null },
   };
 }
 
 /**
  * We don't really need the ephemeral parts to initialize the state
  */
-type InitializerState = Omit<UserState, "ephemeral"> & {
-  ephemeral?: UserState["ephemeral"];
-};
+type InitializerState = UserState;
 
 function initializeUserState({
   storedUserState,
@@ -283,11 +260,11 @@ export function useUserState(props: {
           });
         }
       },
-      setWhereFound(whereFound: string){
+      setWhereFound(whereFound: string) {
         dispatch({
           type: "WHERE_FOUND",
           whereFound,
-        })
+        });
       },
       loadState(state: LegacyUserState) {
         dispatch({

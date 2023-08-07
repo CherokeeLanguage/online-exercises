@@ -119,7 +119,6 @@ function ImportExportDataConsole() {
     const fieldsToSave: Record<keyof UserState, null> = {
       leitnerBoxes: null,
       // lessons: null,
-      ephemeral: null,
       config: null,
     };
 

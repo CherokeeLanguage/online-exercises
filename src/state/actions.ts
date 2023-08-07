@@ -1,7 +1,6 @@
-import { GroupId, GROUPS } from "./reducers/groupId";
+import { GroupId } from "./reducers/groupId";
 import { ReviewResult } from "./reducers/leitnerBoxes";
 import { Lesson } from "./reducers/lessons";
-import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 import { PhoneticsPreference } from "./reducers/phoneticsPreference";
 import { LegacyUserState, UserState } from "./useUserState";
 
@@ -48,15 +47,7 @@ export type ConcludeLessonAction = {
   reviewedTerms: Record<string, ReviewResult>;
 };
 
-export type FlagLessonCreationError = {
-  type: "LESSON_CREATE_ERROR";
-  error: LessonCreationError;
-};
-
-export type LessonsAction =
-  | ConcludeLessonAction
-  | StartLessonAction
-  | FlagLessonCreationError;
+export type LessonsAction = ConcludeLessonAction | StartLessonAction;
 
 export type HandleSetChangesAction = {
   type: "HANDLE_SET_CHANGES";
@@ -65,8 +56,7 @@ export type HandleSetChangesAction = {
 export type SetWhereFound = {
   type: "WHERE_FOUND";
   whereFound: string;
-  
-}
+};
 
 // FIXME: I think 'preferences' could get moved into a separate part of the codebase so this doesn't keep getting longer
 export type SetPhoneticsPreferenceAction = {
