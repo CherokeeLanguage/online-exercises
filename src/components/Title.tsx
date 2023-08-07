@@ -22,7 +22,7 @@ export function Title(): ReactElement {
     <div>
       <StyledTitle>ᎭᏁᎵᏓ!</StyledTitle>
       <span>
-        <em>Learn Cherokee by "trying"</em>
+        <em>Try it!</em>
       </span>
     </div>
   );

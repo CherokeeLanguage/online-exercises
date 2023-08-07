@@ -28,9 +28,11 @@ export function HanehldaView({
     return (
       <Page>
         {!noHeader && <HanehldaHeader>{navControls}</HanehldaHeader>}
-        <ScrollWrapper>
-          <PageContent>{children}</PageContent>
-        </ScrollWrapper>
+        <ContentArea>
+          <ScrollWrapper>
+            <PageContent>{children}</PageContent>
+          </ScrollWrapper>
+        </ContentArea>
       </Page>
     );
 

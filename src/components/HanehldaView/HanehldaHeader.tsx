@@ -4,7 +4,7 @@ import { theme } from "../../theme";
 
 const StyledHeader = styled.header`
   display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: 150px 1fr 150px;
   grid-template-areas: "header nav right";
   height: min-content;
   padding: 8px;
@@ -17,7 +17,8 @@ const StyledHeader = styled.header`
     margin: 0;
     font-size: 35px;
     color: ${theme.colors.WHITE};
-    grid-area: header;
+    float: left;
+    /* grid-area: header; */
   }
   align-items: center;
 `;

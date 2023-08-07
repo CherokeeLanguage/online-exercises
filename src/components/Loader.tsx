@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { BarLoader, BeatLoader } from "react-spinners/";
 import { theme } from "../theme";
-import { StyledHeading } from "./NavigationBar";
+import { Title } from "./Title";
 
 const StyledLoader = styled.div<{ centerInParent: boolean }>`
   text-align: center;
@@ -73,11 +73,7 @@ const PageLoaderWrapper = styled.div`
 export function LoadingPage({ children }: { children?: ReactNode }) {
   return (
     <PageLoaderWrapper>
-      <Loader
-        above={<StyledHeading>Cherokee Language Exercises</StyledHeading>}
-        below={children}
-        centerInParent
-      />
+      <Loader above={<Title />} below={children} centerInParent />
     </PageLoaderWrapper>
   );
 }
