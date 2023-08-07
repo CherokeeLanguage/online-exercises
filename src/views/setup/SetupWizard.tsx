@@ -6,15 +6,10 @@ import { CodeOfConductStep } from "./CodeOfConductStep";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import React from "react";
 import { useAuth } from "../../firebase/AuthProvider";
-import { HanehldaHeader, HeaderLabel } from "../../components/HanehldaHeader";
+import { HeaderLabel } from "../../components/HanehldaView/HanehldaHeader";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { HANEHLDA_ID } from "../../state/reducers/groupId";
-import {
-  Page,
-  PageContent,
-  ScrollWrapper,
-} from "../../components/HanehldaView/Page";
 import { HanehldaView } from "../../components/HanehldaView";
 
 const STEPS = ["Code of Conduct", "Info", "Pick course"] as const;

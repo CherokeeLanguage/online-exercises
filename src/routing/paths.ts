@@ -12,10 +12,6 @@ export const MyTermsPath = "/terms";
 export const LessonsPath = "/lessons";
 export const ViewLessonPath = (lessonId: string) =>
   `${LessonsPath}/${lessonId}`;
-export const NewLessonPath = (
-  numChallenges: string | number,
-  reviewOnly?: boolean
-) => `${LessonsPath}/new/${numChallenges}/${reviewOnly ?? ""}`;
 export const PracticePath = `/practice`;
 export const PracticeLessonPath = (lessonId: string) =>
   `${PracticePath}/${lessonId}`;

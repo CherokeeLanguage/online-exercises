@@ -8,7 +8,7 @@ export const Form = styled.form<{ standalone?: true }>`
       max-width: 400px;
       margin: auto;
     `}
-  input {
+  input, select {
     margin: 6px 0;
     box-sizing: border-box;
     border-radius: ${theme.borderRadii.md};

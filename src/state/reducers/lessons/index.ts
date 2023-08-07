@@ -2,15 +2,12 @@ import React, { Dispatch } from "react";
 import { getToday } from "../../../utils/dateUtils";
 import { vocabSets } from "../../../data/vocabSets";
 import { UserState } from "../../useUserState";
-import { createLessonAndFindSetsToAdd } from "./createNewLesson";
 import { LessonsAction, UserStateAction } from "../../actions";
 import { showsPerSessionForBox } from "../../../spaced-repetition/usePimsleurTimings";
 import { cherokeeToKey } from "../../../data/cards";
-import { logEvent } from "firebase/analytics";
-import { analytics } from "../../../firebase";
 import { useAuth } from "../../../firebase/AuthProvider";
-import { lessonMetadataPath } from "../../../firebase/paths";
-import { set } from "firebase/database";
+import { lessonMetadataPath, setTyped } from "../../../firebase/paths";
+import { LessonPlan } from "./planLesson";
 
 export interface DailyLesson {
   type: "DAILY";
@@ -60,11 +57,7 @@ export function nameForLesson(lesson: Lesson) {
 export type LessonsState = Record<string, Lesson>;
 
 export interface LessonsInteractors {
-  createNewLesson: (
-    desiredId: string,
-    numChallenges: number,
-    reviewOnly: boolean
-  ) => Promise<void>;
+  createNewLesson: (desiredId: string, plan: LessonPlan) => Promise<void>;
   createPracticeLesson: (
     desiredId: string,
     setsToInclude: string[],
@@ -130,38 +123,19 @@ export function useLessonInteractors(
 ): LessonsInteractors {
   const { user } = useAuth();
   return {
-    createNewLesson(desiredId, numChallenges, reviewOnly) {
-      const result = createLessonAndFindSetsToAdd(
-        desiredId,
-        numChallenges,
-        reviewOnly,
-        state
-      );
-      if (result.type === "ERROR") {
-        logEvent(analytics, "lesson_creation_error", {
-          error: result.error,
-          reviewOnly,
-        });
+    createNewLesson(desiredId, plan) {
+      plan.setsToAdd.forEach((setToAdd) =>
         dispatch({
-          type: "LESSON_CREATE_ERROR",
-          error: {
-            lessonId: desiredId,
-            type: result.error,
-          },
-        });
-        return Promise.reject();
-      } else {
-        result.result.setsToAdd.forEach((setToAdd) =>
-          dispatch({
-            type: "ADD_SET",
-            setToAdd,
-          })
-        );
-        return set(
-          lessonMetadataPath(user, result.result.lesson.id).ref,
-          result.result.lesson
-        );
-      }
+          type: "ADD_SET",
+          setToAdd,
+        })
+      );
+      // I'm not sure why the compiler is being difficult here
+      const lesson: Lesson = {
+        ...(plan.lesson as Omit<LessonMixin & DailyLesson, "id">),
+        id: desiredId,
+      };
+      return setTyped(lessonMetadataPath(user, desiredId), lesson);
     },
     createPracticeLesson(lessonId, setsToInclude, shuffleTerms) {
       const lesson = practiceLessonForSets(
@@ -169,7 +143,7 @@ export function useLessonInteractors(
         setsToInclude,
         shuffleTerms
       );
-      return set(lessonMetadataPath(user, lesson.id).ref, lesson);
+      return setTyped(lessonMetadataPath(user, lesson.id), lesson);
     },
   };
 }

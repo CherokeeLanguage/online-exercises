@@ -14,6 +14,8 @@ import { UserState } from "../../state/useUserState";
 import { useAuth } from "../../firebase/AuthProvider";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import { HanehldaView } from "../../components/HanehldaView";
+import { DefaultNav } from "../../components/HanehldaView/HanehldaNav";
 
 interface ExportedLessonData {
   lessonId: string;
@@ -28,36 +30,38 @@ export function Settings() {
   const { user } = useAuth();
   useAnalyticsPageName("Settings");
   return (
-    <div>
-      <Preferences />
-      <br />
-      <SectionHeading>User identity</SectionHeading>
-      <p>User id: {user.uid}</p>
-      <p>
-        We have your email on file as: <code>{userEmail}</code>
-      </p>
-      {!user.isAnonymous && (
-        <Button onClick={() => signOut(auth)}>Sign out</Button>
-      )}
-      <p>
-        <em>
-          Wrong address? Contact the maintainer at{" "}
-          <a href="mailto:charliemcvicker@protonmail.com">
-            charliemcvicker@protonmail.com
-          </a>
-        </em>
-      </p>
-      <br />
-      <br />
-      <hr />
-      <p>
-        <em>
-          Settings below this point might not be much use to you unless a
-          maintainer of this website contacted you.
-        </em>
-      </p>
-      <ImportExportDataConsole />
-    </div>
+    <HanehldaView navControls={<DefaultNav />} collapseNav>
+      <div>
+        <Preferences />
+        <br />
+        <SectionHeading>User identity</SectionHeading>
+        <p>User id: {user.uid}</p>
+        <p>
+          We have your email on file as: <code>{userEmail}</code>
+        </p>
+        {!user.isAnonymous && (
+          <Button onClick={() => signOut(auth)}>Sign out</Button>
+        )}
+        <p>
+          <em>
+            Wrong address? Contact the maintainer at{" "}
+            <a href="mailto:charliemcvicker@protonmail.com">
+              charliemcvicker@protonmail.com
+            </a>
+          </em>
+        </p>
+        <br />
+        <br />
+        <hr />
+        <p>
+          <em>
+            Settings below this point might not be much use to you unless a
+            maintainer of this website contacted you.
+          </em>
+        </p>
+        <ImportExportDataConsole />
+      </div>
+    </HanehldaView>
   );
 }
 
@@ -115,7 +119,6 @@ function ImportExportDataConsole() {
     const fieldsToSave: Record<keyof UserState, null> = {
       leitnerBoxes: null,
       // lessons: null,
-      ephemeral: null,
       config: null,
     };
 

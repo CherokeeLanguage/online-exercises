@@ -1,8 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { App } from "../App";
-import { Dashboard } from "../views/dashboard/Dashboard";
 import { LessonArchive } from "../views/lessons/LessonArchive";
-import { NewLesson } from "../views/lessons/NewLesson";
 import { ViewLesson } from "../views/lessons/ViewLesson";
 import { PracticeLesson } from "../views/practice/PracticeLesson";
 import { MyTerms } from "../views/terms/MyTerms";
@@ -16,6 +14,7 @@ import { CreateAccountPage } from "../views/signin/CreateAccountPage";
 import { ForgotPasswordPage } from "../views/signin/ForgotPasswordPage";
 import { SetupPage } from "../views/setup/SetupPage";
 import { Providers } from "../providers/Providers";
+import { LearnPage } from "../views/learn/LearnPage";
 
 /**
  * All the routes for the app.
@@ -36,7 +35,7 @@ export function AllRoutes() {
           <Route index element={<SetupPage />} />
         </Route>
         <Route path="/" element={<App />}>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<LearnPage />} />
           <Route path="vocabulary">
             <Route index element={<BrowseCollections />} />
             <Route path="set/:setId" element={<ViewSet />} />
@@ -50,11 +49,6 @@ export function AllRoutes() {
           <Route path="lessons">
             <Route index element={<LessonArchive />} />
             <Route path=":lessonId" element={<ViewLesson />} />
-            {/* "reviewOnly" is an optional parameter so we make two routes https://stackoverflow.com/questions/70005601/alternate-way-for-optional-parameters-in-v6 */}
-            <Route path="new/:numChallenges/">
-              <Route path="" element={<NewLesson />} />
-              <Route path=":reviewOnly" element={<NewLesson />} />
-            </Route>
           </Route>
           <Route path="practice">
             <Route index element={<Navigate to="/lessons/" replace />} />

@@ -27,12 +27,22 @@ export function Page({ children }: { children: ReactNode }): ReactElement {
   );
 }
 
+export const ContentArea = styled.div`
+  position: relative;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: ${theme.hanehldaColors.CREAM};
+`;
+
 export const ScrollWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;
   height: 100%;
   overflow-x: auto;
+  background-color: ${theme.hanehldaColors.CREAM};
 `;
 
 export const PageContent = styled.div`

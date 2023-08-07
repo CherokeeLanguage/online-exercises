@@ -17,7 +17,7 @@ import { PickExercise } from "./PickExercise";
 import { LessonProvider } from "../../providers/LessonProvider";
 import { CombinedLesson } from "../../components/exercises/CombinedLesson";
 import { HanehldaView } from "../../components/HanehldaView";
-import { HeaderLabel, Nav, NavLink } from "../../components/HanehldaHeader";
+import { Nav, NavLink } from "../../components/HanehldaView/HanehldaNav";
 
 export const exercises: {
   path: string;

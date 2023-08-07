@@ -8,16 +8,9 @@ import {
 import assert from "assert";
 import { TermStats } from "../spaced-repetition/types";
 import { MockAuthProvider } from "../firebase/AuthProvider";
-import { LessonCreationError } from "./reducers/lessons/createNewLesson";
 
 function renderUserStateHook(props: {
-  storedUserState?:
-    | (Omit<UserState, "ephemeral"> & {
-        ephemeral?:
-          | { lessonCreationError: LessonCreationError | null }
-          | undefined;
-      })
-    | undefined;
+  storedUserState?: UserState;
   initializationProps: UserStateProps;
 }) {
   return renderHook(() => useUserState(props), {
@@ -70,9 +63,6 @@ describe("useUserState", () => {
           ),
           numBoxes: 6,
         },
-        ephemeral: {
-          lessonCreationError: null,
-        },
         config: {
           sets: {
             [setToAdd.id]: {
@@ -84,6 +74,7 @@ describe("useUserState", () => {
           groupId: null,
           phoneticsPreference: null,
           userEmail: null,
+          whereFound: null,
         },
       });
     });
@@ -109,9 +100,6 @@ describe("useUserState", () => {
               [termAlreadyAdded]: existingTermStats,
             },
             numBoxes: 6,
-          },
-          ephemeral: {
-            lessonCreationError: null,
           },
           config: {
             sets: {},
@@ -160,9 +148,6 @@ describe("useUserState", () => {
           ]),
           numBoxes: 6,
         },
-        ephemeral: {
-          lessonCreationError: null,
-        },
         config: {
           sets: {
             [setToAdd.id]: {
@@ -174,6 +159,7 @@ describe("useUserState", () => {
           groupId: null,
           phoneticsPreference: null,
           userEmail: null,
+          whereFound: null,
         },
       });
     });
@@ -203,9 +189,6 @@ describe("useUserState", () => {
         leitnerBoxes: {
           terms: {},
           numBoxes: 6,
-        },
-        ephemeral: {
-          lessonCreationError: null,
         },
         config: {
           sets: {},
@@ -261,9 +244,6 @@ describe("useUserState", () => {
           ),
           numBoxes: 6,
         },
-        ephemeral: {
-          lessonCreationError: null,
-        },
         config: {
           sets: {
             [sswSetWithAyv.id]: {
@@ -275,6 +255,7 @@ describe("useUserState", () => {
           groupId: null,
           phoneticsPreference: null,
           userEmail: null,
+          whereFound: null,
         },
       });
     });
