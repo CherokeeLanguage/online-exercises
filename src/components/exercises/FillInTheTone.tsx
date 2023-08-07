@@ -1,12 +1,12 @@
 import React, { ReactElement, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
-import { theme } from "../../theme";
+import { devices, theme } from "../../theme";
 import {
   alignSyllabaryAndPhonetics,
   getPhonetics,
 } from "../../utils/phonetics";
-import { useAudio } from "../../utils/useAudio";
+import { UseAudioReturn, useAudio } from "../../utils/useAudio";
 import {
   AnswerCard,
   AnswersWithFeedback,
@@ -19,6 +19,9 @@ import { ListenButton } from "../ListenButton";
 import { ChallengeContainer } from "../challenges/styled";
 import { pickNRandom, pickRandomElement, spliceInAtRandomIndex } from "./utils";
 import { Button } from "../Button";
+import { Challenge } from "../challenges/Challenge";
+import { ActionRow } from "../ActionRow";
+import { ContinueButton } from "../ContinueButton";
 
 export function validWordsToHide(
   phoneticsWords: string[][]
@@ -128,7 +131,7 @@ export function FillInTheTone({
     [currentCard]
   );
 
-  const { play, playing } = useAudio({
+  const audio = useAudio({
     src: cherokeeAudio,
     autoplay: true,
   });
@@ -142,107 +145,120 @@ export function FillInTheTone({
     return <Loader />;
   }
 
-  const {
+  return (
+    <div style={{ maxWidth: "800px", margin: "auto" }}>
+      <Challenge
+        description="Fill in the missing tones."
+        content={
+          <FillInTheToneContent
+            reviewCurrentCard={reviewCurrentCard}
+            phoneticsSegments={phoneticsSegments}
+            audio={audio}
+            maskedToneHook={maskedToneHook}
+          />
+        }
+        after={
+          <FlagIssueButton
+            problematicAudio={cherokeeAudio}
+            card={currentCard.card}
+          />
+        }
+      />
+    </div>
+  );
+}
+
+function FillInTheToneContent({
+  reviewCurrentCard,
+  phoneticsSegments,
+  maskedToneHook: {
     maskedWordIdx,
     maskedSyllableIdx,
     maskedSyllables,
     allOptions,
     correctIdx,
-  } = maskedToneHook;
-
+  },
+  audio: { play, playing },
+}: {
+  reviewCurrentCard: ExerciseComponentProps["reviewCurrentCard"];
+  phoneticsSegments: string[][];
+  maskedToneHook: MaskedToneReturn;
+  audio: UseAudioReturn;
+}) {
   return (
     <div>
-      <p>
-        Here you can practice working with tone by filling in the missing tone
-        sequence.
-      </p>
-      <ChallengeContainer style={{ fontSize: "1.5em" }}>
-        <BigSyllabaryWithMaskedPhonetics
-          syllabary={currentCard.card.syllabary}
+      <ActionRow action={<ListenButton playAudio={play} playing={playing} />}>
+        <MaskedPhonetics
           phoneticsSegments={phoneticsSegments}
           maskedWordIdx={maskedWordIdx}
           maskedSyllables={maskedSyllables}
           maskedSyllableIdx={maskedSyllableIdx}
         />
+      </ActionRow>
 
-        <div style={{ fontSize: "0.75em" }}>
-          <ListenButton playAudio={play} playing={playing} />
-        </div>
-
-        <AnswersWithFeedback
-          reviewCurrentCard={reviewCurrentCard}
-          hintLocation={"overAnswers"}
-          IncorrectAnswerHint={() => (
-            <FillInTheToneHint
-              correctAnswer={
-                maskedSyllables[maskedSyllableIdx] + allOptions[correctIdx]
-              }
-              options={allOptions.map(
-                (option) => maskedSyllables[maskedSyllableIdx] + option
-              )}
-            />
-          )}
-        >
-          {allOptions.map((option, idx) => (
-            <AnswerCard correct={idx === correctIdx} idx={idx} key={idx}>
-              <span style={{ fontSize: 24 }}>
-                {maskedSyllables[maskedSyllableIdx] + option}
-              </span>
-            </AnswerCard>
-          ))}
-        </AnswersWithFeedback>
-
-        <FlagIssueButton
-          problematicAudio={cherokeeAudio}
-          card={currentCard.card}
-        />
-      </ChallengeContainer>
+      <AnswersWithFeedback
+        reviewCurrentCard={reviewCurrentCard}
+        hintLocation="underAnswers"
+        IncorrectAnswerHint={() => <ContinueButton />}
+      >
+        {allOptions.map((option, idx) => (
+          <AnswerCard correct={idx === correctIdx} idx={idx} key={idx}>
+            <span style={{ fontSize: 24 }}>
+              {maskedSyllables[maskedSyllableIdx] + option}
+            </span>
+          </AnswerCard>
+        ))}
+      </AnswersWithFeedback>
     </div>
   );
 }
 
-function BigSyllabaryWithMaskedPhonetics({
-  syllabary,
+const StyledMaskedPhonetics = styled.p`
+  font-size: ${theme.fontSizes.md};
+  @media screen and (${devices.laptop}) {
+    font-size: ${theme.fontSizes.lg};
+  }
+  span {
+    display: inline-block;
+    margin: 0 4px;
+  }
+`;
+
+function MaskedPhonetics({
   phoneticsSegments,
   maskedWordIdx,
   maskedSyllables,
   maskedSyllableIdx,
 }: {
-  syllabary: string;
   phoneticsSegments: string[][];
   maskedWordIdx: number;
   maskedSyllables: string[];
   maskedSyllableIdx: number;
 }) {
   return (
-    <>
-      <p style={{ fontWeight: "bold", fontSize: "2em", marginBottom: 0 }}>
-        {syllabary}
-      </p>
-      <p>
-        {phoneticsSegments.map((word, idx) => (
-          <>
-            {idx > 0 && " "}
-            {idx === maskedWordIdx ? (
-              <span>
-                {maskedSyllables.map((syllable, syllableIdx) =>
-                  syllableIdx === maskedSyllableIdx ? (
-                    <MaskedSyllable>
-                      {syllable}
-                      <sup>??</sup>
-                    </MaskedSyllable>
-                  ) : (
-                    syllable
-                  )
-                )}
-              </span>
-            ) : (
-              <span>{word}</span>
-            )}
-          </>
-        ))}
-      </p>
-    </>
+    <StyledMaskedPhonetics>
+      {phoneticsSegments.map((word, idx) => (
+        <>
+          {idx > 0 && " "}
+          {idx === maskedWordIdx ? (
+            <span>
+              {maskedSyllables.map((syllable, syllableIdx) =>
+                syllableIdx === maskedSyllableIdx ? (
+                  <MaskedSyllable>
+                    {syllable}
+                    <sup>??</sup>
+                  </MaskedSyllable>
+                ) : (
+                  syllable
+                )
+              )}
+            </span>
+          ) : (
+            <span>{word}</span>
+          )}
+        </>
+      ))}
+    </StyledMaskedPhonetics>
   );
 }
 

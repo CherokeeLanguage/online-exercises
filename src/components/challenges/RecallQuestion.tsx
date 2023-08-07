@@ -15,6 +15,7 @@ import { ExerciseComponentProps } from "../exercises/Exercise";
 import { pickRandomElement } from "../exercises/utils";
 import { ActionRow } from "../ActionRow";
 import { Challenge } from "./Challenge";
+import { useFeedbackChimes } from "../../utils/useFeedbackChimes";
 
 export function RecallQuestion({
   currentCard,
@@ -25,10 +26,13 @@ export function RecallQuestion({
   } = useUserStateContext();
 
   const [showAnswer, setShowAnswer] = useState(false);
+  const [feedbackPeriod, setFeedbackPeriod] = useState(false);
   const startSide: "cherokee" | "english" = useMemo(
     () => (currentCard.stats.box >= 3 ? "english" : "cherokee"),
     [currentCard]
   );
+
+  const { playCorrectChime, playIncorrectChime } = useFeedbackChimes();
 
   const phonetics = useMemo(
     () => getPhonetics(currentCard.card, phoneticsPreference),
@@ -42,8 +46,14 @@ export function RecallQuestion({
   }
 
   function reviewCardAndResetState(correct: boolean) {
-    reviewCurrentCard(correct);
-    setShowAnswer(false);
+    if (correct) playCorrectChime();
+    else playIncorrectChime();
+    setFeedbackPeriod(true);
+    setTimeout(() => {
+      reviewCurrentCard(correct);
+      setShowAnswer(false);
+      setFeedbackPeriod(false);
+    }, 1500);
   }
 
   // pick random voice to use
@@ -102,8 +112,7 @@ export function RecallQuestion({
           {showAnswer ? (
             <FlashcardControls
               reviewCard={reviewCardAndResetState}
-              playAudio={targetAudio.play}
-              playing={targetAudio.playing}
+              disabled={feedbackPeriod}
             />
           ) : (
             <StyledControlRow>
@@ -173,12 +182,10 @@ function RecallContent({
 
 function FlashcardControls({
   reviewCard,
-  playAudio,
-  playing,
+  disabled,
 }: {
   reviewCard: (correct: boolean) => void;
-  playAudio: () => void;
-  playing: boolean;
+  disabled: boolean;
 }): ReactElement {
   return (
     <StyledControlRow>
@@ -187,6 +194,7 @@ function FlashcardControls({
           Icon={AiOutlineCloseCircle}
           onClick={() => reviewCard(false)}
           color={theme.colors.DARK_RED}
+          disabled={disabled}
         >
           Answered incorrectly
         </IconButton>
@@ -196,6 +204,7 @@ function FlashcardControls({
           Icon={AiOutlineCheckCircle}
           onClick={() => reviewCard(true)}
           color={theme.colors.DARK_GREEN}
+          disabled={disabled}
         >
           Answered correctly
         </IconButton>

@@ -1,16 +1,11 @@
 import React, { ReactElement, useMemo } from "react";
-import { UseAudioReturn, useAudio } from "../../utils/useAudio";
+import { useAudio } from "../../utils/useAudio";
+import { ContinueButton } from "../ContinueButton";
 // @ts-ignore
 import trigramSimilarity from "trigram-similarity";
 import { Card } from "../../data/cards";
 import { TermCardWithStats } from "../../spaced-repetition/types";
-import { theme } from "../../theme";
-import {
-  AnswersWithFeedback,
-  AnswerCard,
-  useAnswersWithFeedback,
-} from "../AnswersWithFeedback";
-import { Button } from "../Button";
+import { AnswersWithFeedback, AnswerCard } from "../AnswersWithFeedback";
 import { FlagIssueButton } from "../FlagIssueModal";
 import { ListenButton } from "../ListenButton";
 import { ExerciseComponentProps } from "../exercises/Exercise";
@@ -25,11 +20,6 @@ import { Challenge } from "./Challenge";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { AlignedCherokee } from "../AlignedCherokee";
 import { ActionRow } from "../ActionRow";
-import { IconButton } from "../IconButton";
-import { NextButton } from "../../views/setup/common";
-import { GrNext } from "react-icons/gr";
-import { StyledControl, StyledControlRow } from "./styled";
-import styled from "styled-components";
 
 interface Challenge {
   terms: Card[];
@@ -151,12 +141,7 @@ function ListeningQuestionContent({
       <AnswersWithFeedback
         reviewCurrentCard={reviewCurrentCard}
         hintLocation="underAnswers"
-        IncorrectAnswerHint={() => (
-          <ListeningQuestionHint
-            correctAnswerIdx={challenge.correctTermIdx}
-            options={challenge.terms}
-          />
-        )}
+        IncorrectAnswerHint={() => <ContinueButton />}
       >
         {challenge.terms.map((term, idx) => (
           <AnswerCard
@@ -169,29 +154,5 @@ function ListeningQuestionContent({
         ))}
       </AnswersWithFeedback>
     </>
-  );
-}
-
-const StyledContinue = styled.div`
-  text-align: center;
-  margin-top: 20px;
-`;
-
-function ListeningQuestionHint({
-  correctAnswerIdx,
-  options,
-}: {
-  correctAnswerIdx: number;
-  options: Card[];
-}): ReactElement {
-  const { selectedAnswer, endFeedback } = useAnswersWithFeedback();
-  if (selectedAnswer === null)
-    throw new Error("Answer should be selected if we are providing feedback");
-  return (
-    <StyledContinue>
-      <IconButton onClick={endFeedback} Icon={GrNext}>
-        Continue
-      </IconButton>
-    </StyledContinue>
   );
 }
