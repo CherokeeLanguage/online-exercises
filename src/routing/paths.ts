@@ -2,6 +2,7 @@
 // This _must_ be updated as routes are added / change.
 
 export const DashboardPath = "/";
+export const CommunityPath = "/community";
 export const VocabularyPath = "/vocabulary";
 export const BrowseCollectionsPath = VocabularyPath;
 export const ViewSetPath = (setId: string) => `${VocabularyPath}/set/${setId}`;

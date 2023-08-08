@@ -1,7 +1,11 @@
 import { ReactNode } from "react";
 import { NavLinkProps, NavLink as RouterNavLink } from "react-router-dom";
 import styled from "styled-components";
-import { DashboardPath, BrowseCollectionsPath } from "../../routing/paths";
+import {
+  DashboardPath,
+  BrowseCollectionsPath,
+  CommunityPath,
+} from "../../routing/paths";
 import { theme } from "../../theme";
 
 const StyledNav = styled.nav`
@@ -108,7 +112,7 @@ export function DefaultNav() {
     <Nav right={<NavLink to="/settings">Settings</NavLink>}>
       <NavLink to={DashboardPath}>Learn</NavLink>
       <NavLink to={BrowseCollectionsPath}>Courses</NavLink>
-      <NavLink to={"/community"}>Community</NavLink>
+      <NavLink to={CommunityPath}>Community</NavLink>
       <NavLink to={"/find-a-word"}>Find a word</NavLink>
     </Nav>
   );

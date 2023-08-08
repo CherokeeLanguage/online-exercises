@@ -15,6 +15,7 @@ import { ForgotPasswordPage } from "../views/signin/ForgotPasswordPage";
 import { SetupPage } from "../views/setup/SetupPage";
 import { Providers } from "../providers/Providers";
 import { LearnPage } from "../views/learn/LearnPage";
+import { CommunityPage } from "../views/community/CommunityPage";
 
 /**
  * All the routes for the app.
@@ -44,6 +45,7 @@ export function AllRoutes() {
               element={<ViewCollection />}
             />
           </Route>
+          <Route path="community" element={<CommunityPage />}></Route>
           <Route path="my-sets" element={<MySets />}></Route>
           <Route path="terms" element={<MyTerms />} />
           <Route path="lessons">
