@@ -14,17 +14,21 @@ const ContentWapper = styled.div`
   box-sizing: border-box;
   width: 100%;
   max-width: 800px;
-  padding: 20px;
   margin: 0 auto;
 `;
 
-function searchCards(query: string) {
+function searchCards(_query: string) {
+  const query = _query.toLocaleLowerCase();
   return cards.filter(
     (c) =>
-      getPhonetics(c, PhoneticsPreference.Simple).includes(query) ||
-      getPhonetics(c, PhoneticsPreference.Detailed).includes(query) ||
-      c.syllabary.includes(query) ||
-      c.english.includes(query)
+      getPhonetics(c, PhoneticsPreference.Simple)
+        .toLocaleLowerCase()
+        .includes(query) ||
+      getPhonetics(c, PhoneticsPreference.Detailed)
+        .toLocaleLowerCase()
+        .includes(query) ||
+      c.syllabary.toLocaleLowerCase().includes(query) ||
+      c.english.toLocaleLowerCase().includes(query)
   );
 }
 
@@ -48,25 +52,34 @@ export function SearchPage(): ReactElement {
   }
   const resultContent =
     results === null ? (
-      <p>Enter your search in the input above and hit enter.</p>
+      <p>...</p>
     ) : results.length === 0 ? (
       <p>No terms found matching your query</p>
     ) : (
-      <CardTable cards={results} />
+      <div>
+        <h4>Search results for "{pageQuery}"</h4>
+        <CardTable cards={results} />
+      </div>
     );
 
   return (
     <HanehldaView navControls={<DefaultNav />} collapseNav>
       <ContentWapper>
-        <Form onSubmit={onFormSubmit}>
-          <input
-            type="text"
-            onChange={(e) => setQuery(e.target.value)}
-            value={query}
-            placeholder="Phonetics, Syllabary, or English..."
-          />
-        </Form>
-        <div style={{ background: "white" }}>{resultContent}</div>
+        <div style={{ padding: "20px 20px 0 20px" }}>
+          <span>
+            Type below and hit enter to search in Syllabary, Phonetics, and
+            English.
+          </span>
+          <Form onSubmit={onFormSubmit}>
+            <input
+              type="text"
+              onChange={(e) => setQuery(e.target.value)}
+              value={query}
+              placeholder="Phonetics, Syllabary, or English..."
+            />
+          </Form>
+        </div>
+        <div>{resultContent}</div>
       </ContentWapper>
     </HanehldaView>
   );
