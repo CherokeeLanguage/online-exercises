@@ -1,6 +1,11 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
-import { Collection } from "../data/vocabSets";
+import {
+  Collection,
+  CollectionCredits as CollectionCreditsType,
+} from "../data/vocabSets";
+import { theme } from "../theme";
+import React from "react";
 
 const StyledList = styled.ul`
   margin: 0;
@@ -15,8 +20,11 @@ const StyledList = styled.ul`
 const StyledCreditsSection = styled.div`
   margin-bottom: 10px;
   h4 {
-    margin: 0;
+    margin: 10px auto;
+    text-align: center;
+    font-size: ${theme.fontSizes.md};
   }
+  text-align: left;
 `;
 
 export function CollectionCredits({
@@ -26,7 +34,14 @@ export function CollectionCredits({
 }): ReactElement {
   return (
     <div>
-      <p>{credits.description}</p>
+      {credits.externalResources.length > 0 && (
+        <StyledCreditsSection>
+          <h4>External resources</h4>
+          {credits.externalResources.map((resource, i) => (
+            <ResourceInfo key={i} resource={resource} />
+          ))}
+        </StyledCreditsSection>
+      )}
       <StyledCreditsSection>
         <h4>Credits</h4>
         <StyledList>
@@ -37,29 +52,32 @@ export function CollectionCredits({
           ))}
         </StyledList>
       </StyledCreditsSection>
-      {credits.externalResources.length > 0 && (
-        <StyledCreditsSection>
-          <h4>External resources</h4>
-          <StyledList>
-            {credits.externalResources.map((resource, i) => (
-              <li key={i}>
-                {resource.notes ? (
-                  <p>
-                    <a target="_blank" href={resource.href}>
-                      {resource.name}
-                    </a>
-                    : {resource.notes}
-                  </p>
-                ) : (
-                  <a target="_blank" href={resource.href}>
-                    {resource.name}
-                  </a>
-                )}
-              </li>
-            ))}
-          </StyledList>
-        </StyledCreditsSection>
-      )}
     </div>
+  );
+}
+
+const StyledResourceInfo = styled.div`
+  a {
+    color: white;
+    font-weight: bold;
+  }
+  p {
+    margin-top: 0;
+  }
+  margin-bottom: 16px;
+`;
+
+function ResourceInfo({
+  resource,
+}: {
+  resource: CollectionCreditsType["externalResources"][number];
+}) {
+  return (
+    <StyledResourceInfo>
+      <a target="_blank" href={resource.href}>
+        {resource.name}
+      </a>
+      {resource.notes && <p>{resource.notes}</p>}
+    </StyledResourceInfo>
   );
 }

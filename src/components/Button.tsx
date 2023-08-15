@@ -19,23 +19,27 @@ export type ButtonProps = RequiredButtonProps & Partial<OptionalButtonProps>;
 
 export const Button = styledWithDefault(
   styled.button<ButtonPropsWithDefaults>`
-    border-radius: 8px;
-    padding: 8px;
-    text-decoration: none;
-    font-size: ${theme.fontSizes.sm};
+    box-sizing: border-box;
     display: inline-block;
+    text-decoration: none;
+    border: none;
+    border-radius: ${theme.borderRadii.md};
+    padding: 5px 20px;
+    font-weight: bold;
+    margin: 8px auto;
+    font-size: ${theme.fontSizes.sm};
     cursor: pointer;
-    box-shadow: 1px 1px 6px ${theme.colors.MED_GRAY};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     ${({ variant }) =>
       variant === "primary" &&
       css`
-        background: ${theme.colors.HARD_YELLOW};
-        color: ${theme.colors.TEXT_GRAY};
-        border: 1px solid ${theme.colors.MED_GRAY};
+        background-color: ${theme.colors.WHITE};
+        color: ${theme.hanehldaColors.DARK_GRAY};
+        border: 1px solid black;
         &:hover {
-          border: 1px solid ${theme.colors.TEXT_GRAY};
+          border: 1px solid black;
         }
-        &:disabled{
+        &:disabled {
           background: ${theme.colors.MED_GRAY};
 
           &:hover {
@@ -47,11 +51,11 @@ export const Button = styledWithDefault(
     ${({ variant }) =>
       variant === "negative" &&
       css`
-        background: ${theme.colors.DARK_RED};
-        color: ${theme.colors.LIGHTER_GRAY};
-        border: 1px solid ${theme.colors.LIGHTER_GRAY};
+        background: ${theme.hanehldaColors.DARK_RED};
+        color: white;
+        border: 1px solid black;
         &:hover {
-          border: 1px solid ${theme.colors.TEXT_GRAY};
+          border: 1px solid black;
         }
       `}
 

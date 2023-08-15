@@ -8,6 +8,9 @@ import { Modal } from "./Modal";
 import { StyledTable } from "./StyledTable";
 import { VisuallyHidden } from "./VisuallyHidden";
 import { FlagIssueButton } from "./FlagIssueModal";
+import styled from "styled-components";
+import { AlignedCherokee } from "./AlignedCherokee";
+import { theme } from "../theme";
 
 export function CardTable({ cards }: { cards: Card[] }): ReactElement {
   const [modalOpenForCard, showDetailsForCard] = useState<Card | undefined>(
@@ -72,7 +75,7 @@ function CardRow({
         <td>
           <Button
             onClick={() => showDetailsForCard(card)}
-            style={{ width: "100%" }}
+            style={{ padding: "0 5px" }}
           >
             More
           </Button>
@@ -84,24 +87,36 @@ function CardRow({
 
 function CardDetailsModal({ card, close }: { card: Card; close: () => void }) {
   return (
-    <Modal close={close} title={`Card details - ${card.syllabary}`}>
-      <CardAudioModalContent card={card} />
+    <Modal close={close} title={`Card details`}>
+      <CardDetailsModalContent card={card} />
     </Modal>
   );
 }
 
-function CardAudioModalContent({ card }: { card: Card }) {
+const CardDetailsContentWrapper = styled.div`
+  h4 {
+    font-weight: bold;
+    font-size: ${theme.fontSizes.md};
+    margin: 10px 0;
+  }
+  p {
+    margin: 0;
+    margin-left: 8px;
+  }
+`;
+
+function CardDetailsModalContent({ card }: { card: Card }) {
   const {
     config: { phoneticsPreference },
   } = useUserStateContext();
   return (
-    <div>
-      {showPhonetics(phoneticsPreference) && (
-        <>
-          <h4>Phonetics</h4>
-          <p>{getPhonetics(card, phoneticsPreference)}</p>
-        </>
-      )}
+    <CardDetailsContentWrapper>
+      <h4>Cherokee</h4>
+      <AlignedCherokee
+        syllabary={card.syllabary}
+        phonetics={getPhonetics(card, phoneticsPreference)}
+        fontSize={theme.fontSizes.sm}
+      />
       {card.alternate_syllabary.length > 0 && (
         <>
           <h4>Alternate spellings</h4>
@@ -111,38 +126,42 @@ function CardAudioModalContent({ card }: { card: Card }) {
         </>
       )}
       <h4>English translation</h4>
-      {card.english}
+      <p>{card.english}</p>
       <hr></hr>
-      <StyledTable>
-        <thead>
-          <tr>
-            <th>Cherokee audio</th>
-            <th>
-              <VisuallyHidden>Button to flag an issue with term</VisuallyHidden>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {card.cherokee_audio.map((src, idx) => (
-            <AudioRow src={src} card={card} key={idx} />
-          ))}
-        </tbody>
-      </StyledTable>
-    </div>
+
+      <h4>Cherokee audio</h4>
+      <AudioList>
+        {card.cherokee_audio.map((src, idx) => (
+          <AudioRow src={src} card={card} key={idx} />
+        ))}
+      </AudioList>
+    </CardDetailsContentWrapper>
   );
 }
 
+const AudioList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  li {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    audio {
+      flex: 1;
+    }
+  }
+`;
+
 function AudioRow({ src, card }: { src: string; card: Card }) {
   return (
-    <>
-      <tr>
-        <td>
-          <audio src={src} controls style={{ width: "100%" }} />
-        </td>
-        <td>
-          <FlagIssueButton problematicAudio={src} card={card} />
-        </td>
-      </tr>
-    </>
+    <li>
+      <audio src={src} controls style={{ width: "100%" }} />
+      <FlagIssueButton
+        problematicAudio={src}
+        card={card}
+        style={{ margin: 0 }}
+      />
+    </li>
   );
 }

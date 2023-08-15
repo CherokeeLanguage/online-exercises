@@ -42,7 +42,7 @@ export function FlagIssueModal({
   }
   return (
     <Modal title={"Flag issue"} close={close}>
-      <div style={{ minWidth: 400 }}>
+      <div style={{ minWidth: "calc(min(400px, 100%))" }}>
         <h4>Term information</h4>
         <ul>
           <li>
@@ -70,7 +70,13 @@ export function FlagIssueModal({
           <div style={{ display: "flex", padding: "8px" }}>
             {" "}
             <textarea
-              style={{ flex: "1" }}
+              style={{
+                flex: "1",
+                borderRadius: "20px",
+                padding: "10px",
+                outline: "none",
+                border: "1px solid black",
+              }}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               disabled={saving}
@@ -93,9 +99,11 @@ export function FlagIssueModal({
 export function FlagIssueButton({
   card,
   problematicAudio,
+  style,
 }: {
   card: Card;
   problematicAudio?: string;
+  style?: React.CSSProperties;
 }) {
   const [modalOpen, setModalOpen] = useState(false);
   return (
@@ -110,7 +118,7 @@ export function FlagIssueButton({
       <Button
         variant={"negative"}
         onClick={() => setModalOpen(true)}
-        style={{ marginTop: 24 }}
+        style={{ marginTop: 24, ...style }}
       >
         Flag issue
       </Button>
