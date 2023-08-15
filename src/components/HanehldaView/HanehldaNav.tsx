@@ -5,6 +5,7 @@ import {
   DashboardPath,
   BrowseCollectionsPath,
   FindAWordPath,
+  CommunityPath,
 } from "../../routing/paths";
 import { theme } from "../../theme";
 
@@ -113,7 +114,7 @@ export function DefaultNav() {
     <Nav right={<NavLink to="/settings">Settings</NavLink>}>
       <NavLink to={DashboardPath}>Learn</NavLink>
       <NavLink to={BrowseCollectionsPath}>Courses</NavLink>
-      <NavLink to={"/community"}>Community</NavLink>
+      <NavLink to={CommunityPath}>Community</NavLink>
       <NavLink to={FindAWordPath}>Find a word</NavLink>
     </Nav>
   );

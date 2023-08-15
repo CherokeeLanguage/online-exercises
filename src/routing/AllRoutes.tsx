@@ -16,6 +16,7 @@ import { SetupPage } from "../views/setup/SetupPage";
 import { Providers } from "../providers/Providers";
 import { LearnPage } from "../views/learn/LearnPage";
 import { SearchPage } from "../views/search/SearchPage";
+import { CommunityPage } from "../views/community/CommunityPage";
 
 /**
  * All the routes for the app.
@@ -49,12 +50,13 @@ export function AllRoutes() {
             <Route index element={<SearchPage />} />
             <Route path=":query" element={<SearchPage />} />
           </Route>
+          <Route path="community" element={<CommunityPage />}></Route>
           {/* <Route path="my-sets" element={<MySets />}></Route> */}
           {/* <Route path="terms" element={<MyTerms />} /> */}
-          {/* <Route path="lessons">
+          <Route path="lessons">
             <Route index element={<LessonArchive />} />
             <Route path=":lessonId" element={<ViewLesson />} />
-          </Route> */}
+          </Route>
           <Route path="practice">
             <Route index element={<Navigate to="/lessons/" replace />} />
             <Route path=":lessonId/*" element={<PracticeLesson />}></Route>
