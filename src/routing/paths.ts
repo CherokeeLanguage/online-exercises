@@ -7,6 +7,9 @@ export const BrowseCollectionsPath = VocabularyPath;
 export const ViewSetPath = (setId: string) => `${VocabularyPath}/set/${setId}`;
 export const ViewCollectionPath = (collectionId: string) =>
   `${VocabularyPath}/collection/${collectionId}`;
+export const FindAWordPath = "/search";
+export const FindAWordWithQueryPath = (query: string) =>
+  `${FindAWordPath}/${query}`;
 export const MySetsPath = "/my-sets";
 export const MyTermsPath = "/terms";
 export const LessonsPath = "/lessons";

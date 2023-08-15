@@ -1,7 +1,11 @@
 import { ReactNode } from "react";
 import { NavLinkProps, NavLink as RouterNavLink } from "react-router-dom";
 import styled from "styled-components";
-import { DashboardPath, BrowseCollectionsPath } from "../../routing/paths";
+import {
+  DashboardPath,
+  BrowseCollectionsPath,
+  FindAWordPath,
+} from "../../routing/paths";
 import { theme } from "../../theme";
 
 const StyledNav = styled.nav`
@@ -38,9 +42,10 @@ const StyledNavLink = styled.a`
   margin: 4px 0;
   text-decoration: none;
   font-weight: normal;
+  font-weight: bold;
   &.active {
     color: ${theme.hanehldaColors.DARK_YELLOW};
-    font-weight: bold;
+    text-decoration: underline;
   }
 `;
 
@@ -109,7 +114,7 @@ export function DefaultNav() {
       <NavLink to={DashboardPath}>Learn</NavLink>
       <NavLink to={BrowseCollectionsPath}>Courses</NavLink>
       <NavLink to={"/community"}>Community</NavLink>
-      <NavLink to={"/find-a-word"}>Find a word</NavLink>
+      <NavLink to={FindAWordPath}>Find a word</NavLink>
     </Nav>
   );
 }
