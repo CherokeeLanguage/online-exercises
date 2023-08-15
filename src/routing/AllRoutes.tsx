@@ -4,7 +4,7 @@ import { LessonArchive } from "../views/lessons/LessonArchive";
 import { ViewLesson } from "../views/lessons/ViewLesson";
 import { PracticeLesson } from "../views/practice/PracticeLesson";
 import { MyTerms } from "../views/terms/MyTerms";
-import { BrowseCollections } from "../views/vocabulary/BrowseCollections";
+import { CoursesPage } from "../views/vocabulary/CoursesPage";
 import { MySets } from "../views/vocabulary/MySets";
 import { ViewCollection } from "../views/vocabulary/ViewCollection";
 import { ViewSet } from "../views/vocabulary/ViewSet";
@@ -37,7 +37,7 @@ export function AllRoutes() {
         <Route path="/" element={<App />}>
           <Route path="/" element={<LearnPage />} />
           <Route path="vocabulary">
-            <Route index element={<BrowseCollections />} />
+            <Route index element={<CoursesPage />} />
             <Route path="set/:setId" element={<ViewSet />} />
             <Route
               path="collection/:collectionId"

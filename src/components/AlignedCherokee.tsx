@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { alignSyllabaryAndPhonetics } from "../utils/phonetics";
 import { theme } from "../theme";
 
-const StyledAlignedCherokee = styled.div`
-  font-size: ${theme.fontSizes.md};
+const StyledAlignedCherokee = styled.div<{ fontSize: string }>`
+  font-size: ${(p) => p.fontSize};
   mark {
     background: none;
     color: red;
@@ -15,9 +15,11 @@ const StyledAlignedCherokee = styled.div`
 export function AlignedCherokee({
   syllabary,
   phonetics,
+  fontSize = theme.fontSizes.md,
 }: {
   syllabary: string;
   phonetics: string | undefined;
+  fontSize?: string;
 }): ReactElement {
   const [alignedSyllabaryWords, alignedPhoneticWords] = useMemo(
     () =>
@@ -31,7 +33,7 @@ export function AlignedCherokee({
     null,
   ]);
   return (
-    <StyledAlignedCherokee>
+    <StyledAlignedCherokee fontSize={fontSize}>
       <div style={{ fontSize: "1.5em" }}>
         <AlignedTextRow
           words={alignedSyllabaryWords}

@@ -23,8 +23,8 @@ const StyledModal = styled.div`
   /* min-height: min(80vh, 300px); */
   max-height: 80vh;
   background: ${theme.colors.WHITE};
-  border-radius: 8px;
-  padding: 8px;
+  border-radius: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   border: 1px solid ${theme.colors.MED_GRAY};
@@ -57,23 +57,28 @@ export function Modal({
   children?: ReactNode;
   flexContent?: boolean;
 }) {
-  
-    return createPortal(
-      <>
-        <ModalBackground onClick={() => close?.()}></ModalBackground>
-        <StyledModal>
+  return createPortal(
+    <>
+      <ModalBackground onClick={() => close?.()}></ModalBackground>
+      <StyledModal>
         <div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <h3 style={{ flex: 1, margin: 0 }}>{title}</h3>
-              {close && <Button style={{ flex: 0 }} onClick={() => close()}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <h3 style={{ flex: 1, margin: 0 }}>{title}</h3>
+            {close && (
+              <Button
+                style={{ flex: 0 }}
+                onClick={() => close()}
+                variant="negative"
+              >
                 Close
-              </Button>}
-            </div>
-            <hr />
+              </Button>
+            )}
           </div>
-          <ModalContent flex={flexContent}>{children}</ModalContent>
-        </StyledModal>
-      </>,
-      modalContainer!
-    );
+          <hr />
+        </div>
+        <ModalContent flex={flexContent}>{children}</ModalContent>
+      </StyledModal>
+    </>,
+    modalContainer!
+  );
 }

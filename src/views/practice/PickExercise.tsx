@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { ButtonLink } from "../../components/Button";
-import { SectionHeading } from "../../components/SectionHeading";
 import { useLesson } from "../../providers/LessonProvider";
 import { useAnalyticsPageName } from "../../firebase/hooks";
 import { devices, theme } from "../../theme";
