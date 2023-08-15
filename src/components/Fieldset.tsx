@@ -7,5 +7,6 @@ export const Fieldset = styled.fieldset`
   min-width: 0;
   legend {
     display: table;
+    width: 100%;
   }
 `;

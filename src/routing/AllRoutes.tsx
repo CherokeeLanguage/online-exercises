@@ -1,14 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { App } from "../App";
-import { LessonArchive } from "../views/lessons/LessonArchive";
+import { LessonHistoryPage } from "../views/lessons/LessonHistoryPage";
 import { ViewLesson } from "../views/lessons/ViewLesson";
 import { PracticeLesson } from "../views/practice/PracticeLesson";
-import { MyTerms } from "../views/terms/MyTerms";
 import { CoursesPage } from "../views/vocabulary/CoursesPage";
-import { MySets } from "../views/vocabulary/MySets";
 import { ViewCollection } from "../views/vocabulary/ViewCollection";
 import { ViewSet } from "../views/vocabulary/ViewSet";
-import { Settings } from "../views/settings/Settings";
+import { SettingsPage } from "../views/settings/SettingsPage";
 import { SignInPage } from "../views/signin/SignInPage";
 import { CreateAccountPage } from "../views/signin/CreateAccountPage";
 import { ForgotPasswordPage } from "../views/signin/ForgotPasswordPage";
@@ -54,14 +52,14 @@ export function AllRoutes() {
           {/* <Route path="my-sets" element={<MySets />}></Route> */}
           {/* <Route path="terms" element={<MyTerms />} /> */}
           <Route path="lessons">
-            <Route index element={<LessonArchive />} />
+            <Route index element={<LessonHistoryPage />} />
             <Route path=":lessonId" element={<ViewLesson />} />
           </Route>
           <Route path="practice">
             <Route index element={<Navigate to="/lessons/" replace />} />
             <Route path=":lessonId/*" element={<PracticeLesson />}></Route>
           </Route>
-          <Route path="settings" element={<Settings />} />
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
       </Route>
     </Routes>
