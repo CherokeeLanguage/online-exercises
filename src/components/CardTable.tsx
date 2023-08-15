@@ -147,6 +147,7 @@ const AudioList = styled.ul`
     display: flex;
     gap: 4px;
     align-items: center;
+    padding: 5px 0;
     audio {
       flex: 1;
     }
