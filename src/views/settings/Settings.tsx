@@ -11,6 +11,7 @@ import {
 } from "../../state/reducers/phoneticsPreference";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { UserState } from "../../state/useUserState";
+import { useAuth } from "../../firebase/AuthProvider";
 
 interface ExportedLessonData {
   lessonId: string;
@@ -22,6 +23,7 @@ export function Settings() {
   const {
     config: { userEmail },
   } = useUserStateContext();
+  const { user } = useAuth();
   useAnalyticsPageName("Settings");
   return (
     <div>
@@ -30,6 +32,9 @@ export function Settings() {
       <SectionHeading>User identity</SectionHeading>
       <p>
         We have your email on file as: <code>{userEmail}</code>
+      </p>
+      <p>
+        Your user id is: <code>{user.uid}</code>
       </p>
       <p>
         <em>
