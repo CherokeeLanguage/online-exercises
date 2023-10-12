@@ -62,6 +62,12 @@ export type HandleSetChangesAction = {
   type: "HANDLE_SET_CHANGES";
 };
 
+export type SetWhereFound = {
+  type: "WHERE_FOUND";
+  whereFound: string;
+  
+}
+
 // FIXME: I think 'preferences' could get moved into a separate part of the codebase so this doesn't keep getting longer
 export type SetPhoneticsPreferenceAction = {
   type: "SET_PHONETICS_PREFERENCE";
@@ -81,4 +87,5 @@ export type UserStateAction =
   | LessonsAction
   | HandleSetChangesAction
   | SetPhoneticsPreferenceAction
-  | SetUserEmailAction;
+  | SetUserEmailAction
+  | SetWhereFound;

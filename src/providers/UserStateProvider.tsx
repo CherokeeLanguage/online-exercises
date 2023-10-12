@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from "react";
 import { useLocalStorage } from "react-use";
-import { GroupRegistrationModal } from "../components/GroupRegistrationModal";
+import { GettingStartedModal } from "../components/GettingStartedModal";
 import { LoadingPage } from "../components/Loader";
 import { useAuth } from "../firebase/AuthProvider";
 import {
@@ -140,12 +140,13 @@ function WrappedUserStateProvider({
   const { state, interactors, dispatch } = useUserState({
     storedUserState,
     initializationProps: {
-      leitnerBoxes: {
-        numBoxes: 6,
+    leitnerBoxes: {
+      numBoxes: 6,
       },
     },
   });
 
+  var userNeedsSetup: boolean = (state.config.userEmail === null || state.config.groupId === null || state.config.whereFound === null)
   // sync segments of state independently
   useEffect(() => {
     setConfig(state.config);
@@ -157,9 +158,7 @@ function WrappedUserStateProvider({
   return (
     <userStateContext.Provider value={{ ...state, ...interactors, dispatch }}>
       {children}
-      {(state.config.userEmail === null || state.config.groupId === null) && (
-        <GroupRegistrationModal />
-      )}
+      {(userNeedsSetup) && (<GettingStartedModal />)}
     </userStateContext.Provider>
   );
 }
