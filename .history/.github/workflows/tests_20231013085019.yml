@@ -1,0 +1,30 @@
+name: client-side
+
+on: 
+  push: 
+    branches: [ main ]
+  pull_request: 
+    branches: [ main ]  
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix: 
+        node-version: []
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start application
+        run: npm start
+
+      - name: Run tests
+        run: npm test
+
+
