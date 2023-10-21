@@ -1,6 +1,6 @@
 {
-  "short_name": "Cherokee Language Exercises",
-  "name": "Cherokee Language Exercises",
+  "short_name": "ᎭᏁᎵᏓ",
+  "name": "ᎭᏁᎵᏓ! Hanehlda: Learn Cherokee",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#98342E",
-  "background_color": "#F5EBD5"
+  "theme_color": "#f7c85d",
+  "background_color": "#98342e"
 }
