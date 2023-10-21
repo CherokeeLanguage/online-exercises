@@ -16,6 +16,13 @@ export function CommunityPage() {
     <HanehldaView navControls={<DefaultNav />} collapseNav>
       <ContentWrapper>
         <p>
+          <strong>
+            <em>This area is under construction.</em> If you'd like to join one
+            of these groups, or want to have your group listed here, please
+            contact <code>charliemcvicker@protonmail.com</code>
+          </strong>
+        </p>
+        <p>
           Finding community with other language learners is an incredibly
           important part of learning Cherokee. Below are some study groups that
           welcome new members.
