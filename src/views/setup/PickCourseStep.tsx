@@ -5,7 +5,11 @@ import {
   useContext,
   useState,
 } from "react";
-import { collections, VocabSet } from "../../data/vocabSets";
+import {
+  CHEROKEE_LANGUAGE_LESSONS_COLLLECTION,
+  collections,
+  VocabSet,
+} from "../../data/vocabSets";
 import { Step, wizardContext } from "./SetupWizard";
 import { Form } from "../signin/common";
 import { Fieldset } from "../../components/Fieldset";
@@ -89,29 +93,35 @@ function PickCourse(): ReactElement {
         <Fieldset>
           <legend>Select your first course below</legend>
           <CourseList>
-            {Object.values(collections).map((collection, idx) => (
-              <CourseLabel
-                htmlFor={collection.id}
-                key={idx}
-                checked={collectionId == collection.id}
-              >
-                <VisuallyHidden>
-                  <input
-                    name={"first-collection"}
-                    type="radio"
-                    value={collection.id}
-                    id={collection.id}
-                    onChange={onRadioChanged}
-                    checked={collectionId == collection.id}
-                    required
-                  />
-                </VisuallyHidden>
-                <span>
-                  {collection.title}{" "}
-                  <em>({totalTerms(collection.sets)} terms)</em>
-                </span>
-              </CourseLabel>
-            ))}
+            {Object.values(collections)
+              .filter(
+                (collection) =>
+                  // Let's not sign people up for this
+                  collection.id !== CHEROKEE_LANGUAGE_LESSONS_COLLLECTION
+              )
+              .map((collection, idx) => (
+                <CourseLabel
+                  htmlFor={collection.id}
+                  key={idx}
+                  checked={collectionId === collection.id}
+                >
+                  <VisuallyHidden>
+                    <input
+                      name={"first-collection"}
+                      type="radio"
+                      value={collection.id}
+                      id={collection.id}
+                      onChange={onRadioChanged}
+                      checked={collectionId === collection.id}
+                      required
+                    />
+                  </VisuallyHidden>
+                  <span>
+                    {collection.title}{" "}
+                    <em>({totalTerms(collection.sets)} terms)</em>
+                  </span>
+                </CourseLabel>
+              ))}
           </CourseList>
         </Fieldset>
         <Hr />

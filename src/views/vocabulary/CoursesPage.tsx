@@ -1,7 +1,11 @@
 import React, { ReactElement, useMemo } from "react";
 import { CollectionDetails } from "../../components/CollectionDetails";
 import { SectionHeading } from "../../components/SectionHeading";
-import { Collection, collections } from "../../data/vocabSets";
+import {
+  CHEROKEE_LANGUAGE_LESSONS_COLLLECTION,
+  Collection,
+  collections,
+} from "../../data/vocabSets";
 import { useAnalyticsPageName } from "../../firebase/hooks";
 import { useUserStateContext } from "../../providers/UserStateProvider";
 import { HanehldaView } from "../../components/HanehldaView";
@@ -59,12 +63,21 @@ export function CoursesPage(): ReactElement {
               unstartedCollections,
             };
           // none means unstarted
-          else
+          else {
+            // hide CLL
+            if (collection.id === CHEROKEE_LANGUAGE_LESSONS_COLLLECTION) {
+              return {
+                completedCollections,
+                inProgressCollections,
+                unstartedCollections,
+              };
+            }
             return {
               completedCollections,
               inProgressCollections,
               unstartedCollections: [...unstartedCollections, collection],
             };
+          }
         },
         {
           completedCollections: [],
