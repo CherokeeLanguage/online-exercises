@@ -15,6 +15,8 @@ import styled from "styled-components";
 
 const ContentWrapper = styled.div`
   padding: 10px;
+  max-width: 800px;
+  margin: 0 auto;
 `;
 
 export function CoursesPage(): ReactElement {

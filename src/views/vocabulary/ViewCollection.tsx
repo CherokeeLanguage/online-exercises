@@ -41,6 +41,11 @@ const CourseContents = styled.div`
   }
 `;
 
+const ExtraCollectionDetails = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
 export function ViewCollectionPage({
   collectionId,
 }: {
@@ -68,10 +73,10 @@ export function ViewCollectionPage({
             <h2>{collection.title}</h2>
           </StyledCollectionHeader>
           {showMore && (
-            <>
+            <ExtraCollectionDetails>
               <p>{collection.credits.description}</p>
               <CollectionCredits collection={collection} />
-            </>
+            </ExtraCollectionDetails>
           )}
           <ShowMoreButton onClick={() => setShowMore(!showMore)}>
             {showMore ? "Show less" : "Show more"}
