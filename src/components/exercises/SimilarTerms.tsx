@@ -4,7 +4,7 @@ import { ListeningQuestion } from "../challenges/ListeningQuestion";
 
 export function SimilarTerms(props: ExerciseComponentProps): ReactElement {
   return (
-    <div>
+    <div style={{ maxWidth: "800px", margin: "auto" }}>
       <ListeningQuestion {...props} />
     </div>
   );
