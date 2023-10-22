@@ -5,7 +5,7 @@ import { Form } from "../signin/common";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { FindAWordWithQueryPath } from "../../routing/paths";
-import { cards } from "../../data/cards";
+import { searchableCards } from "../../data/cards";
 import { getPhonetics } from "../../utils/phonetics";
 import { PhoneticsPreference } from "../../state/reducers/phoneticsPreference";
 import { CardTable } from "../../components/CardTable";
@@ -19,7 +19,7 @@ const ContentWapper = styled.div`
 
 function searchCards(_query: string) {
   const query = _query.toLocaleLowerCase();
-  return cards.filter(
+  return searchableCards.filter(
     (c) =>
       getPhonetics(c, PhoneticsPreference.Simple)
         .toLocaleLowerCase()

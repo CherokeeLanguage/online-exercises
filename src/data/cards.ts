@@ -89,6 +89,12 @@ export const cards: Card[] = mergeSets(
   jwLivingPhrases.map(cleanCard)
 );
 
+export const searchableCards = mergeSets(
+  // not including cll
+  sswCards.map(cleanCard),
+  jwLivingPhrases.map(cleanCard)
+);
+
 export function cherokeeToKey(cherokee: string) {
   return cherokee
     .trim()
