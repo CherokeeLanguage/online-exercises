@@ -69,6 +69,9 @@ const PreferencesForm = styled.form`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 8px;
+  max-width: 800px;
+  padding: 8px;
+  margin: 0 auto;
 `;
 
 function Preferences() {
