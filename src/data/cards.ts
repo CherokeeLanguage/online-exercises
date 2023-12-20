@@ -1,5 +1,6 @@
 import cllCards from "./collections/cll1-cards.json";
 import sswCards from "./collections/ssw-cards.json";
+import walcCards from "./collections/walc-1-cards.json";
 import jwLivingPhrases from "./collections/jw-living-phrases-cards.json";
 
 export enum PhoneticOrthography {
@@ -83,16 +84,16 @@ function cleanCard({ phoneticOrthography, ...card }: DiskCard): Card {
   });
 }
 
-export const cards: Card[] = mergeSets(
-  cllCards.map(cleanCard),
-  sswCards.map(cleanCard),
-  jwLivingPhrases.map(cleanCard)
-);
-
 export const searchableCards = mergeSets(
   // not including cll
   sswCards.map(cleanCard),
+  walcCards.map(cleanCard),
   jwLivingPhrases.map(cleanCard)
+);
+
+export const cards: Card[] = mergeSets(
+  cllCards.map(cleanCard),
+  searchableCards
 );
 
 export function cherokeeToKey(cherokee: string) {
