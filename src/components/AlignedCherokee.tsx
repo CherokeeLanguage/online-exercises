@@ -1,6 +1,6 @@
 import { ReactElement, useMemo, useState } from "react";
 import styled from "styled-components";
-import { alignSyllabaryAndPhonetics } from "../utils/phonetics";
+import { tryAlignSyllabaryAndPhonetics } from "../utils/phonetics";
 import { theme } from "../theme";
 
 const StyledAlignedCherokee = styled.div<{ fontSize: string }>`
@@ -24,7 +24,7 @@ export function AlignedCherokee({
   const [alignedSyllabaryWords, alignedPhoneticWords] = useMemo(
     () =>
       phonetics
-        ? alignSyllabaryAndPhonetics(syllabary, phonetics)
+        ? tryAlignSyllabaryAndPhonetics(syllabary, phonetics)
         : [syllabary.split(" ").map((word) => word.split("")), []],
     [syllabary, phonetics]
   );

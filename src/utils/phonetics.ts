@@ -423,3 +423,15 @@ export function alignSyllabaryAndPhonetics(
     [[], []]
   );
 }
+
+export function tryAlignSyllabaryAndPhonetics(
+  syllabary: string,
+  phonetics: string,
+  suppressErrors = true
+): [string[][], string[][]] {
+  try {
+    return alignSyllabaryAndPhonetics(syllabary, phonetics, suppressErrors);
+  } catch (e) {
+    return [[[syllabary]], [[phonetics]]];
+  }
+}
