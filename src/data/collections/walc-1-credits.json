@@ -1,0 +1,22 @@
+{
+  "credits": [
+    { "role": "Copyright holder", "name": "Cherokee Nation" },
+    {
+      "role": "All contributors",
+      "name": "Durbin Feeling, Patrick Rochford, Anna Sixkiller, David Crawler, John Ross, Dennis Sixkiller, Ed Fields, Edna Jones, Lula Elk, Lawrence Panther, Jeff Edwards, Zachary Barnes, Wade Blevins, and Roy Boney, Jr."
+    }
+  ],
+  "description": "This collection contains terms from the \"We are Learning Cherokee\" textbook produced by Cherokee Nation. This is a textbook aimed at beginning students, and covers topics such as greetings, surivial phrases, and several thematic units.",
+  "externalResources": [
+    {
+      "name": "Cherokee Nation Language Department Homepage",
+      "href": "https://language.cherokee.org/",
+      "notes": "Has many great free resources, including posters and other print outs."
+    },
+    {
+      "name": "Book download with audio from Cherokee Nation",
+      "href": "https://language.cherokee.org/media/nn0puwfc/we-are-learning-cherokee.zip",
+      "notes": "Download your copy of the We are Learning Cherokee textbook to follow along. The book explains the different terms and provides important context for learning"
+    }
+  ]
+}

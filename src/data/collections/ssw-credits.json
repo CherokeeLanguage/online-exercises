@@ -1,5 +1,8 @@
 {
-  "credits": [{ "role": "Author", "name": "Cherokee Nation" }],
+  "credits": [
+    { "role": "Copyright holder", "name": "Cherokee Nation" },
+    { "name": "Durbin Feeling", "role": "Author/Speaker" }
+  ],
   "description": "This collection contains terms lifted from a textbook aimed at teaching first-language speakers to read and write the syllabary.",
   "externalResources": [
     {

@@ -3,6 +3,8 @@ import CLL1 from "./collections/cll1.json";
 import CLL1Credits from "./collections/cll1-credits.json";
 import JWLivingPhrases from "./collections/jw-living-phrases.json";
 import JWLivingPhrasesCredits from "./collections/jw-living-phrases-credits.json";
+import WALC from "./collections/walc-1.json";
+import WALCCredits from "./collections/walc-1-credits.json";
 import SSW from "./collections/ssw.json";
 import SSWCredits from "./collections/ssw-credits.json";
 
@@ -95,10 +97,12 @@ export interface VocabSet {
 export const CHEROKEE_LANGUAGE_LESSONS_COLLLECTION = CLL1.id;
 export const SEE_SAY_WRITE_COLLECTION = SSW.id;
 export const JW_LIVING_PHRASES = JWLivingPhrases.id;
+export const WALC_COLLECTION = WALC.id;
 
 // additional sets can be added here
 export const collections: Record<string, Collection> = {
   [SEE_SAY_WRITE_COLLECTION]: addCredits(cleanCollection(SSW), SSWCredits),
+  [WALC_COLLECTION]: addCredits(cleanCollection(WALC), WALCCredits),
   [JW_LIVING_PHRASES]: addCredits(
     cleanCollection(JWLivingPhrases),
     JWLivingPhrasesCredits
