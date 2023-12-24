@@ -3,6 +3,11 @@ import sswCards from "./collections/ssw-cards.json";
 import walcCards from "./collections/walc-1-cards.json";
 import jwLivingPhrases from "./collections/jw-living-phrases-cards.json";
 
+/**
+ * Represents the phonetic system used to write the phonetics for cards.
+ *
+ * Note: This enum is shared with the Python codebase. Please sync all changes.
+ */
 export enum PhoneticOrthography {
   MCO = "MCO",
   WEBSTER = "WEBSTER",
@@ -44,6 +49,8 @@ export interface Card {
   cherokee_audio: string[];
   english_audio: string[];
   phoneticOrthography: PhoneticOrthography;
+  /** If tones on a card are not reliable, hide them by setting this */
+  forcePlainPhonetics?: boolean;
 }
 
 export function prefixAudio(path: string) {
@@ -84,10 +91,17 @@ function cleanCard({ phoneticOrthography, ...card }: DiskCard): Card {
   });
 }
 
+/**
+ * Mark all cards as having non-proofread tone that shouldn't be shown to users.
+ */
+function forcePlainPhonetics(card: Card) {
+  return { ...card, forcePlainPhonetics: true };
+}
+
 export const searchableCards = mergeSets(
   // not including cll
   sswCards.map(cleanCard),
-  walcCards.map(cleanCard),
+  walcCards.map(cleanCard).map(forcePlainPhonetics),
   jwLivingPhrases.map(cleanCard)
 );
 

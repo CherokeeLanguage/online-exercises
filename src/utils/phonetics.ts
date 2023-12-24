@@ -1,6 +1,17 @@
 import { Card, PhoneticOrthography } from "../data/cards";
 import { PhoneticsPreference } from "../state/reducers/phoneticsPreference";
 
+/**
+ * Block tone from being read from cards
+ */
+function forcePlainPhonetics(
+  phoneticsPreference: PhoneticsPreference | null
+): PhoneticsPreference | null {
+  if (phoneticsPreference === PhoneticsPreference.Detailed)
+    return PhoneticsPreference.Simple;
+  else return phoneticsPreference;
+}
+
 export function getPhonetics(
   card: Card,
   phoneticsPreference: PhoneticsPreference | null
@@ -13,6 +24,10 @@ function getRawPhonetics(
   card: Card,
   phoneticsPreference: PhoneticsPreference | null
 ): string {
+  phoneticsPreference = card.forcePlainPhonetics
+    ? forcePlainPhonetics(phoneticsPreference)
+    : phoneticsPreference;
+
   switch (phoneticsPreference) {
     case PhoneticsPreference.Detailed:
       return detailedPhonetics(card);
