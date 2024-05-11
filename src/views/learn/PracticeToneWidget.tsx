@@ -5,6 +5,8 @@ import { useUserStateContext } from "../../providers/UserStateProvider";
 import { JW_LIVING_PHRASES, collections } from "../../data/vocabSets";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
+import { PracticeLessonWithExercisePath } from "../../routing/paths";
+import { FillInTheToneInfo } from "../../components/exercises";
 
 export function PracticeToneWidget(): ReactElement {
   const { createPracticeLesson } = useUserStateContext();
@@ -16,8 +18,13 @@ export function PracticeToneWidget(): ReactElement {
       collections[JW_LIVING_PHRASES].sets.map((s) => s.id),
       true
     );
-    // TODO: make this a function in routes
-    navigate(`/practice/${id}/fill-in-the-tone`);
+
+    navigate(
+      PracticeLessonWithExercisePath({
+        lessonId: id,
+        exercisePath: FillInTheToneInfo.path,
+      })
+    );
   }
   return (
     <Widget maxWidth={300} background={theme.hanehldaColors.DARK_GRAY}>

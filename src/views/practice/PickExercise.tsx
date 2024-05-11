@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useLesson } from "../../providers/LessonProvider";
 import { useAnalyticsPageName } from "../../firebase/hooks";
 import { devices, theme } from "../../theme";
-import { exercises } from "./PracticeLesson";
+import { exercises } from "../../components/exercises";
 import { Hr } from "../setup/common";
 import { Link } from "react-router-dom";
 
