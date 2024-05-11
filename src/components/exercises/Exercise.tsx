@@ -103,6 +103,8 @@ function ExerciseComponentWrapper({ Component, name }: ExerciseProps) {
 
 const StyledPracticeLessonContentsMemo = styled.p`
   text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
   margin-top: 16px;
 `;
 
