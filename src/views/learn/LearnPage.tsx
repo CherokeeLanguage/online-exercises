@@ -5,6 +5,7 @@ import { ContentWrapper } from "./styled";
 import { PracticeToneWidget } from "./PracticeToneWidget";
 import { DefaultNav } from "../../components/HanehldaView/HanehldaNav";
 import { StyledAnchor } from "../../components/StyledLink";
+import { PronounListeningWidget } from "./PronounListeningWidget";
 
 export function LearnPage(): ReactElement {
   return (
@@ -12,6 +13,7 @@ export function LearnPage(): ReactElement {
       <ContentWrapper>
         <StudyVocabWidget />
         <PracticeToneWidget />
+        <PronounListeningWidget />
 
         <p>
           If you have any questions about the site, please read over our{" "}
