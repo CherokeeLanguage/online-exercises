@@ -29,10 +29,10 @@ const StyledNavigation = styled.div`
 const NavigationButton = styled.button`
   color: black;
   outline: none;
-  border: 1px solid ${theme.hanehldaColors.BORDER_GRAY};
-
   background-color: ${theme.colors.WHITE};
-  border-radius: 15px;
+  border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   padding: 10px;
   display: flex;
   align-self: flex-end;

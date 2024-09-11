@@ -11,10 +11,11 @@ export const Form = styled.form<{ standalone?: true }>`
   input, select {
     margin: 6px 0;
     box-sizing: border-box;
-    border-radius: ${theme.borderRadii.md};
     outline: none;
     background-color: ${theme.colors.WHITE};
-    border: 1px solid ${theme.hanehldaColors.BORDER_GRAY};
+    border-radius: ${theme.borderRadii.md};
+    border: "none";
+    box-shadow: ${theme.boxShadow.light};
     width: 100%;
     padding: 16px;
     font-size: ${theme.fontSizes.md};
@@ -26,16 +27,18 @@ export const Form = styled.form<{ standalone?: true }>`
 `;
 
 export const FormSubmitButton = styled.button`
-  text-transform: uppercase;
 
   box-sizing: border-box;
 
-  background: #ffea9f;
-  border: 1px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
+  background-color: ${theme.hanehldaColors.YELLOW_BUTTON};
+  &:hover {
+    background-color: ${theme.hanehldaColors.YELLOW_HIGHLIGHT};
+  };
+  border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
 
-  font-family: "Inika";
+  font-family: 'Noto Sans Cherokee', 'Noto Sans', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 40px;

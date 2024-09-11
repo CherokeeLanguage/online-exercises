@@ -20,7 +20,7 @@ export function PracticeToneWidget(): ReactElement {
     navigate(`/practice/${id}/fill-in-the-tone`);
   }
   return (
-    <Widget maxWidth={300} background={theme.hanehldaColors.DARK_GRAY}>
+    <Widget maxWidth={300} background={theme.hanehldaColors.DARK_BLUE}>
       <WidgetTitle>Practice your tone</WidgetTitle>
       <WidgetButton onClick={startToneMinigame}>
         <strong>Begin practice session</strong>

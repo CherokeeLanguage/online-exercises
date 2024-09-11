@@ -110,7 +110,7 @@ function SetCard({
 }) {
   return (
     <GridCard
-      color={theme.hanehldaColors.TEXT_CREAM}
+      color={theme.hanehldaColors.LIGHT_YELLOW}
       title={set.title}
       link={ViewSetPath(set.id)}
     >

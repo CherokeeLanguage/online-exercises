@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 const ExercisesWrapper = styled.div`
   display: grid;
   gap: 16px;
+  margin: 0 auto;
+  max-width: 1480px;
   grid-template-columns: 1fr;
   @media ${devices.laptop} {
     grid-template-columns: 1fr 1fr;
@@ -43,10 +45,12 @@ export function PickExercise() {
 
 const StartExerciseButton = styled.a`
   display: inline-block;
-  border-radius: 8px;
-  border: 1px solid black;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: ${theme.colors.WHITE};
+  border-radius: ${theme.borderRadii.sm};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
+  background-color: ${theme.hanehldaColors.WHITE_BUTTON};&:hover {
+    background-color: ${theme.hanehldaColors.WHITE_HIGHLIGHT};
+  }
   color: ${theme.hanehldaColors.DARK_GRAY};
   text-decoration: none;
   font-size: 1.5em;
@@ -56,11 +60,12 @@ const StartExerciseButton = styled.a`
 `;
 
 const StyledExerciseCard = styled.div`
-  border: 1px solid black;
   background-color: ${theme.hanehldaColors.DARK_BLUE};
-  margin: 0 8px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+  max-width: 700px;
+  border-radius: ${theme.borderRadii.sm};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   padding: 16px;
   flex: 1;
   min-width: 250px;

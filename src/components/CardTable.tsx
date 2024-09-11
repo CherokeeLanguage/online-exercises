@@ -87,7 +87,7 @@ function CardRow({
 
 function CardDetailsModal({ card, close }: { card: Card; close: () => void }) {
   return (
-    <Modal close={close} title={`Card details`}>
+    <Modal close={close} title={`Word details`}>
       <CardDetailsModalContent card={card} />
     </Modal>
   );
@@ -144,7 +144,6 @@ const AudioList = styled.ul`
   padding: 0;
   margin: 0;
   li {
-    display: flex;
     gap: 4px;
     align-items: center;
     padding: 5px 0;

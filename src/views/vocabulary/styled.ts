@@ -9,16 +9,20 @@ export const StyledCourseDescription = styled.div`
   color: white;
   background-color: ${theme.hanehldaColors.DARK_BLUE};
   padding: 20px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: ${theme.boxShadow.light};
   h2 {
     margin-top: 0;
   }
 `;
 export const ShowMoreButton = styled.button`
   display: block;
-  background-color: ${theme.colors.WHITE};
-  border: none;
+  background-color: ${theme.hanehldaColors.WHITE_BUTTON};
+  &:hover {
+    background-color: ${theme.hanehldaColors.WHITE_HIGHLIGHT};
+  }
   border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   padding: 10px;
   font-weight: bold;
   color: ${theme.hanehldaColors.DARK_GRAY};

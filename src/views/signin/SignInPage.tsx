@@ -43,9 +43,10 @@ export function SignInPage(): ReactElement {
 const StyledSignInMethodButton = styled.button`
   box-sizing: border-box;
   border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   outline: none;
   background-color: ${theme.colors.WHITE};
-  border: 1px solid ${theme.hanehldaColors.BORDER_GRAY};
   width: 100%;
 
   display: grid;
@@ -98,7 +99,9 @@ const StyledSignInContent = styled.div`
 const ForgotPasswordButton = styled.button`
   color: ${theme.hanehldaColors.TEXT_LIGHT_GRAY};
   outline: none;
-  border: none;
+  border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: none;
   text-decoration: underline;
   background: none;
   margin: 8px;
@@ -148,7 +151,7 @@ function SignInContent(): ReactElement {
   return (
     <StyledSignInContent>
       <SignInMethodButton Icon={FcGoogle} onClick={signInWithGoogle}>
-        Sign in with Google
+        Log in with Google
       </SignInMethodButton>
       <span>or</span>
       <Form onSubmit={onSubmit}>
@@ -164,13 +167,16 @@ function SignInContent(): ReactElement {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <FormSubmitButton type="submit" style={{
+          marginTop: 7,
+        }}>Log In</FormSubmitButton>
+        
         <ForgotPasswordButton
           type="button"
           onClick={() => navigate("/signin/forgot-password")}
         >
           Forgot your password?
         </ForgotPasswordButton>
-        <FormSubmitButton type="submit">Sign in</FormSubmitButton>
       </Form>
     </StyledSignInContent>
   );
@@ -179,7 +185,7 @@ function SignInContent(): ReactElement {
 const StyledCreateAccountSection = styled.div`
   background: ${theme.hanehldaColors.LIGHT_RED};
   position: relative;
-  margin-top: 20px;
+  margin-top: 40px;
   padding: 40px;
   padding-top: 0;
   border-top: 4px solid ${theme.hanehldaColors.DARK_RED};
@@ -191,6 +197,8 @@ const StyledCreateAccountSection = styled.div`
     color: ${theme.colors.WHITE};
     font-size: 40px;
     border-radius: ${theme.borderRadii.md};
+    border: "none";
+    box-shadow: ${theme.boxShadow.light};
   }
 `;
 

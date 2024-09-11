@@ -57,7 +57,8 @@ const HintContent = styled.div`
   min-height: 100%;
   background: ${theme.colors.LIGHTEST_RED};
   border: 4px solid ${theme.colors.DARK_RED};
-  border-radius: 8px;
+  border-radius: ${theme.borderRadii.sm};
+  box-shadow: ${theme.boxShadow.light};
   padding: 8px;
 `;
 
@@ -125,10 +126,14 @@ const StyledAnswerCard = styled.button<{
   correct: boolean;
   selected: boolean;
 }>`
-  background: #fff;
-  border: 2px solid ${theme.hanehldaColors.TEXT_LIGHT_GRAY};
+  background-color: ${theme.hanehldaColors.WHITE_BUTTON};
+  &:hover {
+    background-color: ${theme.hanehldaColors.WHITE_HIGHLIGHT};
+  }
   color: ${theme.hanehldaColors.DARK_GRAY};
-  border-radius: 8px;
+  border-radius: ${theme.borderRadii.sm};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   @media screen and (${devices.laptop}) {
     padding: 24px;
   }
@@ -139,22 +144,28 @@ const StyledAnswerCard = styled.button<{
     answerState !== AnswerState.UNANSWERED &&
     (correct
       ? css`
-          border-color: ${theme.hanehldaColors.LIGHT_GREEN};
-          color: ${theme.hanehldaColors.LIGHT_GREEN};
+          background-color: ${theme.hanehldaColors.CORRECT_GREEN};
+          color: ${theme.hanehldaColors.DARK_GREEN_TEXT};
+          &:hover {
+            background-color: ${theme.hanehldaColors.CORRECT_GREEN};
+          }
         `
       : css`
           background-color: ${theme.hanehldaColors.ERROR_RED};
+          &:hover {
+            background-color: ${theme.hanehldaColors.ERROR_RED};
+          }
           border-color: ${theme.hanehldaColors.DARK_RED};
-          color: ${theme.hanehldaColors.DARK_RED};
+          color: ${theme.hanehldaColors.DARK_RED_TEXT};
         `)}
   ${({ selected }) =>
     selected &&
     css`
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      border-bottom: 4px solid rgba(0,0,0,0.5);
     `}
 
     &:disabled {
-    cursor: not-allowed;
+    cursor: default;
   }
 `;
 

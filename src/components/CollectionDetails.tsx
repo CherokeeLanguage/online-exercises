@@ -17,18 +17,23 @@ export function UpstreamCollectionFlare() {
 const StyledCollectionDetails = styled.div`
   padding: 10px;
   margin: 10px;
-  border-radius: 20px;
-  border: 1px solid black;
+  border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   background-color: ${theme.hanehldaColors.DARK_BLUE};
   color: white;
 `;
 
 const ViewDetailsLink = styled.a`
   display: block;
-  background-color: ${theme.colors.WHITE};
+  background-color: ${theme.hanehldaColors.WHITE_BUTTON};
+  &:hover {
+    background-color: ${theme.hanehldaColors.WHITE_HIGHLIGHT};
+  }
   text-decoration: none;
-  border: none;
   border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   max-width: 300px;
   box-sizing: border-box;
   color: ${theme.hanehldaColors.DARK_GRAY};

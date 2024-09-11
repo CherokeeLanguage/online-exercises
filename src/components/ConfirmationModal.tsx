@@ -1,6 +1,7 @@
 import { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
 import { Button, ButtonVariant } from "./Button";
+import { theme } from "../theme";
 import { Modal } from "./Modal";
 
 const ConfirmModalWrapper = styled.div`
@@ -15,7 +16,9 @@ const ConfirmModalContent = styled.div`
 `;
 
 const ConfirmModalActions = styled.div`
-  border-radius: 8px;
+  border-radius: ${theme.borderRadii.sm};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   flex: 0;
   justify-content: space-between;
   flex-direction: row-reverse;

@@ -22,28 +22,30 @@ export const Button = styledWithDefault(
     box-sizing: border-box;
     display: inline-block;
     text-decoration: none;
-    border: none;
     border-radius: ${theme.borderRadii.md};
+    border: "none";
+    box-shadow: ${theme.boxShadow.light};
     padding: 5px 20px;
     font-weight: bold;
     margin: 8px auto;
     font-size: ${theme.fontSizes.sm};
     cursor: pointer;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     ${({ variant }) =>
       variant === "primary" &&
       css`
-        background-color: ${theme.colors.WHITE};
+        background-color: ${theme.hanehldaColors.WHITE_BUTTON};
         color: ${theme.hanehldaColors.DARK_GRAY};
-        border: 1px solid black;
+        border-radius: ${theme.borderRadii.md};
+        border: "none";
+        box-shadow: ${theme.boxShadow.light};
         &:hover {
-          border: 1px solid black;
+          background-color: ${theme.hanehldaColors.WHITE_HIGHLIGHT};
         }
         &:disabled {
           background: ${theme.colors.MED_GRAY};
 
           &:hover {
-            border: 1px solid ${theme.colors.MED_GRAY};
+            background-color: ${theme.hanehldaColors.GRAY_HIGHLIGHT};
           }
         }
       `}
@@ -53,19 +55,23 @@ export const Button = styledWithDefault(
       css`
         background: ${theme.hanehldaColors.DARK_RED};
         color: white;
-        border: 1px solid black;
+        border-radius: ${theme.borderRadii.md};
+        border: "none";
+        box-shadow: ${theme.boxShadow.light};
         &:hover {
-          border: 1px solid black;
+          background-color: ${theme.hanehldaColors.DARK_RED_HIGHLIGHT};
         }
       `}
 
     &:disabled {
       background: ${theme.colors.MED_GRAY};
       color: ${theme.colors.TEXT_GRAY};
-      border: 1px solid ${theme.colors.MED_GRAY};
+      border-radius: ${theme.borderRadii.md};
+      border: "none";
+      box-shadow: ${theme.boxShadow.light};
       cursor: not-allowed;
       &:hover {
-        border: 1px solid ${theme.colors.MED_GRAY};
+        background-color: ${theme.hanehldaColors.GRAY_HIGHLIGHT};
       }
     }
   `,

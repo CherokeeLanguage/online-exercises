@@ -15,7 +15,7 @@ export const StyledTable = styled.table`
 
   th {
     padding: 0 8px;
-    color: ${theme.hanehldaColors.DARK_BLUE};
+    color: ${theme.hanehldaColors.DARK_BLUE_TEXT};
   }
 
   td {
@@ -37,12 +37,12 @@ export const StyledTable = styled.table`
 
   tr:nth-child(2n) {
     td {
-      background: ${theme.hanehldaColors.CREAM};
+      background: ${theme.hanehldaColors.TABLE_EVEN};
     }
   }
   tr:nth-child(2n + 1) {
     td {
-      background: ${theme.hanehldaColors.TEXT_CREAM};
+      background: ${theme.hanehldaColors.TABLE_ODD};
     }
   }
   @media screen and (${devices.tablet}) {

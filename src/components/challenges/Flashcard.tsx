@@ -15,8 +15,9 @@ import { AlignedCherokee } from "../AlignedCherokee";
 import { ExerciseComponentProps } from "../exercises/Exercise";
 
 const StyledFlashcardBody = styled.button`
-  border: none;
-  border-radius: 8px;
+  border-radius: ${theme.borderRadii.sm};
+  border: "none";
+  box-shadow: ${theme.boxShadow.thick};
   width: 100%;
   min-height: 200px;
   margin: 30px auto;
@@ -26,11 +27,9 @@ const StyledFlashcardBody = styled.button`
   outline: none;
   background: none;
   transition: box-shadow 0.1s linear;
-  box-shadow: 2px 2px 8px #6664;
   font-size: ${theme.fontSizes.lg};
   &:hover {
-    /* border: 1px solid #333; */
-    box-shadow: 2px 2px 8px #666a;
+    border: 1px solid #000;
     /* background: ${theme.colors.LIGHTER_GRAY}; */
   }
   p {

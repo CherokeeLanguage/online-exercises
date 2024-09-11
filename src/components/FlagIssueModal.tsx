@@ -8,6 +8,7 @@ import { PhoneticsPreference } from "../state/reducers/phoneticsPreference";
 import { getPhonetics } from "../utils/phonetics";
 import { Button } from "./Button";
 import { Modal } from "./Modal";
+import { StyledAnchor } from "./StyledLink";
 
 export function FlagIssueModal({
   card,
@@ -41,7 +42,7 @@ export function FlagIssueModal({
     });
   }
   return (
-    <Modal title={"Flag issue"} close={close}>
+    <Modal title={"Submit audio issue"} close={close}>
       <div style={{ minWidth: "calc(min(400px, 100%))" }}>
         <h4>Term information</h4>
         <ul>
@@ -72,10 +73,9 @@ export function FlagIssueModal({
             <textarea
               style={{
                 flex: "1",
-                borderRadius: "20px",
+                borderRadius: "7px",
                 padding: "10px",
                 outline: "none",
-                border: "1px solid black",
               }}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -115,13 +115,13 @@ export function FlagIssueButton({
           close={() => setModalOpen(false)}
         />
       )}
-      <Button
-        variant={"negative"}
+      <StyledAnchor
         onClick={() => setModalOpen(true)}
-        style={{ marginTop: 24, ...style }}
+        style={{ marginTop: 0, fontSize: "12px",
+          fontStyle:"italic", ...style }}
       >
-        Flag issue
-      </Button>
+        Submit an issue with this card
+      </StyledAnchor>
     </>
   );
 }

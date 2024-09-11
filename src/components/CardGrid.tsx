@@ -33,8 +33,9 @@ const StyledGridCard = styled.div<{ color: string; textColor: string }>`
   box-sizing: border-box;
   width: 100%;
   max-width: 300px;
-  border: 1px solid black;
-  border-radius: 20px;
+  border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   margin: 0 auto;
   padding: 10px;
   background-color: ${(p) => p.color};
@@ -45,18 +46,17 @@ const GridCardHeader = styled.a`
   display: inline-block;
   text-decoration: none;
   background-color: ${theme.colors.WHITE};
-  border: none;
   border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   padding: 5px;
   font-weight: bold;
   width: 100%;
   max-width: 250px;
   box-sizing: border-box;
   font-size: ${theme.fontSizes.md};
-  color: ${theme.hanehldaColors.DARK_BLUE};
+  color: ${theme.hanehldaColors.DARK_BLUE_TEXT};
   margin: 0 auto 20px;
-  border: 1px solid black;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export function GridCard({

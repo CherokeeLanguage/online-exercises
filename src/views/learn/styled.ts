@@ -14,9 +14,9 @@ export const Widget = styled.div<{
     typeof p.maxWidth === "number" ? `${p.maxWidth}px` : p.maxWidth};
   background-color: ${(p) => p.background};
   color: ${theme.colors.WHITE};
-  border: 1px solid black;
   border-radius: ${theme.borderRadii.md};
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   margin: 0 auto 30px;
   ${(p) =>
     p.align === "left" &&
@@ -40,9 +40,13 @@ export const WidgetTitle = styled.h2`
 
 export const WidgetButton = styled.button`
   display: block;
-  background-color: ${theme.colors.WHITE};
-  border: none;
+  background-color: ${theme.hanehldaColors.WHITE_BUTTON};
+  &:hover {
+    background-color: ${theme.hanehldaColors.WHITE_HIGHLIGHT};
+  }
   border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   padding: 10px;
   min-height: 60px;
   width: 100%;

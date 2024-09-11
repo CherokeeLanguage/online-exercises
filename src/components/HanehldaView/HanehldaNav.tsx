@@ -62,7 +62,7 @@ const NavDrawerBlackout = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: ${theme.hanehldaColors.DARK_GRAY}40;
+  background-color: rgba(0,0,0,0.35);
 `;
 
 const NavDrawerContainer = styled.div`
@@ -75,7 +75,7 @@ const NavDrawerContainer = styled.div`
   margin: 0;
   margin-left: auto;
   padding: 25px;
-  background-color: ${theme.hanehldaColors.TEXT_LIGHT_GRAY};
+  background-color: ${theme.hanehldaColors.SIDEBAR};
   height: 100%;
   display: grid;
   grid-template-rows: 1fr auto;

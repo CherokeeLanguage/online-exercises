@@ -23,14 +23,12 @@ const StyledModal = styled.div`
   /* min-height: min(80vh, 300px); */
   max-height: 80vh;
   background: ${theme.colors.WHITE};
-  border-radius: 20px;
+  border-radius: ${theme.borderRadii.md};
+  border: "none";
+  box-shadow: ${theme.boxShadow.light};
   padding: 20px;
   display: flex;
   flex-direction: column;
-  border: 1px solid ${theme.colors.MED_GRAY};
-  hr {
-    border-color: ${theme.colors.MED_GRAY};
-  }
 `;
 
 const ModalContent = styled.div<{ flex: boolean }>`

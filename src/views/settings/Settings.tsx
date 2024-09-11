@@ -23,6 +23,13 @@ interface ExportedLessonData {
   timings: string | null;
 }
 
+const ContentWrapper = styled.div`
+  box-sizing: border-box;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+`;
+
 export function Settings() {
   const {
     config: { userEmail },
@@ -31,7 +38,7 @@ export function Settings() {
   useAnalyticsPageName("Settings");
   return (
     <HanehldaView navControls={<DefaultNav />} collapseNav>
-      <div>
+      <ContentWrapper>
         <Preferences />
         <br />
         <SectionHeading>User identity</SectionHeading>
@@ -60,7 +67,7 @@ export function Settings() {
           </em>
         </p>
         <ImportExportDataConsole />
-      </div>
+      </ContentWrapper>
     </HanehldaView>
   );
 }
@@ -98,6 +105,7 @@ function Preferences() {
           id={phoneticsPreferenceId}
           value={phoneticsPreference ?? undefined}
           onChange={onPhoneticsPreferenceChanged}
+          style={{minWidth:"200px"}}
         >
           {Object.entries(PREFERENCE_LITERATES).map(([value, literate], i) => (
             <option key={i} value={value}>
