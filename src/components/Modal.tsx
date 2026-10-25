@@ -53,26 +53,27 @@ export function Modal({
   flexContent = false,
 }: {
   title: string;
-  close: () => void;
+  close?: () => void;
   children?: ReactNode;
   flexContent?: boolean;
 }) {
-  return createPortal(
-    <>
-      <ModalBackground onClick={() => close()}></ModalBackground>
-      <StyledModal>
+  
+    return createPortal(
+      <>
+        <ModalBackground onClick={() => close?.()}></ModalBackground>
+        <StyledModal>
         <div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <h3 style={{ flex: 1, margin: 0 }}>{title}</h3>
-            <Button style={{ flex: 0 }} onClick={() => close()}>
-              Close
-            </Button>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <h3 style={{ flex: 1, margin: 0 }}>{title}</h3>
+              {close && <Button style={{ flex: 0 }} onClick={() => close()}>
+                Close
+              </Button>}
+            </div>
+            <hr />
           </div>
-          <hr />
-        </div>
-        <ModalContent flex={flexContent}>{children}</ModalContent>
-      </StyledModal>
-    </>,
-    modalContainer!
-  );
+          <ModalContent flex={flexContent}>{children}</ModalContent>
+        </StyledModal>
+      </>,
+      modalContainer!
+    );
 }

@@ -119,6 +119,7 @@ describe("useUserState", () => {
             groupId: null,
             phoneticsPreference: null,
             userEmail: null,
+            whereFound: null,
           },
         },
         initializationProps: {
@@ -212,6 +213,7 @@ describe("useUserState", () => {
           groupId: null,
           phoneticsPreference: null,
           userEmail: null,
+          whereFound: null,
         },
       });
     });
