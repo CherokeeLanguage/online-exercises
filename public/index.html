@@ -30,10 +30,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Cherokee&family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <div id="modal-root"></div>
-    <!--
+    
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -41,7 +41,19 @@
       The build step will place the bundled scripts into the <body> tag.
 
       To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      To create a production bundle, use `npm run build` or `yarn build`. -->
+      <div id="root"></div>
+      <div id="modal-root"></div>
+      <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('%PUBLIC_URL%/serviceWorker.js').then(function(registration){
+              console.log('ServiceWorker registered: ', registration.scope);
+            }, function(err) {
+              console.log('ServiceWorker unable to be registered: ', err);
+            });
+          });
+        }
+      </script>
   </body>
 </html>
